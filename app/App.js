@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/clerk-expo";
 import RootNavigator from "./src/navigation/RootNavigator"
 import { Toaster } from "sonner-native";
 import { ThemeProvider } from "./src/context/ThemeContext"
+import tokenCache from "./src/utils/tokenCache";
 
 
 const publishableKey =
@@ -20,7 +21,10 @@ if (!publishableKey) {
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <ClerkProvider publishableKey={process.env.EXPO_PUBLIC_CLERK_KEY}>
+      <ClerkProvider
+        publishableKey={process.env.EXPO_PUBLIC_CLERK_KEY}
+        tokenCache={tokenCache}
+      >
         <ThemeProvider>
           <SafeAreaProvider>
             <RootNavigator />
