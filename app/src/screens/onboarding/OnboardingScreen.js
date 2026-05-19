@@ -23,63 +23,12 @@ import OptionCard from "../../components/ui/OptionCard";
 import Button from "../../components/ui/Button";
 import ProgressBar from "../../components/ui/ProgressBar";
 
-
-const LANGUAGES = [
-  {
-    id: "as-tw",
-    title: "Asante Twi",
-    description: "A widely spoken Akan language in Ghana.",
-    image: require("../../assets/images/flagImage.png"),
-  },
-  {
-    id: "ga",
-    title: "Ga",
-    description: "Spoken in Accra and coastal areas.",
-    image: require("../../assets/images/flagImage.png"),
-  },
-  {
-    id: "ee",
-    title: "Ewe",
-    description: "Spoken in Volta Region and parts of Togo.",
-    image: require("../../assets/images/flagImage.png"),
-  },
-];
-
-const LEVELS = [
-  {
-    id: "beginner",
-    title: "Beginner",
-    description: "I know a few words or nothing at all.",
-    icon: "leaf-outline",
-  },
-  {
-    id: "intermediate",
-    title: "Intermediate",
-    description: "I can have basic conversations.",
-    icon: "partly-sunny-outline",
-  },
-  {
-    id: "advanced",
-    title: "Advanced",
-    description: "I can express myself fluently.",
-    icon: "trophy-outline",
-  },
-];
-
-const MOTIVATIONS = [
-  { id: "travel", title: "Travel", icon: "airplane-outline" },
-  { id: "work", title: "Work", icon: "briefcase-outline" },
-  { id: "family", title: "Family", icon: "people-outline" },
-  { id: "culture", title: "Culture", icon: "book-outline" },
-  { id: "hobby", title: "Hobby", icon: "game-controller-outline" },
-];
-
-const GOALS = [
-  { id: "casual", title: "Casual", description: "5 min/day", icon: "walk-outline" },
-  { id: "regular", title: "Regular", description: "10 min/day", icon: "bicycle-outline" },
-  { id: "serious", title: "Serious", description: "20 min/day", icon: "flame-outline" },
-  { id: "intense", title: "Intense", description: "30 min/day", icon: "rocket-outline" },
-];
+import {
+  LANGUAGES,
+  LEVELS,
+  MOTIVATIONS,
+  GOALS,
+} from "../../constants/data/onboardingOptions";
 
 
 export default function OnboardingScreen({ onComplete, navigation }) {
@@ -237,14 +186,14 @@ export default function OnboardingScreen({ onComplete, navigation }) {
       <TextInput
         value={name}
         onChangeText={setName}
-        placeholder="Your name"
+        placeholder="Enter your full name"
         placeholderTextColor="#999"
         style={[styles.input, { color: colors.text, borderColor: colors.border }]}
       />
     </View>,
 
     <View key="language" style={styles.step}>
-      <ThemedText type="title">Select a language</ThemedText>
+      <ThemedText type="title">What would you like to learn?</ThemedText>
       <ScrollView>
         {LANGUAGES.map((l) => (
           <OptionCard
