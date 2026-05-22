@@ -50,7 +50,6 @@ export default function EmailAuth() {
   const isValidEmail = (v) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
-
   const sendOTP = useCallback(async () => {
     if (
       !isValidEmail(email) ||
@@ -139,6 +138,13 @@ export default function EmailAuth() {
           strategy: "email_code",
         });
       }
+
+      if (flow === "forgot-password") {
+        await signIn.create({
+          strategy: "reset_password_email_code",
+          identifier: email,
+        });
+      }
     } catch (err) {
       Alert.alert(
         "Resend Failed",
@@ -148,7 +154,6 @@ export default function EmailAuth() {
       setLoading(false);
     }
   }, [flow, email, password, signIn, signUp]);
-
 
   const handleVerify = useCallback(async (code) => {
     try {
@@ -164,12 +169,12 @@ export default function EmailAuth() {
           await setSignInActive({
             session: res.createdSessionId,
           });
+
           setShowVerify(false);
         }
       }
 
-      if (flow === "signup") {
-        const res =
+      if (flow === "signup") {const res =
           await signUp.attemptEmailAddressVerification({
             code,
           });
@@ -178,6 +183,28 @@ export default function EmailAuth() {
           await setSignUpActive({
             session: res.createdSessionId,
           });
+
+          setShowVerify(false);
+        }
+      }
+
+      if (flow === "forgot-password") {
+        const result = await signIn.attemptFirstFactor({
+          strategy: "reset_password_email_code",
+          code,
+          password,
+        });
+
+        if (result.status === "complete") {
+          await setSignInActive({
+            session: result.createdSessionId,
+          });
+
+          Alert.alert(
+            "Success",
+            "Password reset successful"
+          );
+
           setShowVerify(false);
         }
       }
@@ -189,14 +216,53 @@ export default function EmailAuth() {
     } finally {
       setLoading(false);
     }
-  }, [flow, signIn, signUp]);
+  }, [flow, password, signIn, signUp]);
+
+  const forgotPassword = useCallback(async () => {
+    if (!isValidEmail(email)) {
+      Alert.alert("Error", "Enter your email first");
+      return;
+    }
+
+    if (password.length < 6) {
+      Alert.alert(
+        "Error",
+        "Enter your new password first"
+      );
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      await signIn.create({
+        strategy: "reset_password_email_code",
+        identifier: email,
+      });
+
+      setFlow("forgot-password");
+      setShowVerify(true);
+    } catch (err) {
+      Alert.alert(
+        "Error",
+        err?.errors?.[0]?.message || err.message
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, [email, password, signIn]);
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
       <View style={styles.headerContainer}>
         <ThemedText type="title">Welcome</ThemedText>
 
-        <ThemedText style={[styles.subtitle, { color: theme.secondaryText }]}>
+        <ThemedText
+          style={[
+            styles.subtitle,
+            { color: theme.secondaryText },
+          ]}
+        >
           Enter your email and password. We’ll send a verification code.
         </ThemedText>
       </View>
@@ -206,31 +272,68 @@ export default function EmailAuth() {
         onChangeText={setEmail}
         placeholder="Email"
         autoCapitalize="none"
-        style={[styles.input, { color: theme.text, borderColor: theme.border }]}
+        style={[
+          styles.input,
+          {
+            color: theme.text,
+            borderColor: theme.border,
+          },
+        ]}
       />
 
-      <View style={[styles.passwordContainer, { borderColor: theme.border }]}>
+      <View
+        style={[
+          styles.passwordContainer,
+          { borderColor: theme.border },
+        ]}
+      >
         <TextInput
           value={password}
           onChangeText={setPassword}
           placeholder="Password"
           secureTextEntry={!showPassword}
-          style={[styles.passwordInput, { color: theme.text }]}
+          style={[
+            styles.passwordInput,
+            { color: theme.text },
+          ]}
         />
 
-        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+        <TouchableOpacity
+          onPress={() =>
+            setShowPassword(!showPassword)
+          }
+        >
           <Ionicons
-            name={showPassword ? "eye-off-outline" : "eye-outline"}
+            name={
+              showPassword
+                ? "eye-off-outline"
+                : "eye-outline"
+            }
             size={22}
             color={theme.secondaryText}
           />
         </TouchableOpacity>
       </View>
 
+      <TouchableOpacity
+        onPress={forgotPassword}
+        style={styles.forgotButton}
+      >
+        <ThemedText
+          style={{ color: theme.primary }}
+        >
+          Forgot Password?
+        </ThemedText>
+      </TouchableOpacity>
+
       <Button
         title={loading ? "Please wait..." : "Continue"}
         onPress={sendOTP}
-        disabled={!isValidEmail(email) || password.length < 6 || loading}
+        disabled={
+          !isValidEmail(email) ||
+          password.length < 6 ||
+          loading
+        }
       />
 
       <Verification
@@ -249,32 +352,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
-    paddingTop: 70
+    paddingTop: 70,
   },
+
   headerContainer: {
     gap: 8,
-    marginBottom: 32
+    marginBottom: 32,
   },
+
   subtitle: {
-    fontSize: 15,
-    lineHeight: 22
+    fontSize: 15,lineHeight: 22,
   },
+
   input: {
     borderBottomWidth: 2,
     fontSize: 18,
     paddingVertical: 12,
     marginBottom: 24,
   },
+
   passwordContainer: {
     borderBottomWidth: 2,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 40,
   },
+
   passwordInput: {
     flex: 1,
     fontSize: 18,
     paddingVertical: 12,
+  },
+
+  forgotButton: {
+    alignSelf: "flex-end",
+    marginTop: 12,
+    marginBottom: 32,
   },
 });

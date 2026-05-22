@@ -16,7 +16,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import ThemeToggle from "../../components/ui/ThemeToggle";
 import Button from "../../components/ui/Button";
-import { introData } from "../../constants/introData";
+import { introData } from "../../constants/data/introData";
 import { useTheme } from "../../context/ThemeContext";
 import GoogleSignIn from "./GoogleSignIn";
 import { ThemedText } from "../../components/themed-text";
