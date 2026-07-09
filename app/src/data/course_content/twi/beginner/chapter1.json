@@ -1,0 +1,694 @@
+{
+  "id": 1,
+  "title": "Twi Greetings & Basics",
+  "description": "Learn essential Twi greetings for daily conversations in Ghana",
+  "lessons": [
+    {
+      "id": "1-1",
+      "title": "Saying Hello",
+      "icon": "chatbubbles-outline",
+      "completionCount": 0,
+      "difficulty": "Beginner",
+      "questions": [
+        {
+          "id": 101,
+          "type": "multiple_choice",
+          "instruction": "Select the correct Twi greeting for 'Good morning'.",
+          "question": "What is 'Good morning' in Twi?",
+          "options": [
+            { "id": 1, "text": "Me ma wo akye" },
+            { "id": 2, "text": "Me ma wo adwo" },
+            { "id": 3, "text": "Me ma wo anadwo" },
+            { "id": 4, "text": "Agoo" }
+          ],
+          "correctOptionId": 1,
+          "hints": ["Used before noon", "Morning greeting"],
+          "explanation": "Me ma wo akye = Good morning. 'Akye' means morning."
+        },
+        {
+          "id": 102,
+          "type": "drag_drop",
+          "instruction": "Complete the morning greeting by dragging the correct word into the blank.",
+          "sentence": "Me ma wo [_____]",
+          "blankId": "blank1",
+          "items": [
+            { "id": "opt1", "text": "akye", "meaning": "morning" },
+            { "id": "opt2", "text": "adwo", "meaning": "afternoon" },
+            { "id": "opt3", "text": "anadwo", "meaning": "evening" }
+          ],
+          "correctDrop": { "blankId": "blank1", "itemId": "opt1" },
+          "hints": ["Starts with 'a'", "Means 'morning'"],
+          "explanation": "Me ma wo akye = Good morning. 'Akye' means morning."
+        },
+        {
+          "id": 103,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi phrase, then drag the correct English meaning.",
+          "audio": "audio/twi/me_ma_wo_adwo.mp3",
+          "audioText": "Me ma wo adwo",
+          "sentence": "Me ma wo adwo",
+          "direction": "twi_to_eng",
+          "dropZoneLabel": "Drop the correct meaning here",
+          "items": [
+            { "id": "opt1", "text": "Good afternoon", "isCorrect": true },
+            { "id": "opt2", "text": "Good morning", "isCorrect": false },
+            { "id": "opt3", "text": "Good evening", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["Used from 12 PM to 4 PM", "Afternoon greeting"],
+          "explanation": "'Me ma wo adwo' is used specifically for afternoon greetings (12 PM - 4 PM)."
+        },
+        {
+          "id": 104,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi phrase, then drag the matching Twi greeting.",
+          "audio": "audio/twi/me_ma_wo_anadwo.mp3",
+          "audioText": "Me ma wo anadwo",
+          "sentence": "Listen carefully, then match to the same Twi greeting.",
+          "direction": "twi_to_twi",
+          "dropZoneLabel": "Drop the matching Twi greeting here",
+          "items": [
+            { "id": "opt1", "text": "Me ma wo anadwo", "isCorrect": true },
+            { "id": "opt2", "text": "Me ma wo akye", "isCorrect": false },
+            { "id": "opt3", "text": "Me ma wo adwo", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["Used after 6 PM", "Evening greeting", "Contains 'anadwo'"],
+          "explanation": "Me ma wo anadwo = Good evening. 'Anadwo' means evening/night."
+        },
+        {
+          "id": 105,
+          "type": "matching",
+          "instruction": "Match each Twi greeting to its correct English meaning.",
+          "pairs": [
+            { "id": 1, "left": "Agoo", "right": "Hello / May I come in?" },
+            { "id": 2, "left": "Me ma wo akye", "right": "Good morning" },
+            { "id": 3, "left": "Me ma wo adwo", "right": "Good afternoon" },
+            { "id": 4, "left": "Me ma wo anadwo", "right": "Good evening" }
+          ],
+          "hints": ["All greetings follow 'Me ma wo' + time of day", "Agoo is different"],
+          "explanation": "These are the essential Twi greetings for different times of day."
+        },
+        {
+          "id": 106,
+          "type": "single_response",
+          "instruction": "How do you say 'Hello' in Twi? Type your answer below.",
+          "question": "How do you say 'Hello' in Twi?",
+          "expectedAnswer": "Agoo",
+          "alternativeAnswers": ["agoo", "Agoo", "AGOO"],
+          "hints": ["Used to announce your presence", "Starts with 'A'", "4 letters"],
+          "explanation": "'Agoo' is used to announce your presence, similar to 'hello' or 'may I come in?'"
+        }
+      ]
+    },
+    {
+      "id": "1-2",
+      "title": "How Are You?",
+      "icon": "happy-outline",
+      "completionCount": 0,
+      "difficulty": "Beginner",
+      "questions": [
+        {
+          "id": 201,
+          "type": "single_response",
+          "instruction": "Type the Twi phrase for 'How are you?'",
+          "question": "How do you ask 'How are you?' in Twi?",
+          "expectedAnswer": "Ɛte sɛn",
+          "alternativeAnswers": ["Ɛte sɛn?", "ete sen", "Ɛte sen", "Ɛte sɛn", "Ete sen"],
+          "hints": ["Literally 'How is it?'", "Starts with 'Ɛ'", "2 words"],
+          "explanation": "'Ɛte sɛn?' literally means 'How is it?' and is the standard way to ask 'How are you?'"
+        },
+        {
+          "id": 202,
+          "type": "multiple_choice",
+          "instruction": "Select the correct response to 'How are you?'",
+          "question": "What is the correct response to 'Ɛte sɛn?' (How are you?)",
+          "options": [
+            { "id": 1, "text": "Me ho yɛ" },
+            { "id": 2, "text": "Meda wo ase" },
+            { "id": 3, "text": "Yɛfrɛ wo sɛn?" },
+            { "id": 4, "text": "Wofiri he?" }
+          ],
+          "correctOptionId": 1,
+          "hints": ["Me ho = my body", "yɛ = is good", "Short response"],
+          "explanation": "Me ho yɛ = I am fine. 'Yɛ' means 'is good' or 'is well'."
+        },
+        {
+          "id": 203,
+          "type": "drag_drop",
+          "instruction": "Complete the response 'I am fine' by dragging the correct word.",
+          "sentence": "Me ho [_____]",
+          "blankId": "blank1",
+          "items": [
+            { "id": "opt1", "text": "yɛ", "meaning": "is good" },
+            { "id": "opt2", "text": "nn", "meaning": "not" },
+            { "id": "opt3", "text": "papaapa", "meaning": "very much" }
+          ],
+          "correctDrop": { "blankId": "blank1", "itemId": "opt1" },
+          "hints": ["Single letter/syllable", "Sounds like 'yeah'", "Means 'is good'"],
+          "explanation": "Me ho yɛ = I am fine. 'Yɛ' means 'is good' or 'is well'."
+        },
+        {
+          "id": 204,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi phrase, then drag the correct English meaning.",
+          "audio": "audio/twi/me_ho_ye_papaapa.mp3",
+          "audioText": "Me ho yɛ papaapa",
+          "sentence": "Me ho yɛ papaapa",
+          "direction": "twi_to_eng",
+          "dropZoneLabel": "Drop the correct meaning here",
+          "items": [
+            { "id": "opt1", "text": "I am very well", "isCorrect": true },
+            { "id": "opt2", "text": "I am fine", "isCorrect": false },
+            { "id": "opt3", "text": "I am not well", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["papa = good", "papaapa = very good", "Emphatic"],
+          "explanation": "'Papaapa' means 'very much' or 'extremely' - repeating 'papa' adds emphasis."
+        },
+        {
+          "id": 205,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi phrase, then drag the matching Twi negative response.",
+          "audio": "audio/twi/me_ho_nn_ye.mp3",
+          "audioText": "Me ho nn yɛ",
+          "sentence": "Me ho nn yɛ",
+          "direction": "twi_to_twi",
+          "dropZoneLabel": "Drop the matching Twi phrase here",
+          "items": [
+            { "id": "opt1", "text": "Me ho nn yɛ", "isCorrect": true },
+            { "id": "opt2", "text": "Me ho yɛ", "isCorrect": false },
+            { "id": "opt3", "text": "Me ho yɛ papaapa", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["nn = not", "Negative response", "3 words", "Ends with 'yɛ'"],
+          "explanation": "Me ho nn yɛ = I am not well. 'Nn' is the negative form."
+        },
+        {
+          "id": 206,
+          "type": "matching",
+          "instruction": "Match each Twi phrase to its correct English meaning.",
+          "pairs": [
+            { "id": 1, "left": "Ɛte sɛn?", "right": "How are you?" },
+            { "id": 2, "left": "Me ho yɛ", "right": "I am fine" },
+            { "id": 3, "left": "Me ho yɛ papaapa", "right": "I am very well" },
+            { "id": 4, "left": "Me ho nn yɛ", "right": "I am not well" }
+          ],
+          "hints": ["All responses use 'Me ho' (my body) + condition"],
+          "explanation": "These are the common responses to 'How are you?' in Twi."
+        }
+      ]
+    },
+    {
+      "id": "1-3",
+      "title": "Polite Expressions",
+      "icon": "chatbox-ellipses-outline",
+      "completionCount": 0,
+      "difficulty": "Beginner",
+      "questions": [
+        {
+          "id": 301,
+          "type": "single_response",
+          "instruction": "Type the Twi phrase for 'Thank you'.",
+          "question": "How do you say 'Thank you' in Twi?",
+          "expectedAnswer": "Meda wo ase",
+          "alternativeAnswers": ["meda wo ase", "Meda woase", "meda woase", "Mɛda wo ase"],
+          "hints": ["3 words", "Starts with 'Meda'", "Ends with 'ase'"],
+          "explanation": "'Meda wo ase' literally means 'I give thanks to you.'"
+        },
+        {
+          "id": 302,
+          "type": "multiple_choice",
+          "instruction": "Select the correct response to 'Meda wo ase' (Thank you).",
+          "question": "What is the correct response to 'Meda wo ase'?",
+          "options": [
+            { "id": 1, "text": "Yoo" },
+            { "id": 2, "text": "Kafra" },
+            { "id": 3, "text": "Mepa wo kyɛw" },
+            { "id": 4, "text": "Aane" }
+          ],
+          "correctOptionId": 1,
+          "hints": ["3 letters", "Also means 'OK' or 'alright'", "Starts with 'Y'"],
+          "explanation": "'Yoo' is used to acknowledge thanks, similar to 'you're welcome' or 'OK'."
+        },
+        {
+          "id": 303,
+          "type": "drag_drop",
+          "instruction": "Complete the polite request by dragging the correct word.",
+          "sentence": "[_____] wo kyɛw (Please)",
+          "blankId": "blank1",
+          "items": [
+            { "id": "opt1", "text": "Mepa", "meaning": "I beg" },
+            { "id": "opt2", "text": "Meda", "meaning": "I thank" },
+            { "id": "opt3", "text": "Mefiri", "meaning": "I come from" }
+          ],
+          "correctDrop": { "blankId": "blank1", "itemId": "opt1" },
+          "hints": ["4 letters", "Starts with M", "Ends with 'pa'", "Literally 'I beg you'"],
+          "explanation": "Mepa wo kyɛw = Please. Literally 'I beg your pardon' but used as 'please'."
+        },
+        {
+          "id": 304,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi phrase, then drag the correct English meaning.",
+          "audio": "audio/twi/kafra.mp3",
+          "audioText": "Kafra",
+          "sentence": "Kafra",
+          "direction": "twi_to_eng",
+          "dropZoneLabel": "Drop the correct meaning here",
+          "items": [
+            { "id": "opt1", "text": "Sorry / Excuse me", "isCorrect": true },
+            { "id": "opt2", "text": "Thank you", "isCorrect": false },
+            { "id": "opt3", "text": "Please", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["Used for apologies", "Also to get attention"],
+          "explanation": "'Kafra' is used for apologies or to get someone's attention politely."
+        },
+        {
+          "id": 305,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi phrase, then drag the matching Twi polite expression.",
+          "audio": "audio/twi/mepa_wo_kyɛw.mp3",
+          "audioText": "Mepa wo kyɛw",
+          "sentence": "Mepa wo kyɛw",
+          "direction": "twi_to_twi",
+          "dropZoneLabel": "Drop the matching Twi phrase here",
+          "items": [
+            { "id": "opt1", "text": "Mepa wo kyɛw", "isCorrect": true },
+            { "id": "opt2", "text": "Meda wo ase", "isCorrect": false },
+            { "id": "opt3", "text": "Kafra", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["Polite request", "Literally 'I beg you'", "3 words"],
+          "explanation": "Mepa wo kyɛw = Please. Literally 'I beg your pardon'."
+        },
+        {
+          "id": 306,
+          "type": "matching",
+          "instruction": "Match each Twi polite expression to its correct English meaning.",
+          "pairs": [
+            { "id": 1, "left": "Meda wo ase", "right": "Thank you" },
+            { "id": 2, "left": "Yoo", "right": "You're welcome / OK" },
+            { "id": 3, "left": "Kafra", "right": "Sorry / Excuse me" },
+            { "id": 4, "left": "Mepa wo kyɛw", "right": "Please" }
+          ],
+          "hints": ["Yoo is the response to Meda wo ase", "Mepa wo kyɛw is for requests"],
+          "explanation": "These are essential polite phrases for daily conversations in Twi."
+        }
+      ]
+    },
+    {
+      "id": "1-4",
+      "title": "Introductions",
+      "icon": "person-outline",
+      "completionCount": 0,
+      "difficulty": "Beginner",
+      "questions": [
+        {
+          "id": 401,
+          "type": "single_response",
+          "instruction": "Type the Twi phrase for 'What is your name?'",
+          "question": "How do you ask 'What is your name?' in Twi?",
+          "expectedAnswer": "Yɛfrɛ wo sɛn",
+          "alternativeAnswers": ["Yɛfrɛ wo sɛn?", "yɛfrɛ wo sɛn", "Yɛfrɛ wo sen", "Yefre wo sen"],
+          "hints": ["3 words", "Starts with 'Yɛfrɛ'", "Ends with 'sɛn'", "Literally 'What do we call you?'"],
+          "explanation": "'Yɛfrɛ wo sɛn?' literally means 'What do we call you?'"
+        },
+        {
+          "id": 402,
+          "type": "multiple_choice",
+          "instruction": "Select the correct way to introduce yourself.",
+          "question": "How do you say 'My name is Kofi' in Twi?",
+          "options": [
+            { "id": 1, "text": "Wɔfrɛ me Kofi" },
+            { "id": 2, "text": "Yɛfrɛ me Kofi" },
+            { "id": 3, "text": "Mene Kofi" },
+            { "id": 4, "text": "Kofi ne me din" }
+          ],
+          "correctOptionId": 1,
+          "hints": ["Wɔfrɛ me = They call me", "Common introduction"],
+          "explanation": "Wɔfrɛ me Kofi = 'They call me Kofi' or 'My name is Kofi.'"
+        },
+        {
+          "id": 403,
+          "type": "drag_drop",
+          "instruction": "Complete the introduction by dragging the correct name.",
+          "sentence": "Wɔfrɛ me [_____] (My name is Adwoa)",
+          "blankId": "blank1",
+          "items": [
+            { "id": "opt1", "text": "Adwoa", "meaning": "born on Monday" },
+            { "id": "opt2", "text": "Kofi", "meaning": "born on Friday" },
+            { "id": "opt3", "text": "Kwame", "meaning": "born on Saturday" }
+          ],
+          "correctDrop": { "blankId": "blank1", "itemId": "opt1" },
+          "hints": ["Female name", "Born on Monday", "Starts with 'A'"],
+          "explanation": "Adwoa is a common Twi name for a female born on Monday."
+        },
+        {
+          "id": 404,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi phrase, then drag the correct English meaning.",
+          "audio": "audio/twi/ɛyɛ_me_anigye.mp3",
+          "audioText": "Ɛyɛ me anigye sɛ mihyia wo",
+          "sentence": "Ɛyɛ me anigye sɛ mihyia wo",
+          "direction": "twi_to_eng",
+          "dropZoneLabel": "Drop the correct meaning here",
+          "items": [
+            { "id": "opt1", "text": "Nice to meet you", "isCorrect": true },
+            { "id": "opt2", "text": "How are you?", "isCorrect": false },
+            { "id": "opt3", "text": "Where are you from?", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["After meeting someone new", "Literally 'It is my joy'", "Long phrase"],
+          "explanation": "Literally 'It is my joy that I meet you.' = Nice to meet you."
+        },
+        {
+          "id": 405,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi phrase, then drag the matching Twi question.",
+          "audio": "audio/twi/wofiri_he.mp3",
+          "audioText": "Wofiri he?",
+          "sentence": "Wofiri he?",
+          "direction": "twi_to_twi",
+          "dropZoneLabel": "Drop the matching Twi phrase here",
+          "items": [
+            { "id": "opt1", "text": "Wofiri he?", "isCorrect": true },
+            { "id": "opt2", "text": "Yɛfrɛ wo sɛn?", "isCorrect": false },
+            { "id": "opt3", "text": "Ɛte sɛn?", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["Wofiri = You come from", "he = where", "2 words", "Ends with '?'"],
+          "explanation": "'Wofiri he?' asks about someone's origin or hometown."
+        },
+        {
+          "id": 406,
+          "type": "matching",
+          "instruction": "Match each Twi introduction phrase to its correct English meaning.",
+          "pairs": [
+            { "id": 1, "left": "Yɛfrɛ wo sɛn?", "right": "What is your name?" },
+            { "id": 2, "left": "Wɔfrɛ me Kofi", "right": "My name is Kofi" },
+            { "id": 3, "left": "Ɛyɛ me anigye sɛ mihyia wo", "right": "Nice to meet you" },
+            { "id": 4, "left": "Wofiri he?", "right": "Where are you from?" }
+          ],
+          "hints": ["Yɛfrɛ = What do we call", "Wɔfrɛ = They call me", "Wofiri = You come from"],
+          "explanation": "These phrases help you introduce yourself and ask about others."
+        }
+      ]
+    },
+    {
+      "id": "1-5",
+      "title": "Yes & No",
+      "icon": "checkmark-circle-outline",
+      "completionCount": 0,
+      "difficulty": "Beginner",
+      "questions": [
+        {
+          "id": 501,
+          "type": "single_response",
+          "instruction": "Type the Twi word for 'Yes'.",
+          "question": "How do you say 'Yes' in Twi?",
+          "expectedAnswer": "Aane",
+          "alternativeAnswers": ["aane", "Aane", "ane", "Ane"],
+          "hints": ["4 letters", "Starts with 'Aa'", "Ends with 'ne'"],
+          "explanation": "'Aane' is the direct word for 'yes' in Twi."
+        },
+        {
+          "id": 502,
+          "type": "multiple_choice",
+          "instruction": "Select the correct Twi word for 'No'.",
+          "question": "What is 'No' in Twi?",
+          "options": [
+            { "id": 1, "text": "Aane" },
+            { "id": 2, "text": "Daabi" },
+            { "id": 3, "text": "Yoo" },
+            { "id": 4, "text": "Ebia" }
+          ],
+          "correctOptionId": 2,
+          "hints": ["5 letters", "Starts with 'D'", "Ends with 'bee'", "Rhymes with 'stabby'"],
+          "explanation": "'Daabi' means 'no' and can be used to refuse or disagree politely."
+        },
+        {
+          "id": 503,
+          "type": "drag_drop",
+          "instruction": "Complete the sentence to disagree politely.",
+          "sentence": "Ɛnyɛ saa, [_____] (That's not right, no)",
+          "blankId": "blank1",
+          "items": [
+            { "id": "opt1", "text": "daabi", "meaning": "no" },
+            { "id": "opt2", "text": "aane", "meaning": "yes" },
+            { "id": "opt3", "text": "yoo", "meaning": "ok" }
+          ],
+          "correctDrop": { "blankId": "blank1", "itemId": "opt1" },
+          "hints": ["Means 'no'", "Starts with 'd'", "5 letters"],
+          "explanation": "Use 'daabi' to politely disagree or say no."
+        },
+        {
+          "id": 504,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi word, then drag the correct English meaning.",
+          "audio": "audio/twi/yoo_yes_no.mp3",
+          "audioText": "Yoo",
+          "sentence": "Yoo",
+          "direction": "twi_to_eng",
+          "dropZoneLabel": "Drop the correct meaning here",
+          "items": [
+            { "id": "opt1", "text": "OK / Alright", "isCorrect": true },
+            { "id": "opt2", "text": "Yes", "isCorrect": false },
+            { "id": "opt3", "text": "No", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["3 letters", "Also response to thank you", "Starts with 'Y'"],
+          "explanation": "'Yoo' expresses agreement or acknowledgment, similar to 'OK' or 'alright'."
+        },
+        {
+          "id": 505,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi word, then drag the matching Twi word.",
+          "audio": "audio/twi/aane.mp3",
+          "audioText": "Aane",
+          "sentence": "Aane",
+          "direction": "twi_to_twi",
+          "dropZoneLabel": "Drop the matching Twi word here",
+          "items": [
+            { "id": "opt1", "text": "Aane", "isCorrect": true },
+            { "id": "opt2", "text": "Daabi", "isCorrect": false },
+            { "id": "opt3", "text": "Yoo", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["4 letters", "Starts with 'Aa'", "Ends with 'ne'", "Means 'yes'"],
+          "explanation": "Aane = Yes"
+        },
+        {
+          "id": 506,
+          "type": "matching",
+          "instruction": "Match each Twi word to its correct English meaning.",
+          "pairs": [
+            { "id": 1, "left": "Aane", "right": "Yes" },
+            { "id": 2, "left": "Daabi", "right": "No" },
+            { "id": 3, "left": "Yoo", "right": "OK / Alright" },
+            { "id": 4, "left": "Ebia", "right": "Maybe" }
+          ],
+          "hints": ["Aane = affirmation", "Daabi = negation", "Yoo = acknowledgment"],
+          "explanation": "These are fundamental response words in Twi conversations."
+        }
+      ]
+    },
+    {
+      "id": "1-6",
+      "title": "Question Words",
+      "icon": "help-circle-outline",
+      "completionCount": 0,
+      "difficulty": "Beginner",
+      "questions": [
+        {
+          "id": 601,
+          "type": "single_response",
+          "instruction": "Type the Twi question word for 'What' or 'How'.",
+          "question": "What is the Twi word for 'What' or 'How'?",
+          "expectedAnswer": "Sɛn",
+          "alternativeAnswers": ["sɛn", "sen", "Sɛn", "Sen"],
+          "hints": ["3 letters", "Has special character 'ɛ'", "Used in 'Ɛte sɛn?'"],
+          "explanation": "'Sɛn' means 'what' or 'how' depending on context."
+        },
+        {
+          "id": 602,
+          "type": "multiple_choice",
+          "instruction": "Select the correct Twi question word for 'Who'.",
+          "question": "How do you ask 'Who?' in Twi?",
+          "options": [
+            { "id": 1, "text": "Dɛn?" },
+            { "id": 2, "text": "Hwan?" },
+            { "id": 3, "text": "Sɛn?" },
+            { "id": 4, "text": "Ɛhe?" }
+          ],
+          "correctOptionId": 2,
+          "hints": ["4 letters", "Asks about people", "Starts with 'H'"],
+          "explanation": "'Hwan' is used to ask about people, similar to 'who' in English."
+        },
+        {
+          "id": 603,
+          "type": "drag_drop",
+          "instruction": "Complete the Twi question for 'Why' by dragging the correct word.",
+          "sentence": "Ɛhe [_____] (Why?)",
+          "blankId": "blank1",
+          "items": [
+            { "id": "opt1", "text": "nti", "meaning": "because/reason" },
+            { "id": "opt2", "text": "sɛn", "meaning": "what" },
+            { "id": "opt3", "text": "na", "meaning": "and/then" }
+          ],
+          "correctDrop": { "blankId": "blank1", "itemId": "opt1" },
+          "hints": ["3 letters", "Means 'why' when paired with 'Ɛhe'", "Sounds like 'tee'"],
+          "explanation": "'Ɛhe nti?' means 'Why?' literally 'Because of what?'"
+        },
+        {
+          "id": 604,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi word, then drag the correct English meaning.",
+          "audio": "audio/twi/dɛn.mp3",
+          "audioText": "Dɛn",
+          "sentence": "Dɛn",
+          "direction": "twi_to_eng",
+          "dropZoneLabel": "Drop the correct meaning here",
+          "items": [
+            { "id": "opt1", "text": "What / Which", "isCorrect": true },
+            { "id": "opt2", "text": "Who", "isCorrect": false },
+            { "id": "opt3", "text": "Where", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["3 letters", "Similar to 'sɛn'", "Has special character 'ɛ'"],
+          "explanation": "'Dɛn' asks about things or choices, similar to 'what' or 'which'."
+        },
+        {
+          "id": 605,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi word, then drag the matching Twi question word.",
+          "audio": "audio/twi/ɛhe.mp3",
+          "audioText": "Ɛhe",
+          "sentence": "Ɛhe",
+          "direction": "twi_to_twi",
+          "dropZoneLabel": "Drop the matching Twi word here",
+          "items": [
+            { "id": "opt1", "text": "Ɛhe", "isCorrect": true },
+            { "id": "opt2", "text": "Sɛn", "isCorrect": false },
+            { "id": "opt3", "text": "Hwan", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["3 letters", "Starts with 'Ɛ'", "Used in 'Wofiri he?'", "Means 'where'"],
+          "explanation": "Ɛhe = Where"
+        },
+        {
+          "id": 606,
+          "type": "matching",
+          "instruction": "Match each Twi question word to its correct English meaning.",
+          "pairs": [
+            { "id": 1, "left": "Sɛn", "right": "What / How" },
+            { "id": 2, "left": "Hwan", "right": "Who" },
+            { "id": 3, "left": "Dɛn", "right": "What / Which" },
+            { "id": 4, "left": "Ɛhe", "right": "Where" },
+            { "id": 5, "left": "Ɛhe nti", "right": "Why" }
+          ],
+          "hints": ["Sɛn and Dɛn are similar", "Ɛhe nti = 2 words", "Hwan = people"],
+          "explanation": "These question words help you ask for information in Twi."
+        }
+      ]
+    },
+    {
+      "id": "1-7",
+      "title": "Review Lesson",
+      "icon": "refresh-outline",
+      "completionCount": 0,
+      "difficulty": "Beginner",
+      "questions": [
+        {
+          "id": 701,
+          "type": "single_response",
+          "instruction": "Type the Twi greeting for 'Hello'.",
+          "question": "What is the Twi word for 'Hello'?",
+          "expectedAnswer": "Agoo",
+          "alternativeAnswers": ["agoo", "Agoo", "AGOO"],
+          "hints": ["4 letters", "Used to announce presence", "Like knocking"],
+          "explanation": "Agoo = Hello / May I come in?"
+        },
+        {
+          "id": 702,
+          "type": "multiple_choice",
+          "instruction": "Select the correct response to 'Ɛte sɛn?' (How are you?).",
+          "question": "How do you respond to 'Ɛte sɛn?'?",
+          "options": [
+            { "id": 1, "text": "Me ho yɛ" },
+            { "id": 2, "text": "Meda wo ase" },
+            { "id": 3, "text": "Yoo" },
+            { "id": 4, "text": "Kafra" }
+          ],
+          "correctOptionId": 1,
+          "hints": ["Me ho = my body", "yɛ = is good"],
+          "explanation": "Me ho yɛ = I am fine"
+        },
+        {
+          "id": 703,
+          "type": "drag_drop",
+          "instruction": "Complete the greeting 'Good morning' by dragging the correct word.",
+          "sentence": "Me ma wo [_____]",
+          "blankId": "blank1",
+          "items": [
+            { "id": "opt1", "text": "akye", "meaning": "morning" },
+            { "id": "opt2", "text": "adwo", "meaning": "afternoon" },
+            { "id": "opt3", "text": "anadwo", "meaning": "evening" }
+          ],
+          "correctDrop": { "blankId": "blank1", "itemId": "opt1" },
+          "hints": ["Used before noon", "Means 'morning'"],
+          "explanation": "Me ma wo akye = Good morning"
+        },
+        {
+          "id": 704,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi phrase, then drag the correct English meaning.",
+          "audio": "audio/twi/meda_wo_ase_review.mp3",
+          "audioText": "Meda wo ase",
+          "sentence": "Meda wo ase",
+          "direction": "twi_to_eng",
+          "dropZoneLabel": "Drop the correct meaning here",
+          "items": [
+            { "id": "opt1", "text": "Thank you", "isCorrect": true },
+            { "id": "opt2", "text": "Please", "isCorrect": false },
+            { "id": "opt3", "text": "Sorry", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["Expression of gratitude", "Response is 'Yoo'"],
+          "explanation": "Meda wo ase = Thank you"
+        },
+        {
+          "id": 705,
+          "type": "listening_drag_drop",
+          "instruction": "Listen to the Twi phrase, then drag the matching Twi greeting.",
+          "audio": "audio/twi/me_ma_wo_adwo_review.mp3",
+          "audioText": "Me ma wo adwo",
+          "sentence": "Me ma wo adwo",
+          "direction": "twi_to_twi",
+          "dropZoneLabel": "Drop the matching Twi greeting here",
+          "items": [
+            { "id": "opt1", "text": "Me ma wo adwo", "isCorrect": true },
+            { "id": "opt2", "text": "Me ma wo akye", "isCorrect": false },
+            { "id": "opt3", "text": "Me ma wo anadwo", "isCorrect": false }
+          ],
+          "correctDrop": { "itemId": "opt1" },
+          "hints": ["Used from 12 PM to 4 PM", "Afternoon greeting"],
+          "explanation": "Me ma wo adwo = Good afternoon"
+        },
+        {
+          "id": 706,
+          "type": "matching",
+          "instruction": "Match the questions to their correct answers (Review).",
+          "pairs": [
+            { "id": 1, "left": "Ɛte sɛn?", "right": "Me ho yɛ" },
+            { "id": 2, "left": "Yɛfrɛ wo sɛn?", "right": "Wɔfrɛ me Kofi" },
+            { "id": 3, "left": "Wofiri he?", "right": "Mefiri America" },
+            { "id": 4, "left": "Meda wo ase", "right": "Yoo" }
+          ],
+          "hints": ["Ɛte sɛn? asks about wellbeing", "Yɛfrɛ wo sɛn? asks for name", "Meda wo ase gets Yoo"],
+          "explanation": "These are common Q&A pairs in Twi conversations."
+        }
+      ]
+    }
+  ]
+}

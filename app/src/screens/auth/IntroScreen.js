@@ -16,9 +16,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import ThemeToggle from "../../components/ui/ThemeToggle";
 import Button from "../../components/ui/Button";
-import { introData } from "../../constants/data/introData";
+import { introData } from "../../data/introData";
 import { useTheme } from "../../context/ThemeContext";
-import GoogleSignIn from "./GoogleSignIn";
 import { ThemedText } from "../../components/themed-text";
 
 const { width, height } = Dimensions.get("window");
@@ -102,14 +101,17 @@ export default function IntroScreen({ navigation }) {
           styles.bottomContainer,
           { paddingBottom: insets.bottom + 10 },
         ]}
-      >
+      > 
         <Button
-          title="Continue with Email"
+          title="Sign up"
           variant="primary"
-          onPress={() => navigation.navigate("Email")}
+          onPress={() => navigation.navigate("SignUp")}
         />
-
-        <GoogleSignIn />
+        <Button
+          title="Login"
+          variant="secondary"
+          onPress={() => navigation.navigate("Login")}
+        />
 
         <View style={styles.termsWrapper}>
           <ThemedText style={styles.termsText}>

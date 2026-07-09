@@ -1,10 +1,12 @@
 import React from "react";
+import { Platform } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import HomeScreen from "../../screens/main/HomeScreen";
-import LessonScreen from "../../screens/main/LessonScreen";
-import ProfileScreen from "../../screens/main/ProfileScreen";
+import HomeScreen from "../../screens/main/home/HomeScreen";
+import ProfileScreen from "../../screens/main/profile/ProfileScreen";
+import LessonScreen from "../../screens/main/lessons/LessonScreen";
+import PracticeScreen from "../../screens/main/practice/PracticeScreen";
 import { useTheme } from "../../context/ThemeContext";
 
 const Tab = createBottomTabNavigator();
@@ -27,32 +29,37 @@ export default function MainTabNavigator() {
 
         tabBarInactiveTintColor:
           theme.muted,
-
+        
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: "600",
+          marginBottom: Platform.OS === "android" ? 5 : 0,
+        },
         tabBarIcon: ({
           focused,
           color,
           size,
         }) => {
-          let iconName = "home-outline";
+          let iconName;
 
           switch (route.name) {
             case "Home":
-              iconName = focused
-                ? "home"
-                : "home-outline";
+              iconName = focused ? "home" : "home-outline";
               break;
-
             case "Lessons":
-              iconName = focused
-                ? "school"
-                : "school-outline";
+              iconName = focused ? "book" : "book-outline";
               break;
-
+            case "Practice":
+              iconName = focused ? "school" : "school-outline";
+              break;
+            case "Progress":
+              iconName = focused ? "poll" : "poll";
+              break;
             case "Profile":
-              iconName = focused
-                ? "person"
-                : "person-outline";
+              iconName = focused ? "person" : "person-outline";
               break;
+            default:
+              iconName = "help";
           }
 
           return (
@@ -65,6 +72,8 @@ export default function MainTabNavigator() {
         },
       })}
     >
+
+
       <Tab.Screen
         name="Home"
         component={HomeScreen}
@@ -78,6 +87,14 @@ export default function MainTabNavigator() {
         component={LessonScreen}
         options={{
           title: "Lessons",
+        }}
+      />
+
+      <Tab.Screen
+        name="Practice"
+        component={PracticeScreen}
+        options={{
+          title: "Practice",
         }}
       />
 

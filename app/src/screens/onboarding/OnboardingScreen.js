@@ -28,7 +28,7 @@ import {
   LEVELS,
   MOTIVATIONS,
   GOALS,
-} from "../../constants/data/onboardingOptions";
+} from "../../data/onboardingOptions";
 
 
 export default function OnboardingScreen({ onComplete, navigation }) {
