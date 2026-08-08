@@ -1,44 +1,47 @@
-import React, { useEffect, useMemo, useState } from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useFocusEffect } from "@react-navigation/native";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Alert,
   ActivityIndicator,
+  Alert,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { useUser, useAuth } from "@clerk/clerk-expo";
+import { useAuth, useUser } from "@clerk/clerk-expo";
 
-import { useTheme } from "../../../context/ThemeContext";
 import { ThemedText } from "../../../components/themed-text";
-import Button from "../../../components/ui/Button"; 
+import Button from "../../../components/ui/Button";
 import ThemeToggle from "../../../components/ui/ThemeToggle";
+import { useTheme } from "../../../context/ThemeContext";
 import { createSupabaseClient } from "../../../utils/supabase";
 
 import { LANGUAGES, LEVELS } from "../../../data/onboardingOptions";
+import EditProfileModal from "./EditProfileModal";
 
 export default function ProfileScreen() {
   const { theme } = useTheme();
   const { user } = useUser();
   const { getToken, signOut } = useAuth();
 
-  const supabase = useMemo(
-    () => createSupabaseClient(getToken),
-    [getToken]
-  );
+
+  const supabase = useMemo(() => {
+    if (typeof getToken !== "function") return null;
+    return createSupabaseClient(getToken);
+  }, [getToken]);
 
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const [userLanguages, setUserLanguages] = useState([]);
 
-  useEffect(() => {
-    if (!user?.id) return;
-    fetchProfile();
-  }, [user?.id]);
+  const fetchProfile = useCallback(async () => {
+    if (!user?.id || !supabase) return;
 
-  const fetchProfile = async () => {
     try {
       const { data, error } = await supabase
         .from("profiles")
@@ -48,23 +51,40 @@ export default function ProfileScreen() {
           total_xp,
           hearts,
           target_language,
-          language_level
+          language_level,
+          email,
+          user_languages
         `)
         .eq("clerk_id", user.id)
         .single();
 
       if (error) {
-        console.log(error);
+        console.log("Error fetching profile:", error);
         return;
       }
 
       setProfile(data);
+      
+      const languages = data?.user_languages || [data?.target_language];
+      setUserLanguages(languages.filter(Boolean));
     } catch (err) {
-      console.log(err);
+      console.log("Error:", err);
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
-  };
+  }, [supabase, user?.id]);
+
+  useEffect(() => {
+    fetchProfile();
+  }, [fetchProfile]);
+
+  
+  useFocusEffect(
+    useCallback(() => {
+      fetchProfile();
+    }, [fetchProfile])
+  );
 
   const currentLanguage = LANGUAGES.find(
     (lang) => lang.id === profile?.target_language
@@ -73,6 +93,57 @@ export default function ProfileScreen() {
   const currentLevel = LEVELS.find(
     (lvl) => lvl.id === profile?.language_level
   );
+
+  const getUserLanguages = () => {
+    return userLanguages
+      .map(id => LANGUAGES.find(lang => lang.id === id))
+      .filter(Boolean);
+  };
+
+  const userLanguageList = getUserLanguages();
+
+  const handleSaveProfile = async (updates) => {
+    if (!user?.id) return;
+
+    try {
+      const updateData = {
+        target_language: updates.target_language,
+        language_level: updates.language_level,
+        user_languages: updates.user_languages || userLanguages,
+      };
+
+      if (updates.username && updates.username !== profile?.full_name) {
+        updateData.full_name = updates.username;
+      }
+
+      if (updates.email && updates.email !== profile?.email) {
+        updateData.email = updates.email;
+      }
+
+      const { error } = await supabase
+        .from("profiles")
+        .update(updateData)
+        .eq("clerk_id", user.id);
+
+      if (error) throw error;
+
+      setProfile((prev) => ({
+        ...prev,
+        ...updateData,
+      }));
+
+      if (updates.user_languages) {
+        setUserLanguages(updates.user_languages);
+      }
+
+      Alert.alert("Success", "Profile updated successfully!");
+
+    } catch (err) {
+      console.error("Failed to update profile:", err);
+      Alert.alert("Error", "We couldn't save your changes. Please check your connection.");
+      throw err;
+    }
+  };
 
   const handleSignOut = () => {
     Alert.alert(
@@ -93,9 +164,6 @@ export default function ProfileScreen() {
         }
       ]
     );
-  };
-  const handleEditProfile = () => {
-    Alert.alert("Edit Profile", "Profile editing feature coming soon!");
   };
 
   const handleDeleteAccount = () => {
@@ -165,21 +233,19 @@ export default function ProfileScreen() {
             style={[
               styles.profileCard,
               {
-                backgroundColor: theme.card,
+                backgroundColor: theme.surface,
                 borderColor: theme.border,
               },
             ]}
           >
-            {/* Absolute Positioned Edit Badge in Top Right */}
             <TouchableOpacity 
               activeOpacity={0.7} 
-              onPress={handleEditProfile}
-              style={[styles.editBadge, { backgroundColor: theme.card, borderColor: theme.border }]}
+              onPress={() => setIsEditModalVisible(true)}
+              style={[styles.editBadge, { backgroundColor: theme.surface, borderColor: theme.border }]}
             >
               <Ionicons name="pencil" size={14} color={theme.primary} />
             </TouchableOpacity>
 
-            {/* Avatar */}
             <View
               style={[
                 styles.avatarContainer,
@@ -196,85 +262,142 @@ export default function ProfileScreen() {
                 {profile?.full_name || "User"}
               </ThemedText>
               <ThemedText style={[styles.userEmail, { color: theme.secondaryText }]}>
-                {user?.primaryEmailAddress?.emailAddress || ""}
+                {profile?.email || user?.primaryEmailAddress?.emailAddress || ""}
               </ThemedText>
             </View>
           </View>
 
+          {/* Statistics */}
           <ThemedText style={[styles.sectionTitle, { color: theme.secondaryText }]}>
             Statistics
           </ThemedText>
           <View style={styles.statsRow}>
-            <View style={[styles.statBox, { backgroundColor: theme.card, borderColor: theme.border }]}>
-              <Ionicons name="flame" size={24} color={theme.accent} />
+            <View style={[styles.statBox, { backgroundColor: theme.surface, borderColor: theme.border }]}>
+              <Ionicons name="flame" size={24} color={theme.accent}/>
               <ThemedText style={styles.statValue}>{profile?.streak ?? 0}</ThemedText>
               <ThemedText numberOfLines={1} style={[styles.statLabel, { color: theme.secondaryText }]}>Streak</ThemedText>
             </View>
 
-            <View style={[styles.statBox, { backgroundColor: theme.card, borderColor: theme.border }]}>
+            <View style={[styles.statBox, { backgroundColor: theme.surface, borderColor: theme.border }]}>
               <Ionicons name="flash" size={24} color={theme.warning} />
               <ThemedText style={styles.statValue}>{profile?.total_xp ?? 0}</ThemedText>
               <ThemedText numberOfLines={1} style={[styles.statLabel, { color: theme.secondaryText }]}>Total XP</ThemedText>
             </View>
-
-            <View style={[styles.statBox, { backgroundColor: theme.card, borderColor: theme.border }]}>
-              <Ionicons name="heart" size={24} color={theme.error} />
-              <ThemedText style={styles.statValue}>{profile?.hearts ?? 5}</ThemedText>
-              <ThemedText numberOfLines={1} style={[styles.statLabel, { color: theme.secondaryText }]}>Hearts</ThemedText>
-            </View>
           </View>
 
+          {/* Current Course - Updated to show all languages with better spacing */}
           <View style={styles.section}>
-            <ThemedText style={[styles.sectionTitle, { color: theme.secondaryText }]}>
-              Current Course
+<ThemedText style={[styles.sectionTitle, { color: theme.secondaryText }]}>
+              My Courses
             </ThemedText>
 
-            <View
+            <TouchableOpacity
+                activeOpacity={0.8}
+              onPress={() => setIsEditModalVisible(true)}
               style={[
                 styles.learningCard,
                 {
-                  backgroundColor: theme.card,
+                  backgroundColor: theme.surface,
                   borderColor: theme.border,
                 },
               ]}
             >
-              <View style={styles.learningRow}>
-                <View style={styles.learningItem}>
-                  <View style={[styles.learningIcon, { backgroundColor: theme.surface }]}>
-                    <Ionicons name="language" size={20} color={theme.primary} />
+              {/* Primary Language */}
+              <View style={styles.primaryLanguageContainer}>
+                <View style={styles.learningRow}>
+                  <View style={styles.learningItem}>
+                    <View style={[styles.learningIcon, { backgroundColor: theme.surface }]}>
+                      <Ionicons name="star" size={20} color={theme.warning} />
+                    </View>
+                    <View style={styles.learningTextBlock}>
+                      <ThemedText style={styles.learningTitle} numberOfLines={1}>PRIMARY LANGUAGE</ThemedText>
+                      <ThemedText style={styles.learningValue} numberOfLines={1}>
+                        {currentLanguage?.title || "Not selected"}
+                      </ThemedText>
+                    </View>
                   </View>
-                  <View>
-                    <ThemedText style={styles.learningTitle}>LANGUAGE</ThemedText>
-                    <ThemedText style={styles.learningValue}>
-                      {currentLanguage?.title || "Not selected"}
-                    </ThemedText>
-                  </View>
-                </View>
 
-                <View style={[styles.learningVerticalDivider, { backgroundColor: theme.border }]} />
+                  <View style={[styles.learningVerticalDivider, { backgroundColor: theme.border }]} />
 
-                <View style={styles.learningItem}>
-                  <View style={[styles.learningIcon, { backgroundColor: theme.surface }]}>
-                    <Ionicons name={currentLevel?.icon || "school"} size={20} color={theme.primary} />
-                  </View>
-                  <View>
-                    <ThemedText style={styles.learningTitle}>LEVEL</ThemedText>
-                    <ThemedText style={styles.learningValue}>
-                      {currentLevel?.title || "Not selected"}
-                    </ThemedText>
+                  <View style={styles.learningItem}>
+                    <View style={[styles.learningIcon, { backgroundColor: theme.surface }]}>
+                      <Ionicons name="school" size={20} color={theme.primary} />
+                    </View>
+                    <View style={styles.learningTextBlock}>
+                      <ThemedText style={styles.learningTitle} numberOfLines={1}>LEVEL</ThemedText>
+                      <ThemedText style={styles.learningValue} numberOfLines={1}>
+                        {currentLevel?.title || "Not selected"}
+                      </ThemedText>
+                    </View>
                   </View>
                 </View>
               </View>
-            </View>
+
+              {/* All Languages - with more spacing */}
+              {userLanguageList.length > 0 && (
+                <View style={styles.languagesContainer}>
+                  <View style={styles.languagesHeader}>
+                    <Ionicons name="book-outline" size={16} color={theme.secondaryText} />
+                    <ThemedText style={[styles.languagesLabel, { color: theme.secondaryText }]}>
+                      {userLanguageList.length} Language{userLanguageList.length > 1 ? 's' : ''}
+                    </ThemedText>
+                  </View>
+                  <ScrollView 
+                    horizontal 
+                    showsHorizontalScrollIndicator={false}
+                    style={styles.languageScroll}
+                    contentContainerStyle={styles.languageScrollContent}
+                  >
+                    <View style={styles.languagePills}>
+                      {userLanguageList.map((lang) => (
+                        <View
+                          key={lang.id}
+                          style={[
+                            styles.languagePill,
+                            {
+                              backgroundColor: lang.id === profile?.target_language 
+                                ? theme.primary + "20" 
+                                : theme.surface,
+                              borderColor: lang.id === profile?.target_language 
+                                ? theme.primary 
+                                : theme.border,
+                              borderWidth: lang.id === profile?.target_language ? 2 : 1,
+                            }
+                          ]}
+                        >
+                          <ThemedText style={styles.languageFlag}>{lang.flag || "🌍"}</ThemedText>
+                          <ThemedText
+                            style={[
+                              styles.languagePillText,
+                              {
+                                color: lang.id === profile?.target_language 
+                                  ? theme.primary 
+                                  : theme.text,
+                                fontWeight: lang.id === profile?.target_language ? "700" : "500",
+                              }
+                            ]}
+                          >
+                            {lang.title}
+                          </ThemedText>
+                          {lang.id === profile?.target_language && (
+                            <Ionicons name="checkmark-circle" size={14} color={theme.primary} />
+                          )}
+                        </View>
+                      ))}
+                    </View>
+                  </ScrollView>
+                </View>
+              )}
+            </TouchableOpacity>
           </View>
 
-          {/* Preferences Settings Section */}
+          {/* Preferences */}
           <View style={styles.section}>
             <ThemedText style={[styles.sectionTitle, { color: theme.secondaryText }]}>
               Preferences
             </ThemedText>
 
-            <View style={[styles.menuCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
+            <View style={[styles.menuCard, { backgroundColor: theme.surface, borderColor: theme.border }]}>
               <TouchableOpacity
                 style={[styles.menuItem, { borderBottomColor: theme.border }]}
                 onPress={() => Alert.alert("Settings", "Manage notifications and options.")}
@@ -320,6 +443,18 @@ export default function ProfileScreen() {
           </View>
         </ScrollView>
       </View>
+
+      {/* Edit Profile Modal */}
+      <EditProfileModal
+        visible={isEditModalVisible}
+        onClose={() => setIsEditModalVisible(false)}
+        currentLanguageId={profile?.target_language}
+        currentLevel={profile?.language_level}
+        currentEmail={profile?.email || user?.primaryEmailAddress?.emailAddress || ""}
+        currentUsername={profile?.full_name || ""}
+        userLanguages={userLanguages}
+        onSave={handleSaveProfile}
+      />
     </SafeAreaView>
   );
 }
@@ -443,6 +578,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 4,
     padding: 16,
   },
+  primaryLanguageContainer: {
+    paddingBottom: 12,
+    marginBottom: 4,
+  },
   learningRow: {
     flexDirection: "row",
     alignItems: "center",
@@ -451,19 +590,26 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     flex: 1,
-    gap: 12,
+    gap: 10,
+    minWidth: 0,
+  },
+  learningTextBlock: {
+    flex: 1,
+    minWidth: 0,
   },
   learningIcon: {
-    width: 40,
-    height: 40,
+    width: 36,
+    height: 36,
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
+    flexShrink: 0,
   },
   learningTitle: {
     fontSize: 10,
     opacity: 0.6,
     fontWeight: "800",
+    letterSpacing: 0.5,
   },
   learningValue: {
     fontSize: 15,
@@ -473,7 +619,50 @@ const styles = StyleSheet.create({
   learningVerticalDivider: {
     width: 2,
     height: 36,
-    marginHorizontal: 12,
+    marginHorizontal: 10,
+    flexShrink: 0,
+  },
+  languagesContainer: {
+    marginTop: 8,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: "rgba(0,0,0,0.08)",
+  },
+  languagesHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    marginBottom: 10,
+  },
+  languagesLabel: {
+    fontSize: 12,
+    fontWeight: "600",
+  },
+  languageScroll: {
+    flexDirection: "row",
+  },
+  languageScrollContent: {
+    paddingVertical: 2,
+  },
+  languagePills: {
+    flexDirection: "row",
+    gap: 10,
+    paddingVertical: 2,
+  },
+  languagePill: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 18,
+    borderWidth: 1,
+  },
+  languageFlag: {
+    fontSize: 16,
+  },
+  languagePillText: {
+    fontSize: 13,
   },
   menuCard: {
     borderRadius: 20,
@@ -524,4 +713,4 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     letterSpacing: 0.5,
   },
-});
+}); 2

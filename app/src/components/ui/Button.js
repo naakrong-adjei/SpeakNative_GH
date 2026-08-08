@@ -56,7 +56,7 @@ export default function Button({
         bg: theme.error,
         border: theme.error,
         text: "#fff",
-        bottom: theme.error,
+        bottom: theme.errorDark,
       };
     }
 

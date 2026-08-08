@@ -1,4 +1,4 @@
-import { AsyncStorage } from "@react-native-async-storage/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const STATS_KEY = "speaking_listening_stats";
 

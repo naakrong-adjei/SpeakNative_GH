@@ -1,30 +1,56 @@
 {
   "expo": {
-    "name": "app",
+    "name": "SpeakNative GH",
     "slug": "app",
     "scheme": "speaknativegh",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/images/logo/adaptiveIcon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./src/assets/images/logo/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#2E7D32",
+      "dark": {
+        "backgroundColor": "#2E7D32"
+      }
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "splash": {
+        "image": "./src/assets/images/logo/splash-icon.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#2E7D32"
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./src/assets/images/logo/adaptiveIcon.png",
+        "backgroundColor": "#2E7D32",
+        "monochromeImage": "./src/assets/images/logo/adaptiveIcon.png"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "splash": {
+        "image": "./src/assets/images/logo/splash-icon.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#2E7D32"
+      }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./src/assets/images/logo/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./src/assets/images/logo/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#2E7D32"
+        }
+      ]
+    ]
   }
 }

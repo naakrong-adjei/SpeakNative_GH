@@ -4,7 +4,7 @@ import { ClerkProvider } from "@clerk/clerk-expo";
 import RootNavigator from "./src/navigation/RootNavigator"
 import { Toaster } from "sonner-native";
 import { ThemeProvider } from "./src/context/ThemeContext"
-import tokenCache from "./src/utils/tokenCache";
+import tokenCache  from "./src/utils/tokenCache";
 
 
 const publishableKey =

@@ -12,7 +12,7 @@ export const LANGUAGES = [
     image: require("../assets/images/flagImage.png"),
   },
   {
-    id: "ee",
+    id: "ewe",
     title: "Ewe",
     description: "Spoken in Volta Region and parts of Togo.",
     image: require("../assets/images/flagImage.png"),

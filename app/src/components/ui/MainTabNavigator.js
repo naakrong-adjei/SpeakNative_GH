@@ -3,10 +3,9 @@ import { Platform } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import HomeScreen from "../../screens/main/home/HomeScreen";
+
 import ProfileScreen from "../../screens/main/profile/ProfileScreen";
 import LessonScreen from "../../screens/main/lessons/LessonScreen";
-import PracticeScreen from "../../screens/main/practice/PracticeScreen";
 import { useTheme } from "../../context/ThemeContext";
 
 const Tab = createBottomTabNavigator();
@@ -43,17 +42,8 @@ export default function MainTabNavigator() {
           let iconName;
 
           switch (route.name) {
-            case "Home":
-              iconName = focused ? "home" : "home-outline";
-              break;
             case "Lessons":
               iconName = focused ? "book" : "book-outline";
-              break;
-            case "Practice":
-              iconName = focused ? "school" : "school-outline";
-              break;
-            case "Progress":
-              iconName = focused ? "poll" : "poll";
               break;
             case "Profile":
               iconName = focused ? "person" : "person-outline";
@@ -74,13 +64,7 @@ export default function MainTabNavigator() {
     >
 
 
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          title: "Home",
-        }}
-      />
+
 
       <Tab.Screen
         name="Lessons"
@@ -90,13 +74,6 @@ export default function MainTabNavigator() {
         }}
       />
 
-      <Tab.Screen
-        name="Practice"
-        component={PracticeScreen}
-        options={{
-          title: "Practice",
-        }}
-      />
 
       <Tab.Screen
         name="Profile"
