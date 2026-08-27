@@ -1,28 +1,40 @@
-// components/modals/EditProfileModal.js
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
-  Modal,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-  SafeAreaView,
   ActivityIndicator,
+  Modal,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
   TextInput,
-  Dimensions,
+  TouchableOpacity,
+  View,
 } from "react-native";
+
 import Ionicons from "@expo/vector-icons/Ionicons";
+
 import { useTheme } from "../../../context/ThemeContext";
 import { LANGUAGES } from "../../../data/languagesData";
 
-const { width } = Dimensions.get("window");
-
-// Levels available for selection
 const LEVELS = [
-  { id: "beginner", title: "Beginner", icon: "🌱", description: "Just starting out" },
-  { id: "intermediate", title: "Intermediate", icon: "🌿", description: "Some experience" },
-  { id: "advanced", title: "Advanced", icon: "🌳", description: "Confident speaker" },
+  {
+    id: "beginner",
+    title: "Beginner",
+    description: "Just starting out",
+    icon: "leaf-outline",
+  },
+  {
+    id: "intermediate",
+    title: "Intermediate",
+    description: "Building confidence",
+    icon: "trending-up-outline",
+    },
+  {
+    id: "advanced",
+    title: "Advanced",
+    description: "Confident speaker",
+    icon: "school-outline",
+  },
 ];
 
 export default function EditProfileModal({
@@ -37,256 +49,710 @@ export default function EditProfileModal({
   onAddLanguage,
 }) {
   const { theme } = useTheme();
-  
-  // Use ref to track if it's the first render to prevent infinite loops
-  const isFirstRender = useRef(true);
-  
+
   const [activeLanguages, setActiveLanguages] = useState([]);
-  const [selectedLanguage, setSelectedLanguage] = useState(currentLanguageId);
-  const [selectedLevel, setSelectedLevel] = useState(currentLevel);
-  const [email, setEmail] = useState(currentEmail || "");
-  const [username, setUsername] = useState(currentUsername || "");
+  const [selectedLanguage, setSelectedLanguage] =
+    useState(currentLanguageId);
+
+  const [selectedLevel, setSelectedLevel] =
+    useState(currentLevel);
+
+  const [email, setEmail] = useState(
+    currentEmail || ""
+  );
+
+  const [username, setUsername] = useState(
+    currentUsername || ""
+  );
+
   const [saving, setSaving] = useState(false);
   const [activeTab, setActiveTab] = useState("profile");
-  const [showAddLanguageModal, setShowAddLanguageModal] = useState(false);
+  const [showAddLanguageModal, setShowAddLanguageModal] =
+    useState(false);
 
-  // Initialize state when modal opens - fixed dependencies
   useEffect(() => {
-    if (visible) {
-      setSelectedLanguage(currentLanguageId);
-      setSelectedLevel(currentLevel);
-      setEmail(currentEmail || "");
-      setUsername(currentUsername || "");
-      
-      // Only update active languages if it's different to avoid loops
-      const newLanguages = userLanguages.length > 0 ? userLanguages : [currentLanguageId];
-      // Compare arrays to prevent unnecessary updates
-      const currentActive = activeLanguages;
-      if (JSON.stringify(currentActive) !== JSON.stringify(newLanguages)) {
-        setActiveLanguages(newLanguages);
-      }
-    }
-  }, [visible, currentLanguageId, currentLevel, currentEmail, currentUsername]);
+    if (!visible) return;
 
-  // Separate effect for userLanguages to avoid dependency issues
-  useEffect(() => {
-    if (visible && userLanguages.length > 0) {
-      const newLanguages = userLanguages;
-      const currentActive = activeLanguages;
-      if (JSON.stringify(currentActive) !== JSON.stringify(newLanguages)) {
-        setActiveLanguages(newLanguages);
-      }
-    }
-  }, [userLanguages, visible]);
+    setSelectedLanguage(currentLanguageId);
+    setSelectedLevel(currentLevel);
+    setEmail(currentEmail || "");
+    setUsername(currentUsername || "");
 
-  const hasChanges = 
-    selectedLanguage !== currentLanguageId || 
-    selectedLevel !== currentLevel ||
-    email !== currentEmail ||
-    username !== currentUsername ||
-    JSON.stringify(activeLanguages) !== JSON.stringify(userLanguages);
+    const languages =
+      userLanguages.length > 0
+        ? userLanguages
+        : currentLanguageId
+        ? [currentLanguageId]
+        : [];
+
+    setActiveLanguages(languages);
+    setActiveTab("profile");
+  }, [
+    visible,
+    currentLanguageId,
+    currentLevel,
+    currentEmail,
+    currentUsername,
+    userLanguages,
+  ]);
+
+  const originalLanguages = useMemo(() => {
+    return userLanguages.length > 0
+      ? userLanguages
+      : currentLanguageId
+      ? [currentLanguageId]
+      : [];
+  }, [userLanguages, currentLanguageId]);
+
+  const availableToAdd = useMemo(() => {
+    return LANGUAGES.filter(
+      (language) =>
+        !activeLanguages.includes(language.id)
+    );
+  }, [activeLanguages]);
+
+  const hasChanges = useMemo(() => {
+    return (
+      selectedLanguage !== currentLanguageId ||
+      selectedLevel !== currentLevel ||
+      email !== (currentEmail || "") ||
+      username !== (currentUsername || "") ||
+      JSON.stringify(activeLanguages) !==
+        JSON.stringify(originalLanguages)
+    );
+  }, [
+    selectedLanguage,
+    selectedLevel,
+    email,
+    username,
+    activeLanguages,
+    originalLanguages,
+    currentLanguageId,
+    currentLevel,
+    currentEmail,
+    currentUsername,
+  ]);
 
   const handleSave = async () => {
+    if (saving || !hasChanges) return;
+
     setSaving(true);
+
     try {
       await onSave({
         target_language: selectedLanguage,
         language_level: selectedLevel,
-        email: email,
-        username: username,
+        email: email.trim(),
+        username: username.trim(),
         user_languages: activeLanguages,
       });
+
       onClose();
     } catch (error) {
-      console.error("Failed to save changes:", error);
+      console.error(
+        "Failed to save profile changes:",
+        error
+      );
     } finally {
       setSaving(false);
     }
   };
 
   const handleAddNewLanguage = (langId) => {
-    if (!activeLanguages.includes(langId)) {
-      setActiveLanguages([...activeLanguages, langId]);
-    }
+    setActiveLanguages((previous) => {
+      if (previous.includes(langId)) {
+        return previous;
+      }
+
+      return [...previous, langId];
+    });
+
     setSelectedLanguage(langId);
     setShowAddLanguageModal(false);
-    
+
     if (onAddLanguage) {
       onAddLanguage(langId);
     }
   };
 
-  const renderProfileTab = () => (
-    <View style={styles.tabContent}>
-      {/* Username Field */}
-      <View style={styles.inputGroup}>
-        <Text style={[styles.inputLabel, { color: theme.text }]}>
-          <Ionicons name="person-outline" size={18} color={theme.primary} /> Username
-        </Text>
-        <View style={[styles.inputContainer, { borderColor: theme.border, backgroundColor: theme.surface }]}>
-          <TextInput
-            style={[styles.input, { color: theme.text }]}
-            value={username}
-            onChangeText={setUsername}
-            placeholder="Enter your username"
-            placeholderTextColor={theme.secondaryText || "#888"}
-          />
-          {username ? (
-            <TouchableOpacity onPress={() => setUsername("")} style={styles.clearButton}>
-              <Ionicons name="close-circle" size={20} color={theme.secondaryText} />
-            </TouchableOpacity>
-          ) : null}
-        </View>
-      </View>
+  const handleRemoveLanguage = (langId) => {
+    if (activeLanguages.length <= 1) {
+      return;
+    }
 
-      {/* Email Field */}
-      <View style={styles.inputGroup}>
-        <Text style={[styles.inputLabel, { color: theme.text }]}>
-          <Ionicons name="mail-outline" size={18} color={theme.primary} /> Email
-        </Text>
-        <View style={[styles.inputContainer, { borderColor: theme.border, backgroundColor: theme.surface }]}>
-          <TextInput
-            style={[styles.input, { color: theme.text }]}
-            value={email}
-            onChangeText={setEmail}
-            placeholder="Enter your email"
-            placeholderTextColor={theme.secondaryText || "#888"}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-          {email ? (
-            <TouchableOpacity onPress={() => setEmail("")} style={styles.clearButton}>
-              <Ionicons name="close-circle" size={20} color={theme.secondaryText} />
-            </TouchableOpacity>
-          ) : null}
-        </View>
-      </View>
-    </View>
+    const updatedLanguages = activeLanguages.filter(
+      (id) => id !== langId
+    );
+
+    setActiveLanguages(updatedLanguages);
+
+    if (selectedLanguage === langId) {
+      setSelectedLanguage(updatedLanguages[0]);
+    }
+  };
+
+  const selectedLanguageData = LANGUAGES.find(
+    (language) =>
+      language.id === selectedLanguage
   );
 
-  const renderPreferencesTab = () => {
-    const availableToAdd = LANGUAGES.filter((lang) => !activeLanguages.includes(lang.id));
+  const selectedLevelData = LEVELS.find(
+    (level) => level.id === selectedLevel
+  );
 
+  const renderProfileTab = () => {
     return (
-      <View style={styles.tabContent}>
-        {/* Active Learning Courses */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Ionicons name="earth-outline" size={20} color={theme.primary} />
-            <Text style={[styles.sectionTitle, { color: theme.text }]}>
-              Active Courses
+      <View style={styles.contentSection}>
+        <View style={styles.sectionIntro}>
+          <View
+            style={[
+              styles.introIcon,
+              {
+                backgroundColor:
+                  theme.primary + "12",
+              },
+            ]}
+          >
+            <Ionicons
+              name="person-outline"
+              size={22}
+              color={theme.primary}
+            />
+          </View>
+
+          <View style={styles.introText}>
+            <Text
+              style={[
+                styles.introTitle,
+                { color: theme.text },
+              ]}
+            >
+              Personal information
+            </Text>
+
+            <Text
+              style={[
+                styles.introDescription,
+                {
+                  color: theme.secondaryText,
+                },
+              ]}
+            >
+              Keep your profile information up to date.
             </Text>
           </View>
-          
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.languageScroll}>
-            <View style={styles.languageRow}>
-              {activeLanguages.map((langId) => {
-                const lang = LANGUAGES.find((l) => l.id === langId) || { id: langId, title: langId, flag: "🌍" };
-                const isSelected = selectedLanguage === lang.id;
-                return (
-                  <TouchableOpacity
-                    key={lang.id}
-                    activeOpacity={0.7}
-                    style={[
-                      styles.languagePill,
-                      {
-                        backgroundColor: isSelected ? theme.primary : theme.surface,
-                        borderColor: isSelected ? theme.primary : theme.border,
-                      },
-                    ]}
-                    onPress={() => setSelectedLanguage(lang.id)}
-                  >
-                    <Text style={styles.languageFlag}>{lang.flag || "🌍"}</Text>
-                    <Text
-                      style={[
-                        styles.languageName,
-                        {
-                          color: isSelected ? "#FFF" : theme.text,
-                          fontWeight: isSelected ? "700" : "500",
-                        },
-                      ]}
-                    >
-                      {lang.title}
-                    </Text>
-                    {isSelected && (
-                      <Ionicons name="checkmark-circle" size={16} color="#FFF" style={styles.pillCheck} />
-                    )}
-                  </TouchableOpacity>
-                );
-              })}
-
-              {/* Add New Language Button */}
-              <TouchableOpacity
-                activeOpacity={0.7}
-                style={[
-                  styles.addLanguagePill,
-                  {
-                    borderColor: theme.primary,
-                    backgroundColor: theme.surface,
-                  },
-                ]}
-                onPress={() => setShowAddLanguageModal(true)}
-              >
-                <Ionicons name="add" size={18} color={theme.primary} />
-                <Text style={[styles.addLanguageText, { color: theme.primary }]}>
-                  Add Course
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </ScrollView>
         </View>
 
-        {/* Level Selection */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Ionicons name="school-outline" size={20} color={theme.primary} />
-            <Text style={[styles.sectionTitle, { color: theme.text }]}>
-              Proficiency Level
-            </Text>
+        <View style={styles.fieldGroup}>
+          <Text
+            style={[
+              styles.fieldLabel,
+              { color: theme.text },
+            ]}
+          >
+            Username
+          </Text>
+
+          <View
+            style={[
+              styles.inputContainer,
+              {
+                backgroundColor: theme.surface,
+                borderColor: theme.border,
+              },
+            ]}
+          >
+            <Ionicons
+              name="person-outline"
+              size={20}
+              color={theme.secondaryText}
+              style={styles.inputIcon}
+            />
+
+            <TextInput
+              style={[
+                styles.input,
+                { color: theme.text },
+              ]}
+              value={username}
+              onChangeText={setUsername}
+              placeholder="Enter your username"
+              placeholderTextColor={
+                theme.secondaryText
+              }
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+
+            {username.length > 0 && (
+              <TouchableOpacity
+                onPress={() => setUsername("")}
+                style={styles.clearButton}
+                activeOpacity={0.7}
+              >
+                <Ionicons
+                  name="close-circle"
+                  size={19}
+                  color={theme.secondaryText}
+                />
+              </TouchableOpacity>
+            )}
+          </View>
+        </View>
+
+        <View style={styles.fieldGroup}>
+          <Text
+            style={[
+              styles.fieldLabel,
+              { color: theme.text },
+            ]}
+          >
+            Email address
+          </Text>
+
+          <View
+            style={[
+              styles.inputContainer,
+              {
+                backgroundColor: theme.surface,
+                borderColor: theme.border,
+              },
+            ]}
+          >
+            <Ionicons
+              name="mail-outline"
+              size={20}
+              color={theme.secondaryText}
+              style={styles.inputIcon}
+            />
+
+            <TextInput
+              style={[
+                styles.input,
+                { color: theme.text },
+              ]}
+              value={email}
+              onChangeText={setEmail}
+              placeholder="Enter your email"
+              placeholderTextColor={
+                theme.secondaryText
+              }
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+
+            {email.length > 0 && (
+              <TouchableOpacity
+                onPress={() => setEmail("")}
+                style={styles.clearButton}
+                activeOpacity={0.7}
+              >
+                <Ionicons
+                  name="close-circle"
+                  size={19}
+                  color={theme.secondaryText}
+                />
+              </TouchableOpacity>
+            )}
+          </View>
+        </View>
+      </View>
+    );
+  };
+
+  const renderPreferencesTab = () => {
+    return (
+      <View style={styles.contentSection}>
+        <View style={styles.preferenceSection}>
+          <View style={styles.sectionHeading}>
+            <View
+              style={[
+                styles.sectionIcon,
+                {
+                  backgroundColor:
+                    theme.primary + "12",
+                },
+              ]}
+            >
+              <Ionicons
+                name="language-outline"
+                size={19}
+                color={theme.primary}
+              />
+            </View>
+
+            <View style={styles.sectionHeadingText}>
+              <Text
+                style={[
+                  styles.sectionTitle,
+                  { color: theme.text },
+                ]}
+              >
+                Learning courses
+              </Text>
+
+              <Text
+                style={[
+                  styles.sectionDescription,
+                  {
+                    color: theme.secondaryText,
+                  },
+                ]}
+              >
+                Choose a language to continue learning.
+              </Text>
+            </View>
           </View>
 
-          <View style={styles.levelGrid}>
+          <View
+            style={[
+              styles.courseCard,
+              {
+                backgroundColor: theme.surface,
+                borderColor: theme.border,
+              },
+            ]}
+          >
+            {activeLanguages.map(
+              (langId, index) => {
+                const language =
+                  LANGUAGES.find(
+                    (item) =>
+                      item.id === langId
+                  ) || {
+                    id: langId,
+                    title: langId,
+                  };
+
+                const isSelected =
+                  selectedLanguage ===
+                  language.id;
+
+                return (
+                  <View
+                    key={language.id}
+                    style={[
+                      styles.courseRow,
+                      index <
+                        activeLanguages.length - 1 && {
+                          borderBottomWidth: 1,
+                          borderBottomColor:
+                            theme.border,
+                        },
+                    ]}
+                  >
+                    <TouchableOpacity
+                      style={styles.courseSelect}
+                      activeOpacity={0.7}
+                      onPress={() =>
+                        setSelectedLanguage(
+                          language.id
+                        )
+                      }
+                    >
+                      <View
+                        style={[
+                          styles.courseIcon,
+                          {
+                            backgroundColor:
+                              isSelected
+                                ? theme.primary +
+                                  "15"
+                                : theme.background,
+                          },
+                        ]}
+                      >
+                        <Ionicons
+                          name="language-outline"
+                          size={21}
+                          color={
+                            isSelected
+                              ? theme.primary
+                              : theme.secondaryText
+                          }
+                        />
+                      </View>
+
+                      <View
+                        style={
+                          styles.courseInfo
+                        }
+                      >
+                        <Text
+                          style={[
+                            styles.courseName,
+                            {
+                              color:
+                                theme.text,
+                            },
+                          ]}
+                        >
+                          {language.title}
+                        </Text>
+
+                        <Text
+                          style={[
+                            styles.courseStatus,
+                            {
+                              color:
+                                theme.secondaryText,
+                            },
+                          ]}
+                        >
+                          {isSelected
+                            ? "Currently selected"
+                            : "Active course"}
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+
+                    {isSelected ? (
+                      <View
+                        style={[
+                          styles.selectedCheck,
+                          {
+                            backgroundColor:
+                              theme.primary,
+                          },
+                        ]}
+                      >
+                        <Ionicons
+                          name="checkmark"
+                          size={14}
+                          color="#FFFFFF"
+                        />
+                      </View>
+                    ) : (
+                      activeLanguages.length > 1 && (
+                        <TouchableOpacity
+                          onPress={() =>
+                            handleRemoveLanguage(
+                              language.id
+                            )
+                          }
+                          style={
+                            styles.removeCourse
+                          }
+                          activeOpacity={0.7}
+                        >
+                          <Ionicons
+                            name="close-circle-outline"
+                            size={20}
+                            color={
+                              theme.secondaryText
+                            }
+                          />
+                        </TouchableOpacity>
+                      )
+                    )}
+                  </View>
+                );
+              }
+            )}
+
+            {availableToAdd.length > 0 && (
+              <TouchableOpacity
+                style={styles.addCourseButton}
+                activeOpacity={0.7}
+                onPress={() =>
+                  setShowAddLanguageModal(true)
+                }
+              >
+                <View
+                  style={[
+                    styles.addCourseIcon,
+                    {
+                      backgroundColor:
+                        theme.primary + "12",
+                    },
+                  ]}
+                >
+                  <Ionicons
+                    name="add"
+                    size={21}
+                    color={theme.primary}
+                  />
+                </View>
+
+                <View
+                  style={styles.addCourseText}
+                >
+                  <Text
+                    style={[
+                      styles.addCourseTitle,
+                      {
+                        color:
+                          theme.primary,
+                      },
+                    ]}
+                  >
+                    Add another course
+                  </Text>
+
+                  <Text
+                    style={[
+                      styles.addCourseSubtitle,
+                      {
+                        color:
+                          theme.secondaryText,
+                      },
+                    ]}
+                  >
+                    Learn another language
+                  </Text>
+                </View>
+
+                <Ionicons
+                  name="chevron-forward"
+                  size={19}
+                  color={theme.secondaryText}
+                />
+              </TouchableOpacity>
+            )}
+          </View>
+        </View>
+
+        <View style={styles.preferenceSection}>
+          <View style={styles.sectionHeading}>
+            <View
+              style={[
+                styles.sectionIcon,
+                {
+                  backgroundColor:
+                    theme.primary + "12",
+                },
+              ]}
+            >
+              <Ionicons
+                name="school-outline"
+                size={19}
+                color={theme.primary}
+              />
+            </View>
+
+            <View style={styles.sectionHeadingText}>
+              <Text
+                style={[
+                  styles.sectionTitle,
+                  { color: theme.text },
+                ]}
+              >
+                Proficiency level
+              </Text>
+
+              <Text
+                style={[
+                  styles.sectionDescription,
+                  {
+                    color: theme.secondaryText,
+                  },
+                ]}
+              >
+                Choose the level that matches your
+                current ability.
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.levelList}>
             {LEVELS.map((level) => {
-              const isSelected = selectedLevel === level.id;
+              const isSelected =
+                selectedLevel === level.id;
+
               return (
                 <TouchableOpacity
                   key={level.id}
-                  activeOpacity={0.7}
+                  activeOpacity={0.75}
+                  onPress={() =>
+                    setSelectedLevel(level.id)
+                  }
                   style={[
                     styles.levelCard,
                     {
-                      backgroundColor: isSelected ? theme.primary + "15" : theme.surface,
-                      borderColor: isSelected ? theme.primary : theme.border,
-                      borderWidth: isSelected ? 2 : 1.5,
+                      backgroundColor:
+                        isSelected
+                          ? theme.primary + "0D"
+                          : theme.surface,
+                      borderColor:
+                        isSelected
+                          ? theme.primary
+                          : theme.border,
                     },
                   ]}
-                  onPress={() => setSelectedLevel(level.id)}
                 >
-                  <View style={styles.levelCardContent}>
-                    <Text style={styles.levelCardIcon}>{level.icon}</Text>
+                  <View
+                    style={[
+                      styles.levelIcon,
+                      {
+                        backgroundColor:
+                          isSelected
+                            ? theme.primary
+                            : theme.background,
+                      },
+                    ]}
+                  >
+                    <Ionicons
+                      name={level.icon}
+                      size={22}
+                      color={
+                        isSelected
+                          ? "#FFFFFF"
+                          : theme.secondaryText
+                      }
+                    />
+                  </View>
+
+                  <View
+                    style={styles.levelInfo}
+                  >
                     <Text
                       style={[
-                        styles.levelCardTitle,
+                        styles.levelTitle,
                         {
-                          color: isSelected ? theme.primary : theme.text,
-                          fontWeight: isSelected ? "700" : "600",
+                          color: isSelected
+                            ? theme.primary
+                            : theme.text,
                         },
                       ]}
                     >
                       {level.title}
                     </Text>
+
                     <Text
                       style={[
-                        styles.levelCardDescription,
-                        { color: theme.secondaryText || "#888" },
+                        styles.levelDescription,
+                        {
+                          color:
+                            theme.secondaryText,
+                        },
                       ]}
                     >
                       {level.description}
                     </Text>
+                  </View>
+
+                  <View
+                    style={[
+                      styles.radio,
+                      {
+                        borderColor:
+                          isSelected
+                            ? theme.primary
+                            : theme.border,
+                      },
+                    ]}
+                  >
                     {isSelected && (
-                      <View style={[styles.levelCheckmark, { backgroundColor: theme.primary }]}>
-                        <Ionicons name="checkmark" size={12} color="#FFF" />
-                      </View>
+                      <View
+                        style={[
+                          styles.radioInner,
+                          {
+                            backgroundColor:
+                              theme.primary,
+                          },
+                        ]}
+                      />
                     )}
                   </View>
                 </TouchableOpacity>
@@ -305,52 +771,123 @@ export default function EditProfileModal({
       presentationStyle="pageSheet"
       onRequestClose={onClose}
     >
-      <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
-        {/* Header */}
-        <View style={[styles.modalHeader, { borderBottomColor: theme.border }]}>
-          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-            <Ionicons name="arrow-back" size={24} color={theme.text} />
+      <SafeAreaView
+        style={[
+          styles.safeArea,
+          {
+            backgroundColor:
+              theme.background,
+          },
+        ]}
+      >
+        <View
+          style={[
+            styles.header,
+            {
+              borderBottomColor:
+                theme.border,
+            },
+          ]}
+        >
+          <TouchableOpacity
+            onPress={onClose}
+            activeOpacity={0.7}
+            style={styles.headerButton}
+          >
+            <Ionicons
+              name="close"
+              size={24}
+              color={theme.text}
+            />
           </TouchableOpacity>
-          <Text style={[styles.modalTitle, { color: theme.text }]}>Edit Profile</Text>
-          <TouchableOpacity 
-            onPress={handleSave} 
+
+          <View style={styles.headerTitleContainer}>
+            <Text
+              style={[
+                styles.headerTitle,
+                { color: theme.text },
+              ]}
+            >
+              Edit Profile
+            </Text>
+          </View>
+
+          <TouchableOpacity
+            onPress={handleSave}
             disabled={saving || !hasChanges}
+            activeOpacity={0.75}
             style={[
               styles.saveButton,
-              { 
-                backgroundColor: hasChanges ? theme.primary : theme.border,
-                opacity: (!hasChanges || saving) ? 0.6 : 1,
+              {
+                backgroundColor: hasChanges
+                  ? theme.primary
+                  : theme.border,
+                opacity:
+                  saving || !hasChanges
+                    ? 0.55
+                    : 1,
               },
             ]}
           >
             {saving ? (
-              <ActivityIndicator size="small" color="#FFF" />
+              <ActivityIndicator
+                size="small"
+                color="#FFFFFF"
+              />
             ) : (
-              <Text style={styles.saveButtonText}>Save</Text>
+              <Text style={styles.saveText}>
+                Save
+              </Text>
             )}
           </TouchableOpacity>
         </View>
 
-        {/* Tabs */}
-        <View style={[styles.tabsContainer, { borderBottomColor: theme.border }]}>
+        <View
+          style={[
+            styles.tabs,
+            {
+              backgroundColor:
+                theme.surface,
+              borderBottomColor:
+                theme.border,
+            },
+          ]}
+        >
           <TouchableOpacity
+            activeOpacity={0.75}
+            onPress={() =>
+              setActiveTab("profile")
+            }
             style={[
               styles.tab,
-              activeTab === "profile" && [styles.activeTab, { borderBottomColor: theme.primary }],
+              activeTab === "profile" && {
+                backgroundColor:
+                  theme.primary + "12",
+              },
             ]}
-            onPress={() => setActiveTab("profile")}
           >
-            <Ionicons 
-              name="person-outline" 
-              size={20} 
-              color={activeTab === "profile" ? theme.primary : theme.secondaryText} 
+            <Ionicons
+              name="person-outline"
+              size={18}
+              color={
+                activeTab === "profile"
+                  ? theme.primary
+                  : theme.secondaryText
+              }
             />
+
             <Text
               style={[
                 styles.tabText,
                 {
-                  color: activeTab === "profile" ? theme.primary : theme.secondaryText,
-                  fontWeight: activeTab === "profile" ? "700" : "500",
+                  color:
+                    activeTab === "profile"
+                      ? theme.primary
+                      : theme.secondaryText,
+                  fontWeight:
+                    activeTab === "profile"
+                      ? "700"
+                      : "500",
                 },
               ]}
             >
@@ -359,23 +896,40 @@ export default function EditProfileModal({
           </TouchableOpacity>
 
           <TouchableOpacity
+            activeOpacity={0.75}
+            onPress={() =>
+              setActiveTab("preferences")
+            }
             style={[
               styles.tab,
-              activeTab === "preferences" && [styles.activeTab, { borderBottomColor: theme.primary }],
+              activeTab === "preferences" && {
+                backgroundColor:
+                  theme.primary + "12",
+              },
             ]}
-            onPress={() => setActiveTab("preferences")}
           >
-            <Ionicons 
-              name="settings-outline" 
-              size={20} 
-              color={activeTab === "preferences" ? theme.primary : theme.secondaryText} 
+            <Ionicons
+              name="options-outline"
+              size={18}
+              color={
+                activeTab === "preferences"
+                  ? theme.primary
+                  : theme.secondaryText
+              }
             />
+
             <Text
               style={[
                 styles.tabText,
                 {
-                  color: activeTab === "preferences" ? theme.primary : theme.secondaryText,
-                  fontWeight: activeTab === "preferences" ? "700" : "500",
+                  color:
+                    activeTab === "preferences"
+                      ? theme.primary
+                      : theme.secondaryText,
+                  fontWeight:
+                    activeTab === "preferences"
+                      ? "700"
+                      : "500",
                 },
               ]}
             >
@@ -384,65 +938,222 @@ export default function EditProfileModal({
           </TouchableOpacity>
         </View>
 
-        <ScrollView 
-          contentContainerStyle={styles.scrollContainer} 
+        <ScrollView
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={
+            styles.scrollContent
+          }
+          keyboardShouldPersistTaps="handled"
         >
-          {activeTab === "profile" ? renderProfileTab() : renderPreferencesTab()}
+          {activeTab === "profile"
+            ? renderProfileTab()
+            : renderPreferencesTab()}
         </ScrollView>
 
-        {/* Footer */}
-        <View style={[styles.footer, { borderTopColor: theme.border, backgroundColor: theme.background }]}>
-          <View style={styles.footerStats}>
-            <View style={styles.footerStat}>
-              <Ionicons name="language" size={16} color={theme.secondaryText} />
-              <Text style={[styles.footerStatText, { color: theme.secondaryText }]}>
-                {LANGUAGES.find(l => l.id === selectedLanguage)?.title || "Not selected"}
-              </Text>
-            </View>
-            <View style={[styles.footerDivider, { backgroundColor: theme.border }]} />
-            <View style={styles.footerStat}>
-              <Ionicons name="school" size={16} color={theme.secondaryText} />
-              <Text style={[styles.footerStatText, { color: theme.secondaryText }]}>
-                {LEVELS.find(l => l.id === selectedLevel)?.title || "Not selected"}
-              </Text>
-            </View>
+        <View
+          style={[
+            styles.footer,
+            {
+              backgroundColor:
+                theme.background,
+              borderTopColor:
+                theme.border,
+            },
+          ]}
+        >
+          <View style={styles.footerItem}>
+            <Ionicons
+              name="language-outline"
+              size={16}
+              color={theme.secondaryText}
+            />
+
+            <Text
+              numberOfLines={1}
+              style={[
+                styles.footerText,
+                {
+                  color:
+                    theme.secondaryText,
+                },
+              ]}
+            >
+              {selectedLanguageData?.title ||
+                "No language"}
+            </Text>
+          </View>
+
+          <View
+            style={[
+              styles.footerDivider,
+              {
+                backgroundColor:
+                  theme.border,
+              },
+            ]}
+          />
+
+          <View style={styles.footerItem}>
+            <Ionicons
+              name="school-outline"
+              size={16}
+              color={theme.secondaryText}
+            />
+
+            <Text
+              style={[
+                styles.footerText,
+                {
+                  color:
+                    theme.secondaryText,
+                },
+              ]}
+            >
+              {selectedLevelData?.title ||
+                "No level"}
+            </Text>
           </View>
         </View>
 
-        {/* Add Language Modal */}
         <Modal
           visible={showAddLanguageModal}
           animationType="fade"
           transparent
-          onRequestClose={() => setShowAddLanguageModal(false)}
+          onRequestClose={() =>
+            setShowAddLanguageModal(false)
+          }
         >
           <View style={styles.overlay}>
-            <TouchableOpacity 
-              style={StyleSheet.absoluteFill} 
-              activeOpacity={1} 
-              onPress={() => setShowAddLanguageModal(false)} 
+            <TouchableOpacity
+              style={StyleSheet.absoluteFill}
+              activeOpacity={1}
+              onPress={() =>
+                setShowAddLanguageModal(false)
+              }
             />
-            <View style={[styles.addLanguageCard, { backgroundColor: theme.surface, borderColor: theme.border }]}>
+
+            <View
+              style={[
+                styles.addModal,
+                {
+                  backgroundColor:
+                    theme.surface,
+                  borderColor:
+                    theme.border,
+                },
+              ]}
+            >
               <View style={styles.addModalHeader}>
-                <Text style={[styles.addModalTitle, { color: theme.text }]}>Add a New Language</Text>
-                <TouchableOpacity onPress={() => setShowAddLanguageModal(false)}>
-                  <Ionicons name="close" size={24} color={theme.secondaryText} />
+                <View>
+                  <Text
+                    style={[
+                      styles.addModalTitle,
+                      {
+                        color: theme.text,
+                      },
+                    ]}
+                  >
+                    Add a course
+                  </Text>
+
+                  <Text
+                    style={[
+                      styles.addModalSubtitle,
+                      {
+                        color:
+                          theme.secondaryText,
+                      },
+                    ]}
+                  >
+                    Choose another language to learn.
+                  </Text>
+                </View>
+
+                <TouchableOpacity
+                  onPress={() =>
+                    setShowAddLanguageModal(
+                      false
+                    )
+                  }
+                  activeOpacity={0.7}
+                  style={[
+                    styles.modalClose,
+                    {
+                      backgroundColor:
+                        theme.background,
+                    },
+                  ]}
+                >
+                  <Ionicons
+                    name="close"
+                    size={20}
+                    color={theme.text}
+                  />
                 </TouchableOpacity>
               </View>
 
-              <ScrollView style={styles.availableList} showsVerticalScrollIndicator={false}>
-                {LANGUAGES.filter((lang) => !activeLanguages.includes(lang.id)).map((lang) => (
-                  <TouchableOpacity
-                    key={lang.id}
-                    style={[styles.availableItem, { borderBottomColor: theme.border }]}
-                    onPress={() => handleAddNewLanguage(lang.id)}
-                  >
-                    <Text style={styles.availableFlag}>{lang.flag || "🌍"}</Text>
-                    <Text style={[styles.availableTitle, { color: theme.text }]}>{lang.title}</Text>
-                    <Ionicons name="chevron-forward" size={18} color={theme.secondaryText} />
-                  </TouchableOpacity>
-                ))}
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                style={styles.languageList}
+              >
+                {availableToAdd.map(
+                  (language) => (
+                    <TouchableOpacity
+                      key={language.id}
+                      activeOpacity={0.7}
+                      onPress={() =>
+                        handleAddNewLanguage(
+                          language.id
+                        )
+                      }
+                      style={[
+                        styles.availableLanguage,
+                        {
+                          borderBottomColor:
+                            theme.border,
+                        },
+                      ]}
+                    >
+                      <View
+                        style={[
+                          styles.availableIcon,
+                          {
+                            backgroundColor:
+                              theme.primary +
+                              "12",
+                          },
+                        ]}
+                      >
+                        <Ionicons
+                          name="language-outline"
+                          size={21}
+                          color={
+                            theme.primary
+                          }
+                        />
+                      </View>
+
+                      <Text
+                        style={[
+                          styles.availableName,
+                          {
+                            color: theme.text,
+                          },
+                        ]}
+                      >
+                        {language.title}
+                      </Text>
+
+                      <Ionicons
+                        name="chevron-forward"
+                        size={19}
+                        color={
+                          theme.secondaryText
+                        }
+                      />
+                    </TouchableOpacity>
+                  )
+                )}
               </ScrollView>
             </View>
           </View>
@@ -456,243 +1167,414 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
   },
-  modalHeader: {
+
+  header: {
+    height: 68,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingHorizontal: 18,
     borderBottomWidth: 1,
   },
-  closeButton: {
-    padding: 4,
+
+  headerButton: {
+    width: 42,
+    height: 42,
+    borderRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  modalTitle: {
+
+  headerTitleContainer: {
+    flex: 1,
+    alignItems: "center",
+  },
+
+  headerTitle: {
     fontSize: 18,
-    fontWeight: "700",
+    fontWeight: "800",
   },
+
   saveButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 16,
+    minWidth: 62,
+    height: 38,
+    paddingHorizontal: 15,
     borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
-    minWidth: 60,
   },
-  saveButtonText: {
-    color: "#FFF",
+
+  saveText: {
+    color: "#FFFFFF",
     fontSize: 14,
-    fontWeight: "600",
+    fontWeight: "800",
   },
-  tabsContainer: {
+
+  tabs: {
     flexDirection: "row",
-    borderBottomWidth: 1,
-    paddingHorizontal: 20,
+    marginHorizontal: 20,
+    marginTop: 16,
+    padding: 4,
+    borderRadius: 14,
+    borderWidth: 1,
   },
+
   tab: {
+    flex: 1,
+    minHeight: 42,
+    borderRadius: 10,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     gap: 8,
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    borderBottomWidth: 2,
-    borderBottomColor: "transparent",
   },
-  activeTab: {
-    borderBottomWidth: 2,
-  },
+
   tabText: {
-    fontSize: 14,
+    fontSize: 13,
   },
-  scrollContainer: {
-    padding: 20,
-    paddingBottom: 100,
+
+  scrollContent: {
+    paddingHorizontal: 20,
+    paddingTop: 24,
+    paddingBottom: 110,
   },
-  tabContent: {
+
+  contentSection: {
     gap: 24,
   },
-  inputGroup: {
-    gap: 8,
-  },
-  inputLabel: {
-    fontSize: 14,
-    fontWeight: "600",
-    marginBottom: 4,
-  },
-  inputContainer: {
+
+  sectionIntro: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1.5,
-    borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingVertical: 2,
   },
-  input: {
+
+  introIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 13,
+  },
+
+  introText: {
     flex: 1,
+  },
+
+  introTitle: {
     fontSize: 16,
-    paddingVertical: 12,
+    fontWeight: "800",
   },
-  clearButton: {
-    padding: 4,
+
+  introDescription: {
+    fontSize: 12,
+    lineHeight: 18,
+    marginTop: 3,
   },
-  section: {
-    gap: 12,
-  },
-  sectionHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-  },
-  languageScroll: {
-    marginHorizontal: -4,
-  },
-  languageRow: {
-    flexDirection: "row",
-    gap: 10,
-    paddingVertical: 4,
-  },
-  languagePill: {
-    flexDirection: "row",
-    alignItems: "center",
+
+  fieldGroup: {
     gap: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 24,
-    borderWidth: 1.5,
   },
-  addLanguagePill: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 24,
-    borderWidth: 1.5,
-    borderStyle: "dashed",
-  },
-  addLanguageText: {
-    fontSize: 14,
-    fontWeight: "600",
-  },
-  languageFlag: {
-    fontSize: 20,
-  },
-  languageName: {
-    fontSize: 14,
-  },
-  pillCheck: {
+
+  fieldLabel: {
+    fontSize: 13,
+    fontWeight: "700",
     marginLeft: 2,
   },
-  levelGrid: {
-    gap: 10,
+
+  inputContainer: {
+    minHeight: 54,
+    borderRadius: 15,
+    borderWidth: 1.2,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 14,
   },
-  levelCard: {
-    padding: 16,
-    borderRadius: 16,
-    borderWidth: 1.5,
-    position: "relative",
+
+  inputIcon: {
+    marginRight: 10,
   },
-  levelCardContent: {
-    gap: 4,
+
+  input: {
+    flex: 1,
+    fontSize: 15,
+    paddingVertical: 14,
   },
-  levelCardIcon: {
-    fontSize: 24,
-    marginBottom: 4,
+
+  clearButton: {
+    padding: 4,
+    marginLeft: 6,
   },
-  levelCardTitle: {
+
+  preferenceSection: {
+    gap: 13,
+  },
+
+  sectionHeading: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  sectionIcon: {
+    width: 42,
+    height: 42,
+    borderRadius: 13,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 11,
+  },
+
+  sectionHeadingText: {
+    flex: 1,
+  },
+
+  sectionTitle: {
     fontSize: 16,
+    fontWeight: "800",
   },
-  levelCardDescription: {
-    fontSize: 13,
+
+  sectionDescription: {
+    fontSize: 12,
+    lineHeight: 17,
+    marginTop: 2,
   },
-  levelCheckmark: {
-    position: "absolute",
-    top: 12,
-    right: 12,
-    width: 20,
-    height: 20,
-    borderRadius: 10,
+
+  courseCard: {
+    borderRadius: 18,
+    borderWidth: 1,
+    overflow: "hidden",
+  },
+
+  courseRow: {
+    minHeight: 72,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+  },
+
+  courseSelect: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  courseIcon: {
+    width: 42,
+    height: 42,
+    borderRadius: 13,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
+  },
+
+  courseInfo: {
+    flex: 1,
+  },
+
+  courseName: {
+    fontSize: 14,
+    fontWeight: "800",
+  },
+
+  courseStatus: {
+    fontSize: 11,
+    marginTop: 3,
+  },
+
+  selectedCheck: {
+    width: 25,
+    height: 25,
+    borderRadius: 13,
     alignItems: "center",
     justifyContent: "center",
   },
+
+  removeCourse: {
+    padding: 5,
+  },
+
+  addCourseButton: {
+    minHeight: 72,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 14,
+  },
+
+  addCourseIcon: {
+    width: 42,
+    height: 42,
+    borderRadius: 13,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
+  },
+
+  addCourseText: {
+    flex: 1,
+  },
+
+  addCourseTitle: {
+    fontSize: 14,
+    fontWeight: "800",
+  },
+
+  addCourseSubtitle: {
+    fontSize: 11,
+    marginTop: 3,
+  },
+
+  levelList: {
+    gap: 10,
+  },
+
+  levelCard: {
+    minHeight: 78,
+    borderRadius: 17,
+    borderWidth: 1.4,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+
+  levelIcon: {
+    width: 45,
+    height: 45,
+    borderRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
+  },
+
+  levelInfo: {
+    flex: 1,
+  },
+
+  levelTitle: {
+    fontSize: 14,
+    fontWeight: "800",
+  },
+
+  levelDescription: {
+    fontSize: 11,
+    marginTop: 3,
+  },
+
+  radio: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    borderWidth: 1.5,
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 10,
+  },
+
+  radioInner: {
+    width: 11,
+    height: 11,
+    borderRadius: 6,
+  },
+
   footer: {
     position: "absolute",
-    bottom: 0,
     left: 0,
     right: 0,
-    paddingHorizontal: 20,
-    paddingVertical: 12,
+    bottom: 0,
+    minHeight: 58,
     borderTopWidth: 1,
-  },
-  footerStats: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 12,
+    paddingHorizontal: 20,
+    gap: 14,
   },
-  footerStat: {
+
+  footerItem: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
+    maxWidth: "40%",
   },
-  footerStatText: {
-    fontSize: 13,
-    fontWeight: "500",
+
+  footerText: {
+    fontSize: 12,
+    fontWeight: "600",
   },
+
   footerDivider: {
     width: 1,
     height: 20,
   },
+
   overlay: {
     flex: 1,
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 20,
   },
-  addLanguageCard: {
+
+  addModal: {
     width: "100%",
-    maxWidth: 340,
-    maxHeight: 400,
-    borderRadius: 20,
-    borderWidth: 2,
-    padding: 18,
-    elevation: 8,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 10,
+    maxWidth: 380,
+    maxHeight: "70%",
+    borderRadius: 22,
+    borderWidth: 1,
+    padding: 20,
   },
+
   addModalHeader: {
     flexDirection: "row",
+    alignItems: "flex-start",
     justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 12,
+    marginBottom: 14,
   },
+
   addModalTitle: {
-    fontSize: 18,
-    fontWeight: "700",
+    fontSize: 19,
+    fontWeight: "900",
   },
-  availableList: {
-    marginTop: 8,
+
+  addModalSubtitle: {
+    fontSize: 12,
+    lineHeight: 17,
+    marginTop: 4,
+    maxWidth: 260,
   },
-  availableItem: {
+
+  modalClose: {
+    width: 36,
+    height: 36,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  languageList: {
+    marginTop: 4,
+  },
+
+  availableLanguage: {
+    minHeight: 64,
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 12,
     borderBottomWidth: 1,
-    gap: 12,
   },
-  availableFlag: {
-    fontSize: 22,
+
+  availableIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
   },
-  availableTitle: {
+
+  availableName: {
     flex: 1,
-    fontSize: 16,
-    fontWeight: "600",
+    fontSize: 14,
+    fontWeight: "700",
   },
 });

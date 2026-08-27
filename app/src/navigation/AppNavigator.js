@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import OnboardingScreen from "../screens/onboarding/OnboardingScreen";
 import AppRoute from "./AppRoute";
 import { createSupabaseClient } from "../utils/supabase";
-import { useAuth } from "@clerk/clerk-expo";
+import { useAuth } from "@clerk/expo";
 
 const Stack = createNativeStackNavigator();
 

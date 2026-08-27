@@ -1,17 +1,17 @@
-// components/lesson/LessonContent.js
-import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTheme } from "../../context/ThemeContext";
+
+import Button from "../ui/Button";
 import ConfirmDialog from "../ui/ConfirmDialog";
 import DragDropMode from "./DragDropMode";
 import LessonCompleteScreen from "./LessonCompleteScreen";
@@ -23,94 +23,153 @@ import ProgressHeader from "./ProgressHeader";
 
 export default function LessonContent({
   questions,
-  lessonId,
-  vocabulary,
   onComplete,
   isReview = false,
 }) {
-const { theme } = useTheme();
+  const { theme } = useTheme();
   const navigation = useNavigation();
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [exitConfirmVisible, setExitConfirmVisible] = useState(false);
-const [showResult, setShowResult] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(null);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [wrongQuestions, setWrongQuestions] = useState([]);
-  const [showComplete, setShowComplete] = useState(false);
-  const [retryCount, setRetryCount] = useState(0);
+  const insets = useSafeAreaInsets();
 
-  const currentQuestion = questions[currentQuestionIndex];
-  const progress = questions.length > 0 
-    ? ((currentQuestionIndex + 1) / questions.length) * 100 
-    : 0;
+  const [
+    currentQuestionIndex,
+    setCurrentQuestionIndex,
+  ] = useState(0);
+
+  const [
+    exitConfirmVisible,
+    setExitConfirmVisible,
+  ] = useState(false);
+
+  const [showResult, setShowResult] =
+    useState(false);
+
+  const [isCorrect, setIsCorrect] =
+    useState(null);
+
+  const [correctAnswers, setCorrectAnswers] =
+    useState(0);
+
+  const [wrongQuestions, setWrongQuestions] =
+    useState([]);
+
+  const [showComplete, setShowComplete] =
+    useState(false);
+
+  const [retryCount, setRetryCount] =
+    useState(0);
+
+  const currentQuestion =
+    questions?.[currentQuestionIndex];
+
+  const totalQuestions =
+    questions?.length || 0;
+
+  const isLastQuestion =
+    currentQuestionIndex ===
+    totalQuestions - 1;
+
+  const progress =
+    totalQuestions > 0
+      ? ((currentQuestionIndex + 1) /
+          totalQuestions) *
+        100
+      : 0;
+
+  useEffect(() => {
+    setShowResult(false);
+    setIsCorrect(null);
+  }, [currentQuestionIndex]);
 
   const handleAnswer = (correct) => {
-    if (showResult) return;
+    if (showResult) {
+      return;
+    }
+
     setIsCorrect(correct);
+
     if (correct) {
-      setCorrectAnswers((prev) => prev + 1);
-      // If this question was previously wrong, remove it from wrong list
-      // (only when it's a different question than the current attempt)
+      setCorrectAnswers(
+        (prev) => prev + 1
+      );
     } else {
-      // Record the incorrectly answered question
-      const q = currentQuestion;
+      const question = currentQuestion;
+
       setWrongQuestions((prev) => {
-        const existing = prev.find(
-          (w) =>
-            w.id === q.id ||
-            (w.question &&
-              q.question &&
-              w.question === q.question)
-        );
-        if (existing) {
-          return prev.map((w) =>
-            (w.id === q.id ||
-              (w.question &&
-                q.question &&
-                w.question === q.question))
-              ? { ...w, attempts: w.attempts + 1 }
-              : w
+        const existingIndex =
+          prev.findIndex(
+            (item) =>
+              item.id === question?.id ||
+              (item.question &&
+                question?.question &&
+                item.question ===
+                  question.question)
+          );
+
+        if (existingIndex !== -1) {
+          return prev.map(
+            (item, index) =>
+              index === existingIndex
+                ? {
+                    ...item,
+                    attempts:
+                      (item.attempts || 0) +
+                      1,
+                  }
+                : item
           );
         }
+
         return [
           ...prev,
           {
-            id: q?.id,
-            question: q?.question,
-            english: q?.options?.find(
-              (o) => o.id === q.correctOptionId
-            )?.text,
-            native: q?.question,
-            pronunciation: q?.hints?.[0] || null,
+            id: question?.id,
+            question:
+              question?.question,
+
+            english:
+              question?.options?.find(
+                (option) =>
+                  option.id ===
+                  question.correctOptionId
+              )?.text,
+
+            native:
+              question?.question,
+
+            pronunciation:
+              question?.hints?.[0] ||
+              null,
+
             attempts: 1,
           },
         ];
       });
     }
+
     setShowResult(true);
   };
 
   const handleNext = () => {
-    setShowResult(false);
-    setIsCorrect(null);
-
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex((prev) => prev + 1);
-    } else {
-      // Lesson complete
+    if (isLastQuestion) {
       setShowComplete(true);
+      return;
     }
+
+    setCurrentQuestionIndex(
+      (prev) => prev + 1
+    );
   };
 
-const handleRetry = () => {
+  const handleRetry = () => {
     setShowResult(false);
     setIsCorrect(null);
-    // Bump the retry count so the mode component remounts and resets
-    // its internal state (clears the previously selected wrong answer).
-    setRetryCount((prev) => prev + 1);
+
+    setRetryCount(
+      (prev) => prev + 1
+    );
   };
 
-const handleComplete = () => {
+  const handleComplete = () => {
     if (onComplete) {
       onComplete();
     } else {
@@ -123,15 +182,34 @@ const handleComplete = () => {
       handleComplete();
       return;
     }
+
     setExitConfirmVisible(true);
   };
 
+  const handleReview = () => {
+    setCorrectAnswers(0);
+    setWrongQuestions([]);
+
+    setRetryCount(
+      (prev) => prev + 1
+    );
+
+    setCurrentQuestionIndex(0);
+
+    setShowResult(false);
+    setIsCorrect(null);
+    setShowComplete(false);
+  };
+
   const renderMode = () => {
-    const type = currentQuestion?.type || "multiple_choice";
-    const commonProps = {
-// key forces a remount when the question changes OR when the user
-      // retries, so internal state (selected option, drag answers) is reset.
-      key: `q-${currentQuestion?.id}-r${retryCount}`,
+    const type =
+      currentQuestion?.type ||
+      "multiple_choice";
+
+    const key = `q-${currentQuestion?.id}-r${retryCount}`;
+
+    const props = {
+      key,
       question: currentQuestion,
       onSubmit: handleAnswer,
       showResult,
@@ -140,26 +218,66 @@ const handleComplete = () => {
 
     switch (type) {
       case "listening_multiple_choice":
-        return <ListeningMultipleChoiceMode {...commonProps} />;
+        return (
+          <ListeningMultipleChoiceMode
+            {...props}
+          />
+        );
+
       case "matching":
-        return <MatchingMode {...commonProps} />;
+        return <MatchingMode {...props} />;
+
       case "listening_matching":
-        return <ListeningMatchingMode {...commonProps} />;
+        return (
+          <ListeningMatchingMode
+            {...props}
+          />
+        );
+
       case "drag_drop":
       case "dragdrop":
-        return <DragDropMode {...commonProps} />;
+        return (
+          <DragDropMode {...props} />
+        );
+
       case "multiple_choice":
       default:
-        return <MultipleChoiceMode {...commonProps} />;
+        return (
+          <MultipleChoiceMode
+            {...props}
+          />
+        );
     }
   };
 
-  if (!currentQuestion && !showComplete) {
+  if (
+    !currentQuestion &&
+    !showComplete
+  ) {
     return (
-      <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
+      <SafeAreaView
+        style={[
+          styles.container,
+          {
+            backgroundColor:
+              theme.background,
+          },
+        ]}
+      >
         <View style={styles.center}>
-          <ActivityIndicator size="large" color={theme.primary} />
-          <Text style={[styles.loadingText, { color: theme.text }]}>
+          <ActivityIndicator
+            size="large"
+            color={theme.primary}
+          />
+
+          <Text
+            style={[
+              styles.loadingText,
+              {
+                color: theme.text,
+              },
+            ]}
+          >
             Loading question...
           </Text>
         </View>
@@ -168,36 +286,50 @@ const handleComplete = () => {
   }
 
   if (showComplete) {
-    const accuracy = questions.length > 0 
-      ? Math.round((correctAnswers / questions.length) * 100) 
-      : 100;
-
-    const handleReview = () => {
-      // Restart the lesson from the beginning for additional practice
-      setCorrectAnswers(0);
-      setWrongQuestions([]);
-      setRetryCount((prev) => prev + 1);
-      setShowResult(false);
-      setIsCorrect(null);
-      setCurrentQuestionIndex(0);
-      setShowComplete(false);
-    };
+    const accuracy =
+      totalQuestions > 0
+        ? Math.round(
+            (correctAnswers /
+              totalQuestions) *
+              100
+          )
+        : 100;
 
     const lessonStats = {
       accuracy,
       correctAnswers,
-      totalQuestions: questions.length,
-      wrongQuestions: wrongQuestions.map((w) => ({
-        id: w.id,
-        english: w.english || w.question,
-        native: w.native,
-        pronunciation: w.pronunciation,
-        attempts: w.attempts,
-      })),
+      totalQuestions,
+
+      wrongQuestions:
+        wrongQuestions.map(
+          (item) => ({
+            id: item.id,
+
+            english:
+              item.english ||
+              item.question,
+
+            native: item.native,
+
+            pronunciation:
+              item.pronunciation,
+
+            attempts:
+              item.attempts || 1,
+          })
+        ),
     };
 
     return (
-      <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
+      <SafeAreaView
+        style={[
+          styles.container,
+          {
+            backgroundColor:
+              theme.background,
+          },
+        ]}
+      >
         <LessonCompleteScreen
           lessonStats={lessonStats}
           onContinue={handleComplete}
@@ -207,8 +339,37 @@ const handleComplete = () => {
     );
   }
 
+  const feedbackBackground =
+    showResult
+      ? isCorrect
+        ? "#E8F7EE"
+        : "#FDECEC"
+      : theme.surface;
+
+  const feedbackBorder =
+    showResult
+      ? isCorrect
+        ? "#B7E4C7"
+        : "#F5B5B5"
+      : theme.border;
+
+  const feedbackColor =
+    showResult
+      ? isCorrect
+        ? "#16803C"
+        : "#C62828"
+      : theme.text;
+
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor:
+            theme.background,
+        },
+      ]}
+    >
       <ConfirmDialog
         visible={exitConfirmVisible}
         title="Exit Practice"
@@ -216,80 +377,195 @@ const handleComplete = () => {
         cancelLabel="Cancel"
         confirmLabel="Exit"
         destructive
-onConfirm={() => {
+        onConfirm={() => {
           setExitConfirmVisible(false);
           navigation.goBack();
         }}
-        onCancel={() => setExitConfirmVisible(false)}
+        onCancel={() =>
+          setExitConfirmVisible(false)
+        }
       />
 
-      <ProgressHeader
-        progress={progress}
-        currentCount={currentQuestionIndex + 1}
-        totalCount={questions.length}
-        onClose={handleBack}
-      />
+      <SafeAreaView style={styles.topArea}>
+        <ProgressHeader
+          progress={progress}
+          currentCount={
+            currentQuestionIndex + 1
+          }
+          totalCount={totalQuestions}
+          onClose={handleBack}
+        />
 
-      <ScrollView
-        contentContainerStyle={styles.content}
-        showsVerticalScrollIndicator={false}
-      >
-        <View style={styles.questionContainer}>
-          {isReview && (
-            <View style={[styles.reviewBadge, { backgroundColor: theme.primary + "20" }]}>
-              <Ionicons name="refresh-outline" size={16} color={theme.primary} />
-              <Text style={[styles.reviewBadgeText, { color: theme.primary }]}>
-                Review Session
-              </Text>
-            </View>
-          )}
-          
-          <Text style={[styles.questionText, { color: theme.text }]}>
-            {currentQuestion.question}
-          </Text>
-          {currentQuestion.instruction && (
-            <Text style={[styles.instructionText, { color: theme.secondaryText }]}>
-              {currentQuestion.instruction}
+        <ScrollView
+          contentContainerStyle={[
+            styles.contentContainer,
+            {
+              paddingBottom:
+                160 + insets.bottom,
+            },
+          ]}
+          showsVerticalScrollIndicator={
+            false
+          }
+        >
+          <View
+            style={styles.questionHeader}
+          >
+            {isReview && (
+              <View
+                style={[
+                  styles.reviewBadge,
+                  {
+                    backgroundColor:
+                      theme.primary +
+                      "18",
+
+                    borderColor:
+                      theme.primary +
+                      "30",
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.reviewBadgeText,
+                    {
+                      color:
+                        theme.primary,
+                    },
+                  ]}
+                >
+                  REVIEW
+                </Text>
+              </View>
+            )}
+
+            <Text
+              style={[
+                styles.questionLabel,
+                {
+                  color:
+                    theme.secondaryText,
+                },
+              ]}
+            >
+              {isReview
+                ? "Let's review this one"
+                : "Translate or answer"}
             </Text>
-          )}
-        </View>
 
-        {renderMode()}
-
-        {showResult && (
-          <View style={[styles.feedbackContainer, { backgroundColor: theme.surface }]}>
-            <Text style={[styles.feedbackText, { color: isCorrect ? "#34C759" : "#FF3B30" }]}>
-              {isCorrect ? "✅ Correct!" : "❌ Not quite right"}
+            <Text
+              style={[
+                styles.questionText,
+                {
+                  color: theme.text,
+                },
+              ]}
+            >
+              {currentQuestion.question}
             </Text>
-            {currentQuestion.explanation && (
-              <Text style={[styles.explanationText, { color: theme.secondaryText }]}>
-                {currentQuestion.explanation}
+
+            {currentQuestion.instruction && (
+              <Text
+                style={[
+                  styles.instructionText,
+                  {
+                    color:
+                      theme.secondaryText,
+                  },
+                ]}
+              >
+                {currentQuestion.instruction}
               </Text>
             )}
-            {!isCorrect && (
-              <TouchableOpacity
-                style={[styles.retryButton, { backgroundColor: theme.primary }]}
-                onPress={handleRetry}
+          </View>
+
+          {renderMode()}
+        </ScrollView>
+      </SafeAreaView>
+
+      <View
+        style={[
+          styles.bottomSheet,
+          {
+            backgroundColor:
+              feedbackBackground,
+
+            borderTopColor:
+              feedbackBorder,
+
+            paddingBottom: Math.max(
+              insets.bottom,
+              16
+            ),
+          },
+        ]}
+      >
+        {showResult && (
+          <View
+            style={styles.feedbackBanner}
+          >
+            <Text
+              style={[
+                styles.feedbackTitle,
+                {
+                  color:
+                    feedbackColor,
+                },
+              ]}
+            >
+              {isCorrect
+                ? "Awesome!"
+                : "Solution:"}
+            </Text>
+
+            {currentQuestion.explanation && (
+              <Text
+                style={[
+                  styles.explanationText,
+                  {
+                    color:
+                      feedbackColor,
+                  },
+                ]}
               >
-                <Text style={styles.retryButtonText}>Try Again</Text>
-              </TouchableOpacity>
+                {currentQuestion.explanation}
+              </Text>
             )}
           </View>
         )}
 
-        {showResult && isCorrect && (
-          <TouchableOpacity
-            style={[styles.nextButton, { backgroundColor: theme.primary }]}
-            onPress={handleNext}
-          >
-            <Text style={styles.nextButtonText}>
-              {currentQuestionIndex < questions.length - 1 ? "Next Question" : "Complete Lesson"}
-            </Text>
-            <Ionicons name="arrow-forward" size={20} color="#FFF" />
-          </TouchableOpacity>
-        )}
-      </ScrollView>
-    </SafeAreaView>
+        <View
+          style={styles.buttonWrapper}
+        >
+          {!showResult ? (
+            <Button
+              title="CONTINUE"
+              disabled
+              variant="primary"
+            />
+          ) : isCorrect ? (
+            <Button
+              title={
+                isLastQuestion
+                  ? "FINISH"
+                  : "CONTINUE"
+              }
+              onPress={handleNext}
+              variant="primary"
+              status="success"
+            />
+          ) : (
+            <Button
+              title="TRY AGAIN"
+              onPress={handleRetry}
+              variant="primary"
+              status="error"
+            />
+          )}
+        </View>
+      </View>
+    </View>
   );
 }
 
@@ -297,172 +573,96 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+
+  topArea: {
+    flex: 1,
+  },
+
   center: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
     padding: 20,
   },
-  content: {
-    flexGrow: 1,
+
+  loadingText: {
+    marginTop: 12,
+    fontSize: 16,
+    fontWeight: "600",
+  },
+
+  contentContainer: {
     paddingHorizontal: 20,
     paddingTop: 16,
-    paddingBottom: 30,
   },
-  loadingText: {
-    fontSize: 16,
-    marginTop: 12,
+
+  questionHeader: {
+    marginBottom: 20,
   },
-  questionContainer: {
-    marginBottom: 24,
-  },
+
   reviewBadge: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: 12,
-    gap: 6,
     alignSelf: "flex-start",
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 8,
+    borderWidth: 1,
     marginBottom: 12,
   },
+
   reviewBadgeText: {
-    fontSize: 13,
-    fontWeight: "600",
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 0.8,
   },
-  questionText: {
-    fontSize: 20,
+
+  questionLabel: {
+    marginBottom: 6,
+    fontSize: 14,
     fontWeight: "700",
-    marginBottom: 8,
+    textTransform: "uppercase",
+    letterSpacing: 0.5,
   },
+
+  questionText: {
+    marginBottom: 6,
+    fontSize: 24,
+    lineHeight: 32,
+    fontWeight: "800",
+  },
+
   instructionText: {
     fontSize: 15,
-  },
-  optionsContainer: {
-    gap: 12,
-    marginBottom: 20,
-  },
-  optionButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    borderWidth: 2,
-  },
-  optionContent: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-  },
-  optionCircle: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    borderWidth: 2,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  optionSelected: {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
-  },
-  optionText: {
-    fontSize: 16,
+    lineHeight: 22,
     fontWeight: "500",
   },
-  feedbackContainer: {
-    padding: 16,
-    borderRadius: 12,
-    marginBottom: 16,
-  },
-  feedbackText: {
-    fontSize: 18,
-    fontWeight: "700",
-    textAlign: "center",
-  },
-  explanationText: {
-    fontSize: 15,
-    textAlign: "center",
-    marginTop: 8,
-  },
-  retryButton: {
-    paddingVertical: 10,
+
+  bottomSheet: {
+    position: "absolute",
+    right: 0,
+    bottom: 0,
+    left: 0,
     paddingHorizontal: 20,
-    borderRadius: 10,
-    marginTop: 12,
-    alignSelf: "center",
+    paddingTop: 16,
+    borderTopWidth: 2,
   },
-  retryButtonText: {
-    color: "#FFF",
+
+  feedbackBanner: {
+    marginBottom: 14,
+  },
+
+  feedbackTitle: {
+    fontSize: 20,
+    fontWeight: "900",
+    letterSpacing: 0.3,
+  },
+
+  explanationText: {
+    marginTop: 4,
     fontSize: 15,
     fontWeight: "600",
   },
-  nextButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 16,
-    borderRadius: 14,
-    gap: 8,
-  },
-  nextButtonText: {
-    color: "#FFF",
-    fontSize: 17,
-    fontWeight: "600",
-  },
-  completeContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 20,
-  },
-  completeIcon: {
-    marginBottom: 20,
-  },
-  completeTitle: {
-    fontSize: 32,
-    fontWeight: "800",
-    marginBottom: 8,
-  },
-  completeSubtitle: {
-    fontSize: 18,
-    marginBottom: 30,
-  },
-  statsContainer: {
-    flexDirection: "row",
-    gap: 12,
+
+  buttonWrapper: {
     width: "100%",
-    marginBottom: 30,
-  },
-  statCard: {
-    flex: 1,
-    alignItems: "center",
-    paddingVertical: 16,
-    borderRadius: 12,
-    borderWidth: 1,
-  },
-  statValue: {
-    fontSize: 24,
-    fontWeight: "700",
-  },
-  statLabel: {
-    fontSize: 12,
-    fontWeight: "500",
-    marginTop: 4,
-  },
-  completeButton: {
-    paddingVertical: 16,
-    paddingHorizontal: 40,
-    borderRadius: 14,
-    width: "100%",
-    alignItems: "center",
-  },
-  completeButtonText: {
-    color: "#FFF",
-    fontSize: 18,
-    fontWeight: "700",
   },
 });

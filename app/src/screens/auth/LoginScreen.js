@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useSignIn } from "@clerk/clerk-expo";
+import { useSignIn } from "@clerk/expo";
 
 import { useTheme } from "../../context/ThemeContext";
 import { ThemedText } from "../../components/themed-text";

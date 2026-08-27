@@ -95,5 +95,5 @@ export default {
       { id: 404, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Opinion' in Ewe?", options: [{ id: 1, text: "Susu" }, { id: 2, text: "Nye susu" }, { id: 3, text: "Kpɔkplɔ" }, { id: 4, text: "Ðo gbe" }], correctOptionId: 1, hints: ["Your viewpoint"], explanation: "'Susu' means 'Opinion' in Ewe." },
       { id: 405, type: "matching", instruction: "Match each Ewe phrase to its English meaning.", pairs: [{ id: 1, left: "Nye susu", right: "My opinion" }, { id: 2, left: "Me lɔ̃tɔ", right: "I agree" }, { id: 3, left: "Me lɔ̃tɔ o", right: "I disagree" }, { id: 4, left: "Kplɔ dzi", right: "To persuade" }, { id: 5, left: "Nya", right: "Argument" }], hints: ["Nye susu = my opinion", "Me lɔ̃tɔ = I agree"], explanation: "These are key debate and opinion phrases from this chapter." }
     ]
-  }
+  } 
 };

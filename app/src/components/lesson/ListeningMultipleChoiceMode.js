@@ -1,193 +1,199 @@
-// components/lesson/ListeningMultipleChoiceMode.js
+import { useEffect, useState } from "react";
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Audio } from "expo-av";
-import { useEffect, useRef, useState } from "react";
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../context/ThemeContext";
+import AudioWave from "../ui/AudioWave";
 
 export default function ListeningMultipleChoiceMode({
   question,
   onSubmit,
   showResult,
-  isCorrect,
 }) {
   const { theme } = useTheme();
   const [selectedOption, setSelectedOption] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const soundRef = useRef(null);
 
   useEffect(() => {
-    return () => {
-      if (soundRef.current) {
-        soundRef.current.unloadAsync();
-      }
-    };
-  }, []);
+    setSelectedOption(null);
+  }, [question]);
 
   const getAudioSource = () => {
-    const audioPath = question?.audioUrl || question?.audio || question?.sound;
+    const audioPath =
+      question?.audioUrl ||
+      question?.audio ||
+      question?.sound;
+
     if (!audioPath) return null;
-    if (typeof audioPath === "number" || typeof audioPath === "object") {
+
+    if (
+      typeof audioPath === "number" ||
+      typeof audioPath === "object"
+    ) {
       return audioPath;
     }
-    if (typeof audioPath === "string") {
-      return { uri: audioPath };
-    }
-    return null;
-  };
 
-  const playAudio = async () => {
-    const audioSource = getAudioSource();
-    if (!audioSource) {
-      Alert.alert("Audio Unavailable", "No audio source found for this question.");
-      return;
-    }
-
-    try {
-      if (soundRef.current) {
-        await soundRef.current.stopAsync();
-        await soundRef.current.unloadAsync();
-        soundRef.current = null;
-      }
-      const { sound } = await Audio.Sound.createAsync(audioSource, { shouldPlay: true });
-      soundRef.current = sound;
-      setIsPlaying(true);
-      sound.setOnPlaybackStatusUpdate((status) => {
-        if (status.didJustFinish) {
-          setIsPlaying(false);
-        }
-      });
-    } catch (error) {
-      console.error("Error playing audio:", error);
-      setIsPlaying(false);
-      Alert.alert("Playback Error", "Could not play the audio file.");
-    }
+    return typeof audioPath === "string"
+      ? { uri: audioPath }
+      : null;
   };
 
   const handleOptionPress = (optionId) => {
     if (showResult || selectedOption !== null) return;
+
     setSelectedOption(optionId);
-    const correct = optionId === question.correctOptionId;
-    onSubmit(correct);
+
+    onSubmit(
+      optionId === question?.correctOptionId
+    );
+  };
+
+  const getOptionState = (option) => {
+    const isSelected = selectedOption === option.id;
+    const isCorrect = option.id === question?.correctOptionId;
+
+    if (showResult && isCorrect) {
+      return {
+        backgroundColor: theme.success + "15",
+        borderColor: theme.success,
+        textColor: theme.success,
+        icon: "checkmark-circle",
+        iconColor: theme.success,
+      };
+    }
+
+    if (showResult && isSelected && !isCorrect) {
+      return {
+        backgroundColor: theme.error + "15",
+        borderColor: theme.error,
+        textColor: theme.error,
+        icon: "close-circle",
+        iconColor: theme.error,
+      };
+    }
+
+    if (isSelected) {
+      return {
+        backgroundColor: theme.primary + "15",
+        borderColor: theme.primary,
+        textColor: theme.text,
+        icon: "radio-button-on",
+        iconColor: theme.primary,
+      };
+    }
+
+    return {
+      backgroundColor: theme.surface,
+      borderColor: theme.border,
+      textColor: theme.text,
+      icon: "radio-button-off",
+      iconColor: theme.icon,
+    };
   };
 
   const renderOption = (option) => {
+    const state = getOptionState(option);
     const isSelected = selectedOption === option.id;
-    const isCorrectOption = option.id === question.correctOptionId;
-    const showCorrect = showResult && isCorrectOption;
-    const showWrong = showResult && isSelected && !isCorrectOption;
-
-    let optionStyle = [
-      styles.optionButton,
-      { backgroundColor: theme.surface, borderColor: theme.border },
-    ];
-
-    if (showCorrect) {
-      optionStyle = [
-        styles.optionButton,
-        { backgroundColor: theme.success + "20", borderColor: theme.success },
-      ];
-    } else if (showWrong) {
-      optionStyle = [
-        styles.optionButton,
-        { backgroundColor: theme.error + "20", borderColor: theme.error },
-      ];
-    } else if (isSelected && !showResult) {
-      optionStyle = [
-        styles.optionButton,
-        { backgroundColor: theme.primary + "20", borderColor: theme.primary },
-      ];
-    }
 
     return (
-      <TouchableOpacity
+      <Pressable
         key={option.id}
-        style={optionStyle}
         onPress={() => handleOptionPress(option.id)}
         disabled={showResult || selectedOption !== null}
-        activeOpacity={0.7}
+        style={({ pressed }) => [
+          styles.optionButton,
+          {
+            backgroundColor: state.backgroundColor,
+            borderColor: state.borderColor,
+            borderWidth: isSelected && !showResult ? 3 : 2,
+            opacity: pressed && !showResult ? 0.85 : 1,
+          },
+        ]}
       >
         <View style={styles.optionContent}>
-          <View style={[styles.optionCircle, { borderColor: theme.border }]}>
-            {isSelected && (
-              <View style={[styles.optionSelected, { backgroundColor: theme.primary }]} />
-            )}
-          </View>
-          <Text style={[styles.optionText, { color: theme.text }]}>
+          <Ionicons
+            name={state.icon}
+            size={26}
+            color={state.iconColor}
+          />
+
+          <Text
+            style={[
+              styles.optionText,
+              { color: state.textColor },
+            ]}
+          >
             {option.text}
           </Text>
         </View>
-        {showCorrect && <Ionicons name="checkmark-circle" size={24} color={theme.success} />}
-        {showWrong && <Ionicons name="close-circle" size={24} color={theme.error} />}
-      </TouchableOpacity>
+      </Pressable>
     );
   };
 
   return (
-    <View>
-      <TouchableOpacity
-        style={[styles.audioButton, { backgroundColor: theme.primary }]}
-        onPress={playAudio}
-        activeOpacity={0.8}
+    <View style={styles.container}>
+      <View style={styles.audioContainer}>
+        <AudioWave
+          source={getAudioSource()}
+          size="medium"
+        />
+      </View>
+
+      <ScrollView
+        style={styles.optionsScrollView}
+        contentContainerStyle={styles.optionsContentContainer}
+        showsVerticalScrollIndicator={false}
+        scrollEnabled={!showResult}
       >
-        <Ionicons name={isPlaying ? "pause-circle" : "volume-high"} size={28} color="#FFF" />
-        <Text style={styles.audioButtonText}>
-          {isPlaying ? "Playing..." : "Play Audio"}
-        </Text>
-      </TouchableOpacity>
-      <View style={styles.optionsContainer}>{question.options.map(renderOption)}</View>
+        {question?.options?.map(renderOption)}
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  audioButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
-    paddingVertical: 16,
-    borderRadius: 14,
-    marginBottom: 20,
+  container: {
+    flex: 1,
   },
-  audioButtonText: {
-    color: "#FFF",
-    fontSize: 17,
-    fontWeight: "600",
+
+  audioContainer: {
+    width: "100%",
+    marginBottom: 24,
   },
-  optionsContainer: {
+
+  optionsScrollView: {
+    flex: 1,
+  },
+
+  optionsContentContainer: {
+    paddingBottom: 20,
     gap: 12,
-    marginBottom: 20,
   },
+
   optionButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    minHeight: 64,
+    borderRadius: 16,
     paddingVertical: 14,
     paddingHorizontal: 16,
-    borderRadius: 12,
-    borderWidth: 2,
+    flexDirection: "row",
+    alignItems: "center",
   },
+
   optionContent: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
+    flex: 1,
+    gap: 14,
   },
-  optionCircle: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    borderWidth: 2,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  optionSelected: {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
-  },
+
   optionText: {
-    fontSize: 16,
-    fontWeight: "500",
+    fontSize: 17,
+    fontWeight: "600",
+    flex: 1,
+    lineHeight: 23,
   },
 });

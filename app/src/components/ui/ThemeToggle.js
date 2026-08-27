@@ -5,7 +5,7 @@ import Feather from "@expo/vector-icons/Feather";
 import { useTheme } from "../../context/ThemeContext";
 
 export default function ThemeToggle() {
-  const { theme, mode, toggleTheme } = useTheme();
+  const { theme, isDark, toggleTheme } = useTheme();
 
   const translateY = useRef(new Animated.Value(0)).current;
 
@@ -43,7 +43,7 @@ export default function ThemeToggle() {
           ]}
         >
           <Feather
-            name={mode === "dark" ? "sun" : "moon"}
+            name={isDark ? "sun" : "moon"}
             size={20}
             color={theme.text}
           />

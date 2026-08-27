@@ -1,4 +1,3 @@
-// data/course_content/ewe/beginner/chapter1.js
 export default {
   id: 1,
   title: "Greetings & Basics",
@@ -127,23 +126,22 @@ export default {
           hints: ["Used when going to bed", "Night greeting"],
           explanation: "Dɔ agbe nyuie = Good night. Used when saying goodbye at night or going to sleep."
         },
-        // Audio question commented out - requires audio file
-        // {
-        //   id: 105,
-        //   type: "listening_multiple_choice",
-        //   instruction: "Listen to the Ewe audio and select the correct English translation.",
-        //   question: "What does this Ewe greeting mean in English?",
-        //   audioUrl: "/audio/ewe/ngdi.mp3",
-        //   options: [
-        //     { id: 1, text: "Good afternoon" },
-        //     { id: 2, text: "Good morning" },
-        //     { id: 3, text: "Good evening" },
-        //     { id: 4, text: "Good night" }
-        //   ],
-        //   correctOptionId: 2,
-        //   hints: ["This greeting is used before noon"],
-        //   explanation: "You heard 'Ŋdi' which means 'Good morning' in Ewe."
-        // },
+        {
+          id: 105,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the Ewe audio and select the correct English translation.",
+          question: "What does this Ewe greeting mean in English?",
+          audioUrl: require("../../../../assets/audio/ewe/ngdi.m4a"),
+          options: [
+            { id: 1, text: "Good afternoon" },
+            { id: 2, text: "Good morning" },
+            { id: 3, text: "Good evening" },
+            { id: 4, text: "Good night" }
+          ],
+          correctOptionId: 2,
+          hints: ["This greeting is used before noon"],
+          explanation: "You heard 'Ŋdi' which means 'Good morning' in Ewe."
+        },
         {
           id: 106,
           type: "multiple_choice",
@@ -620,23 +618,6 @@ export default {
         hints: ["Negative response"],
         explanation: "Ao = No."
       },
-      {
-        id: 511,
-        type: "matching",
-        instruction: "Match each Ewe phrase to its correct English meaning.",
-        pairs: [
-          { id: 1, left: "Ŋdi", right: "Good morning" },
-          { id: 2, left: "Akpe", right: "Thank you" },
-          { id: 3, left: "Efɔa?", right: "How are you?" },
-          { id: 4, left: "Mele nyuie", right: "I am fine" },
-          { id: 5, left: "Taflatse", right: "Please" },
-          { id: 6, left: "Babae", right: "Sorry" },
-          { id: 7, left: "Ɛ̃", right: "Yes" },
-          { id: 8, left: "Ao", right: "No" }
-        ],
-        hints: ["Ŋdi = morning", "Akpe = gratitude", "Efɔa? = question", "Mele nyuie = response"],
-        explanation: "These are the key phrases from this chapter."
-      }
     ]
   }
 };

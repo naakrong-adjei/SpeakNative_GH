@@ -65,7 +65,7 @@ export default function Button({
         bg: theme.success,
         border: theme.success,
         text: "#fff",
-        bottom: theme.success,
+        bottom: theme.primary,
       };
     }
 

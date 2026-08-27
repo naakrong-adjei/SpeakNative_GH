@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 import * as Linking from "expo-linking";
 import * as WebBrowser from "expo-web-browser";
-import { useOAuth, useAuth, useUser } from "@clerk/clerk-expo";
+import { useOAuth, useAuth, useUser } from "@clerk/expo";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
 import Button from "../../components/ui/Button";

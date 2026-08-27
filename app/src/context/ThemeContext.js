@@ -22,9 +22,14 @@ export function ThemeProvider({ children }) {
       : mode === "dark";
 
   const toggleTheme = () => {
-    setMode((prev) =>
-      prev === "dark" ? "light" : "dark"
-    );
+    setMode((prev) => {
+      // If in system mode, switch to the opposite of current system theme
+      if (prev === "system") {
+        return systemTheme === "dark" ? "light" : "dark";
+      }
+      // Otherwise toggle between dark and light
+      return prev === "dark" ? "light" : "dark";
+    });
   };
 
   return (
@@ -35,6 +40,7 @@ export function ThemeProvider({ children }) {
         setMode,
         toggleTheme,
         isDark,
+        systemTheme,
       }}
     >
       {children}

@@ -1,6 +1,6 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { ClerkProvider } from "@clerk/clerk-expo";
+import { ClerkProvider } from "@clerk/expo";
 import RootNavigator from "./src/navigation/RootNavigator"
 import { Toaster } from "sonner-native";
 import { ThemeProvider } from "./src/context/ThemeContext"

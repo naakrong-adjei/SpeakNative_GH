@@ -36,6 +36,16 @@ import twiBeginnerChapter6 from "../data/course_content/twi/beginner/chapter6.js
 import twiBeginnerChapter7 from "../data/course_content/twi/beginner/chapter7.js";
 import twiBeginnerChapter8 from "../data/course_content/twi/beginner/chapter8.js";
 import twiBeginnerChapter9 from "../data/course_content/twi/beginner/chapter9.js";
+import gaBeginnerChapter1 from "../data/course_content/ga/beginner/chapter1.js";
+import gaBeginnerChapter2 from "../data/course_content/ga/beginner/chapter2.js";
+import gaBeginnerChapter3 from "../data/course_content/ga/beginner/chapter3.js";
+import gaBeginnerChapter4 from "../data/course_content/ga/beginner/chapter4.js";
+import gaBeginnerChapter5 from "../data/course_content/ga/beginner/chapter5.js";
+import gaBeginnerChapter6 from "../data/course_content/ga/beginner/chapter6.js";
+import gaBeginnerChapter7 from "../data/course_content/ga/beginner/chapter7.js";
+import gaBeginnerChapter8 from "../data/course_content/ga/beginner/chapter8.js";
+import gaBeginnerChapter9 from "../data/course_content/ga/beginner/chapter9.js";
+import gaBeginnerChapter10 from "../data/course_content/ga/beginner/chapter10.js";
 
 export const getLessonData = () => {
   try {
@@ -56,8 +66,19 @@ export const getLessonData = () => {
         intermediate: {},
         advanced: {},
       },
-      "ga": {
-        beginner: {},
+"ga": {
+        beginner: {
+          chapter1: gaBeginnerChapter1,
+          chapter2: gaBeginnerChapter2,
+          chapter3: gaBeginnerChapter3,
+          chapter4: gaBeginnerChapter4,
+          chapter5: gaBeginnerChapter5,
+          chapter6: gaBeginnerChapter6,
+          chapter7: gaBeginnerChapter7,
+          chapter8: gaBeginnerChapter8,
+          chapter9: gaBeginnerChapter9,
+          chapter10: gaBeginnerChapter10,
+        },
         intermediate: {},
         advanced: {},
       },

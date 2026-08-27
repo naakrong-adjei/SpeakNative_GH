@@ -16,7 +16,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { ThemedText } from "../../components/themed-text";
 import { createSupabaseClient } from "../../utils/supabase";
-import { useAuth, useUser } from "@clerk/clerk-expo";
+import { useAuth, useUser } from "@clerk/expo";
 import { useTheme } from "../../context/ThemeContext";
 
 import OptionCard from "../../components/ui/OptionCard";

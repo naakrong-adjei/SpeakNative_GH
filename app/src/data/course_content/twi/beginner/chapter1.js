@@ -1,4 +1,3 @@
-// data/course_content/twi/beginner/chapter1.js
 export default {
   id: 1,
   title: "Greetings & Basics",

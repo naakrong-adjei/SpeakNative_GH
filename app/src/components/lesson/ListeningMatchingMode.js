@@ -1,22 +1,16 @@
-// components/lesson/ListeningMatchingMode.js
 import { Ionicons } from "@expo/vector-icons";
-import { Audio } from "expo-av";
-import { useEffect, useRef, useState } from "react";
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useTheme } from "../../context/ThemeContext";
+import { useEffect, useState } from "react";
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
-/**
- * ListeningMatchingMode presents a list of audio clips (one per prompt) and
- * a set of English answer choices. The user taps a play button to hear an
- * audio clip, then taps the matching English answer. Question shape:
- *   {
- *     id, type: "listening_matching",
- *     instruction,
- *     pairs: [{ id, native, audioUrl }],
- *     options: [{ id, text }],        // English choices
- *     correctDrops: [{ pairId, optionId }]  // or correctOptionId per pair
- *   }
- */
+import { useTheme } from "../../context/ThemeContext";
+import AudioWave from "../ui/AudioWave";
+
 export default function ListeningMatchingMode({
   question,
   onSubmit,
@@ -24,205 +18,606 @@ export default function ListeningMatchingMode({
   isCorrect,
 }) {
   const { theme } = useTheme();
+
   const pairs = question?.pairs || [];
   const options = question?.options || [];
-  const [selectedPair, setSelectedPair] = useState(null);
-  const [answers, setAnswers] = useState({}); // pairId -> optionId
-  const [submitted, setSubmitted] = useState(false);
-  const [playingPairId, setPlayingPairId] = useState(null);
-  const soundRef = useRef(null);
+
+  const [selectedPair, setSelectedPair] =
+    useState(null);
+
+  const [answers, setAnswers] =
+    useState({});
+
+  const [submitted, setSubmitted] =
+    useState(false);
+
+  // --------------------------------
+  // RESET WHEN QUESTION CHANGES
+  // --------------------------------
 
   useEffect(() => {
-    return () => {
-      if (soundRef.current) {
-        soundRef.current.unloadAsync();
-      }
-    };
-  }, []);
+    setSelectedPair(null);
+    setAnswers({});
+    setSubmitted(false);
+  }, [question]);
+
+  // --------------------------------
+  // GET CORRECT ANSWER
+  // --------------------------------
 
   const getCorrectOptionId = (pairId) => {
-    const pair = pairs.find((p) => p.id === pairId);
-    if (pair?.correctOptionId) return pair.correctOptionId;
-    const drops = question?.correctDrops || [];
-    const drop = drops.find((d) => d.pairId === pairId);
-    return drop ? drop.optionId : null;
+    const pair = pairs.find(
+      (p) => p.id === pairId
+    );
+
+    if (pair?.correctOptionId) {
+      return pair.correctOptionId;
+    }
+
+    const drops =
+      question?.correctDrops || [];
+
+    const drop = drops.find(
+      (d) => d.pairId === pairId
+    );
+
+    return drop?.optionId || null;
   };
 
-  const playAudio = async (pair) => {
-    const audioSource = pair?.audioUrl || pair?.audio || pair?.sound;
-    if (!audioSource) {
-      Alert.alert("Audio Unavailable", "No audio source found for this item.");
+  // --------------------------------
+  // GET AUDIO SOURCE
+  // --------------------------------
+
+  const getAudioSource = (pair) => {
+    const audioPath =
+      pair?.audioUrl ||
+      pair?.audio ||
+      pair?.sound;
+
+    if (!audioPath) {
+      return null;
+    }
+
+    if (
+      typeof audioPath === "number" ||
+      typeof audioPath === "object"
+    ) {
+      return audioPath;
+    }
+
+    if (typeof audioPath === "string") {
+      return {
+        uri: audioPath,
+      };
+    }
+
+    return null;
+  };
+
+  // --------------------------------
+  // SELECT PAIR
+  // --------------------------------
+
+  const handlePairPress = (pairId) => {
+    if (
+      submitted ||
+      showResult
+    ) {
       return;
     }
 
-    try {
-      if (soundRef.current) {
-        await soundRef.current.stopAsync();
-        await soundRef.current.unloadAsync();
-        soundRef.current = null;
-      }
-      const source =
-        typeof audioSource === "string" ? { uri: audioSource } : audioSource;
-      const { sound } = await Audio.Sound.createAsync(source, { shouldPlay: true });
-      soundRef.current = sound;
-      setPlayingPairId(pair.id);
-      sound.setOnPlaybackStatusUpdate((status) => {
-        if (status.didJustFinish) {
-          setPlayingPairId(null);
-        }
-      });
-    } catch (error) {
-      console.error("Error playing audio:", error);
-      setPlayingPairId(null);
-      Alert.alert("Playback Error", "Could not play the audio file.");
-    }
+    setSelectedPair(
+      selectedPair === pairId
+        ? null
+        : pairId
+    );
   };
 
-  const handleOptionPress = (optionId) => {
-    if (submitted || showResult) return;
-    if (selectedPair === null) return;
+  // --------------------------------
+  // SELECT ENGLISH OPTION
+  // --------------------------------
 
-    const newAnswers = { ...answers, [selectedPair]: optionId };
+  const handleOptionPress = (optionId) => {
+    if (
+      submitted ||
+      showResult ||
+      selectedPair === null
+    ) {
+      return;
+    }
+
+    const newAnswers = {
+      ...answers,
+      [selectedPair]: optionId,
+    };
+
     setAnswers(newAnswers);
     setSelectedPair(null);
 
-    // If all pairs answered, evaluate
-    if (Object.keys(newAnswers).length === pairs.length) {
+    // Check whether every pair
+    // has been matched.
+
+    if (
+      Object.keys(newAnswers).length ===
+      pairs.length
+    ) {
       setSubmitted(true);
+
       const allCorrect = pairs.every(
-        (p) => newAnswers[p.id] && newAnswers[p.id] === getCorrectOptionId(p.id)
+        (pair) =>
+          newAnswers[pair.id] ===
+          getCorrectOptionId(pair.id)
       );
+
       onSubmit(allCorrect);
     }
   };
 
-  const renderPair = (pair) => {
-    const answeredId = answers[pair.id];
-    const isDone = answeredId !== undefined;
-    const isCorrectMatch = submitted && answeredId === getCorrectOptionId(pair.id);
+  // --------------------------------
+  // RENDER AUDIO PAIR
+  // --------------------------------
 
-    let style = [
-      styles.pairButton,
-      { backgroundColor: theme.surface, borderColor: theme.border },
-    ];
+  const renderPair = (pair) => {
+    const answeredId =
+      answers[pair.id];
+
+    const isAnswered =
+      answeredId !== undefined;
+
+    const isSelected =
+      selectedPair === pair.id;
+
+    const isCorrectMatch =
+      submitted &&
+      isAnswered &&
+      answeredId ===
+        getCorrectOptionId(pair.id);
+
+    const isWrongMatch =
+      submitted &&
+      isAnswered &&
+      answeredId !==
+        getCorrectOptionId(pair.id);
+
+    let backgroundColor =
+      theme.surface;
+
+    let borderColor =
+      theme.border;
+
     if (isCorrectMatch) {
-      style = [styles.pairButton, { backgroundColor: theme.success + "20", borderColor: theme.success }];
-    } else if (isDone && submitted) {
-      style = [styles.pairButton, { backgroundColor: theme.error + "20", borderColor: theme.error }];
-    } else if (selectedPair === pair.id) {
-      style = [styles.pairButton, { backgroundColor: theme.primary + "20", borderColor: theme.primary }];
+      backgroundColor =
+        theme.success + "15";
+
+      borderColor =
+        theme.success;
+    } else if (isWrongMatch) {
+      backgroundColor =
+        theme.error + "15";
+
+      borderColor =
+        theme.error;
+    } else if (isSelected) {
+      backgroundColor =
+        theme.primary + "15";
+
+      borderColor =
+        theme.primary;
     }
 
+    const audioSource =
+      getAudioSource(pair);
+
     return (
-      <TouchableOpacity
+      <View
         key={pair.id}
-        style={style}
-        onPress={() => !submitted && !showResult && setSelectedPair(pair.id)}
-        disabled={submitted || showResult}
-        activeOpacity={0.7}
+        style={[
+          styles.pairCard,
+          {
+            backgroundColor,
+            borderColor,
+          },
+        ]}
       >
-        <Ionicons
-          name={playingPairId === pair.id ? "pause" : "play"}
-          size={22}
-          color={theme.primary}
+        {/* AUDIO */}
+
+        <AudioWave
+          source={audioSource}
+          size="small"
+          showText={false}
         />
-        <Text style={[styles.pairText, { color: theme.text }]}>
-          {pair.native || pair.text || pair.left || `Listen ${pair.id}`}
-        </Text>
-        {isCorrectMatch && <Ionicons name="checkmark-circle" size={22} color={theme.success} />}
-      </TouchableOpacity>
+
+        {/* PAIR SELECTION */}
+
+        <Pressable
+          onPress={() =>
+            handlePairPress(pair.id)
+          }
+          disabled={
+            submitted ||
+            showResult
+          }
+          style={({ pressed }) => [
+            styles.pairSelectButton,
+            {
+              backgroundColor:
+                isSelected
+                  ? theme.primary +
+                    "15"
+                  : theme.surface,
+
+              borderColor:
+                isSelected
+                  ? theme.primary
+                  : theme.border,
+
+              opacity:
+                pressed ? 0.8 : 1,
+            },
+          ]}
+        >
+          <View
+            style={
+              styles.pairContent
+            }
+          >
+            {/* SELECT ICON */}
+
+            <Ionicons
+              name={
+                isCorrectMatch
+                  ? "checkmark-circle"
+                  : isWrongMatch
+                  ? "close-circle"
+                  : isSelected
+                  ? "radio-button-on"
+                  : "radio-button-off"
+              }
+              size={25}
+              color={
+                isCorrectMatch
+                  ? theme.success
+                  : isWrongMatch
+                  ? theme.error
+                  : isSelected
+                  ? theme.primary
+                  : theme.icon
+              }
+            />
+
+            <Text
+              style={[
+                styles.pairText,
+                {
+                  color:
+                    theme.text,
+                },
+              ]}
+            >
+              {pair.native ||
+                pair.text ||
+                pair.left ||
+                `Listen ${pair.id}`}
+            </Text>
+          </View>
+
+          {/* RESULT */}
+
+          {isCorrectMatch && (
+            <Ionicons
+              name="checkmark"
+              size={22}
+              color={theme.success}
+            />
+          )}
+
+          {isWrongMatch && (
+            <Ionicons
+              name="close"
+              size={22}
+              color={theme.error}
+            />
+          )}
+        </Pressable>
+      </View>
     );
   };
+
+  // --------------------------------
+  // RENDER ENGLISH OPTION
+  // --------------------------------
 
   const renderOption = (option) => {
-    const isUsed = Object.values(answers).includes(option.id);
-    const usedBy = Object.keys(answers).find((k) => answers[k] === option.id);
-    const isCorrectMatch = submitted && usedBy && getCorrectOptionId(usedBy) === option.id;
+    const usedBy = Object.keys(
+      answers
+    ).find(
+      (pairId) =>
+        answers[pairId] ===
+        option.id
+    );
 
-    let style = [
-      styles.optionButton,
-      { backgroundColor: theme.surface, borderColor: theme.border },
-    ];
+    const isUsed =
+      usedBy !== undefined;
+
+    const isCorrectMatch =
+      submitted &&
+      isUsed &&
+      getCorrectOptionId(
+        usedBy
+      ) === option.id;
+
+    const isWrongMatch =
+      submitted &&
+      isUsed &&
+      getCorrectOptionId(
+        usedBy
+      ) !== option.id;
+
+    let backgroundColor =
+      theme.surface;
+
+    let borderColor =
+      theme.border;
+
+    let textColor =
+      theme.text;
+
     if (isCorrectMatch) {
-      style = [styles.optionButton, { backgroundColor: theme.success + "20", borderColor: theme.success }];
-    } else if (isUsed && submitted) {
-      style = [styles.optionButton, { backgroundColor: theme.error + "20", borderColor: theme.error }];
+      backgroundColor =
+        theme.success + "15";
+
+      borderColor =
+        theme.success;
+
+      textColor =
+        theme.success;
+    } else if (isWrongMatch) {
+      backgroundColor =
+        theme.error + "15";
+
+      borderColor =
+        theme.error;
+
+      textColor =
+        theme.error;
     } else if (isUsed) {
-      style = [styles.optionButton, { backgroundColor: theme.primary + "20", borderColor: theme.primary }];
+      backgroundColor =
+        theme.primary + "15";
+
+      borderColor =
+        theme.primary;
     }
 
     return (
-      <TouchableOpacity
+      <Pressable
         key={option.id}
-        style={style}
-        onPress={() => handleOptionPress(option.id)}
-        disabled={showResult || isUsed}
-        activeOpacity={0.7}
+        onPress={() =>
+          handleOptionPress(
+            option.id
+          )
+        }
+        disabled={
+          showResult ||
+          submitted ||
+          isUsed
+        }
+        style={({ pressed }) => [
+          styles.optionButton,
+
+          {
+            backgroundColor,
+            borderColor,
+
+            opacity:
+              pressed ? 0.8 : 1,
+          },
+        ]}
       >
-        <Text style={[styles.optionText, { color: theme.text }]}>{option.text}</Text>
-        {isCorrectMatch && <Ionicons name="checkmark-circle" size={22} color={theme.success} />}
-      </TouchableOpacity>
+        <View
+          style={
+            styles.optionContent
+          }
+        >
+          <Ionicons
+            name={
+              isCorrectMatch
+                ? "checkmark-circle"
+                : isWrongMatch
+                ? "close-circle"
+                : isUsed
+                ? "radio-button-on"
+                : "radio-button-off"
+            }
+            size={25}
+            color={
+              isCorrectMatch
+                ? theme.success
+                : isWrongMatch
+                ? theme.error
+                : isUsed
+                ? theme.primary
+                : theme.icon
+            }
+          />
+
+          <Text
+            style={[
+              styles.optionText,
+              {
+                color: textColor,
+              },
+            ]}
+          >
+            {option.text}
+          </Text>
+        </View>
+
+        {isCorrectMatch && (
+          <Ionicons
+            name="checkmark"
+            size={22}
+            color={theme.success}
+          />
+        )}
+
+        {isWrongMatch && (
+          <Ionicons
+            name="close"
+            size={22}
+            color={theme.error}
+          />
+        )}
+      </Pressable>
     );
   };
 
+  // --------------------------------
+  // RENDER
+  // --------------------------------
+
   return (
-    <View>
-      <View style={styles.instructions}>
-        <Text style={[styles.instructionText, { color: theme.secondaryText }]}>
-          Tap a play button to hear audio, then tap its English meaning below.
+    <ScrollView
+      showsVerticalScrollIndicator={
+        false
+      }
+      contentContainerStyle={
+        styles.container
+      }
+    >
+      {/* INSTRUCTION */}
+
+      <View
+        style={styles.instructions}
+      >
+        <Text
+          style={[
+            styles.instructionText,
+            {
+              color:
+                theme.secondaryText,
+            },
+          ]}
+        >
+          Listen to each word and
+          match it with its meaning.
         </Text>
       </View>
-      <View style={styles.pairsContainer}>
+
+      {/* AUDIO / NATIVE WORDS */}
+
+      <View
+        style={
+          styles.pairsContainer
+        }
+      >
         {pairs.map(renderPair)}
       </View>
-      <View style={styles.optionsContainer}>
-        {options.map(renderOption)}
+
+      {/* ENGLISH OPTIONS */}
+
+      <View
+        style={
+          styles.optionsContainer
+        }
+      >
+        {options.map(
+          renderOption
+        )}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  instructions: {
-    marginBottom: 16,
+  container: {
+    paddingBottom: 24,
   },
+
+  instructions: {
+    alignItems: "center",
+
+    marginBottom: 20,
+
+    paddingHorizontal: 12,
+  },
+
   instructionText: {
     fontSize: 14,
+
+    lineHeight: 20,
+
     textAlign: "center",
+
+    fontWeight: "500",
   },
+
   pairsContainer: {
-    gap: 12,
-    marginBottom: 20,
+    gap: 14,
+
+    marginBottom: 24,
   },
-  pairButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    borderRadius: 12,
+
+  pairCard: {
+    borderRadius: 18,
+
     borderWidth: 2,
+
+    padding: 12,
+
+    gap: 10,
   },
-  pairText: {
-    fontSize: 16,
-    fontWeight: "600",
-    flex: 1,
-  },
-  optionsContainer: {
-    gap: 12,
-  },
-  optionButton: {
+
+  pairSelectButton: {
+    minHeight: 58,
+    borderRadius: 14,
+    borderWidth: 2,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+  },
+
+  pairContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    flex: 1,
+  },
+
+  pairText: {
+    fontSize: 17,
+    fontWeight: "700",
+    flex: 1,
+    lineHeight: 23,
+  },
+
+  optionsContainer: {
+    gap: 12,
+  },
+
+  optionButton: {
+    minHeight: 62,
+    borderRadius: 16,
+    borderWidth: 2,
     paddingVertical: 14,
     paddingHorizontal: 16,
-    borderRadius: 12,
-    borderWidth: 2,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  optionText: {
-    fontSize: 15,
-    fontWeight: "500",
+
+  optionContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
     flex: 1,
+  },
+
+  optionText: {
+    fontSize: 16,
+    fontWeight: "600",
+    flex: 1,
+    lineHeight: 22,
   },
 });
