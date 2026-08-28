@@ -1,6 +1,11 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useFocusEffect } from "@react-navigation/native";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -19,7 +24,11 @@ import ThemeToggle from "../../../components/ui/ThemeToggle";
 import { useTheme } from "../../../context/ThemeContext";
 import { createSupabaseClient } from "../../../utils/supabase";
 
-import { LANGUAGES, LEVELS } from "../../../data/onboardingOptions";
+import {
+  LANGUAGES,
+  LEVELS,
+} from "../../../data/onboardingOptions";
+
 import EditProfileModal from "./EditProfileModal";
 
 export default function ProfileScreen() {
@@ -28,52 +37,151 @@ export default function ProfileScreen() {
   const { getToken, signOut } = useAuth();
 
   const supabase = useMemo(() => {
-    if (typeof getToken !== "function") return null;
+    if (typeof getToken !== "function") {
+      return null;
+    }
+
     return createSupabaseClient(getToken);
   }, [getToken]);
 
-  const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
-  const [userLanguages, setUserLanguages] = useState([]);
+  const [profile, setProfile] =
+    useState(null);
 
-  const fetchProfile = useCallback(async () => {
-    if (!user?.id || !supabase) return;
+  const [loading, setLoading] =
+    useState(true);
 
-    try {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select(`
-          full_name,
-          streak,
-          total_xp,
-          hearts,
-          target_language,
-          language_level,
-          email,
-          user_languages
-        `)
-        .eq("clerk_id", user.id)
-        .single();
+  const [
+    isEditModalVisible,
+    setIsEditModalVisible,
+  ] = useState(false);
 
-      if (error) {
-        console.error("Error fetching profile:", error);
+  const [userLanguages, setUserLanguages] =
+    useState([]);
+
+  const calculateStreak = useCallback(
+    (data) => {
+      if (!data) return 0;
+
+      const streak =
+        Number(data.streak) || 0;
+
+      const lastActivity =
+        data.last_activity_date;
+
+      if (!lastActivity) {
+        return streak;
+      }
+
+      const lastDate = new Date(
+        `${lastActivity}T00:00:00`
+      );
+
+      const today = new Date();
+
+      lastDate.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
+
+      const difference = Math.floor(
+        (today.getTime() -
+          lastDate.getTime()) /
+          (1000 * 60 * 60 * 24)
+      );
+
+      if (difference > 1) {
+        return 0;
+      }
+
+      return streak;
+    },
+    []
+  );
+
+  const fetchProfile = useCallback(
+    async () => {
+      if (!user?.id || !supabase) {
         return;
       }
 
-      setProfile(data);
+      try {
+        const { data, error } =
+          await supabase
+            .from("profiles")
+            .select(`
+              full_name,
+              streak,
+              last_activity_date,
+              total_xp,
+              hearts,
+              target_language,
+              language_level,
+              email,
+              user_languages
+            `)
+            .eq(
+              "clerk_id",
+              user.id
+            )
+            .single();
 
-      const languages =
-        data?.user_languages ||
-        (data?.target_language ? [data.target_language] : []);
+        if (error) {
+          console.error(
+            "Error fetching profile:",
+            error
+          );
+          return;
+        }
 
-      setUserLanguages(languages.filter(Boolean));
-    } catch (error) {
-      console.error("Error fetching profile:", error);
-    } finally {
-      setLoading(false);
-    }
-  }, [supabase, user?.id]);
+        if (!data) return;
+
+        const currentStreak =
+          calculateStreak(data);
+
+        const updatedProfile = {
+          ...data,
+          streak: currentStreak,
+        };
+
+        setProfile(updatedProfile);
+
+        const languages =
+          data?.user_languages ||
+          (data?.target_language
+            ? [data.target_language]
+            : []);
+
+        setUserLanguages(
+          languages.filter(Boolean)
+        );
+
+        if (
+          currentStreak === 0 &&
+          Number(data.streak) > 0
+        ) {
+          await supabase
+            .from("profiles")
+            .update({
+              streak: 0,
+            })
+            .eq(
+              "clerk_id",
+              user.id
+            );
+        }
+      } catch (error) {
+        console.error(
+          "Error fetching profile:",
+          error
+        );
+      } finally {
+        setLoading(false);
+      }
+    },
+    [
+      supabase,
+      user?.id,
+      calculateStreak,
+    ]
+  );
 
   useEffect(() => {
     fetchProfile();
@@ -82,76 +190,167 @@ export default function ProfileScreen() {
   useFocusEffect(
     useCallback(() => {
       fetchProfile();
+
+      return undefined;
     }, [fetchProfile])
   );
 
-  const currentLanguage = LANGUAGES.find(
-    (lang) => lang.id === profile?.target_language
-  );
-
-  const currentLevel = LEVELS.find(
-    (level) => level.id === profile?.language_level
-  );
-
-  const userLanguageList = userLanguages
-    .map((id) => LANGUAGES.find((lang) => lang.id === id))
-    .filter(Boolean);
-
-  const handleSaveProfile = async (updates) => {
-    if (!user?.id || !supabase) return;
-
-    try {
-      const updateData = {
-        target_language: updates.target_language,
-        language_level: updates.language_level,
-        user_languages: updates.user_languages || userLanguages,
-      };
-
-      if (
-        updates.username &&
-        updates.username !== profile?.full_name
-      ) {
-        updateData.full_name = updates.username;
-      }
-
-      if (
-        updates.email &&
-        updates.email !== profile?.email
-      ) {
-        updateData.email = updates.email;
-      }
-
-      const { error } = await supabase
-        .from("profiles")
-        .update(updateData)
-        .eq("clerk_id", user.id);
-
-      if (error) throw error;
-
-      setProfile((prev) => ({
-        ...prev,
-        ...updateData,
-      }));
-
-      if (updates.user_languages) {
-        setUserLanguages(updates.user_languages);
-      }
-
-      Alert.alert(
-        "Success",
-        "Profile updated successfully!"
-      );
-    } catch (error) {
-      console.error("Failed to update profile:", error);
-
-      Alert.alert(
-        "Error",
-        "We couldn't save your changes. Please check your connection."
-      );
-
-      throw error;
+  useEffect(() => {
+    if (!user?.id || !supabase) {
+      return;
     }
-  };
+
+    const channel = supabase
+      .channel(
+        `profile-screen-changes-${user.id}`
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "profiles",
+          filter: `clerk_id=eq.${user.id}`,
+        },
+        (payload) => {
+          const updatedProfile =
+            payload.new;
+
+          setProfile({
+            ...updatedProfile,
+            streak:
+              calculateStreak(
+                updatedProfile
+              ),
+          });
+
+          const languages =
+            updatedProfile?.user_languages ||
+            (updatedProfile
+              ?.target_language
+              ? [
+                  updatedProfile.target_language,
+                ]
+              : []);
+
+          setUserLanguages(
+            languages.filter(Boolean)
+          );
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(
+        channel
+      );
+    };
+  }, [
+    supabase,
+    user?.id,
+    calculateStreak,
+  ]);
+
+  const currentLanguage =
+    LANGUAGES.find(
+      (lang) =>
+        lang.id ===
+        profile?.target_language
+    );
+
+  const currentLevel =
+    LEVELS.find(
+      (level) =>
+        level.id ===
+        profile?.language_level
+    );
+
+  const userLanguageList =
+    userLanguages
+      .map((id) =>
+        LANGUAGES.find(
+          (lang) => lang.id === id
+        )
+      )
+      .filter(Boolean);
+
+  const handleSaveProfile =
+    async (updates) => {
+      if (!user?.id || !supabase) {
+        return;
+      }
+
+      try {
+        const updateData = {
+          target_language:
+            updates.target_language,
+          language_level:
+            updates.language_level,
+          user_languages:
+            updates.user_languages ||
+            userLanguages,
+        };
+
+        if (
+          updates.username &&
+          updates.username !==
+            profile?.full_name
+        ) {
+          updateData.full_name =
+            updates.username;
+        }
+
+        if (
+          updates.email &&
+          updates.email !==
+            profile?.email
+        ) {
+          updateData.email =
+            updates.email;
+        }
+
+        const { error } =
+          await supabase
+            .from("profiles")
+            .update(updateData)
+            .eq(
+              "clerk_id",
+              user.id
+            );
+
+        if (error) {
+          throw error;
+        }
+
+        setProfile((prev) => ({
+          ...prev,
+          ...updateData,
+        }));
+
+        if (updates.user_languages) {
+          setUserLanguages(
+            updates.user_languages
+          );
+        }
+
+        Alert.alert(
+          "Success",
+          "Profile updated successfully!"
+        );
+      } catch (error) {
+        console.error(
+          "Failed to update profile:",
+          error
+        );
+
+        Alert.alert(
+          "Error",
+          "We couldn't save your changes. Please check your connection."
+        );
+
+        throw error;
+      }
+    };
 
   const handleSignOut = () => {
     Alert.alert(
@@ -177,55 +376,63 @@ export default function ProfileScreen() {
     );
   };
 
-  const handleDeleteAccount = () => {
-    Alert.alert(
-      "Delete Account",
-      "Are you absolutely sure you want to delete your account? This action is permanent and your progress will be lost forever.",
-      [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-        {
-          text: "Delete Permanently",
-          style: "destructive",
-          onPress: async () => {
-            try {
-              setLoading(true);
-
-              const { error } = await supabase
-                .from("profiles")
-                .delete()
-                .eq("clerk_id", user.id);
-
-              if (error) throw error;
-
-              await signOut();
-            } catch (error) {
-              console.error(
-                "Error deleting account:",
-                error
-              );
-
-              Alert.alert(
-                "Error",
-                "Something went wrong while deleting your account."
-              );
-            } finally {
-              setLoading(false);
-            }
+  const handleDeleteAccount =
+    () => {
+      Alert.alert(
+        "Delete Account",
+        "Are you absolutely sure you want to delete your account? This action is permanent and your progress will be lost forever.",
+        [
+          {
+            text: "Cancel",
+            style: "cancel",
           },
-        },
-      ]
-    );
-  };
+          {
+            text: "Delete Permanently",
+            style: "destructive",
+            onPress: async () => {
+              try {
+                setLoading(true);
+
+                const { error } =
+                  await supabase
+                    .from("profiles")
+                    .delete()
+                    .eq(
+                      "clerk_id",
+                      user.id
+                    );
+
+                if (error) {
+                  throw error;
+                }
+
+                await signOut();
+              } catch (error) {
+                console.error(
+                  "Error deleting account:",
+                  error
+                );
+
+                Alert.alert(
+                  "Error",
+                  "Something went wrong while deleting your account."
+                );
+              } finally {
+                setLoading(false);
+              }
+            },
+          },
+        ]
+      );
+    };
 
   if (loading) {
     return (
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: theme.background,
+          backgroundColor:
+            theme.background,
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -242,18 +449,28 @@ export default function ProfileScreen() {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: theme.background,
+        backgroundColor:
+          theme.background,
       }}
-      edges={["top", "left", "right"]}
+      edges={[
+        "top",
+        "left",
+        "right",
+      ]}
     >
       <View style={styles.container}>
         <View
           style={[
             styles.header,
-            { borderBottomColor: theme.border },
+            {
+              borderBottomColor:
+                theme.border,
+            },
           ]}
         >
-          <ThemedText style={styles.headerTitle}>
+          <ThemedText
+            style={styles.headerTitle}
+          >
             Profile
           </ThemedText>
 
@@ -261,28 +478,38 @@ export default function ProfileScreen() {
         </View>
 
         <ScrollView
-          contentContainerStyle={styles.scrollContainer}
-          showsVerticalScrollIndicator={false}
+          contentContainerStyle={
+            styles.scrollContainer
+          }
+          showsVerticalScrollIndicator={
+            false
+          }
         >
           <View
             style={[
               styles.profileCard,
               {
-                backgroundColor: theme.surface,
-                borderColor: theme.border,
+                backgroundColor:
+                  theme.surface,
+                borderColor:
+                  theme.border,
               },
             ]}
           >
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() =>
-                setIsEditModalVisible(true)
+                setIsEditModalVisible(
+                  true
+                )
               }
               style={[
                 styles.editBadge,
                 {
-                  backgroundColor: theme.surface,
-                  borderColor: theme.border,
+                  backgroundColor:
+                    theme.surface,
+                  borderColor:
+                    theme.border,
                 },
               ]}
             >
@@ -297,31 +524,45 @@ export default function ProfileScreen() {
               style={[
                 styles.avatarContainer,
                 {
-                  backgroundColor: theme.primary,
-                  borderColor: theme.border,
+                  backgroundColor:
+                    theme.primary,
+                  borderColor:
+                    theme.border,
                 },
               ]}
             >
-              <ThemedText style={styles.avatarText}>
+              <ThemedText
+                style={styles.avatarText}
+              >
                 {profile?.full_name
                   ?.charAt(0)
-                  ?.toUpperCase() || "U"}
+                  ?.toUpperCase() ||
+                  "U"}
               </ThemedText>
             </View>
 
-            <View style={styles.userInfo}>
-              <ThemedText style={styles.userName}>
-                {profile?.full_name || "User"}
+            <View
+              style={styles.userInfo}
+            >
+              <ThemedText
+                style={styles.userName}
+              >
+                {profile?.full_name ||
+                  "User"}
               </ThemedText>
 
               <ThemedText
                 style={[
                   styles.userEmail,
-                  { color: theme.secondaryText },
+                  {
+                    color:
+                      theme.secondaryText,
+                  },
                 ]}
               >
                 {profile?.email ||
-                  user?.primaryEmailAddress
+                  user
+                    ?.primaryEmailAddress
                     ?.emailAddress ||
                   ""}
               </ThemedText>
@@ -331,7 +572,10 @@ export default function ProfileScreen() {
           <ThemedText
             style={[
               styles.sectionTitle,
-              { color: theme.secondaryText },
+              {
+                color:
+                  theme.secondaryText,
+              },
             ]}
           >
             Statistics
@@ -342,8 +586,10 @@ export default function ProfileScreen() {
               style={[
                 styles.statBox,
                 {
-                  backgroundColor: theme.surface,
-                  borderColor: theme.border,
+                  backgroundColor:
+                    theme.surface,
+                  borderColor:
+                    theme.border,
                 },
               ]}
             >
@@ -353,7 +599,9 @@ export default function ProfileScreen() {
                 color={theme.accent}
               />
 
-              <ThemedText style={styles.statValue}>
+              <ThemedText
+                style={styles.statValue}
+              >
                 {profile?.streak ?? 0}
               </ThemedText>
 
@@ -361,7 +609,10 @@ export default function ProfileScreen() {
                 numberOfLines={1}
                 style={[
                   styles.statLabel,
-                  { color: theme.secondaryText },
+                  {
+                    color:
+                      theme.secondaryText,
+                  },
                 ]}
               >
                 Streak
@@ -372,8 +623,10 @@ export default function ProfileScreen() {
               style={[
                 styles.statBox,
                 {
-                  backgroundColor: theme.surface,
-                  borderColor: theme.border,
+                  backgroundColor:
+                    theme.surface,
+                  borderColor:
+                    theme.border,
                 },
               ]}
             >
@@ -383,7 +636,9 @@ export default function ProfileScreen() {
                 color={theme.warning}
               />
 
-              <ThemedText style={styles.statValue}>
+              <ThemedText
+                style={styles.statValue}
+              >
                 {profile?.total_xp ?? 0}
               </ThemedText>
 
@@ -391,7 +646,10 @@ export default function ProfileScreen() {
                 numberOfLines={1}
                 style={[
                   styles.statLabel,
-                  { color: theme.secondaryText },
+                  {
+                    color:
+                      theme.secondaryText,
+                  },
                 ]}
               >
                 Total XP
@@ -403,7 +661,10 @@ export default function ProfileScreen() {
             <ThemedText
               style={[
                 styles.sectionTitle,
-                { color: theme.secondaryText },
+                {
+                  color:
+                    theme.secondaryText,
+                },
               ]}
             >
               My Courses
@@ -412,21 +673,33 @@ export default function ProfileScreen() {
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() =>
-                setIsEditModalVisible(true)
+                setIsEditModalVisible(
+                  true
+                )
               }
               style={[
                 styles.learningCard,
                 {
-                  backgroundColor: theme.surface,
-                  borderColor: theme.border,
+                  backgroundColor:
+                    theme.surface,
+                  borderColor:
+                    theme.border,
                 },
               ]}
             >
               <View
-                style={styles.primaryLanguageContainer}
+                style={
+                  styles.primaryLanguageContainer
+                }
               >
-                <View style={styles.learningRow}>
-                  <View style={styles.learningItem}>
+                <View
+                  style={styles.learningRow}
+                >
+                  <View
+                    style={
+                      styles.learningItem
+                    }
+                  >
                     <View
                       style={[
                         styles.learningIcon,
@@ -439,22 +712,30 @@ export default function ProfileScreen() {
                       <Ionicons
                         name="star"
                         size={20}
-                        color={theme.warning}
+                        color={
+                          theme.warning
+                        }
                       />
                     </View>
 
                     <View
-                      style={styles.learningTextBlock}
+                      style={
+                        styles.learningTextBlock
+                      }
                     >
                       <ThemedText
-                        style={styles.learningTitle}
+                        style={
+                          styles.learningTitle
+                        }
                         numberOfLines={1}
                       >
                         PRIMARY LANGUAGE
                       </ThemedText>
 
                       <ThemedText
-                        style={styles.learningValue}
+                        style={
+                          styles.learningValue
+                        }
                         numberOfLines={1}
                       >
                         {currentLanguage?.title ||
@@ -473,7 +754,11 @@ export default function ProfileScreen() {
                     ]}
                   />
 
-                  <View style={styles.learningItem}>
+                  <View
+                    style={
+                      styles.learningItem
+                    }
+                  >
                     <View
                       style={[
                         styles.learningIcon,
@@ -486,22 +771,30 @@ export default function ProfileScreen() {
                       <Ionicons
                         name="school"
                         size={20}
-                        color={theme.primary}
+                        color={
+                          theme.primary
+                        }
                       />
                     </View>
 
                     <View
-                      style={styles.learningTextBlock}
+                      style={
+                        styles.learningTextBlock
+                      }
                     >
                       <ThemedText
-                        style={styles.learningTitle}
+                        style={
+                          styles.learningTitle
+                        }
                         numberOfLines={1}
                       >
                         LEVEL
                       </ThemedText>
 
                       <ThemedText
-                        style={styles.learningValue}
+                        style={
+                          styles.learningValue
+                        }
                         numberOfLines={1}
                       >
                         {currentLevel?.title ||
@@ -512,25 +805,41 @@ export default function ProfileScreen() {
                 </View>
               </View>
 
-              {userLanguageList.length > 0 && (
-                <View style={styles.languagesContainer}>
-                  <View style={styles.languagesHeader}>
+              {userLanguageList.length >
+                0 && (
+                <View
+                  style={
+                    styles.languagesContainer
+                  }
+                >
+                  <View
+                    style={
+                      styles.languagesHeader
+                    }
+                  >
                     <Ionicons
                       name="book-outline"
                       size={16}
-                      color={theme.secondaryText}
+                      color={
+                        theme.secondaryText
+                      }
                     />
 
                     <ThemedText
                       style={[
                         styles.languagesLabel,
                         {
-                          color: theme.secondaryText,
+                          color:
+                            theme.secondaryText,
                         },
                       ]}
                     >
-                      {userLanguageList.length} Language
-                      {userLanguageList.length > 1
+                      {
+                        userLanguageList.length
+                      }{" "}
+                      Language
+                      {userLanguageList.length >
+                      1
                         ? "s"
                         : ""}
                     </ThemedText>
@@ -538,71 +847,95 @@ export default function ProfileScreen() {
 
                   <ScrollView
                     horizontal
-                    showsHorizontalScrollIndicator={false}
-                    style={styles.languageScroll}
+                    showsHorizontalScrollIndicator={
+                      false
+                    }
+                    style={
+                      styles.languageScroll
+                    }
                     contentContainerStyle={
                       styles.languageScrollContent
                     }
                   >
-                    <View style={styles.languagePills}>
-                      {userLanguageList.map((lang) => {
-                        const isPrimary =
-                          lang.id ===
-                          profile?.target_language;
+                    <View
+                      style={
+                        styles.languagePills
+                      }
+                    >
+                      {userLanguageList.map(
+                        (lang) => {
+                          const isPrimary =
+                            lang.id ===
+                            profile?.target_language;
 
-                        return (
-                          <View
-                            key={lang.id}
-                            style={[
-                              styles.languagePill,
-                              {
-                                backgroundColor:
-                                  isPrimary
-                                    ? theme.primary +
-                                      "20"
-                                    : theme.surface,
-                                borderColor:
-                                  isPrimary
-                                    ? theme.primary
-                                    : theme.border,
-                                borderWidth:
-                                  isPrimary ? 2 : 1,
-                              },
-                            ]}
-                          >
-                            <ThemedText
-                              style={styles.languageFlag}
-                            >
-                              {lang.flag || "🌍"}
-                            </ThemedText>
-
-                            <ThemedText
+                          return (
+                            <View
+                              key={
+                                lang.id
+                              }
                               style={[
-                                styles.languagePillText,
+                                styles.languagePill,
                                 {
-                                  color: isPrimary
-                                    ? theme.primary
-                                    : theme.text,
-                                  fontWeight:
+                                  backgroundColor:
                                     isPrimary
-                                      ? "700"
-                                      : "500",
+                                      ? theme.primary +
+                                        "20"
+                                      : theme.surface,
+                                  borderColor:
+                                    isPrimary
+                                      ? theme.primary
+                                      : theme.border,
+                                  borderWidth:
+                                    isPrimary
+                                      ? 2
+                                      : 1,
                                 },
                               ]}
                             >
-                              {lang.title}
-                            </ThemedText>
+                              <ThemedText
+                                style={
+                                  styles.languageFlag
+                                }
+                              >
+                                {lang.flag ||
+                                  "🌍"}
+                              </ThemedText>
 
-                            {isPrimary && (
-                              <Ionicons
-                                name="checkmark-circle"
-                                size={14}
-                                color={theme.primary}
-                              />
-                            )}
-                          </View>
-                        );
-                      })}
+                              <ThemedText
+                                style={[
+                                  styles.languagePillText,
+                                  {
+                                    color:
+                                      isPrimary
+                                        ? theme.primary
+                                        : theme.text,
+                                    fontWeight:
+                                      isPrimary
+                                        ? "700"
+                                        : "500",
+                                  },
+                                ]}
+                              >
+                                {
+                                  lang.title
+                                }
+                              </ThemedText>
+
+                              {isPrimary && (
+                                <Ionicons
+                                  name="checkmark-circle"
+                                  size={
+                                    14
+                                  }
+                                  color={
+                                    theme.primary
+                                  }
+                                />
+                              )}
+                            </View>
+                          );
+                        }
+                      )}
                     </View>
                   </ScrollView>
                 </View>
@@ -614,7 +947,10 @@ export default function ProfileScreen() {
             <ThemedText
               style={[
                 styles.sectionTitle,
-                { color: theme.secondaryText },
+                {
+                  color:
+                    theme.secondaryText,
+                },
               ]}
             >
               Preferences
@@ -624,15 +960,20 @@ export default function ProfileScreen() {
               style={[
                 styles.menuCard,
                 {
-                  backgroundColor: theme.surface,
-                  borderColor: theme.border,
+                  backgroundColor:
+                    theme.surface,
+                  borderColor:
+                    theme.border,
                 },
               ]}
             >
               <TouchableOpacity
                 style={[
                   styles.menuItem,
-                  { borderBottomColor: theme.border },
+                  {
+                    borderBottomColor:
+                      theme.border,
+                  },
                 ]}
                 onPress={() =>
                   Alert.alert(
@@ -641,15 +982,23 @@ export default function ProfileScreen() {
                   )
                 }
               >
-                <View style={styles.menuItemLeft}>
+                <View
+                  style={
+                    styles.menuItemLeft
+                  }
+                >
                   <Ionicons
                     name="settings-outline"
                     size={22}
-                    color={theme.primary}
+                    color={
+                      theme.primary
+                    }
                   />
 
                   <ThemedText
-                    style={styles.menuItemTitle}
+                    style={
+                      styles.menuItemTitle
+                    }
                   >
                     App Settings
                   </ThemedText>
@@ -658,12 +1007,16 @@ export default function ProfileScreen() {
                 <Ionicons
                   name="chevron-forward"
                   size={18}
-                  color={theme.secondaryText}
+                  color={
+                    theme.secondaryText
+                  }
                 />
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={styles.menuItemLast}
+                style={
+                  styles.menuItemLast
+                }
                 onPress={() =>
                   Alert.alert(
                     "Help",
@@ -671,15 +1024,23 @@ export default function ProfileScreen() {
                   )
                 }
               >
-                <View style={styles.menuItemLeft}>
+                <View
+                  style={
+                    styles.menuItemLeft
+                  }
+                >
                   <Ionicons
                     name="help-circle-outline"
                     size={22}
-                    color={theme.primary}
+                    color={
+                      theme.primary
+                    }
                   />
 
                   <ThemedText
-                    style={styles.menuItemTitle}
+                    style={
+                      styles.menuItemTitle
+                    }
                   >
                     Help & Support
                   </ThemedText>
@@ -688,27 +1049,39 @@ export default function ProfileScreen() {
                 <Ionicons
                   name="chevron-forward"
                   size={18}
-                  color={theme.secondaryText}
+                  color={
+                    theme.secondaryText
+                  }
                 />
               </TouchableOpacity>
             </View>
           </View>
 
-          <View style={styles.actionContainer}>
+          <View
+            style={styles.actionContainer}
+          >
             <Button
               title="Sign Out"
               onPress={handleSignOut}
               variant="secondary"
-              style={styles.customSignOut}
+              style={
+                styles.customSignOut
+              }
             />
 
             <TouchableOpacity
-              onPress={handleDeleteAccount}
-              style={styles.deleteAccountButton}
+              onPress={
+                handleDeleteAccount
+              }
+              style={
+                styles.deleteAccountButton
+              }
               activeOpacity={0.7}
             >
               <ThemedText
-                style={styles.deleteAccountText}
+                style={
+                  styles.deleteAccountText
+                }
               >
                 Delete Account
               </ThemedText>
@@ -725,7 +1098,9 @@ export default function ProfileScreen() {
         currentLanguageId={
           profile?.target_language
         }
-        currentLevel={profile?.language_level}
+        currentLevel={
+          profile?.language_level
+        }
         currentEmail={
           profile?.email ||
           user?.primaryEmailAddress
@@ -938,7 +1313,8 @@ const styles = StyleSheet.create({
     marginTop: 8,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: "rgba(0,0,0,0.08)",
+    borderTopColor:
+      "rgba(0,0,0,0.08)",
   },
 
   languagesHeader: {
@@ -1043,3 +1419,4 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
 });
+

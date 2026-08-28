@@ -1,9 +1,9 @@
-import { Ionicons } from "@expo/vector-icons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import {
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
   ActivityIndicator,
@@ -14,6 +14,8 @@ import {
   View,
 } from "react-native";
 
+import { useAuth, useUser } from "@clerk/expo";
+
 import LessonContent from "../../../components/lesson/LessonContent";
 import VocabularyIntroScreen from "../../../components/lesson/VocabularyIntroScreen";
 import { useTheme } from "../../../context/ThemeContext";
@@ -23,14 +25,27 @@ import {
   markQuizComplete,
   markReviewComplete,
   markVocabularyComplete,
+  completeLessonActivity,
 } from "../../../lib/lessonProgress";
 
 import { getLanguageData } from "../../../utils/lessonData";
+import { createSupabaseClient } from "../../../utils/supabase";
 
 export default function PracticeScreen() {
   const navigation = useNavigation();
   const route = useRoute();
   const { theme } = useTheme();
+
+  const { getToken } = useAuth();
+  const { user } = useUser();
+
+  const supabase = useMemo(() => {
+    if (typeof getToken !== "function") {
+      return null;
+    }
+
+    return createSupabaseClient(getToken);
+  }, [getToken]);
 
   const {
     sectionId,
@@ -69,9 +84,7 @@ export default function PracticeScreen() {
           for (const chapter of Object.values(
             languageData || {}
           )) {
-            if (
-              Array.isArray(chapter?.sections)
-            ) {
+            if (Array.isArray(chapter?.sections)) {
               const section =
                 chapter.sections.find(
                   (item) =>
@@ -124,7 +137,6 @@ export default function PracticeScreen() {
         setVocabulary(safeVocabulary);
         setQuestions(safeQuestions);
 
-
         const shouldShowVocabulary =
           mode !== "quiz" &&
           mode !== "review" &&
@@ -167,9 +179,39 @@ export default function PracticeScreen() {
     isReview,
   ]);
 
+  const recordActivity = async () => {
+    if (
+      !supabase ||
+      !user?.id
+    ) {
+      return;
+    }
+
+    try {
+      const result =
+        await completeLessonActivity(
+          supabase,
+          user.id,
+          sectionId,
+          language,
+          level
+        );
+
+      if (!result?.success) {
+        console.warn(
+          "Daily activity could not be recorded."
+        );
+      }
+    } catch (error) {
+      console.error(
+        "Error recording daily activity:",
+        error
+      );
+    }
+  };
+
   const handleStartLesson = async () => {
     try {
-
       if (
         sectionId &&
         mode !== "quiz" &&
@@ -190,7 +232,6 @@ export default function PracticeScreen() {
       );
     }
 
-
     if (questions.length === 0) {
       await handleVocabularyOnlyComplete();
       return;
@@ -207,13 +248,28 @@ export default function PracticeScreen() {
           return;
         }
 
+
         if (mode === "review" || isReview) {
           await markReviewComplete(
             sectionId,
             language,
             level
           );
+
+
+          await recordActivity();
+
+          return;
         }
+
+
+        await incrementLessonCompletion(
+          sectionId,
+          language,
+          level
+        );
+
+        await recordActivity();
       } catch (error) {
         console.error(
           "Error completing activity:",
@@ -248,6 +304,8 @@ export default function PracticeScreen() {
           level
         );
 
+        await recordActivity();
+
         navigation.goBack();
         return;
       }
@@ -263,16 +321,20 @@ export default function PracticeScreen() {
           level
         );
 
+        await recordActivity();
+
         navigation.goBack();
         return;
       }
-
 
       await incrementLessonCompletion(
         sectionId,
         language,
         level
       );
+
+
+      await recordActivity();
 
       navigation.goBack();
     } catch (error) {
@@ -428,7 +490,6 @@ export default function PracticeScreen() {
     );
   }
 
-
   if (
     showVocabulary &&
     vocabulary.length > 0
@@ -479,9 +540,6 @@ export default function PracticeScreen() {
     );
   }
 
-  /*
-   * Vocabulary-only lesson.
-   */
   return (
     <SafeAreaView
       style={[

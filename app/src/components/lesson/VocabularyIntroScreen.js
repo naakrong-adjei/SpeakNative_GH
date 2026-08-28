@@ -48,18 +48,12 @@ export default function VocabularyIntroScreen({
   const totalCards =
     vocabulary?.length || 0;
 
-  /**
-   * Complete the current vocabulary card.
-   */
   const handleCardComplete = (grade) => {
     Animated.timing(fadeAnim, {
       toValue: 0,
       duration: 200,
       useNativeDriver: true,
     }).start(() => {
-      /**
-       * Count cards that have been reviewed.
-       */
       if (
         grade === "good" ||
         grade === "again"
@@ -72,9 +66,6 @@ export default function VocabularyIntroScreen({
         );
       }
 
-      /**
-       * Move to the next card.
-       */
       if (
         currentIndex <
         totalCards - 1
@@ -83,31 +74,17 @@ export default function VocabularyIntroScreen({
           (prev) => prev + 1
         );
 
-        /**
-         * Always reset the card animation
-         * for the next word.
-         */
         Animated.timing(fadeAnim, {
           toValue: 1,
           duration: 200,
           useNativeDriver: true,
         }).start();
       } else {
-        /**
-         * Vocabulary section is finished.
-         *
-         * This does NOT complete the actual
-         * lesson. It only shows the vocabulary
-         * completion screen.
-         */
         setShowComplete(true);
       }
     });
   };
 
-  /**
-   * Go back to the previous vocabulary card.
-   */
   const handlePrevious = () => {
     if (currentIndex <= 0) {
       return;
@@ -122,11 +99,6 @@ export default function VocabularyIntroScreen({
         (prev) => prev - 1
       );
 
-      /**
-       * We are returning to a previously
-       * completed card, so reduce the
-       * completed counter.
-       */
       setCompleted((prev) =>
         Math.max(0, prev - 1)
       );
@@ -139,9 +111,6 @@ export default function VocabularyIntroScreen({
     });
   };
 
-  /**
-   * Skip vocabulary.
-   */
   const handleSkip = () => {
     if (onSkip) {
       onSkip();
@@ -153,16 +122,10 @@ export default function VocabularyIntroScreen({
     }
   };
 
-  /**
-   * Exit vocabulary.
-   */
   const handleBack = () => {
     setExitConfirmVisible(true);
   };
 
-  /**
-   * Change translation direction.
-   */
   const handleFlipDirection = () => {
     setDirection((prev) =>
       prev === "en-native"
@@ -171,13 +134,15 @@ export default function VocabularyIntroScreen({
     );
   };
 
+  const handleContinueToLesson = () => {
+    if (onStartLesson) {
+      onStartLesson();
+    }
+  };
+
   const currentWord =
     vocabulary?.[currentIndex];
 
-  /**
-   * Determine the native language name
-   * from the vocabulary data.
-   */
   const getNativeLanguageName = () => {
     if (
       !vocabulary ||
@@ -206,11 +171,6 @@ export default function VocabularyIntroScreen({
       ? 0
       : (completed / totalCards) * 100;
 
-  /**
-   * No vocabulary.
-   *
-   * Immediately move to the lesson.
-   */
   if (totalCards === 0) {
     if (onStartLesson) {
       onStartLesson();
@@ -219,37 +179,14 @@ export default function VocabularyIntroScreen({
     return null;
   }
 
-  /**
-   * Vocabulary completion screen.
-   *
-   * Continue moves into LessonContent.
-   */
   if (showComplete) {
     return (
-      <SafeAreaView
-        style={[
-          styles.container,
-          {
-            backgroundColor:
-              theme.background,
-          },
-        ]}
-      >
-        <LessonCompleteScreen
-          lessonStats={{
-            accuracy: 100,
-            correctAnswers:
-              totalCards,
-            totalQuestions:
-              totalCards,
-            wrongQuestions: [],
-          }}
-          onContinue={
-            onStartLesson ||
-            (() => navigation.goBack())
-          }
-        />
-      </SafeAreaView>
+      <LessonCompleteScreen
+        onContinue={
+          handleContinueToLesson
+        }
+        type="lesson"
+      />
     );
   }
 
@@ -400,10 +337,8 @@ export default function VocabularyIntroScreen({
                 {
                   backgroundColor:
                     theme.surface,
-
                   borderColor:
                     theme.border,
-
                   opacity:
                     currentIndex === 0
                       ? 0.5
@@ -500,10 +435,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-
     paddingHorizontal: 14,
     paddingVertical: 6,
-
     borderRadius: 16,
     borderWidth: 1,
   },
@@ -516,10 +449,8 @@ const styles = StyleSheet.create({
   flashcardContainer: {
     flex: 1,
     width: "100%",
-
     justifyContent: "center",
     alignItems: "center",
-
     marginBottom: 12,
     minHeight: 300,
   },

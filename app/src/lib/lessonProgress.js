@@ -1,19 +1,34 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const PROGRESS_STORAGE_KEY = "lesson_progress";
-const VOCAB_PROGRESS_STORAGE_KEY = "lesson_vocabulary_progress";
-const QUIZ_COMPLETION_PREFIX = "quiz_completed_";
-const REVIEW_COMPLETION_PREFIX = "review_completed_";
-const CHAPTER_XP_REWARD_PREFIX = "chapter_xp_reward_";
+const VOCAB_PROGRESS_STORAGE_KEY =
+  "lesson_vocabulary_progress";
+
+const QUIZ_COMPLETION_PREFIX =
+  "quiz_completed_";
+
+const REVIEW_COMPLETION_PREFIX =
+  "review_completed_";
+
+const CHAPTER_XP_REWARD_PREFIX =
+  "chapter_xp_reward_";
 
 const MAX_LESSON_PROGRESS = 3;
 
-const createProgressScope = (language, level) => {
-  const safeLanguage = String(language || "as-tw")
+
+const createProgressScope = (
+  language,
+  level
+) => {
+  const safeLanguage = String(
+    language || "as-tw"
+  )
     .trim()
     .toLowerCase();
 
-  const safeLevel = String(level || "beginner")
+  const safeLevel = String(
+    level || "beginner"
+  )
     .trim()
     .toLowerCase();
 
@@ -40,11 +55,12 @@ const getQuizStorageKey = (
   language,
   level
 ) => {
-  const scopedLessonId = getScopedLessonId(
-    lessonId,
-    language,
-    level
-  );
+  const scopedLessonId =
+    getScopedLessonId(
+      lessonId,
+      language,
+      level
+    );
 
   if (!scopedLessonId) {
     return null;
@@ -58,11 +74,12 @@ const getReviewStorageKey = (
   language,
   level
 ) => {
-  const scopedLessonId = getScopedLessonId(
-    lessonId,
-    language,
-    level
-  );
+  const scopedLessonId =
+    getScopedLessonId(
+      lessonId,
+      language,
+      level
+    );
 
   if (!scopedLessonId) {
     return null;
@@ -95,18 +112,24 @@ const normalizeStars = (value) => {
 
   return Math.max(
     0,
-    Math.min(MAX_LESSON_PROGRESS, number)
+    Math.min(
+      MAX_LESSON_PROGRESS,
+      number
+    )
   );
 };
+
+
 
 export const getAllProgress = async (
   language = "as-tw",
   level = "beginner"
 ) => {
   try {
-    const stored = await AsyncStorage.getItem(
-      PROGRESS_STORAGE_KEY
-    );
+    const stored =
+      await AsyncStorage.getItem(
+        PROGRESS_STORAGE_KEY
+      );
 
     if (!stored) {
       return {};
@@ -121,24 +144,29 @@ export const getAllProgress = async (
       return {};
     }
 
-    const scope = createProgressScope(
-      language,
-      level
-    );
+    const scope =
+      createProgressScope(
+        language,
+        level
+      );
 
     const scopedProgress = {};
 
     Object.entries(parsed).forEach(
       ([key, value]) => {
         if (
-          key.startsWith(`${scope}_`)
+          key.startsWith(
+            `${scope}_`
+          )
         ) {
-          const lessonId = key.slice(
-            scope.length + 1
-          );
+          const lessonId =
+            key.slice(
+              scope.length + 1
+            );
 
-          scopedProgress[lessonId] =
-            normalizeStars(value);
+          scopedProgress[
+            lessonId
+          ] = normalizeStars(value);
         }
       }
     );
@@ -159,9 +187,10 @@ export const getLessonProgress = async (
   }
 
   try {
-    const stored = await AsyncStorage.getItem(
-      PROGRESS_STORAGE_KEY
-    );
+    const stored =
+      await AsyncStorage.getItem(
+        PROGRESS_STORAGE_KEY
+      );
 
     if (!stored) {
       return 0;
@@ -202,15 +231,17 @@ export const setLessonProgress = async (
   }
 
   try {
-    const stored = await AsyncStorage.getItem(
-      PROGRESS_STORAGE_KEY
-    );
+    const stored =
+      await AsyncStorage.getItem(
+        PROGRESS_STORAGE_KEY
+      );
 
     let allProgress = {};
 
     if (stored) {
       try {
-        const parsed = JSON.parse(stored);
+        const parsed =
+          JSON.parse(stored);
 
         if (
           parsed &&
@@ -233,8 +264,9 @@ export const setLessonProgress = async (
         level
       );
 
-    allProgress[scopedLessonId] =
-      normalizedStars;
+    allProgress[
+      scopedLessonId
+    ] = normalizedStars;
 
     await AsyncStorage.setItem(
       PROGRESS_STORAGE_KEY,
@@ -247,40 +279,42 @@ export const setLessonProgress = async (
   }
 };
 
-export const updateLessonProgress = async (
-  lessonId,
-  increment = 1,
-  language = "as-tw",
-  level = "beginner"
-) => {
-  if (!lessonId) {
-    return 0;
-  }
+export const updateLessonProgress =
+  async (
+    lessonId,
+    increment = 1,
+    language = "as-tw",
+    level = "beginner"
+  ) => {
+    if (!lessonId) {
+      return 0;
+    }
 
-  try {
-    const current =
-      await getLessonProgress(
+    try {
+      const current =
+        await getLessonProgress(
+          lessonId,
+          language,
+          level
+        );
+
+      const amount =
+        Number(increment);
+
+      if (!Number.isFinite(amount)) {
+        return current;
+      }
+
+      return setLessonProgress(
         lessonId,
+        current + amount,
         language,
         level
       );
-
-    const amount = Number(increment);
-
-    if (!Number.isFinite(amount)) {
-      return current;
+    } catch {
+      return 0;
     }
-
-    return setLessonProgress(
-      lessonId,
-      current + amount,
-      language,
-      level
-    );
-  } catch {
-    return 0;
-  }
-};
+  };
 
 export const incrementLessonCompletion =
   async (
@@ -295,6 +329,7 @@ export const incrementLessonCompletion =
       level
     );
   };
+
 
 export const getAllVocabularyProgress =
   async (
@@ -311,7 +346,8 @@ export const getAllVocabularyProgress =
         return {};
       }
 
-      const parsed = JSON.parse(stored);
+      const parsed =
+        JSON.parse(stored);
 
       if (
         !parsed ||
@@ -320,26 +356,32 @@ export const getAllVocabularyProgress =
         return {};
       }
 
-      const scope = createProgressScope(
-        language,
-        level
-      );
+      const scope =
+        createProgressScope(
+          language,
+          level
+        );
 
       const scopedProgress = {};
 
       Object.entries(parsed).forEach(
         ([key, value]) => {
           if (
-            key.startsWith(`${scope}_`)
+            key.startsWith(
+              `${scope}_`
+            )
           ) {
-            const lessonId = key.slice(
-              scope.length + 1
-            );
+            const lessonId =
+              key.slice(
+                scope.length + 1
+              );
 
             const numericValue =
               Number(value);
 
-            scopedProgress[lessonId] =
+            scopedProgress[
+              lessonId
+            ] =
               Number.isFinite(
                 numericValue
               )
@@ -375,7 +417,8 @@ export const getVocabularyProgress =
         return 0;
       }
 
-      const parsed = JSON.parse(stored);
+      const parsed =
+        JSON.parse(stored);
 
       if (
         !parsed ||
@@ -391,10 +434,9 @@ export const getVocabularyProgress =
           level
         );
 
-      const value =
-        Number(
-          parsed[scopedLessonId]
-        );
+      const value = Number(
+        parsed[scopedLessonId]
+      );
 
       return Number.isFinite(value)
         ? value
@@ -403,6 +445,8 @@ export const getVocabularyProgress =
       return 0;
     }
   };
+
+
 
 export const getQuizCompletion =
   async (
@@ -497,6 +541,7 @@ export const resetQuizCompletion =
     }
   };
 
+
 export const getReviewCompletion =
   async (
     lessonId,
@@ -583,6 +628,8 @@ export const resetReviewCompletion =
     }
   };
 
+
+
 export const markVocabularyComplete =
   async (
     lessonId,
@@ -632,7 +679,9 @@ export const markVocabularyComplete =
             level
           );
 
-        allProgress[scopedLessonId] = 1;
+        allProgress[
+          scopedLessonId
+        ] = 1;
 
         await AsyncStorage.setItem(
           VOCAB_PROGRESS_STORAGE_KEY,
@@ -662,6 +711,8 @@ export const markVocabularyComplete =
     }
   };
 
+
+
 export const getLessonProgressSummary =
   async (
     lessonId,
@@ -689,16 +740,19 @@ export const getLessonProgressSummary =
           language,
           level
         ),
+
         getVocabularyProgress(
           lessonId,
           language,
           level
         ),
+
         getQuizCompletion(
           lessonId,
           language,
           level
         ),
+
         getReviewCompletion(
           lessonId,
           language,
@@ -708,9 +762,12 @@ export const getLessonProgressSummary =
 
       return {
         stars,
+
         vocabularyCompleted:
           vocabularyProgress > 0,
+
         quizCompleted,
+
         reviewCompleted,
       };
     } catch {
@@ -723,6 +780,8 @@ export const getLessonProgressSummary =
     }
   };
 
+
+
 export const areAllChapterLessonsComplete =
   async (
     chapter,
@@ -732,22 +791,26 @@ export const areAllChapterLessonsComplete =
     if (
       !chapter ||
       !chapter.id ||
-      !Array.isArray(chapter.sections) ||
+      !Array.isArray(
+        chapter.sections
+      ) ||
       chapter.sections.length === 0
     ) {
       return false;
     }
 
     try {
-      const summaries = await Promise.all(
-        chapter.sections.map((section) =>
-          getLessonProgressSummary(
-            section.id,
-            language,
-            level
+      const summaries =
+        await Promise.all(
+          chapter.sections.map(
+            (section) =>
+              getLessonProgressSummary(
+                section.id,
+                language,
+                level
+              )
           )
-        )
-      );
+        );
 
       return summaries.every(
         (summary) =>
@@ -757,6 +820,8 @@ export const areAllChapterLessonsComplete =
       return false;
     }
   };
+
+
 
 export const hasReceivedChapterXPReward =
   async (
@@ -777,7 +842,9 @@ export const hasReceivedChapterXPReward =
 
     try {
       const value =
-        await AsyncStorage.getItem(key);
+        await AsyncStorage.getItem(
+          key
+        );
 
       return value === "true";
     } catch {
@@ -814,6 +881,308 @@ export const markChapterXPRewardReceived =
     }
   };
 
+
+const getLocalDateString = () => {
+  const now = new Date();
+
+  const year = now.getFullYear();
+
+  const month = String(
+    now.getMonth() + 1
+  ).padStart(2, "0");
+
+  const day = String(
+    now.getDate()
+  ).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+};
+
+
+const getDateDifferenceInDays = (
+  firstDate,
+  secondDate
+) => {
+  if (!firstDate || !secondDate) {
+    return null;
+  }
+
+  const first = new Date(
+    `${firstDate}T00:00:00`
+  );
+
+  const second = new Date(
+    `${secondDate}T00:00:00`
+  );
+
+  if (
+    Number.isNaN(
+      first.getTime()
+    ) ||
+    Number.isNaN(
+      second.getTime()
+    )
+  ) {
+    return null;
+  }
+
+  return Math.round(
+    Math.abs(
+      second.getTime() -
+        first.getTime()
+    ) /
+      (1000 * 60 * 60 * 24)
+  );
+};
+
+
+export const getStreak = async (
+  supabase,
+  userId
+) => {
+  if (!supabase || !userId) {
+    return {
+      streak: 0,
+      lastActivityDate: null,
+    };
+  }
+
+  try {
+    const {
+      data,
+      error,
+    } = await supabase
+      .from("profiles")
+      .select(
+        "streak, last_activity_date"
+      )
+      .eq(
+        "clerk_id",
+        userId
+      )
+      .single();
+
+    if (error) {
+      console.error(
+        "Error fetching streak:",
+        error
+      );
+
+      return {
+        streak: 0,
+        lastActivityDate: null,
+      };
+    }
+
+    return {
+      streak:
+        Number(data?.streak) || 0,
+
+      lastActivityDate:
+        data?.last_activity_date ||
+        null,
+    };
+  } catch (error) {
+    console.error(
+      "Streak fetch crash:",
+      error
+    );
+
+    return {
+      streak: 0,
+      lastActivityDate: null,
+    };
+  }
+};
+
+
+export const recordDailyActivity =
+  async (
+    supabase,
+    userId
+  ) => {
+    if (!supabase || !userId) {
+      return {
+        success: false,
+        streak: 0,
+        lastActivityDate: null,
+        alreadyRecordedToday: false,
+      };
+    }
+
+    try {
+      const today =
+        getLocalDateString();
+
+      const {
+        data,
+        error,
+      } = await supabase
+        .from("profiles")
+        .select(
+          "streak, last_activity_date"
+        )
+        .eq(
+          "clerk_id",
+          userId
+        )
+        .single();
+
+      if (error) {
+        console.error(
+          "Error fetching activity:",
+          error
+        );
+
+        return {
+          success: false,
+          streak: 0,
+          lastActivityDate: null,
+          alreadyRecordedToday: false,
+        };
+      }
+
+      const currentStreak =
+        Number(data?.streak) || 0;
+
+      const lastActivityDate =
+        data?.last_activity_date ||
+        null;
+
+
+      if (
+        lastActivityDate === today
+      ) {
+        return {
+          success: true,
+          streak: currentStreak,
+          lastActivityDate,
+          alreadyRecordedToday: true,
+        };
+      }
+
+      let newStreak = 1;
+
+      if (lastActivityDate) {
+        const daysSinceLastActivity =
+          getDateDifferenceInDays(
+            lastActivityDate,
+            today
+          );
+
+        if (
+          daysSinceLastActivity === 1
+        ) {
+          newStreak =
+            currentStreak + 1;
+        }
+      }
+
+
+      const {
+        data: updatedData,
+        error: updateError,
+      } = await supabase
+        .from("profiles")
+        .update({
+          streak: newStreak,
+          last_activity_date: today,
+        })
+        .eq(
+          "clerk_id",
+          userId
+        )
+        .select(
+          "streak, last_activity_date"
+        )
+        .single();
+
+      if (updateError) {
+        console.error(
+          "Error updating streak:",
+          updateError
+        );
+
+        return {
+          success: false,
+          streak: currentStreak,
+          lastActivityDate,
+          alreadyRecordedToday: false,
+        };
+      }
+
+      return {
+        success: true,
+
+        streak:
+          Number(
+            updatedData?.streak
+          ) || newStreak,
+
+        lastActivityDate:
+          updatedData?.last_activity_date ||
+          today,
+
+        alreadyRecordedToday: false,
+      };
+    } catch (error) {
+      console.error(
+        "Streak update crash:",
+        error
+      );
+
+      return {
+        success: false,
+        streak: 0,
+        lastActivityDate: null,
+        alreadyRecordedToday: false,
+      };
+    }
+  };
+
+
+export const completeLessonActivity =
+  async (
+    supabase,
+    userId,
+    lessonId,
+    language = "as-tw",
+    level = "beginner"
+  ) => {
+    if (
+      !supabase ||
+      !userId ||
+      !lessonId
+    ) {
+      return {
+        success: false,
+        streak: 0,
+        lastActivityDate: null,
+        alreadyRecordedToday: false,
+      };
+    }
+
+    try {
+      return await recordDailyActivity(
+        supabase,
+        userId
+      );
+    } catch (error) {
+      console.error(
+        "Error completing lesson activity:",
+        error
+      );
+
+      return {
+        success: false,
+        streak: 0,
+        lastActivityDate: null,
+        alreadyRecordedToday: false,
+      };
+    }
+  };
+
+
 export const getXP = async (
   supabase,
   userId
@@ -823,12 +1192,17 @@ export const getXP = async (
   }
 
   try {
-    const { data, error } =
-      await supabase
-        .from("profiles")
-        .select("total_xp")
-        .eq("clerk_id", userId)
-        .single();
+    const {
+      data,
+      error,
+    } = await supabase
+      .from("profiles")
+      .select("total_xp")
+      .eq(
+        "clerk_id",
+        userId
+      )
+      .single();
 
     if (error) {
       return 0;
@@ -865,15 +1239,20 @@ export const setXP = async (
         ? Math.max(0, number)
         : 0;
 
-    const { data, error } =
-      await supabase
-        .from("profiles")
-        .update({
-          total_xp: normalizedXP,
-        })
-        .eq("clerk_id", userId)
-        .select("total_xp")
-        .single();
+    const {
+      data,
+      error,
+    } = await supabase
+      .from("profiles")
+      .update({
+        total_xp: normalizedXP,
+      })
+      .eq(
+        "clerk_id",
+        userId
+      )
+      .select("total_xp")
+      .single();
 
     if (error) {
       return 0;
@@ -883,7 +1262,9 @@ export const setXP = async (
       data?.total_xp
     );
 
-    return Number.isFinite(updatedXP)
+    return Number.isFinite(
+      updatedXP
+    )
       ? updatedXP
       : normalizedXP;
   } catch {
@@ -995,7 +1376,9 @@ export const checkAndAwardChapterXP =
       );
 
       if (
-        !Number.isFinite(chapterXP) ||
+        !Number.isFinite(
+          chapterXP
+        ) ||
         chapterXP <= 0
       ) {
         return {
@@ -1038,6 +1421,7 @@ export const checkAndAwardChapterXP =
     }
   };
 
+
 export const getChapterProgressSummary =
   async (
     chapter,
@@ -1046,7 +1430,9 @@ export const getChapterProgressSummary =
   ) => {
     if (
       !chapter ||
-      !Array.isArray(chapter.sections)
+      !Array.isArray(
+        chapter.sections
+      )
     ) {
       return {
         completedLessons: 0,
@@ -1057,15 +1443,17 @@ export const getChapterProgressSummary =
     }
 
     try {
-      const summaries = await Promise.all(
-        chapter.sections.map((section) =>
-          getLessonProgressSummary(
-            section.id,
-            language,
-            level
+      const summaries =
+        await Promise.all(
+          chapter.sections.map(
+            (section) =>
+              getLessonProgressSummary(
+                section.id,
+                language,
+                level
+              )
           )
-        )
-      );
+        );
 
       const completedLessons =
         summaries.filter(

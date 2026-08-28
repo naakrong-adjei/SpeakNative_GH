@@ -71,67 +71,66 @@ const LessonNode = React.memo(
         ? "flex-start"
         : "flex-end";
 
-    const renderCompletionStars =
-      useCallback(
-        (completion) => {
-          const stars = [];
+    const renderCompletionStars = useCallback(
+      (completion) => {
+        const stars = [];
 
-          const starsToShow = Math.min(
-            Math.max(
-              0,
-              Number(completion) || 0
-            ),
-            MAX_STARS
-          );
+        const starsToShow = Math.min(
+          Math.max(
+            0,
+            Number(completion) || 0
+          ),
+          MAX_STARS
+        );
 
-          for (
-            let i = 0;
-            i < starsToShow;
-            i++
-          ) {
-            stars.push(
-              <Ionicons
-                key={`star-${i}`}
-                name="star"
-                size={16}
-                color={
-                  theme.warning ||
-                  "#FFD700"
-                }
-              />
-            );
-          }
-
-          for (
-            let i = starsToShow;
-            i < MAX_STARS;
-            i++
-          ) {
-            stars.push(
-              <Ionicons
-                key={`empty-star-${i}`}
-                name="star-outline"
-                size={16}
-                color={
-                  theme.icon ||
-                  "#8e8e93"
-                }
-              />
-            );
-          }
-
-          return (
-            <View
-              style={
-                styles.completionStarsContainer
+        for (
+          let i = 0;
+          i < starsToShow;
+          i++
+        ) {
+          stars.push(
+            <Ionicons
+              key={`star-${i}`}
+              name="star"
+              size={16}
+              color={
+                theme.warning ||
+                "#FFD700"
               }
-            >
-              {stars}
-            </View>
+            />
           );
-        },
-        [theme]
-      );
+        }
+
+        for (
+          let i = starsToShow;
+          i < MAX_STARS;
+          i++
+        ) {
+          stars.push(
+            <Ionicons
+              key={`empty-star-${i}`}
+              name="star-outline"
+              size={16}
+              color={
+                theme.icon ||
+                "#8e8e93"
+              }
+            />
+          );
+        }
+
+        return (
+          <View
+            style={
+              styles.completionStarsContainer
+            }
+          >
+            {stars}
+          </View>
+        );
+      },
+      [theme]
+    );
 
     return (
       <View
@@ -297,95 +296,75 @@ export default function LessonScreen() {
     setRefreshing,
   ] = useState(false);
 
-  useEffect(() => {
-    let isMounted = true;
+  const fetchUserProfile =
+    useCallback(async () => {
+      if (!user?.id) {
+        setProfileLoading(false);
+        setIsInitialLoad(false);
+        return;
+      }
 
-    const fetchUserProfile =
-      async () => {
-        try {
-          if (!user?.id) {
-            if (isMounted) {
-              setProfileLoading(false);
-              setIsInitialLoad(false);
-            }
+      try {
+        const token =
+          await getToken();
 
-            return;
-          }
+        const supabase =
+          createSupabaseClient(
+            token
+          );
 
-          const token =
-            await getToken();
+        const {
+          data,
+          error: profileError,
+        } = await supabase
+          .from("profiles")
+          .select(
+            "target_language, language_level"
+          )
+          .eq(
+            "clerk_id",
+            user.id
+          )
+          .single();
 
-          const supabase =
-            createSupabaseClient(
-              token
-            );
-
-          const {
-            data,
-            error: profileError,
-          } = await supabase
-            .from("profiles")
-            .select(
-              "target_language, language_level"
-            )
-            .eq(
-              "clerk_id",
-              user.id
-            )
-            .single();
-
-          if (profileError) {
-            if (isMounted) {
-              setError(
-                profileError.message
-              );
-              setProfileLoading(false);
-              setIsInitialLoad(false);
-            }
-
-            return;
-          }
-
-          if (
-            data &&
-            isMounted
-          ) {
-            setSelectedLanguage(
-              data.target_language ||
-                "as-tw"
-            );
-
-            setSelectedLevel(
-              data.language_level ||
-                "beginner"
-            );
-          }
-
-          if (isMounted) {
-            setProfileLoading(false);
-            setIsInitialLoad(false);
-          }
-        } catch (err) {
-          if (isMounted) {
-            setError(
-              err?.message ||
-                "Unable to load profile."
-            );
-            setProfileLoading(false);
-            setIsInitialLoad(false);
-          }
+        if (profileError) {
+          throw profileError;
         }
-      };
 
+        setSelectedLanguage(
+          data?.target_language ||
+            "as-tw"
+        );
+
+        setSelectedLevel(
+          data?.language_level ||
+            "beginner"
+        );
+
+        setError(null);
+      } catch (err) {
+        setError(
+          err?.message ||
+            "Unable to load profile."
+        );
+      } finally {
+        setProfileLoading(false);
+        setIsInitialLoad(false);
+      }
+    }, [
+      user?.id,
+      getToken,
+    ]);
+
+  useEffect(() => {
     fetchUserProfile();
+  }, [fetchUserProfile]);
 
-    return () => {
-      isMounted = false;
-    };
-  }, [
-    user?.id,
-    getToken,
-  ]);
+  useFocusEffect(
+    useCallback(() => {
+      fetchUserProfile();
+    }, [fetchUserProfile])
+  );
 
   const loadChapters =
     useCallback(() => {
@@ -433,6 +412,21 @@ export default function LessonScreen() {
             review:
               languageData[key]
                 ?.review || null,
+            totalXp:
+              Number.isFinite(
+                Number(
+                  languageData[key]
+                    ?.totalXp
+                )
+              )
+                ? Math.max(
+                    0,
+                    Number(
+                      languageData[key]
+                        ?.totalXp
+                    )
+                  )
+                : 0,
           }));
 
         setChapters(
@@ -537,29 +531,29 @@ export default function LessonScreen() {
       if (
         profileLoading ||
         !selectedLanguage ||
-        !selectedLevel ||
-        chapters.length === 0
+        !selectedLevel
       ) {
         return undefined;
       }
 
       let cancelled = false;
 
-      const refresh = async () => {
-        await new Promise(
-          (resolve) =>
-            setTimeout(
-              resolve,
-              100
-            )
-        );
+      const refresh =
+        async () => {
+          await new Promise(
+            (resolve) =>
+              setTimeout(
+                resolve,
+                100
+              )
+          );
 
-        if (cancelled) {
-          return;
-        }
+          if (cancelled) {
+            return;
+          }
 
-        await loadProgress();
-      };
+          await loadProgress();
+        };
 
       refresh();
 
@@ -570,7 +564,6 @@ export default function LessonScreen() {
       profileLoading,
       selectedLanguage,
       selectedLevel,
-      chapters.length,
       loadProgress,
     ])
   );
@@ -580,14 +573,16 @@ export default function LessonScreen() {
       setRefreshing(true);
 
       try {
+        await fetchUserProfile();
         loadChapters();
         await loadProgress();
       } finally {
         setRefreshing(false);
       }
     }, [
-      loadProgress,
+      fetchUserProfile,
       loadChapters,
+      loadProgress,
     ]);
 
   const isLessonUnlocked =
@@ -611,7 +606,9 @@ export default function LessonScreen() {
               lessonIndex - 1
             ];
 
-          if (!previousLesson?.id) {
+          if (
+            !previousLesson?.id
+          ) {
             return false;
           }
 
@@ -806,6 +803,13 @@ export default function LessonScreen() {
       ]
     );
 
+  const handleStreakPress =
+    useCallback(() => {
+      navigation.navigate(
+        "Streak"
+      );
+    }, [navigation]);
+
   if (
     isInitialLoad ||
     profileLoading
@@ -880,7 +884,9 @@ export default function LessonScreen() {
           ]}
           onPress={() => {
             setError(null);
-            setProfileLoading(true);
+            setProfileLoading(
+              true
+            );
             setIsInitialLoad(true);
           }}
         >
@@ -906,7 +912,11 @@ export default function LessonScreen() {
         },
       ]}
     >
-      <Header />
+      <Header
+        onStreakPress={
+          handleStreakPress
+        }
+      />
 
       <ScrollView
         contentContainerStyle={
@@ -1066,28 +1076,76 @@ export default function LessonScreen() {
                       </Text>
 
                       <View
-                        style={[
-                          styles.chapterProgressBadge,
-                          {
-                            backgroundColor:
-                              `${theme.primary}20`,
-                          },
-                        ]}
+                        style={
+                          styles.chapterHeaderRight
+                        }
                       >
-                        <Text
+                        {chapter.totalXp >
+                          0 && (
+                          <View
+                            style={[
+                              styles.chapterXPContainer,
+                              {
+                                backgroundColor:
+                                  `${
+                                    theme.warning ||
+                                    "#FFD700"
+                                  }20`,
+                              },
+                            ]}
+                          >
+                            <Ionicons
+                              name="flash"
+                              size={16}
+                              color={
+                                theme.warning ||
+                                "#FFD700"
+                              }
+                            />
+
+                            <Text
+                              style={[
+                                styles.chapterXPText,
+                                {
+                                  color:
+                                    theme.warning ||
+                                    "#D6A900",
+                                },
+                              ]}
+                            >
+                              +
+                              {
+                                chapter.totalXp
+                              }{" "}
+                              XP
+                            </Text>
+                          </View>
+                        )}
+
+                        <View
                           style={[
-                            styles.chapterProgressText,
+                            styles.chapterProgressBadge,
                             {
-                              color:
-                                theme.primary,
+                              backgroundColor:
+                                `${theme.primary}20`,
                             },
                           ]}
                         >
-                          {
-                            avgProgress
-                          }
-                          %
-                        </Text>
+                          <Text
+                            style={[
+                              styles.chapterProgressText,
+                              {
+                                color:
+                                  theme.primary,
+                              },
+                            ]}
+                          >
+                            {
+                              avgProgress
+                            }
+                            %
+                          </Text>
+                        </View>
                       </View>
                     </View>
 
@@ -1268,6 +1326,12 @@ const styles =
       alignItems: "center",
     },
 
+    chapterHeaderRight: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 8,
+    },
+
     chapterNumberText: {
       fontSize: 14,
       fontWeight: "bold",
@@ -1284,6 +1348,20 @@ const styles =
     chapterProgressText: {
       fontSize: 12,
       fontWeight: "600",
+    },
+
+    chapterXPContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      paddingHorizontal: 9,
+      paddingVertical: 5,
+      borderRadius: 14,
+      gap: 4,
+    },
+
+    chapterXPText: {
+      fontSize: 12,
+      fontWeight: "800",
     },
 
     chapterTitleText: {
@@ -1406,3 +1484,4 @@ const styles =
       textAlign: "center",
     },
   });
+

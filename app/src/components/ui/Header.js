@@ -29,6 +29,49 @@ import { useTheme } from "../../context/ThemeContext";
 import { createSupabaseClient } from "../../utils/supabase";
 import { LANGUAGES } from "../../data/languagesData";
 
+const getLocalDateString = () => {
+  const date = new Date();
+
+  const year = date.getFullYear();
+  const month = String(
+    date.getMonth() + 1
+  ).padStart(2, "0");
+  const day = String(
+    date.getDate()
+  ).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+};
+
+const getDateDifference = (
+  firstDate,
+  secondDate
+) => {
+  if (!firstDate || !secondDate) {
+    return null;
+  }
+
+  const first = new Date(
+    `${firstDate}T00:00:00`
+  );
+
+  const second = new Date(
+    `${secondDate}T00:00:00`
+  );
+
+  if (
+    Number.isNaN(first.getTime()) ||
+    Number.isNaN(second.getTime())
+  ) {
+    return null;
+  }
+
+  return Math.round(
+    (second.getTime() - first.getTime()) /
+      (1000 * 60 * 60 * 24)
+  );
+};
+
 export default function Header({
   onLanguagePress,
   onStreakPress,
@@ -56,9 +99,87 @@ export default function Header({
   const [xp, setXp] =
     useState(0);
 
+  const syncStreak = useCallback(
+    async (profileData) => {
+      if (
+        !profileData ||
+        !user?.id ||
+        !supabase
+      ) {
+        return profileData;
+      }
+
+      const today =
+        getLocalDateString();
+
+      const lastActivity =
+        profileData.last_activity_date;
+
+      if (!lastActivity) {
+        return profileData;
+      }
+
+      const daysSinceActivity =
+        getDateDifference(
+          lastActivity,
+          today
+        );
+
+      if (
+        daysSinceActivity === null ||
+        daysSinceActivity <= 1
+      ) {
+        return profileData;
+      }
+
+      const { data, error } =
+        await supabase
+          .from("profiles")
+          .update({
+            streak: 0,
+          })
+          .eq(
+            "clerk_id",
+            user.id
+          )
+          .select(
+            `
+              streak,
+              total_xp,
+              hearts,
+              target_language,
+              language_level,
+              last_activity_date
+            `
+          )
+          .single();
+
+      if (error) {
+        console.log(
+          "Streak sync error:",
+          error
+        );
+
+        return profileData;
+      }
+
+      return data || {
+        ...profileData,
+        streak: 0,
+      };
+    },
+    [
+      supabase,
+      user?.id,
+    ]
+  );
+
   const fetchProfile =
     useCallback(async () => {
-      if (!user?.id) {
+      if (
+        !user?.id ||
+        !supabase
+      ) {
         return;
       }
 
@@ -66,13 +187,16 @@ export default function Header({
         const { data, error } =
           await supabase
             .from("profiles")
-            .select(`
-              streak,
-              total_xp,
-              hearts,
-              target_language,
-              language_level
-            `)
+            .select(
+              `
+                streak,
+                total_xp,
+                hearts,
+                target_language,
+                language_level,
+                last_activity_date
+              `
+            )
             .eq(
               "clerk_id",
               user.id
@@ -91,10 +215,17 @@ export default function Header({
           return;
         }
 
-        setProfile(data);
+        const syncedProfile =
+          await syncStreak(data);
+
+        setProfile(
+          syncedProfile
+        );
 
         setXp(
-          Number(data.total_xp) || 0
+          Number(
+            syncedProfile?.total_xp
+          ) || 0
         );
       } catch (error) {
         console.log(
@@ -105,6 +236,7 @@ export default function Header({
     }, [
       supabase,
       user?.id,
+      syncStreak,
     ]);
 
   useEffect(() => {
@@ -153,7 +285,8 @@ export default function Header({
   useEffect(() => {
     if (
       !isLoaded ||
-      !user?.id
+      !user?.id ||
+      !supabase
     ) {
       return;
     }
@@ -172,17 +305,22 @@ export default function Header({
             filter:
               `clerk_id=eq.${user.id}`,
           },
-          (payload) => {
+          async (payload) => {
             const updatedProfile =
               payload.new;
 
+            const syncedProfile =
+              await syncStreak(
+                updatedProfile
+              );
+
             setProfile(
-              updatedProfile
+              syncedProfile
             );
 
             setXp(
               Number(
-                updatedProfile?.total_xp
+                syncedProfile?.total_xp
               ) || 0
             );
           }
@@ -198,7 +336,20 @@ export default function Header({
     isLoaded,
     user?.id,
     supabase,
+    syncStreak,
   ]);
+
+  const handleStreakPress =
+    useCallback(async () => {
+      await fetchProfile();
+
+      if (onStreakPress) {
+        onStreakPress();
+      }
+    }, [
+      fetchProfile,
+      onStreakPress,
+    ]);
 
   const handleXpPress =
     useCallback(async () => {
@@ -350,7 +501,7 @@ export default function Header({
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={
-            onStreakPress
+            handleStreakPress
           }
           style={
             styles.statItem
@@ -373,7 +524,9 @@ export default function Header({
               },
             ]}
           >
-            {profile?.streak ?? 0}
+            {Number(
+              profile?.streak
+            ) || 0}
           </Text>
         </TouchableOpacity>
 
