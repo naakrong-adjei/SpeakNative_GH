@@ -1,390 +1,310 @@
-// data/course_content/ewe/beginner/chapter8.js
 export default {
   id: 8,
   title: "Daily Activities",
-  description: "Learn to talk about your daily routine and everyday activities in Ewe",
-  icon: "sunny-outline",
-  totalXp: 18,
+  description: "Learn how to talk about daily activities in Ewe",
+  icon: "time-outline",
+  totalXp: 15,
   difficulty: "Beginner",
 
   sections: [
     {
       id: "8-1",
       type: "words",
-      title: "Waking & Morning",
-      icon: "sunny-outline",
-      description: "Learn words for your morning routine in Ewe",
-      words: ["Fɔ", "Togli", "Ɖoɖo ɖokui", "Ŋdi nuɖuɖu", "Yi dɔwɔƒe", "Yi sukuku", "Yɔ", "Amegbetɔ"],
+      title: "Morning Routine",
+      icon: "sunrise-outline",
+      description: "Learn how to talk about your morning routine in Ewe",
+      words: ["Mefɔna ŋdi kaba", "Meyina dɔ me", "Metsi lem"],
       vocabulary: [
         {
-          id: 1,
-          english: "To wake up",
-          native: "Fɔ",
-          pronunciation: "foh"
-          // audioUrl: "/audio/ewe/fɔ.mp3"
+          id: 98,
+          english: "I wake up early",
+          native: "Mefɔna ŋdi kaba",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/mefɔna_ŋdi_kaba.m4a")
         },
         {
-          id: 2,
-          english: "To wash / bathe",
-          native: "Togli",
-          pronunciation: "toh-glee"
-          // audioUrl: "/audio/ewe/togli.mp3"
+          id: 99,
+          english: "I am going to work",
+          native: "Meyina dɔ me",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/meyina_dɔ_me.m4a")
         },
         {
-          id: 3,
-          english: "To get ready / dress",
-          native: "Ɖoɖo ɖokui",
-          pronunciation: "doh-doh doh-koo-ee"
-          // audioUrl: "/audio/ewe/ɉoɖo_ɖokui.mp3"
-        },
-        {
-          id: 4,
-          english: "Breakfast",
-          native: "Ŋdi nuɖuɖu",
-          pronunciation: "ng-dee noo-doo-doo"
-          // audioUrl: "/audio/ewe/ŋdi_nuɖuɖu.mp3"
-        },
-        {
-          id: 5,
-          english: "To go to work",
-          native: "Yi dɔwɔƒe",
-          pronunciation: "yee doh-woh-feh"
-          // audioUrl: "/audio/ewe/yi_dɔwɔƒe.mp3"
-        },
-        {
-          id: 6,
-          english: "To go to school",
-          native: "Yi sukuku",
-          pronunciation: "yee soo-koo-koo"
-          // audioUrl: "/audio/ewe/yi_sukuku.mp3"
-        },
-        {
-          id: 7,
-          english: "To call / invite",
-          native: "Yɔ",
-          pronunciation: "yoh"
-          // audioUrl: "/audio/ewe/yɔ.mp3"
-        },
-        {
-          id: 8,
-          english: "Person",
-          native: "Amegbetɔ",
-          pronunciation: "ah-meh-gbeh-toh"
-          // audioUrl: "/audio/ewe/amegbetɔ.mp3"
+          id: 103,
+          english: "I am bathing",
+          native: "Metsi lem",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/metsi_lem.m4a")
         }
       ],
       questions: [
         {
-          id: 101,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'To wake up' in Ewe?",
-          options: [
-            { id: 1, text: "Fɔ" },
-            { id: 2, text: "Togli" },
-            { id: 3, text: "Ɖoɖo ɖokui" },
-            { id: 4, text: "Ŋdi nuɖuɖu" }
-          ],
-          correctOptionId: 1,
-          hints: ["First thing in the morning", "Short word"],
-          explanation: "'Fɔ' means 'To wake up' in Ewe."
-        },
-        {
-          id: 102,
+          id: 801,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'To go to school' in Ewe?",
+          question: "How do you say 'I wake up early' in Ewe?",
           options: [
-            { id: 1, text: "Yi dɔwɔƒe" },
-            { id: 2, text: "Yi sukuku" },
-            { id: 3, text: "Yɔ" },
-            { id: 4, text: "Togli" }
+            { id: 1, text: "Mefɔna ŋdi kaba" },
+            { id: 2, text: "Meyina dɔ me" },
+            { id: 3, text: "Metsi lem" },
+            { id: 4, text: "Menu ɖam" }
+          ],
+          correctOptionId: 1,
+          hints: ["Mefɔna = I wake up", "ŋdi = morning"],
+          explanation: "Mefɔna ŋdi kaba = I wake up early in Ewe."
+        },
+        {
+          id: 802,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/meyina_dɔ_me.m4a"),
+          options: [
+            { id: 1, text: "I wake up early" },
+            { id: 2, text: "I am going to work" },
+            { id: 3, text: "I am bathing" },
+            { id: 4, text: "I am cooking" }
           ],
           correctOptionId: 2,
-          hints: ["sukuku = school", "Yi = go"],
-          explanation: "'Yi sukuku' means 'To go to school'. 'sukuku' means 'school'."
+          hints: ["meyina = I am going", "dɔ = work"],
+          explanation: "You heard 'Meyina dɔ me' which means 'I am going to work' in Ewe."
         },
         {
-          id: 103,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'To go to work' in Ewe?",
-          options: [
-            { id: 1, text: "Yi dɔwɔƒe" },
-            { id: 2, text: "Yi sukuku" },
-            { id: 3, text: "Yɔ" },
-            { id: 4, text: "Togli" }
+          id: 803,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "Metsi ___ (I am bathing)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "lem" },
+            { id: "opt2", text: "ɖam" },
+            { id: "opt3", text: "nyam" }
           ],
-          correctOptionId: 1,
-          hints: ["dɔwɔƒe = workplace", "Yi = go"],
-          explanation: "'Yi dɔwɔƒe' means 'To go to work'. 'dɔwɔƒe' means 'workplace'."
-        },
-        {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Fɔ", right: "To wake up" },
-            { id: 2, left: "Togli", right: "To wash / bathe" },
-            { id: 3, left: "Yi dɔwɔƒe", right: "To go to work" },
-            { id: 4, left: "Yi sukuku", right: "To go to school" }
-          ],
-          hints: ["Fɔ = to wake up", "Yi dɔwɔƒe = go to work", "Yi sukuku = go to school"],
-          explanation: "These are key morning routine words in Ewe."
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
+          hints: ["tsi = water", "lem = bathing"],
+          explanation: "Metsi lem = I am bathing in Ewe."
         }
       ]
     },
 
     {
       id: "8-2",
-      type: "phrases",
-      title: "Daily Chores",
+      type: "words",
+      title: "Household Chores",
       icon: "home-outline",
-      description: "Learn words for household chores and daily tasks in Ewe",
-      words: ["Da nuɖuɖu", "Zi", "Wɔ dɔ", "Tsɔ nu le", "Kɔ", "Kpɔ tsi", "Nyala aʋu", "Dɔ alɔ̃"],
+      description: "Learn how to talk about household chores in Ewe",
+      words: ["Menu ɖam", "Me avɔ nyam", "Mekplɔa xɔa me"],
       vocabulary: [
         {
-          id: 9,
-          english: "To cook",
-          native: "Da nuɖuɖu",
-          pronunciation: "dah noo-doo-doo"
-          // audioUrl: "/audio/ewe/da_nuɖuɖu.mp3"
+          id: 104,
+          english: "I am cooking",
+          native: "Menu ɖam",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/menu_ɖam.m4a")
         },
         {
-          id: 10,
-          english: "To clean / sweep",
-          native: "Zi",
-          pronunciation: "zee"
-          // audioUrl: "/audio/ewe/zi.mp3"
+          id: 105,
+          english: "I am washing clothes",
+          native: "Me avɔ nyam",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/me_avɔ_nyam.m4a")
         },
         {
-          id: 11,
-          english: "To work",
-          native: "Wɔ dɔ",
-          pronunciation: "woh doh"
-          // audioUrl: "/audio/ewe/wɔ_dɔ.mp3"
-        },
-        {
-          id: 12,
-          english: "To wash (dishes)",
-          native: "Tsɔ nu le",
-          pronunciation: "tsuh noo leh"
-          // audioUrl: "/audio/ewe/tsɔ_nu_le.mp3"
-        },
-        {
-          id: 13,
-          english: "To tidy / keep",
-          native: "Kɔ",
-          pronunciation: "koh"
-          // audioUrl: "/audio/ewe/kɔ.mp3"
-        },
-        {
-          id: 14,
-          english: "To fetch water",
-          native: "Kpɔ tsi",
-          pronunciation: "kpoh tsee"
-          // audioUrl: "/audio/ewe/kpɔ_tsi.mp3"
-        },
-        {
-          id: 15,
-          english: "To wash clothes",
-          native: "Nyala aʋu",
-          pronunciation: "nyah-lah ah-voo"
-          // audioUrl: "/audio/ewe/nyala_aʋu.mp3"
-        },
-        {
-          id: 16,
-          english: "To sleep",
-          native: "Dɔ alɔ̃",
-          pronunciation: "doh ah-loh"
-          // audioUrl: "/audio/ewe/dɔ_alɔ̃.mp3"
+          id: 107,
+          english: "I sweep the room",
+          native: "Mekplɔa xɔa me",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/mekplɔa_xɔa_me.m4a")
         }
       ],
       questions: [
         {
-          id: 201,
+          id: 804,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'To cook' in Ewe?",
+          question: "How do you say 'I am cooking' in Ewe?",
           options: [
-            { id: 1, text: "Da nuɖuɖu" },
-            { id: 2, text: "Zi" },
-            { id: 3, text: "Tsɔ nu le" },
-            { id: 4, text: "Kɔ" }
+            { id: 1, text: "Menu ɖam" },
+            { id: 2, text: "Me avɔ nyam" },
+            { id: 3, text: "Mekplɔa xɔa me" },
+            { id: 4, text: "Metsi lem" }
           ],
           correctOptionId: 1,
-          hints: ["Preparing food", "Contains 'nuɖuɖu' (food)"],
-          explanation: "'Da nuɖuɖu' means 'To cook'. 'nuɖuɖu' means 'food'."
+          hints: ["Menu = I am cooking"],
+          explanation: "Menu ɖam = I am cooking in Ewe."
         },
         {
-          id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'To clean / sweep' in Ewe?",
+          id: 805,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/me_avɔ_nyam.m4a"),
           options: [
-            { id: 1, text: "Da nuɖuɖu" },
-            { id: 2, text: "Zi" },
-            { id: 3, text: "Tsɔ nu le" },
-            { id: 4, text: "Kɔ" }
+            { id: 1, text: "I am cooking" },
+            { id: 2, text: "I am washing clothes" },
+            { id: 3, text: "I sweep the room" },
+            { id: 4, text: "I am bathing" }
           ],
           correctOptionId: 2,
-          hints: ["Making things tidy", "Short word"],
-          explanation: "'Zi' means 'To clean / sweep' in Ewe."
+          hints: ["avɔ = clothes", "nyam = washing"],
+          explanation: "You heard 'Me avɔ nyam' which means 'I am washing clothes' in Ewe."
         },
         {
-          id: 203,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'To sleep' in Ewe?",
-          options: [
-            { id: 1, text: "Dɔ alɔ̃" },
-            { id: 2, text: "Kpɔ tsi" },
-            { id: 3, text: "Nyala aʋu" },
-            { id: 4, text: "Tsɔ nu le" }
+          id: 806,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "Mekplɔa xɔa ___ (I sweep the room)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "me" },
+            { id: "opt2", text: "ɖam" },
+            { id: "opt3", text: "nyam" }
           ],
-          correctOptionId: 1,
-          hints: ["What you do at night", "Contains 'alɔ̃' (sleep)"],
-          explanation: "'Dɔ alɔ̃' means 'To sleep' in Ewe."
-        },
-        {
-          id: 204,
-          type: "matching",
-          instruction: "Match each Ewe phrase to its English meaning.",
-          pairs: [
-            { id: 1, left: "Da nuɖuɖu", right: "To cook" },
-            { id: 2, left: "Zi", right: "To clean / sweep" },
-            { id: 3, left: "Tsɔ nu le", right: "To wash dishes" },
-            { id: 4, left: "Dɔ alɔ̃", right: "To sleep" }
-          ],
-          hints: ["Da nuɖuɖu = to cook", "Zi = to clean", "Dɔ alɔ̃ = to sleep"],
-          explanation: "These are common daily chore words in Ewe."
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
+          hints: ["xɔa me = the room"],
+          explanation: "Mekplɔa xɔa me = I sweep the room in Ewe."
         }
       ]
     },
 
     {
       id: "8-3",
-      type: "simple_sentences",
-      title: "Leisure & Activities",
-      icon: "game-controller-outline",
-      description: "Learn words for leisure and free-time activities in Ewe",
-      words: ["Bua", "Xlẽ", "Bɔl", "Ko", "Lala", "Kpe dɔ", "Yi", "Va"],
+      type: "words",
+      title: "Rest & Evening",
+      icon: "moon-outline",
+      description: "Learn how to talk about resting and evening activities in Ewe",
+      words: ["Ɖeɖi te ŋunye", "Meyina aƒe me", "Malɔ̃ dɔm", "Me ɖiɖim ɖe me"],
       vocabulary: [
         {
-          id: 17,
-          english: "To think / reason",
-          native: "Bua",
-          pronunciation: "boo-ah"
-          // audioUrl: "/audio/ewe/bua.mp3"
+          id: 100,
+          english: "I am tired",
+          native: "Ɖeɖi te ŋunye",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/dedi_te_ŋunye.m4a")
         },
         {
-          id: 18,
-          english: "To read",
-          native: "Xlẽ",
-          pronunciation: "hl-eh"
-          // audioUrl: "/audio/ewe/xlẽ.mp3"
+          id: 101,
+          english: "I am going home",
+          native: "Meyina aƒe me",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/meyina_afe_me.m4a")
         },
         {
-          id: 19,
-          english: "Football / Ball",
-          native: "Bɔl",
-          pronunciation: "bohl"
-          // audioUrl: "/audio/ewe/bɔl.mp3"
+          id: 102,
+          english: "I am sleeping",
+          native: "Malɔ̃ dɔm",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/malɔ̃_dɔm.m4a")
         },
         {
-          id: 20,
-          english: "To laugh / smile",
-          native: "Ko",
-          pronunciation: "koh"
-          // audioUrl: "/audio/ewe/ko.mp3"
-        },
-        {
-          id: 21,
-          english: "To wait",
-          native: "Lala",
-          pronunciation: "lah-lah"
-          // audioUrl: "/audio/ewe/lala.mp3"
-        },
-        {
-          id: 22,
-          english: "To try / make an effort",
-          native: "Kpe dɔ",
-          pronunciation: "kpeh doh"
-          // audioUrl: "/audio/ewe/kpe_dɔ.mp3"
-        },
-        {
-          id: 23,
-          english: "To go",
-          native: "Yi",
-          pronunciation: "yee"
-          // audioUrl: "/audio/ewe/yi.mp3"
-        },
-        {
-          id: 24,
-          english: "To come",
-          native: "Va",
-          pronunciation: "vah"
-          // audioUrl: "/audio/ewe/va.mp3"
+          id: 106,
+          english: "I am resting",
+          native: "Me ɖiɖim ɖe me",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/me_ɖiɖim_ɖe_me.m4a")
         }
       ],
       questions: [
         {
-          id: 301,
+          id: 807,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'To read' in Ewe?",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I am tired' in Ewe?",
           options: [
-            { id: 1, text: "Xlẽ" },
-            { id: 2, text: "Bua" },
-            { id: 3, text: "Ko" },
-            { id: 4, text: "Lala" }
+            { id: 1, text: "Ɖeɖi te ŋunye" },
+            { id: 2, text: "Meyina aƒe me" },
+            { id: 3, text: "Malɔ̃ dɔm" },
+            { id: 4, text: "Me ɖiɖim ɖe me" }
           ],
           correctOptionId: 1,
-          hints: ["What you do with a book", "Starts with 'X'"],
-          explanation: "'Xlẽ' means 'To read' in Ewe."
+          hints: ["Ɖeɖi = tired"],
+          explanation: "Ɖeɖi te ŋunye = I am tired in Ewe."
         },
         {
-          id: 302,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'To come' in Ewe?",
+          id: 808,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/malɔ̃_dɔm.m4a"),
           options: [
-            { id: 1, text: "Yi" },
-            { id: 2, text: "Va" },
-            { id: 3, text: "Lala" },
-            { id: 4, text: "Ko" }
+            { id: 1, text: "I am tired" },
+            { id: 2, text: "I am going home" },
+            { id: 3, text: "I am sleeping" },
+            { id: 4, text: "I am resting" }
+          ],
+          correctOptionId: 3,
+          hints: ["dɔ alɔ̃ = sleeping"],
+          explanation: "You heard 'Malɔ̃ dɔm' which means 'I am sleeping' in Ewe."
+        },
+        {
+          id: 809,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "Meyina ___ me (I am going home)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "aƒe" },
+            { id: "opt2", text: "dɔ" },
+            { id: "opt3", text: "xɔ" }
+          ],
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
+          hints: ["aƒe = home"],
+          explanation: "Meyina aƒe me = I am going home in Ewe."
+        }
+      ]
+    },
+
+    {
+      id: "8-4",
+      type: "words",
+      title: "Everyday Talk",
+      icon: "chatbubble-outline",
+      description: "Learn everyday conversation phrases in Ewe",
+      words: ["Mexlẽa nu gbe shia gbe", "Nu ka wɔm nèle?"],
+      vocabulary: [
+        {
+          id: 108,
+          english: "I read every day",
+          native: "Mexlẽa nu gbe shia gbe",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/mexlẽa_nu_gbe_shia_gbe.m4a")
+        },
+        {
+          id: 109,
+          english: "What are you doing?",
+          native: "Nu ka wɔm nèle?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/nu_ka_wɔm_nèle.m4a")
+        }
+      ],
+      questions: [
+        {
+          id: 810,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I read every day' in Ewe?",
+          options: [
+            { id: 1, text: "Mexlẽa nu gbe shia gbe" },
+            { id: 2, text: "Nu ka wɔm nèle?" },
+            { id: 3, text: "Meyina dɔ me" },
+            { id: 4, text: "Menu ɖam" }
+          ],
+          correctOptionId: 1,
+          hints: ["Mexlẽa = I read", "gbe shia gbe = every day"],
+          explanation: "Mexlẽa nu gbe shia gbe = I read every day in Ewe."
+        },
+        {
+          id: 811,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/nu_ka_wɔm_nèle.m4a"),
+          options: [
+            { id: 1, text: "I read every day" },
+            { id: 2, text: "What are you doing?" },
+            { id: 3, text: "I am going to work" },
+            { id: 4, text: "I am cooking" }
           ],
           correctOptionId: 2,
-          hints: ["Opposite of 'go'", "Starts with 'V'"],
-          explanation: "'Va' means 'To come' in Ewe."
-        },
-        {
-          id: 303,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Football / Ball' in Ewe?",
-          options: [
-            { id: 1, text: "Bɔl" },
-            { id: 2, text: "Xlẽ" },
-            { id: 3, text: "Bua" },
-            { id: 4, text: "Ko" }
-          ],
-          correctOptionId: 1,
-          hints: ["Sport played with a ball", "Contains 'B'"],
-          explanation: "'Bɔl' means 'Football / Ball' in Ewe."
-        },
-        {
-          id: 304,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Xlẽ", right: "To read" },
-            { id: 2, left: "Bɔl", right: "Football / Ball" },
-            { id: 3, left: "Ko", right: "To laugh / smile" },
-            { id: 4, left: "Lala", right: "To wait" }
-          ],
-          hints: ["Xlẽ = to read", "Bɔl = ball", "Ko = to laugh"],
-          explanation: "These are common leisure activity words in Ewe."
+          hints: ["nu ka = what", "wɔm = doing"],
+          explanation: "You heard 'Nu ka wɔm nèle?' which means 'What are you doing?' in Ewe."
         }
       ]
     }
@@ -394,83 +314,134 @@ export default {
     id: "review-8",
     title: "Review: Daily Activities",
     icon: "refresh-outline",
-    description: "Review the daily routine and activity words you've learned",
+    description: "Review all the daily activity vocabulary you've learned",
     questions: [
       {
-        id: 401,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "How do you say 'To wake up' in Ewe?",
-        options: [
-          { id: 1, text: "Fɔ" },
-          { id: 2, text: "Togli" },
-          { id: 3, text: "Ɖoɖo ɖokui" },
-          { id: 4, text: "Ŋdi nuɖuɖu" }
-        ],
-        correctOptionId: 1,
-        hints: ["First thing in the morning"],
-        explanation: "'Fɔ' means 'To wake up' in Ewe."
-      },
-      {
-        id: 402,
+        id: 812,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'To cook' in Ewe?",
+        question: "How do you say 'I am going to work' in Ewe?",
         options: [
-          { id: 1, text: "Da nuɖuɖu" },
-          { id: 2, text: "Zi" },
-          { id: 3, text: "Tsɔ nu le" },
-          { id: 4, text: "Kɔ" }
+          { id: 1, text: "Mefɔna ŋdi kaba" },
+          { id: 2, text: "Meyina dɔ me" },
+          { id: 3, text: "Metsi lem" },
+          { id: 4, text: "Menu ɖam" }
         ],
-        correctOptionId: 1,
-        hints: ["Preparing food"],
-        explanation: "'Da nuɖuɖu' means 'To cook' in Ewe."
+        correctOptionId: 2,
+        hints: ["meyina = I am going", "dɔ = work"],
+        explanation: "Meyina dɔ me = I am going to work."
       },
       {
-        id: 403,
+        id: 813,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/metsi_lem.m4a"),
+        options: [
+          { id: 1, text: "I wake up early" },
+          { id: 2, text: "I am going to work" },
+          { id: 3, text: "I am bathing" },
+          { id: 4, text: "I am cooking" }
+        ],
+        correctOptionId: 3,
+        hints: ["tsi = water"],
+        explanation: "You heard 'Metsi lem' which means 'I am bathing'."
+      },
+      {
+        id: 814,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'To go to school' in Ewe?",
+        question: "How do you say 'I sweep the room' in Ewe?",
         options: [
-          { id: 1, text: "Yi dɔwɔƒe" },
-          { id: 2, text: "Yi sukuku" },
-          { id: 3, text: "Yɔ" },
-          { id: 4, text: "Togli" }
+          { id: 1, text: "Menu ɖam" },
+          { id: 2, text: "Me avɔ nyam" },
+          { id: 3, text: "Mekplɔa xɔa me" },
+          { id: 4, text: "Metsi lem" }
         ],
-        correctOptionId: 2,
-        hints: ["sukuku = school"],
-        explanation: "'Yi sukuku' means 'To go to school'."
+        correctOptionId: 3,
+        hints: ["kplɔa = sweep", "xɔa me = the room"],
+        explanation: "Mekplɔa xɔa me = I sweep the room."
       },
       {
-        id: 404,
+        id: 815,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/menu_ɖam.m4a"),
+        options: [
+          { id: 1, text: "I am cooking" },
+          { id: 2, text: "I am washing clothes" },
+          { id: 3, text: "I sweep the room" },
+          { id: 4, text: "I am bathing" }
+        ],
+        correctOptionId: 1,
+        hints: ["menu = I am cooking"],
+        explanation: "You heard 'Menu ɖam' which means 'I am cooking'."
+      },
+      {
+        id: 816,
         type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "How do you say 'To come' in Ewe?",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I am sleeping' in Ewe?",
         options: [
-          { id: 1, text: "Yi" },
-          { id: 2, text: "Va" },
-          { id: 3, text: "Lala" },
-          { id: 4, text: "Ko" }
+          { id: 1, text: "Ɖeɖi te ŋunye" },
+          { id: 2, text: "Meyina aƒe me" },
+          { id: 3, text: "Malɔ̃ dɔm" },
+          { id: 4, text: "Me ɖiɖim ɖe me" }
         ],
-        correctOptionId: 2,
-        hints: ["Opposite of 'go'"],
-        explanation: "'Va' means 'To come' in Ewe."
+        correctOptionId: 3,
+        hints: ["dɔ alɔ̃ = sleeping"],
+        explanation: "Malɔ̃ dɔm = I am sleeping."
       },
       {
-        id: 405,
-        type: "matching",
-        instruction: "Match each Ewe word to its English meaning.",
-        pairs: [
-          { id: 1, left: "Fɔ", right: "To wake up" },
-          { id: 2, left: "Da nuɖuɖu", right: "To cook" },
-          { id: 3, left: "Xlẽ", right: "To read" },
-          { id: 4, left: "Yi sukuku", right: "To go to school" },
-          { id: 5, left: "Dɔ alɔ̃", right: "To sleep" }
+        id: 817,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/dedi_te_ŋunye.m4a"),
+        options: [
+          { id: 1, text: "I am tired" },
+          { id: 2, text: "I am going home" },
+          { id: 3, text: "I am sleeping" },
+          { id: 4, text: "I am resting" }
         ],
-        hints: ["Fɔ = to wake up", "Da nuɖuɖu = to cook", "Xlẽ = to read"],
-        explanation: "These are key daily activity words from this chapter."
+        correctOptionId: 1,
+        hints: ["ɖeɖi = tired"],
+        explanation: "You heard 'Ɖeɖi te ŋunye' which means 'I am tired'."
+      },
+      {
+        id: 818,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'What are you doing?' in Ewe?",
+        options: [
+          { id: 1, text: "Mexlẽa nu gbe shia gbe" },
+          { id: 2, text: "Nu ka wɔm nèle?" },
+          { id: 3, text: "Meyina dɔ me" },
+          { id: 4, text: "Menu ɖam" }
+        ],
+        correctOptionId: 2,
+        hints: ["nu ka = what", "wɔm = doing"],
+        explanation: "Nu ka wɔm nèle? = What are you doing?"
+      },
+      {
+        id: 819,
+        type: "drag_drop",
+        instruction: "Complete the Ewe phrase by dragging the correct word.",
+        question: "Metsi ___ (I am bathing)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "lem" },
+          { id: "opt2", text: "ɖam" },
+          { id: "opt3", text: "nyam" }
+        ],
+        correctDrop: {
+          blankId: "blank1",
+          itemId: "opt1"
+        },
+        hints: ["tsi = water"],
+        explanation: "Metsi lem = I am bathing."
       }
     ]
   }
 };
-

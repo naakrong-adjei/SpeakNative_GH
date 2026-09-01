@@ -1,410 +1,294 @@
 export default {
   id: 3,
-  title: "Family & Everyday Life",
-  description: "Learn words and phrases to talk about your family and daily routines in Ewe",
+  title: "Family",
+  description: "Learn family members and how to talk about your family in Ewe",
   icon: "people-outline",
-  totalXp: 15,
+  totalXp: 20,
   difficulty: "Beginner",
 
   sections: [
     {
       id: "3-1",
       type: "words",
-      title: "Family Members",
+      title: "Close Family",
       icon: "people-outline",
-      description: "Learn to name core family members in Ewe",
-      words: ["Ɖɔme", "Dada", "Tɔgbuie", "Fofɔ", "Nɔvinyɔnu", "Nɔviŋutsu", "Vi"],
+      description: "Learn the Ewe words for your closest family members",
+      words: ["Dada", "Fofo", "Vi", "Nɔviŋutsu", "Nɔvinyɔnu"],
       vocabulary: [
         {
-          id: 1,
-          english: "Family",
-          native: "Ɖɔme",
-          pronunciation: "doh-meh"
-          // audioUrl: "/audio/ewe/ɖɔme.mp3"
-        },
-        {
-          id: 2,
+          id: 30,
           english: "Mother",
           native: "Dada",
-          pronunciation: "dah-dah"
-          // audioUrl: "/audio/ewe/dada.mp3"
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/dada.m4a")
         },
         {
-          id: 3,
+          id: 31,
           english: "Father",
-          native: "Fofɔ",
-          pronunciation: "foh-foh"
-          // audioUrl: "/audio/ewe/fofɔ.mp3"
+          native: "Fofo",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/fofo.m4a")
         },
         {
-          id: 4,
-          english: "Brother",
-          native: "Nɔviŋutsu",
-          pronunciation: "noh-vee-ngoo-tsu"
-          // audioUrl: "/audio/ewe/nɔviŋutsu.mp3"
-        },
-        {
-          id: 5,
-          english: "Sister",
-          native: "Nɔvinyɔnu",
-          pronunciation: "noh-vee-nyoh-nu"
-          // audioUrl: "/audio/ewe/nɔvinyɔnu.mp3"
-        },
-        {
-          id: 6,
+          id: 32,
           english: "Child",
           native: "Vi",
-          pronunciation: "vee"
-          // audioUrl: "/audio/ewe/vi.mp3"
-        }
-      ],
-      questions: [
-        {
-          id: 101,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Mother'.",
-          question: "How do you say 'Mother' in Ewe?",
-          options: [
-            { id: 1, text: "Dada" },
-            { id: 2, text: "Fofɔ" },
-            { id: 3, text: "Vi" },
-            { id: 4, text: "Nɔvi" }
-          ],
-          correctOptionId: 1,
-          hints: ["Female parent"],
-          explanation: "'Dada' means 'Mother' in Ewe."
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/vi.m4a")
         },
         {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Father'.",
-          question: "How do you say 'Father' in Ewe?",
-          options: [
-            { id: 1, text: "Dada" },
-            { id: 2, text: "Fofɔ" },
-            { id: 3, text: "Vi" },
-            { id: 4, text: "Nɔvi" }
-          ],
-          correctOptionId: 2,
-          hints: ["Male parent"],
-          explanation: "'Fofɔ' means 'Father' in Ewe."
+          id: 33,
+          english: "Brother",
+          native: "Nɔviŋutsu",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/nɔviŋutsu.m4a")
         },
         {
-          id: 103,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Child'.",
-          question: "How do you say 'Child' in Ewe?",
-          options: [
-            { id: 1, text: "Dada" },
-            { id: 2, text: "Fofɔ" },
-            { id: 3, text: "Vi" },
-            { id: 4, text: "Nɔvi" }
-          ],
-          correctOptionId: 3,
-          hints: ["A young person"],
-          explanation: "'Vi' means 'Child' in Ewe."
-        },
-        {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Ɖɔme", right: "Family" },
-            { id: 2, left: "Dada", right: "Mother" },
-            { id: 3, left: "Fofɔ", right: "Father" },
-            { id: 4, left: "Vi", right: "Child" }
-          ],
-          hints: ["Ɖɔme = family", "Dada = mother", "Fofɔ = father"],
-          explanation: "These are key family terms in Ewe."
-        }
-      ]
-    },
-
-    {
-      id: "3-2",
-      type: "phrases",
-      title: "Extended Family",
-      icon: "people-outline",
-      description: "Learn to name grandparents, uncle, and aunt in Ewe",
-      words: ["Tɔgbuie", "Mamaga", "Tɔɖe", "Nɔgbe"],
-      vocabulary: [
-        {
-          id: 7,
-          english: "Grandmother",
-          native: "Mamaga",
-          pronunciation: "mah-mah-gah"
-          // audioUrl: "/audio/ewe/mamaga.mp3"
-        },
-        {
-          id: 8,
-          english: "Grandfather",
-          native: "Tɔgbuie",
-          pronunciation: "toh-gboo-ee-eh"
-          // audioUrl: "/audio/ewe/tɔgbuie.mp3"
-        },
-        {
-          id: 9,
-          english: "Uncle",
-          native: "Tɔɖe",
-          pronunciation: "toh-deh"
-          // audioUrl: "/audio/ewe/tɔɖe.mp3"
-        },
-        {
-          id: 10,
-          english: "Aunt",
-          native: "Nɔgbe",
-          pronunciation: "noh-gbeh"
-          // audioUrl: "/audio/ewe/nɔgbe.mp3"
-        }
-      ],
-      questions: [
-        {
-          id: 201,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Grandmother'.",
-          question: "How do you say 'Grandmother' in Ewe?",
-          options: [
-            { id: 1, text: "Mamaga" },
-            { id: 2, text: "Tɔgbuie" },
-            { id: 3, text: "Tɔɖe" },
-            { id: 4, text: "Nɔgbe" }
-          ],
-          correctOptionId: 1,
-          hints: ["Female grandparent"],
-          explanation: "'Mamaga' means 'Grandmother' in Ewe."
-        },
-        {
-          id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Grandfather'.",
-          question: "How do you say 'Grandfather' in Ewe?",
-          options: [
-            { id: 1, text: "Mamaga" },
-            { id: 2, text: "Tɔgbuie" },
-            { id: 3, text: "Tɔɖe" },
-            { id: 4, text: "Nɔgbe" }
-          ],
-          correctOptionId: 2,
-          hints: ["Male grandparent"],
-          explanation: "'Tɔgbuie' means 'Grandfather' in Ewe."
-        },
-        {
-          id: 203,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Uncle'.",
-          question: "How do you say 'Uncle' in Ewe?",
-          options: [
-            { id: 1, text: "Mamaga" },
-            { id: 2, text: "Tɔgbuie" },
-            { id: 3, text: "Tɔɖe" },
-            { id: 4, text: "Nɔgbe" }
-          ],
-          correctOptionId: 3,
-          hints: ["Male relative"],
-          explanation: "'Tɔɖe' means 'Uncle' in Ewe."
-        },
-        {
-          id: 204,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Mamaga", right: "Grandmother" },
-            { id: 2, left: "Tɔgbuie", right: "Grandfather" },
-            { id: 3, left: "Tɔɖe", right: "Uncle" },
-            { id: 4, left: "Nɔgbe", right: "Aunt" }
-          ],
-          hints: ["Mamaga = grandmother", "Tɔgbuie = grandfather"],
-          explanation: "These are extended family terms in Ewe."
-        }
-      ]
-    },
-
-    {
-      id: "3-3",
-      type: "simple_sentences",
-      title: "Everyday Life",
-      icon: "home-outline",
-      description: "Learn everyday words like home, food, water, and work",
-      words: ["Aƒe", "Nuɖuɖu", "Tsi", "Dɔwɔwɔ"],
-      vocabulary: [
-        {
-          id: 11,
-          english: "Home",
-          native: "Aƒe",
-          pronunciation: "ah-feh"
-          // audioUrl: "/audio/ewe/aƒe.mp3"
-        },
-        {
-          id: 12,
-          english: "Food",
-          native: "Nuɖuɖu",
-          pronunciation: "nu-du-du"
-          // audioUrl: "/audio/ewe/nuɖuɖu.mp3"
-        },
-        {
-          id: 13,
-          english: "Water",
-          native: "Tsi",
-          pronunciation: "chee"
-          // audioUrl: "/audio/ewe/tsi.mp3"
-        },
-        {
-          id: 14,
-          english: "Work",
-          native: "Dɔwɔwɔ",
-          pronunciation: "doh-woh-woh"
-          // audioUrl: "/audio/ewe/dɔwɔwɔ.mp3"
+          id: 34,
+          english: "Sister",
+          native: "Nɔvinyɔnu",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/nɔvinyɔnu.m4a")
         }
       ],
       questions: [
         {
           id: 301,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Home'.",
-          question: "How do you say 'Home' in Ewe?",
+          instruction: "Select the correct Ewe word.",
+          question: "What is 'Mother' in Ewe?",
           options: [
-            { id: 1, text: "Aƒe" },
-            { id: 2, text: "Nuɖuɖu" },
-            { id: 3, text: "Tsi" },
-            { id: 4, text: "Dɔwɔwɔ" }
+            { id: 1, text: "Dada" },
+            { id: 2, text: "Fofo" },
+            { id: 3, text: "Vi" },
+            { id: 4, text: "Nɔviŋutsu" }
           ],
           correctOptionId: 1,
-          hints: ["Where you live"],
-          explanation: "'Aƒe' means 'Home' in Ewe."
+          hints: ["Female parent"],
+          explanation: "Dada = Mother in Ewe."
         },
         {
           id: 302,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Food'.",
-          question: "How do you say 'Food' in Ewe?",
+          instruction: "Select the correct Ewe word.",
+          question: "What is 'Brother' in Ewe?",
           options: [
-            { id: 1, text: "Aƒe" },
-            { id: 2, text: "Nuɖuɖu" },
-            { id: 3, text: "Tsi" },
-            { id: 4, text: "Dɔwɔwɔ" }
+            { id: 1, text: "Dada" },
+            { id: 2, text: "Nɔviŋutsu" },
+            { id: 3, text: "Nɔvinyɔnu" },
+            { id: 4, text: "Vi" }
           ],
           correctOptionId: 2,
-          hints: ["What you eat"],
-          explanation: "'Nuɖuɖu' means 'Food' in Ewe."
+          hints: ["Male sibling"],
+          explanation: "Nɔviŋutsu = Brother in Ewe."
+        }
+      ]
+    },
+
+    {
+      id: "3-2",
+      type: "words",
+      title: "Aunties & Uncles",
+      icon: "people-circle-outline",
+      description: "Learn the specific Ewe terms for aunties and uncles on both sides of the family",
+      words: ["Tɔgã", "Tɔdia", "Ɛte", "Dagã", "Dadia", "Enyurie"],
+      vocabulary: [
+        {
+          id: 35,
+          english: "Uncle (older - father's side)",
+          native: "Tɔgã",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/tɔga.m4a")
         },
+        {
+          id: 36,
+          english: "Uncle (younger - father's side)",
+          native: "Tɔdia",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/tɔdia.m4a")
+        },
+        {
+          id: 37,
+          english: "Aunt (father's side)",
+          native: "Ɛte",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/ɛte.m4a")
+        },
+        {
+          id: 38,
+          english: "Aunt (older - mother's side)",
+          native: "Dagã",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/daga.m4a")
+        },
+        {
+          id: 39,
+          english: "Aunt (younger - mother's side)",
+          native: "Dadia",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/dadia.m4a")
+        },
+        {
+          id: 40,
+          english: "Uncle (mother's side)",
+          native: "Enyurie",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/enyurie.m4a")
+        }
+      ],
+      questions: [
         {
           id: 303,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Water'.",
-          question: "How do you say 'Water' in Ewe?",
+          instruction: "Select the correct Ewe word.",
+          question: "What is 'Uncle (older - father's side)' in Ewe?",
           options: [
-            { id: 1, text: "Aƒe" },
-            { id: 2, text: "Nuɖuɖu" },
-            { id: 3, text: "Tsi" },
-            { id: 4, text: "Dɔwɔwɔ" }
+            { id: 1, text: "Tɔgã" },
+            { id: 2, text: "Tɔdia" },
+            { id: 3, text: "Ɛte" },
+            { id: 4, text: "Enyurie" }
           ],
-          correctOptionId: 3,
-          hints: ["You drink it"],
-          explanation: "'Tsi' means 'Water' in Ewe."
+          correctOptionId: 1,
+          hints: ["Older uncle on father's side"],
+          explanation: "Tɔgã = Uncle (older) on your father's side."
         },
         {
           id: 304,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Aƒe", right: "Home" },
-            { id: 2, left: "Nuɖuɖu", right: "Food" },
-            { id: 3, left: "Tsi", right: "Water" },
-            { id: 4, left: "Dɔwɔwɔ", right: "Work" }
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe word.",
+          question: "What is 'Aunt (father's side)' in Ewe?",
+          options: [
+            { id: 1, text: "Dagã" },
+            { id: 2, text: "Dadia" },
+            { id: 3, text: "Ɛte" },
+            { id: 4, text: "Enyurie" }
           ],
-          hints: ["Aƒe = home", "Nuɖuɖu = food", "Tsi = water"],
-          explanation: "These are common everyday words in Ewe."
+          correctOptionId: 3,
+          hints: ["Aunt on father's side"],
+          explanation: "Ɛte = Aunt on your father's side."
+        }
+      ]
+    },
+
+    {
+      id: "3-3",
+      type: "words",
+      title: "Grandparents & Spouse",
+      icon: "heart-outline",
+      description: "Learn Ewe words for grandparents and spouse",
+      words: ["Mama", "Tɔgbui", "Srɔ̃ŋutsu", "Srɔ̃nyɔnu"],
+      vocabulary: [
+        {
+          id: 41,
+          english: "Grandmother",
+          native: "Mama",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/mama.m4a")
+        },
+        {
+          id: 42,
+          english: "Grandfather",
+          native: "Tɔgbui",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/tɔgbui.m4a")
+        },
+        {
+          id: 43,
+          english: "Husband",
+          native: "Srɔ̃ŋutsu",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/srɔ̃ŋutsu.m4a")
+        },
+        {
+          id: 44,
+          english: "Wife",
+          native: "Srɔ̃nyɔnu",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/srɔ̃nyɔnu.m4a")    
+        }
+      ],
+      questions: [
+        {
+          id: 305,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe word.",
+          question: "What is 'Grandmother' in Ewe?",
+          options: [
+            { id: 1, text: "Mama" },
+            { id: 2, text: "Tɔgbui" },
+            { id: 3, text: "Srɔ̃ŋutsu" },
+            { id: 4, text: "Srɔ̃nyɔnu" }
+          ],
+          correctOptionId: 1,
+          hints: ["Mother of your parent", "Female elder"],
+          explanation: "Mama = Grandmother in Ewe."
+        },
+        {
+          id: 306,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe word.",
+          question: "What is 'Husband' in Ewe?",
+          options: [
+            { id: 1, text: "Mama" },
+            { id: 2, text: "Tɔgbui" },
+            { id: 3, text: "Srɔ̃ŋutsu" },
+            { id: 4, text: "Srɔ̃nyɔnu" }
+          ],
+          correctOptionId: 3,
+          hints: ["Male spouse"],
+          explanation: "Srɔ̃ŋutsu = Husband in Ewe."
         }
       ]
     },
 
     {
       id: "3-4",
-      type: "basic_conversations",
-      title: "Family & Life Review",
-      icon: "refresh-outline",
-      description: "Review the family and everyday life vocabulary",
-      words: ["Ɖɔme", "Nɔvinyɔnu", "Nɔviŋutsu", "Aƒe", "Dɔwɔwɔ"],
+      type: "simple_sentences",
+      title: "Talking About Family",
+      icon: "home-outline",
+      description: "Learn how to talk about your family in Ewe",
+      words: ["Esiae nye nye ƒomea", "Vi eve le asinye", "Nye ƒomea lolo", "Nɔvi nenie le asiwò?"],
       vocabulary: [
         {
-          id: 15,
-          english: "Family",
-          native: "Ɖɔme",
-          pronunciation: "doh-meh"
-          // audioUrl: "/audio/ewe/ɖɔme.mp3"
+          id: 45,
+          english: "This is my family",
+          native: "Esiae nye nye ƒomea",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/esiae_nye_nye_fomea.m4a")
         },
         {
-          id: 16,
-          english: "Sister",
-          native: "Nɔvinyɔnu",
-          pronunciation: "noh-vee-nyoh-nu"
-          // audioUrl: "/audio/ewe/nɔvinyɔnu.mp3"
+          id: 46,
+          english: "I have two children",
+          native: "Vi eve le asinye",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/vi_eve_le_asinye.m4a")
         },
         {
-          id: 17,
-          english: "Brother",
-          native: "Nɔviŋutsu",
-          pronunciation: "noh-vee-ngoo-tsu"
-          // audioUrl: "/audio/ewe/nɔviŋutsu.mp3"
+          id: 47,
+          english: "My family is big",
+          native: "Nye ƒomea lolo",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/nye_fomea_lolo.m4a")
         },
         {
-          id: 18,
-          english: "Home",
-          native: "Aƒe",
-          pronunciation: "ah-feh"
-          // audioUrl: "/audio/ewe/aƒe.mp3"
-        },
-        {
-          id: 19,
-          english: "Work",
-          native: "Dɔwɔwɔ",
-          pronunciation: "doh-woh-woh"
-          // audioUrl: "/audio/ewe/dɔwɔwɔ.mp3"
+          id: 48,
+          english: "How many siblings do you have?",
+          native: "Nɔvi nenie le asiwò?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter3/nɔvi_nenie_le_asiwo.m4a")
         }
       ],
       questions: [
         {
-          id: 401,
+          id: 307,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Family'.",
-          question: "How do you say 'Family' in Ewe?",
+          instruction: "Select the correct Ewe sentence.",
+          question: "How do you say 'This is my family' in Ewe?",
           options: [
-            { id: 1, text: "Ɖɔme" },
-            { id: 2, text: "Dada" },
-            { id: 3, text: "Fofɔ" },
-            { id: 4, text: "Vi" }
+            { id: 1, text: "Esiae nye nye ƒomea" },
+            { id: 2, text: "Vi eve le asinye" },
+            { id: 3, text: "Nye ƒomea lolo" },
+            { id: 4, text: "Nɔvi nenie le asiwò?" }
           ],
           correctOptionId: 1,
-          hints: ["Whole group of relatives"],
-          explanation: "'Ɖɔme' means 'Family' in Ewe."
+          hints: ["Introducing your family"],
+          explanation: "Esiae nye nye ƒomea = This is my family."
         },
         {
-          id: 402,
+          id: 308,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word for 'Work'.",
-          question: "How do you say 'Work' in Ewe?",
+          instruction: "Select the correct Ewe sentence.",
+          question: "How do you ask 'How many siblings do you have?' in Ewe?",
           options: [
-            { id: 1, text: "Tsi" },
-            { id: 2, text: "Nuɖuɖu" },
-            { id: 3, text: "Dɔwɔwɔ" },
-            { id: 4, text: "Aƒe" }
+            { id: 1, text: "Esiae nye nye ƒomea" },
+            { id: 2, text: "Vi eve le asinye" },
+            { id: 3, text: "Nye ƒomea lolo" },
+            { id: 4, text: "Nɔvi nenie le asiwò?" }
           ],
-          correctOptionId: 3,
-          hints: ["What you do for a job"],
-          explanation: "'Dɔwɔwɔ' means 'Work' in Ewe."
-        },
-        {
-          id: 403,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Nɔviŋutsu", right: "Brother" },
-            { id: 2, left: "Nɔvinyɔnu", right: "Sister" },
-            { id: 3, left: "Tsi", right: "Water" },
-            { id: 4, left: "Dɔwɔwɔ", right: "Work" }
-          ],
-          hints: ["Nɔvi = sibling", "Tsi = water", "Dɔwɔwɔ = work"],
-          explanation: "These are useful family and everyday words in Ewe."
+          correctOptionId: 4,
+          hints: ["About siblings", "Question"],
+          explanation: "Nɔvi nenie le asiwò? = How many siblings do you have?"
         }
       ]
     }
@@ -412,20 +296,20 @@ export default {
 
   review: {
     id: "review-3",
-    title: "Review: Family & Everyday Life",
+    title: "Review: Family",
     icon: "refresh-outline",
-    description: "Review the family and everyday life vocabulary you've learned",
+    description: "Review all the family vocabulary and phrases you've learned",
     questions: [
       {
         id: 501,
         type: "multiple_choice",
         instruction: "Select the correct Ewe word.",
-        question: "How do you say 'Mother' in Ewe?",
+        question: "What is 'Mother' in Ewe?",
         options: [
           { id: 1, text: "Dada" },
-          { id: 2, text: "Fofɔ" },
+          { id: 2, text: "Fofo" },
           { id: 3, text: "Vi" },
-          { id: 4, text: "Nɔvi" }
+          { id: 4, text: "Mama" }
         ],
         correctOptionId: 1,
         hints: ["Female parent"],
@@ -435,61 +319,106 @@ export default {
         id: 502,
         type: "multiple_choice",
         instruction: "Select the correct Ewe word.",
-        question: "How do you say 'Father' in Ewe?",
+        question: "What is 'Brother' in Ewe?",
         options: [
-          { id: 1, text: "Dada" },
-          { id: 2, text: "Fofɔ" },
+          { id: 1, text: "Nɔvinyɔnu" },
+          { id: 2, text: "Nɔviŋutsu" },
           { id: 3, text: "Vi" },
-          { id: 4, text: "Nɔvi" }
+          { id: 4, text: "Fofo" }
         ],
         correctOptionId: 2,
-        hints: ["Male parent"],
-        explanation: "Fofɔ = Father."
+        hints: ["Male sibling"],
+        explanation: "Nɔviŋutsu = Brother."
       },
       {
         id: 503,
         type: "multiple_choice",
         instruction: "Select the correct Ewe word.",
-        question: "How do you say 'Family' in Ewe?",
+        question: "What is 'Uncle (older - father's side)' in Ewe?",
         options: [
-          { id: 1, text: "Ɖɔme" },
-          { id: 2, text: "Dada" },
-          { id: 3, text: "Fofɔ" },
-          { id: 4, text: "Vi" }
+          { id: 1, text: "Tɔdia" },
+          { id: 2, text: "Tɔgã" },
+          { id: 3, text: "Enyurie" },
+          { id: 4, text: "Ɛte" }
         ],
-        correctOptionId: 1,
-        hints: ["Whole group of relatives"],
-        explanation: "Ɖɔme = Family."
+        correctOptionId: 2,
+        hints: ["Older uncle on father's side"],
+        explanation: "Tɔgã = Uncle (older) on father's side."
       },
       {
         id: 504,
         type: "multiple_choice",
         instruction: "Select the correct Ewe word.",
-        question: "How do you say 'Water' in Ewe?",
+        question: "What is 'Aunt (father's side)' in Ewe?",
         options: [
-          { id: 1, text: "Aƒe" },
-          { id: 2, text: "Nuɖuɖu" },
-          { id: 3, text: "Tsi" },
-          { id: 4, text: "Dɔwɔwɔ" }
+          { id: 1, text: "Dagã" },
+          { id: 2, text: "Dadia" },
+          { id: 3, text: "Ɛte" },
+          { id: 4, text: "Enyurie" }
         ],
         correctOptionId: 3,
-        hints: ["You drink it"],
-        explanation: "Tsi = Water."
+        hints: ["Aunt on father's side"],
+        explanation: "Ɛte = Aunt on father's side."
       },
       {
         id: 505,
-        type: "matching",
-        instruction: "Match each Ewe word to its English meaning.",
-        pairs: [
-          { id: 1, left: "Dada", right: "Mother" },
-          { id: 2, left: "Fofɔ", right: "Father" },
-          { id: 3, left: "Nɔviŋutsu", right: "Brother" },
-          { id: 4, left: "Nɔvinyɔnu", right: "Sister" },
-          { id: 5, left: "Vi", right: "Child" },
-          { id: 6, left: "Aƒe", right: "Home" }
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe word.",
+        question: "What is 'Grandmother' in Ewe?",
+        options: [
+          { id: 1, text: "Mama" },
+          { id: 2, text: "Tɔgbui" },
+          { id: 3, text: "Srɔ̃ŋutsu" },
+          { id: 4, text: "Srɔ̃nyɔnu" }
         ],
-        hints: ["Dada = mother", "Fofɔ = father", "Nɔvi = sibling"],
-        explanation: "These are key family words from this chapter."
+        correctOptionId: 1,
+        hints: ["Female elder"],
+        explanation: "Mama = Grandmother."
+      },
+      {
+        id: 506,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe word.",
+        question: "What is 'Husband' in Ewe?",
+        options: [
+          { id: 1, text: "Mama" },
+          { id: 2, text: "Tɔgbui" },
+          { id: 3, text: "Srɔ̃ŋutsu" },
+          { id: 4, text: "Srɔ̃nyɔnu" }
+        ],
+        correctOptionId: 3,
+        hints: ["Male spouse"],
+        explanation: "Srɔ̃ŋutsu = Husband."
+      },
+      {
+        id: 507,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe sentence.",
+        question: "How do you say 'This is my family' in Ewe?",
+        options: [
+          { id: 1, text: "Esiae nye nye ƒomea" },
+          { id: 2, text: "Vi eve le asinye" },
+          { id: 3, text: "Nye ƒomea lolo" },
+          { id: 4, text: "Nɔvi nenie le asiwò?" }
+        ],
+        correctOptionId: 1,
+        hints: ["Introducing your family"],
+        explanation: "Esiae nye nye ƒomea = This is my family."
+      },
+      {
+        id: 508,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe sentence.",
+        question: "How do you ask 'How many siblings do you have?' in Ewe?",
+        options: [
+          { id: 1, text: "Esiae nye nye ƒomea" },
+          { id: 2, text: "Vi eve le asinye" },
+          { id: 3, text: "Nye ƒomea lolo" },
+          { id: 4, text: "Nɔvi nenie le asiwò?" }
+        ],
+        correctOptionId: 4,
+        hints: ["About siblings"],
+        explanation: "Nɔvi nenie le asiwò? = How many siblings do you have?"
       }
     ]
   }

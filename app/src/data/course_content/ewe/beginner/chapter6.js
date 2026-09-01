@@ -1,385 +1,328 @@
-// data/course_content/ewe/beginner/chapter6.js
 export default {
   id: 6,
   title: "Shopping",
-  description: "Learn how to shop, bargain, and talk about prices in Ewe",
+  description: "Learn shopping and market vocabulary in Ewe",
   icon: "cart-outline",
-  totalXp: 18,
+  totalXp: 10,
   difficulty: "Beginner",
 
   sections: [
     {
       id: "6-1",
       type: "words",
-      title: "At the Market",
-      icon: "storefront-outline",
-      description: "Learn common words used at the market in Ewe",
-      words: ["Asitsatsa", "Asitsala", "Ga", "Aʋuƒuti", "Aɖuɖu", "Fle", "Di", "Ɖe aaɖo"],
+      title: "Asking Prices",
+      icon: "pricetag-outline",
+      description: "Learn how to ask about prices in Ewe",
+      words: ["Ho nenie?", "Exɔshi akpa", "Mexɔa shi oo"],
       vocabulary: [
         {
-          id: 1,
-          english: "Market",
-          native: "Asitsatsa",
-          pronunciation: "ah-see-tsah-tsah"
-          // audioUrl: "/audio/ewe/asitsatsa.mp3"
+          id: 74,
+          english: "How much is it?",
+          native: "Ho nenie?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/ho_nenie.m4a")
         },
         {
-          id: 2,
-          english: "Shop / Store",
-          native: "Asidzraƒe",
-          pronunciation: "ah-see-jrah-feh"
-          // audioUrl: "/audio/ewe/asidzrafe.mp3"
+          id: 75,
+          english: "It is too expensive",
+          native: "Exɔshi akpa",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/exɔshi_akpa.m4a")
         },
         {
-          id: 3,
-          english: "Money",
-          native: "Ga",
-          pronunciation: "gah"
-          // audioUrl: "/audio/ewe/ga.mp3"
-        },
-        {
-          id: 4,
-          english: "Cloth / Clothes",
-          native: "Aʋuƒuti",
-          pronunciation: "ah-voo-foo-tee"
-          // audioUrl: "/audio/ewe/aʋuƒuti.mp3"
-        },
-        {
-          id: 5,
-          english: "Food",
-          native: "Aɖuɖu",
-          pronunciation: "ah-doo-doo"
-          // audioUrl: "/audio/ewe/aɖuɖu.mp3"
-        },
-        {
-          id: 6,
-          english: "To buy",
-          native: "Fle",
-          pronunciation: "fleh"
-          // audioUrl: "/audio/ewe/fle.mp3"
-        },
-        {
-          id: 7,
-          english: "To want / desire",
-          native: "Di be",
-          pronunciation: "dee beh"
-          // audioUrl: "/audio/ewe/di_be.mp3"
-        },
-        {
-          id: 8,
-          english: "A little / few",
-          native: "Ɖe aaɖo",
-          pronunciation: "deh ah-doh"
-          // audioUrl: "/audio/ewe/ɖe_aaɖo.mp3"
+          id: 84,
+          english: "It is cheap",
+          native: "Mexɔa shi oo",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/mexɔa_shi_oo.m4a")
         }
       ],
       questions: [
         {
-          id: 101,
+          id: 601,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Market' in Ewe?",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you ask 'How much is it?' in Ewe?",
           options: [
-            { id: 1, text: "Asitsatsa" },
-            { id: 2, text: "Asidzraƒe" },
-            { id: 3, text: "Ga" },
-            { id: 4, text: "Aɖuɖu" }
+            { id: 1, text: "Ho nenie?" },
+            { id: 2, text: "Exɔshi akpa" },
+            { id: 3, text: "Mexɔa shi oo" },
+            { id: 4, text: "Ɖe dzi" }
           ],
           correctOptionId: 1,
-          hints: ["Where people buy and sell", "Starts with 'Asit'"],
-          explanation: "'Asitsatsa' means 'Market' in Ewe."
+          hints: ["Question about price"],
+          explanation: "Ho nenie? = How much is it? in Ewe."
         },
         {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Money' in Ewe?",
+          id: 602,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/exɔshi_akpa.m4a"),
           options: [
-            { id: 1, text: "Asitsatsa" },
-            { id: 2, text: "Asidzraƒe" },
-            { id: 3, text: "Ga" },
-            { id: 4, text: "Aɖuɖu" }
-          ],
-          correctOptionId: 3,
-          hints: ["Used to pay for things", "Short word"],
-          explanation: "'Ga' means 'Money' in Ewe."
-        },
-        {
-          id: 103,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Cloth / Clothes' in Ewe?",
-          options: [
-            { id: 1, text: "Asitsatsa" },
-            { id: 2, text: "Aʋuƒuti" },
-            { id: 3, text: "Aɖuɖu" },
-            { id: 4, text: "Ga" }
+            { id: 1, text: "How much is it?" },
+            { id: 2, text: "It is too expensive" },
+            { id: 3, text: "It is cheap" },
+            { id: 4, text: "Reduce the price" }
           ],
           correctOptionId: 2,
-          hints: ["What you wear", "Contains 'Aʋu'"],
-          explanation: "'Aʋuƒuti' means 'Cloth / Clothes' in Ewe."
+          hints: ["exɔ = expensive"],
+          explanation: "You heard 'Exɔshi akpa' which means 'It is too expensive' in Ewe."
         },
         {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Asitsatsa", right: "Market" },
-            { id: 2, left: "Asidzraƒe", right: "Shop / Store" },
-            { id: 3, left: "Ga", right: "Money" },
-            { id: 4, left: "Aʋuƒuti", right: "Cloth / Clothes" }
+          id: 603,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "Mexɔa ___ oo (It is cheap)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "shi" },
+            { id: "opt2", text: "ga" },
+            { id: "opt3", text: "ho" }
           ],
-          hints: ["Asitsatsa = market", "Ga = money", "Aʋuƒuti = clothes"],
-          explanation: "These are common market words in Ewe."
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
+          hints: ["shi = price"],
+          explanation: "Mexɔa shi oo = It is cheap in Ewe."
         }
       ]
     },
 
     {
       id: "6-2",
-      type: "phrases",
-      title: "Prices & Bargaining",
-      icon: "pricetag-outline",
-      description: "Learn how to ask prices and bargain in Ewe",
-      words: ["Ga nyae?", "Ewɔ xɔ", "Eye olɔ̃", "Te ga ɖeɖi", "Mafle", "Na mèwui", "Ga ɖeka"],
+      type: "words",
+      title: "Bargaining",
+      icon: "handshake-outline",
+      description: "Learn how to bargain at the market in Ewe",
+      words: ["Ɖe dzi", "Ga gbagba le ashiwòa?", "Fiam bubu"],
       vocabulary: [
         {
-          id: 9,
-          english: "How much is it?",
-          native: "Ga nyae?",
-          pronunciation: "gah nyah-eh"
-          // audioUrl: "/audio/ewe/ga_nyae.mp3"
+          id: 76,
+          english: "Reduce the price",
+          native: "Ɖe dzi",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/de_dzi.m4a")
         },
         {
-          id: 10,
-          english: "It is expensive",
-          native: "Ewɔ xɔ",
-          pronunciation: "eh-woh hoh"
-          // audioUrl: "/audio/ewe/ewɔ_xɔ.mp3"
+          id: 81,
+          english: "Do you have change?",
+          native: "Ga gbagba le ashiwòa?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/ga_gbagba_le_ashiwoa.m4a")
         },
         {
-          id: 11,
-          english: "It is cheap",
-          native: "Eye olɔ̃",
-          pronunciation: "eh-yeh oh-loh"
-          // audioUrl: "/audio/ewe/eye_olɔ̃.mp3"
-        },
-        {
-          id: 12,
-          english: "To reduce the price",
-          native: "Te ga ɖeɖi",
-          pronunciation: "teh gah deh-dee"
-          // audioUrl: "/audio/ewe/te_ga_deɖi.mp3"
-        },
-        {
-          id: 13,
-          english: "I will buy it",
-          native: "Mafle",
-          pronunciation: "mah-fleh"
-          // audioUrl: "/audio/ewe/mafle.mp3"
-        },
-        {
-          id: 14,
-          english: "Give me a discount",
-          native: "Na mèwui",
-          pronunciation: "nah meh-oo-ee"
-          // audioUrl: "/audio/ewe/na_mèwui.mp3"
+          id: 83,
+          english: "Show me another one",
+          native: "Fiam bubu",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/fiam_bubu.m4a")
         }
       ],
       questions: [
         {
-          id: 201,
+          id: 604,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you ask 'How much is it?' in Ewe?",
+          question: "How do you say 'Reduce the price' in Ewe?",
           options: [
-            { id: 1, text: "Ga nyae?" },
-            { id: 2, text: "Ewɔ xɔ" },
-            { id: 3, text: "Na mèwui" },
-            { id: 4, text: "Mafle" }
+            { id: 1, text: "Ɖe dzi" },
+            { id: 2, text: "Ga gbagba le ashiwòa?" },
+            { id: 3, text: "Fiam bubu" },
+            { id: 4, text: "Ho nenie?" }
           ],
           correctOptionId: 1,
-          hints: ["Asking about the price", "Ends with 'nyae?'"],
-          explanation: "'Ga nyae?' means 'How much is it?' in Ewe. It is used to ask the price."
+          hints: ["Ɖe = reduce", "dzi = price"],
+          explanation: "Ɖe dzi = Reduce the price in Ewe."
         },
         {
-          id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'It is expensive' in Ewe?",
+          id: 605,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/fiam_bubu.m4a"),
           options: [
-            { id: 1, text: "Ewɔ xɔ" },
-            { id: 2, text: "Eye olɔ̃" },
-            { id: 3, text: "Na mèwui" },
-            { id: 4, text: "Mafle" }
-          ],
-          correctOptionId: 1,
-          hints: ["Refer to a high price"],
-          explanation: "'Ewɔ xɔ' means 'It is expensive' in Ewe."
-        },
-        {
-          id: 203,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'Give me a discount' in Ewe?",
-          options: [
-            { id: 1, text: "Ga nyae?" },
-            { id: 2, text: "Ewɔ xɔ" },
-            { id: 3, text: "Na mèwui" },
-            { id: 4, text: "Mafle" }
+            { id: 1, text: "Reduce the price" },
+            { id: 2, text: "Do you have change?" },
+            { id: 3, text: "Show me another one" },
+            { id: 4, text: "How much is it?" }
           ],
           correctOptionId: 3,
-          hints: ["Na = give", "mèwui = me some"],
-          explanation: "'Na mèwui' means 'Give me a discount' when bargaining."
+          hints: ["fiam = show me", "bubu = another"],
+          explanation: "You heard 'Fiam bubu' which means 'Show me another one' in Ewe."
         },
         {
-          id: 204,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'I will buy it' in Ewe?",
-          options: [
-            { id: 1, text: "Ga nyae?" },
-            { id: 2, text: "Ewɔ xɔ" },
-            { id: 3, text: "Na mèwui" },
-            { id: 4, text: "Mafle" }
+          id: 606,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "Ga gbagba le ___? (Do you have change?)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "ashiwòa" },
+            { id: "opt2", text: "ega" },
+            { id: "opt3", text: "asi" }
           ],
-          correctOptionId: 4,
-          hints: ["Ma = I will", "fle = buy"],
-          explanation: "'Mafle' means 'I will buy it'. 'Ma' means 'I will' and 'fle' means 'buy'."
-        },
-        {
-          id: 205,
-          type: "matching",
-          instruction: "Match each Ewe phrase to its English meaning.",
-          pairs: [
-            { id: 1, left: "Ga nyae?", right: "How much is it?" },
-            { id: 2, left: "Ewɔ xɔ", right: "It is expensive" },
-            { id: 3, left: "Eye olɔ̃", right: "It is cheap" },
-            { id: 4, left: "Mafle", right: "I will buy it" }
-          ],
-          hints: ["Ga nyae? = how much", "Ewɔ xɔ = expensive", "Mafle = I will buy"],
-          explanation: "These are essential phrases for bargaining in Ewe."
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
+          hints: ["ashiwòa = with you"],
+          explanation: "Ga gbagba le ashiwòa? = Do you have change? in Ewe."
         }
       ]
     },
 
     {
       id: "6-3",
-      type: "simple_sentences",
-      title: "Shopping Items",
-      icon: "bag-handle-outline",
-      description: "Learn the Ewe names for things you might buy",
-      words: ["Afɔkpa", "Tsotso", "Kɔfi", "Ɖoɖo", "Suku guluegbe nane", "Kusi", "Aku"],
+      type: "words",
+      title: "Buying It",
+      icon: "bag-outline",
+      description: "Learn phrases for completing a purchase in Ewe",
+      words: ["Medzi be maƒle ehia", "Maxɔe", "Ble nam"],
       vocabulary: [
         {
-          id: 15,
-          english: "Shoes",
-          native: "Afɔkpa",
-          pronunciation: "ah-foh-kpah"
-          // audioUrl: "/audio/ewe/afɔkpa.mp3"
+          id: 77,
+          english: "I want to buy this",
+          native: "Medzi be maƒle ehia",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/medzi_be_mafle_ehia.m4a")
         },
         {
-          id: 16,
-          english: "Hat / Cap",
-          native: "Tsotso",
-          pronunciation: "tsoh-tsoh"
-          // audioUrl: "/audio/ewe/tsotso.mp3"
+          id: 82,
+          english: "I will take it",
+          native: "Maxɔe",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/maxɔe.m4a")
         },
         {
-          id: 17,
-          english: "Necklace / Beads",
-          native: "Kɔfi",
-          pronunciation: "koh-fee"
-          // audioUrl: "/audio/ewe/kɔfi.mp3"
-        },
-        {
-          id: 18,
-          english: "Medicine",
-          native: "Ɖoɖo",
-          pronunciation: "doh-doh"
-          // audioUrl: "/audio/ewe/ɉoɖo.mp3"
-        },
-        {
-          id: 19,
-          english: "School supplies",
-          native: "Suku guluegbe nane",
-          pronunciation: "soo-koo goo-loo-eh-gbeh nah-neh"
-          // audioUrl: "/audio/ewe/suku_guluegbe_nane.mp3"
-        },
-        {
-          id: 20,
-          english: "Basket",
-          native: "Kusi",
-          pronunciation: "koo-see"
-          // audioUrl: "/audio/ewe/kusi.mp3"
-        },
-        {
-          id: 21,
-          english: "Bag",
-          native: "Aku",
-          pronunciation: "ah-koo"
-          // audioUrl: "/audio/ewe/aku.mp3"
+          id: 85,
+          english: "Wrap it for me",
+          native: "Ble nam",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/ble_nam.m4a")
         }
       ],
       questions: [
         {
-          id: 301,
+          id: 607,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Shoes' in Ewe?",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I want to buy this' in Ewe?",
           options: [
-            { id: 1, text: "Afɔkpa" },
-            { id: 2, text: "Tsotso" },
-            { id: 3, text: "Kɔfi" },
-            { id: 4, text: "Ɖoɖo" }
+            { id: 1, text: "Medzi be maƒle ehia" },
+            { id: 2, text: "Maxɔe" },
+            { id: 3, text: "Ble nam" },
+            { id: 4, text: "Mele nu kpɔm ko" }
           ],
           correctOptionId: 1,
-          hints: ["What you wear on your feet", "Starts with 'Afɔ'"],
-          explanation: "'Afɔkpa' means 'Shoes' in Ewe."
+          hints: ["Medzi be = I want to", "maƒle = buy", "ehia = this"],
+          explanation: "Medzi be maƒle ehia = I want to buy this in Ewe."
         },
         {
-          id: 302,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Bag' in Ewe?",
+          id: 608,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/maxɔe.m4a"),
           options: [
-            { id: 1, text: "Afɔkpa" },
-            { id: 2, text: "Tsotso" },
-            { id: 3, text: "Kɔfi" },
-            { id: 4, text: "Aku" }
-          ],
-          correctOptionId: 4,
-          hints: ["You carry things in it"],
-          explanation: "'Aku' means 'Bag' in Ewe."
-        },
-        {
-          id: 303,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Medicine' in Ewe?",
-          options: [
-            { id: 1, text: "Afɔkpa" },
-            { id: 2, text: "Ɖoɖo" },
-            { id: 3, text: "Kɔfi" },
-            { id: 4, text: "Aku" }
+            { id: 1, text: "I want to buy this" },
+            { id: 2, text: "I will take it" },
+            { id: 3, text: "Wrap it for me" },
+            { id: 4, text: "I am just looking" }
           ],
           correctOptionId: 2,
-          hints: ["What you take when sick"],
-          explanation: "'Ɖoɖo' means 'Medicine' in Ewe."
+          hints: ["maxɔ = I will take"],
+          explanation: "You heard 'Maxɔe' which means 'I will take it' in Ewe."
         },
         {
-          id: 304,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Afɔkpa", right: "Shoes" },
-            { id: 2, left: "Tsotso", right: "Hat / Cap" },
-            { id: 3, left: "Kɔfi", right: "Necklace / Beads" },
-            { id: 4, left: "Ɖoɖo", right: "Medicine" },
-            { id: 5, left: "Aku", right: "Bag" }
+          id: 609,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "___ nam (Wrap it for me)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "Ble" },
+            { id: "opt2", text: "Maxɔ" },
+            { id: "opt3", text: "Fia" }
           ],
-          hints: ["Afɔkpa = shoes", "Tsotso = hat", "Ɖoɖo = medicine"],
-          explanation: "These are common shopping items in Ewe."
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
+          hints: ["Ble = wrap"],
+          explanation: "Ble nam = Wrap it for me in Ewe."
+        }
+      ]
+    },
+
+    {
+      id: "6-4",
+      type: "words",
+      title: "Market Words",
+      icon: "storefront-outline",
+      description: "Learn essential market vocabulary in Ewe",
+      words: ["Asi", "Ega", "Mele nu kpɔm ko"],
+      vocabulary: [
+        {
+          id: 78,
+          english: "Market",
+          native: "Asi",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/asi.m4a")
+        },
+        {
+          id: 79,
+          english: "Money",
+          native: "Ega",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/ega.m4a")
+        },
+        {
+          id: 80,
+          english: "I am just looking",
+          native: "Mele nu kpɔm ko",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/mele_nu_kpɔm_ko.m4a")
+        }
+      ],
+      questions: [
+        {
+          id: 610,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe word.",
+          question: "What is 'Market' in Ewe?",
+          options: [
+            { id: 1, text: "Asi" },
+            { id: 2, text: "Ega" },
+            { id: 3, text: "Mele nu kpɔm ko" },
+            { id: 4, text: "Ho nenie?" }
+          ],
+          correctOptionId: 1,
+          hints: ["Where you buy things"],
+          explanation: "Asi = Market in Ewe."
+        },
+        {
+          id: 611,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What word did you hear?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/ega.m4a"),
+          options: [
+            { id: 1, text: "Market" },
+            { id: 2, text: "Money" },
+            { id: 3, text: "Change" },
+            { id: 4, text: "Price" }
+          ],
+          correctOptionId: 2,
+          hints: ["What you pay with"],
+          explanation: "You heard 'Ega' which means Money in Ewe."
+        },
+        {
+          id: 612,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "Mele nu ___ ko (I am just looking)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "kpɔm" },
+            { id: "opt2", text: "ƒle" },
+            { id: "opt3", text: "xɔ" }
+          ],
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
+          hints: ["kpɔm = looking"],
+          explanation: "Mele nu kpɔm ko = I am just looking in Ewe."
         }
       ]
     }
@@ -389,83 +332,167 @@ export default {
     id: "review-6",
     title: "Review: Shopping",
     icon: "refresh-outline",
-    description: "Review the market, price, and shopping vocabulary you've learned",
+    description: "Review all the shopping and market vocabulary you've learned",
     questions: [
       {
-        id: 401,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "How do you say 'Market' in Ewe?",
-        options: [
-          { id: 1, text: "Asitsatsa" },
-          { id: 2, text: "Ga" },
-          { id: 3, text: "Aʋuƒuti" },
-          { id: 4, text: "Ɖoɖo" }
-        ],
-        correctOptionId: 1,
-        hints: ["Where people buy and sell"],
-        explanation: "'Asitsatsa' means 'Market' in Ewe."
-      },
-      {
-        id: 402,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "How do you say 'Money' in Ewe?",
-        options: [
-          { id: 1, text: "Asitsatsa" },
-          { id: 2, text: "Ga" },
-          { id: 3, text: "Aʋuƒuti" },
-          { id: 4, text: "Ɖoɖo" }
-        ],
-        correctOptionId: 2,
-        hints: ["Used to pay"],
-        explanation: "'Ga' means 'Money' in Ewe."
-      },
-      {
-        id: 403,
+        id: 613,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you ask 'How much is it?' in Ewe?",
         options: [
-          { id: 1, text: "Ga nyae?" },
-          { id: 2, text: "Ewɔ xɔ" },
-          { id: 3, text: "Na mèwui" },
-          { id: 4, text: "Mafle" }
+          { id: 1, text: "Ho nenie?" },
+          { id: 2, text: "Exɔshi akpa" },
+          { id: 3, text: "Mexɔa shi oo" },
+          { id: 4, text: "Ɖe dzi" }
         ],
         correctOptionId: 1,
-        hints: ["Asking about the price"],
-        explanation: "'Ga nyae?' means 'How much is it?' in Ewe."
+        hints: ["Question about price"],
+        explanation: "Ho nenie? = How much is it?"
       },
       {
-        id: 404,
+        id: 614,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/mexɔa_shi_oo.m4a"),
+        options: [
+          { id: 1, text: "It is too expensive" },
+          { id: 2, text: "It is cheap" },
+          { id: 3, text: "Reduce the price" },
+          { id: 4, text: "How much is it?" }
+        ],
+        correctOptionId: 2,
+        hints: ["shi = price"],
+        explanation: "You heard 'Mexɔa shi oo' which means 'It is cheap'."
+      },
+      {
+        id: 615,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'It is expensive' in Ewe?",
+        question: "How do you say 'Reduce the price' in Ewe?",
         options: [
-          { id: 1, text: "Ewɔ xɔ" },
-          { id: 2, text: "Eye olɔ̃" },
-          { id: 3, text: "Na mèwui" },
-          { id: 4, text: "Mafle" }
+          { id: 1, text: "Ɖe dzi" },
+          { id: 2, text: "Ga gbagba le ashiwòa?" },
+          { id: 3, text: "Fiam bubu" },
+          { id: 4, text: "Ho nenie?" }
         ],
         correctOptionId: 1,
-        hints: ["High price"],
-        explanation: "'Ewɔ xɔ' means 'It is expensive' in Ewe."
+        hints: ["Ɖe = reduce"],
+        explanation: "Ɖe dzi = Reduce the price."
       },
       {
-        id: 405,
-        type: "matching",
-        instruction: "Match each Ewe word to its English meaning.",
-        pairs: [
-          { id: 1, left: "Asitsatsa", right: "Market" },
-          { id: 2, left: "Ga", right: "Money" },
-          { id: 3, left: "Aʋuƒuti", right: "Clothes" },
-          { id: 4, left: "Afɔkpa", right: "Shoes" },
-          { id: 5, left: "Ga nyae?", right: "How much is it?" }
+        id: 616,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/ga_gbagba_le_ashiwoa.m4a"),
+        options: [
+          { id: 1, text: "Reduce the price" },
+          { id: 2, text: "Do you have change?" },
+          { id: 3, text: "Show me another one" },
+          { id: 4, text: "How much is it?" }
         ],
-        hints: ["Asitsatsa = market", "Ga = money", "Afɔkpa = shoes"],
-        explanation: "These are key shopping words from this chapter."
+        correctOptionId: 2,
+        hints: ["ga = money", "gbagba = change"],
+        explanation: "You heard 'Ga gbagba le ashiwòa?' which means 'Do you have change?'."
+      },
+      {
+        id: 617,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I will take it' in Ewe?",
+        options: [
+          { id: 1, text: "Medzi be maƒle ehia" },
+          { id: 2, text: "Maxɔe" },
+          { id: 3, text: "Ble nam" },
+          { id: 4, text: "Mele nu kpɔm ko" }
+        ],
+        correctOptionId: 2,
+        hints: ["maxɔ = I will take"],
+        explanation: "Maxɔe = I will take it."
+      },
+      {
+        id: 618,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter6/medzi_be_mafle_ehia.m4a"),
+        options: [
+          { id: 1, text: "I will take it" },
+          { id: 2, text: "I want to buy this" },
+          { id: 3, text: "Wrap it for me" },
+          { id: 4, text: "I am just looking" }
+        ],
+        correctOptionId: 2,
+        hints: ["maƒle = buy", "ehia = this"],
+        explanation: "You heard 'Medzi be maƒle ehia' which means 'I want to buy this'."
+      },
+      {
+        id: 619,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe word.",
+        question: "What is 'Market' in Ewe?",
+        options: [
+          { id: 1, text: "Asi" },
+          { id: 2, text: "Ega" },
+          { id: 3, text: "Mele nu kpɔm ko" },
+          { id: 4, text: "Ho nenie?" }
+        ],
+        correctOptionId: 1,
+        hints: ["Where you buy things"],
+        explanation: "Asi = Market."
+      },
+      {
+        id: 620,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe word.",
+        question: "What is 'Money' in Ewe?",
+        options: [
+          { id: 1, text: "Asi" },
+          { id: 2, text: "Ega" },
+          { id: 3, text: "Mele nu kpɔm ko" },
+          { id: 4, text: "Ho nenie?" }
+        ],
+        correctOptionId: 2,
+        hints: ["What you pay with"],
+        explanation: "Ega = Money in Ewe."
+      },
+      {
+        id: 621,
+        type: "drag_drop",
+        instruction: "Complete the Ewe phrase by dragging the correct word.",
+        question: "Exɔshi ___ (It is too expensive)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "akpa" },
+          { id: "opt2", text: "bubu" },
+          { id: "opt3", text: "kpɔm" }
+        ],
+        correctDrop: {
+          blankId: "blank1",
+          itemId: "opt1"
+        },
+        hints: ["akpa = too much"],
+        explanation: "Exɔshi akpa = It is too expensive in Ewe."
+      },
+      {
+        id: 622,
+        type: "drag_drop",
+        instruction: "Complete the Ewe phrase by dragging the correct word.",
+        question: "Ga gbagba le ___? (Do you have change?)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "ashiwòa" },
+          { id: "opt2", text: "ega" },
+          { id: "opt3", text: "asi" }
+        ],
+        correctDrop: {
+          blankId: "blank1",
+          itemId: "opt1"
+        },
+        hints: ["ashiwòa = with you"],
+        explanation: "Ga gbagba le ashiwòa? = Do you have change? in Ewe."
       }
     ]
   }
 };
-

@@ -1,10 +1,9 @@
-// data/course_content/ewe/beginner/chapter7.js
 export default {
   id: 7,
   title: "Directions",
   description: "Learn how to ask for and give directions in Ewe",
-  icon: "navigate-outline",
-  totalXp: 18,
+  icon: "compass-outline",
+  totalXp: 10,
   difficulty: "Beginner",
 
   sections: [
@@ -13,394 +12,255 @@ export default {
       type: "words",
       title: "Asking Directions",
       icon: "help-circle-outline",
-      description: "Learn how to ask where places are in Ewe",
-      words: ["Fika?", "Afi?", "Mɔ", "Ɖusime", "Ɖusime", "Ŋgɔ", "Megbe", "Yi"],
+      description: "Learn how to ask for directions in Ewe",
+      words: ["Afikae asia le?", "Afikae nugodoƒe la le?", "Metre mɔ", "Aleke mawɔ aɖo afima?"],
       vocabulary: [
         {
-          id: 1,
-          english: "Where is it?",
-          native: "Fika?",
-          pronunciation: "fee-kah"
-          // audioUrl: "/audio/ewe/fika.mp3"
+          id: 86,
+          english: "Where is the market?",
+          native: "Afikae asia le?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/afikae_asia_le.m4a")
         },
         {
-          id: 2,
-          english: "Where? / Which place?",
-          native: "Afi?",
-          pronunciation: "ah-fee"
-          // audioUrl: "/audio/ewe/afi.mp3"
+          id: 92,
+          english: "Where is the toilet?",
+          native: "Afikae nugodoƒe la le?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/afikae_nugodoƒe_la_le.m4a")
         },
         {
-          id: 3,
-          english: "Road / Way / Path",
-          native: "Mɔ",
-          pronunciation: "moh"
-          // audioUrl: "/audio/ewe/mɔ.mp3"
+          id: 96,
+          english: "I am lost",
+          native: "Metre mɔ",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/metre_mɔ.m4a")
         },
         {
-          id: 4,
-          english: "Left",
-          native: "Ɖusime",
-          pronunciation: "doo-see-meh"
-          // audioUrl: "/audio/ewe/ɖusime.mp3"
-        },
-        {
-          id: 5,
-          english: "Right",
-          native: "Ɖusime",
-          pronunciation: "doo-see-meh"
-          // audioUrl: "/audio/ewe/ɖusime.mp3"
-        },
-        {
-          id: 6,
-          english: "Front / Ahead",
-          native: "Ŋgɔ",
-          pronunciation: "ng-goh"
-          // audioUrl: "/audio/ewe/ŋgɔ.mp3"
-        },
-        {
-          id: 7,
-          english: "Back / Behind",
-          native: "Megbe",
-          pronunciation: "meh-gbeh"
-          // audioUrl: "/audio/ewe/megbe.mp3"
-        },
-        {
-          id: 8,
-          english: "To go",
-          native: "Yi",
-          pronunciation: "yee"
-          // audioUrl: "/audio/ewe/yi.mp3"
+          id: 97,
+          english: "How do I get there?",
+          native: "Aleke mawɔ aɖo afima?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/aleke_mawɔ_aɖo_afima.m4a")
         }
       ],
       questions: [
         {
-          id: 101,
+          id: 701,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you ask 'Where is it?' in Ewe?",
+          question: "How do you ask 'Where is the market?' in Ewe?",
           options: [
-            { id: 1, text: "Fika?" },
-            { id: 2, text: "Afi?" },
-            { id: 3, text: "Mɔ" },
-            { id: 4, text: "Ɖusime" }
+            { id: 1, text: "Afikae asia le?" },
+            { id: 2, text: "Afikae nugodoƒe la le?" },
+            { id: 3, text: "Metre mɔ" },
+            { id: 4, text: "Aleke mawɔ aɖo afima?" }
           ],
           correctOptionId: 1,
-          hints: ["Asking for a location", "Ends with 'ka?'"],
-          explanation: "'Fika?' means 'Where is it?' in Ewe. It is used to ask for a location."
+          hints: ["Afikae = where", "asia = market"],
+          explanation: "Afikae asia le? = Where is the market? in Ewe."
         },
         {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Front / Ahead' in Ewe?",
+          id: 702,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/metre_mɔ.m4a"),
           options: [
-            { id: 1, text: "Ɖusime" },
-            { id: 2, text: "Ŋgɔ" },
-            { id: 3, text: "Megbe" },
-            { id: 4, text: "Afi" }
-          ],
-          correctOptionId: 2,
-          hints: ["Opposite of back", "Starts with 'Ŋ'"],
-          explanation: "'Ŋgɔ' means 'Front / Ahead' in Ewe."
-        },
-        {
-          id: 103,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Back / Behind' in Ewe?",
-          options: [
-            { id: 1, text: "Ɖusime" },
-            { id: 2, text: "Ŋgɔ" },
-            { id: 3, text: "Megbe" },
-            { id: 4, text: "Afi" }
+            { id: 1, text: "Where is the market?" },
+            { id: 2, text: "Where is the toilet?" },
+            { id: 3, text: "I am lost" },
+            { id: 4, text: "How do I get there?" }
           ],
           correctOptionId: 3,
-          hints: ["Opposite of front", "Starts with 'M'"],
-          explanation: "'Megbe' means 'Back / Behind' in Ewe."
+          hints: ["metre = I am lost"],
+          explanation: "You heard 'Metre mɔ' which means 'I am lost' in Ewe."
         },
         {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Fika?", right: "Where is it?" },
-            { id: 2, left: "Mɔ", right: "Road / Way" },
-            { id: 3, left: "Ŋgɔ", right: "Front / Ahead" },
-            { id: 4, left: "Megbe", right: "Back / Behind" }
+          id: 703,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "Afikae nugodoƒe la ___? (Where is the toilet?)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "le" },
+            { id: "opt2", text: "le?" },
+            { id: "opt3", text: "mɔ" }
           ],
-          hints: ["Fika? = where is it", "Mɔ = road", "Ŋgɔ = ahead"],
-          explanation: "These are essential direction words in Ewe."
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt2"
+          },
+          hints: ["le? = is it?"],
+          explanation: "Afikae nugodoƒe la le? = Where is the toilet? in Ewe."
         }
       ]
     },
 
     {
       id: "7-2",
-      type: "phrases",
-      title: "Places in Town",
-      icon: "business-outline",
-      description: "Learn the Ewe names for common places in town",
-      words: ["Sukuku", "Asitsatsa", "Dɔwɔƒe", "Kɔdzi", "Vosotɔme", "Mɔzɔmɔ", "Asitsatsa", "Kɔdzi ne kpɔ"],
+      type: "words",
+      title: "Giving Directions",
+      icon: "navigate-outline",
+      description: "Learn how to give directions in Ewe",
+      words: ["Yi tẽ", "Trɔ ɖe ɖusi me", "Trɔ ɖe miã me", "Zɔ mɔ hia dzi"],
       vocabulary: [
         {
-          id: 9,
-          english: "School",
-          native: "Sukuku",
-          pronunciation: "soo-koo-koo"
-          // audioUrl: "/audio/ewe/sukuku.mp3"
+          id: 87,
+          english: "Go straight",
+          native: "Yi tẽ",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/yi_tẽ.m4a")
         },
         {
-          id: 10,
-          english: "Market",
-          native: "Asitsatsa",
-          pronunciation: "ah-see-tsah-tsah"
-          // audioUrl: "/audio/ewe/asitsatsa.mp3"
+          id: 88,
+          english: "Turn right",
+          native: "Trɔ ɖe ɖusi me",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/trɔ_ɖe_ɖusi_me.m4a")
         },
         {
-          id: 11,
-          english: "Work / Office building",
-          native: "Dɔwɔƒe",
-          pronunciation: "doh-woh-feh"
-          // audioUrl: "/audio/ewe/dɔwɔƒe.mp3"
+          id: 89,
+          english: "Turn left",
+          native: "Trɔ ɖe miã me",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/trɔ_ɖe_miã_me.m4a")
         },
         {
-          id: 12,
-          english: "Hospital",
-          native: "Kɔdzi",
-          pronunciation: "koh-jee"
-          // audioUrl: "/audio/ewe/kɔdzi.mp3"
-        },
-        {
-          id: 13,
-          english: "Church / Mosque",
-          native: "Vosotɔme",
-          pronunciation: "voh-soh-toh-meh"
-          // audioUrl: "/audio/ewe/vosotɔme.mp3"
-        },
-        {
-          id: 14,
-          english: "Station / Stop",
-          native: "Mɔzɔmɔ",
-          pronunciation: "moh-zoh-moh"
-          // audioUrl: "/audio/ewe/mɔzɔmɔ.mp3"
-        },
-        {
-          id: 15,
-          english: "Main road",
-          native: "Mɔ wukple",
-          pronunciation: "moh woo-kpleh"
-          // audioUrl: "/audio/ewe/mɔ_wukple.mp3"
-        },
-        {
-          id: 16,
-          english: "Corner",
-          native: "Neaflugbe",
-          pronunciation: "neh-ah-floo-gbeh"
-          // audioUrl: "/audio/ewe/neaflugbe.mp3"
+          id: 95,
+          english: "Follow this road",
+          native: "Zɔ mɔ hia dzi",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/zɔ_mɔ_hia_dzi.m4a")
         }
       ],
       questions: [
         {
-          id: 201,
+          id: 704,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'School' in Ewe?",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Go straight' in Ewe?",
           options: [
-            { id: 1, text: "Sukuku" },
-            { id: 2, text: "Asitsatsa" },
-            { id: 3, text: "Dɔwɔƒe" },
-            { id: 4, text: "Vosotɔme" }
+            { id: 1, text: "Yi tẽ" },
+            { id: 2, text: "Trɔ ɖe ɖusi me" },
+            { id: 3, text: "Trɔ ɖe miã me" },
+            { id: 4, text: "Zɔ mɔ hia dzi" }
           ],
           correctOptionId: 1,
-          hints: ["Where you learn", "Starts with 'Su'"],
-          explanation: "'Sukuku' means 'School' in Ewe."
+          hints: ["Yi = go", "tẽ = straight"],
+          explanation: "Yi tẽ = Go straight in Ewe."
         },
         {
-          id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Hospital' in Ewe?",
+          id: 705,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/trɔ_ɖe_ɖusi_me.m4a"),
           options: [
-            { id: 1, text: "Sukuku" },
-            { id: 2, text: "Asitsatsa" },
-            { id: 3, text: "Kɔdzi" },
-            { id: 4, text: "Vosotɔme" }
+            { id: 1, text: "Go straight" },
+            { id: 2, text: "Turn right" },
+            { id: 3, text: "Turn left" },
+            { id: 4, text: "Follow this road" }
           ],
-          correctOptionId: 3,
-          hints: ["Where sick people go", "Starts with 'K'"],
-          explanation: "'Kɔdzi' means 'Hospital' in Ewe."
+          correctOptionId: 2,
+          hints: ["trɔ = turn", "ɖusi me = right"],
+          explanation: "You heard 'Trɔ ɖe ɖusi me' which means 'Turn right' in Ewe."
         },
         {
-          id: 203,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Church / Mosque' in Ewe?",
-          options: [
-            { id: 1, text: "Sukuku" },
-            { id: 2, text: "Asitsatsa" },
-            { id: 3, text: "Kɔdzi" },
-            { id: 4, text: "Vosotɔme" }
+          id: 706,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "Trɔ ɖe ___ me (Turn left)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "miã" },
+            { id: "opt2", text: "ɖusi" },
+            { id: "opt3", text: "tẽ" }
           ],
-          correctOptionId: 4,
-          hints: ["Place of worship", "Starts with 'V'"],
-          explanation: "'Vosotɔme' means 'Church / Mosque' in Ewe."
-        },
-        {
-          id: 204,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Sukuku", right: "School" },
-            { id: 2, left: "Asitsatsa", right: "Market" },
-            { id: 3, left: "Kɔdzi", right: "Hospital" },
-            { id: 4, left: "Vosotɔme", right: "Church / Mosque" }
-          ],
-          hints: ["Sukuku = school", "Asitsatsa = market", "Kɔdzi = hospital"],
-          explanation: "These are common places in town in Ewe."
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
+          hints: ["miã me = left"],
+          explanation: "Trɔ ɖe miã me = Turn left in Ewe."
         }
       ]
     },
 
     {
       id: "7-3",
-      type: "simple_sentences",
-      title: "Giving Directions",
+      type: "words",
+      title: "Distance & Position",
       icon: "map-outline",
-      description: "Learn how to give directions to others in Ewe",
-      words: ["Yi Ɖusime", "Yi Ɖusime", "Yi Ŋgɔ", "Yi megbe", "Yi wuie", "Trɔ Ɖusime", "Ve", "Didi"],
+      description: "Learn how to describe distance and position in Ewe",
+      words: ["Edzidzi", "Etsɔ ɖe", "Le xɔa megbe", "Ŋgɔ"],
       vocabulary: [
         {
-          id: 17,
-          english: "Go left",
-          native: "Yi Ɖusime me",
-          pronunciation: "yee doo-see-meh meh"
-          // audioUrl: "/audio/ewe/yi_ɖusime_me.mp3"
+          id: 90,
+          english: "It is far",
+          native: "Edzidzi",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/edzidzi.m4a")
         },
         {
-          id: 18,
-          english: "Go right",
-          native: "Yi Ɖusime me",
-          pronunciation: "yee doo-see-meh meh"
-          // audioUrl: "/audio/ewe/yi_ɖusime_me.mp3"
+          id: 91,
+          english: "It is near",
+          native: "Etsɔ ɖe",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/etsɔ_ɖe.m4a")
         },
         {
-          id: 19,
-          english: "Go straight / ahead",
-          native: "Yi Ŋgɔ",
-          pronunciation: "yee ng-goh"
-          // audioUrl: "/audio/ewe/yi_ŋgɔ.mp3"
+          id: 93,
+          english: "Behind the house",
+          native: "Le xɔa megbe",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/le_xɔa_megbe.m4a")
         },
         {
-          id: 20,
-          english: "Go back",
-          native: "Yi megbe",
-          pronunciation: "yee meh-gbeh"
-          // audioUrl: "/audio/ewe/yi_megbe.mp3"
-        },
-        {
-          id: 21,
-          english: "Continue / go on",
-          native: "Yi kpuie",
-          pronunciation: "yee kpoo-ee-eh"
-          // audioUrl: "/audio/ewe/yi_kpuie.mp3"
-        },
-        {
-          id: 22,
-          english: "Turn left",
-          native: "Trɔ Ɖusime",
-          pronunciation: "troh doo-see-meh"
-          // audioUrl: "/audio/ewe/trɔ_ɖusime.mp3"
-        },
-        {
-          id: 23,
-          english: "Near / Close by",
-          native: "Ve",
-          pronunciation: "veh"
-          // audioUrl: "/audio/ewe/ve.mp3"
-        },
-        {
-          id: 24,
-          english: "Far",
-          native: "Didi",
-          pronunciation: "dee-dee"
-          // audioUrl: "/audio/ewe/didi.mp3"
+          id: 94,
+          english: "In front",
+          native: "Ŋgɔ",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/ŋgɔ.m4a")
         }
       ],
       questions: [
         {
-          id: 301,
+          id: 707,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'Go straight / ahead' in Ewe?",
+          question: "How do you say 'It is far' in Ewe?",
           options: [
-            { id: 1, text: "Yi Ɖusime me" },
-            { id: 2, text: "Yi Ŋgɔ" },
-            { id: 3, text: "Yi megbe" },
-            { id: 4, text: "Trɔ Ɖusime" }
-          ],
-          correctOptionId: 2,
-          hints: ["Ŋgɔ = ahead", "Yi = go"],
-          explanation: "'Yi Ŋgɔ' means 'Go straight / ahead'. 'Ŋgɔ' means 'ahead'."
-        },
-        {
-          id: 302,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'Go back' in Ewe?",
-          options: [
-            { id: 1, text: "Yi Ɖusime me" },
-            { id: 2, text: "Yi Ŋgɔ" },
-            { id: 3, text: "Yi megbe" },
-            { id: 4, text: "Trɔ Ɖusime" }
-          ],
-          correctOptionId: 3,
-          hints: ["megbe = back", "Yi = go"],
-          explanation: "'Yi megbe' means 'Go back'. 'megbe' means 'back/behind'."
-        },
-        {
-          id: 303,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Near' in Ewe?",
-          options: [
-            { id: 1, text: "Ve" },
-            { id: 2, text: "Didi" },
-            { id: 3, text: "Mɔ" },
-            { id: 4, text: "Fika" }
+            { id: 1, text: "Edzidzi" },
+            { id: 2, text: "Etsɔ ɖe" },
+            { id: 3, text: "Le xɔa megbe" },
+            { id: 4, text: "Ŋgɔ" }
           ],
           correctOptionId: 1,
-          hints: ["Opposite of far", "Short word"],
-          explanation: "'Ve' means 'Near / Close by' in Ewe."
+          hints: ["dzidzi = far"],
+          explanation: "Edzidzi = It is far in Ewe."
         },
         {
-          id: 304,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Far' in Ewe?",
+          id: 708,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/etsɔ_ɖe.m4a"),
           options: [
-            { id: 1, text: "Ve" },
-            { id: 2, text: "Didi" },
-            { id: 3, text: "Mɔ" },
-            { id: 4, text: "Fika" }
+            { id: 1, text: "It is far" },
+            { id: 2, text: "It is near" },
+            { id: 3, text: "Behind the house" },
+            { id: 4, text: "In front" }
           ],
           correctOptionId: 2,
-          hints: ["Opposite of near", "Repeat sound"],
-          explanation: "'Didi' means 'Far' in Ewe."
+          hints: ["tsɔ = near"],
+          explanation: "You heard 'Etsɔ ɖe' which means 'It is near' in Ewe."
         },
         {
-          id: 305,
-          type: "matching",
-          instruction: "Match each Ewe phrase to its English meaning.",
-          pairs: [
-            { id: 1, left: "Yi Ŋgɔ", right: "Go straight / ahead" },
-            { id: 2, left: "Yi megbe", right: "Go back" },
-            { id: 3, left: "Trɔ Ɖusime", right: "Turn left" },
-            { id: 4, left: "Ve", right: "Near" },
-            { id: 5, left: "Didi", right: "Far" }
+          id: 709,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "Le xɔa ___ (Behind the house)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "megbe" },
+            { id: "opt2", text: "ŋgɔ" },
+            { id: "opt3", text: "le" }
           ],
-          hints: ["Yi = go", "Ŋgɔ = ahead", "Didi = far"],
-          explanation: "These are essential phrases for giving directions in Ewe."
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
+          hints: ["megbe = behind"],
+          explanation: "Le xɔa megbe = Behind the house in Ewe."
         }
       ]
     }
@@ -410,83 +270,137 @@ export default {
     id: "review-7",
     title: "Review: Directions",
     icon: "refresh-outline",
-    description: "Review the direction words and phrases you've learned",
+    description: "Review all the direction vocabulary you've learned",
     questions: [
       {
-        id: 401,
+        id: 710,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you ask 'Where is it?' in Ewe?",
+        question: "How do you ask 'Where is the toilet?' in Ewe?",
         options: [
-          { id: 1, text: "Fika?" },
-          { id: 2, text: "Afi?" },
-          { id: 3, text: "Mɔ" },
-          { id: 4, text: "Didi" }
-        ],
-        correctOptionId: 1,
-        hints: ["Asking for a location"],
-        explanation: "'Fika?' means 'Where is it?' in Ewe."
-      },
-      {
-        id: 402,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "How do you say 'School' in Ewe?",
-        options: [
-          { id: 1, text: "Sukuku" },
-          { id: 2, text: "Asitsatsa" },
-          { id: 3, text: "Kɔdzi" },
-          { id: 4, text: "Vosotɔme" }
-        ],
-        correctOptionId: 1,
-        hints: ["Where you learn"],
-        explanation: "'Sukuku' means 'School' in Ewe."
-      },
-      {
-        id: 403,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'Go straight / ahead' in Ewe?",
-        options: [
-          { id: 1, text: "Yi Ɖusime me" },
-          { id: 2, text: "Yi Ŋgɔ" },
-          { id: 3, text: "Yi megbe" },
-          { id: 4, text: "Trɔ Ɖusime" }
+          { id: 1, text: "Afikae asia le?" },
+          { id: 2, text: "Afikae nugodoƒe la le?" },
+          { id: 3, text: "Metre mɔ" },
+          { id: 4, text: "Aleke mawɔ aɖo afima?" }
         ],
         correctOptionId: 2,
-        hints: ["Ŋgɔ = ahead"],
-        explanation: "'Yi Ŋgɔ' means 'Go straight / ahead'."
+        hints: ["nugodoƒe = toilet"],
+        explanation: "Afikae nugodoƒe la le? = Where is the toilet?"
       },
       {
-        id: 404,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "How do you say 'Hospital' in Ewe?",
+        id: 711,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/aleke_mawɔ_aɖo_afima.m4a"),
         options: [
-          { id: 1, text: "Sukuku" },
-          { id: 2, text: "Asitsatsa" },
-          { id: 3, text: "Kɔdzi" },
-          { id: 4, text: "Vosotɔme" }
+          { id: 1, text: "Where is the market?" },
+          { id: 2, text: "Where is the toilet?" },
+          { id: 3, text: "I am lost" },
+          { id: 4, text: "How do I get there?" }
+        ],
+        correctOptionId: 4,
+        hints: ["aleke = how", "aɖo = get", "afima = there"],
+        explanation: "You heard 'Aleke mawɔ aɖo afima?' which means 'How do I get there?'."
+      },
+      {
+        id: 712,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Turn left' in Ewe?",
+        options: [
+          { id: 1, text: "Yi tẽ" },
+          { id: 2, text: "Trɔ ɖe ɖusi me" },
+          { id: 3, text: "Trɔ ɖe miã me" },
+          { id: 4, text: "Zɔ mɔ hia dzi" }
         ],
         correctOptionId: 3,
-        hints: ["Where sick people go"],
-        explanation: "'Kɔdzi' means 'Hospital' in Ewe."
+        hints: ["miã me = left"],
+        explanation: "Trɔ ɖe miã me = Turn left."
       },
       {
-        id: 405,
-        type: "matching",
-        instruction: "Match each Ewe word to its English meaning.",
-        pairs: [
-          { id: 1, left: "Ŋgɔ", right: "Ahead" },
-          { id: 2, left: "Megbe", right: "Back" },
-          { id: 3, left: "Sukuku", right: "School" },
-          { id: 4, left: "Kɔdzi", right: "Hospital" },
-          { id: 5, left: "Didi", right: "Far" }
+        id: 713,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/zɔ_mɔ_hia_dzi.m4a"),
+        options: [
+          { id: 1, text: "Go straight" },
+          { id: 2, text: "Turn right" },
+          { id: 3, text: "Turn left" },
+          { id: 4, text: "Follow this road" }
         ],
-        hints: ["Ŋgɔ = ahead", "Megbe = back", "Kɔdzi = hospital"],
-        explanation: "These are key direction words from this chapter."
+        correctOptionId: 4,
+        hints: ["zɔ = follow", "mɔ = road", "hia = this"],
+        explanation: "You heard 'Zɔ mɔ hia dzi' which means 'Follow this road'."
+      },
+      {
+        id: 714,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'It is far' in Ewe?",
+        options: [
+          { id: 1, text: "Edzidzi" },
+          { id: 2, text: "Etsɔ ɖe" },
+          { id: 3, text: "Le xɔa megbe" },
+          { id: 4, text: "Ŋgɔ" }
+        ],
+        correctOptionId: 1,
+        hints: ["dzidzi = far"],
+        explanation: "Edzidzi = It is far."
+      },
+      {
+        id: 715,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter7/ŋgɔ.m4a"),
+        options: [
+          { id: 1, text: "It is far" },
+          { id: 2, text: "It is near" },
+          { id: 3, text: "Behind the house" },
+          { id: 4, text: "In front" }
+        ],
+        correctOptionId: 4,
+        hints: ["ŋgɔ = in front"],
+        explanation: "You heard 'Ŋgɔ' which means 'In front' in Ewe."
+      },
+      {
+        id: 716,
+        type: "drag_drop",
+        instruction: "Complete the Ewe phrase by dragging the correct word.",
+        question: "Afikae asia ___? (Where is the market?)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "le" },
+          { id: "opt2", text: "le?" },
+          { id: "opt3", text: "mɔ" }
+        ],
+        correctDrop: {
+          blankId: "blank1",
+          itemId: "opt2"
+        },
+        hints: ["le? = is it?"],
+        explanation: "Afikae asia le? = Where is the market? in Ewe."
+      },
+      {
+        id: 717,
+        type: "drag_drop",
+        instruction: "Complete the Ewe phrase by dragging the correct word.",
+        question: "Trɔ ɖe ___ me (Turn right)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "miã" },
+          { id: "opt2", text: "ɖusi" },
+          { id: "opt3", text: "tẽ" }
+        ],
+        correctDrop: {
+          blankId: "blank1",
+          itemId: "opt2"
+        },
+        hints: ["ɖusi me = right"],
+        explanation: "Trɔ ɖe ɖusi me = Turn right in Ewe."
       }
     ]
   }
 };
-

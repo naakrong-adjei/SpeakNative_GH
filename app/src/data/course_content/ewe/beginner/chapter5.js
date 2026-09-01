@@ -1,129 +1,64 @@
-// data/course_content/ewe/beginner/chapter5.js
 export default {
   id: 5,
   title: "Food & Drinks",
-  description: "Learn words and phrases for food and drinks in Ewe",
+  description: "Learn food and drink vocabulary in Ewe",
   icon: "restaurant-outline",
-  totalXp: 20,
+  totalXp: 10,
   difficulty: "Beginner",
 
   sections: [
     {
       id: "5-1",
       type: "words",
-      title: "Common Foods",
+      title: "Food Words",
       icon: "restaurant-outline",
-      description: "Learn the names of common foods in Ewe",
-      words: ["Nuɖuɖu", "Ablɔ", "Fufu", "Banku", "Koklo", "Gbe", "Lã"],
+      description: "Learn basic food and drink words in Ewe",
+      words: ["Tsi", "Nuɖuɖu"],
       vocabulary: [
         {
-          id: 1,
+          id: 60,
+          english: "Water",
+          native: "Tsi",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/tsi.m4a")
+        },
+        {
+          id: 61,
           english: "Food",
           native: "Nuɖuɖu",
-          pronunciation: "nu-du-du"
-          // audioUrl: "/audio/ewe/nuɖuɖu.mp3"
-        },
-        {
-          id: 2,
-          english: "Bread",
-          native: "Ablɔ",
-          pronunciation: "ah-bloh"
-          // audioUrl: "/audio/ewe/ablɔ.mp3"
-        },
-        {
-          id: 3,
-          english: "Fufu",
-          native: "Fufu",
-          pronunciation: "foo-foo"
-          // audioUrl: "/audio/ewe/fufu.mp3"
-        },
-        {
-          id: 4,
-          english: "Banku",
-          native: "Banku",
-          pronunciation: "bahn-koo"
-          // audioUrl: "/audio/ewe/banku.mp3"
-        },
-        {
-          id: 5,
-          english: "Chicken",
-          native: "Koklo",
-          pronunciation: "koh-kloh"
-          // audioUrl: "/audio/ewe/koklo.mp3"
-        },
-        {
-          id: 6,
-          english: "Vegetables",
-          native: "Gbe",
-          pronunciation: "gbeh"
-          // audioUrl: "/audio/ewe/gbe.mp3"
-        },
-        {
-          id: 7,
-          english: "Meat",
-          native: "Lã",
-          pronunciation: "lah"
-          // audioUrl: "/audio/ewe/lã.mp3"
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/nududu.m4a")
         }
       ],
       questions: [
         {
-          id: 101,
+          id: 501,
           type: "multiple_choice",
           instruction: "Select the correct Ewe word.",
-          question: "What is 'Food' in Ewe?",
+          question: "What is 'Water' in Ewe?",
           options: [
-            { id: 1, text: "Nuɖuɖu" },
-            { id: 2, text: "Ablɔ" },
-            { id: 3, text: "Koklo" },
-            { id: 4, text: "Lã" }
+            { id: 1, text: "Tsi" },
+            { id: 2, text: "Nuɖuɖu" },
+            { id: 3, text: "Dɔ nye wum" },
+            { id: 4, text: "Tsikɔ nye wum" }
           ],
           correctOptionId: 1,
-          hints: ["What you eat"],
-          explanation: "'Nuɖuɖu' means 'Food' in Ewe."
+          hints: ["Essential for drinking"],
+          explanation: "Tsi = Water in Ewe."
         },
         {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Chicken' in Ewe?",
+          id: 502,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What word did you hear?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/nududu.m4a"),
           options: [
-            { id: 1, text: "Ablɔ" },
-            { id: 2, text: "Koklo" },
-            { id: 3, text: "Lã" },
-            { id: 4, text: "Gbe" }
+            { id: 1, text: "Water" },
+            { id: 2, text: "Food" },
+            { id: 3, text: "Hunger" },
+            { id: 4, text: "Thirst" }
           ],
           correctOptionId: 2,
-          hints: ["A bird people eat"],
-          explanation: "'Koklo' means 'Chicken' in Ewe."
-        },
-        {
-          id: 103,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Meat' in Ewe?",
-          options: [
-            { id: 1, text: "Ablɔ" },
-            { id: 2, text: "Koklo" },
-            { id: 3, text: "Lã" },
-            { id: 4, text: "Gbe" }
-          ],
-          correctOptionId: 3,
-          hints: ["Animal products to eat"],
-          explanation: "'Lã' means 'Meat' in Ewe."
-        },
-        {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Nuɖuɖu", right: "Food" },
-            { id: 2, left: "Ablɔ", right: "Bread" },
-            { id: 3, left: "Koklo", right: "Chicken" },
-            { id: 4, left: "Lã", right: "Meat" }
-          ],
-          hints: ["Nuɖuɖu = food", "Ablɔ = bread", "Lã = meat"],
-          explanation: "These are common food words in Ewe."
+          hints: ["What you eat"],
+          explanation: "You heard 'Nuɖuɖu' which means Food in Ewe."
         }
       ]
     },
@@ -131,324 +66,168 @@ export default {
     {
       id: "5-2",
       type: "phrases",
-      title: "Fruits & Ingredients",
-      icon: "nutrition-outline",
-      description: "Learn the names of fruits and ingredients in Ewe",
-      words: ["Atikutsetse", "Akɔdzu", "Agbe", "Detsi", "Kapa", "Suka"],
+      title: "Hunger & Thirst",
+      icon: "cafe-outline",
+      description: "Learn how to express hunger, thirst, and eating in Ewe",
+      words: ["Dɔ nye wum", "Medzi be maɖu nu", "Tsikɔ nye wum", "Maɖu mɔlu"],
       vocabulary: [
         {
-          id: 8,
-          english: "Fruit",
-          native: "Atikutsetse",
-          pronunciation: "ah-tee-koo-tseh-tseh"
-          // audioUrl: "/audio/ewe/atikutsetse.mp3"
+          id: 62,
+          english: "I am hungry",
+          native: "Dɔ nye wum",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/dɔ_nye_wum.m4a")
         },
         {
-          id: 9,
-          english: "Orange",
-          native: "Akɔdzu",
-          pronunciation: "ah-koh-dzu"
-          // audioUrl: "/audio/ewe/akɔdzu.mp3"
+          id: 63,
+          english: "I want to eat",
+          native: "Medzi be maɖu nu",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/medzi_be_madu_nu.m4a")
         },
         {
-          id: 10,
-          english: "Leaf / Vegetable",
-          native: "Agbe",
-          pronunciation: "ah-gbeh"
-          // audioUrl: "/audio/ewe/agbe.mp3"
+          id: 67,
+          english: "I am thirsty",
+          native: "Tsikɔ nye wum",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/tsikɔ_nye_wum.m4a")
         },
         {
-          id: 11,
-          english: "Salt",
-          native: "Detsi",
-          pronunciation: "deh-chee"
-          // audioUrl: "/audio/ewe/detsi.mp3"
-        },
-        {
-          id: 12,
-          english: "Pepper",
-          native: "Kapa",
-          pronunciation: "kah-pah"
-          // audioUrl: "/audio/ewe/kapa.mp3"
-        },
-        {
-          id: 13,
-          english: "Sugar",
-          native: "Suka",
-          pronunciation: "soo-kah"
-          // audioUrl: "/audio/ewe/suka.mp3"
+          id: 101,
+          english: "I will eat rice",
+          native: "Maɖu mɔlu",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/madu_mɔlu.m4a")
         }
       ],
       questions: [
         {
-          id: 201,
+          id: 503,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "What is 'Fruit' in Ewe?",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I am hungry' in Ewe?",
           options: [
-            { id: 1, text: "Atikutsetse" },
-            { id: 2, text: "Akɔdzu" },
-            { id: 3, text: "Agbe" },
-            { id: 4, text: "Detsi" }
+            { id: 1, text: "Tsikɔ nye wum" },
+            { id: 2, text: "Dɔ nye wum" },
+            { id: 3, text: "Medzi be maɖu nu" },
+            { id: 4, text: "Maɖu mɔlu" }
           ],
-          correctOptionId: 1,
-          hints: ["Sweet food from plants"],
-          explanation: "'Atikutsetse' means 'Fruit' in Ewe."
+          correctOptionId: 2,
+          hints: ["Dɔ = hunger"],
+          explanation: "Dɔ nye wum = I am hungry in Ewe."
         },
         {
-          id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Salt' in Ewe?",
+          id: 504,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/tsikɔ_nye_wum.m4a"),
           options: [
-            { id: 1, text: "Suka" },
-            { id: 2, text: "Kapa" },
-            { id: 3, text: "Detsi" },
-            { id: 4, text: "Atikutsetse" }
+            { id: 1, text: "I am hungry" },
+            { id: 2, text: "I am thirsty" },
+            { id: 3, text: "I want to eat" },
+            { id: 4, text: "I will eat rice" }
           ],
-          correctOptionId: 3,
-          hints: ["Seasoning, white crystals"],
-          explanation: "'Detsi' means 'Salt' in Ewe."
+          correctOptionId: 2,
+          hints: ["Tsikɔ = thirst"],
+          explanation: "You heard 'Tsikɔ nye wum' which means 'I am thirsty' in Ewe."
         },
         {
-          id: 203,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Sugar' in Ewe?",
-          options: [
-            { id: 1, text: "Suka" },
-            { id: 2, text: "Kapa" },
-            { id: 3, text: "Detsi" },
-            { id: 4, text: "Agbe" }
+          id: 505,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          question: "Medzi be _____ nu (I want to eat)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "maɖu" },
+            { id: "opt2", text: "tsi" },
+            { id: "opt3", text: "mɔlu" }
           ],
-          correctOptionId: 1,
-          hints: ["Sweetener"],
-          explanation: "'Suka' means 'Sugar' in Ewe."
-        },
-        {
-          id: 204,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Atikutsetse", right: "Fruit" },
-            { id: 2, left: "Akɔdzu", right: "Orange" },
-            { id: 3, left: "Detsi", right: "Salt" },
-            { id: 4, left: "Suka", right: "Sugar" }
-          ],
-          hints: ["Atikutsetse = fruit", "Akɔdzu = orange", "Suka = sugar"],
-          explanation: "These are fruit and ingredient words in Ewe."
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
+          hints: ["Medzi be = I want to", "nu = food/eat"],
+          explanation: "Medzi be maɖu nu = I want to eat in Ewe."
         }
       ]
     },
 
     {
       id: "5-3",
-      type: "simple_sentences",
-      title: "Drinks",
-      icon: "cafe-outline",
-      description: "Learn the names of drinks in Ewe",
-      words: ["Tsi", "Noɖuɖu", "Fesi", "Keke", "Alɔ", "Aha"],
-      vocabulary: [
-        {
-          id: 14,
-          english: "Water",
-          native: "Tsi",
-          pronunciation: "chee"
-          // audioUrl: "/audio/ewe/tsi.mp3"
-        },
-        {
-          id: 15,
-          english: "Drink",
-          native: "Noɖuɖu",
-          pronunciation: "noh-du-du"
-          // audioUrl: "/audio/ewe/noɖuɖu.mp3"
-        },
-        {
-          id: 16,
-          english: "Tee (local drink)",
-          native: "Fesi",
-          pronunciation: "feh-see"
-          // audioUrl: "/audio/ewe/fesi.mp3"
-        },
-        {
-          id: 17,
-          english: "Milk",
-          native: "Keke",
-          pronunciation: "keh-keh"
-          // audioUrl: "/audio/ewe/keke.mp3"
-        },
-        {
-          id: 18,
-          english: "Palm wine",
-          native: "Alɔ",
-          pronunciation: "ah-loh"
-          // audioUrl: "/audio/ewe/alɔ.mp3"
-        },
-        {
-          id: 19,
-          english: "Alcohol",
-          native: "Aha",
-          pronunciation: "ah-hah"
-          // audioUrl: "/audio/ewe/aha.mp3"
-        }
-      ],
-      questions: [
-        {
-          id: 301,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "What is 'Water' in Ewe?",
-          options: [
-            { id: 1, text: "Tsi" },
-            { id: 2, text: "Noɖuɖu" },
-            { id: 3, text: "Keke" },
-            { id: 4, text: "Alɔ" }
-          ],
-          correctOptionId: 1,
-          hints: ["You drink it every day"],
-          explanation: "'Tsi' means 'Water' in Ewe."
-        },
-        {
-          id: 302,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "What is 'Drink' in Ewe?",
-          options: [
-            { id: 1, text: "Tsi" },
-            { id: 2, text: "Noɖuɖu" },
-            { id: 3, text: "Keke" },
-            { id: 4, text: "Alɔ" }
-          ],
-          correctOptionId: 2,
-          hints: ["Something you drink"],
-          explanation: "'Noɖuɖu' means 'Drink' in Ewe."
-        },
-        {
-          id: 303,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Milk' in Ewe?",
-          options: [
-            { id: 1, text: "Tsi" },
-            { id: 2, text: "Noɖuɖu" },
-            { id: 3, text: "Keke" },
-            { id: 4, text: "Alɔ" }
-          ],
-          correctOptionId: 3,
-          hints: ["White drink from animals"],
-          explanation: "'Keke' means 'Milk' in Ewe."
-        },
-        {
-          id: 304,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Tsi", right: "Water" },
-            { id: 2, left: "Noɖuɖu", right: "Drink" },
-            { id: 3, left: "Keke", right: "Milk" },
-            { id: 4, left: "Alɔ", right: "Palm wine" }
-          ],
-          hints: ["Tsi = water", "Noɖuɖu = drink", "Keke = milk"],
-          explanation: "These are drink words in Ewe."
-        }
-      ]
-    },
-
-    {
-      id: "5-4",
-      type: "basic_conversations",
-      title: "At the Restaurant",
+      type: "phrases",
+      title: "At the Table",
       icon: "restaurant-outline",
-      description: "Learn phrases for ordering food and drinks in Ewe",
-      words: ["Mele nuɖuɖu ƒe dzudzɔ", "Mele tsi fo", "Nuɖuɖu nyui", "Akpe"],
+      description: "Learn useful phrases for dining in Ewe",
+      words: ["Meɖe kuku na tsim", "Nuɖuɖua xo dzo", "Meɖe kuku tsɔ akɔnta ve", "Meɖunu xoxo"],
       vocabulary: [
         {
-          id: 20,
-          english: "I am hungry",
-          native: "Mele nuɖuɖu ƒe dzudzɔ",
-          pronunciation: "meh-leh nu-du-du feh dzu-dzoh"
-          // audioUrl: "/audio/ewe/mele_nuɖuɖu_ƒe_dzudzɔ.mp3"
+          id: 66,
+          english: "Give me water please",
+          native: "Meɖe kuku na tsim",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/mede_kuku_na_tsim.m4a")
         },
         {
-          id: 21,
-          english: "I am thirsty",
-          native: "Mele tsi fo",
-          pronunciation: "meh-leh chee foh"
-          // audioUrl: "/audio/ewe/mele_tsi_fo.mp3"
+          id: 72,
+          english: "The food is hot",
+          native: "Nuɖuɖua xo dzo",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/nududua_xo_dzo.m4a")
         },
         {
-          id: 22,
-          english: "Delicious food",
-          native: "Nuɖuɖu nyui",
-          pronunciation: "nu-du-du nyoo-ee"
-          // audioUrl: "/audio/ewe/nuɖuɖu_nyui.mp3"
+          id: 73,
+          english: "Bring the bill please",
+          native: "Meɖe kuku tsɔ akɔnta ve",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/mede_kuku_tsɔ_akɔnta_ve.m4a")
         },
         {
-          id: 23,
-          english: "Thank you",
-          native: "Akpe",
-          pronunciation: "ah-kpeh"
-          // audioUrl: "/audio/ewe/akpe.mp3"
+          id: 102,
+          english: "I have eaten already",
+          native: "Meɖunu xoxo",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/medunu_xoxo.m4a")
         }
       ],
       questions: [
         {
-          id: 401,
+          id: 506,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'I am hungry' in Ewe?",
+          question: "How do you say 'Give me water please' in Ewe?",
           options: [
-            { id: 1, text: "Mele nuɖuɖu ƒe dzudzɔ" },
-            { id: 2, text: "Mele tsi fo" },
-            { id: 3, text: "Nuɖuɖu nyui" },
-            { id: 4, text: "Akpe" }
+            { id: 1, text: "Meɖe kuku na tsim" },
+            { id: 2, text: "Meɖe kuku tsɔ akɔnta ve" },
+            { id: 3, text: "Dɔ nye wum" },
+            { id: 4, text: "Tsikɔ nye wum" }
           ],
           correctOptionId: 1,
-          hints: ["Means you want to eat"],
-          explanation: "'Mele nuɖuɖu ƒe dzudzɔ' means 'I am hungry' in Ewe."
+          hints: ["Meɖe kuku = please", "tsi = water"],
+          explanation: "Meɖe kuku na tsim = Give me water please in Ewe."
         },
         {
-          id: 402,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'I am thirsty' in Ewe?",
+          id: 507,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/nududua_xo_dzo.m4a"),
           options: [
-            { id: 1, text: "Mele nuɖuɖu ƒe dzudzɔ" },
-            { id: 2, text: "Mele tsi fo" },
-            { id: 3, text: "Nuɖuɖu nyui" },
-            { id: 4, text: "Akpe" }
+            { id: 1, text: "Give me water please" },
+            { id: 2, text: "The food is hot" },
+            { id: 3, text: "Bring the bill please" },
+            { id: 4, text: "I have eaten already" }
           ],
           correctOptionId: 2,
-          hints: ["Means you want a drink", "Contains 'tsi' (water)"],
-          explanation: "'Mele tsi fo' means 'I am thirsty' in Ewe."
+          hints: ["Nuɖuɖu = food", "dzo = hot"],
+          explanation: "You heard 'Nuɖuɖua xo dzo' which means 'The food is hot' in Ewe."
         },
         {
-          id: 403,
+          id: 508,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'Delicious food' in Ewe?",
+          question: "How do you say 'I have eaten already' in Ewe?",
           options: [
-            { id: 1, text: "Mele nuɖuɖu ƒe dzudzɔ" },
-            { id: 2, text: "Mele tsi fo" },
-            { id: 3, text: "Nuɖuɖu nyui" },
-            { id: 4, text: "Akpe" }
+            { id: 1, text: "Medzi be maɖu nu" },
+            { id: 2, text: "Maɖu mɔlu" },
+            { id: 3, text: "Meɖunu xoxo" },
+            { id: 4, text: "Nuɖuɖua xo dzo" }
           ],
           correctOptionId: 3,
-          hints: ["nyui = good/tasty", "nuɖuɖu = food"],
-          explanation: "'Nuɖuɖu nyui' means 'Delicious food' in Ewe."
-        },
-        {
-          id: 404,
-          type: "matching",
-          instruction: "Match each Ewe phrase to its English meaning.",
-          pairs: [
-            { id: 1, left: "Mele nuɖuɖu ƒe dzudzɔ", right: "I am hungry" },
-            { id: 2, left: "Mele tsi fo", right: "I am thirsty" },
-            { id: 3, left: "Nuɖuɖu nyui", right: "Delicious food" },
-            { id: 4, left: "Akpe", right: "Thank you" }
-          ],
-          hints: ["dzudzɔ = hungry", "tsi = water", "nyui = good"],
-          explanation: "These are useful phrases at the restaurant in Ewe."
+          hints: ["meɖu = I ate", "xoxo = already"],
+          explanation: "Meɖunu xoxo = I have eaten already in Ewe."
         }
       ]
     }
@@ -458,96 +237,133 @@ export default {
     id: "review-5",
     title: "Review: Food & Drinks",
     icon: "refresh-outline",
-    description: "Review all the food and drink words you've learned",
+    description: "Review all the food and drink vocabulary you've learned",
     questions: [
       {
-        id: 501,
+        id: 509,
         type: "multiple_choice",
         instruction: "Select the correct Ewe word.",
         question: "What is 'Food' in Ewe?",
         options: [
-          { id: 1, text: "Nuɖuɖu" },
-          { id: 2, text: "Ablɔ" },
-          { id: 3, text: "Koklo" },
-          { id: 4, text: "Lã" }
-        ],
-        correctOptionId: 1,
-        hints: ["What you eat"],
-        explanation: "Nuɖuɖu = Food."
-      },
-      {
-        id: 502,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "What is 'Water' in Ewe?",
-        options: [
           { id: 1, text: "Tsi" },
-          { id: 2, text: "Noɖuɖu" },
-          { id: 3, text: "Keke" },
-          { id: 4, text: "Alɔ" }
-        ],
-        correctOptionId: 1,
-        hints: ["You drink it every day"],
-        explanation: "Tsi = Water."
-      },
-      {
-        id: 503,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "How do you say 'Chicken' in Ewe?",
-        options: [
-          { id: 1, text: "Ablɔ" },
-          { id: 2, text: "Koklo" },
-          { id: 3, text: "Lã" },
-          { id: 4, text: "Gbe" }
+          { id: 2, text: "Nuɖuɖu" },
+          { id: 3, text: "Dɔ nye wum" },
+          { id: 4, text: "Tsikɔ nye wum" }
         ],
         correctOptionId: 2,
-        hints: ["A bird people eat"],
-        explanation: "Koklo = Chicken."
+        hints: ["What you eat"],
+        explanation: "Nuɖuɖu = Food in Ewe."
       },
       {
-        id: 504,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "How do you say 'Sugar' in Ewe?",
+        id: 510,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What word did you hear?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/tsi.m4a"),
         options: [
-          { id: 1, text: "Suka" },
-          { id: 2, text: "Kapa" },
-          { id: 3, text: "Detsi" },
-          { id: 4, text: "Agbe" }
+          { id: 1, text: "Water" },
+          { id: 2, text: "Food" },
+          { id: 3, text: "Hunger" },
+          { id: 4, text: "Thirst" }
         ],
         correctOptionId: 1,
-        hints: ["Sweetener"],
-        explanation: "Suka = Sugar."
+        hints: ["Essential for drinking"],
+        explanation: "You heard 'Tsi' which means Water in Ewe."
       },
       {
-        id: 505,
+        id: 511,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'I am hungry' in Ewe?",
+        question: "How do you say 'I am thirsty' in Ewe?",
         options: [
-          { id: 1, text: "Mele nuɖuɖu ƒe dzudzɔ" },
-          { id: 2, text: "Mele tsi fo" },
-          { id: 3, text: "Nuɖuɖu nyui" },
-          { id: 4, text: "Akpe" }
+          { id: 1, text: "Dɔ nye wum" },
+          { id: 2, text: "Tsikɔ nye wum" },
+          { id: 3, text: "Medzi be maɖu nu" },
+          { id: 4, text: "Maɖu mɔlu" }
         ],
-        correctOptionId: 1,
-        hints: ["You want to eat"],
-        explanation: "Mele nuɖuɖu ƒe dzudzɔ = I am hungry."
+        correctOptionId: 2,
+        hints: ["Tsikɔ = thirst"],
+        explanation: "Tsikɔ nye wum = I am thirsty in Ewe."
       },
       {
-        id: 506,
-        type: "matching",
-        instruction: "Match each Ewe word to its English meaning.",
-        pairs: [
-          { id: 1, left: "Nuɖuɖu", right: "Food" },
-          { id: 2, left: "Tsi", right: "Water" },
-          { id: 3, left: "Koklo", right: "Chicken" },
-          { id: 4, left: "Lã", right: "Meat" },
-          { id: 5, left: "Suka", right: "Sugar" }
+        id: 512,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/medzi_be_madu_nu.m4a"),
+        options: [
+          { id: 1, text: "I am hungry" },
+          { id: 2, text: "I want to eat" },
+          { id: 3, text: "I am thirsty" },
+          { id: 4, text: "I will eat rice" }
         ],
-        hints: ["Nuɖuɖu = food", "Tsi = water", "Lã = meat"],
-        explanation: "These are key food and drink words from this chapter."
+        correctOptionId: 2,
+        hints: ["Medzi be = I want to"],
+        explanation: "You heard 'Medzi be maɖu nu' which means 'I want to eat' in Ewe."
+      },
+      {
+        id: 513,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I will eat rice' in Ewe?",
+        options: [
+          { id: 1, text: "Dɔ nye wum" },
+          { id: 2, text: "Tsikɔ nye wum" },
+          { id: 3, text: "Medzi be maɖu nu" },
+          { id: 4, text: "Maɖu mɔlu" }
+        ],
+        correctOptionId: 4,
+        hints: ["maɖu = I will eat", "mɔlu = rice"],
+        explanation: "Maɖu mɔlu = I will eat rice in Ewe."
+      },
+      {
+        id: 514,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'The food is hot' in Ewe?",
+        options: [
+          { id: 1, text: "Nuɖuɖua xo dzo" },
+          { id: 2, text: "Meɖe kuku na tsim" },
+          { id: 3, text: "Meɖe kuku tsɔ akɔnta ve" },
+          { id: 4, text: "Meɖunu xoxo" }
+        ],
+        correctOptionId: 1,
+        hints: ["Nuɖuɖu = food", "dzo = hot"],
+        explanation: "Nuɖuɖua xo dzo = The food is hot in Ewe."
+      },
+      {
+        id: 515,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter5/medunu_xoxo.m4a"),
+        options: [
+          { id: 1, text: "I want to eat" },
+          { id: 2, text: "I will eat rice" },
+          { id: 3, text: "I have eaten already" },
+          { id: 4, text: "Give me water please" }
+        ],
+        correctOptionId: 3,
+        hints: ["meɖu = I ate", "xoxo = already"],
+        explanation: "You heard 'Meɖunu xoxo' which means 'I have eaten already' in Ewe."
+      },
+      {
+        id: 516,
+        type: "drag_drop",
+        instruction: "Complete the Ewe phrase by dragging the correct word.",
+        question: "Meɖe kuku na ___ (Give me water please)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "tsim" },
+          { id: "opt2", text: "nu" },
+          { id: "opt3", text: "mɔlu" }
+        ],
+        correctDrop: {
+          blankId: "blank1",
+          itemId: "opt1"
+        },
+        hints: ["tsi = water", "m = me"],
+        explanation: "Meɖe kuku na tsim = Give me water please in Ewe."
       }
     ]
   }
