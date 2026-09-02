@@ -3,7 +3,7 @@ export default {
   title: "Future & Past Tense",
   description: "Learn how to talk about the past and future in Ewe",
   icon: "time-outline",
-  totalXp: 9,
+  totalXp: 12,
   difficulty: "Intermediate",
 
   sections: [

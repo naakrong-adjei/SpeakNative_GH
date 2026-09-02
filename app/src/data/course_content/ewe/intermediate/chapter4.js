@@ -3,7 +3,7 @@ export default {
   title: "Opinions & Emotions",
   description: "Learn how to express opinions and emotions in Ewe",
   icon: "chatbubbles-outline",
-  totalXp: 11,
+  totalXp: 12,
   difficulty: "Intermediate",
 
   sections: [

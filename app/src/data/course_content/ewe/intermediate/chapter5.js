@@ -3,7 +3,7 @@ export default {
   title: "Phone Conversations",
   description: "Learn how to make and receive phone calls in Ewe",
   icon: "phone-portrait-outline",
-  totalXp: 9,
+  totalXp: 15,
   difficulty: "Intermediate",
 
   sections: [
