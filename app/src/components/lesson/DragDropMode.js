@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import * as Haptics from "expo-haptics";
 
 import { useTheme } from "../../context/ThemeContext";
 
@@ -19,36 +20,16 @@ const BLANK_PATTERN = /\[_____\]/g;
 
 export default function DragDropMode({
   question,
-  onSubmit,
   showResult = false,
-  isCorrect,
+  onAnswerChange,
 }) {
   const { theme } = useTheme();
-
-  /*
-   * ---------------------------------------------------------
-   * QUESTION DATA
-   * ---------------------------------------------------------
-   */
 
   const items = useMemo(() => {
     return Array.isArray(question?.items)
       ? question.items.filter((item) => item?.id)
       : [];
   }, [question?.items]);
-
-  /*
-   * Build blank IDs.
-   *
-   * IMPORTANT:
-   * The blank IDs must use the same format as correctDrops.
-   *
-   * If correctDrops contains:
-   *
-   *   { blankId: "blank1", itemId: "hello" }
-   *
-   * then the first blank must also be "blank1".
-   */
 
   const blanks = useMemo(() => {
     const sentence = question?.sentence || "";
@@ -59,23 +40,6 @@ export default function DragDropMode({
       index,
     }));
   }, [question?.sentence]);
-
-  /*
-   * Build the correct answer map.
-   *
-   * Supports:
-   *
-   * correctDrops: [
-   *   { blankId: "blank1", itemId: "item1" },
-   *   { blankId: "blank2", itemId: "item2" }
-   * ]
-   *
-   * and the older:
-   *
-   * correctDrop: {
-   *   itemId: "item1"
-   * }
-   */
 
   const correctMap = useMemo(() => {
     const map = {};
@@ -91,44 +55,42 @@ export default function DragDropMode({
         return;
       }
 
-      /*
-       * Prefer the explicit blankId.
-       * Otherwise fall back to blank1, blank2, etc.
-       */
-      const blankId = drop.blankId || `blank${index + 1}`;
+      const blankId =
+        drop.blankId || `blank${index + 1}`;
 
       map[blankId] = drop.itemId;
     });
 
     return map;
-  }, [question?.correctDrops, question?.correctDrop]);
-
-  /*
-   * ---------------------------------------------------------
-   * STATE
-   * ---------------------------------------------------------
-   */
+  }, [
+    question?.correctDrops,
+    question?.correctDrop,
+  ]);
 
   const [answers, setAnswers] = useState({});
-  const [submitted, setSubmitted] = useState(false);
 
-  const scaleAnim = useRef(new Animated.Value(1)).current;
+  const scaleAnim = useRef(
+    new Animated.Value(1)
+  ).current;
 
-  /*
-   * Reset whenever a new question is loaded.
-   */
+  const onAnswerChangeRef = useRef(
+    onAnswerChange
+  );
+
+  useEffect(() => {
+    onAnswerChangeRef.current =
+      onAnswerChange;
+  }, [onAnswerChange]);
 
   useEffect(() => {
     setAnswers({});
-    setSubmitted(false);
     scaleAnim.setValue(1);
-  }, [question?.id, question?.sentence, scaleAnim]);
-
-  /*
-   * ---------------------------------------------------------
-   * HELPERS
-   * ---------------------------------------------------------
-   */
+    onAnswerChangeRef.current?.({});
+  }, [
+    question?.id,
+    question?.sentence,
+    scaleAnim,
+  ]);
 
   const getItemById = useCallback(
     (itemId) => {
@@ -137,7 +99,9 @@ export default function DragDropMode({
       }
 
       return (
-        items.find((item) => item.id === itemId) || null
+        items.find(
+          (item) => item.id === itemId
+        ) || null
       );
     },
     [items]
@@ -158,80 +122,29 @@ export default function DragDropMode({
     ]).start();
   }, [scaleAnim]);
 
-  /*
-   * ---------------------------------------------------------
-   * ANSWER EVALUATION
-   * ---------------------------------------------------------
-   */
+  const triggerSelectionHaptic = useCallback(() => {
+    Haptics.impactAsync(
+      Haptics.ImpactFeedbackStyle.Light
+    );
+  }, []);
 
-  const evaluateAnswers = useCallback(
-    (finalAnswers) => {
-      /*
-       * Prevent duplicate submissions.
-       */
-      if (submitted || showResult) {
-        return;
-      }
+  const triggerRemovalHaptic = useCallback(() => {
+    Haptics.impactAsync(
+      Haptics.ImpactFeedbackStyle.Light
+    );
+  }, []);
 
-      /*
-       * Make sure every blank has an answer.
-       */
-      const allBlanksFilled =
-        blanks.length > 0 &&
-        blanks.every((blank) => {
-          return Boolean(finalAnswers[blank.id]);
-        });
-
-      if (!allBlanksFilled) {
-        return;
-      }
-
-      /*
-       * Check every blank against correctMap.
-       */
-      const allCorrect = blanks.every((blank) => {
-        const selectedItemId =
-          finalAnswers[blank.id];
-
-        const correctItemId =
-          correctMap[blank.id];
-
-        return (
-          Boolean(selectedItemId) &&
-          Boolean(correctItemId) &&
-          selectedItemId === correctItemId
-        );
-      });
-
-      console.log("DragDrop evaluation:", {
-        answers: finalAnswers,
-        correctMap,
-        allCorrect,
-      });
-
-      setSubmitted(true);
-
-      onSubmit?.(allCorrect);
+  const updateAnswers = useCallback(
+    (updatedAnswers) => {
+      setAnswers(updatedAnswers);
+      onAnswerChange?.(updatedAnswers);
     },
-    [
-      submitted,
-      showResult,
-      blanks,
-      correctMap,
-      onSubmit,
-    ]
+    [onAnswerChange]
   );
-
-  /*
-   * ---------------------------------------------------------
-   * SELECT ANSWER
-   * ---------------------------------------------------------
-   */
 
   const handleItemPress = useCallback(
     (item) => {
       if (
-        submitted ||
         showResult ||
         !item?.id ||
         blanks.length === 0
@@ -239,20 +152,14 @@ export default function DragDropMode({
         return;
       }
 
-      /*
-       * Don't allow the same item to be selected twice.
-       */
-      const alreadyUsed = Object.values(answers).includes(
-        item.id
-      );
+      const alreadyUsed = Object.values(
+        answers
+      ).includes(item.id);
 
       if (alreadyUsed) {
         return;
       }
 
-      /*
-       * Find the first empty blank.
-       */
       const emptyBlank = blanks.find(
         (blank) => !answers[blank.id]
       );
@@ -266,90 +173,68 @@ export default function DragDropMode({
         [emptyBlank.id]: item.id,
       };
 
-      setAnswers(updatedAnswers);
+      updateAnswers(updatedAnswers);
+
       triggerBounce();
-
-      /*
-       * Evaluate only after every blank has been filled.
-       */
-      const allFilled = blanks.every(
-        (blank) => Boolean(updatedAnswers[blank.id])
-      );
-
-      if (allFilled) {
-        evaluateAnswers(updatedAnswers);
-      }
+      triggerSelectionHaptic();
     },
     [
-      submitted,
       showResult,
       blanks,
       answers,
+      updateAnswers,
       triggerBounce,
-      evaluateAnswers,
+      triggerSelectionHaptic,
     ]
   );
-
-  /*
-   * ---------------------------------------------------------
-   * REMOVE ANSWER
-   * ---------------------------------------------------------
-   */
 
   const handleSlotPress = useCallback(
     (blankId) => {
       if (
-        submitted ||
         showResult ||
         !answers[blankId]
       ) {
         return;
       }
 
-      setAnswers((currentAnswers) => {
-        const updatedAnswers = {
-          ...currentAnswers,
-        };
+      const updatedAnswers = {
+        ...answers,
+      };
 
-        delete updatedAnswers[blankId];
+      delete updatedAnswers[blankId];
 
-        return updatedAnswers;
-      });
+      updateAnswers(updatedAnswers);
+      triggerRemovalHaptic();
     },
-    [submitted, showResult, answers]
+    [
+      showResult,
+      answers,
+      updateAnswers,
+      triggerRemovalHaptic,
+    ]
   );
 
-  /*
-   * ---------------------------------------------------------
-   * USED ITEMS
-   * ---------------------------------------------------------
-   */
-
   const usedItemIds = useMemo(() => {
-    return new Set(Object.values(answers));
+    return new Set(
+      Object.values(answers)
+    );
   }, [answers]);
 
-  /*
-   * ---------------------------------------------------------
-   * RENDER SENTENCE
-   * ---------------------------------------------------------
-   */
-
   const renderSentence = useCallback(() => {
-    const sentence = question?.sentence || "";
+    const sentence =
+      question?.sentence || "";
 
-    const parts = sentence.split(BLANK_PATTERN);
+    const parts =
+      sentence.split(BLANK_PATTERN);
 
-    /*
-     * If the sentence doesn't contain a blank,
-     * don't try to manufacture one.
-     */
     if (parts.length === 1) {
       return (
         <Text
           style={[
             styles.sentenceText,
-            { color: theme.text },
+            {
+              color: theme.text,
+            },
           ]}
         >
           {sentence}
@@ -366,51 +251,64 @@ export default function DragDropMode({
             ? answers[blank.id]
             : null;
 
-          const selectedItem = getItemById(
-            selectedItemId
-          );
+          const selectedItem =
+            getItemById(selectedItemId);
 
           const correctItemId = blank
             ? correctMap[blank.id]
             : null;
 
-          const isFinished =
-            submitted || showResult;
-
           const slotHasAnswer =
             Boolean(selectedItemId);
 
           const slotIsCorrect =
-            isFinished &&
+            showResult &&
             slotHasAnswer &&
-            selectedItemId === correctItemId;
+            selectedItemId ===
+              correctItemId;
 
           const slotIsIncorrect =
-            isFinished &&
+            showResult &&
             slotHasAnswer &&
-            selectedItemId !== correctItemId;
+            selectedItemId !==
+              correctItemId;
 
-          let backgroundColor = `${theme.primary}1A`;
-          let borderColor = theme.primary;
+          let backgroundColor =
+            `${theme.primary}12`;
+
+          let borderColor =
+            theme.primary;
+
           let bottomBorderColor =
-            theme.primaryDark || theme.primary;
-          let textColor = theme.primary;
+            theme.primaryDark ||
+            theme.primary;
+
+          let textColor =
+            theme.primary;
 
           if (slotIsCorrect) {
-            backgroundColor = theme.success;
-            borderColor = theme.success;
-            bottomBorderColor = theme.success;
+            backgroundColor =
+              theme.success;
+            borderColor =
+              theme.success;
+            bottomBorderColor =
+              theme.success;
             textColor = "#FFFFFF";
           } else if (slotIsIncorrect) {
-            backgroundColor = theme.error;
-            borderColor = theme.error;
+            backgroundColor =
+              theme.error;
+            borderColor =
+              theme.error;
             bottomBorderColor =
-              theme.errorDark || theme.error;
+              theme.errorDark ||
+              theme.error;
             textColor = "#FFFFFF";
           }
 
           return (
-            <React.Fragment key={`part-${index}`}>
+            <React.Fragment
+              key={`part-${index}`}
+            >
               {part !== "" && (
                 <Text
                   style={[
@@ -428,10 +326,13 @@ export default function DragDropMode({
                 <TouchableOpacity
                   activeOpacity={0.8}
                   onPress={() =>
-                    handleSlotPress(blank.id)
+                    handleSlotPress(
+                      blank.id
+                    )
                   }
                   disabled={
-                    isFinished || !slotHasAnswer
+                    showResult ||
+                    !slotHasAnswer
                   }
                   accessibilityRole="button"
                   accessibilityLabel={
@@ -446,7 +347,8 @@ export default function DragDropMode({
                   }
                   accessibilityState={{
                     disabled:
-                      isFinished || !slotHasAnswer,
+                      showResult ||
+                      !slotHasAnswer,
                   }}
                   style={[
                     styles.slotContainer,
@@ -460,18 +362,21 @@ export default function DragDropMode({
                 >
                   {selectedItem ? (
                     <Animated.View
-                      style={{
-                        transform: [
-                          {
-                            scale: scaleAnim,
-                          },
-                        ],
-                      }}
+                      style={[
+                        styles.animatedSlot,
+                        {
+                          transform: [
+                            {
+                              scale:
+                                scaleAnim,
+                            },
+                          ],
+                        },
+                      ]}
                     >
                       <View
                         style={[
-                          styles.duoTile,
-                          styles.slotTile,
+                          styles.selectedTile,
                           {
                             backgroundColor,
                             borderColor,
@@ -484,7 +389,8 @@ export default function DragDropMode({
                           style={[
                             styles.tileText,
                             {
-                              color: textColor,
+                              color:
+                                textColor,
                             },
                           ]}
                         >
@@ -498,7 +404,9 @@ export default function DragDropMode({
                         styles.slotPlaceholder,
                         {
                           backgroundColor:
-                            `${theme.primary}08`,
+                            `${theme.primary}06`,
+                          borderColor:
+                            theme.border,
                         },
                       ]}
                     />
@@ -514,7 +422,6 @@ export default function DragDropMode({
     question?.sentence,
     blanks,
     answers,
-    submitted,
     showResult,
     correctMap,
     theme,
@@ -523,15 +430,10 @@ export default function DragDropMode({
     scaleAnim,
   ]);
 
-  /*
-   * ---------------------------------------------------------
-   * RENDER ANSWER BANK
-   * ---------------------------------------------------------
-   */
-
   const renderAnswerBank = useMemo(() => {
     return items.map((item) => {
-      const isUsed = usedItemIds.has(item.id);
+      const isUsed =
+        usedItemIds.has(item.id);
 
       return (
         <View
@@ -543,35 +445,34 @@ export default function DragDropMode({
               style={[
                 styles.tilePlaceholder,
                 {
-                  backgroundColor: theme.surface,
-                  borderColor: theme.border,
+                  backgroundColor:
+                    `${theme.primary}06`,
+                  borderColor:
+                    theme.border,
                 },
               ]}
             />
           ) : (
             <TouchableOpacity
-              activeOpacity={0.7}
+              activeOpacity={0.75}
               onPress={() =>
                 handleItemPress(item)
               }
-              disabled={
-                submitted || showResult
-              }
+              disabled={showResult}
               accessibilityRole="button"
               accessibilityLabel={`Select ${item.text}`}
               accessibilityState={{
-                disabled:
-                  submitted || showResult,
+                disabled: showResult,
               }}
             >
               <View
                 style={[
-                  styles.duoTile,
-                  styles.bankTile,
+                  styles.answerTile,
                   {
                     backgroundColor:
                       theme.surface,
-                    borderColor: theme.border,
+                    borderColor:
+                      theme.border,
                     borderBottomColor:
                       theme.border,
                   },
@@ -611,48 +512,29 @@ export default function DragDropMode({
     items,
     usedItemIds,
     theme,
-    submitted,
     showResult,
     handleItemPress,
   ]);
-
-  /*
-   * ---------------------------------------------------------
-   * INVALID QUESTION
-   * ---------------------------------------------------------
-   */
 
   if (!question) {
     return null;
   }
 
-  /*
-   * ---------------------------------------------------------
-   * UI
-   * ---------------------------------------------------------
-   */
-
   return (
     <View style={styles.container}>
       <View
-        style={styles.sentenceCard}
+        style={styles.sentenceArea}
         accessibilityRole="text"
       >
         {renderSentence()}
       </View>
 
-      <View style={styles.bankContainer}>
+      <View style={styles.answerBank}>
         {renderAnswerBank}
       </View>
     </View>
   );
 }
-
-/*
- * ---------------------------------------------------------
- * STYLES
- * ---------------------------------------------------------
- */
 
 const styles = StyleSheet.create({
   container: {
@@ -660,9 +542,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
 
-  sentenceCard: {
-    minHeight: 120,
-    marginBottom: 36,
+  sentenceArea: {
+    minHeight: 150,
+    marginBottom: 28,
     justifyContent: "center",
   },
 
@@ -670,16 +552,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
+    justifyContent: "flex-start",
   },
 
   sentenceText: {
-    fontSize: 20,
+    fontSize: 21,
     fontWeight: "700",
     lineHeight: 38,
+    letterSpacing: 0.1,
   },
 
   slotContainer: {
-    minWidth: 80,
+    minWidth: 82,
     height: 48,
     marginHorizontal: 4,
     marginVertical: 4,
@@ -690,64 +574,71 @@ const styles = StyleSheet.create({
 
   slotPlaceholder: {
     width: "100%",
-    height: "100%",
+    height: 44,
+    borderRadius: 10,
+    borderWidth: 1.5,
+    borderStyle: "dashed",
   },
 
-  duoTile: {
-    borderRadius: 14,
-    borderWidth: 2,
-    borderBottomWidth: 4,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
+  animatedSlot: {
     alignItems: "center",
     justifyContent: "center",
   },
 
-  slotTile: {
-    minWidth: 80,
-    height: 48,
-    paddingVertical: 0,
+  selectedTile: {
+    minWidth: 82,
+    minHeight: 46,
+    paddingHorizontal: 14,
+    borderRadius: 11,
+    borderWidth: 2,
+    borderBottomWidth: 4,
+    alignItems: "center",
+    justifyContent: "center",
   },
 
-  bankTile: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.08,
-    shadowRadius: 2,
-    elevation: 2,
+  answerBank: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+  },
+
+  tileWrapper: {
+    marginVertical: 3,
+  },
+
+  answerTile: {
+    minWidth: 82,
+    minHeight: 48,
+    paddingHorizontal: 15,
+    paddingVertical: 9,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderBottomWidth: 3,
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   tileText: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: "700",
+    textAlign: "center",
   },
 
   tileMeaning: {
     marginTop: 2,
     fontSize: 11,
-    fontWeight: "600",
-  },
-
-  bankContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: 10,
-  },
-
-  tileWrapper: {
-    marginVertical: 4,
+    fontWeight: "500",
+    textAlign: "center",
   },
 
   tilePlaceholder: {
-    minWidth: 80,
-    height: 48,
-    borderRadius: 14,
-    borderWidth: 2,
+    minWidth: 82,
+    minHeight: 48,
+    borderRadius: 12,
+    borderWidth: 1.5,
     borderStyle: "dashed",
-    opacity: 0.4,
+    opacity: 0.45,
   },
 });

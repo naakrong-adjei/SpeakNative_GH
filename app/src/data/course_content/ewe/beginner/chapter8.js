@@ -3,7 +3,7 @@ export default {
   title: "Daily Activities",
   description: "Learn how to talk about daily activities in Ewe",
   icon: "time-outline",
-  totalXp: 15,
+  totalXp: 10,
   difficulty: "Beginner",
 
   sections: [
@@ -11,7 +11,7 @@ export default {
       id: "8-1",
       type: "words",
       title: "Morning Routine",
-      icon: "sunrise-outline",
+      icon: "sunny-outline",
       description: "Learn how to talk about your morning routine in Ewe",
       words: ["Mefɔna ŋdi kaba", "Meyina dɔ me", "Metsi lem"],
       vocabulary: [
@@ -68,19 +68,16 @@ export default {
         },
         {
           id: 803,
-          type: "drag_drop",
-          instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Metsi ___ (I am bathing)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "lem" },
-            { id: "opt2", text: "ɖam" },
-            { id: "opt3", text: "nyam" }
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I am bathing' in Ewe?",
+          options: [
+            { id: 1, text: "Mefɔna ŋdi kaba" },
+            { id: 2, text: "Meyina dɔ me" },
+            { id: 3, text: "Metsi lem" },
+            { id: 4, text: "Menu ɖam" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
+          correctOptionId: 3,
           hints: ["tsi = water", "lem = bathing"],
           explanation: "Metsi lem = I am bathing in Ewe."
         }
@@ -148,20 +145,17 @@ export default {
         },
         {
           id: 806,
-          type: "drag_drop",
-          instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Mekplɔa xɔa ___ (I sweep the room)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "me" },
-            { id: "opt2", text: "ɖam" },
-            { id: "opt3", text: "nyam" }
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I sweep the room' in Ewe?",
+          options: [
+            { id: 1, text: "Menu ɖam" },
+            { id: 2, text: "Me avɔ nyam" },
+            { id: 3, text: "Mekplɔa xɔa me" },
+            { id: 4, text: "Metsi lem" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
-          hints: ["xɔa me = the room"],
+          correctOptionId: 3,
+          hints: ["kplɔa = sweep", "xɔa me = the room"],
           explanation: "Mekplɔa xɔa me = I sweep the room in Ewe."
         }
       ]
@@ -229,82 +223,23 @@ export default {
             { id: 4, text: "I am resting" }
           ],
           correctOptionId: 3,
-          hints: ["dɔ alɔ̃ = sleeping"],
+          hints: ["lɔ̃ dɔm = sleeping"],
           explanation: "You heard 'Malɔ̃ dɔm' which means 'I am sleeping' in Ewe."
         },
         {
           id: 809,
-          type: "drag_drop",
-          instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Meyina ___ me (I am going home)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "aƒe" },
-            { id: "opt2", text: "dɔ" },
-            { id: "opt3", text: "xɔ" }
-          ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
-          hints: ["aƒe = home"],
-          explanation: "Meyina aƒe me = I am going home in Ewe."
-        }
-      ]
-    },
-
-    {
-      id: "8-4",
-      type: "words",
-      title: "Everyday Talk",
-      icon: "chatbubble-outline",
-      description: "Learn everyday conversation phrases in Ewe",
-      words: ["Mexlẽa nu gbe shia gbe", "Nu ka wɔm nèle?"],
-      vocabulary: [
-        {
-          id: 108,
-          english: "I read every day",
-          native: "Mexlẽa nu gbe shia gbe",
-          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/mexlẽa_nu_gbe_shia_gbe.m4a")
-        },
-        {
-          id: 109,
-          english: "What are you doing?",
-          native: "Nu ka wɔm nèle?",
-          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/nu_ka_wɔm_nèle.m4a")
-        }
-      ],
-      questions: [
-        {
-          id: 810,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'I read every day' in Ewe?",
+          question: "How do you say 'I am going home' in Ewe?",
           options: [
-            { id: 1, text: "Mexlẽa nu gbe shia gbe" },
-            { id: 2, text: "Nu ka wɔm nèle?" },
-            { id: 3, text: "Meyina dɔ me" },
-            { id: 4, text: "Menu ɖam" }
-          ],
-          correctOptionId: 1,
-          hints: ["Mexlẽa = I read", "gbe shia gbe = every day"],
-          explanation: "Mexlẽa nu gbe shia gbe = I read every day in Ewe."
-        },
-        {
-          id: 811,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter8/nu_ka_wɔm_nèle.m4a"),
-          options: [
-            { id: 1, text: "I read every day" },
-            { id: 2, text: "What are you doing?" },
-            { id: 3, text: "I am going to work" },
-            { id: 4, text: "I am cooking" }
+            { id: 1, text: "Ɖeɖi te ŋunye" },
+            { id: 2, text: "Meyina aƒe me" },
+            { id: 3, text: "Malɔ̃ dɔm" },
+            { id: 4, text: "Me ɖiɖim ɖe me" }
           ],
           correctOptionId: 2,
-          hints: ["nu ka = what", "wɔm = doing"],
-          explanation: "You heard 'Nu ka wɔm nèle?' which means 'What are you doing?' in Ewe."
+          hints: ["aƒe = home"],
+          explanation: "Meyina aƒe me = I am going home in Ewe."
         }
       ]
     }
@@ -317,7 +252,7 @@ export default {
     description: "Review all the daily activity vocabulary you've learned",
     questions: [
       {
-        id: 812,
+        id: 810,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I am going to work' in Ewe?",
@@ -332,7 +267,7 @@ export default {
         explanation: "Meyina dɔ me = I am going to work."
       },
       {
-        id: 813,
+        id: 811,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -348,7 +283,7 @@ export default {
         explanation: "You heard 'Metsi lem' which means 'I am bathing'."
       },
       {
-        id: 814,
+        id: 812,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I sweep the room' in Ewe?",
@@ -363,7 +298,7 @@ export default {
         explanation: "Mekplɔa xɔa me = I sweep the room."
       },
       {
-        id: 815,
+        id: 813,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -379,7 +314,7 @@ export default {
         explanation: "You heard 'Menu ɖam' which means 'I am cooking'."
       },
       {
-        id: 816,
+        id: 814,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I am sleeping' in Ewe?",
@@ -390,11 +325,11 @@ export default {
           { id: 4, text: "Me ɖiɖim ɖe me" }
         ],
         correctOptionId: 3,
-        hints: ["dɔ alɔ̃ = sleeping"],
+        hints: ["lɔ̃ dɔm = sleeping"],
         explanation: "Malɔ̃ dɔm = I am sleeping."
       },
       {
-        id: 817,
+        id: 815,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -410,37 +345,34 @@ export default {
         explanation: "You heard 'Ɖeɖi te ŋunye' which means 'I am tired'."
       },
       {
-        id: 818,
+        id: 816,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'What are you doing?' in Ewe?",
+        question: "How do you say 'I am resting' in Ewe?",
         options: [
-          { id: 1, text: "Mexlẽa nu gbe shia gbe" },
-          { id: 2, text: "Nu ka wɔm nèle?" },
-          { id: 3, text: "Meyina dɔ me" },
-          { id: 4, text: "Menu ɖam" }
+          { id: 1, text: "Ɖeɖi te ŋunye" },
+          { id: 2, text: "Meyina aƒe me" },
+          { id: 3, text: "Malɔ̃ dɔm" },
+          { id: 4, text: "Me ɖiɖim ɖe me" }
         ],
-        correctOptionId: 2,
-        hints: ["nu ka = what", "wɔm = doing"],
-        explanation: "Nu ka wɔm nèle? = What are you doing?"
+        correctOptionId: 4,
+        hints: ["ɖiɖim = resting"],
+        explanation: "Me ɖiɖim ɖe me = I am resting in Ewe."
       },
       {
-        id: 819,
-        type: "drag_drop",
-        instruction: "Complete the Ewe phrase by dragging the correct word.",
-        question: "Metsi ___ (I am bathing)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "lem" },
-          { id: "opt2", text: "ɖam" },
-          { id: "opt3", text: "nyam" }
+        id: 817,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I am cooking' in Ewe?",
+        options: [
+          { id: 1, text: "Menu ɖam" },
+          { id: 2, text: "Me avɔ nyam" },
+          { id: 3, text: "Mekplɔa xɔa me" },
+          { id: 4, text: "Metsi lem" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt1"
-        },
-        hints: ["tsi = water"],
-        explanation: "Metsi lem = I am bathing."
+        correctOptionId: 1,
+        hints: ["menu = I am cooking"],
+        explanation: "Menu ɖam = I am cooking in Ewe."
       }
     ]
   }

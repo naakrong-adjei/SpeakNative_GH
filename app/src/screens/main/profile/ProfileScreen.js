@@ -1,4 +1,4 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
+ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useFocusEffect } from "@react-navigation/native";
 import {
   useCallback,
@@ -9,6 +9,7 @@ import {
 import {
   ActivityIndicator,
   Alert,
+  Image,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
@@ -44,19 +45,16 @@ export default function ProfileScreen() {
     return createSupabaseClient(getToken);
   }, [getToken]);
 
-  const [profile, setProfile] =
-    useState(null);
+  const [profile, setProfile] = useState(null);
 
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] = useState(true);
 
   const [
     isEditModalVisible,
     setIsEditModalVisible,
   ] = useState(false);
 
-  const [userLanguages, setUserLanguages] =
-    useState([]);
+  const [userLanguages, setUserLanguages] = useState([]);
 
   const calculateStreak = useCallback(
     (data) => {
@@ -729,14 +727,13 @@ export default function ProfileScreen() {
                         }
                         numberOfLines={1}
                       >
-                        PRIMARY LANGUAGE
+                        LEARNING
                       </ThemedText>
 
                       <ThemedText
                         style={
                           styles.learningValue
                         }
-                        numberOfLines={1}
                       >
                         {currentLanguage?.title ||
                           "Not selected"}
@@ -892,14 +889,15 @@ export default function ProfileScreen() {
                                 },
                               ]}
                             >
-                              <ThemedText
+                              <Image
+                                source={require(
+                                  "../../../assets/images/flagImage.png"
+                                )}
                                 style={
                                   styles.languageFlag
                                 }
-                              >
-                                {lang.flag ||
-                                  "🌍"}
-                              </ThemedText>
+                                resizeMode="contain"
+                              />
 
                               <ThemedText
                                 style={[
@@ -920,18 +918,6 @@ export default function ProfileScreen() {
                                   lang.title
                                 }
                               </ThemedText>
-
-                              {isPrimary && (
-                                <Ionicons
-                                  name="checkmark-circle"
-                                  size={
-                                    14
-                                  }
-                                  color={
-                                    theme.primary
-                                  }
-                                />
-                              )}
                             </View>
                           );
                         }
@@ -1349,12 +1335,13 @@ const styles = StyleSheet.create({
     gap: 6,
     paddingHorizontal: 14,
     paddingVertical: 8,
-    borderRadius: 18,
+    borderRadius: 14,
     borderWidth: 1,
   },
 
   languageFlag: {
-    fontSize: 16,
+    width: 20,
+    height: 20,
   },
 
   languagePillText: {
@@ -1419,4 +1406,3 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
 });
-

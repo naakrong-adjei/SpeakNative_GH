@@ -1,6 +1,6 @@
 export default {
   id: 1,
-  title: "Greetings & Basics",
+  title: "Greetings & Basics Conversations",
   description: "Learn essential Ewe greetings for daily conversations in Ghana",
   icon: "chatbubbles-outline",
   totalXp: 15,
@@ -190,7 +190,7 @@ export default {
           ],
           correctOptionId: 3,
           hints: ["'Nye ƒomea fɔ' means 'My family is fine'"],
-          explanation: "My ƒomea fɔ = My family is fine. This is a common response to asking about someone's family."
+          explanation: "Nye ƒomea fɔ = My family is fine. This is a common response to asking about someone's family."
         }
       ]
     },
@@ -199,9 +199,9 @@ export default {
       id: "1-3",
       type: "simple_sentences",
       title: "Polite Expressions",
-      icon: "chatbox-outline",
+      icon: "heart-outline",
       description: "Essential polite expressions for daily conversations in Ewe",
-      words: ["Akpe", "Meɖe kuku"],
+      words: ["Akpe", "Meɖe kuku", "Taflatse", "Baba na wò", "Lala vie"],
       vocabulary: [
         {
           id: 7,
@@ -214,6 +214,24 @@ export default {
           english: "Please",
           native: "Meɖe kuku",
           audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/mede_kuku.m4a")
+        },
+        {
+          id: 127,
+          english: "Excuse me",
+          native: "Taflatse",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/taflatse.m4a")
+        },
+        {
+          id: 130,
+          english: "I am sorry",
+          native: "Baba na wò",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/baba_na_wò.m4a")
+        },
+        {
+          id: 131,
+          english: "Wait a moment",
+          native: "Lala vie",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/lala_vie.m4a")
         }
       ],
       questions: [
@@ -246,6 +264,52 @@ export default {
           correctOptionId: 1,
           hints: ["Polite request"],
           explanation: "'Meɖe kuku' means 'Please' in Ewe. It's used when making polite requests."
+        },
+        {
+          id: 303,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Excuse me' in Ewe?",
+          options: [
+            { id: 1, text: "Taflatse" },
+            { id: 2, text: "Baba na wò" },
+            { id: 3, text: "Lala vie" },
+            { id: 4, text: "Akpe" }
+          ],
+          correctOptionId: 1,
+          hints: ["Used to get someone's attention"],
+          explanation: "Taflatse = Excuse me in Ewe."
+        },
+        {
+          id: 304,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/baba_na_wò.m4a"),
+          options: [
+            { id: 1, text: "Excuse me" },
+            { id: 2, text: "I am sorry" },
+            { id: 3, text: "Wait a moment" },
+            { id: 4, text: "Thank you" }
+          ],
+          correctOptionId: 2,
+          hints: ["Baba = sorry"],
+          explanation: "You heard 'Baba na wò' which means 'I am sorry' in Ewe."
+        },
+        {
+          id: 305,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          sentence: "Lala [_____] (Wait a moment)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "vie" },
+            { id: "opt2", text: "wò" },
+            { id: "opt3", text: "me" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["vie = a little/moment"],
+          explanation: "Lala vie = Wait a moment in Ewe."
         }
       ]
     },
@@ -256,7 +320,7 @@ export default {
       title: "Saying Goodbye",
       icon: "hand-right-outline",
       description: "Learn how to say goodbye and related expressions in Ewe",
-      words: ["Hede nyuie", "Zã nyuie", "Edzidzi wu esi mekpɔ wò", "Míado go etsɔ", "Mɔzɔzɔ nyuie"],
+      words: ["Hede nyuie", "Zã nyuie", "Edzidzi wu esi mekpɔ wò", "Míado go etsɔ", "Mɔzɔzɔ nyuie", "Míado go emegbe"],
       vocabulary: [
         {
           id: 8,
@@ -287,6 +351,12 @@ export default {
           english: "Safe journey",
           native: "Mɔzɔzɔ nyuie",
           audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/mɔzɔzɔ_nyuie.m4a")
+        },
+        {
+          id: 133,
+          english: "See you later",
+          native: "Míado go emegbe",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/míado_go_emegbe.m4a")
         }
       ],
       questions: [
@@ -364,6 +434,218 @@ export default {
           correctOptionId: 2,
           hints: ["Used when someone is traveling"],
           explanation: "'Mɔzɔzɔ nyuie' means 'Safe journey' in Ewe."
+        },
+        {
+          id: 406,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'See you later' in Ewe?",
+          options: [
+            { id: 1, text: "Míado go emegbe" },
+            { id: 2, text: "Míado go etsɔ" },
+            { id: 3, text: "Hede nyuie" },
+            { id: 4, text: "Zã nyuie" }
+          ],
+          correctOptionId: 1,
+          hints: ["emegbe = later"],
+          explanation: "Míado go emegbe = See you later in Ewe."
+        }
+      ]
+    },
+
+    {
+      id: "1-5",
+      type: "phrases",
+      title: "Yes & No",
+      icon: "checkmark-circle-outline",
+      description: "Learn how to say yes, no, and express likes in Ewe",
+      words: ["Ɛ̃", "Ao", "Melɔ̃e"],
+      vocabulary: [
+        {
+          id: 122,
+          english: "Yes",
+          native: "Ɛ̃",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/ɛ̃.m4a")
+        },
+        {
+          id: 123,
+          english: "No",
+          native: "Ao",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/ao.m4a")
+        },
+        {
+          id: 132,
+          english: "I like it",
+          native: "Melɔ̃e",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/melɔ̃e.m4a")
+        }
+      ],
+      questions: [
+        {
+          id: 501,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe word.",
+          question: "What is 'Yes' in Ewe?",
+          options: [
+            { id: 1, text: "Ɛ̃" },
+            { id: 2, text: "Ao" },
+            { id: 3, text: "Melɔ̃e" },
+            { id: 4, text: "Taflatse" }
+          ],
+          correctOptionId: 1,
+          hints: ["Affirmative response"],
+          explanation: "Ɛ̃ = Yes in Ewe."
+        },
+        {
+          id: 502,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe word.",
+          question: "What is 'No' in Ewe?",
+          options: [
+            { id: 1, text: "Ɛ̃" },
+            { id: 2, text: "Ao" },
+            { id: 3, text: "Melɔ̃e" },
+            { id: 4, text: "Lala vie" }
+          ],
+          correctOptionId: 2,
+          hints: ["Negative response"],
+          explanation: "Ao = No in Ewe."
+        },
+        {
+          id: 503,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/melɔ̃e.m4a"),
+          options: [
+            { id: 1, text: "Yes" },
+            { id: 2, text: "No" },
+            { id: 3, text: "I like it" },
+            { id: 4, text: "Excuse me" }
+          ],
+          correctOptionId: 3,
+          hints: ["Melɔ̃e = I like it"],
+          explanation: "You heard 'Melɔ̃e' which means 'I like it' in Ewe."
+        }
+      ]
+    },
+
+    {
+      id: "1-6",
+      type: "phrases",
+      title: "Asking for Help",
+      icon: "help-circle-outline",
+      description: "Learn how to ask for help, clarification, and small talk phrases in Ewe",
+      words: ["Nyemese egɔme o", "Meɖe kuku ƒo nu blewuu", "Àte ŋu akpe ɖe ŋunyea?", "Meɖe kuku gblɔe ake", "Nu kae nye ehia?"],
+      vocabulary: [
+        {
+          id: 124,
+          english: "I don't understand",
+          native: "Nyemese egɔme o",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/nyemese_egɔme_o.m4a")
+        },
+        {
+          id: 125,
+          english: "Speak slowly please",
+          native: "Meɖe kuku ƒo nu blewuu",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/meɖe_kuku_ƒo_nu_blewuu.m4a")
+        },
+        {
+          id: 126,
+          english: "Can you help me?",
+          native: "Àte ŋu akpe ɖe ŋunyea?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/àte_ŋu_akpe_ɖe_ŋunyea.m4a")
+        },
+        {
+          id: 129,
+          english: "Say it again please",
+          native: "Meɖe kuku gblɔe ake",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/meɖe_kuku_gblɔe_ake.m4a")
+        },
+        {
+          id: 128,
+          english: "What is this?",
+          native: "Nu kae nye ehia?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/nu_kae_nye_ehia.m4a")
+        }
+      ],
+      questions: [
+        {
+          id: 504,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I don't understand' in Ewe?",
+          options: [
+            { id: 1, text: "Nyemese egɔme o" },
+            { id: 2, text: "Meɖe kuku ƒo nu blewuu" },
+            { id: 3, text: "Àte ŋu akpe ɖe ŋunyea?" },
+            { id: 4, text: "Meɖe kuku gblɔe ake" }
+          ],
+          correctOptionId: 1,
+          hints: ["Nyemese = I don't understand"],
+          explanation: "Nyemese egɔme o = I don't understand in Ewe."
+        },
+        {
+          id: 505,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/àte_ŋu_akpe_ɖe_ŋunyea.m4a"),
+          options: [
+            { id: 1, text: "I don't understand" },
+            { id: 2, text: "Speak slowly please" },
+            { id: 3, text: "Can you help me?" },
+            { id: 4, text: "Say it again please" }
+          ],
+          correctOptionId: 3,
+          hints: ["Àte ŋu = Can you", "akpe ɖe ŋunye = help me"],
+          explanation: "You heard 'Àte ŋu akpe ɖe ŋunyea?' which means 'Can you help me?' in Ewe."
+        },
+        {
+          id: 506,
+          type: "drag_drop",
+          instruction: "Complete the Ewe phrase by dragging the correct word.",
+          sentence: "Meɖe kuku ƒo nu [_____] (Speak slowly please)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "blewuu" },
+            { id: "opt2", text: "ake" },
+            { id: "opt3", text: "ŋunye" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["blewuu = slowly"],
+          explanation: "Meɖe kuku ƒo nu blewuu = Speak slowly please in Ewe."
+        },
+        {
+          id: 507,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/nu_kae_nye_ehia.m4a"),
+          options: [
+            { id: 1, text: "See you later" },
+            { id: 2, text: "What is this?" },
+            { id: 3, text: "What is your name?" },
+            { id: 4, text: "How are you?" }
+          ],
+          correctOptionId: 2,
+          hints: ["Nu = thing", "kae = what", "ehia = this"],
+          explanation: "You heard 'Nu kae nye ehia?' which means 'What is this?' in Ewe."
+        },
+        {
+          id: 508,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you ask 'What is this?' in Ewe?",
+          options: [
+            { id: 1, text: "Nu kae nye ehia?" },
+            { id: 2, text: "Míado go emegbe" },
+            { id: 3, text: "Míado go etsɔ" },
+            { id: 4, text: "Hede nyuie" }
+          ],
+          correctOptionId: 1,
+          hints: ["Nu = thing", "ehia = this"],
+          explanation: "Nu kae nye ehia? = What is this? in Ewe."
         }
       ]
     }
@@ -376,7 +658,7 @@ export default {
     description: "Review all the greetings, phrases, and expressions you've learned",
     questions: [
       {
-        id: 501,
+        id: 509,
         type: "multiple_choice",
         instruction: "Select the correct Ewe greeting.",
         question: "What is 'Good morning' in Ewe?",
@@ -391,7 +673,7 @@ export default {
         explanation: "Ŋdi na wò = Good morning."
       },
       {
-        id: 502,
+        id: 510,
         type: "multiple_choice",
         instruction: "Select the correct Ewe greeting.",
         question: "What is 'Good evening' in Ewe?",
@@ -406,7 +688,7 @@ export default {
         explanation: "Fiẽ na wò = Good evening."
       },
       {
-        id: 503,
+        id: 511,
         type: "multiple_choice",
         instruction: "Select the correct Ewe greeting.",
         question: "What is 'Welcome' in Ewe?",
@@ -421,7 +703,7 @@ export default {
         explanation: "Woezɔ = Welcome."
       },
       {
-        id: 504,
+        id: 512,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'How are you?' in Ewe?",
@@ -436,7 +718,7 @@ export default {
         explanation: "'Èfɔa?' means 'How are you?' in Ewe."
       },
       {
-        id: 505,
+        id: 513,
         type: "multiple_choice",
         instruction: "Select the correct response.",
         question: "What is the correct response to 'Èfɔa?' (How are you?)",
@@ -451,7 +733,7 @@ export default {
         explanation: "Mefɔ = I am fine."
       },
       {
-        id: 506,
+        id: 514,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "What is 'Thank you' in Ewe?",
@@ -466,7 +748,7 @@ export default {
         explanation: "Akpe = Thank you."
       },
       {
-        id: 507,
+        id: 515,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "What is 'Please' in Ewe?",
@@ -481,22 +763,37 @@ export default {
         explanation: "Meɖe kuku = Please."
       },
       {
-        id: 508,
+        id: 516,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'How is your family?' in Ewe?",
+        question: "How do you say 'Excuse me' in Ewe?",
         options: [
-          { id: 1, text: "Èfɔa?" },
-          { id: 2, text: "Mefɔ" },
-          { id: 3, text: "Aleke wò ƒomea le?" },
-          { id: 4, text: "Woezɔ" }
+          { id: 1, text: "Taflatse" },
+          { id: 2, text: "Baba na wò" },
+          { id: 3, text: "Lala vie" },
+          { id: 4, text: "Akpe" }
         ],
-        correctOptionId: 3,
-        hints: ["Asking about someone's family"],
-        explanation: "Aleke wò ƒomea le? = How is your family?"
+        correctOptionId: 1,
+        hints: ["Used to get someone's attention"],
+        explanation: "Taflatse = Excuse me."
       },
       {
-        id: 509,
+        id: 517,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I am sorry' in Ewe?",
+        options: [
+          { id: 1, text: "Taflatse" },
+          { id: 2, text: "Baba na wò" },
+          { id: 3, text: "Lala vie" },
+          { id: 4, text: "Akpe" }
+        ],
+        correctOptionId: 2,
+        hints: ["Baba = sorry"],
+        explanation: "Baba na wò = I am sorry."
+      },
+      {
+        id: 518,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Goodbye' in Ewe?",
@@ -511,19 +808,80 @@ export default {
         explanation: "Hede nyuie = Goodbye."
       },
       {
-        id: 510,
+        id: 519,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'See you tomorrow' in Ewe?",
+        question: "How do you say 'See you later' in Ewe?",
         options: [
-          { id: 1, text: "Míado go etsɔ" },
-          { id: 2, text: "Mɔzɔzɔ nyuie" },
-          { id: 3, text: "Zã nyuie" },
+          { id: 1, text: "Míado go emegbe" },
+          { id: 2, text: "Míado go etsɔ" },
+          { id: 3, text: "Hede nyuie" },
+          { id: 4, text: "Zã nyuie" }
+        ],
+        correctOptionId: 1,
+        hints: ["emegbe = later"],
+        explanation: "Míado go emegbe = See you later."
+      },
+      {
+        id: 520,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe word.",
+        question: "What is 'Yes' in Ewe?",
+        options: [
+          { id: 1, text: "Ao" },
+          { id: 2, text: "Ɛ̃" },
+          { id: 3, text: "Melɔ̃e" },
+          { id: 4, text: "Lala vie" }
+        ],
+        correctOptionId: 2,
+        hints: ["Affirmative response"],
+        explanation: "Ɛ̃ = Yes in Ewe."
+      },
+      {
+        id: 521,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Can you help me?' in Ewe?",
+        options: [
+          { id: 1, text: "Nyemese egɔme o" },
+          { id: 2, text: "Meɖe kuku ƒo nu blewuu" },
+          { id: 3, text: "Àte ŋu akpe ɖe ŋunyea?" },
+          { id: 4, text: "Meɖe kuku gblɔe ake" }
+        ],
+        correctOptionId: 3,
+        hints: ["Àte ŋu = Can you"],
+        explanation: "Àte ŋu akpe ɖe ŋunyea? = Can you help me?"
+      },
+      {
+        id: 522,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter1/baba_na_wò.m4a"),
+        options: [
+          { id: 1, text: "Excuse me" },
+          { id: 2, text: "I am sorry" },
+          { id: 3, text: "Wait a moment" },
+          { id: 4, text: "Thank you" }
+        ],
+        correctOptionId: 2,
+        hints: ["Baba = sorry"],
+        explanation: "You heard 'Baba na wò' which means 'I am sorry'."
+      },
+      {
+        id: 523,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'What is this?' in Ewe?",
+        options: [
+          { id: 1, text: "Nu kae nye ehia?" },
+          { id: 2, text: "Míado go emegbe" },
+          { id: 3, text: "Míado go etsɔ" },
           { id: 4, text: "Hede nyuie" }
         ],
         correctOptionId: 1,
-        hints: ["Tomorrow = Etsɔ"],
-        explanation: "Míado go etsɔ = See you tomorrow."
+        hints: ["Nu = thing", "ehia = this"],
+        explanation: "Nu kae nye ehia? = What is this?"
       }
     ]
   }

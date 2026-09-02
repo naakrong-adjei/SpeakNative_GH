@@ -1,474 +1,424 @@
-// data/course_content/ewe/intermediate/chapter4.js
 export default {
-  id: 4,
-  title: "Describing People & Things",
-  description: "Learn adjectives and phrases to describe people and things in Ewe",
-  icon: "color-palette-outline",
-  totalXp: 25,
+  id: 14,
+  title: "Opinions & Emotions",
+  description: "Learn how to express opinions and emotions in Ewe",
+  icon: "chatbubbles-outline",
+  totalXp: 11,
   difficulty: "Intermediate",
 
   sections: [
     {
-      id: "4-1",
-      type: "vocabulary",
-      title: "Common Adjectives",
-      icon: "options-outline",
-      description: "Learn common Ewe adjectives to describe things",
-      words: ["Nyo", "Vɔ̃", "Gagbe", "Kpuiɖe", "Didi", "Kpui", "Veve", "Ʋedzɛ"],
-      vocabulary: [
-        {
-          id: 1,
-          english: "Good",
-          native: "Nyo",
-          pronunciation: "nyoh"
-          // audioUrl: "/audio/ewe/nyo.mp3"
-        },
-        {
-          id: 2,
-          english: "Bad",
-          native: "Vɔ̃",
-          pronunciation: "voh"
-          // audioUrl: "/audio/ewe/vɔ̃.mp3"
-        },
-        {
-          id: 3,
-          english: "Big / Large",
-          native: "Gagbe",
-          pronunciation: "gah-gbeh"
-          // audioUrl: "/audio/ewe/gagbe.mp3"
-        },
-        {
-          id: 4,
-          english: "Small",
-          native: "Kpuiɖe",
-          pronunciation: "kpoo-ee-deh"
-          // audioUrl: "/audio/ewe/kpuiɖe.mp3"
-        },
-        {
-          id: 5,
-          english: "Tall / Long",
-          native: "Didi",
-          pronunciation: "dee-dee"
-          // audioUrl: "/audio/ewe/didi.mp3"
-        },
-        {
-          id: 6,
-          english: "Short",
-          native: "Kpui",
-          pronunciation: "kpoo-ee"
-          // audioUrl: "/audio/ewe/kpui.mp3"
-        },
-        {
-          id: 7,
-          english: "Sweet / Tasty",
-          native: "Veve",
-          pronunciation: "veh-veh"
-          // audioUrl: "/audio/ewe/veve.mp3"
-        },
-        {
-          id: 8,
-          english: "Colourful / Bright",
-          native: "Ʋedzɛ",
-          pronunciation: "veh-jeh"
-          // audioUrl: "/audio/ewe/ʋedzɛ.mp3"
-        }
-      ],
-      questions: [
-        {
-          id: 101,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe adjective.",
-          question: "How do you say 'Good' in Ewe?",
-          options: [
-            { id: 1, text: "Nyo" },
-            { id: 2, text: "Vɔ̃" },
-            { id: 3, text: "Gagbe" },
-            { id: 4, text: "Kpuiɖe" }
-          ],
-          correctOptionId: 1,
-          hints: ["Opposite of bad", "Short word"],
-          explanation: "'Nyo' means 'Good' in Ewe."
-        },
-        {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe adjective.",
-          question: "How do you say 'Big / Large' in Ewe?",
-          options: [
-            { id: 1, text: "Gagbe" },
-            { id: 2, text: "Kpuiɖe" },
-            { id: 3, text: "Didi" },
-            { id: 4, text: "Kpui" }
-          ],
-          correctOptionId: 1,
-          hints: ["Opposite of small", "Starts with 'Ga'"],
-          explanation: "'Gagbe' means 'Big / Large' in Ewe."
-        },
-        {
-          id: 103,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe adjective.",
-          question: "How do you say 'Sweet / Tasty' in Ewe?",
-          options: [
-            { id: 1, text: "Veve" },
-            { id: 2, text: "Ʋedzɛ" },
-            { id: 3, text: "Nyo" },
-            { id: 4, text: "Kpui" }
-          ],
-          correctOptionId: 1,
-          hints: ["Tastes good", "Repeated sound"],
-          explanation: "'Veve' means 'Sweet / Tasty' in Ewe."
-        },
-        {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Ewe adjective to its English meaning.",
-          pairs: [
-            { id: 1, left: "Nyo", right: "Good" },
-            { id: 2, left: "Vɔ̃", right: "Bad" },
-            { id: 3, left: "Gagbe", right: "Big / Large" },
-            { id: 4, left: "Kpuiɖe", right: "Small" }
-          ],
-          hints: ["Nyo = good", "Vɔ̃ = bad", "Gagbe = big"],
-          explanation: "These are common adjectives in Ewe."
-        }
-      ]
-    },
-
-    {
-      id: "4-2",
-      type: "useful_phrases",
-      title: "Describing People",
+      id: "14-1",
+      type: "words",
+      title: "Happy & Sad",
       icon: "happy-outline",
-      description: "Learn Ewe words to describe people's appearance and character",
-      words: ["Gagbe", "Kpuiɖe", "Dzidzɔtɔ", "Dzi kpekple", "Bɔbɔ", "Fefe", "Kplɔ", "Nufiala"],
+      description: "Learn how to express happiness, sadness, and related emotions in Ewe",
+      words: ["Dzi dzɔm", "Nye dzi gbã", "Nye dzi dzɔ ɖe ŋuwò", "Mègatsi dzi o"],
       vocabulary: [
         {
-          id: 9,
-          english: "Tall",
-          native: "Didi",
-          pronunciation: "dee-dee"
-          // audioUrl: "/audio/ewe/didi.mp3"
+          id: 184,
+          english: "I am happy",
+          native: "Dzi dzɔm",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/dzi_dzɔm.m4a")
         },
         {
-          id: 10,
-          english: "Beautiful / Handsome",
-          native: "Dzidzɔtɔ",
-          pronunciation: "jee-joh-toh"
-          // audioUrl: "/audio/ewe/dzidzɔtɔ.mp3"
+          id: 185,
+          english: "I am sad",
+          native: "Nye dzi gbã",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/nye_dzi_gbã.m4a")
         },
         {
-          id: 11,
-          english: "Kind / Gentle",
-          native: "Dzi kpekple",
-          pronunciation: "jee kpeh-kpleh"
-          // audioUrl: "/audio/ewe/dzi_kpekple.mp3"
+          id: 193,
+          english: "I am proud of you",
+          native: "Nye dzi dzɔ ɖe ŋuwò",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/nye_dzi_dzɔ_ɖe_ŋuwò.m4a")
         },
         {
-          id: 12,
-          english: "Humble",
-          native: "Bɔbɔ",
-          pronunciation: "boh-boh"
-          // audioUrl: "/audio/ewe/bɔbɔ.mp3"
-        },
-        {
-          id: 13,
-          english: "Funny / Playful",
-          native: "Fefe",
-          pronunciation: "feh-feh"
-          // audioUrl: "/audio/ewe/fefe.mp3"
-        },
-        {
-          id: 14,
-          english: "Smart / Intelligent",
-          native: "Kplɔ",
-          pronunciation: "kploh"
-          // audioUrl: "/audio/ewe/kplɔ.mp3"
-        },
-        {
-          id: 15,
-          english: "Teacher",
-          native: "Nufiala",
-          pronunciation: "noo-fee-ah-lah"
-          // audioUrl: "/audio/ewe/nufiala.mp3"
-        },
-        {
-          id: 16,
-          english: "Child",
-          native: "Ɖevi",
-          pronunciation: "deh-vee"
-          // audioUrl: "/audio/ewe/ɉevi.mp3"
+          id: 194,
+          english: "Don't worry",
+          native: "Mègatsi dzi o",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/mègatsi_dzi_o.m4a")
         }
       ],
       questions: [
         {
-          id: 201,
+          id: 1401,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Beautiful / Handsome' in Ewe?",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I am happy' in Ewe?",
           options: [
-            { id: 1, text: "Dzidzɔtɔ" },
-            { id: 2, text: "Dzi kpekple" },
-            { id: 3, text: "Bɔbɔ" },
-            { id: 4, text: "Fefe" }
+            { id: 1, text: "Dzi dzɔm" },
+            { id: 2, text: "Nye dzi gbã" },
+            { id: 3, text: "Nye dzi dzɔ ɖe ŋuwò" },
+            { id: 4, text: "Mègatsi dzi o" }
           ],
           correctOptionId: 1,
-          hints: ["Used to praise appearance", "Starts with 'Dzi'"],
-          explanation: "'Dzidzɔtɔ' means 'Beautiful / Handsome' in Ewe."
+          hints: ["dzi = heart", "dzɔm = is happy"],
+          explanation: "Dzi dzɔm = I am happy in Ewe."
         },
         {
-          id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Kind / Gentle' in Ewe?",
+          id: 1402,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/nye_dzi_gbã.m4a"),
           options: [
-            { id: 1, text: "Dzi kpekple" },
-            { id: 2, text: "Dzidzɔtɔ" },
-            { id: 3, text: "Bɔbɔ" },
-            { id: 4, text: "Kplɔ" }
+            { id: 1, text: "I am happy" },
+            { id: 2, text: "I am sad" },
+            { id: 3, text: "I am proud of you" },
+            { id: 4, text: "Don't worry" }
           ],
-          correctOptionId: 1,
-          hints: ["Warm-hearted", "Contains 'dzi' (heart)"],
-          explanation: "'Dzi kpekple' means 'Kind / Gentle' in Ewe."
+          correctOptionId: 2,
+          hints: ["gbã = broken/sad"],
+          explanation: "You heard 'Nye dzi gbã' which means 'I am sad' in Ewe."
         },
         {
-          id: 203,
+          id: 1403,
           type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'Smart / Intelligent' in Ewe?",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Don't worry' in Ewe?",
           options: [
-            { id: 1, text: "Kplɔ" },
-            { id: 2, text: "Fefe" },
-            { id: 3, text: "Bɔbɔ" },
-            { id: 4, text: "Dzidzɔtɔ" }
+            { id: 1, text: "Dzi dzɔm" },
+            { id: 2, text: "Nye dzi gbã" },
+            { id: 3, text: "Nye dzi dzɔ ɖe ŋuwò" },
+            { id: 4, text: "Mègatsi dzi o" }
           ],
-          correctOptionId: 1,
-          hints: ["Clever person", "Starts with 'Kpl'"],
-          explanation: "'Kplɔ' means 'Smart / Intelligent' in Ewe."
-        },
-        {
-          id: 204,
-          type: "matching",
-          instruction: "Match each Ewe word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Dzidzɔtɔ", right: "Beautiful / Handsome" },
-            { id: 2, left: "Dzi kpekple", right: "Kind / Gentle" },
-            { id: 3, left: "Bɔbɔ", right: "Humble" },
-            { id: 4, left: "Kplɔ", right: "Smart / Intelligent" }
-          ],
-          hints: ["Dzidzɔtɔ = beautiful", "Dzi kpekple = kind", "Kplɔ = smart"],
-          explanation: "These are words to describe people in Ewe."
+          correctOptionId: 4,
+          hints: ["mègatsi = don't take", "dzi = heart"],
+          explanation: "Mègatsi dzi o = Don't worry in Ewe."
         }
       ]
     },
 
     {
-      id: "4-3",
-      type: "complete_sentences",
-      title: "Making Comparisons",
-      icon: "git-compare-outline",
-      description: "Learn how to make comparisons in Ewe",
-      words: ["Wú kplɔ", "Wú dzidzɔ", "Gadĩ", "Vɔ̃", "Kpɔ wu", "Nu yeye", "Nu tsitsri", "Lolo wú"],
+      id: "14-2",
+      type: "words",
+      title: "Strong Feelings",
+      icon: "flame-outline",
+      description: "Learn how to express strong emotions in Ewe",
+      words: ["Me kpo dzi ku", "Me vɔvɔ̃m", "Ewɔ nuku nam"],
       vocabulary: [
         {
-          id: 17,
-          english: "Bigger than",
-          native: "Lolo wú",
-          pronunciation: "loh-loh woo"
-          // audioUrl: "/audio/ewe/lolo_wú.mp3"
+          id: 188,
+          english: "I am angry",
+          native: "Me kpo dzi ku",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/me_kpo_dzi_ku.m4a")
         },
         {
-          id: 18,
-          english: "Taller than",
-          native: "Didi wú",
-          pronunciation: "dee-dee woo"
-          // audioUrl: "/audio/ewe/didi_wú.mp3"
+          id: 189,
+          english: "I am afraid",
+          native: "Me vɔvɔ̃m",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/me_vɔvɔ̃m.m4a")
         },
         {
-          id: 19,
-          english: "Better than",
-          native: "Nyo wú",
-          pronunciation: "nyoh woo"
-          // audioUrl: "/audio/ewe/nyo_wú.mp3"
-        },
-        {
-          id: 20,
-          english: "Smaller than",
-          native: "Kpuiɖe wú",
-          pronunciation: "kpoo-ee-deh woo"
-          // audioUrl: "/audio/ewe/kpuiɖe_wú.mp3"
-        },
-        {
-          id: 21,
-          english: "The best",
-          native: "Enu nyui",
-          pronunciation: "eh-noo nyoo-ee"
-          // audioUrl: "/audio/ewe/enu_nyui.mp3"
-        },
-        {
-          id: 22,
-          english: "New",
-          native: "Yeye",
-          pronunciation: "yeh-yeh"
-          // audioUrl: "/audio/ewe/yeye.mp3"
-        },
-        {
-          id: 23,
-          english: "Old",
-          native: "Tsitsri",
-          pronunciation: "tsee-tsee-ree"
-          // audioUrl: "/audio/ewe/tsitsri.mp3"
-        },
-        {
-          id: 24,
-          english: "Equal / Same",
-          native: "Esi ke",
-          pronunciation: "eh-see keh"
-          // audioUrl: "/audio/ewe/esi_ke.mp3"
+          id: 190,
+          english: "I am surprised",
+          native: "Ewɔ nuku nam",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/ewɔ_nuku_nam.m4a")
         }
       ],
       questions: [
         {
-          id: 301,
+          id: 1404,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'Bigger than' in Ewe?",
+          question: "How do you say 'I am angry' in Ewe?",
           options: [
-            { id: 1, text: "Lolo wú" },
-            { id: 2, text: "Didi wú" },
-            { id: 3, text: "Nyo wú" },
-            { id: 4, text: "Kpuiɖe wú" }
+            { id: 1, text: "Me kpo dzi ku" },
+            { id: 2, text: "Me vɔvɔ̃m" },
+            { id: 3, text: "Ewɔ nuku nam" },
+            { id: 4, text: "Dzi dzɔm" }
           ],
           correctOptionId: 1,
-          hints: ["lolo = big", "wú = than"],
-          explanation: "'Lolo wú' means 'Bigger than'. 'lolo' means 'big' and 'wú' means 'than'."
+          hints: ["dzi = heart", "ku = dead/angry"],
+          explanation: "Me kpo dzi ku = I am angry in Ewe."
         },
         {
-          id: 302,
+          id: 1405,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/me_vɔvɔ̃m.m4a"),
+          options: [
+            { id: 1, text: "I am angry" },
+            { id: 2, text: "I am afraid" },
+            { id: 3, text: "I am surprised" },
+            { id: 4, text: "I am happy" }
+          ],
+          correctOptionId: 2,
+          hints: ["vɔvɔ̃ = fear"],
+          explanation: "You heard 'Me vɔvɔ̃m' which means 'I am afraid' in Ewe."
+        },
+        {
+          id: 1406,
+          type: "drag_drop",
+          instruction: "Complete the phrase by dragging the correct word.",
+          sentence: "Ewɔ nuku [_____] (I am surprised)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "nam" },
+            { id: "opt2", text: "wò" },
+            { id: "opt3", text: "nye" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["nam = for me"],
+          explanation: "Ewɔ nuku nam = I am surprised in Ewe."
+        }
+      ]
+    },
+
+    {
+      id: "14-3",
+      type: "words",
+      title: "Giving Opinions",
+      icon: "chatbox-outline",
+      description: "Learn how to give opinions and express agreement in Ewe",
+      words: ["Mesusu nenema", "Nyemelɔ̃ ɖe edzi o", "Le nye susu nu", "Nyateƒee"],
+      vocabulary: [
+        {
+          id: 186,
+          english: "I think so",
+          native: "Mesusu nenema",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/mesusu_nenema.m4a")
+        },
+        {
+          id: 187,
+          english: "I don't agree",
+          native: "Nyemelɔ̃ ɖe edzi o",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/nyemelɔ̃_ɖe_edzi_o.m4a")
+        },
+        {
+          id: 191,
+          english: "In my opinion",
+          native: "Le nye susu nu",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/le_nye_susu_nu.m4a")
+        },
+        {
+          id: 192,
+          english: "That is true",
+          native: "Nyateƒee",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/nyateƒee.m4a")
+        }
+      ],
+      questions: [
+        {
+          id: 1407,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'Better than' in Ewe?",
+          question: "How do you say 'I think so' in Ewe?",
           options: [
-            { id: 1, text: "Nyo wú" },
-            { id: 2, text: "Didi wú" },
-            { id: 3, text: "Kpuiɖe wú" },
-            { id: 4, text: "Lolo wú" }
+            { id: 1, text: "Mesusu nenema" },
+            { id: 2, text: "Nyemelɔ̃ ɖe edzi o" },
+            { id: 3, text: "Le nye susu nu" },
+            { id: 4, text: "Nyateƒee" }
           ],
           correctOptionId: 1,
-          hints: ["nyo = good", "wú = than"],
-          explanation: "'Nyo wú' means 'Better than'. 'nyo' means 'good' and 'wú' means 'than'."
+          hints: ["mesusu = I think", "nenema = so"],
+          explanation: "Mesusu nenema = I think so in Ewe."
         },
         {
-          id: 303,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "How do you say 'New' in Ewe?",
+          id: 1408,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/nyemelɔ̃_ɖe_edzi_o.m4a"),
           options: [
-            { id: 1, text: "Yeye" },
-            { id: 2, text: "Tsitsri" },
-            { id: 3, text: "Esi ke" },
-            { id: 4, text: "Nyo" }
+            { id: 1, text: "I think so" },
+            { id: 2, text: "I don't agree" },
+            { id: 3, text: "In my opinion" },
+            { id: 4, text: "That is true" }
           ],
-          correctOptionId: 1,
-          hints: ["Opposite of old", "Repeated sound"],
-          explanation: "'Yeye' means 'New' in Ewe."
+          correctOptionId: 2,
+          hints: ["nyemelɔ̃ = I don't like/agree"],
+          explanation: "You heard 'Nyemelɔ̃ ɖe edzi o' which means 'I don't agree' in Ewe."
         },
         {
-          id: 304,
-          type: "matching",
-          instruction: "Match each Ewe phrase to its English meaning.",
-          pairs: [
-            { id: 1, left: "Lolo wú", right: "Bigger than" },
-            { id: 2, left: "Nyo wú", right: "Better than" },
-            { id: 3, left: "Yeye", right: "New" },
-            { id: 4, left: "Tsitsri", right: "Old" }
+          id: 1409,
+          type: "drag_drop",
+          instruction: "Complete the phrase by dragging the correct word.",
+          sentence: "Le nye susu [_____] (In my opinion)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "nu" },
+            { id: "opt2", text: "o" },
+            { id: "opt3", text: "me" }
           ],
-          hints: ["Lolo wú = bigger than", "Nyo wú = better than", "Yeye = new"],
-          explanation: "These are useful for making comparisons in Ewe."
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["nu = in"],
+          explanation: "Le nye susu nu = In my opinion in Ewe."
         }
       ]
     }
   ],
 
   review: {
-    id: "review-int-4",
-    title: "Review: Describing People & Things",
+    id: "review-14",
+    title: "Review: Opinions & Emotions",
     icon: "refresh-outline",
-    description: "Review the adjectives and descriptive vocabulary you've learned",
+    description: "Review all the opinion and emotion vocabulary you've learned",
     questions: [
       {
-        id: 401,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe adjective.",
-        question: "How do you say 'Good' in Ewe?",
-        options: [
-          { id: 1, text: "Nyo" },
-          { id: 2, text: "Vɔ̃" },
-          { id: 3, text: "Gagbe" },
-          { id: 4, text: "Kpuiɖe" }
-        ],
-        correctOptionId: 1,
-        hints: ["Opposite of bad"],
-        explanation: "'Nyo' means 'Good' in Ewe."
-      },
-      {
-        id: 402,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "How do you say 'Beautiful / Handsome' in Ewe?",
-        options: [
-          { id: 1, text: "Dzidzɔtɔ" },
-          { id: 2, text: "Dzi kpekple" },
-          { id: 3, text: "Bɔbɔ" },
-          { id: 4, text: "Fefe" }
-        ],
-        correctOptionId: 1,
-        hints: ["Praise of appearance"],
-        explanation: "'Dzidzɔtɔ' means 'Beautiful / Handsome' in Ewe."
-      },
-      {
-        id: 403,
+        id: 1410,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'Bigger than' in Ewe?",
+        question: "How do you say 'I am happy' in Ewe?",
         options: [
-          { id: 1, text: "Lolo wú" },
-          { id: 2, text: "Didi wú" },
-          { id: 3, text: "Nyo wú" },
-          { id: 4, text: "Kpuiɖe wú" }
+          { id: 1, text: "Dzi dzɔm" },
+          { id: 2, text: "Nye dzi gbã" },
+          { id: 3, text: "Me kpo dzi ku" },
+          { id: 4, text: "Me vɔvɔ̃m" }
         ],
         correctOptionId: 1,
-        hints: ["lolo = big", "wú = than"],
-        explanation: "'Lolo wú' means 'Bigger than' in Ewe."
+        hints: ["dzi = heart"],
+        explanation: "Dzi dzɔm = I am happy."
       },
       {
-        id: 404,
+        id: 1411,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/nye_dzi_dzɔ_ɖe_ŋuwò.m4a"),
+        options: [
+          { id: 1, text: "I am happy" },
+          { id: 2, text: "I am sad" },
+          { id: 3, text: "I am proud of you" },
+          { id: 4, text: "Don't worry" }
+        ],
+        correctOptionId: 3,
+        hints: ["dzɔ ɖe ŋuwò = for you"],
+        explanation: "You heard 'Nye dzi dzɔ ɖe ŋuwò' which means 'I am proud of you'."
+      },
+      {
+        id: 1412,
         type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "How do you say 'New' in Ewe?",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I am angry' in Ewe?",
         options: [
-          { id: 1, text: "Yeye" },
-          { id: 2, text: "Tsitsri" },
-          { id: 3, text: "Esi ke" },
-          { id: 4, text: "Nyo" }
+          { id: 1, text: "Me kpo dzi ku" },
+          { id: 2, text: "Me vɔvɔ̃m" },
+          { id: 3, text: "Ewɔ nuku nam" },
+          { id: 4, text: "Dzi dzɔm" }
         ],
         correctOptionId: 1,
-        hints: ["Opposite of old"],
-        explanation: "'Yeye' means 'New' in Ewe."
+        hints: ["ku = dead"],
+        explanation: "Me kpo dzi ku = I am angry."
       },
       {
-        id: 405,
-        type: "matching",
-        instruction: "Match each Ewe word to its English meaning.",
-        pairs: [
-          { id: 1, left: "Nyo", right: "Good" },
-          { id: 2, left: "Gagbe", right: "Big" },
-          { id: 3, left: "Kpuiɖe", right: "Small" },
-          { id: 4, left: "Dzidzɔtɔ", right: "Beautiful" },
-          { id: 5, left: "Yeye", right: "New" }
+        id: 1413,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/ewɔ_nuku_nam.m4a"),
+        options: [
+          { id: 1, text: "I am angry" },
+          { id: 2, text: "I am afraid" },
+          { id: 3, text: "I am surprised" },
+          { id: 4, text: "I am happy" }
         ],
-        hints: ["Nyo = good", "Gagbe = big", "Yeye = new"],
-        explanation: "These are key descriptive words from this chapter."
+        correctOptionId: 3,
+        hints: ["nuku = wonder"],
+        explanation: "You heard 'Ewɔ nuku nam' which means 'I am surprised'."
+      },
+      {
+        id: 1414,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I think so' in Ewe?",
+        options: [
+          { id: 1, text: "Mesusu nenema" },
+          { id: 2, text: "Nyemelɔ̃ ɖe edzi o" },
+          { id: 3, text: "Le nye susu nu" },
+          { id: 4, text: "Nyateƒee" }
+        ],
+        correctOptionId: 1,
+        hints: ["mesusu = I think"],
+        explanation: "Mesusu nenema = I think so."
+      },
+      {
+        id: 1415,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/nyateƒee.m4a"),
+        options: [
+          { id: 1, text: "I think so" },
+          { id: 2, text: "I don't agree" },
+          { id: 3, text: "In my opinion" },
+          { id: 4, text: "That is true" }
+        ],
+        correctOptionId: 4,
+        hints: ["nyateƒee = true"],
+        explanation: "You heard 'Nyateƒee' which means 'That is true'."
+      },
+      {
+        id: 1416,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'In my opinion' in Ewe?",
+        options: [
+          { id: 1, text: "Mesusu nenema" },
+          { id: 2, text: "Nyemelɔ̃ ɖe edzi o" },
+          { id: 3, text: "Le nye susu nu" },
+          { id: 4, text: "Nyateƒee" }
+        ],
+        correctOptionId: 3,
+        hints: ["susu = opinion"],
+        explanation: "Le nye susu nu = In my opinion."
+      },
+      {
+        id: 1417,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Don't worry' in Ewe?",
+        options: [
+          { id: 1, text: "Dzi dzɔm" },
+          { id: 2, text: "Nye dzi gbã" },
+          { id: 3, text: "Nye dzi dzɔ ɖe ŋuwò" },
+          { id: 4, text: "Mègatsi dzi o" }
+        ],
+        correctOptionId: 4,
+        hints: ["mègatsi = don't take"],
+        explanation: "Mègatsi dzi o = Don't worry."
+      },
+      {
+        id: 1418,
+        type: "matching",
+        instruction: "Match the Ewe emotion with its English translation.",
+        question: "Match each Ewe phrase to its correct meaning:",
+        pairs: [
+          { id: "pair1", left: "Dzi dzɔm", right: "I am angry" },
+          { id: "pair2", left: "Nye dzi gbã", right: "I am happy" },
+          { id: "pair3", left: "Me kpo dzi ku", right: "I am afraid" },
+          { id: "pair4", left: "Me vɔvɔ̃m", right: "I am sad" }
+        ],
+        correctMatches: [
+          { leftId: "pair1", rightId: "pair2" },
+          { leftId: "pair2", rightId: "pair4" },
+          { leftId: "pair3", rightId: "pair1" },
+          { leftId: "pair4", rightId: "pair3" }
+        ],
+        hints: ["Match the emotion to its meaning"],
+        explanation: "These are common emotion phrases in Ewe."
+      },
+      {
+        id: 1419,
+        type: "matching",
+        instruction: "Match the Ewe opinion phrase with its English translation.",
+        question: "Match each Ewe phrase to its correct meaning:",
+        pairs: [
+          { id: "pair1", left: "Mesusu nenema", right: "In my opinion" },
+          { id: "pair2", left: "Nyemelɔ̃ ɖe edzi o", right: "That is true" },
+          { id: "pair3", left: "Le nye susu nu", right: "I don't agree" },
+          { id: "pair4", left: "Nyateƒee", right: "I think so" }
+        ],
+        correctMatches: [
+          { leftId: "pair1", rightId: "pair4" },
+          { leftId: "pair2", rightId: "pair3" },
+          { leftId: "pair3", rightId: "pair1" },
+          { leftId: "pair4", rightId: "pair2" }
+        ],
+        hints: ["Match the opinion phrase to its meaning"],
+        explanation: "These are common opinion phrases in Ewe."
       }
     ]
   }

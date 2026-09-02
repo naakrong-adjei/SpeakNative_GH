@@ -2,7 +2,7 @@ export default {
   id: 4,
   title: "Numbers & Time",
   description: "Learn numbers, telling time, and days of the week in Ewe",
-  icon: "hash-outline",
+  icon: "grid-outline",
   totalXp: 25,
   difficulty: "Beginner",
 
@@ -11,7 +11,7 @@ export default {
       id: "4-1",
       type: "words",
       title: "Numbers 1-5",
-      icon: "hash-outline",
+      icon: "calculator-outline",
       description: "Learn numbers one to five in Ewe",
       words: ["Ɖeka", "Eve", "Etɔ̃", "Ene", "Atɔ̃"],
       vocabulary: [
@@ -59,9 +59,7 @@ export default {
             { id: 4, text: "Ene" }
           ],
           correctOptionId: 3,
-          hints: [
-            "Has a tilde (̃)"
-          ],
+          hints: ["Has a tilde (̃)"],
           explanation: "Etɔ̃ = Three in Ewe."
         },
         {
@@ -71,35 +69,28 @@ export default {
           question: "What number did you hear?",
           audioUrl: require("../../../../assets/audio/ewe/beginner/chapter4/deka.m4a"),
           options: [
-            { id: 1, text: "1"},
-            { id: 2,text: "2"},
-            { id: 3,text: "3"},
-            { id: 4,text: "4"}
+            { id: 1, text: "1" },
+            { id: 2, text: "2" },
+            { id: 3, text: "3" },
+            { id: 4, text: "4" }
           ],
           correctOptionId: 1,
-          hints: [
-            "The smallest number"
-          ],
+          hints: ["The smallest number"],
           explanation: "You heard 'Ɖeka' which means One in Ewe."
         },
         {
           id: 403,
           type: "drag_drop",
           instruction: "Complete the pattern by dragging the correct Ewe number.",
-          question: "Ɖeka, Eve, Etɔ̃, Ene, ___",
+          sentence: "Ɖeka, Eve, Etɔ̃, Ene, [_____]",
           blankId: "blank1",
           items: [
-            {id: "opt1", text: "Atɔ̃"},
-            {id: "opt2", text: "Ade"},
-            {id: "opt3", text: "Ewo"}
+            { id: "opt1", text: "Atɔ̃" },
+            { id: "opt2", text: "Ade" },
+            { id: "opt3", text: "Ewo" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
-          hints: [
-            "Five comes after four"
-          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["Five comes after four"],
           explanation: "Atɔ̃ = Five. The pattern counts from one to five."
         }
       ]
@@ -109,9 +100,9 @@ export default {
       id: "4-2",
       type: "words",
       title: "Numbers 6-10",
-      icon: "hash-outline",
+      icon: "calculator-outline",
       description: "Learn numbers six to ten in Ewe",
-      words: [ "Ade", "Adre","Enyi", "Asieke", "Ewo" ],
+      words: ["Ade", "Adre", "Enyi", "Asieke", "Ewo"],
       vocabulary: [
         {
           id: 60,
@@ -151,15 +142,13 @@ export default {
           instruction: "Select the correct Ewe number.",
           question: "What is 7 in Ewe?",
           options: [
-            { id: 1, text: "Ade"},
-            { id: 2, text: "Adre"},
-            { id: 3, text: "Enyi"},
-            { id: 4, text: "Asieke"}
+            { id: 1, text: "Ade" },
+            { id: 2, text: "Adre" },
+            { id: 3, text: "Enyi" },
+            { id: 4, text: "Asieke" }
           ],
           correctOptionId: 2,
-          hints: [
-            "Has an 'r' sound"
-          ],
+          hints: ["Has an 'r' sound"],
           explanation: "Adre = Seven in Ewe."
         },
         {
@@ -169,35 +158,28 @@ export default {
           question: "What number did you hear?",
           audioUrl: "/audio/ewe/beginner/ewo.mp3",
           options: [
-            { id: 1,text: "8"},
-            { id: 2,text: "9"},
-            { id: 3,text: "10"},
-            {id: 4,text: "11"}
+            { id: 1, text: "8" },
+            { id: 2, text: "9" },
+            { id: 3, text: "10" },
+            { id: 4, text: "11" }
           ],
           correctOptionId: 3,
-          hints: [
-            "Two digits"
-          ],
+          hints: ["Two digits"],
           explanation: "You heard 'Ewo' which means Ten in Ewe."
         },
         {
           id: 406,
           type: "drag_drop",
           instruction: "Complete the pattern by dragging the correct Ewe number.",
-          question: "Ade, Adre, ___, Asieke",
+          sentence: "Ade, Adre, [_____], Asieke",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "Atɔ̃" },
             { id: "opt2", text: "Enyi" },
             { id: "opt3", text: "Ewo" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt2"
-          },
-          hints: [
-            "Eight comes after seven"
-          ],
+          correctDrop: { blankId: "blank1", itemId: "opt2" },
+          hints: ["Eight comes after seven"],
           explanation: "Enyi = Eight. The pattern counts from six to nine."
         }
       ]
@@ -207,9 +189,9 @@ export default {
       id: "4-3",
       type: "words",
       title: "Numbers 11-15",
-      icon: "hash-outline",
+      icon: "calculator-outline",
       description: "Learn numbers eleven to fifteen in Ewe",
-      words: [ "Wuiɖeka", "Wui eve", "Wui etɔ̃", "Wui ene", "Wui atɔ̃" ],
+      words: ["Wuiɖeka", "Wui eve", "Wui etɔ̃", "Wui ene", "Wui atɔ̃"],
       vocabulary: [
         {
           id: 64,
@@ -252,13 +234,10 @@ export default {
             { id: 1, text: "Wuiɖeka" },
             { id: 2, text: "Wui eve" },
             { id: 3, text: "Wui etɔ̃" },
-            { id: 4,text: "Wui ene" }
+            { id: 4, text: "Wui ene" }
           ],
           correctOptionId: 4,
-          hints: [
-            "Wui = ten",
-            "ene = four"
-          ],
+          hints: ["Wui = ten", "ene = four"],
           explanation: "Wui ene = Fourteen in Ewe."
         },
         {
@@ -268,36 +247,28 @@ export default {
           question: "What number did you hear?",
           audioUrl: require("../../../../assets/audio/ewe/beginner/chapter4/wui_atɔ̃.m4a"),
           options: [
-            { id: 1, text: "11"},
+            { id: 1, text: "11" },
             { id: 2, text: "13" },
             { id: 3, text: "14" },
             { id: 4, text: "15" }
           ],
           correctOptionId: 4,
-          hints: [
-            "Wui = ten",
-            "atɔ̃ = five"
-          ],
+          hints: ["Wui = ten", "atɔ̃ = five"],
           explanation: "You heard 'Wui atɔ̃' which means Fifteen in Ewe."
         },
         {
           id: 409,
           type: "drag_drop",
           instruction: "Complete the pattern by dragging the correct Ewe number.",
-          question: "Wuiɖeka, Wui eve, ___, Wui ene, Wui atɔ̃",
+          sentence: "Wuiɖeka, Wui eve, [_____], Wui ene, Wui atɔ̃",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "Wui etɔ̃" },
             { id: "opt2", text: "Wui ade" },
             { id: "opt3", text: "Ewo" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
-          hints: [
-            "Thirteen comes after twelve"
-          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["Thirteen comes after twelve"],
           explanation: "Wui etɔ̃ = Thirteen. The pattern counts from eleven to fifteen."
         }
       ]
@@ -309,7 +280,7 @@ export default {
       title: "Tens 20-50",
       icon: "calculator-outline",
       description: "Learn the tens from twenty to fifty in Ewe",
-      words: [ "Blaeve", "Blaetɔ̃", "Blaene", "Blaatɔ̃" ],
+      words: ["Blaeve", "Blaetɔ̃", "Blaene", "Blaatɔ̃"],
       vocabulary: [
         {
           id: 54,
@@ -334,7 +305,6 @@ export default {
           english: "Fifty",
           native: "Blaatɔ̃",
           audioUrl: require("../../../../assets/audio/ewe/beginner/chapter4/blaatɔ̃.m4a")
-          
         }
       ],
       questions: [
@@ -350,10 +320,7 @@ export default {
             { id: 4, text: "Blaatɔ̃" }
           ],
           correctOptionId: 3,
-          hints: [
-            "Four tens",
-            "Bla + ene"
-          ],
+          hints: ["Four tens", "Bla + ene"],
           explanation: "Blaene = Forty in Ewe."
         },
         {
@@ -369,9 +336,7 @@ export default {
             { id: 4, text: "50" }
           ],
           correctOptionId: 2,
-          hints: [
-            "Three tens"
-          ],
+          hints: ["Three tens"],
           explanation: "You heard 'Blaetɔ̃' which means Thirty in Ewe."
         }
       ]
@@ -383,7 +348,7 @@ export default {
       title: "Tens 60-100",
       icon: "calculator-outline",
       description: "Learn the tens from sixty to one hundred in Ewe",
-      words: [ "Blaade", "Blaadre", "Blaenyi", "Blaasieke", "Alafa ɖeka" ],
+      words: ["Blaade", "Blaadre", "Blaenyi", "Blaasieke", "Alafa ɖeka"],
       vocabulary: [
         {
           id: 77,
@@ -423,16 +388,13 @@ export default {
           instruction: "Select the correct Ewe number.",
           question: "What is 90 in Ewe?",
           options: [
-            { id: 1,text: "Blaade" },
+            { id: 1, text: "Blaade" },
             { id: 2, text: "Blaadre" },
             { id: 3, text: "Blaenyi" },
             { id: 4, text: "Blaasieke" }
           ],
           correctOptionId: 4,
-          hints: [
-            "Nine tens",
-            "Bla + asieke"
-          ],
+          hints: ["Nine tens", "Bla + asieke"],
           explanation: "Blaasieke = Ninety in Ewe."
         },
         {
@@ -448,10 +410,7 @@ export default {
             { id: 4, text: "100" }
           ],
           correctOptionId: 4,
-          hints: [
-            "Alafa = hundred",
-            "ɖeka = one"
-          ],
+          hints: ["Alafa = hundred", "ɖeka = one"],
           explanation: "You heard 'Alafa ɖeka' which means One hundred in Ewe."
         }
       ]
@@ -463,7 +422,7 @@ export default {
       title: "Compound Numbers 21-25",
       icon: "calculator-outline",
       description: "Learn how to form compound numbers from twenty-one to twenty-five in Ewe",
-      words: [ "Blaeve vɔ ɖeka", "Blaeve vɔ eve", "Blaeve vɔ etɔ̃", "Blaeve vɔ ene", "Blaeve vɔ atɔ̃" ],
+      words: ["Blaeve vɔ ɖeka", "Blaeve vɔ eve", "Blaeve vɔ etɔ̃", "Blaeve vɔ ene", "Blaeve vɔ atɔ̃"],
       vocabulary: [
         {
           id: 69,
@@ -482,7 +441,6 @@ export default {
           english: "Twenty-three",
           native: "Blaeve vɔ etɔ̃",
           audioUrl: require("../../../../assets/audio/ewe/beginner/chapter4/blaeve_vɔ_etɔ̃.m4a")
-
         },
         {
           id: 72,
@@ -511,30 +469,22 @@ export default {
             { id: 4, text: "24" }
           ],
           correctOptionId: 4,
-          hints: [
-            "Twenty = Blaeve",
-            "Four = Ene"
-          ],
+          hints: ["Twenty = Blaeve", "Four = Ene"],
           explanation: "You heard 'Blaeve vɔ ene' which means Twenty-four in Ewe."
         },
         {
           id: 415,
           type: "drag_drop",
           instruction: "Complete the pattern by dragging the correct Ewe number.",
-          question: "Blaeve vɔ ɖeka, Blaeve vɔ eve, ___, Blaeve vɔ ene, Blaeve vɔ atɔ̃",
+          sentence: "Blaeve vɔ ɖeka, Blaeve vɔ eve, [_____], Blaeve vɔ ene, Blaeve vɔ atɔ̃",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "Blaeve vɔ etɔ̃" },
             { id: "opt2", text: "Blaeve vɔ ade" },
             { id: "opt3", text: "Blaetɔ̃" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
-          hints: [
-            "Twenty-three comes after twenty-two"
-          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["Twenty-three comes after twenty-two"],
           explanation: "Blaeve vɔ etɔ̃ = Twenty-three. The pattern counts from twenty-one to twenty-five."
         }
       ]
@@ -544,9 +494,9 @@ export default {
       id: "4-7",
       type: "phrases",
       title: "Telling Time",
-      icon: "clock-outline",
+      icon: "time-outline",
       description: "Learn how to ask and tell the time in Ewe",
-      words: [ "Gaƒoƒo ka mee?", "Gaƒoƒo etɔ̃e", "Ŋdi", "Zã me" ],
+      words: ["Gaƒoƒo ka mee?", "Gaƒoƒo etɔ̃e", "Ŋdi", "Zã me"],
       vocabulary: [
         {
           id: 48,
@@ -586,29 +536,22 @@ export default {
             { id: 4, text: "Zã me" }
           ],
           correctOptionId: 1,
-          hints: [
-            "Question about time"
-          ],
+          hints: ["Question about time"],
           explanation: "Gaƒoƒo ka mee? = What time is it?"
         },
         {
           id: 417,
           type: "drag_drop",
           instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "It's 3:00 = Gaƒoƒo _______",
+          sentence: "It's 3:00 = Gaƒoƒo [_____]",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "ka mee?" },
             { id: "opt2", text: "etɔ̃e" },
             { id: "opt3", text: "Ŋdi" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt2"
-          },
-          hints: [
-            "etɔ̃ = three"
-          ],
+          correctDrop: { blankId: "blank1", itemId: "opt2" },
+          hints: ["etɔ̃ = three"],
           explanation: "Gaƒoƒo etɔ̃e = It is three o'clock."
         }
       ]
@@ -620,8 +563,7 @@ export default {
       title: "Days & Weeks",
       icon: "calendar-outline",
       description: "Learn the Ewe words for today, tomorrow, yesterday and next week",
-      words: [ "Egba", "Etsɔ", "Etsɔ si va yi","Kɔshiɖa si gbɔna"
-      ],
+      words: ["Egba", "Etsɔ", "Etsɔ si va yi", "Kɔshiɖa si gbɔna"],
       vocabulary: [
         {
           id: 50,
@@ -661,9 +603,7 @@ export default {
             { id: 4, text: "Kɔshiɖa si gbɔna" }
           ],
           correctOptionId: 3,
-          hints: [
-            "The day before today"
-          ],
+          hints: ["The day before today"],
           explanation: "Etsɔ si va yi = Yesterday in Ewe."
         },
         {
@@ -679,29 +619,22 @@ export default {
             { id: 4, text: "Next week" }
           ],
           correctOptionId: 2,
-          hints: [
-            "The day after today"
-          ],
+          hints: ["The day after today"],
           explanation: "You heard 'Etsɔ' which means Tomorrow in Ewe."
         },
         {
           id: 420,
           type: "drag_drop",
           instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "_____ si va yi (Yesterday)",
+          sentence: "[_____] si va yi (Yesterday)",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "Egba" },
             { id: "opt2", text: "Etsɔ" },
             { id: "opt3", text: "Kɔshiɖa" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt2"
-          },
-          hints: [
-            "Yesterday = the day before today"
-          ],
+          correctDrop: { blankId: "blank1", itemId: "opt2" },
+          hints: ["Yesterday = the day before today"],
           explanation: "Etsɔ si va yi = Yesterday in Ewe."
         }
       ]
@@ -713,7 +646,7 @@ export default {
       title: "Days of the Week",
       icon: "calendar-outline",
       description: "Learn the seven days of the week in Ewe",
-      words: [ "Dzoɖagbe", "Blãɖagbe", "Kuɖagbe", "Yawoɖagbe", "Fiɖagbe", "Memleɖagbe", "Kɔshiɖagbe" ],
+      words: ["Dzoɖagbe", "Blãɖagbe", "Kuɖagbe", "Yawoɖagbe", "Fiɖagbe", "Memleɖagbe", "Kɔshiɖagbe"],
       vocabulary: [
         {
           id: 81,
@@ -771,9 +704,7 @@ export default {
             { id: 4, text: "Yawoɖagbe" }
           ],
           correctOptionId: 3,
-          hints: [
-            "The first day of the week"
-          ],
+          hints: ["The first day of the week"],
           explanation: "Dzoɖagbe = Monday in Ewe."
         },
         {
@@ -789,9 +720,7 @@ export default {
             { id: 4, text: "Saturday" }
           ],
           correctOptionId: 4,
-          hints: [
-            "The day before Sunday"
-          ],
+          hints: ["The day before Sunday"],
           explanation: "You heard 'Memleɖagbe' which means Saturday in Ewe."
         }
       ]
@@ -816,9 +745,7 @@ export default {
           { id: 4, text: "Asieke" }
         ],
         correctOptionId: 3,
-        hints: [
-          "Comes after seven"
-        ],
+        hints: ["Comes after seven"],
         explanation: "Enyi = Eight in Ewe."
       },
       {
@@ -834,29 +761,22 @@ export default {
           { id: 4, text: "5" }
         ],
         correctOptionId: 3,
-        hints: [
-          "Sounds like 'eh-neh'"
-        ],
+        hints: ["Sounds like 'eh-neh'"],
         explanation: "You heard 'Ene' which means Four in Ewe."
       },
       {
         id: 503,
         type: "drag_drop",
         instruction: "Complete the pattern by dragging the correct Ewe number.",
-        question: "Ɖeka, Eve, ___, Ene, Atɔ̃",
+        sentence: "Ɖeka, Eve, [_____], Ene, Atɔ̃",
         blankId: "blank1",
         items: [
-          { id: "opt1", text: "Etɔ̃"},
+          { id: "opt1", text: "Etɔ̃" },
           { id: "opt2", text: "Ade" },
           { id: "opt3", text: "Ewo" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt1"
-        },
-        hints: [
-          "Three comes after two"
-        ],
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        hints: ["Three comes after two"],
         explanation: "Etɔ̃ = Three."
       },
       {
@@ -871,10 +791,7 @@ export default {
           { id: 4, text: "Blaetɔ̃" }
         ],
         correctOptionId: 2,
-        hints: [
-          "Five tens",
-          "Bla + atɔ̃"
-        ],
+        hints: ["Five tens", "Bla + atɔ̃"],
         explanation: "Blaatɔ̃ = Fifty in Ewe."
       },
       {
@@ -890,30 +807,22 @@ export default {
           { id: 4, text: "90" }
         ],
         correctOptionId: 1,
-        hints: [
-          "Seven tens",
-          "Bla + adre"
-        ],
+        hints: ["Seven tens", "Bla + adre"],
         explanation: "You heard 'Blaadre' which means Seventy in Ewe."
       },
       {
         id: 506,
         type: "drag_drop",
         instruction: "Complete the pattern by dragging the correct Ewe number.",
-        question: "Blaeve, ___, Blaene, Blaatɔ̃",
+        sentence: "Blaeve, [_____], Blaene, Blaatɔ̃",
         blankId: "blank1",
         items: [
           { id: "opt1", text: "Blaade" },
           { id: "opt2", text: "Blaetɔ̃" },
           { id: "opt3", text: "Blaenyi" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt2"
-        },
-        hints: [
-          "Thirty comes after twenty"
-        ],
+        correctDrop: { blankId: "blank1", itemId: "opt2" },
+        hints: ["Thirty comes after twenty"],
         explanation: "Blaetɔ̃ = Thirty."
       },
       {
@@ -928,10 +837,7 @@ export default {
           { id: 4, text: "Zã me" }
         ],
         correctOptionId: 2,
-        hints: [
-          "Gaƒoƒo = time",
-          "etɔ̃ = three"
-        ],
+        hints: ["Gaƒoƒo = time", "etɔ̃ = three"],
         explanation: "Gaƒoƒo etɔ̃e = It is three o'clock."
       },
       {
@@ -947,9 +853,7 @@ export default {
           { id: 4, text: "Tomorrow" }
         ],
         correctOptionId: 2,
-        hints: [
-          "Zã = night"
-        ],
+        hints: ["Zã = night"],
         explanation: "You heard 'Zã me' which means At night."
       },
       {
@@ -964,9 +868,7 @@ export default {
           { id: 4, text: "Kɔshiɖa si gbɔna" }
         ],
         correctOptionId: 2,
-        hints: [
-          "The day after today"
-        ],
+        hints: ["The day after today"],
         explanation: "Etsɔ = Tomorrow in Ewe."
       },
       {
@@ -982,9 +884,7 @@ export default {
           { id: 4, text: "Sunday" }
         ],
         correctOptionId: 4,
-        hints: [
-          "The last day of the week"
-        ],
+        hints: ["The last day of the week"],
         explanation: "You heard 'Kɔshiɖagbe' which means Sunday in Ewe."
       },
       {
@@ -999,29 +899,22 @@ export default {
           { id: 4, text: "Kuɖagbe" }
         ],
         correctOptionId: 2,
-        hints: [
-          "The day before Sunday"
-        ],
+        hints: ["The day before Sunday"],
         explanation: "Memleɖagbe = Saturday in Ewe."
       },
       {
         id: 512,
         type: "drag_drop",
         instruction: "Complete the pattern by dragging the correct Ewe number.",
-        question: "Wuiɖeka, Wui eve, Wui etɔ̃, ___ , Wui atɔ̃",
+        sentence: "Wuiɖeka, Wui eve, Wui etɔ̃, [_____], Wui atɔ̃",
         blankId: "blank1",
         items: [
           { id: "opt1", text: "Wui ene" },
           { id: "opt2", text: "Wui ade" },
           { id: "opt3", text: "Ewo" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt1"
-        },
-        hints: [
-          "Fourteen comes after thirteen"
-        ],
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        hints: ["Fourteen comes after thirteen"],
         explanation: "Wui ene = Fourteen."
       }
     ]

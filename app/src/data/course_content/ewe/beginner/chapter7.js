@@ -74,20 +74,17 @@ export default {
         },
         {
           id: 703,
-          type: "drag_drop",
-          instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Afikae nugodoƒe la ___? (Where is the toilet?)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "le" },
-            { id: "opt2", text: "le?" },
-            { id: "opt3", text: "mɔ" }
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you ask 'Where is the toilet?' in Ewe?",
+          options: [
+            { id: 1, text: "Afikae asia le?" },
+            { id: 2, text: "Afikae nugodoƒe la le?" },
+            { id: 3, text: "Metre mɔ" },
+            { id: 4, text: "Aleke mawɔ aɖo afima?" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt2"
-          },
-          hints: ["le? = is it?"],
+          correctOptionId: 2,
+          hints: ["nugodoƒe = toilet"],
           explanation: "Afikae nugodoƒe la le? = Where is the toilet? in Ewe."
         }
       ]
@@ -160,19 +157,16 @@ export default {
         },
         {
           id: 706,
-          type: "drag_drop",
-          instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Trɔ ɖe ___ me (Turn left)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "miã" },
-            { id: "opt2", text: "ɖusi" },
-            { id: "opt3", text: "tẽ" }
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Turn left' in Ewe?",
+          options: [
+            { id: 1, text: "Yi tẽ" },
+            { id: 2, text: "Trɔ ɖe ɖusi me" },
+            { id: 3, text: "Trɔ ɖe miã me" },
+            { id: 4, text: "Zɔ mɔ hia dzi" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
+          correctOptionId: 3,
           hints: ["miã me = left"],
           explanation: "Trɔ ɖe miã me = Turn left in Ewe."
         }
@@ -246,19 +240,16 @@ export default {
         },
         {
           id: 709,
-          type: "drag_drop",
-          instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Le xɔa ___ (Behind the house)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "megbe" },
-            { id: "opt2", text: "ŋgɔ" },
-            { id: "opt3", text: "le" }
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Behind the house' in Ewe?",
+          options: [
+            { id: 1, text: "Edzidzi" },
+            { id: 2, text: "Etsɔ ɖe" },
+            { id: 3, text: "Le xɔa megbe" },
+            { id: 4, text: "Ŋgɔ" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
+          correctOptionId: 3,
           hints: ["megbe = behind"],
           explanation: "Le xɔa megbe = Behind the house in Ewe."
         }
@@ -367,37 +358,31 @@ export default {
       },
       {
         id: 716,
-        type: "drag_drop",
-        instruction: "Complete the Ewe phrase by dragging the correct word.",
-        question: "Afikae asia ___? (Where is the market?)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "le" },
-          { id: "opt2", text: "le?" },
-          { id: "opt3", text: "mɔ" }
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Where is the market?' in Ewe?",
+        options: [
+          { id: 1, text: "Afikae asia le?" },
+          { id: 2, text: "Afikae nugodoƒe la le?" },
+          { id: 3, text: "Metre mɔ" },
+          { id: 4, text: "Aleke mawɔ aɖo afima?" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt2"
-        },
-        hints: ["le? = is it?"],
+        correctOptionId: 1,
+        hints: ["asia = market"],
         explanation: "Afikae asia le? = Where is the market? in Ewe."
       },
       {
         id: 717,
-        type: "drag_drop",
-        instruction: "Complete the Ewe phrase by dragging the correct word.",
-        question: "Trɔ ɖe ___ me (Turn right)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "miã" },
-          { id: "opt2", text: "ɖusi" },
-          { id: "opt3", text: "tẽ" }
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Turn right' in Ewe?",
+        options: [
+          { id: 1, text: "Yi tẽ" },
+          { id: 2, text: "Trɔ ɖe ɖusi me" },
+          { id: 3, text: "Trɔ ɖe miã me" },
+          { id: 4, text: "Zɔ mɔ hia dzi" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt2"
-        },
+        correctOptionId: 2,
         hints: ["ɖusi me = right"],
         explanation: "Trɔ ɖe ɖusi me = Turn right in Ewe."
       }

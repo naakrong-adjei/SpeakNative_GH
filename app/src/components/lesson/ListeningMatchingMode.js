@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useEffect, useState } from "react";
+import * as Haptics from "expo-haptics";
+import { useEffect, useMemo, useState } from "react";
 import {
   Pressable,
   ScrollView,
@@ -13,60 +14,44 @@ import AudioWave from "../ui/AudioWave";
 
 export default function ListeningMatchingMode({
   question,
-  onSubmit,
   showResult,
-  isCorrect,
+  onMatchesChange,
 }) {
   const { theme } = useTheme();
 
   const pairs = question?.pairs || [];
   const options = question?.options || [];
 
-  const [selectedPair, setSelectedPair] =
-    useState(null);
+  const [selectedPair, setSelectedPair] = useState(null);
+  const [answers, setAnswers] = useState({});
 
-  const [answers, setAnswers] =
-    useState({});
-
-  const [submitted, setSubmitted] =
-    useState(false);
-
-  // --------------------------------
-  // RESET WHEN QUESTION CHANGES
-  // --------------------------------
+  const shuffledOptions = useMemo(() => {
+    return [...options].sort(() => Math.random() - 0.5);
+  }, [question]);
 
   useEffect(() => {
     setSelectedPair(null);
     setAnswers({});
-    setSubmitted(false);
+    onMatchesChange?.({});
   }, [question]);
-
-  // --------------------------------
-  // GET CORRECT ANSWER
-  // --------------------------------
 
   const getCorrectOptionId = (pairId) => {
     const pair = pairs.find(
-      (p) => p.id === pairId
+      (item) => item.id === pairId
     );
 
     if (pair?.correctOptionId) {
       return pair.correctOptionId;
     }
 
-    const drops =
-      question?.correctDrops || [];
+    const drops = question?.correctDrops || [];
 
     const drop = drops.find(
-      (d) => d.pairId === pairId
+      (item) => item.pairId === pairId
     );
 
     return drop?.optionId || null;
   };
-
-  // --------------------------------
-  // GET AUDIO SOURCE
-  // --------------------------------
 
   const getAudioSource = (pair) => {
     const audioPath =
@@ -94,15 +79,29 @@ export default function ListeningMatchingMode({
     return null;
   };
 
-  // --------------------------------
-  // SELECT PAIR
-  // --------------------------------
+  const handlePairPress = async (pairId) => {
+    if (showResult) {
+      return;
+    }
 
-  const handlePairPress = (pairId) => {
-    if (
-      submitted ||
-      showResult
-    ) {
+    const isAlreadyAnswered =
+      answers[pairId] !== undefined;
+
+    if (isAlreadyAnswered) {
+      const updatedAnswers = {
+        ...answers,
+      };
+
+      delete updatedAnswers[pairId];
+
+      setAnswers(updatedAnswers);
+      setSelectedPair(pairId);
+      onMatchesChange?.(updatedAnswers);
+
+      await Haptics.impactAsync(
+        Haptics.ImpactFeedbackStyle.Light
+      );
+
       return;
     }
 
@@ -111,418 +110,516 @@ export default function ListeningMatchingMode({
         ? null
         : pairId
     );
+
+    await Haptics.impactAsync(
+      Haptics.ImpactFeedbackStyle.Light
+    );
   };
 
-  // --------------------------------
-  // SELECT ENGLISH OPTION
-  // --------------------------------
-
-  const handleOptionPress = (optionId) => {
+  const handleOptionPress = async (optionId) => {
     if (
-      submitted ||
       showResult ||
       selectedPair === null
     ) {
       return;
     }
 
-    const newAnswers = {
+    const existingPairId = Object.keys(
+      answers
+    ).find(
+      (pairId) =>
+        answers[pairId] === optionId
+    );
+
+    const updatedAnswers = {
       ...answers,
-      [selectedPair]: optionId,
     };
 
-    setAnswers(newAnswers);
-    setSelectedPair(null);
-
-    // Check whether every pair
-    // has been matched.
-
-    if (
-      Object.keys(newAnswers).length ===
-      pairs.length
-    ) {
-      setSubmitted(true);
-
-      const allCorrect = pairs.every(
-        (pair) =>
-          newAnswers[pair.id] ===
-          getCorrectOptionId(pair.id)
-      );
-
-      onSubmit(allCorrect);
+    if (existingPairId) {
+      delete updatedAnswers[existingPairId];
     }
+
+    updatedAnswers[selectedPair] =
+      optionId;
+
+    setAnswers(updatedAnswers);
+    setSelectedPair(null);
+    onMatchesChange?.(updatedAnswers);
+
+    await Haptics.impactAsync(
+      Haptics.ImpactFeedbackStyle.Light
+    );
   };
 
-  // --------------------------------
-  // RENDER AUDIO PAIR
-  // --------------------------------
-
-  const renderPair = (pair) => {
-    const answeredId =
+  const getPairState = (pair) => {
+    const answeredOptionId =
       answers[pair.id];
 
     const isAnswered =
-      answeredId !== undefined;
+      answeredOptionId !== undefined;
 
     const isSelected =
       selectedPair === pair.id;
 
-    const isCorrectMatch =
-      submitted &&
+    const isCorrect =
+      showResult &&
       isAnswered &&
-      answeredId ===
+      answeredOptionId ===
         getCorrectOptionId(pair.id);
 
-    const isWrongMatch =
-      submitted &&
+    const isWrong =
+      showResult &&
       isAnswered &&
-      answeredId !==
+      answeredOptionId !==
         getCorrectOptionId(pair.id);
 
-    let backgroundColor =
-      theme.surface;
-
-    let borderColor =
-      theme.border;
-
-    if (isCorrectMatch) {
-      backgroundColor =
-        theme.success + "15";
-
-      borderColor =
-        theme.success;
-    } else if (isWrongMatch) {
-      backgroundColor =
-        theme.error + "15";
-
-      borderColor =
-        theme.error;
-    } else if (isSelected) {
-      backgroundColor =
-        theme.primary + "15";
-
-      borderColor =
-        theme.primary;
+    if (isCorrect) {
+      return {
+        backgroundColor:
+          theme.success + "12",
+        borderColor: theme.success,
+        icon: "checkmark-circle",
+        iconColor: theme.success,
+      };
     }
 
-    const audioSource =
-      getAudioSource(pair);
+    if (isWrong) {
+      return {
+        backgroundColor:
+          theme.error + "12",
+        borderColor: theme.error,
+        icon: "close-circle",
+        iconColor: theme.error,
+      };
+    }
 
-    return (
-      <View
-        key={pair.id}
-        style={[
-          styles.pairCard,
-          {
-            backgroundColor,
-            borderColor,
-          },
-        ]}
-      >
-        {/* AUDIO */}
+    if (isSelected) {
+      return {
+        backgroundColor:
+          theme.primary + "12",
+        borderColor: theme.primary,
+        icon: "radio-button-on",
+        iconColor: theme.primary,
+      };
+    }
 
-        <AudioWave
-          source={audioSource}
-          size="small"
-          showText={false}
-        />
+    if (isAnswered) {
+      return {
+        backgroundColor:
+          theme.primary + "08",
+        borderColor: theme.primary,
+        icon: "checkmark-circle",
+        iconColor: theme.primary,
+      };
+    }
 
-        {/* PAIR SELECTION */}
-
-        <Pressable
-          onPress={() =>
-            handlePairPress(pair.id)
-          }
-          disabled={
-            submitted ||
-            showResult
-          }
-          style={({ pressed }) => [
-            styles.pairSelectButton,
-            {
-              backgroundColor:
-                isSelected
-                  ? theme.primary +
-                    "15"
-                  : theme.surface,
-
-              borderColor:
-                isSelected
-                  ? theme.primary
-                  : theme.border,
-
-              opacity:
-                pressed ? 0.8 : 1,
-            },
-          ]}
-        >
-          <View
-            style={
-              styles.pairContent
-            }
-          >
-            {/* SELECT ICON */}
-
-            <Ionicons
-              name={
-                isCorrectMatch
-                  ? "checkmark-circle"
-                  : isWrongMatch
-                  ? "close-circle"
-                  : isSelected
-                  ? "radio-button-on"
-                  : "radio-button-off"
-              }
-              size={25}
-              color={
-                isCorrectMatch
-                  ? theme.success
-                  : isWrongMatch
-                  ? theme.error
-                  : isSelected
-                  ? theme.primary
-                  : theme.icon
-              }
-            />
-
-            <Text
-              style={[
-                styles.pairText,
-                {
-                  color:
-                    theme.text,
-                },
-              ]}
-            >
-              {pair.native ||
-                pair.text ||
-                pair.left ||
-                `Listen ${pair.id}`}
-            </Text>
-          </View>
-
-          {/* RESULT */}
-
-          {isCorrectMatch && (
-            <Ionicons
-              name="checkmark"
-              size={22}
-              color={theme.success}
-            />
-          )}
-
-          {isWrongMatch && (
-            <Ionicons
-              name="close"
-              size={22}
-              color={theme.error}
-            />
-          )}
-        </Pressable>
-      </View>
-    );
+    return {
+      backgroundColor: theme.surface,
+      borderColor: theme.border,
+      icon: "radio-button-off",
+      iconColor: theme.icon,
+    };
   };
 
-  // --------------------------------
-  // RENDER ENGLISH OPTION
-  // --------------------------------
-
-  const renderOption = (option) => {
-    const usedBy = Object.keys(
+  const getOptionState = (option) => {
+    const matchedPairId = Object.keys(
       answers
     ).find(
       (pairId) =>
-        answers[pairId] ===
-        option.id
+        answers[pairId] === option.id
     );
 
     const isUsed =
-      usedBy !== undefined;
+      matchedPairId !== undefined;
 
-    const isCorrectMatch =
-      submitted &&
+    const isCorrect =
+      showResult &&
       isUsed &&
       getCorrectOptionId(
-        usedBy
+        matchedPairId
       ) === option.id;
 
-    const isWrongMatch =
-      submitted &&
+    const isWrong =
+      showResult &&
       isUsed &&
       getCorrectOptionId(
-        usedBy
+        matchedPairId
       ) !== option.id;
 
-    let backgroundColor =
-      theme.surface;
-
-    let borderColor =
-      theme.border;
-
-    let textColor =
-      theme.text;
-
-    if (isCorrectMatch) {
-      backgroundColor =
-        theme.success + "15";
-
-      borderColor =
-        theme.success;
-
-      textColor =
-        theme.success;
-    } else if (isWrongMatch) {
-      backgroundColor =
-        theme.error + "15";
-
-      borderColor =
-        theme.error;
-
-      textColor =
-        theme.error;
-    } else if (isUsed) {
-      backgroundColor =
-        theme.primary + "15";
-
-      borderColor =
-        theme.primary;
+    if (isCorrect) {
+      return {
+        backgroundColor:
+          theme.success + "12",
+        borderColor: theme.success,
+        textColor: theme.success,
+        icon: "checkmark-circle",
+        iconColor: theme.success,
+      };
     }
+
+    if (isWrong) {
+      return {
+        backgroundColor:
+          theme.error + "12",
+        borderColor: theme.error,
+        textColor: theme.error,
+        icon: "close-circle",
+        iconColor: theme.error,
+      };
+    }
+
+    if (isUsed) {
+      return {
+        backgroundColor:
+          theme.primary + "08",
+        borderColor: theme.primary,
+        textColor: theme.text,
+        icon: "checkmark-circle",
+        iconColor: theme.primary,
+      };
+    }
+
+    return {
+      backgroundColor: theme.surface,
+      borderColor: theme.border,
+      textColor: theme.text,
+      icon: "radio-button-off",
+      iconColor: theme.icon,
+    };
+  };
+
+  const renderPair = (pair, index) => {
+    const state = getPairState(pair);
+
+    const answeredOptionId =
+      answers[pair.id];
+
+    const matchedOption = options.find(
+      (option) =>
+        option.id === answeredOptionId
+    );
+
+    return (
+      <Pressable
+        key={pair.id}
+        onPress={() =>
+          handlePairPress(pair.id)
+        }
+        disabled={showResult}
+        style={({ pressed }) => [
+          styles.pairCard,
+          {
+            backgroundColor:
+              state.backgroundColor,
+            borderColor:
+              state.borderColor,
+            opacity:
+              pressed && !showResult
+                ? 0.85
+                : 1,
+          },
+        ]}
+      >
+        <View style={styles.pairTopRow}>
+          <View
+            style={[
+              styles.numberBadge,
+              {
+                backgroundColor:
+                  state.borderColor +
+                  "18",
+              },
+            ]}
+          >
+            <Text
+              style={[
+                styles.numberText,
+                {
+                  color:
+                    state.borderColor,
+                },
+              ]}
+            >
+              {index + 1}
+            </Text>
+          </View>
+
+          <View style={styles.audioWrapper}>
+            <AudioWave
+              source={getAudioSource(pair)}
+              size="small"
+              showText={false}
+            />
+          </View>
+
+          <Ionicons
+            name={state.icon}
+            size={24}
+            color={state.iconColor}
+          />
+        </View>
+
+        <View style={styles.pairTextArea}>
+          <Text
+            style={[
+              styles.listenLabel,
+              {
+                color:
+                  theme.secondaryText,
+              },
+            ]}
+          >
+            TAP TO LISTEN
+          </Text>
+
+          <Text
+            style={[
+              styles.nativeText,
+              {
+                color: theme.text,
+              },
+            ]}
+          >
+            {pair.native ||
+              pair.text ||
+              pair.left ||
+              `Word ${index + 1}`}
+          </Text>
+
+          {matchedOption && (
+            <View
+              style={[
+                styles.matchedAnswer,
+                {
+                  backgroundColor:
+                    theme.background,
+                },
+              ]}
+            >
+              <Ionicons
+                name="arrow-forward"
+                size={16}
+                color={theme.secondaryText}
+              />
+
+              <Text
+                style={[
+                  styles.matchedAnswerText,
+                  {
+                    color:
+                      theme.secondaryText,
+                  },
+                ]}
+                numberOfLines={1}
+              >
+                {matchedOption.text}
+              </Text>
+            </View>
+          )}
+        </View>
+      </Pressable>
+    );
+  };
+
+  const renderOption = (option) => {
+    const state =
+      getOptionState(option);
+
+    const isUsed =
+      Object.values(answers).includes(
+        option.id
+      );
 
     return (
       <Pressable
         key={option.id}
         onPress={() =>
-          handleOptionPress(
-            option.id
-          )
+          handleOptionPress(option.id)
         }
         disabled={
           showResult ||
-          submitted ||
-          isUsed
+          selectedPair === null
         }
         style={({ pressed }) => [
           styles.optionButton,
-
           {
-            backgroundColor,
-            borderColor,
-
+            backgroundColor:
+              state.backgroundColor,
+            borderColor:
+              state.borderColor,
             opacity:
-              pressed ? 0.8 : 1,
+              pressed &&
+              !showResult &&
+              selectedPair !== null
+                ? 0.85
+                : selectedPair === null &&
+                    !isUsed
+                  ? 0.6
+                  : 1,
           },
         ]}
       >
         <View
-          style={
-            styles.optionContent
-          }
+          style={styles.optionContent}
         >
           <Ionicons
-            name={
-              isCorrectMatch
-                ? "checkmark-circle"
-                : isWrongMatch
-                ? "close-circle"
-                : isUsed
-                ? "radio-button-on"
-                : "radio-button-off"
-            }
-            size={25}
-            color={
-              isCorrectMatch
-                ? theme.success
-                : isWrongMatch
-                ? theme.error
-                : isUsed
-                ? theme.primary
-                : theme.icon
-            }
+            name={state.icon}
+            size={23}
+            color={state.iconColor}
           />
 
           <Text
             style={[
               styles.optionText,
               {
-                color: textColor,
+                color:
+                  state.textColor,
               },
             ]}
           >
             {option.text}
           </Text>
         </View>
-
-        {isCorrectMatch && (
-          <Ionicons
-            name="checkmark"
-            size={22}
-            color={theme.success}
-          />
-        )}
-
-        {isWrongMatch && (
-          <Ionicons
-            name="close"
-            size={22}
-            color={theme.error}
-          />
-        )}
       </Pressable>
     );
   };
 
-  // --------------------------------
-  // RENDER
-  // --------------------------------
+  const matchedCount =
+    Object.keys(answers).length;
 
   return (
     <ScrollView
-      showsVerticalScrollIndicator={
-        false
-      }
+      showsVerticalScrollIndicator={false}
       contentContainerStyle={
         styles.container
       }
     >
-      {/* INSTRUCTION */}
-
       <View
-        style={styles.instructions}
+        style={[
+          styles.instructionCard,
+          {
+            backgroundColor:
+              theme.surface,
+            borderColor: theme.border,
+          },
+        ]}
       >
+        <View
+          style={[
+            styles.instructionIcon,
+            {
+              backgroundColor:
+                theme.primary + "15",
+            },
+          ]}
+        >
+          <Ionicons
+            name="headset-outline"
+            size={22}
+            color={theme.primary}
+          />
+        </View>
+
+        <View
+          style={styles.instructionContent}
+        >
+          <Text
+            style={[
+              styles.instructionTitle,
+              {
+                color: theme.text,
+              },
+            ]}
+          >
+            Match what you hear
+          </Text>
+
+          <Text
+            style={[
+              styles.instructionText,
+              {
+                color:
+                  theme.secondaryText,
+              },
+            ]}
+          >
+            Listen to a word, select it,
+            then choose its meaning.
+          </Text>
+        </View>
+      </View>
+
+      <View style={styles.progressRow}>
         <Text
           style={[
-            styles.instructionText,
+            styles.progressLabel,
             {
               color:
                 theme.secondaryText,
             },
           ]}
         >
-          Listen to each word and
-          match it with its meaning.
+          MATCHES
+        </Text>
+
+        <Text
+          style={[
+            styles.progressCount,
+            {
+              color: theme.text,
+            },
+          ]}
+        >
+          {matchedCount}/{pairs.length}
         </Text>
       </View>
 
-      {/* AUDIO / NATIVE WORDS */}
+      <View style={styles.section}>
+        <Text
+          style={[
+            styles.sectionTitle,
+            {
+              color: theme.text,
+            },
+          ]}
+        >
+          Listen & select
+        </Text>
 
-      <View
-        style={
-          styles.pairsContainer
-        }
-      >
-        {pairs.map(renderPair)}
+        <Text
+          style={[
+            styles.sectionSubtitle,
+            {
+              color:
+                theme.secondaryText,
+            },
+          ]}
+        >
+          Tap a word to choose its meaning
+        </Text>
+
+        <View style={styles.pairsContainer}>
+          {pairs.map(renderPair)}
+        </View>
       </View>
 
-      {/* ENGLISH OPTIONS */}
+      <View style={styles.section}>
+        <Text
+          style={[
+            styles.sectionTitle,
+            {
+              color: theme.text,
+            },
+          ]}
+        >
+          Choose the meaning
+        </Text>
 
-      <View
-        style={
-          styles.optionsContainer
-        }
-      >
-        {options.map(
-          renderOption
-        )}
+        <View style={styles.optionsContainer}>
+          {shuffledOptions.map(
+            renderOption
+          )}
+        </View>
       </View>
     </ScrollView>
   );
@@ -530,94 +627,170 @@ export default function ListeningMatchingMode({
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: 24,
+    paddingBottom: 32,
   },
 
-  instructions: {
+  instructionCard: {
+    flexDirection: "row",
     alignItems: "center",
+    borderWidth: 1,
+    borderRadius: 18,
+    padding: 14,
+    marginBottom: 18,
+    gap: 12,
+  },
 
-    marginBottom: 20,
+  instructionIcon: {
+    width: 44,
+    height: 44,
+    borderRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
-    paddingHorizontal: 12,
+  instructionContent: {
+    flex: 1,
+  },
+
+  instructionTitle: {
+    fontSize: 16,
+    fontWeight: "800",
+    marginBottom: 3,
   },
 
   instructionText: {
-    fontSize: 14,
-
-    lineHeight: 20,
-
-    textAlign: "center",
-
+    fontSize: 13,
+    lineHeight: 19,
     fontWeight: "500",
   },
 
-  pairsContainer: {
-    gap: 14,
+  progressRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 14,
+  },
 
+  progressLabel: {
+    fontSize: 12,
+    fontWeight: "800",
+    letterSpacing: 0.8,
+  },
+
+  progressCount: {
+    fontSize: 14,
+    fontWeight: "800",
+  },
+
+  section: {
     marginBottom: 24,
   },
 
-  pairCard: {
-    borderRadius: 18,
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "800",
+    marginBottom: 4,
+  },
 
-    borderWidth: 2,
+  sectionSubtitle: {
+    fontSize: 13,
+    lineHeight: 19,
+    fontWeight: "500",
+    marginBottom: 12,
+  },
 
-    padding: 12,
-
+  pairsContainer: {
     gap: 10,
   },
 
-  pairSelectButton: {
-    minHeight: 58,
-    borderRadius: 14,
+  pairCard: {
     borderWidth: 2,
-    paddingVertical: 12,
-    paddingHorizontal: 14,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    borderRadius: 18,
+    padding: 14,
   },
 
-  pairContent: {
+  pairTopRow: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
+  },
+
+  numberBadge: {
+    width: 30,
+    height: 30,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 10,
+  },
+
+  numberText: {
+    fontSize: 13,
+    fontWeight: "900",
+  },
+
+  audioWrapper: {
     flex: 1,
+    alignItems: "flex-start",
   },
 
-  pairText: {
+  pairTextArea: {
+    marginTop: 10,
+    paddingLeft: 40,
+  },
+
+  listenLabel: {
+    fontSize: 10,
+    fontWeight: "800",
+    letterSpacing: 0.8,
+    marginBottom: 3,
+  },
+
+  nativeText: {
     fontSize: 17,
-    fontWeight: "700",
-    flex: 1,
     lineHeight: 23,
+    fontWeight: "800",
+  },
+
+  matchedAnswer: {
+    alignSelf: "flex-start",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    marginTop: 8,
+    paddingHorizontal: 9,
+    paddingVertical: 5,
+    borderRadius: 8,
+  },
+
+  matchedAnswerText: {
+    fontSize: 13,
+    fontWeight: "600",
+    maxWidth: 220,
   },
 
   optionsContainer: {
-    gap: 12,
+    gap: 10,
   },
 
   optionButton: {
-    minHeight: 62,
-    borderRadius: 16,
+    minHeight: 60,
     borderWidth: 2,
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    borderRadius: 16,
+    paddingVertical: 13,
+    paddingHorizontal: 15,
+    justifyContent: "center",
   },
 
   optionContent: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 14,
-    flex: 1,
+    gap: 12,
   },
 
   optionText: {
-    fontSize: 16,
-    fontWeight: "600",
     flex: 1,
+    fontSize: 16,
     lineHeight: 22,
+    fontWeight: "700",
   },
 });

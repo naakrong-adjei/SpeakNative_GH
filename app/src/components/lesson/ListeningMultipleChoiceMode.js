@@ -7,19 +7,23 @@ import {
   View,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import * as Haptics from "expo-haptics";
 import { useTheme } from "../../context/ThemeContext";
 import AudioWave from "../ui/AudioWave";
 
 export default function ListeningMultipleChoiceMode({
   question,
-  onSubmit,
+  onOptionSelect,
   showResult,
 }) {
   const { theme } = useTheme();
-  const [selectedOption, setSelectedOption] = useState(null);
+
+  const [selectedOption, setSelectedOption] =
+    useState(null);
 
   useEffect(() => {
     setSelectedOption(null);
+    onOptionSelect?.(null);
   }, [question]);
 
   const getAudioSource = () => {
@@ -28,7 +32,9 @@ export default function ListeningMultipleChoiceMode({
       question?.audio ||
       question?.sound;
 
-    if (!audioPath) return null;
+    if (!audioPath) {
+      return null;
+    }
 
     if (
       typeof audioPath === "number" ||
@@ -42,23 +48,30 @@ export default function ListeningMultipleChoiceMode({
       : null;
   };
 
-  const handleOptionPress = (optionId) => {
-    if (showResult || selectedOption !== null) return;
+  const handleOptionPress = async (optionId) => {
+    if (showResult) {
+      return;
+    }
 
     setSelectedOption(optionId);
+    onOptionSelect?.(optionId);
 
-    onSubmit(
-      optionId === question?.correctOptionId
+    await Haptics.impactAsync(
+      Haptics.ImpactFeedbackStyle.Light
     );
   };
 
   const getOptionState = (option) => {
-    const isSelected = selectedOption === option.id;
-    const isCorrect = option.id === question?.correctOptionId;
+    const isSelected =
+      selectedOption === option.id;
+
+    const isCorrect =
+      option.id === question?.correctOptionId;
 
     if (showResult && isCorrect) {
       return {
-        backgroundColor: theme.success + "15",
+        backgroundColor:
+          theme.success + "15",
         borderColor: theme.success,
         textColor: theme.success,
         icon: "checkmark-circle",
@@ -66,9 +79,14 @@ export default function ListeningMultipleChoiceMode({
       };
     }
 
-    if (showResult && isSelected && !isCorrect) {
+    if (
+      showResult &&
+      isSelected &&
+      !isCorrect
+    ) {
       return {
-        backgroundColor: theme.error + "15",
+        backgroundColor:
+          theme.error + "15",
         borderColor: theme.error,
         textColor: theme.error,
         icon: "close-circle",
@@ -78,7 +96,8 @@ export default function ListeningMultipleChoiceMode({
 
     if (isSelected) {
       return {
-        backgroundColor: theme.primary + "15",
+        backgroundColor:
+          theme.primary + "15",
         borderColor: theme.primary,
         textColor: theme.text,
         icon: "radio-button-on",
@@ -97,20 +116,32 @@ export default function ListeningMultipleChoiceMode({
 
   const renderOption = (option) => {
     const state = getOptionState(option);
-    const isSelected = selectedOption === option.id;
+
+    const isSelected =
+      selectedOption === option.id;
 
     return (
       <Pressable
         key={option.id}
-        onPress={() => handleOptionPress(option.id)}
-        disabled={showResult || selectedOption !== null}
+        onPress={() =>
+          handleOptionPress(option.id)
+        }
+        disabled={showResult}
         style={({ pressed }) => [
           styles.optionButton,
           {
-            backgroundColor: state.backgroundColor,
-            borderColor: state.borderColor,
-            borderWidth: isSelected && !showResult ? 3 : 2,
-            opacity: pressed && !showResult ? 0.85 : 1,
+            backgroundColor:
+              state.backgroundColor,
+            borderColor:
+              state.borderColor,
+            borderWidth:
+              isSelected && !showResult
+                ? 3
+                : 2,
+            opacity:
+              pressed && !showResult
+                ? 0.85
+                : 1,
           },
         ]}
       >
@@ -124,7 +155,9 @@ export default function ListeningMultipleChoiceMode({
           <Text
             style={[
               styles.optionText,
-              { color: state.textColor },
+              {
+                color: state.textColor,
+              },
             ]}
           >
             {option.text}
@@ -145,7 +178,9 @@ export default function ListeningMultipleChoiceMode({
 
       <ScrollView
         style={styles.optionsScrollView}
-        contentContainerStyle={styles.optionsContentContainer}
+        contentContainerStyle={
+          styles.optionsContentContainer
+        }
         showsVerticalScrollIndicator={false}
         scrollEnabled={!showResult}
       >

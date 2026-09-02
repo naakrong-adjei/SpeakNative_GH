@@ -70,17 +70,14 @@ export default {
           id: 603,
           type: "drag_drop",
           instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Mexɔa ___ oo (It is cheap)",
+          sentence: "Mexɔa [_____] oo (It is cheap)",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "shi" },
             { id: "opt2", text: "ga" },
             { id: "opt3", text: "ho" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
           hints: ["shi = price"],
           explanation: "Mexɔa shi oo = It is cheap in Ewe."
         }
@@ -91,7 +88,7 @@ export default {
       id: "6-2",
       type: "words",
       title: "Bargaining",
-      icon: "handshake-outline",
+      icon: "people-outline",
       description: "Learn how to bargain at the market in Ewe",
       words: ["Ɖe dzi", "Ga gbagba le ashiwòa?", "Fiam bubu"],
       vocabulary: [
@@ -150,17 +147,14 @@ export default {
           id: 606,
           type: "drag_drop",
           instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Ga gbagba le ___? (Do you have change?)",
+          sentence: "Ga gbagba le [_____]? (Do you have change?)",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "ashiwòa" },
             { id: "opt2", text: "ega" },
             { id: "opt3", text: "asi" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
           hints: ["ashiwòa = with you"],
           explanation: "Ga gbagba le ashiwòa? = Do you have change? in Ewe."
         }
@@ -230,17 +224,14 @@ export default {
           id: 609,
           type: "drag_drop",
           instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "___ nam (Wrap it for me)",
+          sentence: "[_____] nam (Wrap it for me)",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "Ble" },
             { id: "opt2", text: "Maxɔ" },
             { id: "opt3", text: "Fia" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
           hints: ["Ble = wrap"],
           explanation: "Ble nam = Wrap it for me in Ewe."
         }
@@ -310,17 +301,14 @@ export default {
           id: 612,
           type: "drag_drop",
           instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Mele nu ___ ko (I am just looking)",
+          sentence: "Mele nu [_____] ko (I am just looking)",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "kpɔm" },
             { id: "opt2", text: "ƒle" },
             { id: "opt3", text: "xɔ" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
           hints: ["kpɔm = looking"],
           explanation: "Mele nu kpɔm ko = I am just looking in Ewe."
         }
@@ -461,17 +449,14 @@ export default {
         id: 621,
         type: "drag_drop",
         instruction: "Complete the Ewe phrase by dragging the correct word.",
-        question: "Exɔshi ___ (It is too expensive)",
+        sentence: "Exɔshi [_____] (It is too expensive)",
         blankId: "blank1",
         items: [
           { id: "opt1", text: "akpa" },
           { id: "opt2", text: "bubu" },
           { id: "opt3", text: "kpɔm" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt1"
-        },
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
         hints: ["akpa = too much"],
         explanation: "Exɔshi akpa = It is too expensive in Ewe."
       },
@@ -479,17 +464,14 @@ export default {
         id: 622,
         type: "drag_drop",
         instruction: "Complete the Ewe phrase by dragging the correct word.",
-        question: "Ga gbagba le ___? (Do you have change?)",
+        sentence: "Ga gbagba le [_____]? (Do you have change?)",
         blankId: "blank1",
         items: [
           { id: "opt1", text: "ashiwòa" },
           { id: "opt2", text: "ega" },
           { id: "opt3", text: "asi" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt1"
-        },
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
         hints: ["ashiwòa = with you"],
         explanation: "Ga gbagba le ashiwòa? = Do you have change? in Ewe."
       }

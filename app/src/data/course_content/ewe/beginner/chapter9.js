@@ -108,7 +108,7 @@ export default {
       title: "Studying & Work",
       icon: "book-outline",
       description: "Learn phrases related to studying, language learning, and work in Ewe",
-      words: ["Mele ʋegbé srɔ̃m", "Medoa ʋegbé vie", "Dodokpɔ le ashinye etsɔ", "Ŋlɔ wò ŋkɔ", "Mewu nye dɔ nu"],
+      words: ["Mele ʋegbé srɔ̃m", "Medoa ʋegbé vie", "Mexlẽa nu gbe shia gbe", "Dodokpɔ le ashinye etsɔ", "Ŋlɔ wò ŋkɔ", "Mewu nye dɔ nu"],
       vocabulary: [
         {
           id: 113,
@@ -121,6 +121,12 @@ export default {
           english: "I speak a little Ewe",
           native: "Medoa ʋegbé vie",
           audioUrl: require("../../../../assets/audio/ewe/beginner/chapter9/medoa_ʋegbé_vie.m4a")
+        },
+        {
+          id: 108,
+          english: "I read every day",
+          native: "Mexlẽa nu gbe shia gbe",
+          audioUrl: require("../../../../assets/audio/ewe/beginner/chapter9/mexlẽa_nu_gbe_shia_gbe.m4a")
         },
         {
           id: 118,
@@ -175,20 +181,17 @@ export default {
         },
         {
           id: 906,
-          type: "drag_drop",
-          instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Ŋlɔ wò ___ (Write your name)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "ŋkɔ" },
-            { id: "opt2", text: "dɔ" },
-            { id: "opt3", text: "me" }
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Write your name' in Ewe?",
+          options: [
+            { id: 1, text: "Mele ʋegbé srɔ̃m" },
+            { id: 2, text: "Medoa ʋegbé vie" },
+            { id: 3, text: "Dodokpɔ le ashinye etsɔ" },
+            { id: 4, text: "Ŋlɔ wò ŋkɔ" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
-          hints: ["ŋkɔ = name"],
+          correctOptionId: 4,
+          hints: ["ŋlɔ = write", "ŋkɔ = name"],
           explanation: "Ŋlɔ wò ŋkɔ = Write your name in Ewe."
         }
       ]
@@ -325,39 +328,34 @@ export default {
       },
       {
         id: 915,
-        type: "drag_drop",
-        instruction: "Complete the Ewe phrase by dragging the correct word.",
-        question: "Mewu nye dɔ ___ (I finished my work)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "nu" },
-          { id: "opt2", text: "me" },
-          { id: "opt3", text: "le" }
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I read every day' in Ewe?",
+        options: [
+          { id: 1, text: "Mexlẽa nu gbe shia gbe" },
+          { id: 2, text: "Nu ka wɔm nèle?" },
+          { id: 3, text: "Meyina dɔ me" },
+          { id: 4, text: "Menu ɖam" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt1"
-        },
-        hints: ["nu = finished"],
-        explanation: "Mewu nye dɔ nu = I finished my work."
+        correctOptionId: 1,
+        hints: ["Mexlẽa = I read", "gbe shia gbe = every day"],
+        explanation: "Mexlẽa nu gbe shia gbe = I read every day in Ewe."
       },
       {
         id: 916,
-        type: "drag_drop",
-        instruction: "Complete the Ewe phrase by dragging the correct word.",
-        question: "Dodokpɔ le ashinye ___ (I have an exam tomorrow)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "etsɔ" },
-          { id: "opt2", text: "egbe" },
-          { id: "opt3", text: "kaba" }
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/beginner/chapter9/mexlẽa_nu_gbe_shia_gbe.m4a"),
+        options: [
+          { id: 1, text: "I read every day" },
+          { id: 2, text: "What are you doing?" },
+          { id: 3, text: "I am going to work" },
+          { id: 4, text: "I am cooking" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt1"
-        },
-        hints: ["etsɔ = tomorrow"],
-        explanation: "Dodokpɔ le ashinye etsɔ = I have an exam tomorrow."
+        correctOptionId: 1,
+        hints: ["Mexlẽa = I read"],
+        explanation: "You heard 'Mexlẽa nu gbe shia gbe' which means 'I read every day' in Ewe."
       }
     ]
   }

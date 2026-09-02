@@ -132,17 +132,14 @@ export default {
           id: 505,
           type: "drag_drop",
           instruction: "Complete the Ewe phrase by dragging the correct word.",
-          question: "Medzi be _____ nu (I want to eat)",
+          sentence: "Medzi be [_____] nu (I want to eat)",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "maɖu" },
             { id: "opt2", text: "tsi" },
             { id: "opt3", text: "mɔlu" }
           ],
-          correctDrop: {
-            blankId: "blank1",
-            itemId: "opt1"
-          },
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
           hints: ["Medzi be = I want to", "nu = food/eat"],
           explanation: "Medzi be maɖu nu = I want to eat in Ewe."
         }
@@ -351,17 +348,14 @@ export default {
         id: 516,
         type: "drag_drop",
         instruction: "Complete the Ewe phrase by dragging the correct word.",
-        question: "Meɖe kuku na ___ (Give me water please)",
+        sentence: "Meɖe kuku na [_____] (Give me water please)",
         blankId: "blank1",
         items: [
           { id: "opt1", text: "tsim" },
           { id: "opt2", text: "nu" },
           { id: "opt3", text: "mɔlu" }
         ],
-        correctDrop: {
-          blankId: "blank1",
-          itemId: "opt1"
-        },
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
         hints: ["tsi = water", "m = me"],
         explanation: "Meɖe kuku na tsim = Give me water please in Ewe."
       }

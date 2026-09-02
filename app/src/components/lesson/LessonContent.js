@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   SafeAreaView,
@@ -30,43 +30,45 @@ export default function LessonContent({
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
 
-  const [
-    currentQuestionIndex,
-    setCurrentQuestionIndex,
-  ] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] =
+    useState(0);
 
-  const [
-    exitConfirmVisible,
-    setExitConfirmVisible,
-  ] = useState(false);
-
-  const [showResult, setShowResult] =
+  const [exitConfirmVisible, setExitConfirmVisible] =
     useState(false);
 
-  const [isCorrect, setIsCorrect] =
+  const [showResult, setShowResult] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(null);
+
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [wrongQuestions, setWrongQuestions] = useState([]);
+
+  const [showComplete, setShowComplete] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+
+  const [selectedOption, setSelectedOption] =
     useState(null);
 
-  const [correctAnswers, setCorrectAnswers] =
-    useState(0);
+  const [matchingAnswers, setMatchingAnswers] =
+    useState({});
 
-  const [wrongQuestions, setWrongQuestions] =
-    useState([]);
+  const [dragDropAnswers, setDragDropAnswers] =
+    useState({});
 
-  const [showComplete, setShowComplete] =
-    useState(false);
-
-  const [retryCount, setRetryCount] =
-    useState(0);
+  const totalQuestions = questions?.length || 0;
 
   const currentQuestion =
-    questions?.[currentQuestionIndex];
+    questions?.[currentQuestionIndex] || null;
 
-  const totalQuestions =
-    questions?.length || 0;
+  const currentQuestionType =
+    currentQuestion?.type || "multiple_choice";
+
+  const questionKey =
+    currentQuestion?.id ??
+    `${currentQuestionIndex}-${currentQuestionType}`;
 
   const isLastQuestion =
-    currentQuestionIndex ===
-    totalQuestions - 1;
+    totalQuestions > 0 &&
+    currentQuestionIndex === totalQuestions - 1;
 
   const progress =
     totalQuestions > 0
@@ -75,180 +77,652 @@ export default function LessonContent({
         100
       : 0;
 
+  const isDragDrop =
+    currentQuestionType === "drag_drop" ||
+    currentQuestionType === "dragdrop";
+
+  const isMultipleChoice =
+    currentQuestionType === "multiple_choice" ||
+    currentQuestionType ===
+      "listening_multiple_choice";
+
+  const isMatching =
+    currentQuestionType === "matching" ||
+    currentQuestionType ===
+      "listening_matching";
+
+  const isListeningMatching =
+    currentQuestionType ===
+    "listening_matching";
+
+
   useEffect(() => {
     setShowResult(false);
     setIsCorrect(null);
-  }, [currentQuestionIndex]);
+    setSelectedOption(null);
+    setMatchingAnswers({});
+    setDragDropAnswers({});
+  }, [questionKey]);
 
-  const handleAnswer = (correct) => {
-    if (showResult) {
+  const handleMultipleChoiceSelect = useCallback(
+    (optionId) => {
+      if (showResult) {
+        return;
+      }
+
+      setSelectedOption(optionId);
+    },
+    [showResult]
+  );
+
+  const handleMatchingAnswersChange = useCallback(
+    (answers) => {
+      if (showResult) {
+        return;
+      }
+
+      setMatchingAnswers(
+        answers &&
+          typeof answers === "object"
+          ? answers
+          : {}
+      );
+    },
+    [showResult]
+  );
+
+  const handleDragDropAnswersChange = useCallback(
+    (answers) => {
+      if (showResult) {
+        return;
+      }
+
+      setDragDropAnswers(
+        answers &&
+          typeof answers === "object"
+          ? answers
+          : {}
+      );
+    },
+    [showResult]
+  );
+
+
+  const getCorrectOptionId = useCallback(
+    (pairId) => {
+      if (!currentQuestion) {
+        return null;
+      }
+
+      const pair = (
+        currentQuestion.pairs || []
+      ).find(
+        (item) => item.id === pairId
+      );
+
+      if (pair?.correctOptionId) {
+        return pair.correctOptionId;
+      }
+
+      const drops = Array.isArray(
+        currentQuestion.correctDrops
+      )
+        ? currentQuestion.correctDrops
+        : [];
+
+      const drop = drops.find(
+        (item) => item?.pairId === pairId
+      );
+
+      return drop?.optionId || null;
+    },
+    [currentQuestion]
+  );
+
+  const getCorrectAnswerText = useCallback(
+    () => {
+      if (!currentQuestion) {
+        return null;
+      }
+
+      if (isMultipleChoice) {
+        return currentQuestion.options?.find(
+          (option) =>
+            option.id ===
+            currentQuestion.correctOptionId
+        )?.text;
+      }
+
+      if (isListeningMatching) {
+        const pairs =
+          currentQuestion.pairs || [];
+
+        for (const pair of pairs) {
+          const correctOptionId =
+            getCorrectOptionId(pair.id);
+
+          const correctOption =
+            currentQuestion.options?.find(
+              (option) =>
+                option.id ===
+                correctOptionId
+            );
+
+          if (correctOption?.text) {
+            return correctOption.text;
+          }
+        }
+      }
+
+      return (
+        currentQuestion.correctAnswer ||
+        currentQuestion.answer ||
+        null
+      );
+    },
+    [
+      currentQuestion,
+      isMultipleChoice,
+      isListeningMatching,
+      getCorrectOptionId,
+    ]
+  );
+
+  const handleAnswer = useCallback(
+    (correct) => {
+      if (
+        showResult ||
+        !currentQuestion
+      ) {
+        return;
+      }
+
+      const wasCorrect = Boolean(correct);
+
+      setIsCorrect(wasCorrect);
+
+      if (wasCorrect) {
+        setCorrectAnswers(
+          (previous) => previous + 1
+        );
+      } else {
+        setWrongQuestions((previous) => {
+          const questionId =
+            currentQuestion.id;
+
+          const questionText =
+            currentQuestion.question;
+
+          const existingIndex =
+            previous.findIndex(
+              (item) =>
+                (
+                  questionId !==
+                    undefined &&
+                  item.id === questionId
+                ) ||
+                (
+                  questionText &&
+                  item.question ===
+                    questionText
+                )
+            );
+
+          if (existingIndex !== -1) {
+            return previous.map(
+              (item, index) =>
+                index === existingIndex
+                  ? {
+                      ...item,
+                      attempts:
+                        (item.attempts || 0) +
+                        1,
+                    }
+                  : item
+            );
+          }
+
+          return [
+            ...previous,
+            {
+              id: currentQuestion.id,
+              question:
+                currentQuestion.question ||
+                "",
+              english:
+                getCorrectAnswerText() ||
+                currentQuestion.question ||
+                "",
+              native:
+                currentQuestion.native ||
+                currentQuestion.question ||
+                "",
+              pronunciation:
+                currentQuestion
+                  .pronunciation ||
+                currentQuestion.hints?.[0] ||
+                null,
+              attempts: 1,
+            },
+          ];
+        });
+      }
+
+      setShowResult(true);
+    },
+    [
+      showResult,
+      currentQuestion,
+      getCorrectAnswerText,
+    ]
+  );
+
+  const evaluateMultipleChoice =
+    useCallback(() => {
+      if (
+        showResult ||
+        !currentQuestion ||
+        !isMultipleChoice ||
+        selectedOption === null
+      ) {
+        return;
+      }
+
+      const correct =
+        selectedOption ===
+        currentQuestion.correctOptionId;
+
+      handleAnswer(correct);
+    }, [
+      showResult,
+      currentQuestion,
+      isMultipleChoice,
+      selectedOption,
+      handleAnswer,
+    ]);
+
+
+  const evaluateMatching =
+    useCallback(() => {
+      if (
+        showResult ||
+        !currentQuestion ||
+        !isMatching
+      ) {
+        return;
+      }
+
+      const pairs =
+        currentQuestion.pairs || [];
+
+      if (pairs.length === 0) {
+        return;
+      }
+
+      const answerCount =
+        Object.keys(
+          matchingAnswers
+        ).length;
+
+      if (
+        answerCount !==
+        pairs.length
+      ) {
+        return;
+      }
+
+      let allCorrect = false;
+
+      if (isListeningMatching) {
+
+        allCorrect = pairs.every(
+          (pair) => {
+            const selectedOptionId =
+              matchingAnswers[
+                pair.id
+              ];
+
+            const correctOptionId =
+              getCorrectOptionId(
+                pair.id
+              );
+
+            return (
+              selectedOptionId !==
+                undefined &&
+              correctOptionId !==
+                null &&
+              selectedOptionId ===
+                correctOptionId
+            );
+          }
+        );
+      } else {
+
+        const correctMatches =
+          Array.isArray(
+            currentQuestion.correctMatches
+          )
+            ? currentQuestion.correctMatches
+            : [];
+
+        const correctMap = {};
+
+        correctMatches.forEach(
+          (match) => {
+            if (
+              match?.leftId !==
+                undefined &&
+              match?.rightId !==
+                undefined
+            ) {
+              correctMap[
+                match.leftId
+              ] = match.rightId;
+            }
+          }
+        );
+
+        allCorrect = pairs.every(
+          (pair) => {
+            const selectedRightId =
+              matchingAnswers[
+                pair.id
+              ];
+
+            const correctRightId =
+              correctMap[pair.id];
+
+            return (
+              selectedRightId !==
+                undefined &&
+              correctRightId !==
+                undefined &&
+              selectedRightId ===
+                correctRightId
+            );
+          }
+        );
+      }
+
+      handleAnswer(allCorrect);
+    }, [
+      showResult,
+      currentQuestion,
+      isMatching,
+      matchingAnswers,
+      isListeningMatching,
+      getCorrectOptionId,
+      handleAnswer,
+    ]);
+
+  const evaluateDragDrop =
+    useCallback(() => {
+      if (
+        showResult ||
+        !currentQuestion ||
+        !isDragDrop
+      ) {
+        return;
+      }
+
+      const sentence =
+        currentQuestion.sentence ||
+        "";
+
+      const blankMatches =
+        sentence.match(
+          /\[_____\]/g
+        ) || [];
+
+      if (
+        blankMatches.length === 0
+      ) {
+        return;
+      }
+
+      const allBlanksFilled =
+        blankMatches.every(
+          (_, index) =>
+            Boolean(
+              dragDropAnswers[
+                `blank${index + 1}`
+              ]
+            )
+        );
+
+      if (!allBlanksFilled) {
+        return;
+      }
+
+      const drops = Array.isArray(
+        currentQuestion.correctDrops
+      )
+        ? currentQuestion.correctDrops
+        : currentQuestion.correctDrop
+        ? [
+            currentQuestion.correctDrop,
+          ]
+        : [];
+
+      const correctMap = {};
+
+      drops.forEach(
+        (drop, index) => {
+          if (!drop?.itemId) {
+            return;
+          }
+
+          const blankId =
+            drop.blankId ||
+            `blank${index + 1}`;
+
+          correctMap[blankId] =
+            drop.itemId;
+        }
+      );
+
+      const allCorrect =
+        blankMatches.every(
+          (_, index) => {
+            const blankId =
+              `blank${index + 1}`;
+
+            const selectedItem =
+              dragDropAnswers[
+                blankId
+              ];
+
+            const correctItem =
+              correctMap[blankId];
+
+            return (
+              Boolean(selectedItem) &&
+              Boolean(correctItem) &&
+              selectedItem ===
+                correctItem
+            );
+          }
+        );
+
+      handleAnswer(allCorrect);
+    }, [
+      showResult,
+      currentQuestion,
+      isDragDrop,
+      dragDropAnswers,
+      handleAnswer,
+    ]);
+
+  const handleNext = useCallback(() => {
+    if (!currentQuestion) {
       return;
     }
 
-    setIsCorrect(correct);
-
-    if (correct) {
-      setCorrectAnswers(
-        (prev) => prev + 1
-      );
-    } else {
-      const question = currentQuestion;
-
-      setWrongQuestions((prev) => {
-        const existingIndex =
-          prev.findIndex(
-            (item) =>
-              item.id === question?.id ||
-              (item.question &&
-                question?.question &&
-                item.question ===
-                  question.question)
-          );
-
-        if (existingIndex !== -1) {
-          return prev.map(
-            (item, index) =>
-              index === existingIndex
-                ? {
-                    ...item,
-                    attempts:
-                      (item.attempts || 0) +
-                      1,
-                  }
-                : item
-          );
-        }
-
-        return [
-          ...prev,
-          {
-            id: question?.id,
-            question:
-              question?.question,
-
-            english:
-              question?.options?.find(
-                (option) =>
-                  option.id ===
-                  question.correctOptionId
-              )?.text,
-
-            native:
-              question?.question,
-
-            pronunciation:
-              question?.hints?.[0] ||
-              null,
-
-            attempts: 1,
-          },
-        ];
-      });
-    }
-
-    setShowResult(true);
-  };
-
-  const handleNext = () => {
     if (isLastQuestion) {
       setShowComplete(true);
       return;
     }
 
     setCurrentQuestionIndex(
-      (prev) => prev + 1
+      (previous) => previous + 1
     );
-  };
+  }, [
+    currentQuestion,
+    isLastQuestion,
+  ]);
 
-  const handleRetry = () => {
+
+  const handleRetry = useCallback(() => {
     setShowResult(false);
     setIsCorrect(null);
+    setSelectedOption(null);
+    setMatchingAnswers({});
+    setDragDropAnswers({});
 
     setRetryCount(
-      (prev) => prev + 1
+      (previous) => previous + 1
     );
-  };
+  }, []);
 
-  const handleComplete = () => {
+  const handleComplete = useCallback(() => {
     if (onComplete) {
       onComplete();
-    } else {
-      navigation.goBack();
+      return;
     }
-  };
 
-  const handleBack = () => {
+    navigation.goBack();
+  }, [
+    onComplete,
+    navigation,
+  ]);
+
+  const handleBack = useCallback(() => {
     if (showComplete) {
       handleComplete();
       return;
     }
 
     setExitConfirmVisible(true);
-  };
+  }, [
+    showComplete,
+    handleComplete,
+  ]);
 
-  const handleReview = () => {
-    setCorrectAnswers(0);
-    setWrongQuestions([]);
+  const handleExitConfirm =
+    useCallback(() => {
+      setExitConfirmVisible(false);
+      navigation.goBack();
+    }, [navigation]);
 
-    setRetryCount(
-      (prev) => prev + 1
-    );
+  const handleExitCancel =
+    useCallback(() => {
+      setExitConfirmVisible(false);
+    }, []);
 
-    setCurrentQuestionIndex(0);
+  const handleReview =
+    useCallback(() => {
+      setCorrectAnswers(0);
+      setWrongQuestions([]);
 
-    setShowResult(false);
-    setIsCorrect(null);
-    setShowComplete(false);
-  };
+      setSelectedOption(null);
+      setMatchingAnswers({});
+      setDragDropAnswers({});
 
-  const renderMode = () => {
-    const type =
-      currentQuestion?.type ||
-      "multiple_choice";
+      setRetryCount(
+        (previous) => previous + 1
+      );
 
-    const key = `q-${currentQuestion?.id}-r${retryCount}`;
+      setCurrentQuestionIndex(0);
+      setShowResult(false);
+      setIsCorrect(null);
+      setShowComplete(false);
+    }, []);
 
-    const props = {
-      key,
-      question: currentQuestion,
-      onSubmit: handleAnswer,
-      showResult,
-      isCorrect,
-    };
+  const renderMode = useCallback(() => {
+    if (!currentQuestion) {
+      return null;
+    }
 
-    switch (type) {
+
+    const modeKey =
+      `q-${questionKey}`;
+
+    switch (currentQuestionType) {
       case "listening_multiple_choice":
         return (
           <ListeningMultipleChoiceMode
-            {...props}
+            key={modeKey}
+            question={currentQuestion}
+            showResult={showResult}
+            onOptionSelect={
+              handleMultipleChoiceSelect
+            }
           />
         );
 
       case "matching":
-        return <MatchingMode {...props} />;
+        return (
+          <MatchingMode
+            question={currentQuestion}
+            showResult={showResult}
+            resetKey={retryCount}
+            onMatchesChange={
+              handleMatchingAnswersChange
+            }
+          />
+        );
 
       case "listening_matching":
         return (
           <ListeningMatchingMode
-            {...props}
+            key={modeKey}
+            question={currentQuestion}
+            showResult={showResult}
+            onMatchesChange={
+              handleMatchingAnswersChange
+            }
           />
         );
 
       case "drag_drop":
       case "dragdrop":
         return (
-          <DragDropMode {...props} />
+          <DragDropMode
+            key={modeKey}
+            question={currentQuestion}
+            showResult={showResult}
+            isCorrect={isCorrect}
+            onAnswerChange={
+              handleDragDropAnswersChange
+            }
+          />
         );
 
       case "multiple_choice":
       default:
         return (
           <MultipleChoiceMode
-            {...props}
+            key={modeKey}
+            question={currentQuestion}
+            showResult={showResult}
+            onOptionSelect={
+              handleMultipleChoiceSelect
+            }
           />
         );
     }
-  };
+  }, [
+    currentQuestion,
+    questionKey,
+    retryCount,
+    currentQuestionType,
+    showResult,
+    handleMultipleChoiceSelect,
+    handleMatchingAnswersChange,
+    isCorrect,
+    handleDragDropAnswersChange,
+  ]);
 
   if (
     !currentQuestion &&
@@ -299,21 +773,21 @@ export default function LessonContent({
       accuracy,
       correctAnswers,
       totalQuestions,
-
       wrongQuestions:
         wrongQuestions.map(
           (item) => ({
             id: item.id,
-
             english:
               item.english ||
-              item.question,
-
-            native: item.native,
-
+              item.question ||
+              "",
+            native:
+              item.native ||
+              item.question ||
+              "",
             pronunciation:
-              item.pronunciation,
-
+              item.pronunciation ||
+              null,
             attempts:
               item.attempts || 1,
           })
@@ -360,6 +834,61 @@ export default function LessonContent({
         : "#C62828"
       : theme.text;
 
+  const canCheckDragDrop =
+    isDragDrop &&
+    Boolean(
+      currentQuestion?.sentence
+    ) &&
+    (
+      currentQuestion.sentence.match(
+        /\[_____\]/g
+      ) || []
+    ).every(
+      (_, index) =>
+        Boolean(
+          dragDropAnswers[
+            `blank${index + 1}`
+          ]
+        )
+    );
+
+  const canCheckMultipleChoice =
+    isMultipleChoice &&
+    selectedOption !== null;
+
+  const canCheckMatching =
+    isMatching &&
+    Array.isArray(
+      currentQuestion?.pairs
+    ) &&
+    currentQuestion.pairs.length >
+      0 &&
+    Object.keys(
+      matchingAnswers
+    ).length ===
+      currentQuestion.pairs.length;
+
+  const handleCheck = () => {
+    if (isDragDrop) {
+      evaluateDragDrop();
+      return;
+    }
+
+    if (isMultipleChoice) {
+      evaluateMultipleChoice();
+      return;
+    }
+
+    if (isMatching) {
+      evaluateMatching();
+    }
+  };
+
+  const canCheck =
+    canCheckDragDrop ||
+    canCheckMultipleChoice ||
+    canCheckMatching;
+
   return (
     <View
       style={[
@@ -377,22 +906,25 @@ export default function LessonContent({
         cancelLabel="Cancel"
         confirmLabel="Exit"
         destructive
-        onConfirm={() => {
-          setExitConfirmVisible(false);
-          navigation.goBack();
-        }}
-        onCancel={() =>
-          setExitConfirmVisible(false)
+        onConfirm={
+          handleExitConfirm
+        }
+        onCancel={
+          handleExitCancel
         }
       />
 
-      <SafeAreaView style={styles.topArea}>
+      <SafeAreaView
+        style={styles.topArea}
+      >
         <ProgressHeader
           progress={progress}
           currentCount={
             currentQuestionIndex + 1
           }
-          totalCount={totalQuestions}
+          totalCount={
+            totalQuestions
+          }
           onClose={handleBack}
         />
 
@@ -401,7 +933,8 @@ export default function LessonContent({
             styles.contentContainer,
             {
               paddingBottom:
-                160 + insets.bottom,
+                160 +
+                insets.bottom,
             },
           ]}
           showsVerticalScrollIndicator={
@@ -419,7 +952,6 @@ export default function LessonContent({
                     backgroundColor:
                       theme.primary +
                       "18",
-
                     borderColor:
                       theme.primary +
                       "30",
@@ -458,11 +990,14 @@ export default function LessonContent({
               style={[
                 styles.questionText,
                 {
-                  color: theme.text,
+                  color:
+                    theme.text,
                 },
               ]}
             >
-              {currentQuestion.question}
+              {
+                currentQuestion.question
+              }
             </Text>
 
             {currentQuestion.instruction && (
@@ -475,7 +1010,9 @@ export default function LessonContent({
                   },
                 ]}
               >
-                {currentQuestion.instruction}
+                {
+                  currentQuestion.instruction
+                }
               </Text>
             )}
           </View>
@@ -490,20 +1027,21 @@ export default function LessonContent({
           {
             backgroundColor:
               feedbackBackground,
-
             borderTopColor:
               feedbackBorder,
-
-            paddingBottom: Math.max(
-              insets.bottom,
-              16
-            ),
+            paddingBottom:
+              Math.max(
+                insets.bottom,
+                16
+              ),
           },
         ]}
       >
         {showResult && (
           <View
-            style={styles.feedbackBanner}
+            style={
+              styles.feedbackBanner
+            }
           >
             <Text
               style={[
@@ -529,19 +1067,42 @@ export default function LessonContent({
                   },
                 ]}
               >
-                {currentQuestion.explanation}
+                {
+                  currentQuestion.explanation
+                }
               </Text>
             )}
           </View>
         )}
 
         <View
-          style={styles.buttonWrapper}
+          style={
+            styles.buttonWrapper
+          }
         >
           {!showResult ? (
             <Button
-              title="CONTINUE"
-              disabled
+              title={
+                isDragDrop ||
+                isMultipleChoice ||
+                isMatching
+                  ? "CHECK"
+                  : "CONTINUE"
+              }
+              onPress={
+                isDragDrop ||
+                isMultipleChoice ||
+                isMatching
+                  ? handleCheck
+                  : undefined
+              }
+              disabled={
+                isDragDrop ||
+                isMultipleChoice ||
+                isMatching
+                  ? !canCheck
+                  : true
+              }
               variant="primary"
             />
           ) : isCorrect ? (
@@ -551,14 +1112,18 @@ export default function LessonContent({
                   ? "FINISH"
                   : "CONTINUE"
               }
-              onPress={handleNext}
+              onPress={
+                handleNext
+              }
               variant="primary"
               status="success"
             />
           ) : (
             <Button
               title="TRY AGAIN"
-              onPress={handleRetry}
+              onPress={
+                handleRetry
+              }
               variant="primary"
               status="error"
             />

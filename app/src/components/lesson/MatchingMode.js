@@ -1,166 +1,474 @@
-// components/lesson/MatchingMode.js
-import React, { useState, useMemo } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import * as Haptics from "expo-haptics";
+import { useEffect, useMemo, useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useTheme } from "../../context/ThemeContext";
 
 export default function MatchingMode({
   question,
-  onSubmit,
   showResult,
-  isCorrect,
+  onMatchesChange,
+  resetKey = 0,
 }) {
   const { theme } = useTheme();
+
   const pairs = question?.pairs || [];
 
-  // 1. Create unique structural representations for Left and Right items
   const leftItems = useMemo(
-    () => pairs.map((p) => ({ pairId: p.id, text: p.left })),
+    () =>
+      pairs.map((pair) => ({
+        pairId: pair.id,
+        text: pair.left,
+      })),
     [pairs]
   );
 
-  const rightItems = useMemo(() => {
-    const shuffled = [...pairs].sort(() => Math.random() - 0.5);
-    return shuffled.map((p) => ({ pairId: p.id, text: p.right, rightKey: `right-${p.id}` }));
-  }, [pairs]);
 
-  const [selectedLeft, setSelectedLeft] = useState(null);
-  const [matches, setMatches] = useState({}); // pairId (left) -> pairId (right matched)
-  const [submitted, setSubmitted] = useState(false);
+  const [rightItems, setRightItems] = useState([]);
 
-  const handleSelectLeft = (pairId) => {
-    if (submitted || showResult) return;
-    
-    // Toggle off if clicking the already selected left item
-    if (selectedLeft === pairId) {
-      setSelectedLeft(null);
-      return;
-    }
+  useEffect(() => {
+    const shuffled = [...pairs].sort(
+      () => Math.random() - 0.5
+    );
 
-    // If item was already matched, clear its match
-    if (matches[pairId]) {
-      const updated = { ...matches };
-      delete updated[pairId];
-      setMatches(updated);
-    }
+    setRightItems(
+      shuffled.map((pair) => ({
+        pairId: pair.id,
+        text: pair.right,
+        rightKey: `right-${pair.id}`,
+      }))
+    );
+  }, [question]);
 
-    setSelectedLeft(pairId);
-  };
+  const correctMatches = useMemo(() => {
+    const matches = {};
 
-  const handleSelectRight = (rightItem) => {
-    if (submitted || showResult) return;
-    if (selectedLeft === null) return;
+    const source = Array.isArray(
+      question?.correctMatches
+    )
+      ? question.correctMatches
+      : [];
 
-    // Remove any previous left item that was matched to this right item
-    const updatedMatches = {};
-    Object.keys(matches).forEach((leftKey) => {
-      if (matches[leftKey] !== rightItem.pairId) {
-        updatedMatches[leftKey] = matches[leftKey];
+    source.forEach((match) => {
+      if (
+        match?.leftId !== undefined &&
+        match?.rightId !== undefined
+      ) {
+        matches[match.leftId] = match.rightId;
       }
     });
 
-    // Assign match
-    updatedMatches[selectedLeft] = rightItem.pairId;
+    return matches;
+  }, [question?.correctMatches]);
+
+  const [selectedLeft, setSelectedLeft] =
+    useState(null);
+
+  const [matches, setMatches] = useState({});
+
+
+  useEffect(() => {
+    setSelectedLeft(null);
+    setMatches({});
+    onMatchesChange?.({});
+  }, [question, resetKey]);
+
+  const updateMatches = (updatedMatches) => {
     setMatches(updatedMatches);
+    onMatchesChange?.(updatedMatches);
+  };
+
+  const handleSelectLeft = async (pairId) => {
+    if (showResult) {
+      return;
+    }
+
+    if (selectedLeft === pairId) {
+      setSelectedLeft(null);
+
+      await Haptics.impactAsync(
+        Haptics.ImpactFeedbackStyle.Light
+      );
+
+      return;
+    }
+
+    if (matches[pairId]) {
+      const updatedMatches = {
+        ...matches,
+      };
+
+      delete updatedMatches[pairId];
+
+      updateMatches(updatedMatches);
+    }
+
+    setSelectedLeft(pairId);
+
+    await Haptics.impactAsync(
+      Haptics.ImpactFeedbackStyle.Light
+    );
+  };
+
+  const handleSelectRight = async (rightItem) => {
+    if (
+      showResult ||
+      selectedLeft === null
+    ) {
+      return;
+    }
+
+    const updatedMatches = {};
+
+    Object.keys(matches).forEach(
+      (leftKey) => {
+        if (
+          matches[leftKey] !==
+          rightItem.pairId
+        ) {
+          updatedMatches[leftKey] =
+            matches[leftKey];
+        }
+      }
+    );
+
+    updatedMatches[selectedLeft] =
+      rightItem.pairId;
+
+    updateMatches(updatedMatches);
     setSelectedLeft(null);
 
-    // Evaluate when all pairs are matched
-    if (Object.keys(updatedMatches).length === pairs.length) {
-      setSubmitted(true);
-      const allCorrect = pairs.every(
-        (p) => updatedMatches[p.id] === p.id
-      );
-      onSubmit(allCorrect);
+    await Haptics.impactAsync(
+      Haptics.ImpactFeedbackStyle.Light
+    );
+  };
+
+  const getLeftState = (item) => {
+    const matchedRightId =
+      matches[item.pairId];
+
+    const isMatched =
+      matchedRightId !== undefined;
+
+    const isSelected =
+      selectedLeft === item.pairId;
+
+    const isCorrect =
+      isMatched &&
+      correctMatches[item.pairId] ===
+        matchedRightId;
+
+    if (showResult && isMatched) {
+      return {
+        backgroundColor: isCorrect
+          ? theme.success + "18"
+          : theme.error + "18",
+        borderColor: isCorrect
+          ? theme.success
+          : theme.error,
+        icon: isCorrect
+          ? "checkmark-circle"
+          : "close-circle",
+        iconColor: isCorrect
+          ? theme.success
+          : theme.error,
+      };
     }
+
+    if (isSelected) {
+      return {
+        backgroundColor:
+          theme.primary + "18",
+        borderColor: theme.primary,
+        icon: "radio-button-on",
+        iconColor: theme.primary,
+      };
+    }
+
+    if (isMatched) {
+      return {
+        backgroundColor:
+          theme.primary + "10",
+        borderColor: theme.primary,
+        icon: "checkmark-circle",
+        iconColor: theme.primary,
+      };
+    }
+
+    return {
+      backgroundColor: theme.surface,
+      borderColor: theme.border,
+      icon: "radio-button-off",
+      iconColor: theme.icon,
+    };
+  };
+
+  const getRightState = (item) => {
+    const matchedLeftId =
+      Object.keys(matches).find(
+        (leftId) =>
+          matches[leftId] ===
+          item.pairId
+      );
+
+    const isMatched =
+      matchedLeftId !== undefined;
+
+    const isCorrect =
+      isMatched &&
+      correctMatches[matchedLeftId] ===
+        item.pairId;
+
+    if (showResult && isMatched) {
+      return {
+        backgroundColor: isCorrect
+          ? theme.success + "18"
+          : theme.error + "18",
+        borderColor: isCorrect
+          ? theme.success
+          : theme.error,
+        icon: isCorrect
+          ? "checkmark-circle"
+          : "close-circle",
+        iconColor: isCorrect
+          ? theme.success
+          : theme.error,
+      };
+    }
+
+    if (isMatched) {
+      return {
+        backgroundColor:
+          theme.primary + "10",
+        borderColor: theme.primary,
+        icon: "checkmark-circle",
+        iconColor: theme.primary,
+      };
+    }
+
+    return {
+      backgroundColor: theme.surface,
+      borderColor: theme.border,
+      icon: "radio-button-off",
+      iconColor: theme.icon,
+    };
   };
 
   const renderLeft = (item) => {
-    const matchedRightId = matches[item.pairId];
-    const isMatched = matchedRightId !== undefined;
-    const isMatchedCorrect = submitted && matchedRightId === item.pairId;
-    const isMatchedWrong = submitted && isMatched && matchedRightId !== item.pairId;
-    const isSelected = selectedLeft === item.pairId;
-
-    let backgroundColor = theme.surface;
-    let borderColor = theme.border;
-
-    if (isMatchedCorrect) {
-      backgroundColor = theme.success + "20";
-      borderColor = theme.success;
-    } else if (isMatchedWrong) {
-      backgroundColor = theme.error + "20";
-      borderColor = theme.error;
-    } else if (isSelected) {
-      backgroundColor = theme.primary + "20";
-      borderColor = theme.primary;
-    } else if (isMatched) {
-      backgroundColor = theme.surface;
-      borderColor = theme.primary;
-    }
+    const state = getLeftState(item);
 
     return (
       <TouchableOpacity
         key={`left-${item.pairId}`}
-        style={[styles.itemCard, { backgroundColor, borderColor }]}
-        onPress={() => handleSelectLeft(item.pairId)}
-        disabled={submitted || showResult}
-        activeOpacity={0.7}
+        style={[
+          styles.itemCard,
+          {
+            backgroundColor:
+              state.backgroundColor,
+            borderColor:
+              state.borderColor,
+          },
+        ]}
+        onPress={() =>
+          handleSelectLeft(item.pairId)
+        }
+        disabled={showResult}
+        activeOpacity={0.75}
       >
-        <Text style={[styles.itemText, { color: theme.text }]}>{item.text}</Text>
-        {isMatchedCorrect && <Ionicons name="checkmark-circle" size={20} color={theme.success} />}
-        {isMatchedWrong && <Ionicons name="close-circle" size={20} color={theme.error} />}
+        <Text
+          style={[
+            styles.itemText,
+            {
+              color: theme.text,
+            },
+          ]}
+          numberOfLines={3}
+        >
+          {item.text}
+        </Text>
+
+        <Ionicons
+          name={state.icon}
+          size={24}
+          color={state.iconColor}
+        />
       </TouchableOpacity>
     );
   };
 
   const renderRight = (item) => {
-    // Find which left pair matched this right item
-    const matchedLeftId = Object.keys(matches).find(
-      (leftId) => matches[leftId] === item.pairId
-    );
-    const isMatched = matchedLeftId !== undefined;
-    const isMatchedCorrect = submitted && matchedLeftId === item.pairId;
-    const isMatchedWrong = submitted && isMatched && matchedLeftId !== item.pairId;
+    const state = getRightState(item);
 
-    let backgroundColor = theme.surface;
-    let borderColor = theme.border;
+    const matchedLeftId =
+      Object.keys(matches).find(
+        (leftId) =>
+          matches[leftId] ===
+          item.pairId
+      );
 
-    if (isMatchedCorrect) {
-      backgroundColor = theme.success + "20";
-      borderColor = theme.success;
-    } else if (isMatchedWrong) {
-      backgroundColor = theme.error + "20";
-      borderColor = theme.error;
-    } else if (isMatched) {
-      backgroundColor = theme.primary + "15";
-      borderColor = theme.primary;
-    }
+    const isMatched =
+      matchedLeftId !== undefined;
 
     return (
       <TouchableOpacity
         key={item.rightKey}
-        style={[styles.itemCard, { backgroundColor, borderColor }]}
-        onPress={() => handleSelectRight(item)}
-        disabled={submitted || showResult || (!selectedLeft && !isMatched)}
-        activeOpacity={0.7}
+        style={[
+          styles.itemCard,
+          {
+            backgroundColor:
+              state.backgroundColor,
+            borderColor:
+              state.borderColor,
+          },
+        ]}
+        onPress={() =>
+          handleSelectRight(item)
+        }
+        disabled={
+          showResult ||
+          selectedLeft === null
+        }
+        activeOpacity={0.75}
       >
-        <Text style={[styles.itemText, { color: theme.text }]}>{item.text}</Text>
-        {isMatchedCorrect && <Ionicons name="checkmark-circle" size={20} color={theme.success} />}
-        {isMatchedWrong && <Ionicons name="close-circle" size={20} color={theme.error} />}
+        <Text
+          style={[
+            styles.itemText,
+            {
+              color: theme.text,
+            },
+          ]}
+          numberOfLines={3}
+        >
+          {item.text}
+        </Text>
+
+        <Ionicons
+          name={
+            isMatched
+              ? state.icon
+              : "radio-button-off"
+          }
+          size={24}
+          color={
+            isMatched
+              ? state.iconColor
+              : theme.icon
+          }
+        />
       </TouchableOpacity>
     );
   };
 
+  const matchedCount =
+    Object.keys(matches).length;
+
   return (
     <View style={styles.container}>
-      <View style={styles.instructions}>
-        <Text style={[styles.instructionText, { color: theme.secondaryText }]}>
-          Tap a term on the left, then tap its match on the right.
+      <View
+        style={[
+          styles.instructionCard,
+          {
+            backgroundColor:
+              theme.surface,
+            borderColor: theme.border,
+          },
+        ]}
+      >
+        <Ionicons
+          name="swap-horizontal"
+          size={22}
+          color={theme.primary}
+        />
+
+        <View style={styles.instructionContent}>
+          <Text
+            style={[
+              styles.instructionTitle,
+              {
+                color: theme.text,
+              },
+            ]}
+          >
+            Match the pairs
+          </Text>
+
+          <Text
+            style={[
+              styles.instructionText,
+              {
+                color:
+                  theme.secondaryText,
+              },
+            ]}
+          >
+            Tap an item on the left, then
+            tap its match on the right.
+          </Text>
+        </View>
+      </View>
+
+      <View style={styles.progressRow}>
+        <Text
+          style={[
+            styles.progressText,
+            {
+              color:
+                theme.secondaryText,
+            },
+          ]}
+        >
+          Matches
+        </Text>
+
+        <Text
+          style={[
+            styles.progressCount,
+            {
+              color: theme.primary,
+            },
+          ]}
+        >
+          {matchedCount}/{pairs.length}
         </Text>
       </View>
+
       <View style={styles.columns}>
-        <View style={styles.column}>{leftItems.map(renderLeft)}</View>
-        <View style={styles.column}>{rightItems.map(renderRight)}</View>
+        <View style={styles.column}>
+          <Text
+            style={[
+              styles.columnLabel,
+              {
+                color:
+                  theme.secondaryText,
+              },
+            ]}
+          >
+            TERM
+          </Text>
+
+          {leftItems.map(renderLeft)}
+        </View>
+
+        <View style={styles.column}>
+          <Text
+            style={[
+              styles.columnLabel,
+              {
+                color:
+                  theme.secondaryText,
+              },
+            ]}
+          >
+            MATCH
+          </Text>
+
+          {rightItems.map(renderRight)}
+        </View>
       </View>
     </View>
   );
@@ -170,34 +478,88 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: 8,
   },
-  instructions: {
-    marginBottom: 16,
+
+  instructionCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 16,
+    borderWidth: 1,
+    marginBottom: 18,
   },
+
+  instructionContent: {
+    flex: 1,
+  },
+
+  instructionTitle: {
+    fontSize: 15,
+    fontWeight: "800",
+    marginBottom: 2,
+  },
+
   instructionText: {
-    fontSize: 14,
-    textAlign: "center",
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: "500",
   },
+
+  progressRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 10,
+    paddingHorizontal: 2,
+  },
+
+  progressText: {
+    fontSize: 13,
+    fontWeight: "700",
+    textTransform: "uppercase",
+    letterSpacing: 0.6,
+  },
+
+  progressCount: {
+    fontSize: 14,
+    fontWeight: "800",
+  },
+
   columns: {
     flexDirection: "row",
-    gap: 12,
+    gap: 10,
   },
+
   column: {
     flex: 1,
-    gap: 12,
+    gap: 10,
   },
+
+  columnLabel: {
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 0.8,
+    marginBottom: 2,
+    paddingHorizontal: 2,
+  },
+
   itemCard: {
+    minHeight: 68,
     paddingVertical: 14,
     paddingHorizontal: 12,
-    borderRadius: 12,
+    borderRadius: 16,
     borderWidth: 2,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    minHeight: 56,
+    gap: 8,
   },
+
   itemText: {
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: "600",
+    lineHeight: 20,
     flex: 1,
   },
 });

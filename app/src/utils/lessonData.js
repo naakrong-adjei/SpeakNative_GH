@@ -6,8 +6,9 @@ import eweAdvancedChapter5 from "../data/course_content/ewe/advanced/chapter5.js
 import eweAdvancedChapter6 from "../data/course_content/ewe/advanced/chapter6.js";
 import eweAdvancedChapter7 from "../data/course_content/ewe/advanced/chapter7.js";
 import eweAdvancedChapter8 from "../data/course_content/ewe/advanced/chapter8.js";
+
+
 import eweBeginnerChapter1 from "../data/course_content/ewe/beginner/chapter1.js";
-import eweBeginnerChapter10 from "../data/course_content/ewe/beginner/chapter10.js";
 import eweBeginnerChapter2 from "../data/course_content/ewe/beginner/chapter2.js";
 import eweBeginnerChapter3 from "../data/course_content/ewe/beginner/chapter3.js";
 import eweBeginnerChapter4 from "../data/course_content/ewe/beginner/chapter4.js";
@@ -16,6 +17,8 @@ import eweBeginnerChapter6 from "../data/course_content/ewe/beginner/chapter6.js
 import eweBeginnerChapter7 from "../data/course_content/ewe/beginner/chapter7.js";
 import eweBeginnerChapter8 from "../data/course_content/ewe/beginner/chapter8.js";
 import eweBeginnerChapter9 from "../data/course_content/ewe/beginner/chapter9.js";
+
+
 import eweIntermediateChapter1 from "../data/course_content/ewe/intermediate/chapter1.js";
 import eweIntermediateChapter10 from "../data/course_content/ewe/intermediate/chapter10.js";
 import eweIntermediateChapter2 from "../data/course_content/ewe/intermediate/chapter2.js";
@@ -25,7 +28,8 @@ import eweIntermediateChapter5 from "../data/course_content/ewe/intermediate/cha
 import eweIntermediateChapter6 from "../data/course_content/ewe/intermediate/chapter6.js";
 import eweIntermediateChapter7 from "../data/course_content/ewe/intermediate/chapter7.js";
 import eweIntermediateChapter8 from "../data/course_content/ewe/intermediate/chapter8.js";
-import eweIntermediateChapter9 from "../data/course_content/ewe/intermediate/chapter9.js";
+
+
 import twiBeginnerChapter1 from "../data/course_content/twi/beginner/chapter1.js";
 import twiBeginnerChapter10 from "../data/course_content/twi/beginner/chapter10.js";
 import twiBeginnerChapter2 from "../data/course_content/twi/beginner/chapter2.js";
@@ -36,6 +40,8 @@ import twiBeginnerChapter6 from "../data/course_content/twi/beginner/chapter6.js
 import twiBeginnerChapter7 from "../data/course_content/twi/beginner/chapter7.js";
 import twiBeginnerChapter8 from "../data/course_content/twi/beginner/chapter8.js";
 import twiBeginnerChapter9 from "../data/course_content/twi/beginner/chapter9.js";
+
+
 import gaBeginnerChapter1 from "../data/course_content/ga/beginner/chapter1.js";
 import gaBeginnerChapter2 from "../data/course_content/ga/beginner/chapter2.js";
 import gaBeginnerChapter3 from "../data/course_content/ga/beginner/chapter3.js";
@@ -66,7 +72,7 @@ export const getLessonData = () => {
         intermediate: {},
         advanced: {},
       },
-"ga": {
+      "ga": {
         beginner: {
           chapter1: gaBeginnerChapter1,
           chapter2: gaBeginnerChapter2,
@@ -82,7 +88,7 @@ export const getLessonData = () => {
         intermediate: {},
         advanced: {},
       },
-"ewe": {
+      "ewe": {
         beginner: {
           chapter1: eweBeginnerChapter1,
           chapter2: eweBeginnerChapter2,
@@ -93,9 +99,8 @@ export const getLessonData = () => {
           chapter7: eweBeginnerChapter7,
           chapter8: eweBeginnerChapter8,
           chapter9: eweBeginnerChapter9,
-          chapter10: eweBeginnerChapter10,
-},
-intermediate: {
+        },
+        intermediate: {
           chapter1: eweIntermediateChapter1,
           chapter2: eweIntermediateChapter2,
           chapter3: eweIntermediateChapter3,
@@ -104,8 +109,6 @@ intermediate: {
           chapter6: eweIntermediateChapter6,
           chapter7: eweIntermediateChapter7,
           chapter8: eweIntermediateChapter8,
-          chapter9: eweIntermediateChapter9,
-          chapter10: eweIntermediateChapter10,
         },
         advanced: {
           chapter1: eweAdvancedChapter1,
