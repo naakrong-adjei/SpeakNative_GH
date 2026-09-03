@@ -1,99 +1,382 @@
 export default {
-  id: 5,
-  title: "Literature & Expressions",
-  description: "Learn advanced Ewe vocabulary for reading, writing, and storytelling",
+  id: 25,
+  title: "Storytelling",
+  description: "Learn how to tell and understand stories in Ewe",
   icon: "book-outline",
-  totalXp: 30,
+  totalXp: 15,
   difficulty: "Advanced",
 
   sections: [
     {
-      id: "a5-1",
-      type: "advanced_vocabulary",
-      title: "Reading & Books",
+      id: "25-1",
+      type: "words",
+      title: "Starting a Story",
       icon: "book-outline",
-      description: "Learn Ewe words about books and reading",
-      words: ["Agbalẽ", "Xlẽ", "Agbalẽdzrala", "Agbalẽme", "Lilo", "Nudzɔdzɔ", "Xexlẽdzesi", "Agbalẽ"],
+      description: "Learn how to begin a story in Ewe",
+      words: ["Blema ɣeaɖeɣi", "Ɖo to nye ŋutinya"],
       vocabulary: [
-        { id: 1, english: "Book", native: "Agbalẽ", pronunciation: "ah-gbah-len" },
-        { id: 2, english: "To read", native: "Xlẽ", pronunciation: "hlen" },
-        { id: 3, english: "Story", native: "Lilo", pronunciation: "lee-loh" },
-        { id: 4, english: "Chapter", native: "Agbalẽme", pronunciation: "ah-gbah-len-meh" },
-        { id: 5, english: "Author / Writer", native: "Agbalẽŋlɔla", pronunciation: "ah-gbah-len-ngloh-lah" },
-        { id: 6, english: "Page", native: "Agbalẽ ba", pronunciation: "ah-gbah-len bah" },
-        { id: 7, english: "Poem", native: "Ha", pronunciation: "hah" },
-        { id: 8, english: "Library", native: "Agbalẽdzesiƒe", pronunciation: "ah-gbah-len-jeh-see-feh" }
+        {
+          id: 175,
+          english: "Once upon a time",
+          native: "Blema ɣeaɖeɣi",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/blema_ɣeaɖeɣi.m4a")
+        },
+        {
+          id: 176,
+          english: "Listen to my story",
+          native: "Ɖo to nye ŋutinya",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/ɖo_to_nye_ŋutinya.m4a")
+        }
       ],
       questions: [
-        { id: 101, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Book' in Ewe?", options: [{ id: 1, text: "Agbalẽ" }, { id: 2, text: "Xlẽ" }, { id: 3, text: "Lilo" }, { id: 4, text: "Ha" }], correctOptionId: 1, hints: ["You read it"], explanation: "'Agbalẽ' means 'Book' in Ewe." },
-        { id: 102, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'To read' in Ewe?", options: [{ id: 1, text: "Xlẽ" }, { id: 2, text: "Agbalẽ" }, { id: 3, text: "Lilo" }, { id: 4, text: "Ha" }], correctOptionId: 1, hints: ["Reading a book"], explanation: "'Xlẽ' means 'To read' in Ewe." },
-        { id: 103, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Author / Writer' in Ewe?", options: [{ id: 1, text: "Agbalẽŋlɔla" }, { id: 2, text: "Agbalẽ" }, { id: 3, text: "Agbalẽdzrala" }, { id: 4, text: "Agbalẽme" }], correctOptionId: 1, hints: ["Writes books"], explanation: "'Agbalẽŋlɔla' means 'Author / Writer' in Ewe." },
-        { id: 104, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Agbalẽ", right: "Book" }, { id: 2, left: "Xlẽ", right: "To read" }, { id: 3, left: "Lilo", right: "Story" }, { id: 4, left: "Ha", right: "Poem" }], hints: ["Agbalẽ = book", "Xlẽ = to read"], explanation: "These are reading words in Ewe." }
+        {
+          id: 2501,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Once upon a time' in Ewe?",
+          options: [
+            { id: 1, text: "Blema ɣeaɖeɣi" },
+            { id: 2, text: "Ɖo to nye ŋutinya" },
+            { id: 3, text: "Emegbe nane dzɔ" },
+            { id: 4, text: "Wonɔ agbe dzidzɔtɔe" }
+          ],
+          correctOptionId: 1,
+          hints: ["Blema = long ago", "ɣeaɖeɣi = some time"],
+          explanation: "Blema ɣeaɖeɣi = Once upon a time in Ewe."
+        },
+        {
+          id: 2502,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/ɖo_to_nye_ŋutinya.m4a"),
+          options: [
+            { id: 1, text: "Once upon a time" },
+            { id: 2, text: "Listen to my story" },
+            { id: 3, text: "Then something happened" },
+            { id: 4, text: "They lived happily" }
+          ],
+          correctOptionId: 2,
+          hints: ["ɖo to = listen", "ŋutinya = story"],
+          explanation: "You heard 'Ɖo to nye ŋutinya' which means 'Listen to my story' in Ewe."
+        }
       ]
     },
 
     {
-      id: "a5-2",
-      type: "expressions_idioms",
-      title: "Writing & Speech",
-      icon: "create-outline",
-      description: "Learn Ewe words about writing and speaking",
-      words: ["Ŋlɔ", "Nuŋlɔ", "Ŋlɔla", "Gbe", "Dzɔdzɔ", "Nya", "Gblɔ", "Ha"],
+      id: "25-2",
+      type: "words",
+      title: "Telling the Story",
+      icon: "chatbubble-outline",
+      description: "Learn how to tell a story in Ewe",
+      words: ["Emegbe nane dzɔ", "Wonɔ agbe dzidzɔtɔe", "Gblɔ ŋutinya bubu nam"],
       vocabulary: [
-        { id: 9, english: "To write", native: "Ŋlɔ", pronunciation: "ngloh" },
-        { id: 10, english: "Writing / Text", native: "Nuŋlɔ", pronunciation: "noo-ngloh" },
-        { id: 11, english: "Writer", native: "Ŋlɔla", pronunciation: "ngloh-lah" },
-        { id: 12, english: "Speech", native: "Gbe", pronunciation: "gbeh" },
-        { id: 13, english: "Word", native: "Nya", pronunciation: "nyah" },
-        { id: 14, english: "Sentence", native: "Dzɔdzɔ", pronunciation: "joh-joh" },
-        { id: 15, english: "Language", native: "Gbe", pronunciation: "gbeh" },
-        { id: 16, english: "Essay", native: "Nugblɔ", pronunciation: "noo-gbloh" }
+        {
+          id: 180,
+          english: "Then something happened",
+          native: "Emegbe nane dzɔ",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/emegbe_nane_dzɔ.m4a")
+        },
+        {
+          id: 182,
+          english: "They lived happily",
+          native: "Wonɔ agbe dzidzɔtɔe",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/wonɔ_agbe_dzidzɔtɔe.m4a")
+        },
+        {
+          id: 183,
+          english: "Tell me another story",
+          native: "Gblɔ ŋutinya bubu nam",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/gblɔ_ŋutinya_bubu_nam.m4a")
+        }
       ],
       questions: [
-        { id: 201, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'To write' in Ewe?", options: [{ id: 1, text: "Ŋlɔ" }, { id: 2, text: "Nuŋlɔ" }, { id: 3, text: "Gbe" }, { id: 4, text: "Nya" }], correctOptionId: 1, hints: ["Put words down"], explanation: "'Ŋlɔ' means 'To write' in Ewe." },
-        { id: 202, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Speech' in Ewe?", options: [{ id: 1, text: "Gbe" }, { id: 2, text: "Ŋlɔ" }, { id: 3, text: "Nya" }, { id: 4, text: "Nuŋlɔ" }], correctOptionId: 1, hints: ["Talking publicly"], explanation: "'Gbe' means 'Speech' in Ewe." },
-        { id: 203, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Writer' in Ewe?", options: [{ id: 1, text: "Ŋlɔla" }, { id: 2, text: "Ŋlɔ" }, { id: 3, text: "Nuŋlɔ" }, { id: 4, text: "Dzɔdzɔ" }], correctOptionId: 1, hints: ["Person who writes"], explanation: "'Ŋlɔla' means 'Writer' in Ewe." },
-        { id: 204, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Ŋlɔ", right: "To write" }, { id: 2, left: "Gbe", right: "Speech" }, { id: 3, left: "Nya", right: "Word" }, { id: 4, left: "Ŋlɔla", right: "Writer" }], hints: ["Ŋlɔ = to write", "Gbe = speech"], explanation: "These are writing and speech words in Ewe." }
+        {
+          id: 2503,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Then something happened' in Ewe?",
+          options: [
+            { id: 1, text: "Emegbe nane dzɔ" },
+            { id: 2, text: "Wonɔ agbe dzidzɔtɔe" },
+            { id: 3, text: "Gblɔ ŋutinya bubu nam" },
+            { id: 4, text: "Blema ɣeaɖeɣi" }
+          ],
+          correctOptionId: 1,
+          hints: ["emegbe = then", "nane = something", "dzɔ = happened"],
+          explanation: "Emegbe nane dzɔ = Then something happened in Ewe."
+        },
+        {
+          id: 2504,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/wonɔ_agbe_dzidzɔtɔe.m4a"),
+          options: [
+            { id: 1, text: "Then something happened" },
+            { id: 2, text: "They lived happily" },
+            { id: 3, text: "Tell me another story" },
+            { id: 4, text: "Once upon a time" }
+          ],
+          correctOptionId: 2,
+          hints: ["wonɔ = they lived", "dzidzɔtɔe = happily"],
+          explanation: "You heard 'Wonɔ agbe dzidzɔtɔe' which means 'They lived happily' in Ewe."
+        },
+        {
+          id: 2505,
+          type: "drag_drop",
+          instruction: "Complete the phrase by dragging the correct word.",
+          sentence: "Gblɔ ŋutinya bubu [_____] (Tell me another story)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "nam" },
+            { id: "opt2", text: "nye" },
+            { id: "opt3", text: "mí" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["nam = to me"],
+          explanation: "Gblɔ ŋutinya bubu nam = Tell me another story in Ewe."
+        }
       ]
     },
 
     {
-      id: "a5-3",
-      type: "complex_sentences",
-      title: "Storytelling",
-      icon: "mic-outline",
-      description: "Learn Ewe words for telling stories and folklore",
-      words: ["Liloko", "Gbe", "Tɔƒetɔ", "Fome", "Nuyɔnu", "Ðo", "Nukua", "ƒome"],
+      id: "25-3",
+      type: "words",
+      title: "Lessons & Endings",
+      icon: "sparkles-outline",
+      description: "Learn how to conclude a story and share its moral in Ewe",
+      words: ["Ŋutinya fiaa nunya mí", "Emae nye ma mle", "Ŋutinya la ƒe nufiame"],
       vocabulary: [
-        { id: 17, english: "Folk tale", native: "Liloko", pronunciation: "lee-loh-koh" },
-        { id: 18, english: "Legend", native: "Gbe ɖeka", pronunciation: "gbeh deh-kah" },
-        { id: 19, english: "Tradition", native: "ƒomegbe", pronunciation: "foh-meh-gbeh" },
-        { id: 20, english: "Culture", native: "Fome", pronunciation: "foh-meh" },
-        { id: 21, english: "Tale / Story", native: "Nuyɔnu", pronunciation: "noo-yoh-noo" },
-        { id: 22, english: "To narrate", native: "Ðo lilo", pronunciation: "doh lee-loh" },
-        { id: 23, english: "Moral", native: "Nukua", pronunciation: "noo-koo-ah" },
-        { id: 24, english: "Heritage", native: "ƒomegbe", pronunciation: "foh-meh-gbeh" }
+        {
+          id: 177,
+          english: "The story teaches us wisdom",
+          native: "Ŋutinya fiaa nunya mí",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/ŋutinya_fiaa_nunya_mí.m4a")
+        },
+        {
+          id: 178,
+          english: "That is the end",
+          native: "Emae nye ma mle",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/emae_nye_ma_mle.m4a")
+        },
+        {
+          id: 181,
+          english: "The moral of the story",
+          native: "Ŋutinya la ƒe nufiame",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/ŋutinya_la_ƒe_nufiame.m4a")
+        }
       ],
       questions: [
-        { id: 301, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Folk tale' in Ewe?", options: [{ id: 1, text: "Liloko" }, { id: 2, text: "Fome" }, { id: 3, text: "Nuyɔnu" }, { id: 4, text: "Nukua" }], correctOptionId: 1, hints: ["Traditional story"], explanation: "'Liloko' means 'Folk tale' in Ewe." },
-        { id: 302, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Culture' in Ewe?", options: [{ id: 1, text: "Fome" }, { id: 2, text: "Liloko" }, { id: 3, text: "Nuyɔnu" }, { id: 4, text: "Nukua" }], correctOptionId: 1, hints: ["Way of life"], explanation: "'Fome' means 'Culture' in Ewe." },
-        { id: 303, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'To narrate' in Ewe?", options: [{ id: 1, text: "Ðo lilo" }, { id: 2, text: "Fome" }, { id: 3, text: "Liloko" }, { id: 4, text: "Nukua" }], correctOptionId: 1, hints: ["Tell a story"], explanation: "'Ðo lilo' means 'To narrate' in Ewe." },
-        { id: 304, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Liloko", right: "Folk tale" }, { id: 2, left: "Fome", right: "Culture" }, { id: 3, left: "Ðo lilo", right: "To narrate" }, { id: 4, left: "Nukua", right: "Moral" }], hints: ["Liloko = folk tale", "Fome = culture"], explanation: "These are storytelling words in Ewe." }
+        {
+          id: 2506,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'The story teaches us wisdom' in Ewe?",
+          options: [
+            { id: 1, text: "Ŋutinya fiaa nunya mí" },
+            { id: 2, text: "Emae nye ma mle" },
+            { id: 3, text: "Ŋutinya la ƒe nufiame" },
+            { id: 4, text: "Blema ɣeaɖeɣi" }
+          ],
+          correctOptionId: 1,
+          hints: ["fiaa = teaches", "nunya = wisdom"],
+          explanation: "Ŋutinya fiaa nunya mí = The story teaches us wisdom in Ewe."
+        },
+        {
+          id: 2507,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/emae_nye_ma_mle.m4a"),
+          options: [
+            { id: 1, text: "The story teaches us wisdom" },
+            { id: 2, text: "That is the end" },
+            { id: 3, text: "The moral of the story" },
+            { id: 4, text: "Once upon a time" }
+          ],
+          correctOptionId: 2,
+          hints: ["ma mle = the end"],
+          explanation: "You heard 'Emae nye ma mle' which means 'That is the end' in Ewe."
+        },
+        {
+          id: 2508,
+          type: "drag_drop",
+          instruction: "Complete the phrase by dragging the correct word.",
+          sentence: "Ŋutinya la ƒe [_____] (The moral of the story)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "nufiame" },
+            { id: "opt2", text: "nunya" },
+            { id: "opt3", text: "mle" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["nufiame = moral/lesson"],
+          explanation: "Ŋutinya la ƒe nufiame = The moral of the story in Ewe."
+        }
       ]
     }
   ],
 
   review: {
-    id: "review-adv-5",
-    title: "Review: Literature & Expressions",
+    id: "review-25",
+    title: "Review: Storytelling",
     icon: "refresh-outline",
-    description: "Review the literature and expression vocabulary you've learned",
+    description: "Review all the storytelling vocabulary you've learned",
     questions: [
-      { id: 401, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Book' in Ewe?", options: [{ id: 1, text: "Agbalẽ" }, { id: 2, text: "Xlẽ" }, { id: 3, text: "Lilo" }, { id: 4, text: "Ha" }], correctOptionId: 1, hints: ["You read it"], explanation: "'Agbalẽ' means 'Book' in Ewe." },
-      { id: 402, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'To write' in Ewe?", options: [{ id: 1, text: "Ŋlɔ" }, { id: 2, text: "Nuŋlɔ" }, { id: 3, text: "Gbe" }, { id: 4, text: "Nya" }], correctOptionId: 1, hints: ["Put words down"], explanation: "'Ŋlɔ' means 'To write' in Ewe." },
-      { id: 403, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Folk tale' in Ewe?", options: [{ id: 1, text: "Liloko" }, { id: 2, text: "Fome" }, { id: 3, text: "Nuyɔnu" }, { id: 4, text: "Nukua" }], correctOptionId: 1, hints: ["Traditional story"], explanation: "'Liloko' means 'Folk tale' in Ewe." },
-      { id: 404, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'To read' in Ewe?", options: [{ id: 1, text: "Xlẽ" }, { id: 2, text: "Agbalẽ" }, { id: 3, text: "Lilo" }, { id: 4, text: "Ha" }], correctOptionId: 1, hints: ["Reading a book"], explanation: "'Xlẽ' means 'To read' in Ewe." },
-      { id: 405, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Agbalẽ", right: "Book" }, { id: 2, left: "Xlẽ", right: "To read" }, { id: 3, left: "Ŋlɔ", right: "To write" }, { id: 4, left: "Liloko", right: "Folk tale" }, { id: 5, left: "Fome", right: "Culture" }], hints: ["Agbalẽ = book", "Xlẽ = to read"], explanation: "These are key literature words from this chapter." }
+      {
+        id: 2509,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Once upon a time' in Ewe?",
+        options: [
+          { id: 1, text: "Blema ɣeaɖeɣi" },
+          { id: 2, text: "Ɖo to nye ŋutinya" },
+          { id: 3, text: "Emegbe nane dzɔ" },
+          { id: 4, text: "Wonɔ agbe dzidzɔtɔe" }
+        ],
+        correctOptionId: 1,
+        hints: ["Blema = long ago"],
+        explanation: "Blema ɣeaɖeɣi = Once upon a time."
+      },
+      {
+        id: 2510,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/emegbe_nane_dzɔ.m4a"),
+        options: [
+          { id: 1, text: "Once upon a time" },
+          { id: 2, text: "Listen to my story" },
+          { id: 3, text: "Then something happened" },
+          { id: 4, text: "They lived happily" }
+        ],
+        correctOptionId: 3,
+        hints: ["dzɔ = happened"],
+        explanation: "You heard 'Emegbe nane dzɔ' which means 'Then something happened'."
+      },
+      {
+        id: 2511,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Tell me another story' in Ewe?",
+        options: [
+          { id: 1, text: "Emegbe nane dzɔ" },
+          { id: 2, text: "Wonɔ agbe dzidzɔtɔe" },
+          { id: 3, text: "Gblɔ ŋutinya bubu nam" },
+          { id: 4, text: "Blema ɣeaɖeɣi" }
+        ],
+        correctOptionId: 3,
+        hints: ["bubu = another"],
+        explanation: "Gblɔ ŋutinya bubu nam = Tell me another story."
+      },
+      {
+        id: 2512,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/gblɔ_ŋutinya_bubu_nam.m4a"),
+        options: [
+          { id: 1, text: "Then something happened" },
+          { id: 2, text: "They lived happily" },
+          { id: 3, text: "Tell me another story" },
+          { id: 4, text: "The story teaches us wisdom" }
+        ],
+        correctOptionId: 3,
+        hints: ["bubu = another"],
+        explanation: "You heard 'Gblɔ ŋutinya bubu nam' which means 'Tell me another story'."
+      },
+      {
+        id: 2513,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'That is the end' in Ewe?",
+        options: [
+          { id: 1, text: "Ŋutinya fiaa nunya mí" },
+          { id: 2, text: "Emae nye ma mle" },
+          { id: 3, text: "Ŋutinya la ƒe nufiame" },
+          { id: 4, text: "Blema ɣeaɖeɣi" }
+        ],
+        correctOptionId: 2,
+        hints: ["ma mle = the end"],
+        explanation: "Emae nye ma mle = That is the end."
+      },
+      {
+        id: 2514,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/ŋutinya_fiaa_nunya_mí.m4a"),
+        options: [
+          { id: 1, text: "The story teaches us wisdom" },
+          { id: 2, text: "That is the end" },
+          { id: 3, text: "The moral of the story" },
+          { id: 4, text: "Once upon a time" }
+        ],
+        correctOptionId: 1,
+        hints: ["nunya = wisdom"],
+        explanation: "You heard 'Ŋutinya fiaa nunya mí' which means 'The story teaches us wisdom'."
+      },
+      {
+        id: 2515,
+        type: "drag_drop",
+        instruction: "Complete the phrase by dragging the correct word.",
+        sentence: "Gblɔ ŋutinya bubu [_____] (Tell me another story)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "nam" },
+          { id: "opt2", text: "nye" },
+          { id: "opt3", text: "mí" }
+        ],
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        hints: ["nam = to me"],
+        explanation: "Gblɔ ŋutinya bubu nam = Tell me another story."
+      },
+      {
+        id: 2516,
+        type: "drag_drop",
+        instruction: "Complete the phrase by dragging the correct word.",
+        sentence: "Ŋutinya la ƒe [_____] (The moral of the story)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "nufiame" },
+          { id: "opt2", text: "nunya" },
+          { id: "opt3", text: "mle" }
+        ],
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        hints: ["nufiame = moral"],
+        explanation: "Ŋutinya la ƒe nufiame = The moral of the story."
+      },
+      {
+        id: 2517,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'They lived happily' in Ewe?",
+        options: [
+          { id: 1, text: "Emegbe nane dzɔ" },
+          { id: 2, text: "Wonɔ agbe dzidzɔtɔe" },
+          { id: 3, text: "Gblɔ ŋutinya bubu nam" },
+          { id: 4, text: "Blema ɣeaɖeɣi" }
+        ],
+        correctOptionId: 2,
+        hints: ["dzidzɔtɔe = happily"],
+        explanation: "Wonɔ agbe dzidzɔtɔe = They lived happily."
+      },
+      {
+        id: 2518,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'The moral of the story' in Ewe?",
+        options: [
+          { id: 1, text: "Ŋutinya fiaa nunya mí" },
+          { id: 2, text: "Emae nye ma mle" },
+          { id: 3, text: "Ŋutinya la ƒe nufiame" },
+          { id: 4, text: "Blema ɣeaɖeɣi" }
+        ],
+        correctOptionId: 3,
+        hints: ["nufiame = moral"],
+        explanation: "Ŋutinya la ƒe nufiame = The moral of the story."
+      }
     ]
   }
 };

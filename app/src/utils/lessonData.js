@@ -20,7 +20,6 @@ import eweBeginnerChapter9 from "../data/course_content/ewe/beginner/chapter9.js
 
 
 import eweIntermediateChapter1 from "../data/course_content/ewe/intermediate/chapter1.js";
-import eweIntermediateChapter10 from "../data/course_content/ewe/intermediate/chapter10.js";
 import eweIntermediateChapter2 from "../data/course_content/ewe/intermediate/chapter2.js";
 import eweIntermediateChapter3 from "../data/course_content/ewe/intermediate/chapter3.js";
 import eweIntermediateChapter4 from "../data/course_content/ewe/intermediate/chapter4.js";

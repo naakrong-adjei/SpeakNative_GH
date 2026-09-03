@@ -1,99 +1,392 @@
 export default {
-  id: 2,
-  title: "Business & Work",
-  description: "Learn advanced Ewe vocabulary for business, meetings, and professional life",
-  icon: "briefcase-outline",
-  totalXp: 30,
+  id: 22,
+  title: "Proverbs & Idioms",
+  description: "Learn common Ewe proverbs and idioms",
+  icon: "bulb-outline",
+  totalXp: 10,
   difficulty: "Advanced",
 
   sections: [
     {
-      id: "a2-1",
-      type: "advanced_vocabulary",
-      title: "The Office",
-      icon: "business-outline",
-      description: "Learn Ewe words for the office and workplace",
-      words: ["Dɔwɔƒe", "Kɔmpany", "Dɔwɔla", "Dɔdzikpɔla", "Dɔ gbɔgblɔ", "Agba", "Taɖodzinu", "Numekukuɖo"],
+      id: "22-1",
+      type: "words",
+      title: "Wisdom Proverbs",
+      icon: "brain-outline",
+      description: "Learn wise Ewe proverbs about life and knowledge",
+      words: ["Nunya menɔa ame ɖeka ƒe ta me o", "Ta ɖeka meɖoa aɖaŋu o"],
       vocabulary: [
-        { id: 1, english: "Office / Workplace", native: "Dɔwɔƒe", pronunciation: "doh-woh-feh" },
-        { id: 2, english: "Company", native: "Kɔmpany", pronunciation: "kohm-pah-nyee" },
-        { id: 3, english: "Worker / Employee", native: "Dɔwɔla", pronunciation: "doh-woh-lah" },
-        { id: 4, english: "Manager / Boss", native: "Dɔdzikpɔla", pronunciation: "doh-jee-kpoh-lah" },
-        { id: 5, english: "Job / Work", native: "Dɔ", pronunciation: "doh" },
-        { id: 6, english: "Office desk", native: "Agba", pronunciation: "ah-gbah" },
-        { id: 7, english: "Meeting room", native: "Taɖodzinu", pronunciation: "tah-doh-jee-noo" },
-        { id: 8, english: "Document / File", native: "Numekukuɖo", pronunciation: "noo-meh-koo-koo-doh" }
+        {
+          id: 240,
+          english: "Wisdom is not in one person's head",
+          native: "Nunya menɔa ame ɖeka ƒe ta me o",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/nunya_menɔa_ame_ɖeka_ƒe_ta_me_o.m4a")
+        },
+        {
+          id: 244,
+          english: "One head does not hold council",
+          native: "Ta ɖeka meɖoa aɖaŋu o",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/ta_ɖeka_meɖoa_aɖaŋu_o.m4a")
+        }
       ],
       questions: [
-        { id: 101, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Office / Workplace' in Ewe?", options: [{ id: 1, text: "Dɔwɔƒe" }, { id: 2, text: "Kɔmpany" }, { id: 3, text: "Dɔwɔla" }, { id: 4, text: "Agba" }], correctOptionId: 1, hints: ["Where you work"], explanation: "'Dɔwɔƒe' means 'Office / Workplace' in Ewe." },
-        { id: 102, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Manager / Boss' in Ewe?", options: [{ id: 1, text: "Dɔdzikpɔla" }, { id: 2, text: "Dɔwɔla" }, { id: 3, text: "Kɔmpany" }, { id: 4, text: "Taɖodzinu" }], correctOptionId: 1, hints: ["Supervises others"], explanation: "'Dɔdzikpɔla' means 'Manager / Boss' in Ewe." },
-        { id: 103, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Worker / Employee' in Ewe?", options: [{ id: 1, text: "Dɔwɔla" }, { id: 2, text: "Dɔdzikpɔla" }, { id: 3, text: "Dɔwɔƒe" }, { id: 4, text: "Agba" }], correctOptionId: 1, hints: ["Person who works"], explanation: "'Dɔwɔla' means 'Worker / Employee' in Ewe." },
-        { id: 104, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Dɔwɔƒe", right: "Office" }, { id: 2, left: "Dɔwɔla", right: "Worker" }, { id: 3, left: "Dɔdzikpɔla", right: "Manager" }, { id: 4, left: "Kɔmpany", right: "Company" }], hints: ["Dɔwɔƒe = office", "Dɔwɔla = worker"], explanation: "These are common office words in Ewe." }
+        {
+          id: 2201,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe proverb.",
+          question: "How do you say 'Wisdom is not in one person's head' in Ewe?",
+          options: [
+            { id: 1, text: "Nunya menɔa ame ɖeka ƒe ta me o" },
+            { id: 2, text: "Ta ɖeka meɖoa aɖaŋu o" },
+            { id: 3, text: "Blewuu blewuu wolénɛ kese" },
+            { id: 4, text: "Nɔnɔme aɖeke menɔa anyi tegbee o" }
+          ],
+          correctOptionId: 1,
+          hints: ["nunya = wisdom", "ame ɖeka = one person"],
+          explanation: "Nunya menɔa ame ɖeka ƒe ta me o = Wisdom is not in one person's head in Ewe."
+        },
+        {
+          id: 2202,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What does this Ewe proverb mean in English?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/ta_ɖeka_meɖoa_aɖaŋu_o.m4a"),
+          options: [
+            { id: 1, text: "Wisdom is not in one person's head" },
+            { id: 2, text: "One head does not hold council" },
+            { id: 3, text: "Slowly slowly catches the monkey" },
+            { id: 4, text: "No condition is permanent" }
+          ],
+          correctOptionId: 2,
+          hints: ["ta ɖeka = one head", "meɖoa aɖaŋu = does not hold council"],
+          explanation: "You heard 'Ta ɖeka meɖoa aɖaŋu o' which means 'One head does not hold council' in Ewe."
+        },
+        {
+          id: 2203,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What does this Ewe proverb mean in English?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/nunya_menɔa_ame_ɖeka_ƒe_ta_me_o.m4a"),
+          options: [
+            { id: 1, text: "Wisdom is not in one person's head" },
+            { id: 2, text: "One head does not hold council" },
+            { id: 3, text: "Slowly slowly catches the monkey" },
+            { id: 4, text: "No condition is permanent" }
+          ],
+          correctOptionId: 1,
+          hints: ["nunya = wisdom"],
+          explanation: "You heard 'Nunya menɔa ame ɖeka ƒe ta me o' which means 'Wisdom is not in one person's head' in Ewe."
+        }
       ]
     },
 
     {
-      id: "a2-2",
-      type: "expressions_idioms",
-      title: "Meetings & Negotiation",
-      icon: "people-outline",
-      description: "Learn Ewe phrases for meetings and negotiation",
-      words: ["Taɖoɖo", "Ðo nya", "Lɔ̃tɔ", "Dɔ wɔ", "Se", "Kpɔta", "Nugbɔ", "Dzinɔnɔ"],
+      id: "22-2",
+      type: "words",
+      title: "Patience Proverbs",
+      icon: "hourglass-outline",
+      description: "Learn Ewe proverbs about patience and perseverance",
+      words: ["Blewuu blewuu wolénɛ kese", "Nɔnɔme aɖeke menɔa anyi tegbee o"],
       vocabulary: [
-        { id: 9, english: "Meeting", native: "Taɖoɖo", pronunciation: "tah-doh-doh" },
-        { id: 10, english: "To negotiate", native: "Ðo nya", pronunciation: "doh nyah" },
-        { id: 11, english: "To agree", native: "Lɔ̃tɔ", pronunciation: "loh-toh" },
-        { id: 12, english: "To work / do work", native: "Dɔ wɔ", pronunciation: "doh woh" },
-        { id: 13, english: "To sign", native: "Se", pronunciation: "seh" },
-        { id: 14, english: "Contract / Agreement", native: "Kpɔta", pronunciation: "kpoh-tah" },
-        { id: 15, english: "Profit / Gain", native: "Nugbɔ", pronunciation: "noo-gboh" },
-        { id: 16, english: "Investment", native: "Dzinɔnɔ", pronunciation: "jee-noh-noh" }
+        {
+          id: 242,
+          english: "Slowly slowly catches the monkey",
+          native: "Blewuu blewuu wolénɛ kese",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/blewuu_blewuu_wolénɛ_kese.m4a")
+        },
+        {
+          id: 246,
+          english: "No condition is permanent",
+          native: "Nɔnɔme aɖeke menɔa anyi tegbee o",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/nɔnɔme_aɖeke_menɔa_anyi_tegbee_o.m4a")
+        }
       ],
       questions: [
-        { id: 201, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Meeting' in Ewe?", options: [{ id: 1, text: "Taɖoɖo" }, { id: 2, text: "Ðo nya" }, { id: 3, text: "Kpɔta" }, { id: 4, text: "Nugbɔ" }], correctOptionId: 1, hints: ["People gather to discuss"], explanation: "'Taɖoɖo' means 'Meeting' in Ewe." },
-        { id: 202, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'To sign' in Ewe?", options: [{ id: 1, text: "Se" }, { id: 2, text: "Lɔ̃tɔ" }, { id: 3, text: "Dɔ wɔ" }, { id: 4, text: "Taɖoɖo" }], correctOptionId: 1, hints: ["Sign a document"], explanation: "'Se' means 'To sign' in Ewe." },
-        { id: 203, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Profit / Gain' in Ewe?", options: [{ id: 1, text: "Nugbɔ" }, { id: 2, text: "Kpɔta" }, { id: 3, text: "Dzinɔnɔ" }, { id: 4, text: "Taɖoɖo" }], correctOptionId: 1, hints: ["Money earned"], explanation: "'Nugbɔ' means 'Profit / Gain' in Ewe." },
-        { id: 204, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Taɖoɖo", right: "Meeting" }, { id: 2, left: "Kpɔta", right: "Contract" }, { id: 3, left: "Nugbɔ", right: "Profit" }, { id: 4, left: "Se", right: "To sign" }], hints: ["Taɖoɖo = meeting", "Kpɔta = contract"], explanation: "These are meeting and negotiation words in Ewe." }
+        {
+          id: 2204,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe proverb.",
+          question: "How do you say 'Slowly slowly catches the monkey' in Ewe?",
+          options: [
+            { id: 1, text: "Blewuu blewuu wolénɛ kese" },
+            { id: 2, text: "Nɔnɔme aɖeke menɔa anyi tegbee o" },
+            { id: 3, text: "Nunya menɔa ame ɖeka ƒe ta me o" },
+            { id: 4, text: "Ta ɖeka meɖoa aɖaŋu o" }
+          ],
+          correctOptionId: 1,
+          hints: ["blewuu blewuu = slowly slowly"],
+          explanation: "Blewuu blewuu wolénɛ kese = Slowly slowly catches the monkey in Ewe."
+        },
+        {
+          id: 2205,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What does this Ewe proverb mean in English?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/nɔnɔme_aɖeke_menɔa_anyi_tegbee_o.m4a"),
+          options: [
+            { id: 1, text: "Slowly slowly catches the monkey" },
+            { id: 2, text: "No condition is permanent" },
+            { id: 3, text: "Wisdom is not in one person's head" },
+            { id: 4, text: "One head does not hold council" }
+          ],
+          correctOptionId: 2,
+          hints: ["nɔnɔme = condition", "tegbee = forever"],
+          explanation: "You heard 'Nɔnɔme aɖeke menɔa anyi tegbee o' which means 'No condition is permanent' in Ewe."
+        },
+        {
+          id: 2206,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What does this Ewe proverb mean in English?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/blewuu_blewuu_wolénɛ_kese.m4a"),
+          options: [
+            { id: 1, text: "Slowly slowly catches the monkey" },
+            { id: 2, text: "No condition is permanent" },
+            { id: 3, text: "When the drumbeat changes, the dance changes" },
+            { id: 4, text: "A child who washes his hands eats with elders" }
+          ],
+          correctOptionId: 1,
+          hints: ["blewuu = slowly"],
+          explanation: "You heard 'Blewuu blewuu wolénɛ kese' which means 'Slowly slowly catches the monkey' in Ewe."
+        }
       ]
     },
 
     {
-      id: "a2-3",
-      type: "complex_sentences",
-      title: "Professional Phrases",
-      icon: "school-outline",
-      description: "Learn professional Ewe phrases for the workplace",
-      words: ["Dɔdasi", "Dɔwɔme", "Agbalẽ", "Ðo ŋgɔ", "Gbɔgblɔ", "Kafukafu", "Gbe dze", "Wɔ dɔ"],
+      id: "22-3",
+      type: "words",
+      title: "Change & Respect",
+      icon: "repeat-outline",
+      description: "Learn Ewe proverbs about change and respect",
+      words: ["Ɖevi si klɔa asi la ɖua nu kple ametsitsiwo", "Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna"],
       vocabulary: [
-        { id: 17, english: "Career / Profession", native: "Dɔdasi", pronunciation: "doh-dah-see" },
-        { id: 18, english: "Experience", native: "Dɔwɔme", pronunciation: "doh-woh-meh" },
-        { id: 19, english: "Report", native: "Agbalẽ", pronunciation: "ah-gbah-len" },
-        { id: 20, english: "To promote", native: "Ðo ŋgɔ", pronunciation: "doh ngoh" },
-        { id: 21, english: "To succeed", native: "Gbɔgblɔ", pronunciation: "gboh-gbloh" },
-        { id: 22, english: "Congratulations", native: "Kafukafu", pronunciation: "kah-foo-kah-foo" },
-        { id: 23, english: "To be punctual", native: "Gbe dze", pronunciation: "gbeh jeh" },
-        { id: 24, english: "To work hard", native: "Wɔ dɔ vevie", pronunciation: "woh doh veh-vee-eh" }
+        {
+          id: 241,
+          english: "A child who washes his hands eats with elders",
+          native: "Ɖevi si klɔa asi la ɖua nu kple ametsitsiwo",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/ɖevi_si_klɔa_asi_la_ɖua_nu_kple_ametsitsiwo.m4a")
+        },
+        {
+          id: 243,
+          english: "When the drumbeat changes, the dance changes",
+          native: "Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/ne_ʋuƒoƒo_trɔ_la_ɣeɖuɖu_hã_trɔna.m4a")
+        }
       ],
       questions: [
-        { id: 301, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Career / Profession' in Ewe?", options: [{ id: 1, text: "Dɔdasi" }, { id: 2, text: "Dɔwɔme" }, { id: 3, text: "Agbalẽ" }, { id: 4, text: "Kafukafu" }], correctOptionId: 1, hints: ["Your chosen work"], explanation: "'Dɔdasi' means 'Career / Profession' in Ewe." },
-        { id: 302, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Congratulations' in Ewe?", options: [{ id: 1, text: "Kafukafu" }, { id: 2, text: "Gbɔgblɔ" }, { id: 3, text: "Ðo ŋgɔ" }, { id: 4, text: "Agbalẽ" }], correctOptionId: 1, hints: ["Praise for success"], explanation: "'Kafukafu' means 'Congratulations' in Ewe." },
-        { id: 303, type: "multiple_choice", instruction: "Select the correct Ewe phrase.", question: "How do you say 'To work hard' in Ewe?", options: [{ id: 1, text: "Wɔ dɔ vevie" }, { id: 2, text: "Gbe dze" }, { id: 3, text: "Ðo ŋgɔ" }, { id: 4, text: "Gbɔgblɔ" }], correctOptionId: 1, hints: ["Working with effort"], explanation: "'Wɔ dɔ vevie' means 'To work hard' in Ewe." },
-        { id: 304, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Dɔdasi", right: "Career" }, { id: 2, left: "Kafukafu", right: "Congratulations" }, { id: 3, left: "Agbalẽ", right: "Report" }, { id: 4, left: "Dɔwɔme", right: "Experience" }], hints: ["Dɔdasi = career", "Kafukafu = congratulations"], explanation: "These are professional phrases in Ewe." }
+        {
+          id: 2207,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe proverb.",
+          question: "How do you say 'A child who washes his hands eats with elders' in Ewe?",
+          options: [
+            { id: 1, text: "Ɖevi si klɔa asi la ɖua nu kple ametsitsiwo" },
+            { id: 2, text: "Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna" },
+            { id: 3, text: "Blewuu blewuu wolénɛ kese" },
+            { id: 4, text: "Ta ɖeka meɖoa aɖaŋu o" }
+          ],
+          correctOptionId: 1,
+          hints: ["ɖevi = child", "ametsitsiwo = elders"],
+          explanation: "Ɖevi si klɔa asi la ɖua nu kple ametsitsiwo = A child who washes his hands eats with elders in Ewe."
+        },
+        {
+          id: 2208,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What does this Ewe proverb mean in English?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/ne_ʋuƒoƒo_trɔ_la_ɣeɖuɖu_hã_trɔna.m4a"),
+          options: [
+            { id: 1, text: "A child who washes his hands eats with elders" },
+            { id: 2, text: "When the drumbeat changes, the dance changes" },
+            { id: 3, text: "Slowly slowly catches the monkey" },
+            { id: 4, text: "Wisdom is not in one person's head" }
+          ],
+          correctOptionId: 2,
+          hints: ["ʋuƒoƒo = drumbeat", "ɣeɖuɖu = dance"],
+          explanation: "You heard 'Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna' which means 'When the drumbeat changes, the dance changes' in Ewe."
+        },
+        {
+          id: 2209,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What does this Ewe proverb mean in English?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/ɖevi_si_klɔa_asi_la_ɖua_nu_kple_ametsitsiwo.m4a"),
+          options: [
+            { id: 1, text: "A child who washes his hands eats with elders" },
+            { id: 2, text: "When the drumbeat changes, the dance changes" },
+            { id: 3, text: "No condition is permanent" },
+            { id: 4, text: "One head does not hold council" }
+          ],
+          correctOptionId: 1,
+          hints: ["ɖevi = child", "ametsitsiwo = elders"],
+          explanation: "You heard 'Ɖevi si klɔa asi la ɖua nu kple ametsitsiwo' which means 'A child who washes his hands eats with elders' in Ewe."
+        }
       ]
     }
   ],
 
   review: {
-    id: "review-adv-2",
-    title: "Review: Business & Work",
+    id: "review-22",
+    title: "Review: Proverbs & Idioms",
     icon: "refresh-outline",
-    description: "Review the business and work vocabulary you've learned",
+    description: "Review all the Ewe proverbs and idioms you've learned",
     questions: [
-      { id: 401, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Office / Workplace' in Ewe?", options: [{ id: 1, text: "Dɔwɔƒe" }, { id: 2, text: "Kɔmpany" }, { id: 3, text: "Dɔwɔla" }, { id: 4, text: "Agba" }], correctOptionId: 1, hints: ["Where you work"], explanation: "'Dɔwɔƒe' means 'Office / Workplace' in Ewe." },
-      { id: 402, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Meeting' in Ewe?", options: [{ id: 1, text: "Taɖoɖo" }, { id: 2, text: "Ðo nya" }, { id: 3, text: "Kpɔta" }, { id: 4, text: "Nugbɔ" }], correctOptionId: 1, hints: ["People gather to discuss"], explanation: "'Taɖoɖo' means 'Meeting' in Ewe." },
-      { id: 403, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Manager / Boss' in Ewe?", options: [{ id: 1, text: "Dɔdzikpɔla" }, { id: 2, text: "Dɔwɔla" }, { id: 3, text: "Kɔmpany" }, { id: 4, text: "Taɖodzinu" }], correctOptionId: 1, hints: ["Supervises others"], explanation: "'Dɔdzikpɔla' means 'Manager / Boss' in Ewe." },
-      { id: 404, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Career / Profession' in Ewe?", options: [{ id: 1, text: "Dɔdasi" }, { id: 2, text: "Dɔwɔme" }, { id: 3, text: "Agbalẽ" }, { id: 4, text: "Kafukafu" }], correctOptionId: 1, hints: ["Your chosen work"], explanation: "'Dɔdasi' means 'Career / Profession' in Ewe." },
-      { id: 405, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Dɔwɔƒe", right: "Office" }, { id: 2, left: "Dɔwɔla", right: "Worker" }, { id: 3, left: "Taɖoɖo", right: "Meeting" }, { id: 4, left: "Kpɔta", right: "Contract" }, { id: 5, left: "Nugbɔ", right: "Profit" }], hints: ["Dɔwɔƒe = office", "Dɔwɔla = worker"], explanation: "These are key business words from this chapter." }
+      {
+        id: 2210,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe proverb.",
+        question: "How do you say 'Wisdom is not in one person's head' in Ewe?",
+        options: [
+          { id: 1, text: "Nunya menɔa ame ɖeka ƒe ta me o" },
+          { id: 2, text: "Ta ɖeka meɖoa aɖaŋu o" },
+          { id: 3, text: "Blewuu blewuu wolénɛ kese" },
+          { id: 4, text: "Nɔnɔme aɖeke menɔa anyi tegbee o" }
+        ],
+        correctOptionId: 1,
+        hints: ["nunya = wisdom"],
+        explanation: "Nunya menɔa ame ɖeka ƒe ta me o = Wisdom is not in one person's head."
+      },
+      {
+        id: 2211,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What does this Ewe proverb mean in English?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/ta_ɖeka_meɖoa_aɖaŋu_o.m4a"),
+        options: [
+          { id: 1, text: "Wisdom is not in one person's head" },
+          { id: 2, text: "One head does not hold council" },
+          { id: 3, text: "Slowly slowly catches the monkey" },
+          { id: 4, text: "No condition is permanent" }
+        ],
+        correctOptionId: 2,
+        hints: ["ta ɖeka = one head"],
+        explanation: "You heard 'Ta ɖeka meɖoa aɖaŋu o' which means 'One head does not hold council'."
+      },
+      {
+        id: 2212,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What does this Ewe proverb mean in English?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/nunya_menɔa_ame_ɖeka_ƒe_ta_me_o.m4a"),
+        options: [
+          { id: 1, text: "Wisdom is not in one person's head" },
+          { id: 2, text: "One head does not hold council" },
+          { id: 3, text: "Slowly slowly catches the monkey" },
+          { id: 4, text: "No condition is permanent" }
+        ],
+        correctOptionId: 1,
+        hints: ["nunya = wisdom"],
+        explanation: "You heard 'Nunya menɔa ame ɖeka ƒe ta me o' which means 'Wisdom is not in one person's head'."
+      },
+      {
+        id: 2213,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe proverb.",
+        question: "How do you say 'Slowly slowly catches the monkey' in Ewe?",
+        options: [
+          { id: 1, text: "Blewuu blewuu wolénɛ kese" },
+          { id: 2, text: "Nɔnɔme aɖeke menɔa anyi tegbee o" },
+          { id: 3, text: "Nunya menɔa ame ɖeka ƒe ta me o" },
+          { id: 4, text: "Ta ɖeka meɖoa aɖaŋu o" }
+        ],
+        correctOptionId: 1,
+        hints: ["blewuu = slowly"],
+        explanation: "Blewuu blewuu wolénɛ kese = Slowly slowly catches the monkey."
+      },
+      {
+        id: 2214,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What does this Ewe proverb mean in English?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/nɔnɔme_aɖeke_menɔa_anyi_tegbee_o.m4a"),
+        options: [
+          { id: 1, text: "Slowly slowly catches the monkey" },
+          { id: 2, text: "No condition is permanent" },
+          { id: 3, text: "Wisdom is not in one person's head" },
+          { id: 4, text: "One head does not hold council" }
+        ],
+        correctOptionId: 2,
+        hints: ["tegbee = forever"],
+        explanation: "You heard 'Nɔnɔme aɖeke menɔa anyi tegbee o' which means 'No condition is permanent'."
+      },
+      {
+        id: 2215,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe proverb.",
+        question: "How do you say 'When the drumbeat changes, the dance changes' in Ewe?",
+        options: [
+          { id: 1, text: "Ɖevi si klɔa asi la ɖua nu kple ametsitsiwo" },
+          { id: 2, text: "Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna" },
+          { id: 3, text: "Blewuu blewuu wolénɛ kese" },
+          { id: 4, text: "Ta ɖeka meɖoa aɖaŋu o" }
+        ],
+        correctOptionId: 2,
+        hints: ["ʋuƒoƒo = drumbeat"],
+        explanation: "Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna = When the drumbeat changes, the dance changes."
+      },
+      {
+        id: 2216,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What does this Ewe proverb mean in English?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/ɖevi_si_klɔa_asi_la_ɖua_nu_kple_ametsitsiwo.m4a"),
+        options: [
+          { id: 1, text: "A child who washes his hands eats with elders" },
+          { id: 2, text: "When the drumbeat changes, the dance changes" },
+          { id: 3, text: "No condition is permanent" },
+          { id: 4, text: "One head does not hold council" }
+        ],
+        correctOptionId: 1,
+        hints: ["ɖevi = child"],
+        explanation: "You heard 'Ɖevi si klɔa asi la ɖua nu kple ametsitsiwo' which means 'A child who washes his hands eats with elders'."
+      },
+      {
+        id: 2217,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What does this Ewe proverb mean in English?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/ne_ʋuƒoƒo_trɔ_la_ɣeɖuɖu_hã_trɔna.m4a"),
+        options: [
+          { id: 1, text: "A child who washes his hands eats with elders" },
+          { id: 2, text: "When the drumbeat changes, the dance changes" },
+          { id: 3, text: "No condition is permanent" },
+          { id: 4, text: "Slowly slowly catches the monkey" }
+        ],
+        correctOptionId: 2,
+        hints: ["ʋuƒoƒo = drumbeat"],
+        explanation: "You heard 'Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna' which means 'When the drumbeat changes, the dance changes'."
+      },
+      {
+        id: 2218,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What does this Ewe proverb mean in English?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/blewuu_blewuu_wolénɛ_kese.m4a"),
+        options: [
+          { id: 1, text: "Slowly slowly catches the monkey" },
+          { id: 2, text: "No condition is permanent" },
+          { id: 3, text: "When the drumbeat changes, the dance changes" },
+          { id: 4, text: "A child who washes his hands eats with elders" }
+        ],
+        correctOptionId: 1,
+        hints: ["blewuu = slowly"],
+        explanation: "You heard 'Blewuu blewuu wolénɛ kese' which means 'Slowly slowly catches the monkey'."
+      },
+      {
+        id: 2219,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What does this Ewe proverb mean in English?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter2/ta_ɖeka_meɖoa_aɖaŋu_o.m4a"),
+        options: [
+          { id: 1, text: "Wisdom is not in one person's head" },
+          { id: 2, text: "One head does not hold council" },
+          { id: 3, text: "Slowly slowly catches the monkey" },
+          { id: 4, text: "No condition is permanent" }
+        ],
+        correctOptionId: 2,
+        hints: ["ta ɖeka = one head"],
+        explanation: "You heard 'Ta ɖeka meɖoa aɖaŋu o' which means 'One head does not hold council'."
+      }
     ]
   }
 };

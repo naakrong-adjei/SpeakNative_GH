@@ -1,99 +1,320 @@
 export default {
-  id: 6,
-  title: "Advanced Grammar",
-  description: "Learn advanced Ewe grammar for time, location, and connecting ideas",
-  icon: "git-merge-outline",
-  totalXp: 30,
+  id: 26,
+  title: "News & Politics",
+  description: "Learn news and politics vocabulary in Ewe",
+  icon: "newspaper-outline",
+  totalXp: 10,
   difficulty: "Advanced",
 
   sections: [
     {
-      id: "a6-1",
-      type: "advanced_vocabulary",
-      title: "Time Phrases",
-      icon: "time-outline",
-      description: "Learn advanced Ewe time expressions",
-      words: ["Hafi", "Xoxoa", "Egbe", "Etso", "Tso", "Nyitsɔ", "Ɣleti", "Ƒe"],
+      id: "26-1",
+      type: "words",
+      title: "Government & Elections",
+      icon: "landmark-outline",
+      description: "Learn about government and elections in Ewe",
+      words: ["Dziɖuɖua ɖe gbeƒã ɖoɖo yeye", "Woawɔ akɔdada le ƒe si gbɔna me", "Dukplɔla la ƒo nu na dukɔa", "Sededzraɖoƒea lɔ̃ ɖe sea dzi"],
       vocabulary: [
-        { id: 1, english: "Before", native: "Hafi", pronunciation: "hah-fee" },
-        { id: 2, english: "After", native: "Megbe", pronunciation: "meh-gbeh" },
-        { id: 3, english: "Yesterday", native: "Etso", pronunciation: "eh-tsoh" },
-        { id: 4, english: "Tomorrow", native: "Nyitsɔ", pronunciation: "nyee-tsoh" },
-        { id: 5, english: "Today", native: "Egbe", pronunciation: "eh-gbeh" },
-        { id: 6, english: "Previously", native: "Xoxoa", pronunciation: "xoh-xoh-ah" },
-        { id: 7, english: "Month", native: "Ɣleti", pronunciation: "gleh-tee" },
-        { id: 8, english: "Year", native: "Ƒe", pronunciation: "feh" }
+        {
+          id: 254,
+          english: "The government announced a new policy",
+          native: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/dziɖuɖua_ɖe_gbeƒã_ɖoɖo_yeye.m4a")
+        },
+        {
+          id: 255,
+          english: "Elections will be held next year",
+          native: "Woawɔ akɔdada le ƒe si gbɔna me",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/woawɔ_akɔdada_le_ƒe_si_gbɔna_me.m4a")
+        },
+        {
+          id: 257,
+          english: "The president addressed the nation",
+          native: "Dukplɔla la ƒo nu na dukɔa",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/dukplɔla_la_ƒo_nu_na_dukɔa.m4a")
+        },
+        // TODO: Add back when audio is ready
+        // {
+        //   id: 258,
+        //   english: "Parliament passed the bill",
+        //   native: "Sededzraɖoƒea lɔ̃ ɖe sea dzi",
+        //   audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/sededzraɖoƒea_lɔ̃_ɖe_sea_dzi.m4a")
+        // }
       ],
       questions: [
-        { id: 101, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Tomorrow' in Ewe?", options: [{ id: 1, text: "Nyitsɔ" }, { id: 2, text: "Etso" }, { id: 3, text: "Egbe" }, { id: 4, text: "Hafi" }], correctOptionId: 1, hints: ["The next day"], explanation: "'Nyitsɔ' means 'Tomorrow' in Ewe." },
-        { id: 102, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Yesterday' in Ewe?", options: [{ id: 1, text: "Etso" }, { id: 2, text: "Nyitsɔ" }, { id: 3, text: "Egbe" }, { id: 4, text: "Megbe" }], correctOptionId: 1, hints: ["The day before"], explanation: "'Etso' means 'Yesterday' in Ewe." },
-        { id: 103, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Year' in Ewe?", options: [{ id: 1, text: "Ƒe" }, { id: 2, text: "Ɣleti" }, { id: 3, text: "Egbe" }, { id: 4, text: "Hafi" }], correctOptionId: 1, hints: ["12 months"], explanation: "'Ƒe' means 'Year' in Ewe." },
-        { id: 104, type: "matching", instruction: "Match each Ewe time word to its English meaning.", pairs: [{ id: 1, left: "Egbe", right: "Today" }, { id: 2, left: "Etso", right: "Yesterday" }, { id: 3, left: "Nyitsɔ", right: "Tomorrow" }, { id: 4, left: "Ƒe", right: "Year" }], hints: ["Egbe = today", "Etso = yesterday"], explanation: "These are time phrases in Ewe." }
+        {
+          id: 2601,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'The government announced a new policy' in Ewe?",
+          options: [
+            { id: 1, text: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye" },
+            { id: 2, text: "Woawɔ akɔdada le ƒe si gbɔna me" },
+            { id: 3, text: "Dukplɔla la ƒo nu na dukɔa" },
+            { id: 4, text: "Sededzraɖoƒea lɔ̃ ɖe sea dzi" }
+          ],
+          correctOptionId: 1,
+          hints: ["dziɖuɖua = government", "ɖoɖo yeye = new policy"],
+          explanation: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye = The government announced a new policy in Ewe."
+        },
+        {
+          id: 2602,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/woawɔ_akɔdada_le_ƒe_si_gbɔna_me.m4a"),
+          options: [
+            { id: 1, text: "The government announced a new policy" },
+            { id: 2, text: "Elections will be held next year" },
+            { id: 3, text: "The president addressed the nation" },
+            { id: 4, text: "Parliament passed the bill" }
+          ],
+          correctOptionId: 2,
+          hints: ["akɔdada = elections", "ƒe si gbɔna = next year"],
+          explanation: "You heard 'Woawɔ akɔdada le ƒe si gbɔna me' which means 'Elections will be held next year' in Ewe."
+        },
+        {
+          id: 2603,
+          type: "drag_drop",
+          instruction: "Complete the phrase by dragging the correct word.",
+          sentence: "Dukplɔla la ƒo nu na [_____] (The president addressed the nation)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "dukɔa" },
+            { id: "opt2", text: "sea" },
+            { id: "opt3", text: "gbe" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["dukɔa = the nation"],
+          explanation: "Dukplɔla la ƒo nu na dukɔa = The president addressed the nation in Ewe."
+        }
       ]
     },
 
     {
-      id: "a6-2",
-      type: "expressions_idioms",
-      title: "Location Phrases",
-      icon: "navigate-outline",
-      description: "Learn advanced Ewe location expressions",
-      words: ["Le anyi", "Le me", "Le ŋgɔ", "Le megbe", "Le dome", "Le afi adeke", "Le ƒome", "Le he"],
+      id: "26-2",
+      type: "words",
+      title: "Economy & Citizens",
+      icon: "trending-up-outline",
+      description: "Learn about the economy and citizens in Ewe",
+      words: ["Ganyawo ɖeɖem ɖe edzi", "Nuwo ƒe asi dzi ɖe edzi", "Dukɔmeviwo bia akɔntabubu"],
       vocabulary: [
-        { id: 9, english: "On / Above", native: "Le ŋgɔ", pronunciation: "leh ngoh" },
-        { id: 10, english: "In / Inside", native: "Le me", pronunciation: "leh meh" },
-        { id: 11, english: "Under", native: "Le anyi", pronunciation: "leh ah-nyee" },
-        { id: 12, english: "Behind", native: "Le megbe", pronunciation: "leh meh-gbeh" },
-        { id: 13, english: "Between", native: "Le dome", pronunciation: "leh doh-meh" },
-        { id: 14, english: "Near", native: "Le ƒome", pronunciation: "leh foh-meh" },
-        { id: 15, english: "Far", native: "Le he", pronunciation: "leh heh" },
-        { id: 16, english: "Nowhere", native: "Le afi adeke", pronunciation: "leh ah-fee ah-deh-keh" }
+        {
+          id: 256,
+          english: "The economy is improving",
+          native: "Ganyawo ɖeɖem ɖe edzi",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/ganyawo_ɖeɖem_ɖe_edzi.m4a")
+        },
+        // TODO: Add back when audio is ready
+        // {
+        //   id: 259,
+        //   english: "Prices of goods have risen",
+        //   native: "Nuwo ƒe asi dzi ɖe edzi",
+        //   audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/nuwo_ƒe_asi_dzi_ɖe_edzi.m4a")
+        // },
+        // {
+        //   id: 260,
+        //   english: "Citizens demand accountability",
+        //   native: "Dukɔmeviwo bia akɔntabubu",
+        //   audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/dukɔmeviwo_bia_akɔntabubu.m4a")
+        // }
       ],
       questions: [
-        { id: 201, type: "multiple_choice", instruction: "Select the correct Ewe phrase.", question: "How do you say 'Under' in Ewe?", options: [{ id: 1, text: "Le anyi" }, { id: 2, text: "Le ŋgɔ" }, { id: 3, text: "Le me" }, { id: 4, text: "Le megbe" }], correctOptionId: 1, hints: ["Below something"], explanation: "'Le anyi' means 'Under' in Ewe." },
-        { id: 202, type: "multiple_choice", instruction: "Select the correct Ewe phrase.", question: "How do you say 'Behind' in Ewe?", options: [{ id: 1, text: "Le megbe" }, { id: 2, text: "Le ŋgɔ" }, { id: 3, text: "Le dome" }, { id: 4, text: "Le ƒome" }], correctOptionId: 1, hints: ["At the back"], explanation: "'Le megbe' means 'Behind' in Ewe." },
-        { id: 203, type: "multiple_choice", instruction: "Select the correct Ewe phrase.", question: "How do you say 'Near' in Ewe?", options: [{ id: 1, text: "Le ƒome" }, { id: 2, text: "Le he" }, { id: 3, text: "Le dome" }, { id: 4, text: "Le megbe" }], correctOptionId: 1, hints: ["Close by"], explanation: "'Le ƒome' means 'Near' in Ewe." },
-        { id: 204, type: "matching", instruction: "Match each Ewe location phrase to its English meaning.", pairs: [{ id: 1, left: "Le ŋgɔ", right: "Above" }, { id: 2, left: "Le me", right: "Inside" }, { id: 3, left: "Le anyi", right: "Under" }, { id: 4, left: "Le megbe", right: "Behind" }], hints: ["Le ŋgɔ = above", "Le me = inside"], explanation: "These are location phrases in Ewe." }
-      ]
-    },
-
-    {
-      id: "a6-3",
-      type: "complex_sentences",
-      title: "Connectors",
-      icon: "link-outline",
-      description: "Learn advanced Ewe connecting words",
-      words: ["Gake", "Elabena", "Alo", "Nenema", "Tsɔ", "Kple", "Hafi", "Nɛkema"],
-      vocabulary: [
-        { id: 17, english: "But", native: "Gake", pronunciation: "gah-keh" },
-        { id: 18, english: "Because", native: "Elabena", pronunciation: "eh-lah-beh-nah" },
-        { id: 19, english: "Or", native: "Alo", pronunciation: "ah-loh" },
-        { id: 20, english: "So / Thus", native: "Nenema", pronunciation: "neh-neh-mah" },
-        { id: 21, english: "Also", native: "Kple", pronunciation: "kpleh" },
-        { id: 22, english: "Then / So", native: "Nɛkema", pronunciation: "neh-keh-mah" },
-        { id: 23, english: "Although", native: "Wòahafi", pronunciation: "woh-ah-hah-fee" },
-        { id: 24, english: "However", native: "Gake hã", pronunciation: "gah-keh hah" }
-      ],
-      questions: [
-        { id: 301, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'But' in Ewe?", options: [{ id: 1, text: "Gake" }, { id: 2, text: "Elabena" }, { id: 3, text: "Alo" }, { id: 4, text: "Kple" }], correctOptionId: 1, hints: ["Contrast word"], explanation: "'Gake' means 'But' in Ewe." },
-        { id: 302, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Because' in Ewe?", options: [{ id: 1, text: "Elabena" }, { id: 2, text: "Gake" }, { id: 3, text: "Alo" }, { id: 4, text: "Nenema" }], correctOptionId: 1, hints: ["Gives a reason"], explanation: "'Elabena' means 'Because' in Ewe." },
-        { id: 303, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'However' in Ewe?", options: [{ id: 1, text: "Gake hã" }, { id: 2, text: "Elabena" }, { id: 3, text: "Nenema" }, { id: 4, text: "Kple" }], correctOptionId: 1, hints: ["Nevertheless"], explanation: "'Gake hã' means 'However' in Ewe." },
-        { id: 304, type: "matching", instruction: "Match each Ewe connector to its English meaning.", pairs: [{ id: 1, left: "Gake", right: "But" }, { id: 2, left: "Elabena", right: "Because" }, { id: 3, left: "Alo", right: "Or" }, { id: 4, left: "Nenema", right: "So / Thus" }], hints: ["Gake = but", "Elabena = because"], explanation: "These are connecting words in Ewe." }
+        {
+          id: 2604,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'The economy is improving' in Ewe?",
+          options: [
+            { id: 1, text: "Ganyawo ɖeɖem ɖe edzi" },
+            { id: 2, text: "Nuwo ƒe asi dzi ɖe edzi" },
+            { id: 3, text: "Dukɔmeviwo bia akɔntabubu" },
+            { id: 4, text: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye" }
+          ],
+          correctOptionId: 1,
+          hints: ["ganyawo = economy", "ɖeɖem = improving"],
+          explanation: "Ganyawo ɖeɖem ɖe edzi = The economy is improving in Ewe."
+        },
+        {
+          id: 2605,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/ganyawo_ɖeɖem_ɖe_edzi.m4a"),
+          options: [
+            { id: 1, text: "The economy is improving" },
+            { id: 2, text: "Prices of goods have risen" },
+            { id: 3, text: "Citizens demand accountability" },
+            { id: 4, text: "The government announced a new policy" }
+          ],
+          correctOptionId: 1,
+          hints: ["ganyawo = economy"],
+          explanation: "You heard 'Ganyawo ɖeɖem ɖe edzi' which means 'The economy is improving' in Ewe."
+        }
       ]
     }
   ],
 
   review: {
-    id: "review-adv-6",
-    title: "Review: Advanced Grammar",
+    id: "review-26",
+    title: "Review: News & Politics",
     icon: "refresh-outline",
-    description: "Review the advanced grammar topics you've learned",
+    description: "Review all the news and politics vocabulary you've learned",
     questions: [
-      { id: 401, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Tomorrow' in Ewe?", options: [{ id: 1, text: "Nyitsɔ" }, { id: 2, text: "Etso" }, { id: 3, text: "Egbe" }, { id: 4, text: "Hafi" }], correctOptionId: 1, hints: ["The next day"], explanation: "'Nyitsɔ' means 'Tomorrow' in Ewe." },
-      { id: 402, type: "multiple_choice", instruction: "Select the correct Ewe phrase.", question: "How do you say 'Under' in Ewe?", options: [{ id: 1, text: "Le anyi" }, { id: 2, text: "Le ŋgɔ" }, { id: 3, text: "Le me" }, { id: 4, text: "Le megbe" }], correctOptionId: 1, hints: ["Below something"], explanation: "'Le anyi' means 'Under' in Ewe." },
-      { id: 403, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'But' in Ewe?", options: [{ id: 1, text: "Gake" }, { id: 2, text: "Elabena" }, { id: 3, text: "Alo" }, { id: 4, text: "Kple" }], correctOptionId: 1, hints: ["Contrast word"], explanation: "'Gake' means 'But' in Ewe." },
-      { id: 404, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Yesterday' in Ewe?", options: [{ id: 1, text: "Etso" }, { id: 2, text: "Nyitsɔ" }, { id: 3, text: "Egbe" }, { id: 4, text: "Megbe" }], correctOptionId: 1, hints: ["The day before"], explanation: "'Etso' means 'Yesterday' in Ewe." },
-      { id: 405, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Nyitsɔ", right: "Tomorrow" }, { id: 2, left: "Etso", right: "Yesterday" }, { id: 3, left: "Gake", right: "But" }, { id: 4, left: "Elabena", right: "Because" }, { id: 5, left: "Le anyi", right: "Under" }], hints: ["Nyitsɔ = tomorrow", "Etso = yesterday"], explanation: "These are key grammar words from this chapter." }
+      {
+        id: 2606,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'The government announced a new policy' in Ewe?",
+        options: [
+          { id: 1, text: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye" },
+          { id: 2, text: "Woawɔ akɔdada le ƒe si gbɔna me" },
+          { id: 3, text: "Dukplɔla la ƒo nu na dukɔa" },
+          { id: 4, text: "Sededzraɖoƒea lɔ̃ ɖe sea dzi" }
+        ],
+        correctOptionId: 1,
+        hints: ["dziɖuɖua = government"],
+        explanation: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye = The government announced a new policy."
+      },
+      {
+        id: 2607,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/dukplɔla_la_ƒo_nu_na_dukɔa.m4a"),
+        options: [
+          { id: 1, text: "The government announced a new policy" },
+          { id: 2, text: "Elections will be held next year" },
+          { id: 3, text: "The president addressed the nation" },
+          { id: 4, text: "Parliament passed the bill" }
+        ],
+        correctOptionId: 3,
+        hints: ["dukplɔla = president"],
+        explanation: "You heard 'Dukplɔla la ƒo nu na dukɔa' which means 'The president addressed the nation'."
+      },
+      {
+        id: 2608,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Elections will be held next year' in Ewe?",
+        options: [
+          { id: 1, text: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye" },
+          { id: 2, text: "Woawɔ akɔdada le ƒe si gbɔna me" },
+          { id: 3, text: "Dukplɔla la ƒo nu na dukɔa" },
+          { id: 4, text: "Ganyawo ɖeɖem ɖe edzi" }
+        ],
+        correctOptionId: 2,
+        hints: ["akɔdada = elections"],
+        explanation: "Woawɔ akɔdada le ƒe si gbɔna me = Elections will be held next year."
+      },
+      {
+        id: 2609,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/dziɖuɖua_ɖe_gbeƒã_ɖoɖo_yeye.m4a"),
+        options: [
+          { id: 1, text: "The government announced a new policy" },
+          { id: 2, text: "Elections will be held next year" },
+          { id: 3, text: "The president addressed the nation" },
+          { id: 4, text: "The economy is improving" }
+        ],
+        correctOptionId: 1,
+        hints: ["ɖoɖo yeye = new policy"],
+        explanation: "You heard 'Dziɖuɖua ɖe gbeƒã ɖoɖo yeye' which means 'The government announced a new policy'."
+      },
+      {
+        id: 2610,
+        type: "drag_drop",
+        instruction: "Complete the phrase by dragging the correct word.",
+        sentence: "Dukplɔla la ƒo nu na [_____] (The president addressed the nation)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "dukɔa" },
+          { id: "opt2", text: "sea" },
+          { id: "opt3", text: "gbe" }
+        ],
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        hints: ["dukɔa = the nation"],
+        explanation: "Dukplɔla la ƒo nu na dukɔa = The president addressed the nation."
+      },
+      {
+        id: 2611,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'The economy is improving' in Ewe?",
+        options: [
+          { id: 1, text: "Ganyawo ɖeɖem ɖe edzi" },
+          { id: 2, text: "Nuwo ƒe asi dzi ɖe edzi" },
+          { id: 3, text: "Dukɔmeviwo bia akɔntabubu" },
+          { id: 4, text: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye" }
+        ],
+        correctOptionId: 1,
+        hints: ["ganyawo = economy"],
+        explanation: "Ganyawo ɖeɖem ɖe edzi = The economy is improving."
+      },
+      {
+        id: 2612,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/ganyawo_ɖeɖem_ɖe_edzi.m4a"),
+        options: [
+          { id: 1, text: "The economy is improving" },
+          { id: 2, text: "Prices of goods have risen" },
+          { id: 3, text: "Citizens demand accountability" },
+          { id: 4, text: "The government announced a new policy" }
+        ],
+        correctOptionId: 1,
+        hints: ["ɖeɖem = improving"],
+        explanation: "You heard 'Ganyawo ɖeɖem ɖe edzi' which means 'The economy is improving'."
+      },
+      {
+        id: 2613,
+        type: "drag_drop",
+        instruction: "Complete the phrase by dragging the correct word.",
+        sentence: "Dziɖuɖua ɖe gbeƒã ɖoɖo [_____] (The government announced a new policy)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "yeye" },
+          { id: "opt2", text: "me" },
+          { id: "opt3", text: "nu" }
+        ],
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        hints: ["yeye = new"],
+        explanation: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye = The government announced a new policy."
+      },
+      {
+        id: 2614,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'The president addressed the nation' in Ewe?",
+        options: [
+          { id: 1, text: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye" },
+          { id: 2, text: "Woawɔ akɔdada le ƒe si gbɔna me" },
+          { id: 3, text: "Dukplɔla la ƒo nu na dukɔa" },
+          { id: 4, text: "Sededzraɖoƒea lɔ̃ ɖe sea dzi" }
+        ],
+        correctOptionId: 3,
+        hints: ["dukplɔla = president"],
+        explanation: "Dukplɔla la ƒo nu na dukɔa = The president addressed the nation."
+      },
+      {
+        id: 2615,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/woawɔ_akɔdada_le_ƒe_si_gbɔna_me.m4a"),
+        options: [
+          { id: 1, text: "The government announced a new policy" },
+          { id: 2, text: "Elections will be held next year" },
+          { id: 3, text: "The president addressed the nation" },
+          { id: 4, text: "Parliament passed the bill" }
+        ],
+        correctOptionId: 2,
+        hints: ["akɔdada = elections"],
+        explanation: "You heard 'Woawɔ akɔdada le ƒe si gbɔna me' which means 'Elections will be held next year'."
+      }
     ]
   }
 };

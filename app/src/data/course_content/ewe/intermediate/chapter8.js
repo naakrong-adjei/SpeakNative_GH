@@ -94,7 +94,7 @@ export default {
       id: "18-2",
       type: "words",
       title: "Talking About the Future",
-      icon: "calendar-clock-outline",
+      icon: "time-outline",
       description: "Learn how to express future actions and plans in Ewe",
       words: ["Mava etsɔ", "Meyina ʋu ƒle ge", "Woawu enu le ɣleti si gbɔna me"],
       vocabulary: [

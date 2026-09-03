@@ -1,99 +1,377 @@
 export default {
-  id: 3,
-  title: "Politics & Society",
-  description: "Learn advanced Ewe vocabulary for government, citizenship, and public life",
-  icon: "shield-checkmark-outline",
-  totalXp: 30,
+  id: 23,
+  title: "Public Speaking",
+  description: "Learn public speaking and formal speech phrases in Ewe",
+  icon: "mic-outline",
+  totalXp: 10,
   difficulty: "Advanced",
 
   sections: [
     {
-      id: "a3-1",
-      type: "advanced_vocabulary",
-      title: "Government",
-      icon: "business-outline",
-      description: "Learn Ewe words for government and its institutions",
-      words: ["Dukɔ", "Dukɔ si woɖo", "Fiazikpui", "Dukɔa ƒe dziɖuɖu", "Se", "Dukɔwo dome", "Nɔnɔme", "Dukɔa"],
+      id: "23-1",
+      type: "words",
+      title: "Opening a Speech",
+      icon: "mic-outline",
+      description: "Learn how to open a speech or formal presentation in Ewe",
+      words: ["Amedzro bubutɔwo, fiẽ na mi", "Nyɔnuwo kple ŋutsuwo", "Enye bubu be metsi tre ɖe afia"],
       vocabulary: [
-        { id: 1, english: "Government", native: "Dziɖuɖu", pronunciation: "jee-doo-doo" },
-        { id: 2, english: "Country / Nation", native: "Dukɔ", pronunciation: "doo-koh" },
-        { id: 3, english: "President", native: "Dukɔa ƒe dɔgbedzikpɔla", pronunciation: "doo-koh-ah feh doh-gbeh-jee-kpoh-lah" },
-        { id: 4, english: "Law", native: "Se", pronunciation: "seh" },
-        { id: 5, english: "Parliament", native: "Se dzikpɔƒe", pronunciation: "seh jee-kpoh-feh" },
-        { id: 6, english: "Minister", native: "Dɔdzikpɔla", pronunciation: "doh-jee-kpoh-lah" },
-        { id: 7, english: "Election", native: "Ðitiɖiɖi", pronunciation: "dee-tee-dee-dee" },
-        { id: 8, english: "Vote", native: "Ðo gbe", pronunciation: "doh gbeh" }
+        {
+          id: 247,
+          english: "Distinguished guests, good evening",
+          native: "Amedzro bubutɔwo, fiẽ na mi",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/amedzro_bubutɔwo_fiẽ_na_mi.m4a")
+        },
+        {
+          id: 250,
+          english: "Ladies and gentlemen",
+          native: "Nyɔnuwo kple ŋutsuwo",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/nyɔnuwo_kple_ŋutsuwo.m4a")
+        },
+        {
+          id: 251,
+          english: "It is an honour to stand here",
+          native: "Enye bubu be metsi tre ɖe afia",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/enye_bubu_be_metsi_tre_ɖe_afia.m4a")
+        }
       ],
       questions: [
-        { id: 101, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Government' in Ewe?", options: [{ id: 1, text: "Dziɖuɖu" }, { id: 2, text: "Dukɔ" }, { id: 3, text: "Se" }, { id: 4, text: "Ðitiɖiɖi" }], correctOptionId: 1, hints: ["Runs the country"], explanation: "'Dziɖuɖu' means 'Government' in Ewe." },
-        { id: 102, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Law' in Ewe?", options: [{ id: 1, text: "Se" }, { id: 2, text: "Dukɔ" }, { id: 3, text: "Dziɖuɖu" }, { id: 4, text: "Ðitiɖiɖi" }], correctOptionId: 1, hints: ["Rules to follow"], explanation: "'Se' means 'Law' in Ewe." },
-        { id: 103, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Election' in Ewe?", options: [{ id: 1, text: "Ðitiɖiɖi" }, { id: 2, text: "Se" }, { id: 3, text: "Dukɔ" }, { id: 4, text: "Ðo gbe" }], correctOptionId: 1, hints: ["Choosing leaders"], explanation: "'Ðitiɖiɖi' means 'Election' in Ewe." },
-        { id: 104, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Dziɖuɖu", right: "Government" }, { id: 2, left: "Dukɔ", right: "Country" }, { id: 3, left: "Se", right: "Law" }, { id: 4, left: "Ðitiɖiɖi", right: "Election" }], hints: ["Dziɖuɖu = government", "Dukɔ = country"], explanation: "These are government words in Ewe." }
+        {
+          id: 2301,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Distinguished guests, good evening' in Ewe?",
+          options: [
+            { id: 1, text: "Amedzro bubutɔwo, fiẽ na mi" },
+            { id: 2, text: "Nyɔnuwo kple ŋutsuwo" },
+            { id: 3, text: "Enye bubu be metsi tre ɖe afia" },
+            { id: 4, text: "Mina madze egɔme to akpedada na mi me" }
+          ],
+          correctOptionId: 1,
+          hints: ["amedzro = guests", "bubutɔwo = distinguished"],
+          explanation: "Amedzro bubutɔwo, fiẽ na mi = Distinguished guests, good evening in Ewe."
+        },
+        {
+          id: 2302,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/nyɔnuwo_kple_ŋutsuwo.m4a"),
+          options: [
+            { id: 1, text: "Distinguished guests, good evening" },
+            { id: 2, text: "Ladies and gentlemen" },
+            { id: 3, text: "It is an honour to stand here" },
+            { id: 4, text: "Let me begin by thanking you" }
+          ],
+          correctOptionId: 2,
+          hints: ["nyɔnuwo = ladies", "ŋutsuwo = gentlemen"],
+          explanation: "You heard 'Nyɔnuwo kple ŋutsuwo' which means 'Ladies and gentlemen' in Ewe."
+        },
+        {
+          id: 2303,
+          type: "drag_drop",
+          instruction: "Complete the phrase by dragging the correct word.",
+          sentence: "Enye bubu be metsi tre ɖe [_____] (It is an honour to stand here)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "afia" },
+            { id: "opt2", text: "afima" },
+            { id: "opt3", text: "afisia" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["afia = here"],
+          explanation: "Enye bubu be metsi tre ɖe afia = It is an honour to stand here in Ewe."
+        }
       ]
     },
 
     {
-      id: "a3-2",
-      type: "expressions_idioms",
-      title: "Citizenship",
-      icon: "people-outline",
-      description: "Learn Ewe words about citizenship and rights",
-      words: ["Dzinye", "Amegbetɔ", "Gbɔkpɔ", "Ðoɖoɖo", "Se", "Dukɔ", "Agbe", "Dodo"],
-      vocabulary: [
-        { id: 9, english: "Citizen", native: "Dukɔmenukila", pronunciation: "doo-koh-meh-noo-kee-lah" },
-        { id: 10, english: "Person / Human", native: "Amegbetɔ", pronunciation: "ah-meh-gbeh-toh" },
-        { id: 11, english: "Right / Freedom", native: "Ðoɖoɖo", pronunciation: "doh-doh-doh" },
-        { id: 12, english: "Freedom", native: "Xɔse", pronunciation: "xoh-seh" },
-        { id: 13, english: "Community", native: "Dukɔme", pronunciation: "doo-koh-meh" },
-        { id: 14, english: "Society", native: "Amegbetɔwo", pronunciation: "ah-meh-gbeh-toh-woh" },
-        { id: 15, english: "Responsibility", native: "Dodo", pronunciation: "doh-doh" },
-        { id: 16, english: "Peace", native: "Ðoɖo", pronunciation: "doh-doh" }
-      ],
-      questions: [
-        { id: 201, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Citizen' in Ewe?", options: [{ id: 1, text: "Dukɔmenukila" }, { id: 2, text: "Amegbetɔ" }, { id: 3, text: "Ðoɖoɖo" }, { id: 4, text: "Xɔse" }], correctOptionId: 1, hints: ["Person of a country"], explanation: "'Dukɔmenukila' means 'Citizen' in Ewe." },
-        { id: 202, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Freedom' in Ewe?", options: [{ id: 1, text: "Xɔse" }, { id: 2, text: "Ðoɖoɖo" }, { id: 3, text: "Dukɔme" }, { id: 4, text: "Dodo" }], correctOptionId: 1, hints: ["Being free"], explanation: "'Xɔse' means 'Freedom' in Ewe." },
-        { id: 203, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Responsibility' in Ewe?", options: [{ id: 1, text: "Dodo" }, { id: 2, text: "Xɔse" }, { id: 3, text: "Dukɔmenukila" }, { id: 4, text: "Amegbetɔ" }], correctOptionId: 1, hints: ["Duty to do"], explanation: "'Dodo' means 'Responsibility' in Ewe." },
-        { id: 204, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Dukɔmenukila", right: "Citizen" }, { id: 2, left: "Xɔse", right: "Freedom" }, { id: 3, left: "Dukɔme", right: "Community" }, { id: 4, left: "Dodo", right: "Responsibility" }], hints: ["Dukɔmenukila = citizen", "Xɔse = freedom"], explanation: "These are citizenship words in Ewe." }
-      ]
-    },
-
-    {
-      id: "a3-3",
-      type: "complex_sentences",
-      title: "Public Life",
+      id: "23-2",
+      type: "words",
+      title: "Delivering Your Point",
       icon: "megaphone-outline",
-      description: "Learn Ewe words about public life and civic engagement",
-      words: ["Nusiwo", "Dukɔa ƒe nyawo", "Gbe", "Ðo gbe", "Nya", "Dziɖuɖu", "Seselame", "Dɔwɔƒe"],
+      description: "Learn how to deliver your key points in a speech in Ewe",
+      words: ["Mina madze egɔme to akpedada na mi me", "Na mɔnukpɔkpɔm maɖe eme"],
       vocabulary: [
-        { id: 17, english: "News / Information", native: "Nyadzɔdzɔ", pronunciation: "nyah-joh-joh" },
-        { id: 18, english: "Public affairs", native: "Dukɔa ƒe nyawo", pronunciation: "doo-koh-ah feh nyah-woh" },
-        { id: 19, english: "To speak out", native: "Ðo gbe", pronunciation: "doh gbeh" },
-        { id: 20, english: "Issue / Topic", native: "Nya", pronunciation: "nyah" },
-        { id: 21, english: "Political party", native: "Dziɖuɖu habɔbɔ", pronunciation: "jee-doo-doo hah-boh-boh" },
-        { id: 22, english: "Justice", native: "Seselame", pronunciation: "seh-seh-lah-meh" },
-        { id: 23, english: "Order / Rule", native: "Dɔwɔƒe", pronunciation: "doh-woh-feh" },
-        { id: 24, english: "To govern", native: "Dzi ɖu", pronunciation: "jee doo" }
+        {
+          id: 248,
+          english: "Let me begin by thanking you",
+          native: "Mina madze egɔme to akpedada na mi me",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/mina_madze_egɔme_to_akpedada_na_mi_me.m4a")
+        },
+        {
+          id: 252,
+          english: "Allow me to explain",
+          native: "Na mɔnukpɔkpɔm maɖe eme",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/na_mɔnukpɔkpɔm_maɖe_eme.m4a")
+        }
       ],
       questions: [
-        { id: 301, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'News / Information' in Ewe?", options: [{ id: 1, text: "Nyadzɔdzɔ" }, { id: 2, text: "Nya" }, { id: 3, text: "Ðo gbe" }, { id: 4, text: "Seselame" }], correctOptionId: 1, hints: ["What's happening"], explanation: "'Nyadzɔdzɔ' means 'News / Information' in Ewe." },
-        { id: 302, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Justice' in Ewe?", options: [{ id: 1, text: "Seselame" }, { id: 2, text: "Nyadzɔdzɔ" }, { id: 3, text: "Nya" }, { id: 4, text: "Dɔwɔƒe" }], correctOptionId: 1, hints: ["Fairness"], explanation: "'Seselame' means 'Justice' in Ewe." },
-        { id: 303, type: "multiple_choice", instruction: "Select the correct Ewe phrase.", question: "How do you say 'To speak out' in Ewe?", options: [{ id: 1, text: "Ðo gbe" }, { id: 2, text: "Dzi ɖu" }, { id: 3, text: "Nya" }, { id: 4, text: "Nyadzɔdzɔ" }], correctOptionId: 1, hints: ["Voice an opinion"], explanation: "'Ðo gbe' means 'To speak out' in Ewe." },
-        { id: 304, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Nyadzɔdzɔ", right: "News" }, { id: 2, left: "Ðo gbe", right: "To speak out" }, { id: 3, left: "Seselame", right: "Justice" }, { id: 4, left: "Nya", right: "Issue" }], hints: ["Nyadzɔdzɔ = news", "Ðo gbe = to speak out"], explanation: "These are public life words in Ewe." }
+        {
+          id: 2304,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Let me begin by thanking you' in Ewe?",
+          options: [
+            { id: 1, text: "Mina madze egɔme to akpedada na mi me" },
+            { id: 2, text: "Na mɔnukpɔkpɔm maɖe eme" },
+            { id: 3, text: "Le nuwuwua" },
+            { id: 4, text: "Amedzro bubutɔwo, fiẽ na mi" }
+          ],
+          correctOptionId: 1,
+          hints: ["madze egɔme = let me begin", "akpedada = thanking"],
+          explanation: "Mina madze egɔme to akpedada na mi me = Let me begin by thanking you in Ewe."
+        },
+        {
+          id: 2305,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/na_mɔnukpɔkpɔm_maɖe_eme.m4a"),
+          options: [
+            { id: 1, text: "Let me begin by thanking you" },
+            { id: 2, text: "Allow me to explain" },
+            { id: 3, text: "In conclusion" },
+            { id: 4, text: "Ladies and gentlemen" }
+          ],
+          correctOptionId: 2,
+          hints: ["mɔnukpɔkpɔm = permission", "maɖe eme = I explain"],
+          explanation: "You heard 'Na mɔnukpɔkpɔm maɖe eme' which means 'Allow me to explain' in Ewe."
+        },
+        {
+          id: 2306,
+          type: "drag_drop",
+          instruction: "Complete the phrase by dragging the correct word.",
+          sentence: "Mina madze egɔme to akpedada na mi [_____] (Let me begin by thanking you)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "me" },
+            { id: "opt2", text: "nu" },
+            { id: "opt3", text: "wo" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["me = in"],
+          explanation: "Mina madze egɔme to akpedada na mi me = Let me begin by thanking you in Ewe."
+        }
+      ]
+    },
+
+    {
+      id: "23-3",
+      type: "words",
+      title: "Closing a Speech",
+      icon: "checkmark-outline",
+      description: "Learn how to close a speech or presentation in Ewe",
+      words: ["Le nuwuwua"],
+      vocabulary: [
+        {
+          id: 249,
+          english: "In conclusion",
+          native: "Le nuwuwua",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/le_nuwuwua.m4a")
+        }
+        // TODO: Add back "Thank you for your attention" when audio is ready
+        // {
+        //   id: 253,
+        //   english: "Thank you for your attention",
+        //   native: "Akpe na wò ɖotoɖoame",
+        //   audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/akpe_na_wò_ɖotoɖoame.m4a")
+        // }
+      ],
+      questions: [
+        {
+          id: 2307,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'In conclusion' in Ewe?",
+          options: [
+            { id: 1, text: "Le nuwuwua" },
+            { id: 2, text: "Mina madze egɔme to akpedada na mi me" },
+            { id: 3, text: "Na mɔnukpɔkpɔm maɖe eme" },
+            { id: 4, text: "Amedzro bubutɔwo, fiẽ na mi" }
+          ],
+          correctOptionId: 1,
+          hints: ["nuwuwua = conclusion"],
+          explanation: "Le nuwuwua = In conclusion in Ewe."
+        },
+        {
+          id: 2308,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/le_nuwuwua.m4a"),
+          options: [
+            { id: 1, text: "Let me begin by thanking you" },
+            { id: 2, text: "Allow me to explain" },
+            { id: 3, text: "In conclusion" },
+            { id: 4, text: "Ladies and gentlemen" }
+          ],
+          correctOptionId: 3,
+          hints: ["nuwuwua = conclusion"],
+          explanation: "You heard 'Le nuwuwua' which means 'In conclusion' in Ewe."
+        }
       ]
     }
   ],
 
   review: {
-    id: "review-adv-3",
-    title: "Review: Politics & Society",
+    id: "review-23",
+    title: "Review: Public Speaking",
     icon: "refresh-outline",
-    description: "Review the politics and society vocabulary you've learned",
+    description: "Review all the public speaking vocabulary you've learned",
     questions: [
-      { id: 401, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Government' in Ewe?", options: [{ id: 1, text: "Dziɖuɖu" }, { id: 2, text: "Dukɔ" }, { id: 3, text: "Se" }, { id: 4, text: "Ðitiɖiɖi" }], correctOptionId: 1, hints: ["Runs the country"], explanation: "'Dziɖuɖu' means 'Government' in Ewe." },
-      { id: 402, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Citizen' in Ewe?", options: [{ id: 1, text: "Dukɔmenukila" }, { id: 2, text: "Amegbetɔ" }, { id: 3, text: "Ðoɖoɖo" }, { id: 4, text: "Xɔse" }], correctOptionId: 1, hints: ["Person of a country"], explanation: "'Dukɔmenukila' means 'Citizen' in Ewe." },
-      { id: 403, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'Law' in Ewe?", options: [{ id: 1, text: "Se" }, { id: 2, text: "Dukɔ" }, { id: 3, text: "Dziɖuɖu" }, { id: 4, text: "Ðitiɖiɖi" }], correctOptionId: 1, hints: ["Rules to follow"], explanation: "'Se' means 'Law' in Ewe." },
-      { id: 404, type: "multiple_choice", instruction: "Select the correct Ewe word.", question: "How do you say 'News / Information' in Ewe?", options: [{ id: 1, text: "Nyadzɔdzɔ" }, { id: 2, text: "Nya" }, { id: 3, text: "Ðo gbe" }, { id: 4, text: "Seselame" }], correctOptionId: 1, hints: ["What's happening"], explanation: "'Nyadzɔdzɔ' means 'News / Information' in Ewe." },
-      { id: 405, type: "matching", instruction: "Match each Ewe word to its English meaning.", pairs: [{ id: 1, left: "Dziɖuɖu", right: "Government" }, { id: 2, left: "Dukɔ", right: "Country" }, { id: 3, left: "Se", right: "Law" }, { id: 4, left: "Dukɔmenukila", right: "Citizen" }, { id: 5, left: "Xɔse", right: "Freedom" }], hints: ["Dziɖuɖu = government", "Dukɔ = country"], explanation: "These are key politics and society words from this chapter." }
+      {
+        id: 2309,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Distinguished guests, good evening' in Ewe?",
+        options: [
+          { id: 1, text: "Amedzro bubutɔwo, fiẽ na mi" },
+          { id: 2, text: "Nyɔnuwo kple ŋutsuwo" },
+          { id: 3, text: "Enye bubu be metsi tre ɖe afia" },
+          { id: 4, text: "Mina madze egɔme to akpedada na mi me" }
+        ],
+        correctOptionId: 1,
+        hints: ["amedzro = guests"],
+        explanation: "Amedzro bubutɔwo, fiẽ na mi = Distinguished guests, good evening."
+      },
+      {
+        id: 2310,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/enye_bubu_be_metsi_tre_ɖe_afia.m4a"),
+        options: [
+          { id: 1, text: "Distinguished guests, good evening" },
+          { id: 2, text: "Ladies and gentlemen" },
+          { id: 3, text: "It is an honour to stand here" },
+          { id: 4, text: "Let me begin by thanking you" }
+        ],
+        correctOptionId: 3,
+        hints: ["bubu = honour"],
+        explanation: "You heard 'Enye bubu be metsi tre ɖe afia' which means 'It is an honour to stand here'."
+      },
+      {
+        id: 2311,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Ladies and gentlemen' in Ewe?",
+        options: [
+          { id: 1, text: "Amedzro bubutɔwo, fiẽ na mi" },
+          { id: 2, text: "Nyɔnuwo kple ŋutsuwo" },
+          { id: 3, text: "Enye bubu be metsi tre ɖe afia" },
+          { id: 4, text: "Mina madze egɔme to akpedada na mi me" }
+        ],
+        correctOptionId: 2,
+        hints: ["nyɔnuwo = ladies", "ŋutsuwo = gentlemen"],
+        explanation: "Nyɔnuwo kple ŋutsuwo = Ladies and gentlemen."
+      },
+      {
+        id: 2312,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/mina_madze_egɔme_to_akpedada_na_mi_me.m4a"),
+        options: [
+          { id: 1, text: "Let me begin by thanking you" },
+          { id: 2, text: "Allow me to explain" },
+          { id: 3, text: "In conclusion" },
+          { id: 4, text: "Ladies and gentlemen" }
+        ],
+        correctOptionId: 1,
+        hints: ["akpedada = thanking"],
+        explanation: "You heard 'Mina madze egɔme to akpedada na mi me' which means 'Let me begin by thanking you'."
+      },
+      {
+        id: 2313,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Allow me to explain' in Ewe?",
+        options: [
+          { id: 1, text: "Mina madze egɔme to akpedada na mi me" },
+          { id: 2, text: "Na mɔnukpɔkpɔm maɖe eme" },
+          { id: 3, text: "Le nuwuwua" },
+          { id: 4, text: "Amedzro bubutɔwo, fiẽ na mi" }
+        ],
+        correctOptionId: 2,
+        hints: ["mɔnukpɔkpɔm = permission"],
+        explanation: "Na mɔnukpɔkpɔm maɖe eme = Allow me to explain."
+      },
+      {
+        id: 2314,
+        type: "drag_drop",
+        instruction: "Complete the phrase by dragging the correct word.",
+        sentence: "Enye bubu be metsi tre ɖe [_____] (It is an honour to stand here)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "afia" },
+          { id: "opt2", text: "afima" },
+          { id: "opt3", text: "afisia" }
+        ],
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        hints: ["afia = here"],
+        explanation: "Enye bubu be metsi tre ɖe afia = It is an honour to stand here."
+      },
+      {
+        id: 2315,
+        type: "drag_drop",
+        instruction: "Complete the phrase by dragging the correct word.",
+        sentence: "Mina madze egɔme to akpedada na mi [_____] (Let me begin by thanking you)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "me" },
+          { id: "opt2", text: "nu" },
+          { id: "opt3", text: "wo" }
+        ],
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        hints: ["me = in"],
+        explanation: "Mina madze egɔme to akpedada na mi me = Let me begin by thanking you."
+      },
+      {
+        id: 2316,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'In conclusion' in Ewe?",
+        options: [
+          { id: 1, text: "Le nuwuwua" },
+          { id: 2, text: "Mina madze egɔme to akpedada na mi me" },
+          { id: 3, text: "Na mɔnukpɔkpɔm maɖe eme" },
+          { id: 4, text: "Amedzro bubutɔwo, fiẽ na mi" }
+        ],
+        correctOptionId: 1,
+        hints: ["nuwuwua = conclusion"],
+        explanation: "Le nuwuwua = In conclusion."
+      },
+      {
+        id: 2317,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/nyɔnuwo_kple_ŋutsuwo.m4a"),
+        options: [
+          { id: 1, text: "Distinguished guests, good evening" },
+          { id: 2, text: "Ladies and gentlemen" },
+          { id: 3, text: "It is an honour to stand here" },
+          { id: 4, text: "Let me begin by thanking you" }
+        ],
+        correctOptionId: 2,
+        hints: ["nyɔnuwo = ladies"],
+        explanation: "You heard 'Nyɔnuwo kple ŋutsuwo' which means 'Ladies and gentlemen'."
+      },
+      {
+        id: 2318,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'It is an honour to stand here' in Ewe?",
+        options: [
+          { id: 1, text: "Amedzro bubutɔwo, fiẽ na mi" },
+          { id: 2, text: "Nyɔnuwo kple ŋutsuwo" },
+          { id: 3, text: "Enye bubu be metsi tre ɖe afia" },
+          { id: 4, text: "Mina madze egɔme to akpedada na mi me" }
+        ],
+        correctOptionId: 3,
+        hints: ["bubu = honour"],
+        explanation: "Enye bubu be metsi tre ɖe afia = It is an honour to stand here."
+      }
     ]
   }
 };
