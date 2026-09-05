@@ -33,13 +33,12 @@ export default {
           native: "Dukplɔla la ƒo nu na dukɔa",
           audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/dukplɔla_la_ƒo_nu_na_dukɔa.m4a")
         },
-        // TODO: Add back when audio is ready
-        // {
-        //   id: 258,
-        //   english: "Parliament passed the bill",
-        //   native: "Sededzraɖoƒea lɔ̃ ɖe sea dzi",
-        //   audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/sededzraɖoƒea_lɔ̃_ɖe_sea_dzi.m4a")
-        // }
+        {
+          id: 258,
+          english: "Parliament passed the bill",
+          native: "Sededzraɖoƒea lɔ̃ ɖe sea dzi",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/sededzraɖoƒea_lɔ̃_ɖe_sea_dzi.m4a")
+        }
       ],
       questions: [
         {
@@ -105,19 +104,18 @@ export default {
           native: "Ganyawo ɖeɖem ɖe edzi",
           audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/ganyawo_ɖeɖem_ɖe_edzi.m4a")
         },
-        // TODO: Add back when audio is ready
-        // {
-        //   id: 259,
-        //   english: "Prices of goods have risen",
-        //   native: "Nuwo ƒe asi dzi ɖe edzi",
-        //   audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/nuwo_ƒe_asi_dzi_ɖe_edzi.m4a")
-        // },
-        // {
-        //   id: 260,
-        //   english: "Citizens demand accountability",
-        //   native: "Dukɔmeviwo bia akɔntabubu",
-        //   audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/dukɔmeviwo_bia_akɔntabubu.m4a")
-        // }
+        {
+          id: 259,
+          english: "Prices of goods have risen",
+          native: "Nuwo ƒe asi dzi ɖe edzi",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/nuwo_ƒe_asi_dzi_ɖe_edzi.m4a")
+        },
+        {
+          id: 260,
+          english: "Citizens demand accountability",
+          native: "Dukɔmeviwo bia akɔntabubu",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/dukɔmeviwo_bia_akɔntabubu.m4a")
+        }
       ],
       questions: [
         {

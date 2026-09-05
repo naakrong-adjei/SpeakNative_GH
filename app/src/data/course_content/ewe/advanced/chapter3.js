@@ -168,14 +168,13 @@ export default {
           english: "In conclusion",
           native: "Le nuwuwua",
           audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/le_nuwuwua.m4a")
+        },
+        {
+          id: 253,
+          english: "Thank you for your attention",
+          native: "Akpe na wò ɖotoɖoame",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/akpe_na_wò_ɖotoɖoame.m4a")
         }
-        // TODO: Add back "Thank you for your attention" when audio is ready
-        // {
-        //   id: 253,
-        //   english: "Thank you for your attention",
-        //   native: "Akpe na wò ɖotoɖoame",
-        //   audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/akpe_na_wò_ɖotoɖoame.m4a")
-        // }
       ],
       questions: [
         {
