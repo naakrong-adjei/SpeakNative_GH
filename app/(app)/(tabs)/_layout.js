@@ -1,6 +1,6 @@
 import React from "react";
 import { Platform } from "react-native";
-import { Tabs } from "expo-router"; // Changed back to standard expo-router
+import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useTheme } from "../../../src/context/ThemeContext";
 
@@ -9,7 +9,7 @@ export default function TabsLayout() {
 
   return (
     <Tabs
-      initialRouteName="index" // Add this line!
+      initialRouteName="index"
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: {
@@ -17,7 +17,7 @@ export default function TabsLayout() {
           borderTopColor: theme.border,
         },
         tabBarActiveTintColor: theme.primary,
-        tabBarInactiveTintColor: theme.muted,
+        tabBarInactiveTintColor: theme.secondaryText,
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: "600",
@@ -26,7 +26,7 @@ export default function TabsLayout() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           switch (route.name) {
-            case "index": // Updated from "lessons"
+            case "index":
               iconName = focused ? "book" : "book-outline";
               break;
             case "profile":

@@ -19,19 +19,19 @@ export default {
           id: 134,
           english: "I want to travel to Accra",
           native: "Mitaoɔ ni mafã gbɛ kɛya Ga",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter11/mitaoɔ_ni_mafã_gbɛ_kɛya_ga.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter1/mitaoɔ_ni_mafã_gbɛ_kɛya_ga.m4a")
         },
         {
           id: 135,
           english: "Where is the bus station?",
           native: "Nɛgbɛ tsɔne daamɔhe lɛ yɔɔ?",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter11/nɛgbɛ_tsɔne_daamɔhe_lɛ_yɔɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter1/nɛgbɛ_tsɔne_daamɔhe_lɛ_yɔɔ.m4a")
         },
         {
           id: 136,
           english: "How long does it take?",
           native: "Bei enyiɛ eyeɔ?",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter11/bei_enyiɛ_eyeɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter1/bei_enyiɛ_eyeɔ.m4a")
         }
       ],
       questions: [
@@ -95,19 +95,19 @@ export default {
           id: 137,
           english: "Stop here please",
           native: "Ofainɛ damɔ biɛ",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter11/ofainɛ_damɔ_biɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter1/ofainɛ_damɔ_biɛ.m4a")
         },
         {
           id: 140,
           english: "Is this seat taken?",
           native: "Mɔ ko ta sɛi nɛɛ nɔ lo?",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter11/mɔ_ko_ta_sɛi_nɛɛ_nɔ_lo.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter1/mɔ_ko_ta_sɛi_nɛɛ_nɔ_lo.m4a")
         },
         {
           id: 143,
           english: "Where do I get down?",
           native: "Nɛgbɛ mayi shi yɛ?",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter11/nɛgbɛ_mayi_shi_yɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter1/nɛgbɛ_mayi_shi_yɛ.m4a")
         }
       ],
       questions: [
@@ -171,25 +171,25 @@ export default {
           id: 138,
           english: "I missed the bus",
           native: "Tsɔne lɛ shi mi",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter11/tsɔne_lɛ_shi_mi.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter1/tsɔne_lɛ_shi_mi.m4a")
         },
         {
           id: 139,
           english: "How much is the fare?",
           native: "Shika enyiɛ aheɔ?",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter11/shika_enyiɛ_aheɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter1/shika_enyiɛ_aheɔ.m4a")
         },
         {
           id: 141,
           english: "Drive carefully",
           native: "Kudɔmɔ ojogbaŋŋ",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter11/kudɔmɔ_ojogbaŋŋ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter1/kudɔmɔ_ojogbaŋŋ.m4a")
         },
         {
           id: 144,
           english: "The road is bad",
           native: "Gbɛ lɛ ehiii",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter11/gbɛ_lɛ_ehiii.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter1/gbɛ_lɛ_ehiii.m4a")
         }
       ],
       questions: [

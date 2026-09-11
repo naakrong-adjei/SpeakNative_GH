@@ -456,7 +456,7 @@ export default {
     {
       id: "1-5",
       type: "phrases",
-      title: "Yes & No",
+      title: "Simple Responses",
       icon: "checkmark-circle-outline",
       description: "Learn how to say yes, no, and express likes in Ewe",
       words: ["Ɛ̃", "Ao", "Melɔ̃e"],

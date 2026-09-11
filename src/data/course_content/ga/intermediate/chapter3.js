@@ -19,25 +19,25 @@ export default {
           id: 156,
           english: "What is your last price?",
           native: "Mɛni ji ojara naagbee?",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter12/mɛni_ji_ojara_naagbee.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter3/mɛni_ji_ojara_naagbee.m4a")
         },
         {
           id: 158,
           english: "Can you add a little?",
           native: "Obaanyɛ okɛ fioo afata he?",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter12/obaanyɛ_okɛ_fioo_afata_he.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter3/obaanyɛ_okɛ_fioo_afata_he.m4a")
         },
         {
           id: 160,
           english: "Give me a discount",
           native: "Ba jara lɛ shi oha mi",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter12/ba_jara_lɛ_shi_oha_mi.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter3/ba_jara_lɛ_shi_oha_mi.m4a")
         },
         {
           id: 163,
           english: "I bought it cheaper there",
           native: "Mihe lɛ shika bibioo yɛ jɛi",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter12/mihe_lɛ_shika_bibioo_yɛ_jɛi.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter3/mihe_lɛ_shika_bibioo_yɛ_jɛi.m4a")
         }
       ],
       questions: [
@@ -116,31 +116,31 @@ export default {
           id: 157,
           english: "I will buy two",
           native: "Mahe enyɔ",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter12/mahe_enyɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter3/mahe_enyɔ.m4a")
         },
         {
           id: 161,
           english: "I don't have enough money",
           native: "Mibɛ shika pii",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter12/mibɛ_shika_pii.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter3/mibɛ_shika_pii.m4a")
         },
         {
           id: 162,
           english: "Is it fresh?",
           native: "Ehe tse lo?",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter12/ehe_tse_lo.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter3/ehe_tse_lo.m4a")
         },
         {
           id: 164,
           english: "Count the money",
           native: "Kanemɔ shika lɛ",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter12/kanemɔ_shika_lɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter3/kanemɔ_shika_lɛ.m4a")
         },
         {
           id: 165,
           english: "Keep the change",
           native: "Hiɛmɔ sɛɛdamɔ",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter12/hiɛmɔ_sɛɛdamɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter3/hiɛmɔ_sɛɛdamɔ.m4a")
         }
       ],
       questions: [

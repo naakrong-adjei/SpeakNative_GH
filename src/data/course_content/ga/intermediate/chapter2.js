@@ -19,25 +19,25 @@ export default {
           id: 145,
           english: "I am sick",
           native: "Mibɛ hewalɛ",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter10/mibɛ_hewalɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter2/mibɛ_hewalɛ.m4a")
         },
         {
           id: 147,
           english: "My head hurts",
           native: "Miyitso miigba mi",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter10/miyitso_miigba_mi.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter2/miyitso_miigba_mi.m4a")
         },
         {
           id: 150,
           english: "I am feeling cold",
           native: "Fɛi miiye mi",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter10/fɛi_miiye_mi.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter2/fɛi_miiye_mi.m4a")
         },
         {
           id: 154,
           english: "My stomach hurts",
           native: "Mimusu miiwa mihe",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter10/mimusu_miiwa_mihe.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter2/mimusu_miiwa_mihe.m4a")
         }
       ],
       questions: [
@@ -116,19 +116,19 @@ export default {
           id: 146,
           english: "Call a doctor",
           native: "Tsɛ datrɛfonyo",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter10/tsɛ_datrɛfonyo.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter2/tsɛ_datrɛfonyo.m4a")
         },
         {
           id: 149,
           english: "Where is the hospital?",
           native: "Nɛgbɛ helatsamɔhe lɛ yɔɔ?",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter10/nɛgbɛ_helatsamɔhe_lɛ_yɔɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter2/nɛgbɛ_helatsamɔhe_lɛ_yɔɔ.m4a")
         },
         {
           id: 151,
           english: "I want medicine",
           native: "Mitao tsofa",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter10/mitao_tsofa.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter2/mitao_tsofa.m4a")
         }
       ],
       questions: [
@@ -192,13 +192,13 @@ export default {
           id: 152,
           english: "Take this drug three times a day",
           native: "Nu tsofa nɛɛ shii etɛ gbi kome",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter10/nu_tsofa_nɛɛ_shii_etɛ_gbi_kome.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter2/nu_tsofa_nɛɛ_shii_etɛ_gbi_kome.m4a")
         },
         {
           id: 155,
           english: "Be careful",
           native: "Kwɛmɔ ohenɔ jogbaŋŋ",
-          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter10/kwɛmɔ_ohenɔ_jogbaŋŋ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/intermediate/chapter2/kwɛmɔ_ohenɔ_jogbaŋŋ.m4a")
         }
       ],
       questions: [

@@ -7,7 +7,7 @@ import {
 } from "react-native";
 
 import { useTheme } from "../src/context/ThemeContext";
-import { createSupabaseClient } from "../src/utils/supabase"
+import { createSupabaseClient } from "../src/utils/supabase";
 
 const supabase = createSupabaseClient(() => {});
 
@@ -27,6 +27,7 @@ export default function Index() {
     }
 
     if (!isSignedIn || !userId) {
+      setNeedsOnboarding(false);
       setCheckingOnboarding(false);
       return;
     }
@@ -34,6 +35,8 @@ export default function Index() {
     let cancelled = false;
 
     const checkOnboarding = async () => {
+      setCheckingOnboarding(true);
+
       try {
         const { data, error } = await supabase
           .from("profiles")

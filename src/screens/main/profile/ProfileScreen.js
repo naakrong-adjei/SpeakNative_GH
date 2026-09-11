@@ -47,25 +47,21 @@ export default function ProfileScreen() {
   }, [getToken]);
 
   const [profile, setProfile] = useState(null);
-
   const [loading, setLoading] = useState(true);
-
   const [
     isEditModalVisible,
     setIsEditModalVisible,
   ] = useState(false);
-
   const [userLanguages, setUserLanguages] = useState([]);
 
   const calculateStreak = useCallback(
     (data) => {
-      if (!data) return 0;
+      if (!data) {
+        return 0;
+      }
 
-      const streak =
-        Number(data.streak) || 0;
-
-      const lastActivity =
-        data.last_activity_date;
+      const streak = Number(data.streak) || 0;
+      const lastActivity = data.last_activity_date;
 
       if (!lastActivity) {
         return streak;
@@ -81,8 +77,7 @@ export default function ProfileScreen() {
       today.setHours(0, 0, 0, 0);
 
       const difference = Math.floor(
-        (today.getTime() -
-          lastDate.getTime()) /
+        (today.getTime() - lastDate.getTime()) /
           (1000 * 60 * 60 * 24)
       );
 
@@ -98,29 +93,26 @@ export default function ProfileScreen() {
   const fetchProfile = useCallback(
     async () => {
       if (!user?.id || !supabase) {
+        setLoading(false);
         return;
       }
 
       try {
-        const { data, error } =
-          await supabase
-            .from("profiles")
-            .select(`
-              full_name,
-              streak,
-              last_activity_date,
-              total_xp,
-              hearts,
-              target_language,
-              language_level,
-              email,
-              user_languages
-            `)
-            .eq(
-              "clerk_id",
-              user.id
-            )
-            .single();
+        const { data, error } = await supabase
+          .from("profiles")
+          .select(`
+            full_name,
+            streak,
+            last_activity_date,
+            total_xp,
+            hearts,
+            target_language,
+            language_level,
+            email,
+            user_languages
+          `)
+          .eq("clerk_id", user.id)
+          .single();
 
         if (error) {
           console.error(
@@ -130,7 +122,9 @@ export default function ProfileScreen() {
           return;
         }
 
-        if (!data) return;
+        if (!data) {
+          return;
+        }
 
         const currentStreak =
           calculateStreak(data);
@@ -161,10 +155,7 @@ export default function ProfileScreen() {
             .update({
               streak: 0,
             })
-            .eq(
-              "clerk_id",
-              user.id
-            );
+            .eq("clerk_id", user.id);
         }
       } catch (error) {
         console.error(
@@ -212,24 +203,19 @@ export default function ProfileScreen() {
           filter: `clerk_id=eq.${user.id}`,
         },
         (payload) => {
-          const updatedProfile =
-            payload.new;
+          const updatedProfile = payload.new;
 
           setProfile({
             ...updatedProfile,
-            streak:
-              calculateStreak(
-                updatedProfile
-              ),
+            streak: calculateStreak(
+              updatedProfile
+            ),
           });
 
           const languages =
             updatedProfile?.user_languages ||
-            (updatedProfile
-              ?.target_language
-              ? [
-                  updatedProfile.target_language,
-                ]
+            (updatedProfile?.target_language
+              ? [updatedProfile.target_language]
               : []);
 
           setUserLanguages(
@@ -240,9 +226,7 @@ export default function ProfileScreen() {
       .subscribe();
 
     return () => {
-      supabase.removeChannel(
-        channel
-      );
+      supabase.removeChannel(channel);
     };
   }, [
     supabase,
@@ -273,83 +257,77 @@ export default function ProfileScreen() {
       )
       .filter(Boolean);
 
-  const handleSaveProfile =
-    async (updates) => {
-      if (!user?.id || !supabase) {
-        return;
+  const handleSaveProfile = async (
+    updates
+  ) => {
+    if (!user?.id || !supabase) {
+      return;
+    }
+
+    try {
+      const updateData = {
+        target_language:
+          updates.target_language,
+        language_level:
+          updates.language_level,
+        user_languages:
+          updates.user_languages ||
+          userLanguages,
+      };
+
+      if (
+        updates.username &&
+        updates.username !== profile?.full_name
+      ) {
+        updateData.full_name =
+          updates.username;
       }
 
-      try {
-        const updateData = {
-          target_language:
-            updates.target_language,
-          language_level:
-            updates.language_level,
-          user_languages:
-            updates.user_languages ||
-            userLanguages,
-        };
+      if (
+        updates.email &&
+        updates.email !== profile?.email
+      ) {
+        updateData.email = updates.email;
+      }
 
-        if (
-          updates.username &&
-          updates.username !==
-            profile?.full_name
-        ) {
-          updateData.full_name =
-            updates.username;
-        }
+      const { error } = await supabase
+        .from("profiles")
+        .update(updateData)
+        .eq("clerk_id", user.id);
 
-        if (
-          updates.email &&
-          updates.email !==
-            profile?.email
-        ) {
-          updateData.email =
-            updates.email;
-        }
-
-        const { error } =
-          await supabase
-            .from("profiles")
-            .update(updateData)
-            .eq(
-              "clerk_id",
-              user.id
-            );
-
-        if (error) {
-          throw error;
-        }
-
-        setProfile((prev) => ({
-          ...prev,
-          ...updateData,
-        }));
-
-        if (updates.user_languages) {
-          setUserLanguages(
-            updates.user_languages
-          );
-        }
-
-        Alert.alert(
-          "Success",
-          "Profile updated successfully!"
-        );
-      } catch (error) {
-        console.error(
-          "Failed to update profile:",
-          error
-        );
-
-        Alert.alert(
-          "Error",
-          "We couldn't save your changes. Please check your connection."
-        );
-
+      if (error) {
         throw error;
       }
-    };
+
+      setProfile((prev) => ({
+        ...prev,
+        ...updateData,
+      }));
+
+      if (updates.user_languages) {
+        setUserLanguages(
+          updates.user_languages
+        );
+      }
+
+      Alert.alert(
+        "Success",
+        "Profile updated successfully!"
+      );
+    } catch (error) {
+      console.error(
+        "Failed to update profile:",
+        error
+      );
+
+      Alert.alert(
+        "Error",
+        "We couldn't save your changes. Please check your connection."
+      );
+
+      throw error;
+    }
+  };
 
   const handleSignOut = () => {
     Alert.alert(
@@ -366,8 +344,17 @@ export default function ProfileScreen() {
           onPress: async () => {
             try {
               await signOut();
+              router.replace("/(auth)/intro");
             } catch (error) {
-              console.error(error);
+              console.error(
+                "Sign out failed:",
+                error
+              );
+
+              Alert.alert(
+                "Sign Out Failed",
+                "We couldn't sign you out. Please try again."
+              );
             }
           },
         },
@@ -375,55 +362,61 @@ export default function ProfileScreen() {
     );
   };
 
-  const handleDeleteAccount =
-    () => {
-      Alert.alert(
-        "Delete Account",
-        "Are you absolutely sure you want to delete your account? This action is permanent and your progress will be lost forever.",
-        [
-          {
-            text: "Cancel",
-            style: "cancel",
-          },
-          {
-            text: "Delete Permanently",
-            style: "destructive",
-            onPress: async () => {
-              try {
-                setLoading(true);
+  const handleDeleteAccount = () => {
+    Alert.alert(
+      "Delete Account",
+      "Are you absolutely sure you want to delete your account? This action is permanent and your progress will be lost forever.",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete Permanently",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              setLoading(true);
 
-                const { error } =
-                  await supabase
-                    .from("profiles")
-                    .delete()
-                    .eq(
-                      "clerk_id",
-                      user.id
-                    );
-
-                if (error) {
-                  throw error;
-                }
-
-                await signOut();
-              } catch (error) {
-                console.error(
-                  "Error deleting account:",
-                  error
+              if (!supabase || !user?.id) {
+                throw new Error(
+                  "Account information is unavailable."
                 );
-
-                Alert.alert(
-                  "Error",
-                  "Something went wrong while deleting your account."
-                );
-              } finally {
-                setLoading(false);
               }
-            },
+
+              const { error } =
+                await supabase
+                  .from("profiles")
+                  .delete()
+                  .eq(
+                    "clerk_id",
+                    user.id
+                  );
+
+              if (error) {
+                throw error;
+              }
+
+              await signOut();
+              router.replace("/(auth)/intro");
+            } catch (error) {
+              console.error(
+                "Error deleting account:",
+                error
+              );
+
+              Alert.alert(
+                "Error",
+                "Something went wrong while deleting your account."
+              );
+            } finally {
+              setLoading(false);
+            }
           },
-        ]
-      );
-    };
+        },
+      ]
+    );
+  };
 
   if (loading) {
     return (
@@ -498,9 +491,7 @@ export default function ProfileScreen() {
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() =>
-                setIsEditModalVisible(
-                  true
-                )
+                setIsEditModalVisible(true)
               }
               style={[
                 styles.editBadge,
@@ -535,14 +526,11 @@ export default function ProfileScreen() {
               >
                 {profile?.full_name
                   ?.charAt(0)
-                  ?.toUpperCase() ||
-                  "U"}
+                  ?.toUpperCase() || "U"}
               </ThemedText>
             </View>
 
-            <View
-              style={styles.userInfo}
-            >
+            <View style={styles.userInfo}>
               <ThemedText
                 style={styles.userName}
               >
@@ -672,9 +660,7 @@ export default function ProfileScreen() {
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() =>
-                setIsEditModalVisible(
-                  true
-                )
+                setIsEditModalVisible(true)
               }
               style={[
                 styles.learningCard,
@@ -695,9 +681,7 @@ export default function ProfileScreen() {
                   style={styles.learningRow}
                 >
                   <View
-                    style={
-                      styles.learningItem
-                    }
+                    style={styles.learningItem}
                   >
                     <View
                       style={[
@@ -753,9 +737,7 @@ export default function ProfileScreen() {
                   />
 
                   <View
-                    style={
-                      styles.learningItem
-                    }
+                    style={styles.learningItem}
                   >
                     <View
                       style={[
@@ -832,9 +814,7 @@ export default function ProfileScreen() {
                         },
                       ]}
                     >
-                      {
-                        userLanguageList.length
-                      }{" "}
+                      {userLanguageList.length}{" "}
                       Language
                       {userLanguageList.length >
                       1
@@ -915,9 +895,7 @@ export default function ProfileScreen() {
                                   },
                                 ]}
                               >
-                                {
-                                  lang.title
-                                }
+                                {lang.title}
                               </ThemedText>
                             </View>
                           );
