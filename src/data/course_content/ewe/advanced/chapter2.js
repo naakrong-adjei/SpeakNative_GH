@@ -11,7 +11,7 @@ export default {
       id: "22-1",
       type: "words",
       title: "Wisdom Proverbs",
-      icon: "brain-outline",
+      icon: "bulb-outline",
       description: "Learn wise Ewe proverbs about life and knowledge",
       words: ["Nunya menɔa ame ɖeka ƒe ta me o", "Ta ɖeka meɖoa aɖaŋu o"],
       vocabulary: [

@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
 import {
-  Image,
   SafeAreaView,
   StyleSheet,
   View,
 } from "react-native";
+import {
+  useVideoPlayer,
+  VideoView,
+} from "expo-video";
 
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../ui/Button";
 import { ThemedText } from "../themed-text";
 import ConfettiCelebration from "./ConfettiCelebration";
 
-const STAR_GIF = require("../../assets/images/star.gif");
+const REWARD_VIDEO = require("../../assets/images/celebration/reward.mp4");
 
 export default function LessonCompleteScreen({
   onContinue,
@@ -21,7 +24,11 @@ export default function LessonCompleteScreen({
 
   const [showConfetti, setShowConfetti] = useState(false);
 
-  const [starLoaded, setStarLoaded] = useState(false);
+  const player = useVideoPlayer(REWARD_VIDEO, (player) => {
+    player.loop = true;
+    player.muted = true;
+    player.play();
+  });
 
   useEffect(() => {
     const confettiTimer = setTimeout(() => {
@@ -33,10 +40,15 @@ export default function LessonCompleteScreen({
     };
   }, []);
 
-  const completionText =
-    type === "quiz"
-      ? "You just completed this quiz!"
-      : "You just completed this lesson!";
+  const completionText = {
+    lesson: "You just completed this lesson!",
+    quiz: "You just completed this quiz!",
+    chapter: "You just completed this chapter!",
+  };
+
+  const subtitle =
+    completionText[type] ||
+    completionText.lesson;
 
   return (
     <SafeAreaView
@@ -49,12 +61,12 @@ export default function LessonCompleteScreen({
     >
       <View style={styles.content}>
         <View style={styles.messageContainer}>
-          <View style={styles.starContainer}>
-            <Image
-              source={STAR_GIF}
-              style={styles.starGif}
-              resizeMode="contain"
-              onLoad={() => setStarLoaded(true)}
+          <View style={styles.rewardContainer}>
+            <VideoView
+              player={player}
+              style={styles.rewardVideo}
+              contentFit="contain"
+              nativeControls={false}
             />
           </View>
 
@@ -77,7 +89,7 @@ export default function LessonCompleteScreen({
               },
             ]}
           >
-            {completionText}
+            {subtitle}
           </ThemedText>
         </View>
 
@@ -100,10 +112,10 @@ export default function LessonCompleteScreen({
           theme.success,
           theme.info,
           theme.warning,
-          '#FF6B6B',
-          '#4ECDC4',
-          '#FFE66D',
-          '#A8E6CF',
+          "#FF6B6B",
+          "#4ECDC4",
+          "#FFE66D",
+          "#A8E6CF",
         ]}
       />
     </SafeAreaView>
@@ -127,15 +139,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  starContainer: {
+  rewardContainer: {
     width: 220,
     height: 220,
     marginBottom: 12,
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
   },
 
-  starGif: {
+  rewardVideo: {
     width: 220,
     height: 220,
   },

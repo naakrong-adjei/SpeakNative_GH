@@ -5,7 +5,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import {
+import { 
   ActivityIndicator,
   SafeAreaView,
   ScrollView,
@@ -15,25 +15,28 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useFocusEffect } from "expo-router";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import {
+  useFocusEffect,
+  useLocalSearchParams,
+  useRouter,
+} from "expo-router";
 import {
   useAuth,
   useUser,
 } from "@clerk/expo";
+
 import { useTheme } from "../../context/ThemeContext";
 import {
   createSupabaseClient,
 } from "../../utils/supabase";
 import {
-  getLanguageData,
+  getLessonData,
 } from "../../utils/lessonData";
 import {
   getLessonProgress,
   getQuizCompletion,
   getReviewCompletion,
   getVocabularyProgress,
-  checkAndAwardChapterXP,
   getStreak,
 } from "../../lib/lessonProgress";
 
@@ -54,45 +57,61 @@ export default function LessonOverview() {
     isReview: isReviewParam = false,
     language = "as-tw",
     level = "beginner",
-    chapterId,
   } = params;
 
-  // Parse lessonData if it's a string (from URL params)
-  const lessonData = lessonDataParam 
-    ? (typeof lessonDataParam === 'string' ? JSON.parse(lessonDataParam) : lessonDataParam)
-    : null;
+  const lessonData = useMemo(() => {
+    if (!lessonDataParam) {
+      return null;
+    }
+
+    if (typeof lessonDataParam === "string") {
+      try {
+        return JSON.parse(lessonDataParam);
+      } catch {
+        return null;
+      }
+    }
+
+    return lessonDataParam;
+  }, [lessonDataParam]);
+
+  const parseBooleanParam = useCallback((value) => {
+    if (typeof value === "boolean") {
+      return value;
+    }
+
+    if (typeof value === "string") {
+      return value.toLowerCase() === "true";
+    }
+
+    return Boolean(value);
+  }, []);
 
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);
+
   const [vocabulary, setVocabulary] = useState([]);
   const [questions, setQuestions] = useState([]);
+
   const [isReview, setIsReview] = useState(false);
+
   const [
     vocabularyCompleted,
     setVocabularyCompleted,
   ] = useState(false);
+
   const [
     quizCompleted,
     setQuizCompleted,
   ] = useState(false);
+
   const [
     reviewCompleted,
     setReviewCompleted,
   ] = useState(false);
+
   const [progress, setProgress] = useState(0);
   const [streak, setStreak] = useState(0);
-  const [
-    chapterXPAwarded,
-    setChapterXPAwarded,
-  ] = useState(false);
-  const [
-    chapterXPAmount,
-    setChapterXPAmount,
-  ] = useState(0);
-  const [
-    awardingChapterXP,
-    setAwardingChapterXP,
-  ] = useState(false);
 
   const normalizeProgress = useCallback(
     (value) => {
@@ -104,7 +123,10 @@ export default function LessonOverview() {
 
       return Math.max(
         0,
-        Math.min(MAX_STARS, numericValue)
+        Math.min(
+          MAX_STARS,
+          numericValue
+        )
       );
     },
     []
@@ -152,57 +174,23 @@ export default function LessonOverview() {
     }
 
     return lessonData;
-  }, [lessonData, lessonIdParam]);
-
-  const resolveChapter = useCallback(() => {
-    if (
-      lessonData &&
-      Array.isArray(lessonData.sections)
-    ) {
-      return {
-        ...lessonData,
-        id: lessonData.id || chapterId,
-      };
-    }
-
-    if (!chapterId) {
-      return null;
-    }
-
-    try {
-      const languageData =
-        getLanguageData(language, level);
-
-      const chapter =
-        languageData?.[chapterId];
-
-      if (!chapter) {
-        return null;
-      }
-
-      return {
-        ...chapter,
-        id: chapter.id || chapterId,
-      };
-    } catch {
-      return null;
-    }
   }, [
     lessonData,
-    chapterId,
-    language,
-    level,
+    lessonIdParam,
   ]);
 
   const checkProgress = useCallback(
     async (id, vocab = []) => {
       if (!id) {
         setProgress(0);
+
         setVocabularyCompleted(
           vocab.length === 0
         );
+
         setQuizCompleted(false);
         setReviewCompleted(false);
+
         return;
       }
 
@@ -218,16 +206,19 @@ export default function LessonOverview() {
             language,
             level
           ),
+
           getVocabularyProgress(
             id,
             language,
             level
           ),
+
           getQuizCompletion(
             id,
             language,
             level
           ),
+
           getReviewCompletion(
             id,
             language,
@@ -247,21 +238,33 @@ export default function LessonOverview() {
                 vocabularyProgress
               );
 
-        const finalProgress = quizDone
-          ? MAX_STARS
-          : lessonStars;
+        const finalProgress =
+          quizDone
+            ? MAX_STARS
+            : lessonStars;
 
-        setProgress(finalProgress);
+        setProgress(
+          finalProgress
+        );
+
         setVocabularyCompleted(
           vocabularyDone
         );
-        setQuizCompleted(quizDone);
-        setReviewCompleted(reviewDone);
+
+        setQuizCompleted(
+          quizDone
+        );
+
+        setReviewCompleted(
+          reviewDone
+        );
       } catch {
         setProgress(0);
+
         setVocabularyCompleted(
           vocab.length === 0
         );
+
         setQuizCompleted(false);
         setReviewCompleted(false);
       }
@@ -282,100 +285,38 @@ export default function LessonOverview() {
       }
 
       try {
-        const token = await getToken();
+        const token =
+          await getToken();
 
         if (!token) {
           return;
         }
 
         const supabase =
-          createSupabaseClient(token);
+          createSupabaseClient(
+            token
+          );
 
-        const result = await getStreak(
-          supabase,
-          user.id
-        );
+        const result =
+          await getStreak(
+            supabase,
+            user.id
+          );
 
         setStreak(
-          Number(result?.streak) || 0
+          Number(
+            result?.streak
+          ) || 0
         );
       } catch {
         setStreak(0);
       }
     },
-    [user?.id, getToken]
-  );
-
-  const awardChapterXP =
-    useCallback(async () => {
-      if (!user?.id) {
-        return;
-      }
-
-      if (isReview) {
-        return;
-      }
-
-      const chapter =
-        resolveChapter();
-
-      if (
-        !chapter?.id ||
-        !Array.isArray(
-          chapter.sections
-        ) ||
-        chapter.sections.length === 0
-      ) {
-        return;
-      }
-
-      if (awardingChapterXP) {
-        return;
-      }
-
-      try {
-        setAwardingChapterXP(true);
-
-        const token = await getToken();
-
-        if (!token) {
-          return;
-        }
-
-        const supabase =
-          createSupabaseClient(token);
-
-        const result =
-          await checkAndAwardChapterXP(
-            chapter,
-            supabase,
-            user.id,
-            language,
-            level
-          );
-
-        if (
-          result?.xpAwarded &&
-          Number(result.xp) > 0
-        ) {
-          setChapterXPAwarded(true);
-          setChapterXPAmount(
-            Number(result.xp)
-          );
-        }
-      } catch {
-      } finally {
-        setAwardingChapterXP(false);
-      }
-    }, [
+    [
       user?.id,
-      isReview,
-      resolveChapter,
-      awardingChapterXP,
       getToken,
-      language,
-      level,
-    ]);
+    ]
+  );
 
   useEffect(() => {
     let mounted = true;
@@ -397,9 +338,14 @@ export default function LessonOverview() {
           setQuestions([]);
           setIsReview(false);
           setProgress(0);
-          setVocabularyCompleted(false);
+
+          setVocabularyCompleted(
+            false
+          );
+
           setQuizCompleted(false);
           setReviewCompleted(false);
+
           return;
         }
 
@@ -422,22 +368,30 @@ export default function LessonOverview() {
             : [];
 
         const resolvedLessonId =
-          actualLesson.id || lessonIdParam;
+          actualLesson.id ||
+          lessonIdParam;
 
         const normalizedLesson = {
           ...actualLesson,
           id: resolvedLessonId,
         };
 
-        setLesson(normalizedLesson);
+        setLesson(
+          normalizedLesson
+        );
+
         setVocabulary(
           lessonVocabulary
         );
+
         setQuestions(
           lessonQuestions
         );
+
         setIsReview(
-          Boolean(isReviewParam)
+          parseBooleanParam(
+            isReviewParam
+          )
         );
 
         await checkProgress(
@@ -452,7 +406,11 @@ export default function LessonOverview() {
         setLesson(null);
         setVocabulary([]);
         setQuestions([]);
-        setVocabularyCompleted(false);
+
+        setVocabularyCompleted(
+          false
+        );
+
         setQuizCompleted(false);
         setReviewCompleted(false);
         setProgress(0);
@@ -473,6 +431,7 @@ export default function LessonOverview() {
     lessonIdParam,
     isReviewParam,
     checkProgress,
+    parseBooleanParam,
   ]);
 
   useFocusEffect(
@@ -487,7 +446,10 @@ export default function LessonOverview() {
       const refresh = async () => {
         await new Promise(
           (resolve) =>
-            setTimeout(resolve, 150)
+            setTimeout(
+              resolve,
+              150
+            )
         );
 
         if (cancelled) {
@@ -501,12 +463,6 @@ export default function LessonOverview() {
           ),
           loadStreak(),
         ]);
-
-        if (cancelled) {
-          return;
-        }
-
-        await awardChapterXP();
       };
 
       refresh();
@@ -519,7 +475,6 @@ export default function LessonOverview() {
       vocabulary,
       checkProgress,
       loadStreak,
-      awardChapterXP,
     ])
   );
 
@@ -535,11 +490,17 @@ export default function LessonOverview() {
       const hasQuiz =
         questions.length > 0;
 
-      if (!hasVocabulary && !hasQuiz) {
+      if (
+        !hasVocabulary &&
+        !hasQuiz
+      ) {
         return 0;
       }
 
-      if (hasQuiz && quizCompleted) {
+      if (
+        hasQuiz &&
+        quizCompleted
+      ) {
         return 100;
       }
 
@@ -573,43 +534,45 @@ export default function LessonOverview() {
       isReview,
     ]);
 
-  const vocabChunks = useMemo(() => {
-    if (vocabulary.length === 0) {
-      return [];
-    }
+  const vocabChunks =
+    useMemo(() => {
+      if (vocabulary.length === 0) {
+        return [];
+      }
 
-    if (vocabulary.length <= 7) {
+      if (vocabulary.length <= 7) {
+        return [
+          {
+            id: "vocabulary",
+            title: "Vocabulary",
+            data: vocabulary,
+          },
+        ];
+      }
+
+      const midpoint =
+        Math.ceil(
+          vocabulary.length / 2
+        );
+
       return [
         {
-          id: "vocabulary",
+          id: "vocabulary-1",
           title: "Vocabulary",
-          data: vocabulary,
+          data: vocabulary.slice(
+            0,
+            midpoint
+          ),
+        },
+        {
+          id: "vocabulary-2",
+          title: "Vocabulary II",
+          data: vocabulary.slice(
+            midpoint
+          ),
         },
       ];
-    }
-
-    const midpoint = Math.ceil(
-      vocabulary.length / 2
-    );
-
-    return [
-      {
-        id: "vocabulary-1",
-        title: "Vocabulary",
-        data: vocabulary.slice(
-          0,
-          midpoint
-        ),
-      },
-      {
-        id: "vocabulary-2",
-        title: "Vocabulary II",
-        data: vocabulary.slice(
-          midpoint
-        ),
-      },
-    ];
-  }, [vocabulary]);
+    }, [vocabulary]);
 
   const handleStartVocabulary =
     useCallback(
@@ -627,16 +590,31 @@ export default function LessonOverview() {
         }
 
         router.push({
-          pathname: "/(app)/practice/[id]",
+          pathname:
+            "/(app)/practice/[id]",
+
           params: {
-            id: lesson?.id || 'practice',
-            sectionId: lesson?.id,
-            sectionTitle: `${lesson?.title || lessonTitle} - ${title}`,
-            sectionData: JSON.stringify({
-              ...lesson,
-              vocabulary: vocabSubset,
-              questions: [],
-            }),
+            id:
+              lesson?.id ||
+              "practice",
+
+            sectionId:
+              lesson?.id,
+
+            sectionTitle:
+              `${
+                lesson?.title ||
+                lessonTitle
+              } - ${title}`,
+
+            sectionData:
+              JSON.stringify({
+                ...lesson,
+                vocabulary:
+                  vocabSubset,
+                questions: [],
+              }),
+
             language,
             level,
             mode: "vocabulary",
@@ -655,25 +633,44 @@ export default function LessonOverview() {
 
   const handleStartQuiz =
     useCallback(() => {
-      if (questions.length === 0) {
+      if (
+        questions.length === 0
+      ) {
         return;
       }
 
       router.push({
-        pathname: "/(app)/practice/[id]",
+        pathname:
+          "/(app)/practice/[id]",
+
         params: {
-          id: lesson?.id || 'quiz',
-          sectionId: lesson?.id,
-          sectionTitle: `${lesson?.title || lessonTitle} - Quiz`,
-          sectionData: JSON.stringify({
-            ...lesson,
-            vocabulary: [],
-            questions,
-          }),
+          id:
+            lesson?.id ||
+            "quiz",
+
+          sectionId:
+            lesson?.id,
+
+          sectionTitle:
+            `${
+              lesson?.title ||
+              lessonTitle
+            } - Quiz`,
+
+          sectionData:
+            JSON.stringify({
+              ...lesson,
+              vocabulary: [],
+              questions,
+            }),
+
           language,
           level,
           mode: "quiz",
-          quizAlreadyCompleted: quizCompleted,
+
+          quizAlreadyCompleted:
+            quizCompleted,
+
           isReview: false,
         },
       });
@@ -697,16 +694,30 @@ export default function LessonOverview() {
       }
 
       router.push({
-        pathname: "/(app)/practice/[id]",
+        pathname:
+          "/(app)/practice/[id]",
+
         params: {
-          id: lesson?.id || 'review',
-          sectionId: lesson?.id,
-          sectionTitle: `${lesson?.title || lessonTitle} - Review`,
-          sectionData: JSON.stringify({
-            ...lesson,
-            vocabulary,
-            questions,
-          }),
+          id:
+            lesson?.id ||
+            "review",
+
+          sectionId:
+            lesson?.id,
+
+          sectionTitle:
+            `${
+              lesson?.title ||
+              lessonTitle
+            } - Review`,
+
+          sectionData:
+            JSON.stringify({
+              ...lesson,
+              vocabulary,
+              questions,
+            }),
+
           language,
           level,
           mode: "review",
@@ -726,30 +737,45 @@ export default function LessonOverview() {
   const getSectionIcon =
     useCallback((type) => {
       const icons = {
-        vocabulary: "book-outline",
-        words: "book-outline",
+        vocabulary:
+          "book-outline",
+
+        words:
+          "book-outline",
+
         phrases:
           "chatbox-ellipses-outline",
+
         simple_sentences:
           "document-text-outline",
+
         basic_conversations:
           "chatbubbles-outline",
+
         useful_phrases:
           "chatbox-ellipses-outline",
+
         complete_sentences:
           "document-text-outline",
+
         conversations:
           "chatbubbles-outline",
+
         listening:
           "headset-outline",
+
         advanced_vocabulary:
           "book-outline",
+
         expressions_idioms:
           "chatbox-ellipses-outline",
+
         complex_sentences:
           "document-text-outline",
+
         natural_conversations:
           "chatbubbles-outline",
+
         proverbs_cultural:
           "library-outline",
       };
@@ -760,9 +786,10 @@ export default function LessonOverview() {
       );
     }, []);
 
-  const goBack = useCallback(() => {
-    router.back();
-  }, [router]);
+  const goBack =
+    useCallback(() => {
+      router.back();
+    }, [router]);
 
   if (loading) {
     return (
@@ -896,7 +923,8 @@ export default function LessonOverview() {
   }
 
   const quizIsCompleted =
-    !isReview && quizCompleted;
+    !isReview &&
+    quizCompleted;
 
   const quizLocked =
     questions.length === 0 ||
@@ -980,7 +1008,9 @@ export default function LessonOverview() {
           </Text>
 
           <View
-            style={styles.headerSpacer}
+            style={
+              styles.headerSpacer
+            }
           />
         </View>
 
@@ -997,7 +1027,9 @@ export default function LessonOverview() {
             <Ionicons
               name={lessonIcon}
               size={32}
-              color={theme.background}
+              color={
+                theme.background
+              }
             />
           </View>
 
@@ -1027,8 +1059,6 @@ export default function LessonOverview() {
             </Text>
           ) : null}
         </View>
-
-
 
         <View
           style={styles.pathHeader}
@@ -1126,12 +1156,14 @@ export default function LessonOverview() {
                         {
                           backgroundColor:
                             theme.surface,
+
                           borderColor:
                             completed
                               ? theme.primary
                               : available
                               ? theme.primary
                               : theme.border,
+
                           opacity:
                             available
                               ? 1
@@ -1194,9 +1226,8 @@ export default function LessonOverview() {
                           {chunk.data
                             .length ===
                           1
-                            ? "word"
-                            : "words"}{" "}
-                          to learn
+                            ? "new item"
+                            : "new items"}
                         </Text>
                       </View>
 
@@ -1254,12 +1285,14 @@ export default function LessonOverview() {
                   {
                     backgroundColor:
                       theme.surface,
+
                     borderColor:
                       quizIsCompleted
                         ? theme.primary
                         : quizLocked
                         ? theme.border
                         : theme.accent,
+
                     opacity:
                       quizLocked
                         ? 0.55
@@ -1407,6 +1440,7 @@ export default function LessonOverview() {
                   {
                     backgroundColor:
                       theme.surface,
+
                     borderColor:
                       theme.primary,
                   },
@@ -1487,68 +1521,6 @@ export default function LessonOverview() {
             </View>
           )}
         </View>
-
-        {chapterXPAwarded &&
-          chapterXPAmount > 0 && (
-            <View
-              style={[
-                styles.xpReward,
-                {
-                  backgroundColor:
-                    `${theme.primary}12`,
-                  borderColor:
-                    `${theme.primary}35`,
-                },
-              ]}
-            >
-              <View
-                style={[
-                  styles.xpIcon,
-                  {
-                    backgroundColor:
-                      `${theme.primary}20`,
-                  },
-                ]}
-              >
-                <Ionicons
-                  name="sparkles"
-                  size={22}
-                  color={theme.primary}
-                />
-              </View>
-
-              <View
-                style={
-                  styles.xpRewardText
-                }
-              >
-                <Text
-                  style={[
-                    styles.xpRewardTitle,
-                    {
-                      color:
-                        theme.text,
-                    },
-                  ]}
-                >
-                  Chapter Complete!
-                </Text>
-
-                <Text
-                  style={[
-                    styles.xpRewardSubtitle,
-                    {
-                      color:
-                        theme.secondaryText,
-                    },
-                  ]}
-                >
-                  +{chapterXPAmount} XP
-                  added to your total
-                </Text>
-              </View>
-            </View>
-          )}
 
         <View
           style={[
@@ -1821,41 +1793,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
-  },
-
-  xpReward: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 15,
-    marginTop: 4,
-    marginBottom: 12,
-    borderRadius: 18,
-    borderWidth: 1,
-  },
-
-  xpIcon: {
-    width: 44,
-    height: 44,
-    borderRadius: 14,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  xpRewardText: {
-    flex: 1,
-    marginLeft: 12,
-  },
-
-  xpRewardTitle: {
-    fontSize: 15,
-    fontWeight: "900",
-  },
-
-  xpRewardSubtitle: {
-    marginTop: 3,
-    fontSize: 12,
-    lineHeight: 17,
-    fontWeight: "600",
   },
 
   encouragement: {

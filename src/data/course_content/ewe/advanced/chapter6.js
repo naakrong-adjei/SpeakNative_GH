@@ -11,7 +11,7 @@ export default {
       id: "26-1",
       type: "words",
       title: "Government & Elections",
-      icon: "landmark-outline",
+      icon: "business-outline",
       description: "Learn about government and elections in Ewe",
       words: ["Dziɖuɖua ɖe gbeƒã ɖoɖo yeye", "Woawɔ akɔdada le ƒe si gbɔna me", "Dukplɔla la ƒo nu na dukɔa", "Sededzraɖoƒea lɔ̃ ɖe sea dzi"],
       vocabulary: [

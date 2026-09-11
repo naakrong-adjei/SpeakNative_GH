@@ -1,129 +1,120 @@
-// data/course_content/ga/beginner/chapter5.js
 export default {
   id: 5,
   title: "Food & Drinks",
-  description: "Learn words and phrases for food and drinks in Ga",
+  description: "Learn food and drink vocabulary in Ga",
   icon: "restaurant-outline",
-  totalXp: 20,
+  totalXp: 15,
   difficulty: "Beginner",
 
   sections: [
     {
       id: "5-1",
       type: "words",
-      title: "Common Foods",
+      title: "Food Words",
       icon: "restaurant-outline",
-      description: "Learn the names of common foods in Ga",
-      words: ["Nii", "Bulu", "Futuo", "Banku", "Akokɔn", "Akadu", "La"],
+      description: "Learn basic food and drink words in Ga",
+      words: ["Nu", "Niyenii", "Omo", "Loo"],
       vocabulary: [
         {
-          id: 1,
+          id: 60,
+          english: "Water",
+          native: "Nu",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/nu.m4a")
+        },
+        {
+          id: 61,
           english: "Food",
-          native: "Nii",
-          pronunciation: "nee"
-          // audioUrl: "/audio/ga/nii.mp3"
+          native: "Niyenii",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/niyenii.m4a")
         },
         {
-          id: 2,
-          english: "Bread",
-          native: "Bulu",
-          pronunciation: "boo-loo"
-          // audioUrl: "/audio/ga/bulu.mp3"
+          id: 64,
+          english: "Rice",
+          native: "Omo",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/omo.m4a")
         },
         {
-          id: 3,
-          english: "Fufu",
-          native: "Futuo",
-          pronunciation: "foo-too-oh"
-          // audioUrl: "/audio/ga/futuo.mp3"
-        },
-        {
-          id: 4,
-          english: "Banku",
-          native: "Banku",
-          pronunciation: "bahn-koo"
-          // audioUrl: "/audio/ga/banku.mp3"
-        },
-        {
-          id: 5,
-          english: "Chicken",
-          native: "Akokɔn",
-          pronunciation: "ah-koh-kohn"
-          // audioUrl: "/audio/ga/akokɔn.mp3"
-        },
-        {
-          id: 6,
-          english: "Vegetables",
-          native: "Akadu",
-          pronunciation: "ah-kah-doo"
-          // audioUrl: "/audio/ga/akadu.mp3"
-        },
-        {
-          id: 7,
+          id: 68,
           english: "Meat",
-          native: "La",
-          pronunciation: "lah"
-          // audioUrl: "/audio/ga/la.mp3"
+          native: "Loo",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/loo.m4a")
         }
       ],
       questions: [
         {
-          id: 101,
+          id: 501,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga word.",
+          question: "What is 'Water' in Ga?",
+          options: [
+            { id: 1, text: "Nu" },
+            { id: 2, text: "Niyenii" },
+            { id: 3, text: "Omo" },
+            { id: 4, text: "Loo" }
+          ],
+          correctOptionId: 1,
+          hints: ["Essential for drinking"],
+          explanation: "Nu = Water in Ga."
+        },
+        {
+          id: 502,
           type: "multiple_choice",
           instruction: "Select the correct Ga word.",
           question: "What is 'Food' in Ga?",
           options: [
-            { id: 1, text: "Nii" },
-            { id: 2, text: "Bulu" },
-            { id: 3, text: "Akokɔn" },
-            { id: 4, text: "La" }
-          ],
-          correctOptionId: 1,
-          hints: ["What you eat"],
-          explanation: "'Nii' means 'Food' in Ga."
-        },
-        {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "How do you say 'Chicken' in Ga?",
-          options: [
-            { id: 1, text: "Bulu" },
-            { id: 2, text: "Akokɔn" },
-            { id: 3, text: "La" },
-            { id: 4, text: "Akadu" }
+            { id: 1, text: "Nu" },
+            { id: 2, text: "Niyenii" },
+            { id: 3, text: "Omo" },
+            { id: 4, text: "Loo" }
           ],
           correctOptionId: 2,
-          hints: ["A bird people eat"],
-          explanation: "'Akokɔn' means 'Chicken' in Ga."
+          hints: ["What you eat"],
+          explanation: "Niyenii = Food in Ga."
         },
         {
-          id: 103,
+          id: 503,
           type: "multiple_choice",
           instruction: "Select the correct Ga word.",
-          question: "How do you say 'Meat' in Ga?",
+          question: "What is 'Rice' in Ga?",
           options: [
-            { id: 1, text: "Bulu" },
-            { id: 2, text: "Akokɔn" },
-            { id: 3, text: "La" },
-            { id: 4, text: "Akadu" }
+            { id: 1, text: "Nu" },
+            { id: 2, text: "Niyenii" },
+            { id: 3, text: "Omo" },
+            { id: 4, text: "Loo" }
           ],
           correctOptionId: 3,
-          hints: ["Animal products to eat"],
-          explanation: "'La' means 'Meat' in Ga."
+          hints: ["A staple food"],
+          explanation: "Omo = Rice in Ga."
         },
         {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Ga word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Nii", right: "Food" },
-            { id: 2, left: "Bulu", right: "Bread" },
-            { id: 3, left: "Akokɔn", right: "Chicken" },
-            { id: 4, left: "La", right: "Meat" }
+          id: 504,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga word.",
+          question: "What is 'Meat' in Ga?",
+          options: [
+            { id: 1, text: "Nu" },
+            { id: 2, text: "Niyenii" },
+            { id: 3, text: "Omo" },
+            { id: 4, text: "Loo" }
           ],
-          hints: ["Nii = food", "Bulu = bread", "La = meat"],
-          explanation: "These are common food words in Ga."
+          correctOptionId: 4,
+          hints: ["Loo = Meat"],
+          explanation: "Loo = Meat in Ga."
+        },
+        {
+          id: 505,
+          type: "drag_drop",
+          instruction: "Complete the Ga word by dragging the correct ending.",
+          sentence: "L[_____] (Meat)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "oo" },
+            { id: "opt2", text: "u" },
+            { id: "opt3", text: "a" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["Loo = Meat"],
+          explanation: "Loo = Meat in Ga."
         }
       ]
     },
@@ -131,333 +122,217 @@ export default {
     {
       id: "5-2",
       type: "phrases",
-      title: "Fruits & Ingredients",
-      icon: "nutrition-outline",
-      description: "Learn the names of fruits and ingredients in Ga",
-      words: ["Futuo-ng", "Akutu", "Akadu", "Nyuublamla", "Kpa", "Sukla"],
+      title: "Hunger & Thirst",
+      icon: "cafe-outline",
+      description: "Learn how to express hunger and thirst in Ga",
+      words: ["Hɔmɔ ye mi", "Mitaoɔ ni maye nii", "Kumai miiye mi"],
       vocabulary: [
         {
-          id: 8,
-          english: "Fruit",
-          native: "Futuo-ng",
-          pronunciation: "foo-too-oh-ng"
-          // audioUrl: "/audio/ga/futuo_ng.mp3"
+          id: 62,
+          english: "I am hungry",
+          native: "Hɔmɔ ye mi",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/hɔmɔ_ye_mi.m4a")
         },
         {
-          id: 9,
-          english: "Orange",
-          native: "Akutu",
-          pronunciation: "ah-koo-too"
-          // audioUrl: "/audio/ga/akutu.mp3"
+          id: 63,
+          english: "I want to eat",
+          native: "Mitaoɔ ni maye nii",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/mitaoɔ_ni_maye_nii.m4a")
         },
         {
-          id: 10,
-          english: "Leaf / Vegetable",
-          native: "Akadu",
-          pronunciation: "ah-kah-doo"
-          // audioUrl: "/audio/ga/akadu.mp3"
-        },
-        {
-          id: 11,
-          english: "Salt",
-          native: "Nyuublamla",
-          pronunciation: "nyoo-blahm-lah"
-          // audioUrl: "/audio/ga/nyuublamla.mp3"
-        },
-        {
-          id: 12,
-          english: "Pepper",
-          native: "Kpa",
-          pronunciation: "kpah"
-          // audioUrl: "/audio/ga/kpa.mp3"
-        },
-        {
-          id: 13,
-          english: "Sugar",
-          native: "Sukla",
-          pronunciation: "soo-klah"
-          // audioUrl: "/audio/ga/sukla.mp3"
+          id: 67,
+          english: "I am thirsty",
+          native: "Kumai miiye mi",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/kumai_miiye_mi.m4a")
         }
       ],
       questions: [
         {
-          id: 201,
+          id: 506,
           type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Fruit' in Ga?",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I am hungry' in Ga?",
           options: [
-            { id: 1, text: "Futuo-ng" },
-            { id: 2, text: "Akutu" },
-            { id: 3, text: "Akadu" },
-            { id: 4, text: "Nyuublamla" }
+            { id: 1, text: "Hɔmɔ ye mi" },
+            { id: 2, text: "Mitaoɔ ni maye nii" },
+            { id: 3, text: "Kumai miiye mi" },
+            { id: 4, text: "Eŋɔɔ" }
           ],
           correctOptionId: 1,
-          hints: ["Sweet food from plants"],
-          explanation: "'Futuo-ng' means 'Fruit' in Ga."
+          hints: ["Hɔmɔ = hunger"],
+          explanation: "Hɔmɔ ye mi = I am hungry in Ga."
         },
         {
-          id: 202,
+          id: 507,
           type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "How do you say 'Salt' in Ga?",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I want to eat' in Ga?",
           options: [
-            { id: 1, text: "Sukla" },
-            { id: 2, text: "Kpa" },
-            { id: 3, text: "Nyuublamla" },
-            { id: 4, text: "Futuo-ng" }
+            { id: 1, text: "Hɔmɔ ye mi" },
+            { id: 2, text: "Mitaoɔ ni maye nii" },
+            { id: 3, text: "Kumai miiye mi" },
+            { id: 4, text: "Eŋɔɔ" }
+          ],
+          correctOptionId: 2,
+          hints: ["Mitaoɔ = I want"],
+          explanation: "Mitaoɔ ni maye nii = I want to eat in Ga."
+        },
+        {
+          id: 508,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I am thirsty' in Ga?",
+          options: [
+            { id: 1, text: "Hɔmɔ ye mi" },
+            { id: 2, text: "Mitaoɔ ni maye nii" },
+            { id: 3, text: "Kumai miiye mi" },
+            { id: 4, text: "Eŋɔɔ" }
           ],
           correctOptionId: 3,
-          hints: ["Seasoning, white crystals"],
-          explanation: "'Nyuublamla' means 'Salt' in Ga."
+          hints: ["Kumai = thirst"],
+          explanation: "Kumai miiye mi = I am thirsty in Ga."
         },
         {
-          id: 203,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "How do you say 'Sugar' in Ga?",
-          options: [
-            { id: 1, text: "Sukla" },
-            { id: 2, text: "Kpa" },
-            { id: 3, text: "Nyuublamla" },
-            { id: 4, text: "Akadu" }
+          id: 509,
+          type: "drag_drop",
+          instruction: "Complete the Ga phrase by dragging the correct word.",
+          sentence: "Mitaoɔ ni maye [_____] (I want to eat)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "nii" },
+            { id: "opt2", text: "nu" },
+            { id: "opt3", text: "loo" }
           ],
-          correctOptionId: 1,
-          hints: ["Sweetener"],
-          explanation: "'Sukla' means 'Sugar' in Ga."
-        },
-        {
-          id: 204,
-          type: "matching",
-          instruction: "Match each Ga word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Futuo-ng", right: "Fruit" },
-            { id: 2, left: "Akutu", right: "Orange" },
-            { id: 3, left: "Nyuublamla", right: "Salt" },
-            { id: 4, left: "Sukla", right: "Sugar" }
-          ],
-          hints: ["Futuo-ng = fruit", "Akutu = orange", "Sukla = sugar"],
-          explanation: "These are fruit and ingredient words in Ga."
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["nii = food"],
+          explanation: "Mitaoɔ ni maye nii = I want to eat in Ga."
         }
       ]
     },
 
     {
       id: "5-3",
-      type: "simple_sentences",
-      title: "Drinks",
-      icon: "cafe-outline",
-      description: "Learn the names of drinks in Ga",
-      words: ["Nuu", "Yitso", "Akpeteshie", "Lɛ", "Nubla"],
-      vocabulary: [
-        {
-          id: 14,
-          english: "Water",
-          native: "Nuu",
-          pronunciation: "noo"
-          // audioUrl: "/audio/ga/nuu.mp3"
-        },
-        {
-          id: 15,
-          english: "Drink",
-          native: "Yitso",
-          pronunciation: "yee-tsoh"
-          // audioUrl: "/audio/ga/yitso.mp3"
-        },
-        {
-          id: 16,
-          english: "Local gin",
-          native: "Akpeteshie",
-          pronunciation: "ah-kpeh-tseh-sheh"
-          // audioUrl: "/audio/ga/akpeteshie.mp3"
-        },
-        {
-          id: 17,
-          english: "Milk",
-          native: "Lɛ",
-          pronunciation: "leh"
-          // audioUrl: "/audio/ga/lɛ.mp3"
-        },
-        {
-          id: 18,
-          english: "Palm wine",
-          native: "Nubla",
-          pronunciation: "noo-blah"
-          // audioUrl: "/audio/ga/nubla.mp3"
-        }
-      ],
-      questions: [
-        {
-          id: 301,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Water' in Ga?",
-          options: [
-            { id: 1, text: "Nuu" },
-            { id: 2, text: "Yitso" },
-            { id: 3, text: "Lɛ" },
-            { id: 4, text: "Nubla" }
-          ],
-          correctOptionId: 1,
-          hints: ["You drink it every day"],
-          explanation: "'Nuu' means 'Water' in Ga."
-        },
-        {
-          id: 302,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Drink' in Ga?",
-          options: [
-            { id: 1, text: "Nuu" },
-            { id: 2, text: "Yitso" },
-            { id: 3, text: "Lɛ" },
-            { id: 4, text: "Nubla" }
-          ],
-          correctOptionId: 2,
-          hints: ["Something you drink"],
-          explanation: "'Yitso' means 'Drink' in Ga."
-        },
-        {
-          id: 303,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "How do you say 'Milk' in Ga?",
-          options: [
-            { id: 1, text: "Nuu" },
-            { id: 2, text: "Yitso" },
-            { id: 3, text: "Lɛ" },
-            { id: 4, text: "Nubla" }
-          ],
-          correctOptionId: 3,
-          hints: ["White drink from animals"],
-          explanation: "'Lɛ' means 'Milk' in Ga."
-        },
-        {
-          id: 304,
-          type: "matching",
-          instruction: "Match each Ga word to its English meaning.",
-          pairs: [
-            { id: 1, left: "Nuu", right: "Water" },
-            { id: 2, left: "Yitso", right: "Drink" },
-            { id: 3, left: "Lɛ", right: "Milk" },
-            { id: 4, left: "Nubla", right: "Palm wine" }
-          ],
-          hints: ["Nuu = water", "Yitso = drink", "Lɛ = milk"],
-          explanation: "These are drink words in Ga."
-        }
-      ]
-    },
-
-    {
-      id: "5-4",
-      type: "basic_conversations",
-      title: "At the Restaurant",
+      type: "phrases",
+      title: "At the Table",
       icon: "restaurant-outline",
-      description: "Learn phrases for ordering food and drinks in Ga",
-      words: ["Nii domɔɔ minɔ", "Nuu domɔɔ minɔ", "Nii dɔŋ", "Ɛɛftee"],
+      description: "Learn useful phrases for dining in Ga",
+      words: ["Eŋɔɔ", "Ofainɛ hã mi nu", "Miyeee loo", "Niyenii lɛ edɔ"],
       vocabulary: [
         {
-          id: 19,
-          english: "I am hungry",
-          native: "Nii domɔɔ minɔ",
-          pronunciation: "nee doh-moh-oh mee-noh"
-          // audioUrl: "/audio/ga/nii_domɔɔ_minɔ.mp3"
+          id: 65,
+          english: "It is delicious",
+          native: "Eŋɔɔ",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/eŋɔɔ.m4a")
         },
         {
-          id: 20,
-          english: "I am thirsty",
-          native: "Nuu domɔɔ minɔ",
-          pronunciation: "noo doh-moh-oh mee-noh"
-          // audioUrl: "/audio/ga/nuu_domɔɔ_minɔ.mp3"
+          id: 66,
+          english: "Give me water please",
+          native: "Ofainɛ hã mi nu",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/ofainɛ_hã_mi_nu.m4a")
         },
         {
-          id: 21,
-          english: "Delicious food",
-          native: "Nii dɔŋ",
-          pronunciation: "nee dong"
-          // audioUrl: "/audio/ga/nii_dɔŋ.mp3"
+          id: 71,
+          english: "I don't eat meat",
+          native: "Miyeee loo",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/miyeee_loo.m4a")
         },
         {
-          id: 22,
-          english: "Thank you",
-          native: "Ɛɛftee",
-          pronunciation: "eh-eh-fteh"
-          // audioUrl: "/audio/ga/ɛɛftee.mp3"
+          id: 72,
+          english: "The food is hot",
+          native: "Niyenii lɛ edɔ",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/niyenii_lɛ_edɔ.m4a")
         }
       ],
       questions: [
         {
-          id: 401,
+          id: 510,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I am hungry' in Ga?",
+          question: "How do you say 'It is delicious' in Ga?",
           options: [
-            { id: 1, text: "Nii domɔɔ minɔ" },
-            { id: 2, text: "Nuu domɔɔ minɔ" },
-            { id: 3, text: "Nii dɔŋ" },
-            { id: 4, text: "Ɛɛftee" }
+            { id: 1, text: "Eŋɔɔ" },
+            { id: 2, text: "Ofainɛ hã mi nu" },
+            { id: 3, text: "Miyeee loo" },
+            { id: 4, text: "Niyenii lɛ edɔ" }
           ],
           correctOptionId: 1,
-          hints: ["Means you want to eat"],
-          explanation: "'Nii domɔɔ minɔ' means 'I am hungry' in Ga."
+          hints: ["Eŋɔɔ = It is delicious"],
+          explanation: "Eŋɔɔ = It is delicious in Ga."
         },
         {
-          id: 402,
+          id: 511,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I am thirsty' in Ga?",
+          question: "How do you say 'Give me water please' in Ga?",
           options: [
-            { id: 1, text: "Nii domɔɔ minɔ" },
-            { id: 2, text: "Nuu domɔɔ minɔ" },
-            { id: 3, text: "Nii dɔŋ" },
-            { id: 4, text: "Ɛɛftee" }
+            { id: 1, text: "Eŋɔɔ" },
+            { id: 2, text: "Ofainɛ hã mi nu" },
+            { id: 3, text: "Miyeee loo" },
+            { id: 4, text: "Niyenii lɛ edɔ" }
           ],
           correctOptionId: 2,
-          hints: ["Means you want a drink", "Contains 'nuu' (water)"],
-          explanation: "'Nuu domɔɔ minɔ' means 'I am thirsty' in Ga."
+          hints: ["Ofainɛ = please", "nu = water"],
+          explanation: "Ofainɛ hã mi nu = Give me water please in Ga."
         },
         {
-          id: 403,
+          id: 512,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Delicious food' in Ga?",
+          question: "How do you say 'I don't eat meat' in Ga?",
           options: [
-            { id: 1, text: "Nii domɔɔ minɔ" },
-            { id: 2, text: "Nuu domɔɔ minɔ" },
-            { id: 3, text: "Nii dɔŋ" },
-            { id: 4, text: "Ɛɛftee" }
+            { id: 1, text: "Eŋɔɔ" },
+            { id: 2, text: "Ofainɛ hã mi nu" },
+            { id: 3, text: "Miyeee loo" },
+            { id: 4, text: "Niyenii lɛ edɔ" }
           ],
           correctOptionId: 3,
-          hints: ["dɔŋ = good/tasty", "nii = food"],
-          explanation: "'Nii dɔŋ' means 'Delicious food' in Ga."
+          hints: ["Miyeee = I don't eat", "loo = meat"],
+          explanation: "Miyeee loo = I don't eat meat in Ga."
         },
         {
-          id: 404,
-          type: "matching",
-          instruction: "Match each Ga phrase to its English meaning.",
-          pairs: [
-            { id: 1, left: "Nii domɔɔ minɔ", right: "I am hungry" },
-            { id: 2, left: "Nuu domɔɔ minɔ", right: "I am thirsty" },
-            { id: 3, left: "Nii dɔŋ", right: "Delicious food" },
-            { id: 4, left: "Ɛɛftee", right: "Thank you" }
-          ],
-          hints: ["domɔɔ = want", "nuu = water", "dɔŋ = good"],
-          explanation: "These are useful phrases at the restaurant in Ga."
-        },
-        {
-          id: 405,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the Ga audio and select the correct English translation.",
-          question: "What does this Ga phrase mean in English?",
-          audioUrl: "/audio/ga/nii_dɔŋ.mp3",
+          id: 513,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'The food is hot' in Ga?",
           options: [
-            { id: 1, text: "I am hungry" },
-            { id: 2, text: "Delicious food" },
-            { id: 3, text: "I am thirsty" },
-            { id: 4, text: "Thank you" }
+            { id: 1, text: "Eŋɔɔ" },
+            { id: 2, text: "Ofainɛ hã mi nu" },
+            { id: 3, text: "Miyeee loo" },
+            { id: 4, text: "Niyenii lɛ edɔ" }
           ],
-          correctOptionId: 2,
-          hints: ["dɔŋ = good/tasty"],
-          explanation: "You heard 'Nii dɔŋ' which means 'Delicious food' in Ga."
+          correctOptionId: 4,
+          hints: ["edɔ = hot"],
+          explanation: "Niyenii lɛ edɔ = The food is hot in Ga."
+        },
+        {
+          id: 514,
+          type: "drag_drop",
+          instruction: "Complete the Ga phrase by dragging the correct word.",
+          sentence: "Ofainɛ hã mi [_____] (Give me water please)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "nu" },
+            { id: "opt2", text: "niyenii" },
+            { id: "opt3", text: "loo" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["nu = water"],
+          explanation: "Ofainɛ hã mi nu = Give me water please in Ga."
+        },
+        {
+          id: 515,
+          type: "drag_drop",
+          instruction: "Complete the Ga phrase by dragging the correct word.",
+          sentence: "Miyeee [_____] (I don't eat meat)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "loo" },
+            { id: "opt2", text: "nu" },
+            { id: "opt3", text: "omo" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["loo = meat"],
+          explanation: "Miyeee loo = I don't eat meat in Ga."
         }
       ]
     }
@@ -467,96 +342,127 @@ export default {
     id: "review-5",
     title: "Review: Food & Drinks",
     icon: "refresh-outline",
-    description: "Review all the food and drink words you've learned",
+    description: "Review all the food and drink vocabulary you've learned",
     questions: [
       {
-        id: 501,
+        id: 516,
         type: "multiple_choice",
         instruction: "Select the correct Ga word.",
-        question: "What is 'Food' in Ga?",
+        question: "What is 'Rice' in Ga?",
         options: [
-          { id: 1, text: "Nii" },
-          { id: 2, text: "Bulu" },
-          { id: 3, text: "Akokɔn" },
-          { id: 4, text: "La" }
+          { id: 1, text: "Nu" },
+          { id: 2, text: "Niyenii" },
+          { id: 3, text: "Omo" },
+          { id: 4, text: "Loo" }
         ],
-        correctOptionId: 1,
-        hints: ["What you eat"],
-        explanation: "Nii = Food."
+        correctOptionId: 3,
+        hints: ["A staple food"],
+        explanation: "Omo = Rice in Ga."
       },
       {
-        id: 502,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga word.",
-        question: "What is 'Water' in Ga?",
-        options: [
-          { id: 1, text: "Nuu" },
-          { id: 2, text: "Yitso" },
-          { id: 3, text: "Lɛ" },
-          { id: 4, text: "Nubla" }
-        ],
-        correctOptionId: 1,
-        hints: ["You drink it every day"],
-        explanation: "Nuu = Water."
-      },
-      {
-        id: 503,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga word.",
-        question: "How do you say 'Chicken' in Ga?",
-        options: [
-          { id: 1, text: "Bulu" },
-          { id: 2, text: "Akokɔn" },
-          { id: 3, text: "La" },
-          { id: 4, text: "Akadu" }
-        ],
-        correctOptionId: 2,
-        hints: ["A bird people eat"],
-        explanation: "Akokɔn = Chicken."
-      },
-      {
-        id: 504,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga word.",
-        question: "How do you say 'Sugar' in Ga?",
-        options: [
-          { id: 1, text: "Sukla" },
-          { id: 2, text: "Kpa" },
-          { id: 3, text: "Nyuublamla" },
-          { id: 4, text: "Akadu" }
-        ],
-        correctOptionId: 1,
-        hints: ["Sweetener"],
-        explanation: "Sukla = Sugar."
-      },
-      {
-        id: 505,
+        id: 517,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I am hungry' in Ga?",
         options: [
-          { id: 1, text: "Nii domɔɔ minɔ" },
-          { id: 2, text: "Nuu domɔɔ minɔ" },
-          { id: 3, text: "Nii dɔŋ" },
-          { id: 4, text: "Ɛɛftee" }
+          { id: 1, text: "Hɔmɔ ye mi" },
+          { id: 2, text: "Mitaoɔ ni maye nii" },
+          { id: 3, text: "Kumai miiye mi" },
+          { id: 4, text: "Eŋɔɔ" }
         ],
         correctOptionId: 1,
-        hints: ["You want to eat"],
-        explanation: "Nii domɔɔ minɔ = I am hungry."
+        hints: ["Hɔmɔ = hunger"],
+        explanation: "Hɔmɔ ye mi = I am hungry."
       },
       {
-        id: 506,
-        type: "matching",
-        instruction: "Match each Ga word to its English meaning.",
-        pairs: [
-          { id: 1, left: "Nii", right: "Food" },
-          { id: 2, left: "Nuu", right: "Water" },
-          { id: 3, left: "Akokɔn", right: "Chicken" },
-          { id: 4, left: "La", right: "Meat" },
-          { id: 5, left: "Sukla", right: "Sugar" }
+        id: 518,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Give me water please' in Ga?",
+        options: [
+          { id: 1, text: "Ofainɛ hã mi nu" },
+          { id: 2, text: "Miyeee loo" },
+          { id: 3, text: "Niyenii lɛ edɔ" },
+          { id: 4, text: "Eŋɔɔ" }
         ],
-        hints: ["Nii = food", "Nuu = water", "La = meat"],
-        explanation: "These are key food and drink words from this chapter."
+        correctOptionId: 1,
+        hints: ["Ofainɛ = please", "nu = water"],
+        explanation: "Ofainɛ hã mi nu = Give me water please."
+      },
+      {
+        id: 519,
+        type: "drag_drop",
+        instruction: "Complete the Ga phrase by dragging the correct word.",
+        sentence: "Miyeee [_____] (I don't eat meat)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "loo" },
+          { id: "opt2", text: "nu" },
+          { id: "opt3", text: "omo" }
+        ],
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        hints: ["loo = meat"],
+        explanation: "Miyeee loo = I don't eat meat."
+      },
+      {
+        id: 520,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'The food is hot' in Ga?",
+        options: [
+          { id: 1, text: "Eŋɔɔ" },
+          { id: 2, text: "Niyenii lɛ edɔ" },
+          { id: 3, text: "Miyeee loo" },
+          { id: 4, text: "Ofainɛ hã mi nu" }
+        ],
+        correctOptionId: 2,
+        hints: ["edɔ = hot"],
+        explanation: "Niyenii lɛ edɔ = The food is hot."
+      },
+      {
+        id: 521,
+        type: "drag_drop",
+        instruction: "Complete the Ga phrase by dragging the correct word.",
+        sentence: "Ofainɛ hã mi [_____] (Give me water please)",
+        blankId: "blank1",
+        items: [
+          { id: "opt1", text: "nu" },
+          { id: "opt2", text: "niyenii" },
+          { id: "opt3", text: "loo" }
+        ],
+        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        hints: ["nu = water"],
+        explanation: "Ofainɛ hã mi nu = Give me water please."
+      },
+      {
+        id: 522,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I want to eat' in Ga?",
+        options: [
+          { id: 1, text: "Hɔmɔ ye mi" },
+          { id: 2, text: "Mitaoɔ ni maye nii" },
+          { id: 3, text: "Kumai miiye mi" },
+          { id: 4, text: "Eŋɔɔ" }
+        ],
+        correctOptionId: 2,
+        hints: ["Mitaoɔ = I want"],
+        explanation: "Mitaoɔ ni maye nii = I want to eat."
+      },
+      {
+        id: 523,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I am thirsty' in Ga?",
+        options: [
+          { id: 1, text: "Hɔmɔ ye mi" },
+          { id: 2, text: "Mitaoɔ ni maye nii" },
+          { id: 3, text: "Kumai miiye mi" },
+          { id: 4, text: "Eŋɔɔ" }
+        ],
+        correctOptionId: 3,
+        hints: ["Kumai = thirst"],
+        explanation: "Kumai miiye mi = I am thirsty."
       }
     ]
   }

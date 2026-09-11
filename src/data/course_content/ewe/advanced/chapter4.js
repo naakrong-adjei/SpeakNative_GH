@@ -11,7 +11,7 @@ export default {
       id: "24-1",
       type: "words",
       title: "Festivals & Chiefs",
-      icon: "crown-outline",
+      icon: "trophy-outline",
       description: "Learn about festivals and chieftaincy in Ewe",
       words: ["Blema kɔnu ŋkekenyui", "Fia", "Fianyɔnu"],
       vocabulary: [
@@ -88,7 +88,7 @@ export default {
       id: "24-2",
       type: "words",
       title: "Ceremonies",
-      icon: "drum-outline",
+      icon: "musical-notes-outline",
       description: "Learn about traditional ceremonies in Ewe",
       words: ["Ŋkɔnana", "Ʋuƒoƒo kple ɣeɖuɖu", "Ametsitsiwo ƒo tsi di"],
       vocabulary: [

@@ -19,31 +19,31 @@ export default {
           id: 44,
           english: "One",
           native: "Ekome",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ekome.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ekome.m4a")
         },
         {
           id: 45,
           english: "Two",
           native: "Enyɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/enyɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/enyɔ.m4a")
         },
         {
           id: 46,
           english: "Three",
           native: "Etɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/etɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/etɛ.m4a")
         },
         {
           id: 52,
           english: "Four",
           native: "Ejwɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ejwɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ejwɛ.m4a")
         },
         {
           id: 53,
           english: "Five",
           native: "Enumɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/enumɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/enumɔ.m4a")
         }
       ],
       questions: [
@@ -62,22 +62,22 @@ export default {
           hints: ["Has an 'ɛ' sound"],
           explanation: "Etɛ = Three in Ga."
         },
-        // {
-        //   id: 402,
-        //   type: "listening_multiple_choice",
-        //   instruction: "Listen to the audio and select the correct English number.",
-        //   question: "What number did you hear?",
-        //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ekome.m4a"),
-        //   options: [
-        //     { id: 1, text: "1" },
-        //     { id: 2, text: "2" },
-        //     { id: 3, text: "3" },
-        //     { id: 4, text: "4" }
-        //   ],
-        //   correctOptionId: 1,
-        //   hints: ["The smallest number"],
-        //   explanation: "You heard 'Ekome' which means One in Ga."
-        // },
+        {
+          id: 402,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English number.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ekome.m4a"),
+          options: [
+            { id: 1, text: "1" },
+            { id: 2, text: "2" },
+            { id: 3, text: "3" },
+            { id: 4, text: "4" }
+          ],
+          correctOptionId: 1,
+          hints: ["The smallest number"],
+          explanation: "You heard 'Ekome' which means One in Ga."
+        },
         {
           id: 403,
           type: "drag_drop",
@@ -108,31 +108,31 @@ export default {
           id: 60,
           english: "Six",
           native: "Ekpaa",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ekpaa.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ekpaa.m4a")
         },
         {
           id: 61,
           english: "Seven",
           native: "Kpawo",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/kpawo.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/kpawo.m4a")
         },
         {
           id: 62,
           english: "Eight",
           native: "Kpaanyɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/kpaanyɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/kpaanyɔ.m4a")
         },
         {
           id: 63,
           english: "Nine",
           native: "Nɛɛhu",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nɛɛhu.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nɛɛhu.m4a")
         },
         {
           id: 47,
           english: "Ten",
           native: "Nyɔŋma",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma.m4a")
         }
       ],
       questions: [
@@ -151,22 +151,22 @@ export default {
           hints: ["Has a 'wo' sound"],
           explanation: "Kpawo = Seven in Ga."
         },
-        // {
-        //   id: 405,
-        //   type: "listening_multiple_choice",
-        //   instruction: "Listen to the audio and select the correct English number.",
-        //   question: "What number did you hear?",
-        //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma.m4a"),
-        //   options: [
-        //     { id: 1, text: "8" },
-        //     { id: 2, text: "9" },
-        //     { id: 3, text: "10" },
-        //     { id: 4, text: "11" }
-        //   ],
-        //   correctOptionId: 3,
-        //   hints: ["Two digits"],
-        //   explanation: "You heard 'Nyɔŋma' which means Ten in Ga."
-        // },
+        {
+          id: 405,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English number.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma.m4a"),
+          options: [
+            { id: 1, text: "8" },
+            { id: 2, text: "9" },
+            { id: 3, text: "10" },
+            { id: 4, text: "11" }
+          ],
+          correctOptionId: 3,
+          hints: ["Two digits"],
+          explanation: "You heard 'Nyɔŋma' which means Ten in Ga."
+        },
         {
           id: 406,
           type: "drag_drop",
@@ -197,31 +197,31 @@ export default {
           id: 64,
           english: "Eleven",
           native: "Nyɔŋma kɛ ekome",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_ekome.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_ekome.m4a")
         },
         {
           id: 65,
           english: "Twelve",
           native: "Nyɔŋma kɛ enyɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_enyɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_enyɔ.m4a")
         },
         {
           id: 66,
           english: "Thirteen",
           native: "Nyɔŋma kɛ etɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_etɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_etɛ.m4a")
         },
         {
           id: 67,
           english: "Fourteen",
           native: "Nyɔŋma kɛ ejwɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_ejwɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_ejwɛ.m4a")
         },
         {
           id: 68,
           english: "Fifteen",
           native: "Nyɔŋma kɛ enumɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_enumɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_enumɔ.m4a")
         }
       ],
       questions: [
@@ -240,22 +240,22 @@ export default {
           hints: ["Nyɔŋma = ten", "ejwɛ = four"],
           explanation: "Nyɔŋma kɛ ejwɛ = Fourteen in Ga."
         },
-        // {
-        //   id: 408,
-        //   type: "listening_multiple_choice",
-        //   instruction: "Listen to the audio and select the correct English number.",
-        //   question: "What number did you hear?",
-        //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_enumɔ.m4a"),
-        //   options: [
-        //     { id: 1, text: "13" },
-        //     { id: 2, text: "14" },
-        //     { id: 3, text: "15" },
-        //     { id: 4, text: "16" }
-        //   ],
-        //   correctOptionId: 3,
-        //   hints: ["Nyɔŋma = ten", "enumɔ = five"],
-        //   explanation: "You heard 'Nyɔŋma kɛ enumɔ' which means Fifteen in Ga."
-        // },
+        {
+          id: 408,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English number.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋma_kɛ_enumɔ.m4a"),
+          options: [
+            { id: 1, text: "13" },
+            { id: 2, text: "14" },
+            { id: 3, text: "15" },
+            { id: 4, text: "16" }
+          ],
+          correctOptionId: 3,
+          hints: ["Nyɔŋma = ten", "enumɔ = five"],
+          explanation: "You heard 'Nyɔŋma kɛ enumɔ' which means Fifteen in Ga."
+        },
         {
           id: 409,
           type: "drag_drop",
@@ -286,25 +286,25 @@ export default {
           id: 54,
           english: "Twenty",
           native: "Nyɔŋmai enyɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_enyɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_enyɔ.m4a")
         },
         {
           id: 74,
           english: "Thirty",
           native: "Nyɔŋmai etɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_etɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_etɛ.m4a")
         },
         {
           id: 75,
           english: "Forty",
           native: "Nyɔŋmai ejwɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_ejwɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_ejwɛ.m4a")
         },
         {
           id: 76,
           english: "Fifty",
           native: "Nyɔŋmai enumɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_enumɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_enumɔ.m4a")
         }
       ],
       questions: [
@@ -323,22 +323,22 @@ export default {
           hints: ["Four tens"],
           explanation: "Nyɔŋmai ejwɛ = Forty in Ga."
         },
-        // {
-        //   id: 411,
-        //   type: "listening_multiple_choice",
-        //   instruction: "Listen to the audio and select the correct English number.",
-        //   question: "What number did you hear?",
-        //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_etɛ.m4a"),
-        //   options: [
-        //     { id: 1, text: "20" },
-        //     { id: 2, text: "30" },
-        //     { id: 3, text: "40" },
-        //     { id: 4, text: "50" }
-        //   ],
-        //   correctOptionId: 2,
-        //   hints: ["Three tens"],
-        //   explanation: "You heard 'Nyɔŋmai etɛ' which means Thirty in Ga."
-        // },
+        {
+          id: 411,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English number.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_etɛ.m4a"),
+          options: [
+            { id: 1, text: "20" },
+            { id: 2, text: "30" },
+            { id: 3, text: "40" },
+            { id: 4, text: "50" }
+          ],
+          correctOptionId: 2,
+          hints: ["Three tens"],
+          explanation: "You heard 'Nyɔŋmai etɛ' which means Thirty in Ga."
+        },
         {
           id: 412,
           type: "drag_drop",
@@ -369,31 +369,31 @@ export default {
           id: 77,
           english: "Sixty",
           native: "Nyɔŋmai ekpaa",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_ekpaa.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_ekpaa.m4a")
         },
         {
           id: 78,
           english: "Seventy",
           native: "Nyɔŋmai kpawo",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_kpawo.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_kpawo.m4a")
         },
         {
           id: 79,
           english: "Eighty",
           native: "Nyɔŋmai kpaanyɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_kpaanyɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_kpaanyɔ.m4a")
         },
         {
           id: 80,
           english: "Ninety",
           native: "Nyɔŋmai nɛɛhu",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_nɛɛhu.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_nɛɛhu.m4a")
         },
         {
           id: 55,
           english: "One hundred",
           native: "Oha",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/oha.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/oha.m4a")
         }
       ],
       questions: [
@@ -412,22 +412,22 @@ export default {
           hints: ["Nine tens"],
           explanation: "Nyɔŋmai nɛɛhu = Ninety in Ga."
         },
-        // {
-        //   id: 414,
-        //   type: "listening_multiple_choice",
-        //   instruction: "Listen to the audio and select the correct English number.",
-        //   question: "What number did you hear?",
-        //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/oha.m4a"),
-        //   options: [
-        //     { id: 1, text: "50" },
-        //     { id: 2, text: "75" },
-        //     { id: 3, text: "90" },
-        //     { id: 4, text: "100" }
-        //   ],
-        //   correctOptionId: 4,
-        //   hints: ["Oha = hundred"],
-        //   explanation: "You heard 'Oha' which means One hundred in Ga."
-        // },
+        {
+          id: 414,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English number.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/oha.m4a"),
+          options: [
+            { id: 1, text: "50" },
+            { id: 2, text: "75" },
+            { id: 3, text: "90" },
+            { id: 4, text: "100" }
+          ],
+          correctOptionId: 4,
+          hints: ["Oha = hundred"],
+          explanation: "You heard 'Oha' which means One hundred in Ga."
+        },
         {
           id: 415,
           type: "drag_drop",
@@ -452,56 +452,56 @@ export default {
       title: "Compound Numbers",
       icon: "calculator-outline",
       description: "Learn compound numbers in Ga",
-      words: ["Nyɔŋmai enumɔ kɛ ekome", "Nyɔŋmai enyɔ kɛ enyɔ", "Nyɔŋmai etɛ kɛ nɛɛhu", "Nyɔŋmai nɛɛhu kɛ kpaanyɔ", "Oha kɛ nyɔŋmai enumɔ"],
+      words: ["Nyɔŋmai enyɔ kɛ enyɔ", "Nyɔŋmai etɛ kɛ nɛɛhu", "Nyɔŋmai enumɔ kɛ ekome", "Nyɔŋmai nɛɛhu kɛ kpaanyɔ", "Oha kɛ nyɔŋmai enumɔ"],
       vocabulary: [
         {
           id: 81,
-          english: "Fifty-one",
-          native: "Nyɔŋmai enumɔ kɛ ekome",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_enumɔ_kɛ_ekome.m4a")
+          english: "Twenty-two",
+          native: "Nyɔŋmai enyɔ kɛ enyɔ",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_enyɔ_kɛ_enyɔ.m4a")
         },
         {
           id: 82,
-          english: "Twenty-two",
-          native: "Nyɔŋmai enyɔ kɛ enyɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_enyɔ_kɛ_enyɔ.m4a")
+          english: "Thirty-nine",
+          native: "Nyɔŋmai etɛ kɛ nɛɛhu",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_etɛ_kɛ_nɛɛhu.m4a")
         },
         {
           id: 83,
-          english: "Thirty-nine",
-          native: "Nyɔŋmai etɛ kɛ nɛɛhu",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_etɛ_kɛ_nɛɛhu.m4a")
+          english: "Fifty-one",
+          native: "Nyɔŋmai enumɔ kɛ ekome",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_enumɔ_kɛ_ekome.m4a")
         },
         {
           id: 84,
           english: "Ninety-eight",
           native: "Nyɔŋmai nɛɛhu kɛ kpaanyɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_nɛɛhu_kɛ_kpaanyɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_nɛɛhu_kɛ_kpaanyɔ.m4a")
         },
         {
           id: 85,
           english: "One hundred and fifty",
           native: "Oha kɛ nyɔŋmai enumɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/oha_kɛ_nyɔŋmai_enumɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/oha_kɛ_nyɔŋmai_enumɔ.m4a")
         }
       ],
       questions: [
-        // {
-        //   id: 416,
-        //   type: "listening_multiple_choice",
-        //   instruction: "Listen to the audio and select the correct English number.",
-        //   question: "What number did you hear?",
-        //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/oha_kɛ_nyɔŋmai_enumɔ.m4a"),
-        //   options: [
-        //     { id: 1, text: "50" },
-        //     { id: 2, text: "100" },
-        //     { id: 3, text: "150" },
-        //     { id: 4, text: "200" }
-        //   ],
-        //   correctOptionId: 3,
-        //   hints: ["Oha = one hundred", "nyɔŋmai enumɔ = fifty"],
-        //   explanation: "You heard 'Oha kɛ nyɔŋmai enumɔ' which means One hundred and fifty in Ga."
-        // },
+        {
+          id: 416,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English number.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/oha_kɛ_nyɔŋmai_enumɔ.m4a"),
+          options: [
+            { id: 1, text: "50" },
+            { id: 2, text: "100" },
+            { id: 3, text: "150" },
+            { id: 4, text: "200" }
+          ],
+          correctOptionId: 3,
+          hints: ["Oha = one hundred", "nyɔŋmai enumɔ = fifty"],
+          explanation: "You heard 'Oha kɛ nyɔŋmai enumɔ' which means One hundred and fifty in Ga."
+        },
         {
           id: 417,
           type: "drag_drop",
@@ -541,43 +541,43 @@ export default {
       title: "Telling Time",
       icon: "time-outline",
       description: "Learn how to ask and tell the time in Ga",
-      words: ["ŋmɛjii enyiɛ atswa?", "Atswa ŋmɛjii etɛ", "Leebi", "Shwane", "Gbɛkɛ", "Nyɔɔŋ"],
+      words: ["Ŋmɛjii enyiɛ atswa?", "Atswa ŋmɛjii etɛ", "Leebi", "Shwane", "Gbɛkɛ", "Nyɔɔŋ"],
       vocabulary: [
         {
           id: 48,
           english: "What time is it?",
-          native: "ŋmɛjii enyiɛ atswa?",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ŋmɛjii_enyiɛ_atswa.m4a")
+          native: "Ŋmɛjii enyiɛ atswa?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ŋmɛjii_enyiɛ_atswa.m4a")
         },
         {
           id: 49,
           english: "It is three o'clock",
           native: "Atswa ŋmɛjii etɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/atswa_ŋmɛjii_etɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/atswa_ŋmɛjii_etɛ.m4a")
         },
         {
           id: 56,
           english: "In the morning",
           native: "Leebi",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/leebi.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/leebi.m4a")
         },
         {
           id: 86,
           english: "In the afternoon",
           native: "Shwane",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/shwane.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/shwane.m4a")
         },
         {
           id: 87,
           english: "In the evening",
           native: "Gbɛkɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/gbɛkɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/gbɛkɛ.m4a")
         },
         {
           id: 57,
           english: "At night",
           native: "Nyɔɔŋ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔɔŋ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔɔŋ.m4a")
         }
       ],
       questions: [
@@ -587,31 +587,31 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you ask 'What time is it?' in Ga?",
           options: [
-            { id: 1, text: "ŋmɛjii enyiɛ atswa?" },
+            { id: 1, text: "Ŋmɛjii enyiɛ atswa?" },
             { id: 2, text: "Atswa ŋmɛjii etɛ" },
             { id: 3, text: "Leebi" },
             { id: 4, text: "Nyɔɔŋ" }
           ],
           correctOptionId: 1,
           hints: ["Question about time"],
-          explanation: "ŋmɛjii enyiɛ atswa? = What time is it? in Ga."
+          explanation: "Ŋmɛjii enyiɛ atswa? = What time is it? in Ga."
         },
-        // {
-        //   id: 420,
-        //   type: "listening_multiple_choice",
-        //   instruction: "Listen to the audio and select the correct English translation.",
-        //   question: "What did the speaker say?",
-        //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/atswa_ŋmɛjii_etɛ.m4a"),
-        //   options: [
-        //     { id: 1, text: "What time is it?" },
-        //     { id: 2, text: "It is three o'clock" },
-        //     { id: 3, text: "In the morning" },
-        //     { id: 4, text: "At night" }
-        //   ],
-        //   correctOptionId: 2,
-        //   hints: ["Atswa = It is", "etɛ = three"],
-        //   explanation: "You heard 'Atswa ŋmɛjii etɛ' which means 'It is three o'clock' in Ga."
-        // },
+        {
+          id: 420,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/atswa_ŋmɛjii_etɛ.m4a"),
+          options: [
+            { id: 1, text: "What time is it?" },
+            { id: 2, text: "It is three o'clock" },
+            { id: 3, text: "In the morning" },
+            { id: 4, text: "At night" }
+          ],
+          correctOptionId: 2,
+          hints: ["Atswa = It is", "etɛ = three"],
+          explanation: "You heard 'Atswa ŋmɛjii etɛ' which means 'It is three o'clock' in Ga."
+        },
         {
           id: 421,
           type: "drag_drop",
@@ -636,37 +636,37 @@ export default {
       title: "Days & Weeks",
       icon: "calendar-outline",
       description: "Learn the Ga words for days, weeks, today, tomorrow, and yesterday",
-      words: ["Ŋmɛnɛ", "Wɔ", "Nyɛ", "Otsi ni baa lɛ", "nyɛsɛɛ otsi lɛ"],
+      words: ["Ŋmɛnɛ", "Wɔ", "Nyɛ", "Otsi ni baa lɛ", "Nyɛsɛɛ otsi lɛ"],
       vocabulary: [
         {
           id: 50,
           english: "Today",
           native: "Ŋmɛnɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ŋmɛnɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ŋmɛnɛ.m4a")
         },
         {
           id: 51,
           english: "Tomorrow",
           native: "Wɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/wɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/wɔ.m4a")
         },
         {
           id: 58,
           english: "Yesterday",
           native: "Nyɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɛ.m4a")
         },
         {
           id: 59,
           english: "Next week",
           native: "Otsi ni baa lɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/otsi_ni_baa_lɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/otsi_ni_baa_lɛ.m4a")
         },
         {
           id: 88,
           english: "Last week",
           native: "nyɛsɛɛ otsi lɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɛsɛɛ_otsi_lɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɛsɛɛ_otsi_lɛ.m4a")
         }
       ],
       questions: [
@@ -685,22 +685,22 @@ export default {
           hints: ["The current day"],
           explanation: "Ŋmɛnɛ = Today in Ga."
         },
-        // {
-        //   id: 423,
-        //   type: "listening_multiple_choice",
-        //   instruction: "Listen to the audio and select the correct English translation.",
-        //   question: "What did the speaker say?",
-        //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/wɔ.m4a"),
-        //   options: [
-        //     { id: 1, text: "Today" },
-        //     { id: 2, text: "Tomorrow" },
-        //     { id: 3, text: "Yesterday" },
-        //     { id: 4, text: "Next week" }
-        //   ],
-        //   correctOptionId: 2,
-        //   hints: ["The day after today"],
-        //   explanation: "You heard 'Wɔ' which means Tomorrow in Ga."
-        // },
+        {
+          id: 423,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/wɔ.m4a"),
+          options: [
+            { id: 1, text: "Today" },
+            { id: 2, text: "Tomorrow" },
+            { id: 3, text: "Yesterday" },
+            { id: 4, text: "Next week" }
+          ],
+          correctOptionId: 2,
+          hints: ["The day after today"],
+          explanation: "You heard 'Wɔ' which means Tomorrow in Ga."
+        },
         {
           id: 424,
           type: "drag_drop",
@@ -731,43 +731,43 @@ export default {
           id: 89,
           english: "Monday",
           native: "Ju",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ju.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ju.m4a")
         },
         {
           id: 90,
           english: "Tuesday",
           native: "Jufɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/jufɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/jufɔ.m4a")
         },
         {
           id: 91,
           english: "Wednesday",
           native: "Shɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/shɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/shɔ.m4a")
         },
         {
           id: 92,
           english: "Thursday",
           native: "Soo",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/soo.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/soo.m4a")
         },
         {
           id: 93,
           english: "Friday",
           native: "Sohaa",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/sohaa.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/sohaa.m4a")
         },
         {
           id: 94,
           english: "Saturday",
           native: "Hɔɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/hɔɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/hɔɔ.m4a")
         },
         {
           id: 95,
           english: "Sunday",
           native: "Hɔgbaa",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/hɔgbaa.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/hɔgbaa.m4a")
         }
       ],
       questions: [
@@ -786,22 +786,22 @@ export default {
           hints: ["The first day of the week"],
           explanation: "Ju = Monday in Ga."
         },
-        // {
-        //   id: 426,
-        //   type: "listening_multiple_choice",
-        //   instruction: "Listen to the audio and select the correct English translation.",
-        //   question: "What day of the week did you hear?",
-        //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/hɔɔ.m4a"),
-        //   options: [
-        //     { id: 1, text: "Monday" },
-        //     { id: 2, text: "Wednesday" },
-        //     { id: 3, text: "Friday" },
-        //     { id: 4, text: "Saturday" }
-        //   ],
-        //   correctOptionId: 4,
-        //   hints: ["The day before Sunday"],
-        //   explanation: "You heard 'Hɔɔ' which means Saturday in Ga."
-        // },
+        {
+          id: 426,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What day of the week did you hear?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/hɔɔ.m4a"),
+          options: [
+            { id: 1, text: "Monday" },
+            { id: 2, text: "Wednesday" },
+            { id: 3, text: "Friday" },
+            { id: 4, text: "Saturday" }
+          ],
+          correctOptionId: 4,
+          hints: ["The day before Sunday"],
+          explanation: "You heard 'Hɔɔ' which means Saturday in Ga."
+        },
         {
           id: 427,
           type: "drag_drop",
@@ -842,22 +842,22 @@ export default {
         hints: ["Comes after seven"],
         explanation: "Kpaanyɔ = Eight in Ga."
       },
-      // {
-      //   id: 502,
-      //   type: "listening_multiple_choice",
-      //   instruction: "Listen to the audio and select the correct English number.",
-      //   question: "What number did you hear?",
-      //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ejwɛ.m4a"),
-      //   options: [
-      //     { id: 1, text: "2" },
-      //     { id: 2, text: "3" },
-      //     { id: 3, text: "4" },
-      //     { id: 4, text: "5" }
-      //   ],
-      //   correctOptionId: 3,
-      //   hints: ["Sounds like 'eh-jweh'"],
-      //   explanation: "You heard 'Ejwɛ' which means Four in Ga."
-      // },
+       {
+         id: 502,
+         type: "listening_multiple_choice",
+         instruction: "Listen to the audio and select the correct English number.",
+         question: "What number did you hear?",
+         audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/ejwɛ.m4a"),
+         options: [
+           { id: 1, text: "2" },
+           { id: 2, text: "3" },
+           { id: 3, text: "4" },
+           { id: 4, text: "5" }
+         ],
+         correctOptionId: 3,
+         hints: ["Sounds like 'eh-jweh'"],
+         explanation: "You heard 'Ejwɛ' which means Four in Ga."
+       },
       {
         id: 503,
         type: "drag_drop",
@@ -888,22 +888,22 @@ export default {
         hints: ["Five tens"],
         explanation: "Nyɔŋmai enumɔ = Fifty in Ga."
       },
-      // {
-      //   id: 505,
-      //   type: "listening_multiple_choice",
-      //   instruction: "Listen to the audio and select the correct English number.",
-      //   question: "What number did you hear?",
-      //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_kpawo.m4a"),
-      //   options: [
-      //     { id: 1, text: "70" },
-      //     { id: 2, text: "60" },
-      //     { id: 3, text: "80" },
-      //     { id: 4, text: "90" }
-      //   ],
-      //   correctOptionId: 1,
-      //   hints: ["Seven tens"],
-      //   explanation: "You heard 'Nyɔŋmai kpawo' which means Seventy in Ga."
-      // },
+       {
+         id: 505,
+         type: "listening_multiple_choice",
+         instruction: "Listen to the audio and select the correct English number.",
+         question: "What number did you hear?",
+         audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔŋmai_kpawo.m4a"),
+         options: [
+           { id: 1, text: "70" },
+           { id: 2, text: "60" },
+           { id: 3, text: "80" },
+           { id: 4, text: "90" }
+         ],
+         correctOptionId: 1,
+         hints: ["Seven tens"],
+         explanation: "You heard 'Nyɔŋmai kpawo' which means Seventy in Ga."
+       },
       {
         id: 506,
         type: "drag_drop",
@@ -934,22 +934,22 @@ export default {
         hints: ["Atswa = It is", "etɛ = three"],
         explanation: "Atswa ŋmɛjii etɛ = It is three o'clock."
       },
-      // {
-      //   id: 508,
-      //   type: "listening_multiple_choice",
-      //   instruction: "Listen to the audio and select the correct English translation.",
-      //   question: "What did the speaker say?",
-      //   audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔɔŋ.m4a"),
-      //   options: [
-      //     { id: 1, text: "In the morning" },
-      //     { id: 2, text: "At night" },
-      //     { id: 3, text: "Today" },
-      //     { id: 4, text: "Tomorrow" }
-      //   ],
-      //   correctOptionId: 2,
-      //   hints: ["Nyɔɔŋ = night"],
-      //   explanation: "You heard 'Nyɔɔŋ' which means At night."
-      // },
+       {
+         id: 508,
+         type: "listening_multiple_choice",
+         instruction: "Listen to the audio and select the correct English translation.",
+         question: "What did the speaker say?",
+         audioUrl: require("../../../../assets/audio/ga/beginner/chapter4/nyɔɔŋ.m4a"),
+         options: [
+           { id: 1, text: "In the morning" },
+           { id: 2, text: "At night" },
+           { id: 3, text: "Today" },
+           { id: 4, text: "Tomorrow" }
+         ],
+         correctOptionId: 2,
+         hints: ["Nyɔɔŋ = night"],
+         explanation: "You heard 'Nyɔɔŋ' which means At night."
+       },
       {
         id: 509,
         type: "multiple_choice",

@@ -155,7 +155,7 @@ export default {
       id: "21-3",
       type: "words",
       title: "Relative Clauses",
-      icon: "brackets-outline",
+      icon: "code-slash-outline",
       description: "Learn how to form relative clauses in Ewe",
       words: ["Dɔ hia wowɔ etsɔ", "Ame shia ame si va gbã la woasubɔ", "Xɔ hia metu le ƒe si va yi me"],
       vocabulary: [

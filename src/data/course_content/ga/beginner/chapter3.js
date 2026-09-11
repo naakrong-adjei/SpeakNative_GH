@@ -19,31 +19,31 @@ export default {
           id: 30,
           english: "Mother",
           native: "Nyɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nyɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nyɛ.m4a")
         },
         {
           id: 31,
           english: "Father",
           native: "Tsɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/tsɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/tsɛ.m4a")
         },
         {
           id: 32,
           english: "Child",
           native: "Bi",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/bi.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/bi.m4a")
         },
         {
           id: 33,
           english: "Brother",
           native: "Nyɛmi nuu",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nyɛmi_nuu.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nyɛmi_nuu.m4a")
         },
         {
           id: 34,
           english: "Sister",
           native: "Nyɛmi yoo",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nyɛmi_yoo.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nyɛmi_yoo.m4a")
         }
       ],
       questions: [
@@ -137,37 +137,37 @@ export default {
           id: 37,
           english: "Grandmother",
           native: "Naa",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/naa.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/naa.m4a")
         },
         {
           id: 40,
           english: "Grandfather",
           native: "Nii",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nii.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nii.m4a")
         },
         {
           id: 100,
           english: "Uncle",
           native: "Tsɛkwɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/tsɛkwɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/tsɛkwɛ.m4a")
         },
         {
           id: 101,
           english: "Auntie",
           native: "Nyɛkwɛ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nyɛkwɛ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nyɛkwɛ.m4a")
         },
         {
           id: 38,
           english: "Husband",
           native: "Wu",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/wu.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/wu.m4a")
         },
         {
           id: 39,
           english: "Wife",
           native: "Ŋa",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/ŋa.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/ŋa.m4a")
         }
       ],
       questions: [
@@ -276,25 +276,25 @@ export default {
           id: 35,
           english: "This is my family",
           native: "Enɛ ji miweku",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/enɛ_ji_miweku.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/enɛ_ji_miweku.m4a")
         },
         {
           id: 36,
           english: "I have two children",
           native: "Miyɛ bii enyɔ",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/miyɛ_bii_enyɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/miyɛ_bii_enyɔ.m4a")
         },
         {
           id: 41,
           english: "My family is big",
           native: "Miweku lɛ da",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/miweku_lɛ_da.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/miweku_lɛ_da.m4a")
         },
         {
           id: 43,
           english: "How many siblings do you have?",
           native: "Nyɛmimɛi enyiɛ oyɔɔ?",
-          // audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nyɛmimɛi_enyiɛ_oyɔɔ.m4a")
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter3/nyɛmimɛi_enyiɛ_oyɔɔ.m4a")
         }
       ],
       questions: [
