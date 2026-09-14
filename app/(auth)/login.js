@@ -47,17 +47,7 @@ export default function LoginScreen() {
   const [showVerify, setShowVerify] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  /*
-   * Once Clerk confirms that the session is active,
-   * leave the login screen.
-   *
-   * We navigate to "/" instead of directly to lessons
-   * because index.js is responsible for checking:
-   *
-   * 1. Authentication
-   * 2. Onboarding status
-   * 3. Final app destination
-   */
+
   useEffect(() => {
     if (!authLoaded || !isSignedIn) {
       return;

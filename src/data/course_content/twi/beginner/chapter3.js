@@ -1,292 +1,49 @@
-// data/course_content/twi/beginner/chapter3.js
 export default {
   id: 3,
-  title: "Family & Everyday Life",
-  description: "Learn words and phrases to talk about your family and daily routines in Twi",
+  title: "Family",
+  description: "Learn family vocabulary in Twi",
   icon: "people-outline",
-  totalXp: 20,
+  totalXp: 15,
   difficulty: "Beginner",
 
   sections: [
     {
       id: "3-1",
-      type: "vocabulary",
-      title: "Family Members",
-      icon: "people-outline",
-      description: "Learn to name the members of your family in Twi",
-      words: ["Abusua", "Ɛna", "Agya", "Ɔba", "Nua barima", "Nua ba"],
+      type: "words",
+      title: "Close Family",
+      icon: "users-outline",
+      description: "Learn words for close family members in Twi",
+      words: ["Ɛna", "Agya", "Abofra", "Nua barima", "Nua baa"],
       vocabulary: [
         {
-          id: 1,
-          english: "Family",
-          native: "Abusua",
-          pronunciation: "ah-boo-soo-ah"
-          // audioUrl: "/audio/twi/abusua.mp3"
-        },
-        {
-          id: 2,
+          id: 40,
           english: "Mother",
           native: "Ɛna",
-          pronunciation: "eh-nah"
-          // audioUrl: "/audio/twi/ena.mp3"
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/ɛna.m4a")
         },
         {
-          id: 3,
+          id: 41,
           english: "Father",
           native: "Agya",
-          pronunciation: "ah-jah"
-          // audioUrl: "/audio/twi/agya.mp3"
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/agya.m4a")
         },
         {
-          id: 4,
+          id: 42,
           english: "Child",
-          native: "Ɔba",
-          pronunciation: "oh-bah"
-          // audioUrl: "/audio/twi/oba.mp3"
+          native: "Abofra",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/abofra.m4a")
         },
         {
-          id: 5,
+          id: 43,
           english: "Brother",
           native: "Nua barima",
-          pronunciation: "nuu-ah bah-ree-mah"
-          // audioUrl: "/audio/twi/nua_barima.mp3"
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/nua_barima.m4a")
         },
         {
-          id: 6,
+          id: 44,
           english: "Sister",
-          native: "Nua ba",
-          pronunciation: "nuu-ah bah"
-          // audioUrl: "/audio/twi/nua_ba.mp3"
-        }
-      ],
-      questions: [
-        {
-          id: 101,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Mother' in Twi?",
-          options: [
-            { id: 1, text: "Ɛna" },
-            { id: 2, text: "Agya" },
-            { id: 3, text: "Ɔba" },
-            { id: 4, text: "Nua" }
-          ],
-          correctOptionId: 1,
-          hints: ["Starts with 'Ɛ'", "Female parent"],
-          explanation: "Ɛna = Mother. Use it to refer to your female parent."
-        },
-        {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Father' in Twi?",
-          options: [
-            { id: 1, text: "Ɛna" },
-            { id: 2, text: "Agya" },
-            { id: 3, text: "Ɔba" },
-            { id: 4, text: "Nua" }
-          ],
-          correctOptionId: 2,
-          hints: ["Starts with 'A'", "Male parent"],
-          explanation: "Agya = Father. Use it to refer to your male parent."
-        },
-        {
-          id: 103,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Child' in Twi?",
-          options: [
-            { id: 1, text: "Ɛna" },
-            { id: 2, text: "Agya" },
-            { id: 3, text: "Ɔba" },
-            { id: 4, text: "Abusua" }
-          ],
-          correctOptionId: 3,
-          hints: ["A young person", "Starts with 'Ɔ'"],
-          explanation: "Ɔba = Child. It refers to a young person or offspring."
-        },
-        {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Twi word to its correct English meaning.",
-          pairs: [
-            { id: 1, left: "Abusua", right: "Family" },
-            { id: 2, left: "Ɛna", right: "Mother" },
-            { id: 3, left: "Agya", right: "Father" },
-            { id: 4, left: "Ɔba", right: "Child" }
-          ],
-          hints: ["Abusua = family", "Ɛna = mother", "Agya = father", "Ɔba = child"],
-          explanation: "These are key family terms in Twi."
-        },
-        {
-          id: 105,
-          type: "drag_drop",
-          instruction: "Complete the word for 'Brother' by dragging the correct words.",
-          sentence: "[_____] [_____] (Brother)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "Nua", meaning: "Sibling" },
-            { id: "opt2", text: "barima", meaning: "Male" },
-            { id: "opt3", text: "Ɔba", meaning: "Child" }
-          ],
-          correctDrops: [
-            { blankId: "blank1", itemId: "opt1" },
-            { blankId: "blank2", itemId: "opt2" }
-          ],
-          hints: ["First word = sibling", "Second word = male"],
-          explanation: "'Nua barima' = Brother. 'Nua' means 'sibling' and 'barima' means 'male'."
-        }
-      ]
-    },
-
-    {
-      id: "3-2",
-      type: "vocabulary",
-      title: "Extended Family",
-      icon: "people-circle-outline",
-      description: "Learn words for your extended family in Twi",
-      words: ["Nana", "Seɛ", "Wɔfa", "Ɔbaa", "Ɔbarima"],
-      vocabulary: [
-        {
-          id: 7,
-          english: "Grandparent / Grandchild",
-          native: "Nana",
-          pronunciation: "nah-nah"
-          // audioUrl: "/audio/twi/nana.mp3"
-        },
-        {
-          id: 8,
-          english: "Aunt",
-          native: "Seɛ",
-          pronunciation: "seh"
-          // audioUrl: "/audio/twi/see.mp3"
-        },
-        {
-          id: 9,
-          english: "Uncle",
-          native: "Wɔfa",
-          pronunciation: "woh-fah"
-          // audioUrl: "/audio/twi/wofa.mp3"
-        },
-        {
-          id: 10,
-          english: "Woman",
-          native: "Ɔbaa",
-          pronunciation: "oh-bah-ah"
-          // audioUrl: "/audio/twi/obaa.mp3"
-        },
-        {
-          id: 11,
-          english: "Man",
-          native: "Ɔbarima",
-          pronunciation: "oh-bah-ree-mah"
-          // audioUrl: "/audio/twi/obarima.mp3"
-        }
-      ],
-      questions: [
-        {
-          id: 201,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Grandparent' in Twi?",
-          options: [
-            { id: 1, text: "Nana" },
-            { id: 2, text: "Seɛ" },
-            { id: 3, text: "Wɔfa" },
-            { id: 4, text: "Ɔbaa" }
-          ],
-          correctOptionId: 1,
-          hints: ["Starts with 'N'", "Older family member"],
-          explanation: "Nana = Grandparent. It can also mean grandchild."
-        },
-        {
-          id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Uncle' in Twi?",
-          options: [
-            { id: 1, text: "Nana" },
-            { id: 2, text: "Seɛ" },
-            { id: 3, text: "Wɔfa" },
-            { id: 4, text: "Ɔbaa" }
-          ],
-          correctOptionId: 3,
-          hints: ["Starts with 'W'", "Male relative of parents"],
-          explanation: "Wɔfa = Uncle. It refers to the brother of your parent."
-        },
-        {
-          id: 203,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Woman' in Twi?",
-          options: [
-            { id: 1, text: "Ɔbarima" },
-            { id: 2, text: "Ɔbaa" },
-            { id: 3, text: "Nana" },
-            { id: 4, text: "Wɔfa" }
-          ],
-          correctOptionId: 2,
-          hints: ["Starts with 'Ɔ'", "Female adult"],
-          explanation: "Ɔbaa = Woman. It refers to an adult female."
-        },
-        {
-          id: 204,
-          type: "matching",
-          instruction: "Match each Twi word to its correct English meaning.",
-          pairs: [
-            { id: 1, left: "Nana", right: "Grandparent" },
-            { id: 2, left: "Seɛ", right: "Aunt" },
-            { id: 3, left: "Wɔfa", right: "Uncle" },
-            { id: 4, left: "Ɔbarima", right: "Man" }
-          ],
-          hints: ["Nana = grandparent", "Seɛ = aunt", "Wɔfa = uncle", "Ɔbarima = man"],
-          explanation: "These are extended family terms in Twi."
-        }
-      ]
-    },
-
-    {
-      id: "3-3",
-      type: "vocabulary",
-      title: "Everyday Items & Life",
-      icon: "home-outline",
-      description: "Learn everyday words like home, food, water, and work",
-      words: ["Ɛfi", "Aduane", "Nsu", "Adwuma", "Sukuu"],
-      vocabulary: [
-        {
-          id: 12,
-          english: "Home",
-          native: "Ɛfi",
-          pronunciation: "eh-fee"
-          // audioUrl: "/audio/twi/efi.mp3"
-        },
-        {
-          id: 13,
-          english: "Food",
-          native: "Aduane",
-          pronunciation: "ah-doo-ahn-eh"
-          // audioUrl: "/audio/twi/aduane.mp3"
-        },
-        {
-          id: 14,
-          english: "Water",
-          native: "Nsu",
-          pronunciation: "un-soo"
-          // audioUrl: "/audio/twi/nsu.mp3"
-        },
-        {
-          id: 15,
-          english: "Work",
-          native: "Adwuma",
-          pronunciation: "ah-juu-mah"
-          // audioUrl: "/audio/twi/adwuma.mp3"
-        },
-        {
-          id: 16,
-          english: "School",
-          native: "Sukuu",
-          pronunciation: "soo-koo"
-          // audioUrl: "/audio/twi/sukuu.mp3"
+          native: "Nua baa",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/nua_baa.m4a")
         }
       ],
       questions: [
@@ -294,75 +51,271 @@ export default {
           id: 301,
           type: "multiple_choice",
           instruction: "Select the correct Twi word.",
-          question: "What is 'Home' in Twi?",
+          question: "What is 'Mother' in Twi?",
           options: [
-            { id: 1, text: "Ɛfi" },
-            { id: 2, text: "Aduane" },
-            { id: 3, text: "Nsu" },
-            { id: 4, text: "Adwuma" }
+            { id: 1, text: "Ɛna" },
+            { id: 2, text: "Agya" },
+            { id: 3, text: "Abofra" },
+            { id: 4, text: "Nua barima" }
           ],
           correctOptionId: 1,
-          hints: ["Where you live", "Starts with 'Ɛ'"],
-          explanation: "Ɛfi = Home. It is where you live."
+          hints: ["Female parent"],
+          explanation: "Ɛna = Mother in Twi."
         },
         {
           id: 302,
           type: "multiple_choice",
           instruction: "Select the correct Twi word.",
-          question: "What is 'Food' in Twi?",
+          question: "What is 'Father' in Twi?",
           options: [
-            { id: 1, text: "Ɛfi" },
-            { id: 2, text: "Aduane" },
-            { id: 3, text: "Nsu" },
-            { id: 4, text: "Adwuma" }
+            { id: 1, text: "Ɛna" },
+            { id: 2, text: "Agya" },
+            { id: 3, text: "Abofra" },
+            { id: 4, text: "Nua baa" }
           ],
           correctOptionId: 2,
-          hints: ["What you eat", "Starts with 'A'"],
-          explanation: "Aduane = Food. It is what you eat."
+          hints: ["Male parent"],
+          explanation: "Agya = Father in Twi."
         },
         {
           id: 303,
           type: "multiple_choice",
           instruction: "Select the correct Twi word.",
-          question: "What is 'Work' in Twi?",
+          question: "What is 'Child' in Twi?",
           options: [
-            { id: 1, text: "Nsu" },
-            { id: 2, text: "Aduane" },
-            { id: 3, text: "Adwuma" },
-            { id: 4, text: "Ɛfi" }
+            { id: 1, text: "Ɛna" },
+            { id: 2, text: "Agya" },
+            { id: 3, text: "Abofra" },
+            { id: 4, text: "Nua barima" }
           ],
           correctOptionId: 3,
-          hints: ["What you do for a job", "Starts with 'A'"],
-          explanation: "Adwuma = Work. It refers to a job or daily tasks."
+          hints: ["A young person"],
+          explanation: "Abofra = Child in Twi."
         },
         {
           id: 304,
-          type: "matching",
-          instruction: "Match each Twi word to its correct English meaning.",
-          pairs: [
-            { id: 1, left: "Ɛfi", right: "Home" },
-            { id: 2, left: "Aduane", right: "Food" },
-            { id: 3, left: "Nsu", right: "Water" },
-            { id: 4, left: "Adwuma", right: "Work" },
-            { id: 5, left: "Sukuu", right: "School" }
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Brother' in Twi?",
+          options: [
+            { id: 1, text: "Ɛna" },
+            { id: 2, text: "Agya" },
+            { id: 3, text: "Abofra" },
+            { id: 4, text: "Nua barima" }
           ],
-          hints: ["Ɛfi = home", "Aduane = food", "Nsu = water", "Adwuma = work", "Sukuu = school"],
-          explanation: "These are common everyday words in Twi."
+          correctOptionId: 4,
+          hints: ["Male sibling"],
+          explanation: "Nua barima = Brother in Twi."
         },
         {
           id: 305,
-          type: "drag_drop",
-          instruction: "Complete the word for 'School' by dragging the correct word.",
-          sentence: "[_____] (School)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "Sukuu", meaning: "School" },
-            { id: "opt2", text: "Adwuma", meaning: "Work" },
-            { id: "opt3", text: "Ɛfi", meaning: "Home" }
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Sister' in Twi?",
+          options: [
+            { id: 1, text: "Nua baa" },
+            { id: 2, text: "Agya" },
+            { id: 3, text: "Abofra" },
+            { id: 4, text: "Nua barima" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["Where you learn", "Starts with 'S'"],
-          explanation: "Sukuu = School. It is where you go to learn."
+          correctOptionId: 1,
+          hints: ["Female sibling"],
+          explanation: "Nua baa = Sister in Twi."
+        }
+      ]
+    },
+
+    {
+      id: "3-2",
+      type: "words",
+      title: "Grandparents & Spouse",
+      icon: "heart-outline",
+      description: "Learn words for grandparents and spouse in Twi",
+      words: ["Nana baa", "Nana barima", "Kunu", "Yere"],
+      vocabulary: [
+        {
+          id: 45,
+          english: "Grandmother",
+          native: "Nana baa",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/nana_baa.m4a")
+        },
+        {
+          id: 46,
+          english: "Grandfather",
+          native: "Nana barima",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/nana_barima.m4a")
+        },
+        {
+          id: 47,
+          english: "Husband",
+          native: "Kunu",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/kunu.m4a")
+        },
+        {
+          id: 48,
+          english: "Wife",
+          native: "Yere",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/yere.m4a")
+        },
+        
+      ],
+      questions: [
+        {
+          id: 306,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Grandmother' in Twi?",
+          options: [
+            { id: 1, text: "Nana baa" },
+            { id: 2, text: "Kunu" },
+            { id: 3, text: "Yere" },
+            { id: 4, text: "Nana barima" }
+          ],
+          correctOptionId: 1,
+          hints: ["Female grandparent"],
+          explanation: "Nana baa = Grandmother in Twi."
+        },
+        {
+          id: 307,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Husband' in Twi?",
+          options: [
+            { id: 1, text: "Nana baa" },
+            { id: 2, text: "Kunu" },
+            { id: 3, text: "Yere" },
+            { id: 4, text: "Nana barima" }
+          ],
+          correctOptionId: 2,
+          hints: ["Male spouse"],
+          explanation: "Kunu = Husband in Twi."
+        },
+        {
+          id: 308,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Wife' in Twi?",
+          options: [
+            { id: 1, text: "Nana baa" },
+            { id: 2, text: "Kunu" },
+            { id: 3, text: "Yere" },
+            { id: 4, text: "Nana barima" }
+          ],
+          correctOptionId: 3,
+          hints: ["Female spouse"],
+          explanation: "Yere = Wife in Twi."
+        },
+        {
+          id: 309,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Grandfather' in Twi?",
+          options: [
+            { id: 1, text: "Nana baa" },
+            { id: 2, text: "Kunu" },
+            { id: 3, text: "Yere" },
+            { id: 4, text: "Nana barima" }
+          ],
+          correctOptionId: 4,
+          hints: ["Male grandparent"],
+          explanation: "Nana barima = Grandfather in Twi."
+        }
+      ]
+    },
+
+    {
+      id: "3-3",
+      type: "phrases",
+      title: "Talking About Family",
+      icon: "home-outline",
+      description: "Learn how to talk about your family in Twi",
+      words: ["M'abusua nie", "M'abusua no sõ", "Mewɔ mma mmienu",  "Wowɔ nuanom ahe?"],
+      vocabulary: [
+        {
+          id: 49,
+          english: "This is my family",
+          native: "M'abusua nie",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/m_abusua_nie.m4a")
+        },
+        {
+          id: 50,
+          english: "My family is big",
+          native: "M'abusua no sõ",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/m_abusua_no_sõ.m4a")
+        },
+        {
+          id: 51,
+          english: "I have two children",
+          native: "Mewɔ mma mmienu",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/mewɔ_mma_mmienu.m4a")
+        },
+        {
+          id: 52,
+          english: "How many siblings do you have?",
+          native: "Wowɔ nuanom ahe?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/wowɔ_nuanom_ahe.m4a")
+        }
+      ],
+      questions: [
+        {
+          id: 310,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'This is my family' in Twi?",
+          options: [
+            { id: 1, text: "M'abusua nie" },
+            { id: 2, text: "Mewɔ mma mmienu" },
+            { id: 3, text: "M'abusua no sõ" },
+            { id: 4, text: "Wowɔ nuanom ahe?" }
+          ],
+          correctOptionId: 1,
+          hints: ["M'abusua = my family", "nie = this is"],
+          explanation: "M'abusua nie = This is my family in Twi."
+        },
+        {
+          id: 311,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I have two children' in Twi?",
+          options: [
+            { id: 1, text: "M'abusua nie" },
+            { id: 2, text: "Mewɔ mma mmienu" },
+            { id: 3, text: "M'abusua no sõ" },
+            { id: 4, text: "Wowɔ nuanom ahe?" }
+          ],
+          correctOptionId: 2,
+          hints: ["Mewɔ = I have", "mma mmienu = two children"],
+          explanation: "Mewɔ mma mmienu = I have two children in Twi."
+        },
+        {
+          id: 312,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'My family is big' in Twi?",
+          options: [
+            { id: 1, text: "M'abusua nie" },
+            { id: 2, text: "Mewɔ mma mmienu" },
+            { id: 3, text: "M'abusua no sõ" },
+            { id: 4, text: "Wowɔ nuanom ahe?" }
+          ],
+          correctOptionId: 3,
+          hints: ["sõ = big"],
+          explanation: "M'abusua no sõ = My family is big in Twi."
+        },
+        {
+          id: 313,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you ask 'How many siblings do you have?' in Twi?",
+          options: [
+            { id: 1, text: "M'abusua nie" },
+            { id: 2, text: "Mewɔ mma mmienu" },
+            { id: 3, text: "M'abusua no sõ" },
+            { id: 4, text: "Wowɔ nuanom ahe?" }
+          ],
+          correctOptionId: 4,
+          hints: ["nuanom = siblings", "ahe = how many"],
+          explanation: "Wowɔ nuanom ahe? = How many siblings do you have? in Twi."
         }
       ]
     }
@@ -370,100 +323,175 @@ export default {
 
   review: {
     id: "review-3",
-    title: "Review: Family & Everyday Life",
+    title: "Review: Family",
     icon: "refresh-outline",
-    description: "Review the family and everyday life vocabulary",
+    description: "Review all the family vocabulary you've learned",
     questions: [
       {
-        id: 401,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi word.",
-        question: "What is 'Family' in Twi?",
-        options: [
-          { id: 1, text: "Abusua" },
-          { id: 2, text: "Ɛna" },
-          { id: 3, text: "Agya" },
-          { id: 4, text: "Ɔba" }
-        ],
-        correctOptionId: 1,
-        hints: ["Whole group of relatives"],
-        explanation: "Abusua = Family."
-      },
-      {
-        id: 402,
+        id: 601,
         type: "multiple_choice",
         instruction: "Select the correct Twi word.",
         question: "What is 'Mother' in Twi?",
         options: [
-          { id: 1, text: "Agya" },
-          { id: 2, text: "Ɛna" },
-          { id: 3, text: "Ɔba" },
-          { id: 4, text: "Nana" }
+          { id: 1, text: "Ɛna" },
+          { id: 2, text: "Agya" },
+          { id: 3, text: "Abofra" },
+          { id: 4, text: "Nua barima" }
         ],
-        correctOptionId: 2,
+        correctOptionId: 1,
         hints: ["Female parent"],
         explanation: "Ɛna = Mother."
       },
       {
-        id: 403,
+        id: 602,
         type: "multiple_choice",
         instruction: "Select the correct Twi word.",
-        question: "What is 'Work' in Twi?",
+        question: "What is 'Father' in Twi?",
         options: [
-          { id: 1, text: "Nsu" },
-          { id: 2, text: "Aduane" },
-          { id: 3, text: "Adwuma" },
-          { id: 4, text: "Sukuu" }
+          { id: 1, text: "Ɛna" },
+          { id: 2, text: "Agya" },
+          { id: 3, text: "Abofra" },
+          { id: 4, text: "Nua baa" }
         ],
-        correctOptionId: 3,
-        hints: ["A job or task"],
-        explanation: "Adwuma = Work."
+        correctOptionId: 2,
+        hints: ["Male parent"],
+        explanation: "Agya = Father."
       },
       {
-        id: 404,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi word.",
-        question: "What is 'Uncle' in Twi?",
-        options: [
-          { id: 1, text: "Seɛ" },
-          { id: 2, text: "Nana" },
-          { id: 3, text: "Wɔfa" },
-          { id: 4, text: "Ɔbaa" }
-        ],
-        correctOptionId: 3,
-        hints: ["Brother of a parent"],
-        explanation: "Wɔfa = Uncle."
-      },
-      {
-        id: 405,
+        id: 603,
         type: "multiple_choice",
         instruction: "Select the correct Twi word.",
         question: "What is 'Brother' in Twi?",
         options: [
-          { id: 1, text: "Nua ba" },
-          { id: 2, text: "Nua barima" },
-          { id: 3, text: "Ɔbaa" },
-          { id: 4, text: "Ɛfi" }
+          { id: 1, text: "Nua baa" },
+          { id: 2, text: "Agya" },
+          { id: 3, text: "Nua barima" },
+          { id: 4, text: "Abofra" }
         ],
-        correctOptionId: 2,
-        hints: ["Sibling + male"],
+        correctOptionId: 3,
+        hints: ["Male sibling"],
         explanation: "Nua barima = Brother."
       },
       {
-        id: 406,
-        type: "matching",
-        instruction: "Match each Twi word to its correct English meaning.",
-        pairs: [
-          { id: 1, left: "Abusua", right: "Family" },
-          { id: 2, left: "Ɛna", right: "Mother" },
-          { id: 3, left: "Nana", right: "Grandparent" },
-          { id: 4, left: "Aduane", right: "Food" },
-          { id: 5, left: "Sukuu", right: "School" }
+        id: 604,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi word.",
+        question: "What is 'Sister' in Twi?",
+        options: [
+          { id: 1, text: "Nua baa" },
+          { id: 2, text: "Nua barima" },
+          { id: 3, text: "Ɛna" },
+          { id: 4, text: "Yere" }
         ],
-        hints: ["Family and everyday words"],
-        explanation: "These are key family and everyday words in Twi."
+        correctOptionId: 1,
+        hints: ["Female sibling"],
+        explanation: "Nua baa = Sister."
+      },
+      {
+        id: 605,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi word.",
+        question: "What is 'Grandmother' in Twi?",
+        options: [
+          { id: 1, text: "Nana barima" },
+          { id: 2, text: "Nana baa" },
+          { id: 3, text: "Yere" },
+          { id: 4, text: "Kunu" }
+        ],
+        correctOptionId: 2,
+        hints: ["Female grandparent"],
+        explanation: "Nana baa = Grandmother."
+      },
+      {
+        id: 606,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi word.",
+        question: "What is 'Husband' in Twi?",
+        options: [
+          { id: 1, text: "Yere" },
+          { id: 2, text: "Kunu" },
+          { id: 3, text: "Nana baa" },
+          { id: 4, text: "Agya" }
+        ],
+        correctOptionId: 2,
+        hints: ["Male spouse"],
+        explanation: "Kunu = Husband."
+      },
+      {
+        id: 607,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi word.",
+        question: "What is 'Wife' in Twi?",
+        options: [
+          { id: 1, text: "Yere" },
+          { id: 2, text: "Kunu" },
+          { id: 3, text: "Ɛna" },
+          { id: 4, text: "Nua baa" }
+        ],
+        correctOptionId: 1,
+        hints: ["Female spouse"],
+        explanation: "Yere = Wife."
+      },
+      {
+        id: 608,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'This is my family' in Twi?",
+        options: [
+          { id: 1, text: "M'abusua nie" },
+          { id: 2, text: "Mewɔ mma mmienu" },
+          { id: 3, text: "M'abusua no sõ" },
+          { id: 4, text: "Wowɔ nuanom ahe?" }
+        ],
+        correctOptionId: 1,
+        hints: ["M'abusua = my family"],
+        explanation: "M'abusua nie = This is my family."
+      },
+      {
+        id: 609,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I have two children' in Twi?",
+        options: [
+          { id: 1, text: "M'abusua nie" },
+          { id: 2, text: "Mewɔ mma mmienu" },
+          { id: 3, text: "M'abusua no sõ" },
+          { id: 4, text: "Wowɔ nuanom ahe?" }
+        ],
+        correctOptionId: 2,
+        hints: ["Mewɔ = I have"],
+        explanation: "Mewɔ mma mmienu = I have two children."
+      },
+      {
+        id: 610,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'My family is big' in Twi?",
+        options: [
+          { id: 1, text: "M'abusua nie" },
+          { id: 2, text: "Mewɔ mma mmienu" },
+          { id: 3, text: "M'abusua no sõ" },
+          { id: 4, text: "Wowɔ nuanom ahe?" }
+        ],
+        correctOptionId: 3,
+        hints: ["sõ = big"],
+        explanation: "M'abusua no sõ = My family is big."
+      },
+      {
+        id: 611,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you ask 'How many siblings do you have?' in Twi?",
+        options: [
+          { id: 1, text: "M'abusua nie" },
+          { id: 2, text: "Mewɔ mma mmienu" },
+          { id: 3, text: "M'abusua no sõ" },
+          { id: 4, text: "Wowɔ nuanom ahe?" }
+        ],
+        correctOptionId: 4,
+        hints: ["nuanom = siblings"],
+        explanation: "Wowɔ nuanom ahe? = How many siblings do you have?"
       }
     ]
   }
 };
-

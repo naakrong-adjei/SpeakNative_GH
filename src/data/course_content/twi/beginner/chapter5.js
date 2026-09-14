@@ -1,462 +1,356 @@
-// data/course_content/twi/beginner/chapter5.js
 export default {
   id: 5,
   title: "Food & Drinks",
-  description: "Learn words and phrases for food, drinks, and ordering in Ghana",
+  description: "Learn food and drink vocabulary in Twi",
   icon: "restaurant-outline",
-  totalXp: 20,
+  totalXp: 15,
   difficulty: "Beginner",
 
   sections: [
     {
       id: "5-1",
-      type: "vocabulary",
-      title: "Common Ghanaian Foods",
+      type: "words",
+      title: "Food Words",
       icon: "restaurant-outline",
-      description: "Learn the names of popular Ghanaian dishes",
-      words: ["Fufu", "Banku", "Jollof", "Kenkey", "Waakye", "Ampesi"],
+      description: "Learn basic food and drink words in Twi",
+      words: ["Nsuo", "Aduane", "Ɛmo", "Nammono", "Nsuomnam", "Mako"],
       vocabulary: [
         {
-          id: 1,
-          english: "Fufu",
-          native: "Fufu",
-          pronunciation: "foo-foo"
-          // audioUrl: "/audio/twi/fufu.mp3"
+          id: 53,
+          english: "Water",
+          native: "Nsuo",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/nsuo.m4a")
         },
         {
-          id: 2,
-          english: "Banku",
-          native: "Banku",
-          pronunciation: "ban-koo"
-          // audioUrl: "/audio/twi/banku.mp3"
+          id: 54,
+          english: "Food",
+          native: "Aduane",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/aduane.m4a")
         },
         {
-          id: 3,
-          english: "Jollof rice",
-          native: "Jollof",
-          pronunciation: "joh-lof"
-          // audioUrl: "/audio/twi/jollof.mp3"
-        },
-        {
-          id: 4,
-          english: "Kenkey",
-          native: "Kenkey",
-          pronunciation: "ken-keh"
-          // audioUrl: "/audio/twi/kenkey.mp3"
-        },
-        {
-          id: 5,
-          english: "Waakye",
-          native: "Waakye",
-          pronunciation: "wah-cheh"
-          // audioUrl: "/audio/twi/waakye.mp3"
-        },
-        {
-          id: 6,
+          id: 55,
           english: "Rice",
           native: "Ɛmo",
-          pronunciation: "eh-moh"
-          // audioUrl: "/audio/twi/emo.mp3"
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/ɛmo.m4a")
+        },
+        {
+          id: 56,
+          english: "Meat",
+          native: "Nammono",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/nammono.m4a")
+        },
+        {
+          id: 57,
+          english: "Fish",
+          native: "Nsuomnam",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/nsuomnam.m4a")
+        },
+        {
+          id: 58,
+          english: "Pepper",
+          native: "Mako",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/mako.m4a")
         }
       ],
       questions: [
         {
-          id: 101,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi dish.",
-          question: "Which of these is a popular dumpling made from cassava and plantain?",
-          options: [
-            { id: 1, text: "Fufu" },
-            { id: 2, text: "Waakye" },
-            { id: 3, text: "Jollof" },
-            { id: 4, text: "Kenkey" }
-          ],
-          correctOptionId: 1,
-          hints: ["Pounded food", "Often eaten with soup"],
-          explanation: "Fufu is a popular Ghanaian dish made from pounded cassava and plantain."
-        },
-        {
-          id: 102,
+          id: 501,
           type: "multiple_choice",
           instruction: "Select the correct Twi word.",
-          question: "What is 'Jollof rice' in Twi?",
+          question: "What is 'Water' in Twi?",
           options: [
-            { id: 1, text: "Banku" },
-            { id: 2, text: "Jollof" },
-            { id: 3, text: "Kenkey" },
-            { id: 4, text: "Ampesi" }
+            { id: 1, text: "Nsuo" },
+            { id: 2, text: "Aduane" },
+            { id: 3, text: "Ɛmo" },
+            { id: 4, text: "Nammono" }
           ],
-          correctOptionId: 2,
-          hints: ["Famous spicy rice dish"],
-          explanation: "Jollof is a popular spicy rice dish in Ghana and West Africa."
+          correctOptionId: 1,
+          hints: ["Essential for drinking"],
+          explanation: "Nsuo = Water in Twi."
         },
         {
-          id: 103,
+          id: 502,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Food' in Twi?",
+          options: [
+            { id: 1, text: "Nsuo" },
+            { id: 2, text: "Aduane" },
+            { id: 3, text: "Ɛmo" },
+            { id: 4, text: "Mako" }
+          ],
+          correctOptionId: 2,
+          hints: ["What you eat"],
+          explanation: "Aduane = Food in Twi."
+        },
+        {
+          id: 503,
           type: "multiple_choice",
           instruction: "Select the correct Twi word.",
           question: "What is 'Rice' in Twi?",
           options: [
-            { id: 1, text: "Ɛmo" },
-            { id: 2, text: "Banku" },
-            { id: 3, text: "Fufu" },
-            { id: 4, text: "Kenkey" }
+            { id: 1, text: "Nsuo" },
+            { id: 2, text: "Aduane" },
+            { id: 3, text: "Ɛmo" },
+            { id: 4, text: "Nsuomnam" }
           ],
-          correctOptionId: 1,
-          hints: ["A common grain", "Starts with 'ɛ'"],
-          explanation: "Ɛmo = Rice. It is a common staple grain in Ghana."
+          correctOptionId: 3,
+          hints: ["A staple food"],
+          explanation: "Ɛmo = Rice in Twi."
         },
         {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Twi dish to a brief description.",
-          pairs: [
-            { id: 1, left: "Fufu", right: "Pounded cassava & plantain" },
-            { id: 2, left: "Banku", right: "Fermented corn & cassava dough" },
-            { id: 3, left: "Jollof", right: "Spicy rice dish" },
-            { id: 4, left: "Kenkey", right: "Fermented corn dumpling" }
+          id: 504,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Meat' in Twi?",
+          options: [
+            { id: 1, text: "Nsuo" },
+            { id: 2, text: "Aduane" },
+            { id: 3, text: "Ɛmo" },
+            { id: 4, text: "Nammono" }
           ],
-          hints: ["Fufu = pounded", "Banku = dough", "Jollof = rice", "Kenkey = dumpling"],
-          explanation: "These are some of the most popular Ghanaian foods."
+          correctOptionId: 4,
+          hints: ["From animals"],
+          explanation: "Nammono = Meat in Twi."
+        },
+        {
+          id: 505,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Fish' in Twi?",
+          options: [
+            { id: 1, text: "Nsuomnam" },
+            { id: 2, text: "Aduane" },
+            { id: 3, text: "Ɛmo" },
+            { id: 4, text: "Mako" }
+          ],
+          correctOptionId: 1,
+          hints: ["From the water"],
+          explanation: "Nsuomnam = Fish in Twi."
+        },
+        {
+          id: 506,
+          type: "drag_drop",
+          instruction: "Complete the Twi word by dragging the correct word.",
+          sentence: "[_____] (Pepper)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "Mako" },
+            { id: "opt2", text: "Nsuo" },
+            { id: "opt3", text: "Ɛmo" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["Spicy ingredient"],
+          explanation: "Mako = Pepper in Twi."
         }
       ]
     },
 
     {
       id: "5-2",
-      type: "vocabulary",
-      title: "Fruits & Ingredients",
-      icon: "nutrition-outline",
-      description: "Learn common fruits and cooking ingredients in Twi",
-      words: ["Abro", "Bɔfre", "Ankaa", "Nkateɛ", "Nkyene", "Mako"],
+      type: "phrases",
+      title: "Hunger & Thirst",
+      icon: "cafe-outline",
+      description: "Learn how to express hunger and thirst in Twi",
+      words: ["Ɛkɔm de me", "Mepɛ sɛ mididi", "Sukɔm de me"],
       vocabulary: [
         {
-          id: 7,
-          english: "Corn",
-          native: "Abro",
-          pronunciation: "ab-roh"
-          // audioUrl: "/audio/twi/abro.mp3"
+          id: 59,
+          english: "I am hungry",
+          native: "Ɛkɔm de me",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/ɛkɔm_de_me.m4a")
         },
         {
-          id: 8,
-          english: "Banana",
-          native: "Bɔfre",
-          pronunciation: "bor-freh"
-          // audioUrl: "/audio/twi/bofre.mp3"
+          id: 60,
+          english: "I want to eat",
+          native: "Mepɛ sɛ mididi",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/mepɛ_sɛ_mididi.m4a")
         },
         {
-          id: 9,
-          english: "Pineapple",
-          native: "Aborɔbɛ",
-          pronunciation: "ah-bor-oh-beh"
-          // audioUrl: "/audio/twi/aborobe.mp3"
-        },
-        {
-          id: 10,
-          english: "Groundnut / Peanut",
-          native: "Nkateɛ",
-          pronunciation: "un-kah-teh"
-          // audioUrl: "/audio/twi/nkatee.mp3"
-        },
-        {
-          id: 11,
-          english: "Salt",
-          native: "Nkyene",
-          pronunciation: "un-chen-eh"
-          // audioUrl: "/audio/twi/nkyene.mp3"
-        },
-        {
-          id: 12,
-          english: "Pepper",
-          native: "Mako",
-          pronunciation: "mah-koh"
-          // audioUrl: "/audio/twi/mako.mp3"
+          id: 61,
+          english: "I am thirsty",
+          native: "Sukɔm de me",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/sukɔm_de_me.m4a")
         }
       ],
       questions: [
         {
-          id: 201,
+          id: 507,
           type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Banana' in Twi?",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I am hungry' in Twi?",
           options: [
-            { id: 1, text: "Bɔfre" },
-            { id: 2, text: "Abro" },
-            { id: 3, text: "Mako" },
-            { id: 4, text: "Nkateɛ" }
+            { id: 1, text: "Ɛkɔm de me" },
+            { id: 2, text: "Mepɛ sɛ mididi" },
+            { id: 3, text: "Sukɔm de me" },
+            { id: 4, text: "Ɛyɛ dɛ" }
           ],
           correctOptionId: 1,
-          hints: ["Yellow fruit", "Starts with 'B'"],
-          explanation: "Bɔfre = Banana. It is a popular fruit in Ghana."
+          hints: ["Ɛkɔm = hunger"],
+          explanation: "Ɛkɔm de me = I am hungry in Twi."
         },
         {
-          id: 202,
+          id: 508,
           type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Salt' in Twi?",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I want to eat' in Twi?",
           options: [
-            { id: 1, text: "Mako" },
-            { id: 2, text: "Nkyene" },
-            { id: 3, text: "Nkateɛ" },
-            { id: 4, text: "Abro" }
+            { id: 1, text: "Ɛkɔm de me" },
+            { id: 2, text: "Mepɛ sɛ mididi" },
+            { id: 3, text: "Sukɔm de me" },
+            { id: 4, text: "Mepa wo kyɛw ma me nsuo" }
           ],
           correctOptionId: 2,
-          hints: ["Used to season food", "Starts with 'N'"],
-          explanation: "Nkyene = Salt. It is used to season food."
+          hints: ["Mepɛ sɛ = I want to"],
+          explanation: "Mepɛ sɛ mididi = I want to eat in Twi."
         },
         {
-          id: 203,
+          id: 509,
           type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Pepper' in Twi?",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I am thirsty' in Twi?",
           options: [
-            { id: 1, text: "Mako" },
-            { id: 2, text: "Nkyene" },
-            { id: 3, text: "Bɔfre" },
-            { id: 4, text: "Aborɔbɛ" }
+            { id: 1, text: "Ɛkɔm de me" },
+            { id: 2, text: "Mepɛ sɛ mididi" },
+            { id: 3, text: "Sukɔm de me" },
+            { id: 4, text: "Ɛyɛ dɛ" }
           ],
-          correctOptionId: 1,
-          hints: ["Spicy ingredient", "Starts with 'M'"],
-          explanation: "Mako = Pepper. It adds spice to Ghanaian dishes."
+          correctOptionId: 3,
+          hints: ["Sukɔm = thirst"],
+          explanation: "Sukɔm de me = I am thirsty in Twi."
         },
         {
-          id: 204,
-          type: "matching",
-          instruction: "Match each Twi word to its correct English meaning.",
-          pairs: [
-            { id: 1, left: "Bɔfre", right: "Banana" },
-            { id: 2, left: "Aborɔbɛ", right: "Pineapple" },
-            { id: 3, left: "Nkateɛ", right: "Groundnut" },
-            { id: 4, left: "Mako", right: "Pepper" }
+          id: 510,
+          type: "drag_drop",
+          instruction: "Complete the Twi phrase by dragging the correct word.",
+          sentence: "Mepɛ sɛ [_____] (I want to eat)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "mididi" },
+            { id: "opt2", text: "nsuo" },
+            { id: "opt3", text: "mako" }
           ],
-          hints: ["Bɔfre = banana", "Aborɔbɛ = pineapple", "Nkateɛ = groundnut", "Mako = pepper"],
-          explanation: "These are common fruits and ingredients in Twi."
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["mididi = I eat"],
+          explanation: "Mepɛ sɛ mididi = I want to eat in Twi."
         }
       ]
     },
 
     {
       id: "5-3",
-      type: "vocabulary",
-      title: "Drinks",
-      icon: "water-outline",
-      description: "Learn the names of common drinks in Twi",
-      words: ["Nsu", "Nufosuo", "Tii", "Kɔfe", "Palm wine"],
+      type: "phrases",
+      title: "At the Table",
+      icon: "restaurant-outline",
+      description: "Learn useful phrases for dining in Twi",
+      words: ["Ɛyɛ dɛ", "Mepa wo kyɛw ma me nsuo", "Menni nammono", "Aduane no yɛ hye", "Mepa wo kyɛw fa ka no brɛ me"],
       vocabulary: [
         {
-          id: 13,
-          english: "Water",
-          native: "Nsu",
-          pronunciation: "un-soo"
-          // audioUrl: "/audio/twi/nsu.mp3"
+          id: 62,
+          english: "It is delicious",
+          native: "Ɛyɛ dɛ",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/ɛyɛ_dɛ.m4a")
         },
         {
-          id: 14,
-          english: "Milk",
-          native: "Nufosuo",
-          pronunciation: "nuu-foh-soo-oh"
-          // audioUrl: "/audio/twi/nufosuo.mp3"
+          id: 63,
+          english: "Give me water please",
+          native: "Mepa wo kyɛw ma me nsuo",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/mepa_wo_kyɛw_ma_me_nsuo.m4a")
         },
         {
-          id: 15,
-          english: "Tea",
-          native: "Tii",
-          pronunciation: "tee"
-          // audioUrl: "/audio/twi/tii.mp3"
+          id: 64,
+          english: "I don't eat meat",
+          native: "Menni nammono",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/menni_nammono.m4a")
         },
         {
-          id: 16,
-          english: "Coffee",
-          native: "Kɔfe",
-          pronunciation: "koh-feh"
-          // audioUrl: "/audio/twi/kofe.mp3"
+          id: 65,
+          english: "The food is hot",
+          native: "Aduane no yɛ hye",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/aduane_no_yɛ_hye.m4a")
         },
         {
-          id: 17,
-          english: "Juice",
-          native: "Aburo nsu",
-          pronunciation: "ah-broo-nsoo"
-          // audioUrl: "/audio/twi/aburo_nsu.mp3"
+          id: 66,
+          english: "Bring the bill please",
+          native: "Mepa wo kyɛw fa ka no brɛ me",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter5/mepa_wo_kyɛw_fa_ka_no_brɛ_me.m4a")
         }
       ],
       questions: [
         {
-          id: 301,
+          id: 511,
           type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Water' in Twi?",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'It is delicious' in Twi?",
           options: [
-            { id: 1, text: "Nsu" },
-            { id: 2, text: "Tii" },
-            { id: 3, text: "Kɔfe" },
-            { id: 4, text: "Nufosuo" }
+            { id: 1, text: "Ɛyɛ dɛ" },
+            { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+            { id: 3, text: "Menni nammono" },
+            { id: 4, text: "Aduane no yɛ hye" }
           ],
           correctOptionId: 1,
-          hints: ["You drink it daily", "Starts with 'N'"],
-          explanation: "Nsu = Water. It is the most essential drink."
+          hints: ["Ɛyɛ dɛ = it is sweet/delicious"],
+          explanation: "Ɛyɛ dɛ = It is delicious in Twi."
         },
         {
-          id: 302,
+          id: 512,
           type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Coffee' in Twi?",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'Give me water please' in Twi?",
           options: [
-            { id: 1, text: "Nufosuo" },
-            { id: 2, text: "Tii" },
-            { id: 3, text: "Kɔfe" },
-            { id: 4, text: "Nsu" }
+            { id: 1, text: "Ɛyɛ dɛ" },
+            { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+            { id: 3, text: "Menni nammono" },
+            { id: 4, text: "Mepa wo kyɛw fa ka no brɛ me" }
+          ],
+          correctOptionId: 2,
+          hints: ["nsuo = water"],
+          explanation: "Mepa wo kyɛw ma me nsuo = Give me water please in Twi."
+        },
+        {
+          id: 513,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I don't eat meat' in Twi?",
+          options: [
+            { id: 1, text: "Ɛyɛ dɛ" },
+            { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+            { id: 3, text: "Menni nammono" },
+            { id: 4, text: "Aduane no yɛ hye" }
           ],
           correctOptionId: 3,
-          hints: ["Hot caffeinated drink", "Starts with 'K'"],
-          explanation: "Kɔfe = Coffee. It is a popular hot drink."
+          hints: ["Menni = I don't eat", "nammono = meat"],
+          explanation: "Menni nammono = I don't eat meat in Twi."
         },
         {
-          id: 303,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Milk' in Twi?",
-          options: [
-            { id: 1, text: "Tii" },
-            { id: 2, text: "Nufosuo" },
-            { id: 3, text: "Kɔfe" },
-            { id: 4, text: "Nsu" }
-          ],
-          correctOptionId: 2,
-          hints: ["White drink from animals", "Starts with 'N'"],
-          explanation: "Nufosuo = Milk. It is a drink produced by animals."
-        },
-        {
-          id: 304,
-          type: "matching",
-          instruction: "Match each Twi word to its correct English meaning.",
-          pairs: [
-            { id: 1, left: "Nsu", right: "Water" },
-            { id: 2, left: "Nufosuo", right: "Milk" },
-            { id: 3, left: "Tii", right: "Tea" },
-            { id: 4, left: "Kɔfe", right: "Coffee" }
-          ],
-          hints: ["Nsu = water", "Nufosuo = milk", "Tii = tea", "Kɔfe = coffee"],
-          explanation: "These are common drinks in Twi."
-        }
-      ]
-    },
-
-    {
-      id: "5-4",
-      type: "vocabulary",
-      title: "At the Restaurant",
-      icon: "chatbubble-ellipses-outline",
-      description: "Learn phrases for ordering food and drinks",
-      words: ["Mepɛ...", "Adedie", "Betumi abrɛ me...", "Mepɛ sɛ me tua"],
-      vocabulary: [
-        {
-          id: 18,
-          english: "I want / I would like...",
-          native: "Mepɛ...",
-          pronunciation: "meh-peh"
-          // audioUrl: "/audio/twi/mepɛ.mp3"
-        },
-        {
-          id: 19,
-          english: "Menu",
-          native: "Adedie",
-          pronunciation: "ah-deh-dee-eh"
-          // audioUrl: "/audio/twi/adedie.mp3"
-        },
-        {
-          id: 20,
-          english: "Can you bring me...?",
-          native: "Betumi abrɛ me...?",
-          pronunciation: "beh-too-mee ab-reh meh"
-          // audioUrl: "/audio/twi/betumi_abre_me.mp3"
-        },
-        {
-          id: 21,
-          english: "I want to pay",
-          native: "Mepɛ sɛ me tua",
-          pronunciation: "meh-peh seh meh too-ah"
-          // audioUrl: "/audio/twi/mepɛ_se_me_tua.mp3"
-        },
-        {
-          id: 22,
-          english: "Delicious",
-          native: "Ɛdɛ",
-          pronunciation: "eh-deh"
-          // audioUrl: "/audio/twi/ede.mp3"
-        }
-      ],
-      questions: [
-        {
-          id: 401,
+          id: 514,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'I would like...' when ordering in Twi?",
+          question: "How do you say 'The food is hot' in Twi?",
           options: [
-            { id: 1, text: "Mepɛ..." },
-            { id: 2, text: "Adedie" },
-            { id: 3, text: "Ɛdɛ" },
-            { id: 4, text: "Mepɛ sɛ me tua" }
+            { id: 1, text: "Ɛyɛ dɛ" },
+            { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+            { id: 3, text: "Menni nammono" },
+            { id: 4, text: "Aduane no yɛ hye" }
           ],
-          correctOptionId: 1,
-          hints: ["Starts with 'Me'", "Used when ordering food"],
-          explanation: "'Mepɛ...' means 'I want / I would like...'. Use it to order food or drinks."
+          correctOptionId: 4,
+          hints: ["hye = hot"],
+          explanation: "Aduane no yɛ hye = The food is hot in Twi."
         },
         {
-          id: 402,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Delicious' in Twi?",
-          options: [
-            { id: 1, text: "Adedie" },
-            { id: 2, text: "Ɛdɛ" },
-            { id: 3, text: "Mepɛ" },
-            { id: 4, text: "Nsu" }
-          ],
-          correctOptionId: 2,
-          hints: ["Describes tasty food", "Starts with 'Ɛ'"],
-          explanation: "Ɛdɛ = Delicious. Use it to describe tasty food."
-        },
-        {
-          id: 403,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'I want to pay' in Twi?",
-          options: [
-            { id: 1, text: "Mepɛ sɛ me tua" },
-            { id: 2, text: "Mepɛ..." },
-            { id: 3, text: "Betumi abrɛ me?" },
-            { id: 4, text: "Ɛdɛ" }
-          ],
-          correctOptionId: 1,
-          hints: ["Used at the end of a meal", "Mentions paying"],
-          explanation: "'Mepɛ sɛ me tua' = 'I want to pay'. Use it to ask for the bill."
-        },
-        {
-          id: 404,
-          type: "matching",
-          instruction: "Match each Twi phrase to its correct English meaning.",
-          pairs: [
-            { id: 1, left: "Mepɛ...", right: "I would like..." },
-            { id: 2, left: "Adedie", right: "Menu" },
-            { id: 3, left: "Ɛdɛ", right: "Delicious" },
-            { id: 4, left: "Mepɛ sɛ me tua", right: "I want to pay" }
-          ],
-          hints: ["Mepɛ = I want", "Adedie = menu", "Ɛdɛ = delicious", "tua = pay"],
-          explanation: "These are useful phrases for dining out in Ghana."
-        },
-        {
-          id: 405,
+          id: 515,
           type: "drag_drop",
-          instruction: "Complete the phrase 'I would like...' by dragging the correct word.",
-          sentence: "[_____] fufu (I would like fufu)",
+          instruction: "Complete the Twi phrase by dragging the correct word.",
+          sentence: "Mepa wo kyɛw fa ka no [_____] (Bring the bill please)",
           blankId: "blank1",
           items: [
-            { id: "opt1", text: "Mepɛ", meaning: "I want" },
-            { id: "opt2", text: "Mene", meaning: "I am" },
-            { id: "opt3", text: "Ɛdɛ", meaning: "Delicious" }
+            { id: "opt1", text: "brɛ me" },
+            { id: "opt2", text: "nsuo" },
+            { id: "opt3", text: "nammono" }
           ],
           correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["Means 'I want'", "Used to order"],
-          explanation: "'Mepɛ fufu' means 'I would like fufu' in Twi."
+          hints: ["brɛ me = bring to me"],
+          explanation: "Mepa wo kyɛw fa ka no brɛ me = Bring the bill please in Twi."
         }
       ]
     }
@@ -466,96 +360,187 @@ export default {
     id: "review-5",
     title: "Review: Food & Drinks",
     icon: "refresh-outline",
-    description: "Review all the food, drink, and ordering phrases you've learned",
+    description: "Review all the food and drink vocabulary you've learned",
     questions: [
       {
-        id: 501,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi dish.",
-        question: "Which dish is made from pounded cassava and plantain?",
-        options: [
-          { id: 1, text: "Fufu" },
-          { id: 2, text: "Waakye" },
-          { id: 3, text: "Jollof" },
-          { id: 4, text: "Kenkey" }
-        ],
-        correctOptionId: 1,
-        hints: ["Pounded food"],
-        explanation: "Fufu is made from pounded cassava and plantain."
-      },
-      {
-        id: 502,
+        id: 601,
         type: "multiple_choice",
         instruction: "Select the correct Twi word.",
         question: "What is 'Water' in Twi?",
         options: [
-          { id: 1, text: "Tii" },
-          { id: 2, text: "Kɔfe" },
-          { id: 3, text: "Nsu" },
-          { id: 4, text: "Nufosuo" }
+          { id: 1, text: "Nsuo" },
+          { id: 2, text: "Aduane" },
+          { id: 3, text: "Ɛmo" },
+          { id: 4, text: "Nammono" }
+        ],
+        correctOptionId: 1,
+        hints: ["Essential for drinking"],
+        explanation: "Nsuo = Water."
+      },
+      {
+        id: 602,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi word.",
+        question: "What is 'Rice' in Twi?",
+        options: [
+          { id: 1, text: "Nsuo" },
+          { id: 2, text: "Aduane" },
+          { id: 3, text: "Ɛmo" },
+          { id: 4, text: "Mako" }
         ],
         correctOptionId: 3,
-        hints: ["Essential drink"],
-        explanation: "Nsu = Water."
+        hints: ["A staple food"],
+        explanation: "Ɛmo = Rice."
       },
       {
-        id: 503,
+        id: 603,
         type: "multiple_choice",
         instruction: "Select the correct Twi word.",
-        question: "What is 'Banana' in Twi?",
+        question: "What is 'Fish' in Twi?",
         options: [
-          { id: 1, text: "Bɔfre" },
-          { id: 2, text: "Abro" },
-          { id: 3, text: "Mako" },
-          { id: 4, text: "Nkateɛ" }
+          { id: 1, text: "Nsuomnam" },
+          { id: 2, text: "Nammono" },
+          { id: 3, text: "Ɛmo" },
+          { id: 4, text: "Mako" }
         ],
         correctOptionId: 1,
-        hints: ["Yellow fruit"],
-        explanation: "Bɔfre = Banana."
+        hints: ["From the water"],
+        explanation: "Nsuomnam = Fish."
       },
       {
-        id: 504,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi phrase.",
-        question: "How do you say 'I would like...' in Twi?",
-        options: [
-          { id: 1, text: "Mepɛ..." },
-          { id: 2, text: "Adedie" },
-          { id: 3, text: "Ɛdɛ" },
-          { id: 4, text: "Nsu" }
-        ],
-        correctOptionId: 1,
-        hints: ["Used to order"],
-        explanation: "Mepɛ... = I would like..."
-      },
-      {
-        id: 505,
+        id: 604,
         type: "multiple_choice",
         instruction: "Select the correct Twi word.",
-        question: "What is 'Salt' in Twi?",
+        question: "What is 'Pepper' in Twi?",
         options: [
-          { id: 1, text: "Mako" },
-          { id: 2, text: "Nkyene" },
-          { id: 3, text: "Nkateɛ" },
-          { id: 4, text: "Abro" }
+          { id: 1, text: "Nsuo" },
+          { id: 2, text: "Mako" },
+          { id: 3, text: "Ɛmo" },
+          { id: 4, text: "Nsuomnam" }
         ],
         correctOptionId: 2,
-        hints: ["Seasons food"],
-        explanation: "Nkyene = Salt."
+        hints: ["Spicy ingredient"],
+        explanation: "Mako = Pepper."
       },
       {
-        id: 506,
-        type: "matching",
-        instruction: "Match each Twi word to its correct English meaning.",
-        pairs: [
-          { id: 1, left: "Fufu", right: "Pounded dish" },
-          { id: 2, left: "Nsu", right: "Water" },
-          { id: 3, left: "Bɔfre", right: "Banana" },
-          { id: 4, left: "Mako", right: "Pepper" },
-          { id: 5, left: "Ɛdɛ", right: "Delicious" }
+        id: 605,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I am hungry' in Twi?",
+        options: [
+          { id: 1, text: "Ɛkɔm de me" },
+          { id: 2, text: "Mepɛ sɛ mididi" },
+          { id: 3, text: "Sukɔm de me" },
+          { id: 4, text: "Ɛyɛ dɛ" }
         ],
-        hints: ["Several food and drink words"],
-        explanation: "These are key food and drink words from this chapter."
+        correctOptionId: 1,
+        hints: ["Ɛkɔm = hunger"],
+        explanation: "Ɛkɔm de me = I am hungry."
+      },
+      {
+        id: 606,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I want to eat' in Twi?",
+        options: [
+          { id: 1, text: "Ɛkɔm de me" },
+          { id: 2, text: "Mepɛ sɛ mididi" },
+          { id: 3, text: "Sukɔm de me" },
+          { id: 4, text: "Mepa wo kyɛw ma me nsuo" }
+        ],
+        correctOptionId: 2,
+        hints: ["Mepɛ sɛ = I want to"],
+        explanation: "Mepɛ sɛ mididi = I want to eat."
+      },
+      {
+        id: 607,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I am thirsty' in Twi?",
+        options: [
+          { id: 1, text: "Ɛkɔm de me" },
+          { id: 2, text: "Mepɛ sɛ mididi" },
+          { id: 3, text: "Sukɔm de me" },
+          { id: 4, text: "Ɛyɛ dɛ" }
+        ],
+        correctOptionId: 3,
+        hints: ["Sukɔm = thirst"],
+        explanation: "Sukɔm de me = I am thirsty."
+      },
+      {
+        id: 608,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'It is delicious' in Twi?",
+        options: [
+          { id: 1, text: "Ɛyɛ dɛ" },
+          { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+          { id: 3, text: "Menni nammono" },
+          { id: 4, text: "Aduane no yɛ hye" }
+        ],
+        correctOptionId: 1,
+        hints: ["Ɛyɛ dɛ = it is sweet/delicious"],
+        explanation: "Ɛyɛ dɛ = It is delicious."
+      },
+      {
+        id: 609,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Give me water please' in Twi?",
+        options: [
+          { id: 1, text: "Ɛyɛ dɛ" },
+          { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+          { id: 3, text: "Menni nammono" },
+          { id: 4, text: "Mepa wo kyɛw fa ka no brɛ me" }
+        ],
+        correctOptionId: 2,
+        hints: ["nsuo = water"],
+        explanation: "Mepa wo kyɛw ma me nsuo = Give me water please."
+      },
+      {
+        id: 610,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I don't eat meat' in Twi?",
+        options: [
+          { id: 1, text: "Ɛyɛ dɛ" },
+          { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+          { id: 3, text: "Menni nammono" },
+          { id: 4, text: "Aduane no yɛ hye" }
+        ],
+        correctOptionId: 3,
+        hints: ["nammono = meat"],
+        explanation: "Menni nammono = I don't eat meat."
+      },
+      {
+        id: 611,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'The food is hot' in Twi?",
+        options: [
+          { id: 1, text: "Ɛyɛ dɛ" },
+          { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+          { id: 3, text: "Menni nammono" },
+          { id: 4, text: "Aduane no yɛ hye" }
+        ],
+        correctOptionId: 4,
+        hints: ["hye = hot"],
+        explanation: "Aduane no yɛ hye = The food is hot."
+      },
+      {
+        id: 612,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Bring the bill please' in Twi?",
+        options: [
+          { id: 1, text: "Mepa wo kyɛw fa ka no brɛ me" },
+          { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+          { id: 3, text: "Menni nammono" },
+          { id: 4, text: "Aduane no yɛ hye" }
+        ],
+        correctOptionId: 1,
+        hints: ["ka = bill"],
+        explanation: "Mepa wo kyɛw fa ka no brɛ me = Bring the bill please."
       }
     ]
   }

@@ -27,7 +27,7 @@ import eweIntermediateChapter7 from "../data/course_content/ewe/intermediate/cha
 import eweIntermediateChapter8 from "../data/course_content/ewe/intermediate/chapter8.js";
 
 
-{/*
+
 import gaAdvancedChapter1 from "../data/course_content/ga/advanced/chapter1.js";
 import gaAdvancedChapter2 from "../data/course_content/ga/advanced/chapter2.js";
 import gaAdvancedChapter3 from "../data/course_content/ga/advanced/chapter3.js";
@@ -36,7 +36,7 @@ import gaAdvancedChapter5 from "../data/course_content/ga/advanced/chapter5.js";
 import gaAdvancedChapter6 from "../data/course_content/ga/advanced/chapter6.js";
 import gaAdvancedChapter7 from "../data/course_content/ga/advanced/chapter7.js";
 import gaAdvancedChapter8 from "../data/course_content/ga/advanced/chapter8.js";
-*/}
+
 
 import gaBeginnerChapter1 from "../data/course_content/ga/beginner/chapter1.js";
 import gaBeginnerChapter2 from "../data/course_content/ga/beginner/chapter2.js";
@@ -137,7 +137,14 @@ export const getLessonData = () => {
           chapter8: gaIntermediateChapter8,
         },
         advanced: {
-          
+          chapter1: gaAdvancedChapter1,
+          chapter2: gaAdvancedChapter2,
+          chapter3: gaAdvancedChapter3,
+          chapter4: gaAdvancedChapter4,
+          chapter5: gaAdvancedChapter5,
+          chapter6: gaAdvancedChapter6,
+          chapter7: gaAdvancedChapter7,
+          chapter8: gaAdvancedChapter8,
         },
       },
       "ewe": {

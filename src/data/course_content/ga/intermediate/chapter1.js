@@ -1,5 +1,5 @@
 export default {
-  id: 11,
+  id: 1,
   title: "Travel & Transport",
   description: "Learn travel and transport vocabulary in Ga",
   icon: "bus-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "11-1",
+      id: "1-1",
       type: "words",
       title: "Planning a Trip",
       icon: "map-outline",
@@ -36,7 +36,7 @@ export default {
       ],
       questions: [
         {
-          id: 1101,
+          id: 101,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I want to travel to Accra' in Ga?",
@@ -51,7 +51,7 @@ export default {
           explanation: "Mitaoɔ ni mafã gbɛ kɛya Ga = I want to travel to Accra in Ga."
         },
         {
-          id: 1102,
+          id: 102,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Where is the bus station?' in Ga?",
@@ -66,7 +66,7 @@ export default {
           explanation: "Nɛgbɛ tsɔne daamɔhe lɛ yɔɔ? = Where is the bus station? in Ga."
         },
         {
-          id: 1103,
+          id: 103,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'How long does it take?' in Ga?",
@@ -84,7 +84,7 @@ export default {
     },
 
     {
-      id: "11-2",
+      id: "1-2",
       type: "words",
       title: "On Board",
       icon: "bus-outline",
@@ -112,7 +112,7 @@ export default {
       ],
       questions: [
         {
-          id: 1104,
+          id: 104,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Stop here please' in Ga?",
@@ -127,7 +127,7 @@ export default {
           explanation: "Ofainɛ damɔ biɛ = Stop here please in Ga."
         },
         {
-          id: 1105,
+          id: 105,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Is this seat taken?' in Ga?",
@@ -142,7 +142,7 @@ export default {
           explanation: "Mɔ ko ta sɛi nɛɛ nɔ lo? = Is this seat taken? in Ga."
         },
         {
-          id: 1106,
+          id: 106,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Where do I get down?' in Ga?",
@@ -160,7 +160,7 @@ export default {
     },
 
     {
-      id: "11-3",
+      id: "1-3",
       type: "words",
       title: "Fares & Problems",
       icon: "ticket-outline",
@@ -194,7 +194,7 @@ export default {
       ],
       questions: [
         {
-          id: 1107,
+          id: 107,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I missed the bus' in Ga?",
@@ -209,7 +209,7 @@ export default {
           explanation: "Tsɔne lɛ shi mi = I missed the bus in Ga."
         },
         {
-          id: 1108,
+          id: 108,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'How much is the fare?' in Ga?",
@@ -224,7 +224,7 @@ export default {
           explanation: "Shika enyiɛ aheɔ? = How much is the fare? in Ga."
         },
         {
-          id: 1109,
+          id: 109,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Drive carefully' in Ga?",
@@ -239,7 +239,7 @@ export default {
           explanation: "Kudɔmɔ ojogbaŋŋ = Drive carefully in Ga."
         },
         {
-          id: 1110,
+          id: 110,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'The road is bad' in Ga?",
@@ -258,13 +258,13 @@ export default {
   ],
 
   review: {
-    id: "review-11",
+    id: "review-1",
     title: "Review: Travel & Transport",
     icon: "refresh-outline",
     description: "Review all the travel and transport vocabulary you've learned",
     questions: [
       {
-        id: 1111,
+        id: 11,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I want to travel to Accra' in Ga?",
@@ -279,7 +279,7 @@ export default {
         explanation: "Mitaoɔ ni mafã gbɛ kɛya Ga = I want to travel to Accra."
       },
       {
-        id: 1112,
+        id: 112,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Where is the bus station?' in Ga?",
@@ -294,7 +294,7 @@ export default {
         explanation: "Nɛgbɛ tsɔne daamɔhe lɛ yɔɔ? = Where is the bus station?"
       },
       {
-        id: 1113,
+        id: 113,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'How long does it take?' in Ga?",
@@ -309,7 +309,7 @@ export default {
         explanation: "Bei enyiɛ eyeɔ? = How long does it take?"
       },
       {
-        id: 1114,
+        id: 114,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Stop here please' in Ga?",
@@ -324,7 +324,7 @@ export default {
         explanation: "Ofainɛ damɔ biɛ = Stop here please."
       },
       {
-        id: 1115,
+        id: 115,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Is this seat taken?' in Ga?",
@@ -339,7 +339,7 @@ export default {
         explanation: "Mɔ ko ta sɛi nɛɛ nɔ lo? = Is this seat taken?"
       },
       {
-        id: 1116,
+        id: 116,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Where do I get down?' in Ga?",
@@ -354,7 +354,7 @@ export default {
         explanation: "Nɛgbɛ mayi shi yɛ? = Where do I get down?"
       },
       {
-        id: 1117,
+        id: 117,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I missed the bus' in Ga?",
@@ -369,7 +369,7 @@ export default {
         explanation: "Tsɔne lɛ shi mi = I missed the bus."
       },
       {
-        id: 1118,
+        id: 118,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'How much is the fare?' in Ga?",
@@ -384,7 +384,7 @@ export default {
         explanation: "Shika enyiɛ aheɔ? = How much is the fare?"
       },
       {
-        id: 1119,
+        id: 119,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Drive carefully' in Ga?",
@@ -399,7 +399,7 @@ export default {
         explanation: "Kudɔmɔ ojogbaŋŋ = Drive carefully."
       },
       {
-        id: 1120,
+        id: 120,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'The road is bad' in Ga?",

@@ -1,5 +1,5 @@
 export default {
-  id: 12,
+  id: 3,
   title: "Market Negotiation",
   description: "Learn market negotiation vocabulary in Ga",
   icon: "handshake-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "12-1",
+      id: "3-1",
       type: "words",
       title: "Opening Bargaining",
       icon: "tag-outline",
@@ -42,7 +42,7 @@ export default {
       ],
       questions: [
         {
-          id: 1201,
+          id: 301,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'What is your last price?' in Ga?",
@@ -57,7 +57,7 @@ export default {
           explanation: "Mɛni ji ojara naagbee? = What is your last price? in Ga."
         },
         {
-          id: 1202,
+          id: 302,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Can you add a little?' in Ga?",
@@ -72,7 +72,7 @@ export default {
           explanation: "Obaanyɛ okɛ fioo afata he? = Can you add a little? in Ga."
         },
         {
-          id: 1203,
+          id: 303,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Give me a discount' in Ga?",
@@ -87,7 +87,7 @@ export default {
           explanation: "Ba jara lɛ shi oha mi = Give me a discount in Ga."
         },
         {
-          id: 1204,
+          id: 304,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I bought it cheaper there' in Ga?",
@@ -105,7 +105,7 @@ export default {
     },
 
     {
-      id: "12-2",
+      id: "3-2",
       type: "words",
       title: "Making Offers & Paying",
       icon: "banknote-outline",
@@ -145,7 +145,7 @@ export default {
       ],
       questions: [
         {
-          id: 1205,
+          id: 305,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I will buy two' in Ga?",
@@ -160,7 +160,7 @@ export default {
           explanation: "Mahe enyɔ = I will buy two in Ga."
         },
         {
-          id: 1206,
+          id: 306,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I don't have enough money' in Ga?",
@@ -175,7 +175,7 @@ export default {
           explanation: "Mibɛ shika pii = I don't have enough money in Ga."
         },
         {
-          id: 1207,
+          id: 307,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Is it fresh?' in Ga?",
@@ -190,7 +190,7 @@ export default {
           explanation: "Ehe tse lo? = Is it fresh? in Ga."
         },
         {
-          id: 1208,
+          id: 308,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Count the money' in Ga?",
@@ -205,7 +205,7 @@ export default {
           explanation: "Kanemɔ shika lɛ = Count the money in Ga."
         },
         {
-          id: 1209,
+          id: 309,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Keep the change' in Ga?",
@@ -224,13 +224,13 @@ export default {
   ],
 
   review: {
-    id: "review-12",
+    id: "review-3",
     title: "Review: Market Negotiation",
     icon: "refresh-outline",
     description: "Review all the market negotiation vocabulary you've learned",
     questions: [
       {
-        id: 1210,
+        id: 310,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'What is your last price?' in Ga?",
@@ -245,7 +245,7 @@ export default {
         explanation: "Mɛni ji ojara naagbee? = What is your last price?"
       },
       {
-        id: 1211,
+        id: 311,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Can you add a little?' in Ga?",
@@ -260,7 +260,7 @@ export default {
         explanation: "Obaanyɛ okɛ fioo afata he? = Can you add a little?"
       },
       {
-        id: 1212,
+        id: 33,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Give me a discount' in Ga?",
@@ -275,7 +275,7 @@ export default {
         explanation: "Ba jara lɛ shi oha mi = Give me a discount."
       },
       {
-        id: 1213,
+        id: 313,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I bought it cheaper there' in Ga?",
@@ -290,7 +290,7 @@ export default {
         explanation: "Mihe lɛ shika bibioo yɛ jɛi = I bought it cheaper there."
       },
       {
-        id: 1214,
+        id: 314,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I will buy two' in Ga?",
@@ -305,7 +305,7 @@ export default {
         explanation: "Mahe enyɔ = I will buy two."
       },
       {
-        id: 1215,
+        id: 315,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I don't have enough money' in Ga?",
@@ -320,7 +320,7 @@ export default {
         explanation: "Mibɛ shika pii = I don't have enough money."
       },
       {
-        id: 1216,
+        id: 316,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Is it fresh?' in Ga?",
@@ -335,7 +335,7 @@ export default {
         explanation: "Ehe tse lo? = Is it fresh?"
       },
       {
-        id: 1217,
+        id: 317,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Count the money' in Ga?",
@@ -350,7 +350,7 @@ export default {
         explanation: "Kanemɔ shika lɛ = Count the money."
       },
       {
-        id: 1218,
+        id: 318,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Keep the change' in Ga?",

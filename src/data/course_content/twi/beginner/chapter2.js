@@ -1,166 +1,37 @@
-// data/course_content/twi/beginner/chapter2.js
 export default {
   id: 2,
   title: "Introductions",
-  description: "Learn how to introduce yourself, ask about others, and share personal information in Twi",
-  icon: "person-outline",
-  totalXp: 20,
+  description: "Learn how to introduce yourself and others in Twi",
+  icon: "person-add-outline",
+  totalXp: 15,
   difficulty: "Beginner",
 
   sections: [
     {
       id: "2-1",
-      type: "vocabulary",
-      title: "Introducing Yourself",
+      type: "words",
+      title: "Your Name",
       icon: "person-outline",
-      description: "Learn how to say your name and ask others for theirs",
-      words: ["Me din de...", "Wo din de sɛn?", "Mene...", "M'ani agye sɛ mehyia wo"],
+      description: "Learn how to ask and give your name in Twi",
+      words: ["Wo din de sɛn?", "Me din de Adwoa", "Ɛyɛ me dɛ sɛ mahyia wo"],
       vocabulary: [
         {
-          id: 1,
-          english: "My name is...",
-          native: "Me din de...",
-          pronunciation: "meh din deh"
-          // audioUrl: "/audio/twi/me_din_de.mp3"
-        },
-        {
-          id: 2,
+          id: 26,
           english: "What is your name?",
           native: "Wo din de sɛn?",
-          pronunciation: "wo din deh sen"
-          // audioUrl: "/audio/twi/wo_din_de_sen.mp3"
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/wo_din_de_sɛn.m4a")
         },
         {
-          id: 3,
-          english: "I am...",
-          native: "Mene...",
-          pronunciation: "meh-neh"
-          // audioUrl: "/audio/twi/mene.mp3"
+          id: 27,
+          english: "My name is Adwoa",
+          native: "Me din de Adwoa",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/me_din_de_adwoa.m4a")
         },
         {
-          id: 4,
+          id: 28,
           english: "Nice to meet you",
-          native: "M'ani agye sɛ mehyia wo",
-          pronunciation: "mah-nee ah-jeh seh meh-hee-ah wo"
-          // audioUrl: "/audio/twi/mani_agye_se_mehyia_wo.mp3"
-        }
-      ],
-      questions: [
-        {
-          id: 101,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'My name is...' in Twi?",
-          options: [
-            { id: 1, text: "Me din de..." },
-            { id: 2, text: "Wo din de sɛn?" },
-            { id: 3, text: "Mene..." },
-            { id: 4, text: "Mefiri Ghana" }
-          ],
-          correctOptionId: 1,
-          hints: ["Me = my", "din = name", "de = is"],
-          explanation: "'Me din de...' = 'My name is...'. 'Me' means 'my', 'din' means 'name', and 'de' means 'is'."
-        },
-        {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you ask 'What is your name?' in Twi?",
-          options: [
-            { id: 1, text: "Me din de..." },
-            { id: 2, text: "Wo din de sɛn?" },
-            { id: 3, text: "Mene..." },
-            { id: 4, text: "Wofiri he?" }
-          ],
-          correctOptionId: 2,
-          hints: ["Wo = your", "din = name", "de sɛn? = is what?"],
-          explanation: "'Wo din de sɛn?' = 'What is your name?'. 'Wo' means 'your' and 'de sɛn?' means 'is what?'."
-        },
-        {
-          id: 103,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'I am...' when introducing yourself?",
-          options: [
-            { id: 1, text: "Me din de..." },
-            { id: 2, text: "Wo din de sɛn?" },
-            { id: 3, text: "Mene..." },
-            { id: 4, text: "Mefiri Ghana" }
-          ],
-          correctOptionId: 3,
-          hints: ["Me = I", "ne = am/are (linking verb)"],
-          explanation: "'Mene...' means 'I am...'. For example, 'Mene Kwame' means 'I am Kwame'."
-        },
-        {
-          id: 104,
-          type: "drag_drop",
-          instruction: "Complete the question 'What is your name?' by dragging the correct words.",
-          sentence: "[_____] din de [_____]?",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "Wo", meaning: "your" },
-            { id: "opt2", text: "Me", meaning: "my" },
-            { id: "opt3", text: "sɛn", meaning: "what" },
-            { id: "opt4", text: "he", meaning: "where" }
-          ],
-          correctDrops: [
-            { blankId: "blank1", itemId: "opt1" },
-            { blankId: "blank2", itemId: "opt3" }
-          ],
-          hints: ["First blank = your", "Second blank = what (question word)"],
-          explanation: "'Wo din de sɛn?' = 'What is your name?'. 'Wo' means 'your' and 'sɛn' means 'what'."
-        },
-        {
-          id: 105,
-          type: "matching",
-          instruction: "Match each Twi phrase to its correct English meaning.",
-          pairs: [
-            { id: 1, left: "Me din de Kwame", right: "My name is Kwame" },
-            { id: 2, left: "Wo din de sɛn?", right: "What is your name?" },
-            { id: 3, left: "Mene Kwame", right: "I am Kwame" },
-            { id: 4, left: "M'ani agye sɛ mehyia wo", right: "Nice to meet you" }
-          ],
-          hints: ["Me din de = My name is", "Wo din de sɛn? = What is your name?", "Mene = I am"],
-          explanation: "These are essential phrases for introducing yourself in Twi."
-        }
-      ]
-    },
-
-    {
-      id: "2-2",
-      type: "vocabulary",
-      title: "Where Are You From?",
-      icon: "globe-outline",
-      description: "Learn how to ask and answer questions about where you're from",
-      words: ["Wofiri he?", "Mefiri...", "Mefiri Ghana"],
-      vocabulary: [
-        {
-          id: 5,
-          english: "Where are you from?",
-          native: "Wofiri he?",
-          pronunciation: "wo-fee-ree heh"
-          // audioUrl: "/audio/twi/wofiri_he.mp3"
-        },
-        {
-          id: 6,
-          english: "I am from...",
-          native: "Mefiri...",
-          pronunciation: "meh-fee-ree"
-          // audioUrl: "/audio/twi/mefiri.mp3"
-        },
-        {
-          id: 7,
-          english: "Ghana",
-          native: "Ghana",
-          pronunciation: "gah-nah"
-          // audioUrl: "/audio/twi/ghana.mp3"
-        },
-        {
-          id: 8,
-          english: "America",
-          native: "America",
-          pronunciation: "ah-meh-ree-kah"
-          // audioUrl: "/audio/twi/america.mp3"
+          native: "Ɛyɛ me dɛ sɛ mahyia wo",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/ɛyɛ_me_dɛ_sɛ_mahyia_wo.m4a")
         }
       ],
       questions: [
@@ -168,293 +39,316 @@ export default {
           id: 201,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
-          question: "How do you ask 'Where are you from?' in Twi?",
+          question: "How do you ask 'What is your name?' in Twi?",
           options: [
-            { id: 1, text: "Wofiri he?" },
-            { id: 2, text: "Mefiri Ghana" },
-            { id: 3, text: "Kasa bɛn na wokasa?" },
-            { id: 4, text: "Wo mfe ahe?" }
+            { id: 1, text: "Wo din de sɛn?" },
+            { id: 2, text: "Me din de Adwoa" },
+            { id: 3, text: "Ɛyɛ me dɛ sɛ mahyia wo" },
+            { id: 4, text: "Wofiri he?" }
           ],
           correctOptionId: 1,
-          hints: ["Wo = you", "firi = from", "he? = where?"],
-          explanation: "'Wofiri he?' = 'Where are you from?'. 'Wo' means 'you', 'firi' means 'from', and 'he' means 'where'."
+          hints: ["din = name", "sɛn = what"],
+          explanation: "Wo din de sɛn? = What is your name? in Twi."
         },
         {
           id: 202,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'I am from Ghana' in Twi?",
+          question: "How do you say 'My name is Adwoa' in Twi?",
           options: [
-            { id: 1, text: "Wofiri Ghana" },
-            { id: 2, text: "Mefiri Ghana" },
-            { id: 3, text: "Mefiri America" },
-            { id: 4, text: "Me din de Ghana" }
+            { id: 1, text: "Wo din de sɛn?" },
+            { id: 2, text: "Me din de Adwoa" },
+            { id: 3, text: "Ɛyɛ me dɛ sɛ mahyia wo" },
+            { id: 4, text: "Mefiri Ghana" }
           ],
           correctOptionId: 2,
-          hints: ["Me = I", "firi = from", "Ghana stays the same"],
-          explanation: "'Mefiri Ghana' = 'I am from Ghana'. 'Me' means 'I' and 'firi' means 'from'."
+          hints: ["Me din de = My name is"],
+          explanation: "Me din de Adwoa = My name is Adwoa in Twi."
         },
         {
           id: 203,
           type: "multiple_choice",
-          instruction: "Select the correct response.",
-          question: "If someone asks 'Wofiri he?', what should you say if you're from Ghana?",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'Nice to meet you' in Twi?",
           options: [
-            { id: 1, text: "Mefiri Ghana" },
-            { id: 2, text: "Wofiri he?" },
-            { id: 3, text: "Me din de..." },
-            { id: 4, text: "Mene Ghana" }
+            { id: 1, text: "Wo din de sɛn?" },
+            { id: 2, text: "Me din de Adwoa" },
+            { id: 3, text: "Ɛyɛ me dɛ sɛ mahyia wo" },
+            { id: 4, text: "Wote he?" }
           ],
-          correctOptionId: 1,
-          hints: ["Response starts with 'Me'", "Tell them your country"],
-          explanation: "'Mefiri Ghana' is the correct response to 'Where are you from?' if you are from Ghana."
+          correctOptionId: 3,
+          hints: ["Used when meeting someone for the first time"],
+          explanation: "Ɛyɛ me dɛ sɛ mahyia wo = Nice to meet you in Twi."
+        }
+      ]
+    },
+
+    {
+      id: "2-2",
+      type: "words",
+      title: "Where You're From & Where You Live",
+      icon: "location-outline",
+      description: "Learn how to ask and say where you're from and where you live in Twi",
+      words: ["Wofiri he?", "Mefiri Ghana", "Wote he?", "Mete Aburi"],
+      vocabulary: [
+        {
+          id: 29,
+          english: "Where are you from?",
+          native: "Wofiri he?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/wofiri_he.m4a")
         },
         {
+          id: 30,
+          english: "I am from Ghana",
+          native: "Mefiri Ghana",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/mefiri_ghana.m4a")
+        },
+        {
+          id: 31,
+          english: "Where do you live?",
+          native: "Wote he?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/wote_he.m4a")
+        },
+        {
+          id: 32,
+          english: "I live in Aburi",
+          native: "Mete Aburi",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/mete_aburi.m4a")
+        }
+      ],
+      questions: [
+        {
           id: 204,
-          type: "drag_drop",
-          instruction: "Complete the question 'Where are you from?' by dragging the correct words.",
-          sentence: "[_____] [_____] he?",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "Wo", meaning: "you" },
-            { id: "opt2", text: "Me", meaning: "I" },
-            { id: "opt3", text: "firi", meaning: "from" },
-            { id: "opt4", text: "kasa", meaning: "speak" }
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you ask 'Where are you from?' in Twi?",
+          options: [
+            { id: 1, text: "Wote he?" },
+            { id: 2, text: "Wofiri he?" },
+            { id: 3, text: "Mefiri Ghana" },
+            { id: 4, text: "Mete Aburi" }
           ],
-          correctDrops: [
-            { blankId: "blank1", itemId: "opt1" },
-            { blankId: "blank2", itemId: "opt3" }
+          correctOptionId: 2,
+          hints: ["firi = come from", "he = where"],
+          explanation: "Wofiri he? = Where are you from? in Twi."
+        },
+        {
+          id: 205,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I am from Ghana' in Twi?",
+          options: [
+            { id: 1, text: "Wofiri he?" },
+            { id: 2, text: "Mefiri Ghana" },
+            { id: 3, text: "Wote he?" },
+            { id: 4, text: "Mete Aburi" }
           ],
-          hints: ["First blank = you", "Second blank = from", "Ending 'he?' is already there"],
-          explanation: "'Wo' + 'firi' + 'he?' = 'Wofiri he?' which means 'Where are you from?'."
+          correctOptionId: 2,
+          hints: ["Mefiri = I am from"],
+          explanation: "Mefiri Ghana = I am from Ghana in Twi."
+        },
+        {
+          id: 206,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you ask 'Where do you live?' in Twi?",
+          options: [
+            { id: 1, text: "Wote he?" },
+            { id: 2, text: "Wofiri he?" },
+            { id: 3, text: "Mefiri Ghana" },
+            { id: 4, text: "Mete Aburi" }
+          ],
+          correctOptionId: 1,
+          hints: ["te = live/stay", "he = where"],
+          explanation: "Wote he? = Where do you live? in Twi."
+        },
+        {
+          id: 207,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I live in Aburi' in Twi?",
+          options: [
+            { id: 1, text: "Wofiri he?" },
+            { id: 2, text: "Mefiri Ghana" },
+            { id: 3, text: "Wote he?" },
+            { id: 4, text: "Mete Aburi" }
+          ],
+          correctOptionId: 4,
+          hints: ["Mete = I live in"],
+          explanation: "Mete Aburi = I live in Aburi in Twi."
         }
       ]
     },
 
     {
       id: "2-3",
-      type: "vocabulary",
-      title: "Languages & Age",
-      icon: "chatbubbles-outline",
-      description: "Learn how to talk about which languages you speak and how old you are",
-      words: ["Kasa bɛn na wokasa?", "Mekasa Twi", "Wo mfe ahe?", "Me mfe 25"],
+      type: "words",
+      title: "About You",
+      icon: "id-card-outline",
+      description: "Learn how to talk about yourself in Twi",
+      words: ["Wadi mfeɛ ahe?", "Meyɛ sukuuni", "Woyɛ adwuma bɛn?", "W'aware anaa?"],
       vocabulary: [
         {
-          id: 9,
-          english: "Which language do you speak?",
-          native: "Kasa bɛn na wokasa?",
-          pronunciation: "kah-sah ben nah wo-kah-sah"
-          // audioUrl: "/audio/twi/kasa_ben_na_wokasa.mp3"
-        },
-        {
-          id: 10,
-          english: "I speak...",
-          native: "Mekasa...",
-          pronunciation: "meh-kah-sah"
-          // audioUrl: "/audio/twi/mekasa.mp3"
-        },
-        {
-          id: 11,
+          id: 33,
           english: "How old are you?",
-          native: "Wo mfe ahe?",
-          pronunciation: "wo mfeh ah-heh"
-          // audioUrl: "/audio/twi/wo_mfe_ahe.mp3"
+          native: "Wadi mfeɛ ahe?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/wadi_mfeɛ_ahe.m4a")
         },
         {
-          id: 12,
-          english: "I am ... years old",
-          native: "Me mfe...",
-          pronunciation: "meh mfeh"
-          // audioUrl: "/audio/twi/me_mfe.mp3"
+          id: 34,
+          english: "I am a student",
+          native: "Meyɛ sukuuni",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/meyɛ_sukuuni.m4a")
+        },
+        {
+          id: 35,
+          english: "What work do you do?",
+          native: "Woyɛ adwuma bɛn?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/woyɛ_adwuma_bɛn.m4a")
+        },
+        {
+          id: 36,
+          english: "Are you married?",
+          native: "W'aware anaa?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/w_aware_anaa.m4a")
         }
       ],
       questions: [
         {
-          id: 301,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you ask 'Which language do you speak?' in Twi?",
-          options: [
-            { id: 1, text: "Kasa bɛn na wokasa?" },
-            { id: 2, text: "Mekasa Twi" },
-            { id: 3, text: "Wo mfe ahe?" },
-            { id: 4, text: "Me mfe 25" }
-          ],
-          correctOptionId: 1,
-          hints: ["Kasa = language/speak", "bɛn = which", "wo = you"],
-          explanation: "'Kasa bɛn na wokasa?' = 'Which language do you speak?'. 'Kasa' means 'language' or 'speak'."
-        },
-        {
-          id: 302,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'I speak...' in Twi?",
-          options: [
-            { id: 1, text: "Kasa bɛn na wokasa?" },
-            { id: 2, text: "Mekasa..." },
-            { id: 3, text: "Wo mfe ahe?" },
-            { id: 4, text: "Me mfe..." }
-          ],
-          correctOptionId: 2,
-          hints: ["Me = I", "kasa = speak", "Add the language name"],
-          explanation: "'Mekasa...' means 'I speak...'. For example, 'Mekasa Twi' means 'I speak Twi'."
-        },
-        {
-          id: 303,
+          id: 208,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
           question: "How do you ask 'How old are you?' in Twi?",
           options: [
-            { id: 1, text: "Kasa bɛn na wokasa?" },
-            { id: 2, text: "Mekasa..." },
-            { id: 3, text: "Wo mfe ahe?" },
-            { id: 4, text: "Me mfe..." }
+            { id: 1, text: "Woyɛ adwuma bɛn?" },
+            { id: 2, text: "Wadi mfeɛ ahe?" },
+            { id: 3, text: "Meyɛ sukuuni" },
+            { id: 4, text: "W'aware anaa?" }
           ],
-          correctOptionId: 3,
-          hints: ["Wo = your", "mfe = years", "ahe? = how many?"],
-          explanation: "'Wo mfe ahe?' = 'How old are you?'. 'Wo' means 'your', 'mfe' means 'years', and 'ahe' means 'how many'."
+          correctOptionId: 2,
+          hints: ["mfeɛ = years", "ahe = how many"],
+          explanation: "Wadi mfeɛ ahe? = How old are you? in Twi."
         },
         {
-          id: 304,
+          id: 209,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'I am 25 years old' in Twi?",
+          question: "How do you say 'I am a student' in Twi?",
           options: [
-            { id: 1, text: "Kasa bɛn na wokasa?" },
-            { id: 2, text: "Mekasa Twi" },
-            { id: 3, text: "Wo mfe ahe?" },
-            { id: 4, text: "Me mfe 25" }
+            { id: 1, text: "Wadi mfeɛ ahe?" },
+            { id: 2, text: "Meyɛ sukuuni" },
+            { id: 3, text: "Woyɛ adwuma bɛn?" },
+            { id: 4, text: "W'aware anaa?" }
           ],
-          correctOptionId: 4,
-          hints: ["Me = my", "mfe = years", "Add the number"],
-          explanation: "'Me mfe 25' = 'I am 25 years old'. 'Me mfe' means 'my years' and you add the number."
+          correctOptionId: 2,
+          hints: ["Meyɛ = I am", "sukuuni = student"],
+          explanation: "Meyɛ sukuuni = I am a student in Twi."
         },
         {
-          id: 305,
-          type: "matching",
-          instruction: "Match each Twi phrase to its correct English meaning.",
-          pairs: [
-            { id: 1, left: "Kasa bɛn na wokasa?", right: "Which language do you speak?" },
-            { id: 2, left: "Mekasa Twi", right: "I speak Twi" },
-            { id: 3, left: "Wo mfe ahe?", right: "How old are you?" },
-            { id: 4, left: "Me mfe 20", right: "I am 20 years old" }
+          id: 210,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you ask 'What work do you do?' in Twi?",
+          options: [
+            { id: 1, text: "Wadi mfeɛ ahe?" },
+            { id: 2, text: "Meyɛ sukuuni" },
+            { id: 3, text: "Woyɛ adwuma bɛn?" },
+            { id: 4, text: "W'aware anaa?" }
           ],
-          hints: ["Kasa = language/speak", "mfe = years", "Mekasa = I speak"],
-          explanation: "These are essential phrases for asking and answering about language and age."
+          correctOptionId: 3,
+          hints: ["adwuma = work", "bɛn = what"],
+          explanation: "Woyɛ adwuma bɛn? = What work do you do? in Twi."
+        },
+        {
+          id: 211,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you ask 'Are you married?' in Twi?",
+          options: [
+            { id: 1, text: "Wadi mfeɛ ahe?" },
+            { id: 2, text: "Meyɛ sukuuni" },
+            { id: 3, text: "Woyɛ adwuma bɛn?" },
+            { id: 4, text: "W'aware anaa?" }
+          ],
+          correctOptionId: 4,
+          hints: ["aware = marriage", "anaa = or/question"],
+          explanation: "W'aware anaa? = Are you married? in Twi."
         }
       ]
     },
 
     {
       id: "2-4",
-      type: "vocabulary",
-      title: "Introducing Others & Farewells",
+      type: "words",
+      title: "Language & Friends",
       icon: "people-outline",
-      description: "Learn to introduce friends, use pronouns, and say goodbye in Twi",
-      words: ["Yi ne me yɔnko", "Ɔyɛ me yɔnko", "Nante yie", "Ɔkyena yɛbɛhyia"],
+      description: "Learn how to talk about language and friends in Twi",
+      words: ["Meka Twi kakra", "M'adamfo nie", "Meresua wo kasa"],
       vocabulary: [
         {
-          id: 13,
+          id: 37,
+          english: "I speak a little Twi",
+          native: "Meka Twi kakra",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/meka_twi_kakra.m4a")
+        },
+        {
+          id: 38,
           english: "This is my friend",
-          native: "Yi ne me yɔnko",
-          pronunciation: "yee neh meh yon-koh"
-          // audioUrl: "/audio/twi/yi_ne_me_yonko.mp3"
+          native: "M'adamfo nie",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/m_adamfo_nie.m4a")
         },
         {
-          id: 14,
-          english: "He is... / She is...",
-          native: "Ɔyɛ...",
-          pronunciation: "oh-yeh"
-          // audioUrl: "/audio/twi/oye.mp3"
-        },
-        {
-          id: 15,
-          english: "Goodbye",
-          native: "Nante yie",
-          pronunciation: "nan-teh yee-eh"
-          // audioUrl: "/audio/twi/nante_yie.mp3"
-        },
-        {
-          id: 16,
-          english: "See you tomorrow",
-          native: "Ɔkyena yɛbɛhyia",
-          pronunciation: "oh-chen-ah yeh-beh-hee-ah"
-          // audioUrl: "/audio/twi/okyena_yebehyia.mp3"
+          id: 39,
+          english: "I am learning your language",
+          native: "Meresua wo kasa",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter2/meresua_wo_kasa.m4a")
         }
       ],
       questions: [
         {
-          id: 401,
+          id: 212,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I speak a little Twi' in Twi?",
+          options: [
+            { id: 1, text: "Meka Twi kakra" },
+            { id: 2, text: "M'adamfo nie" },
+            { id: 3, text: "Meresua wo kasa" },
+            { id: 4, text: "Meyɛ sukuuni" }
+          ],
+          correctOptionId: 1,
+          hints: ["Meka = I speak", "kakra = a little"],
+          explanation: "Meka Twi kakra = I speak a little Twi in Twi."
+        },
+        {
+          id: 213,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'This is my friend' in Twi?",
           options: [
-            { id: 1, text: "Yi ne me yɔnko" },
-            { id: 2, text: "Ɔyɛ me yɔnko" },
-            { id: 3, text: "Nante yie" },
-            { id: 4, text: "M'ani agye wo" }
-          ],
-          correctOptionId: 1,
-          hints: ["Yi = this", "ne = is", "me yɔnko = my friend"],
-          explanation: "'Yi ne me yɔnko' = 'This is my friend'. 'Yi' means 'this', 'ne' means 'is', and 'me yɔnko' means 'my friend'."
-        },
-        {
-          id: 402,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'He is...' or 'She is...' in Twi?",
-          options: [
-            { id: 1, text: "Yi ne..." },
-            { id: 2, text: "Ɔyɛ..." },
-            { id: 3, text: "Mene..." },
-            { id: 4, text: "Ɔkyena yɛbɛhyia" }
+            { id: 1, text: "Meka Twi kakra" },
+            { id: 2, text: "M'adamfo nie" },
+            { id: 3, text: "Meresua wo kasa" },
+            { id: 4, text: "Mete Aburi" }
           ],
           correctOptionId: 2,
-          hints: ["Ɔ = he/she", "yɛ = is", "Same for both genders"],
-          explanation: "'Ɔyɛ...' means 'He is...' or 'She is...'. The pronoun 'ɔ' is used for both 'he' and 'she'."
+          hints: ["M'adamfo = my friend", "nie = this is"],
+          explanation: "M'adamfo nie = This is my friend in Twi."
         },
         {
-          id: 403,
+          id: 214,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'Goodbye' in Twi?",
+          question: "How do you say 'I am learning your language' in Twi?",
           options: [
-            { id: 1, text: "Nante yie" },
-            { id: 2, text: "Ɔkyena yɛbɛhyia" },
-            { id: 3, text: "M'ani agye wo" },
-            { id: 4, text: "Me mfe..." }
+            { id: 1, text: "Meka Twi kakra" },
+            { id: 2, text: "M'adamfo nie" },
+            { id: 3, text: "Meresua wo kasa" },
+            { id: 4, text: "Meyɛ sukuuni" }
           ],
-          correctOptionId: 1,
-          hints: ["Nante = walk/go", "yie = well", "Wishing someone well on their journey"],
-          explanation: "'Nante yie' means 'Goodbye'. Literally it means 'Walk well' or 'Go well'."
-        },
-        {
-          id: 404,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'See you tomorrow' in Twi?",
-          options: [
-            { id: 1, text: "Nante yie" },
-            { id: 2, text: "Ɔkyena yɛbɛhyia" },
-            { id: 3, text: "M'ani agye wo" },
-            { id: 4, text: "Me din de..." }
-          ],
-          correctOptionId: 2,
-          hints: ["Ɔkyena = tomorrow", "yɛbɛhyia = we will meet"],
-          explanation: "'Ɔkyena yɛbɛhyia' = 'See you tomorrow'. 'Ɔkyena' means 'tomorrow' and 'yɛbɛhyia' means 'we will meet'."
-        },
-        {
-          id: 405,
-          type: "matching",
-          instruction: "Match each Twi phrase to its correct English meaning.",
-          pairs: [
-            { id: 1, left: "Yi ne me yɔnko", right: "This is my friend" },
-            { id: 2, left: "Ɔyɛ me yɔnko", right: "He/She is my friend" },
-            { id: 3, left: "Nante yie", right: "Goodbye" },
-            { id: 4, left: "Ɔkyena yɛbɛhyia", right: "See you tomorrow" }
-          ],
-          hints: ["Yɔnko = friend", "Nante yie = go well", "Ɔkyena = tomorrow"],
-          explanation: "These are essential phrases for introducing others and saying goodbye in Twi."
+          correctOptionId: 3,
+          hints: ["Meresua = I am learning", "kasa = language"],
+          explanation: "Meresua wo kasa = I am learning your language in Twi."
         }
       ]
     }
@@ -464,99 +358,187 @@ export default {
     id: "review-2",
     title: "Review: Introductions",
     icon: "refresh-outline",
-    description: "Review all the phrases you've learned for introducing yourself and others",
+    description: "Review all the introduction vocabulary and phrases you've learned",
     questions: [
       {
         id: 501,
         type: "multiple_choice",
-        instruction: "Select the correct response.",
-        question: "If someone asks 'Wo din de sɛn?', what should you say?",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you ask 'What is your name?' in Twi?",
         options: [
-          { id: 1, text: "Me din de Kwame" },
-          { id: 2, text: "Mefiri Ghana" },
-          { id: 3, text: "Me mfe 25" },
-          { id: 4, text: "Mekasa Twi" }
+          { id: 1, text: "Wo din de sɛn?" },
+          { id: 2, text: "Me din de Adwoa" },
+          { id: 3, text: "Wofiri he?" },
+          { id: 4, text: "Wote he?" }
         ],
         correctOptionId: 1,
-        hints: ["They asked for your name", "Response starts with 'Me din de'"],
-        explanation: "'Me din de Kwame' is the correct response as it gives your name."
+        hints: ["din = name"],
+        explanation: "Wo din de sɛn? = What is your name?"
       },
       {
         id: 502,
         type: "multiple_choice",
-        instruction: "Select the correct response.",
-        question: "If someone asks 'Wofiri he?', what should you say?",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'My name is Adwoa' in Twi?",
         options: [
-          { id: 1, text: "Me din de Kwame" },
-          { id: 2, text: "Mefiri Ghana" },
-          { id: 3, text: "Me mfe 25" },
-          { id: 4, text: "Mekasa Twi" }
+          { id: 1, text: "Wo din de sɛn?" },
+          { id: 2, text: "Me din de Adwoa" },
+          { id: 3, text: "Mefiri Ghana" },
+          { id: 4, text: "Mete Aburi" }
         ],
         correctOptionId: 2,
-        hints: ["They asked where you're from", "Response starts with 'Me' + 'firi'"],
-        explanation: "'Mefiri Ghana' is the correct response as it gives your origin."
+        hints: ["Me din de = My name is"],
+        explanation: "Me din de Adwoa = My name is Adwoa."
       },
       {
         id: 503,
         type: "multiple_choice",
-        instruction: "Select the correct response.",
-        question: "If someone asks 'Kasa bɛn na wokasa?', what should you say?",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you ask 'Where are you from?' in Twi?",
         options: [
-          { id: 1, text: "Me din de Kwame" },
-          { id: 2, text: "Mefiri Ghana" },
-          { id: 3, text: "Me mfe 25" },
-          { id: 4, text: "Mekasa Twi" }
+          { id: 1, text: "Wote he?" },
+          { id: 2, text: "Wofiri he?" },
+          { id: 3, text: "Mefiri Ghana" },
+          { id: 4, text: "Mete Aburi" }
         ],
-        correctOptionId: 4,
-        hints: ["They asked about language", "Response starts with 'Me' + 'kasa'"],
-        explanation: "'Mekasa Twi' is the correct response as it gives the language you speak."
+        correctOptionId: 2,
+        hints: ["firi = come from"],
+        explanation: "Wofiri he? = Where are you from?"
       },
       {
         id: 504,
         type: "multiple_choice",
-        instruction: "Select the correct response.",
-        question: "If someone asks 'Wo mfe ahe?', what should you say?",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I am from Ghana' in Twi?",
         options: [
-          { id: 1, text: "Me din de Kwame" },
-          { id: 2, text: "Mefiri Ghana" },
-          { id: 3, text: "Me mfe 25" },
-          { id: 4, text: "Mekasa Twi" }
+          { id: 1, text: "Mefiri Ghana" },
+          { id: 2, text: "Mete Aburi" },
+          { id: 3, text: "Wofiri he?" },
+          { id: 4, text: "Wote he?" }
         ],
-        correctOptionId: 3,
-        hints: ["They asked about age", "Response starts with 'Me mfe'"],
-        explanation: "'Me mfe 25' is the correct response as it gives your age."
+        correctOptionId: 1,
+        hints: ["Mefiri = I am from"],
+        explanation: "Mefiri Ghana = I am from Ghana."
       },
       {
         id: 505,
-        type: "matching",
-        instruction: "Match each question to its correct response in Twi.",
-        pairs: [
-          { id: 1, left: "Wo din de sɛn?", right: "Me din de Kwame" },
-          { id: 2, left: "Wofiri he?", right: "Mefiri Ghana" },
-          { id: 3, left: "Kasa bɛn na wokasa?", right: "Mekasa Twi" },
-          { id: 4, left: "Wo mfe ahe?", right: "Me mfe 25" }
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you ask 'How old are you?' in Twi?",
+        options: [
+          { id: 1, text: "Woyɛ adwuma bɛn?" },
+          { id: 2, text: "Wadi mfeɛ ahe?" },
+          { id: 3, text: "Meyɛ sukuuni" },
+          { id: 4, text: "W'aware anaa?" }
         ],
-        hints: ["din = name", "firi = from", "kasa = language", "mfe = years"],
-        explanation: "These are common Q&A pairs for introductions in Twi."
+        correctOptionId: 2,
+        hints: ["mfeɛ = years"],
+        explanation: "Wadi mfeɛ ahe? = How old are you?"
       },
       {
         id: 506,
-        type: "drag_drop",
-        instruction: "Complete this introduction by dragging the correct words to the blanks.",
-        sentence: "[_____] ne me yɔnko. [_____] Kwame.",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "Yi", meaning: "This" },
-          { id: "opt2", text: "Ɔ", meaning: "He/She" },
-          { id: "opt3", text: "Me", meaning: "My" },
-          { id: "opt4", text: "Ɔyɛ", meaning: "He/She is" }
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I am a student' in Twi?",
+        options: [
+          { id: 1, text: "Meyɛ sukuuni" },
+          { id: 2, text: "Wadi mfeɛ ahe?" },
+          { id: 3, text: "Woyɛ adwuma bɛn?" },
+          { id: 4, text: "W'aware anaa?" }
         ],
-        correctDrops: [
-          { blankId: "blank1", itemId: "opt1" },
-          { blankId: "blank2", itemId: "opt4" }
+        correctOptionId: 1,
+        hints: ["sukuuni = student"],
+        explanation: "Meyɛ sukuuni = I am a student."
+      },
+      {
+        id: 507,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Where do you live?' in Twi?",
+        options: [
+          { id: 1, text: "Wote he?" },
+          { id: 2, text: "Wofiri he?" },
+          { id: 3, text: "Mefiri Ghana" },
+          { id: 4, text: "Mete Aburi" }
         ],
-        hints: ["First blank = This", "Second blank = He/She is"],
-        explanation: "'Yi ne me yɔnko. Ɔyɛ Kwame.' means 'This is my friend. He is Kwame.'"
+        correctOptionId: 1,
+        hints: ["te = live/stay"],
+        explanation: "Wote he? = Where do you live?"
+      },
+      {
+        id: 508,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Nice to meet you' in Twi?",
+        options: [
+          { id: 1, text: "Wo din de sɛn?" },
+          { id: 2, text: "Me din de Adwoa" },
+          { id: 3, text: "Ɛyɛ me dɛ sɛ mahyia wo" },
+          { id: 4, text: "Wofiri he?" }
+        ],
+        correctOptionId: 3,
+        hints: ["Used when meeting someone"],
+        explanation: "Ɛyɛ me dɛ sɛ mahyia wo = Nice to meet you."
+      },
+      {
+        id: 509,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'This is my friend' in Twi?",
+        options: [
+          { id: 1, text: "M'adamfo nie" },
+          { id: 2, text: "Wo din de sɛn?" },
+          { id: 3, text: "Me din de Adwoa" },
+          { id: 4, text: "Woyɛ adwuma bɛn?" }
+        ],
+        correctOptionId: 1,
+        hints: ["M'adamfo = my friend"],
+        explanation: "M'adamfo nie = This is my friend."
+      },
+      {
+        id: 510,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you ask 'What work do you do?' in Twi?",
+        options: [
+          { id: 1, text: "Wadi mfeɛ ahe?" },
+          { id: 2, text: "Meyɛ sukuuni" },
+          { id: 3, text: "Woyɛ adwuma bɛn?" },
+          { id: 4, text: "W'aware anaa?" }
+        ],
+        correctOptionId: 3,
+        hints: ["adwuma = work"],
+        explanation: "Woyɛ adwuma bɛn? = What work do you do?"
+      },
+      {
+        id: 511,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I speak a little Twi' in Twi?",
+        options: [
+          { id: 1, text: "Meka Twi kakra" },
+          { id: 2, text: "M'adamfo nie" },
+          { id: 3, text: "Meresua wo kasa" },
+          { id: 4, text: "Mete Aburi" }
+        ],
+        correctOptionId: 1,
+        hints: ["kakra = a little"],
+        explanation: "Meka Twi kakra = I speak a little Twi."
+      },
+      {
+        id: 512,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I am learning your language' in Twi?",
+        options: [
+          { id: 1, text: "Meka Twi kakra" },
+          { id: 2, text: "M'adamfo nie" },
+          { id: 3, text: "Meresua wo kasa" },
+          { id: 4, text: "Meyɛ sukuuni" }
+        ],
+        correctOptionId: 3,
+        hints: ["Meresua = I am learning"],
+        explanation: "Meresua wo kasa = I am learning your language."
       }
     ]
   }

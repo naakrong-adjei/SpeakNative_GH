@@ -26,7 +26,10 @@
       "expo-splash-screen",
       "expo-router",
       "expo-asset",
-      "expo-video"
+      "expo-video",
+      "expo-audio",
+      "expo-secure-store",
+      "expo-web-browser"
     ]
   }
 }

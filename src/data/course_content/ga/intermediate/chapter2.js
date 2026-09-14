@@ -1,5 +1,5 @@
 export default {
-  id: 10,
+  id: 2,
   title: "Health & Emergencies",
   description: "Learn health and emergency vocabulary in Ga",
   icon: "medkit-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "10-1",
+      id: "2-1",
       type: "words",
       title: "Feeling Unwell",
       icon: "thermometer-outline",
@@ -42,7 +42,7 @@ export default {
       ],
       questions: [
         {
-          id: 1001,
+          id: 201,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I am sick' in Ga?",
@@ -57,7 +57,7 @@ export default {
           explanation: "Mibɛ hewalɛ = I am sick in Ga."
         },
         {
-          id: 1002,
+          id: 202,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'My head hurts' in Ga?",
@@ -72,7 +72,7 @@ export default {
           explanation: "Miyitso miigba mi = My head hurts in Ga."
         },
         {
-          id: 1003,
+          id: 203,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I am feeling cold' in Ga?",
@@ -87,7 +87,7 @@ export default {
           explanation: "Fɛi miiye mi = I am feeling cold in Ga."
         },
         {
-          id: 1004,
+          id: 204,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'My stomach hurts' in Ga?",
@@ -105,7 +105,7 @@ export default {
     },
 
     {
-      id: "10-2",
+      id: "2-2",
       type: "words",
       title: "Getting Medical Help",
       icon: "siren-outline",
@@ -133,7 +133,7 @@ export default {
       ],
       questions: [
         {
-          id: 1005,
+          id: 205,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Call a doctor' in Ga?",
@@ -148,7 +148,7 @@ export default {
           explanation: "Tsɛ datrɛfonyo = Call a doctor in Ga."
         },
         {
-          id: 1006,
+          id: 206,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Where is the hospital?' in Ga?",
@@ -163,7 +163,7 @@ export default {
           explanation: "Nɛgbɛ helatsamɔhe lɛ yɔɔ? = Where is the hospital? in Ga."
         },
         {
-          id: 1007,
+          id: 207,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I want medicine' in Ga?",
@@ -181,7 +181,7 @@ export default {
     },
 
     {
-      id: "10-3",
+      id: "2-3",
       type: "words",
       title: "Medicine & Safety",
       icon: "shield-checkmark-outline",
@@ -203,7 +203,7 @@ export default {
       ],
       questions: [
         {
-          id: 1008,
+          id: 208,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Take this drug three times a day' in Ga?",
@@ -218,7 +218,7 @@ export default {
           explanation: "Nu tsofa nɛɛ shii etɛ gbi kome = Take this drug three times a day in Ga."
         },
         {
-          id: 1009,
+          id: 209,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Be careful' in Ga?",
@@ -237,13 +237,13 @@ export default {
   ],
 
   review: {
-    id: "review-10",
+    id: "review-2",
     title: "Review: Health & Emergencies",
     icon: "refresh-outline",
     description: "Review all the health and emergency vocabulary you've learned",
     questions: [
       {
-        id: 1010,
+        id: 22,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I am sick' in Ga?",
@@ -258,7 +258,7 @@ export default {
         explanation: "Mibɛ hewalɛ = I am sick."
       },
       {
-        id: 1011,
+        id: 211,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'My head hurts' in Ga?",
@@ -273,7 +273,7 @@ export default {
         explanation: "Miyitso miigba mi = My head hurts."
       },
       {
-        id: 1012,
+        id: 212,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I am feeling cold' in Ga?",
@@ -288,7 +288,7 @@ export default {
         explanation: "Fɛi miiye mi = I am feeling cold."
       },
       {
-        id: 1013,
+        id: 213,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'My stomach hurts' in Ga?",
@@ -303,7 +303,7 @@ export default {
         explanation: "Mimusu miiwa mihe = My stomach hurts."
       },
       {
-        id: 1014,
+        id: 214,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Call a doctor' in Ga?",
@@ -318,7 +318,7 @@ export default {
         explanation: "Tsɛ datrɛfonyo = Call a doctor."
       },
       {
-        id: 1015,
+        id: 215,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Where is the hospital?' in Ga?",
@@ -333,7 +333,7 @@ export default {
         explanation: "Nɛgbɛ helatsamɔhe lɛ yɔɔ? = Where is the hospital?"
       },
       {
-        id: 1016,
+        id: 216,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I want medicine' in Ga?",
@@ -348,7 +348,7 @@ export default {
         explanation: "Mitao tsofa = I want medicine."
       },
       {
-        id: 1017,
+        id: 217,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Take this drug three times a day' in Ga?",
@@ -363,7 +363,7 @@ export default {
         explanation: "Nu tsofa nɛɛ shii etɛ gbi kome = Take this drug three times a day."
       },
       {
-        id: 1018,
+        id: 218,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Be careful' in Ga?",
