@@ -37,7 +37,6 @@ import gaAdvancedChapter6 from "../data/course_content/ga/advanced/chapter6.js";
 import gaAdvancedChapter7 from "../data/course_content/ga/advanced/chapter7.js";
 import gaAdvancedChapter8 from "../data/course_content/ga/advanced/chapter8.js";
 
-
 import gaBeginnerChapter1 from "../data/course_content/ga/beginner/chapter1.js";
 import gaBeginnerChapter2 from "../data/course_content/ga/beginner/chapter2.js";
 import gaBeginnerChapter3 from "../data/course_content/ga/beginner/chapter3.js";
@@ -58,7 +57,7 @@ import gaIntermediateChapter7 from "../data/course_content/ga/intermediate/chapt
 import gaIntermediateChapter8 from "../data/course_content/ga/intermediate/chapter8.js";
 
 
-{/*
+
 import twiAdvancedChapter1 from "../data/course_content/twi/advanced/chapter1.js";
 import twiAdvancedChapter2 from "../data/course_content/twi/advanced/chapter2.js";
 import twiAdvancedChapter3 from "../data/course_content/twi/advanced/chapter3.js";
@@ -67,7 +66,6 @@ import twiAdvancedChapter5 from "../data/course_content/twi/advanced/chapter5.js
 import twiAdvancedChapter6 from "../data/course_content/twi/advanced/chapter6.js";
 import twiAdvancedChapter7 from "../data/course_content/twi/advanced/chapter7.js";
 import twiAdvancedChapter8 from "../data/course_content/twi/advanced/chapter8.js";
-*/}
 
 import twiBeginnerChapter1 from "../data/course_content/twi/beginner/chapter1.js";
 import twiBeginnerChapter10 from "../data/course_content/twi/beginner/chapter10.js";
@@ -80,7 +78,6 @@ import twiBeginnerChapter7 from "../data/course_content/twi/beginner/chapter7.js
 import twiBeginnerChapter8 from "../data/course_content/twi/beginner/chapter8.js";
 import twiBeginnerChapter9 from "../data/course_content/twi/beginner/chapter9.js";
 
-{/*
 import twiIntermediateChapter1 from "../data/course_content/twi/intermediate/chapter1.js";
 import twiIntermediateChapter2 from "../data/course_content/twi/intermediate/chapter2.js";
 import twiIntermediateChapter3 from "../data/course_content/twi/intermediate/chapter3.js";
@@ -89,8 +86,6 @@ import twiIntermediateChapter5 from "../data/course_content/twi/intermediate/cha
 import twiIntermediateChapter6 from "../data/course_content/twi/intermediate/chapter6.js";
 import twiIntermediateChapter7 from "../data/course_content/twi/intermediate/chapter7.js";
 import twiIntermediateChapter8 from "../data/course_content/twi/intermediate/chapter8.js";
-import twiIntermediateChapter9 from "../data/course_content/twi/intermediate/chapter9.js";
-*/}
 
 export const getLessonData = () => {
   try {
@@ -109,9 +104,24 @@ export const getLessonData = () => {
           chapter10: twiBeginnerChapter10,
         },
         intermediate: {
-          
+          chapter1: twiIntermediateChapter1,
+          chapter2: twiIntermediateChapter2,
+          chapter3: twiIntermediateChapter3,
+          chapter4: twiIntermediateChapter4,
+          chapter5: twiIntermediateChapter5,
+          chapter6: twiIntermediateChapter6,
+          chapter7: twiIntermediateChapter7,
+          chapter8: twiIntermediateChapter8,
         },
         advanced: {
+          chapter1: twiAdvancedChapter1,
+          chapter2: twiAdvancedChapter2,
+          chapter3: twiAdvancedChapter3,
+          chapter4: twiAdvancedChapter4,
+          chapter5: twiAdvancedChapter5,
+          chapter6: twiAdvancedChapter6,
+          chapter7: twiAdvancedChapter7,
+          chapter8: twiAdvancedChapter8,
         },
       },
       "ga": {

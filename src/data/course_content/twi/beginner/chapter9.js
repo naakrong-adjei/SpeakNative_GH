@@ -1,391 +1,298 @@
-// data/course_content/twi/beginner/chapter9.js
 export default {
   id: 9,
   title: "School & Work",
-  description: "Learn words and phrases for school subjects and work in Twi",
+  description: "Learn school and work vocabulary in Twi",
   icon: "school-outline",
-  totalXp: 18,
+  totalXp: 15,
   difficulty: "Beginner",
 
   sections: [
     {
       id: "9-1",
-      type: "vocabulary",
-      title: "School Subjects",
-      icon: "book-outline",
-      description: "Learn the Twi names for school subjects",
-      words: ["ɔbenem", "akontaabuo", "abakɔsɛm", "nyansahu", "adwenkyerɛ", "nsɛmkyerɛw", "ɔyarehwɛ", "sini"],
+      type: "words",
+      title: "School Words",
+      icon: "school-outline",
+      description: "Learn essential school vocabulary in Twi",
+      words: ["Sukuu", "Ɔkyerɛkyerɛni", "Nwoma", "Twerɛdua", "Adesuadan"],
       vocabulary: [
         {
-          id: 1,
+          id: 146,
+          english: "School",
+          native: "Sukuu",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/sukuu.m4a")
+        },
+        {
+          id: 147,
           english: "Teacher",
-          native: "ɔkyerɛkyerɛni",
-          pronunciation: "oh-cheh-reh-cheh-reh-nee"
-          // audioUrl: "/audio/twi/okyerеkyereni.mp3"
+          native: "Ɔkyerɛkyerɛni",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/ɔkyerɛkyerɛni.m4a")
         },
         {
-          id: 2,
-          english: "Student",
-          native: "ɔsukuuni",
-          pronunciation: "oh-soo-koo-nee"
-          // audioUrl: "/audio/twi/osukuuni.mp3"
+          id: 148,
+          english: "Book",
+          native: "Nwoma",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/nwoma.m4a")
         },
         {
-          id: 3,
-          english: "Mathematics",
-          native: "akontaabuo",
-          pronunciation: "ah-kon-tah-ah-boo-oh"
-          // audioUrl: "/audio/twi/akontaabuo.mp3"
+          id: 149,
+          english: "Pen",
+          native: "Twerɛdua",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/twerɛdua.m4a")
         },
         {
-          id: 4,
-          english: "History",
-          native: "abakɔsɛm",
-          pronunciation: "ah-bah-koh-sehm"
-          // audioUrl: "/audio/twi/abakosem.mp3"
-        },
-        {
-          id: 5,
-          english: "Science",
-          native: "nyansahu",
-          pronunciation: "nyahn-sah-hoo"
-          // audioUrl: "/audio/twi/nyansahu.mp3"
-        },
-        {
-          id: 6,
-          english: "Art / Design",
-          native: "adwenkyerɛ",
-          pronunciation: "ah-dwen-cheh-reh"
-          // audioUrl: "/audio/twi/adwenkyere.mp3"
-        },
-        {
-          id: 7,
-          english: "Writing / Essay",
-          native: "nsɛmkyerɛw",
-          pronunciation: "en-sem-cheh-reh-yeu"
-          // audioUrl: "/audio/twi/nsemkyerew.mp3"
-        },
-        {
-          id: 8,
-          english: "Reading",
-          native: "kenkan",
-          pronunciation: "ken-kahn"
-          // audioUrl: "/audio/twi/kenkan.mp3"
+          id: 150,
+          english: "Classroom",
+          native: "Adesuadan",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/adesuadan.m4a")
         }
       ],
       questions: [
         {
-          id: 101,
+          id: 901,
           type: "multiple_choice",
           instruction: "Select the correct Twi word.",
-          question: "How do you say 'Teacher' in Twi?",
+          question: "What is 'School' in Twi?",
           options: [
-            { id: 1, text: "ɔkyerɛkyerɛni" },
-            { id: 2, text: "ɔsukuuni" },
-            { id: 3, text: "akontaabuo" },
-            { id: 4, text: "abakɔsɛm" }
+            { id: 1, text: "Sukuu" },
+            { id: 2, text: "Ɔkyerɛkyerɛni" },
+            { id: 3, text: "Nwoma" },
+            { id: 4, text: "Twerɛdua" }
           ],
           correctOptionId: 1,
-          hints: ["A person who teaches", "Starts with 'ɔk'"],
-          explanation: "'ɔkyerɛkyerɛni' means 'Teacher' in Twi."
+          hints: ["Place of learning"],
+          explanation: "Sukuu = School in Twi."
         },
         {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'Student' in Twi?",
+          id: 902,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What word did you hear?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/ɔkyerɛkyerɛni.m4a"),
           options: [
-            { id: 1, text: "ɔkyerɛkyerɛni" },
-            { id: 2, text: "ɔsukuuni" },
-            { id: 3, text: "akontaabuo" },
-            { id: 4, text: "abakɔsɛm" }
+            { id: 1, text: "School" },
+            { id: 2, text: "Teacher" },
+            { id: 3, text: "Book" },
+            { id: 4, text: "Pen" }
           ],
           correctOptionId: 2,
-          hints: ["A person who learns", "Starts with 'ɔs'"],
-          explanation: "'ɔsukuuni' means 'Student' in Twi."
+          hints: ["Person who teaches"],
+          explanation: "You heard 'Ɔkyerɛkyerɛni' which means Teacher in Twi."
         },
         {
-          id: 103,
+          id: 903,
           type: "multiple_choice",
           instruction: "Select the correct Twi word.",
-          question: "How do you say 'Mathematics' in Twi?",
+          question: "What is 'Book' in Twi?",
           options: [
-            { id: 1, text: "akontaabuo" },
-            { id: 2, text: "abakɔsɛm" },
-            { id: 3, text: "nyansahu" },
-            { id: 4, text: "kenkan" }
+            { id: 1, text: "Sukuu" },
+            { id: 2, text: "Ɔkyerɛkyerɛni" },
+            { id: 3, text: "Nwoma" },
+            { id: 4, text: "Adesuadan" }
           ],
-          correctOptionId: 1,
-          hints: ["Subject about numbers", "Starts with 'ak'"],
-          explanation: "'akontaabuo' means 'Mathematics' in Twi."
+          correctOptionId: 3,
+          hints: ["What you read"],
+          explanation: "Nwoma = Book in Twi."
         },
         {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Twi word to its English meaning.",
-          pairs: [
-            { id: 1, left: "ɔkyerɛkyerɛni", right: "Teacher" },
-            { id: 2, left: "ɔsukuuni", right: "Student" },
-            { id: 3, left: "akontaabuo", right: "Mathematics" },
-            { id: 4, left: "abakɔsɛm", right: "History" },
-            { id: 5, left: "nyansahu", right: "Science" }
+          id: 904,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What word did you hear?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/twerɛdua.m4a"),
+          options: [
+            { id: 1, text: "School" },
+            { id: 2, text: "Book" },
+            { id: 3, text: "Pen" },
+            { id: 4, text: "Classroom" }
           ],
-          hints: ["ɔkyerɛkyerɛni = teacher", "ɔsukuuni = student", "akontaabuo = math"],
-          explanation: "These are common school words in Twi."
+          correctOptionId: 3,
+          hints: ["What you write with"],
+          explanation: "You heard 'Twerɛdua' which means Pen in Twi."
+        },
+        {
+          id: 905,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Classroom' in Twi?",
+          options: [
+            { id: 1, text: "Sukuu" },
+            { id: 2, text: "Nwoma" },
+            { id: 3, text: "Twerɛdua" },
+            { id: 4, text: "Adesuadan" }
+          ],
+          correctOptionId: 4,
+          hints: ["Where lessons happen"],
+          explanation: "Adesuadan = Classroom in Twi."
         }
       ]
     },
 
     {
       id: "9-2",
-      type: "vocabulary",
-      title: "Education Phrases",
-      icon: "create-outline",
-      description: "Learn useful phrases to talk about learning in Twi",
-      words: ["Merekenkan", "Mereyɛ adwuma", "Mete ase", "Mente ase", "Bisa", "Gyina so", "daakye", "nnɛ"],
+      type: "phrases",
+      title: "Studying & Schoolwork",
+      icon: "book-outline",
+      description: "Learn phrases about studying and schoolwork in Twi",
+      words: ["Fie adwuma", "Meresua Twi", "Mewɔ sɔhwɛ ɔkyena", "Twerɛ wo din"],
       vocabulary: [
         {
-          id: 9,
-          english: "I am reading",
-          native: "Merekenkan",
-          pronunciation: "meh-reh-ken-kahn"
-          // audioUrl: "/audio/twi/merekenkan.mp3"
+          id: 151,
+          english: "Homework",
+          native: "Fie adwuma",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/fie_adwuma.m4a")
         },
         {
-          id: 10,
-          english: "I am working",
-          native: "Mereyɛ adwuma",
-          pronunciation: "meh-reh-yeh ah-joo-mah"
-          // audioUrl: "/audio/twi/mereye_adwuma.mp3"
+          id: 152,
+          english: "I am learning Twi",
+          native: "Meresua Twi",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/meresua_twi.m4a")
         },
         {
-          id: 11,
-          english: "I understand",
-          native: "Mete ase",
-          pronunciation: "meh-teh ah-seh"
-          // audioUrl: "/audio/twi/mete_ase.mp3"
+          id: 153,
+          english: "I have an exam tomorrow",
+          native: "Mewɔ sɔhwɛ ɔkyena",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/mewɔ_sɔhwɛ_ɔkyena.m4a")
         },
         {
-          id: 12,
-          english: "I don't understand",
-          native: "Mente ase",
-          pronunciation: "men-teh ah-seh"
-          // audioUrl: "/audio/twi/mente_ase.mp3"
-        },
-        {
-          id: 13,
-          english: "To ask",
-          native: "bisa",
-          pronunciation: "bee-sah"
-          // audioUrl: "/audio/twi/bisa.mp3"
-        },
-        {
-          id: 14,
-          english: "To repeat / answer",
-          native: "gyina so",
-          pronunciation: "jee-nah soh"
-          // audioUrl: "/audio/twi/gyina_so.mp3"
-        },
-        {
-          id: 15,
-          english: "Tomorrow / future",
-          native: "daakye",
-          pronunciation: "dah-cheh"
-          // audioUrl: "/audio/twi/daakye.mp3"
-        },
-        {
-          id: 16,
-          english: "Today",
-          native: "nnɛ",
-          pronunciation: "n-neh"
-          // audioUrl: "/audio/twi/nne.mp3"
+          id: 154,
+          english: "Write your name",
+          native: "Twerɛ wo din",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/twerɛ_wo_din.m4a")
         }
       ],
       questions: [
         {
-          id: 201,
+          id: 906,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'I understand' in Twi?",
+          question: "How do you say 'Homework' in Twi?",
           options: [
-            { id: 1, text: "Mete ase" },
-            { id: 2, text: "Mente ase" },
-            { id: 3, text: "Merekenkan" },
-            { id: 4, text: "Mereyɛ adwuma" }
+            { id: 1, text: "Fie adwuma" },
+            { id: 2, text: "Meresua Twi" },
+            { id: 3, text: "Mewɔ sɔhwɛ ɔkyena" },
+            { id: 4, text: "Twerɛ wo din" }
           ],
           correctOptionId: 1,
-          hints: ["Me = I", "te ase = understand"],
-          explanation: "'Mete ase' means 'I understand'. 'te ase' means 'understand'."
+          hints: ["fie = home", "adwuma = work"],
+          explanation: "Fie adwuma = Homework in Twi."
         },
         {
-          id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'I don't understand' in Twi?",
+          id: 907,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/meresua_twi.m4a"),
           options: [
-            { id: 1, text: "Mete ase" },
-            { id: 2, text: "Mente ase" },
-            { id: 3, text: "Merekenkan" },
-            { id: 4, text: "Mereyɛ adwuma" }
+            { id: 1, text: "Homework" },
+            { id: 2, text: "I am learning Twi" },
+            { id: 3, text: "I have an exam tomorrow" },
+            { id: 4, text: "Write your name" }
           ],
           correctOptionId: 2,
-          hints: ["Negative form of 'Mete ase'", "Adds 'n' after Me"],
-          explanation: "'Mente ase' means 'I don't understand'. The 'n' makes it negative."
+          hints: ["Meresua = I am learning"],
+          explanation: "You heard 'Meresua Twi' which means 'I am learning Twi' in Twi."
         },
         {
-          id: 203,
+          id: 908,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'I am reading' in Twi?",
+          question: "How do you say 'I have an exam tomorrow' in Twi?",
           options: [
-            { id: 1, text: "Mete ase" },
-            { id: 2, text: "Mente ase" },
-            { id: 3, text: "Merekenkan" },
-            { id: 4, text: "Mereyɛ adwuma" }
+            { id: 1, text: "Fie adwuma" },
+            { id: 2, text: "Meresua Twi" },
+            { id: 3, text: "Mewɔ sɔhwɛ ɔkyena" },
+            { id: 4, text: "Twerɛ wo din" }
           ],
           correctOptionId: 3,
-          hints: ["kenkan = read", "Mere = I am (in progress)"],
-          explanation: "'Merekenkan' means 'I am reading'. 'kenkan' means 'read'."
+          hints: ["sɔhwɛ = exam", "ɔkyena = tomorrow"],
+          explanation: "Mewɔ sɔhwɛ ɔkyena = I have an exam tomorrow in Twi."
         },
         {
-          id: 204,
-          type: "matching",
-          instruction: "Match each Twi phrase to its English meaning.",
-          pairs: [
-            { id: 1, left: "Mete ase", right: "I understand" },
-            { id: 2, left: "Mente ase", right: "I don't understand" },
-            { id: 3, left: "Merekenkan", right: "I am reading" },
-            { id: 4, left: "Mereyɛ adwuma", right: "I am working" }
+          id: 909,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/twerɛ_wo_din.m4a"),
+          options: [
+            { id: 1, text: "Homework" },
+            { id: 2, text: "I am learning Twi" },
+            { id: 3, text: "I have an exam tomorrow" },
+            { id: 4, text: "Write your name" }
           ],
-          hints: ["Mete ase = I understand", "Mente ase = I don't understand", "Merekenkan = I am reading"],
-          explanation: "These are useful phrases for learning in Twi."
+          correctOptionId: 4,
+          hints: ["Twerɛ = write", "wo din = your name"],
+          explanation: "You heard 'Twerɛ wo din' which means 'Write your name' in Twi."
         }
       ]
     },
 
     {
       id: "9-3",
-      type: "vocabulary",
-      title: "Work & Occupations",
+      type: "phrases",
+      title: "School & Work Activities",
       icon: "briefcase-outline",
-      description: "Learn the Twi names for common occupations",
-      words: ["ɔdɔkita", "ɔkyerɛkyerɛni", "ɔsomfo", "ɔfumfuo", "ɔkwankyerɛfoɔ", "ɔtrafoɔ", "ɔsɛmfo", "ɔtɔfoɔ"],
+      description: "Learn phrases about school and work activities in Twi",
+      words: ["Ɔkyerɛkyerɛni no reba", "Mawie m'adwuma"],
       vocabulary: [
         {
-          id: 17,
-          english: "Doctor",
-          native: "ɔdɔkita",
-          pronunciation: "oh-doh-kee-tah"
-          // audioUrl: "/audio/twi/odokita.mp3"
+          id: 155,
+          english: "The teacher is coming",
+          native: "Ɔkyerɛkyerɛni no reba",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/ɔkyerɛkyerɛni_no_reba.m4a")
         },
         {
-          id: 18,
-          english: "Teacher",
-          native: "ɔkyerɛkyerɛni",
-          pronunciation: "oh-cheh-reh-cheh-reh-nee"
-          // audioUrl: "/audio/twi/okyerеkyereni.mp3"
-        },
-        {
-          id: 19,
-          english: "Pastor / Priest",
-          native: "ɔsomfo",
-          pronunciation: "oh-sohm-foh"
-          // audioUrl: "/audio/twi/osomfo.mp3"
-        },
-        {
-          id: 20,
-          english: "Farmer",
-          native: "ɔfumfuo",
-          pronunciation: "oh-foom-foo-oh"
-          // audioUrl: "/audio/twi/ofumfuo.mp3"
-        },
-        {
-          id: 21,
-          english: "Driver / Guide",
-          native: "ɔkwankyerɛfoɔ",
-          pronunciation: "oh-kwan-cheh-reh-foh"
-          // audioUrl: "/audio/twi/okwankyerefo.mp3"
-        },
-        {
-          id: 22,
-          english: "Trader / Seller",
-          native: "ɔtrafoɔ",
-          pronunciation: "oh-trah-foh"
-          // audioUrl: "/audio/twi/otrafo.mp3"
-        },
-        {
-          id: 23,
-          english: "Judge / Lawyer",
-          native: "ɔsɛmfo",
-          pronunciation: "oh-sehm-foh"
-          // audioUrl: "/audio/twi/osemfo.mp3"
-        },
-        {
-          id: 24,
-          english: "Buyer / Customer",
-          native: "ɔtɔfoɔ",
-          pronunciation: "oh-toh-foh"
-          // audioUrl: "/audio/twi/otofoo.mp3"
+          id: 156,
+          english: "I finished my work",
+          native: "Mawie m'adwuma",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/mawie_m_adwuma.m4a")
         }
       ],
       questions: [
         {
-          id: 301,
+          id: 910,
           type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'Doctor' in Twi?",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'The teacher is coming' in Twi?",
           options: [
-            { id: 1, text: "ɔdɔkita" },
-            { id: 2, text: "ɔsomfo" },
-            { id: 3, text: "ɔfumfuo" },
-            { id: 4, text: "ɔsɛmfo" }
+            { id: 1, text: "Ɔkyerɛkyerɛni no reba" },
+            { id: 2, text: "Mawie m'adwuma" },
+            { id: 3, text: "Meresua Twi" },
+            { id: 4, text: "Fie adwuma" }
           ],
           correctOptionId: 1,
-          hints: ["Treats sick people", "Starts with 'ɔd'"],
-          explanation: "'ɔdɔkita' means 'Doctor' in Twi."
+          hints: ["reba = is coming"],
+          explanation: "Ɔkyerɛkyerɛni no reba = The teacher is coming in Twi."
         },
         {
-          id: 302,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'Farmer' in Twi?",
+          id: 911,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/mawie_m_adwuma.m4a"),
           options: [
-            { id: 1, text: "ɔdɔkita" },
-            { id: 2, text: "ɔsomfo" },
-            { id: 3, text: "ɔfumfuo" },
-            { id: 4, text: "ɔsɛmfo" }
+            { id: 1, text: "The teacher is coming" },
+            { id: 2, text: "I finished my work" },
+            { id: 3, text: "I am learning Twi" },
+            { id: 4, text: "Write your name" }
           ],
-          correctOptionId: 3,
-          hints: ["Works on a farm", "Starts with 'ɔf'"],
-          explanation: "'ɔfumfuo' means 'Farmer' in Twi."
+          correctOptionId: 2,
+          hints: ["Mawie = I finished", "m'adwuma = my work"],
+          explanation: "You heard 'Mawie m'adwuma' which means 'I finished my work' in Twi."
         },
         {
-          id: 303,
+          id: 912,
           type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'Trader / Seller' in Twi?",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I finished my work' in Twi?",
           options: [
-            { id: 1, text: "ɔtrafoɔ" },
-            { id: 2, text: "ɔkwankyerɛfoɔ" },
-            { id: 3, text: "ɔsɛmfo" },
-            { id: 4, text: "ɔtɔfoɔ" }
+            { id: 1, text: "Ɔkyerɛkyerɛni no reba" },
+            { id: 2, text: "Mawie m'adwuma" },
+            { id: 3, text: "Meresua Twi" },
+            { id: 4, text: "Twerɛ wo din" }
           ],
-          correctOptionId: 1,
-          hints: ["Sells goods", "Starts with 'ɔtr'"],
-          explanation: "'ɔtrafoɔ' means 'Trader / Seller' in Twi."
-        },
-        {
-          id: 304,
-          type: "matching",
-          instruction: "Match each Twi occupation to its English meaning.",
-          pairs: [
-            { id: 1, left: "ɔdɔkita", right: "Doctor" },
-            { id: 2, left: "ɔkyerɛkyerɛni", right: "Teacher" },
-            { id: 3, left: "ɔfumfuo", right: "Farmer" },
-            { id: 4, left: "ɔtrafoɔ", right: "Trader / Seller" }
-          ],
-          hints: ["ɔdɔkita = doctor", "ɔkyerɛkyerɛni = teacher", "ɔfumfuo = farmer"],
-          explanation: "These are common occupations in Twi."
+          correctOptionId: 2,
+          hints: ["Mawie = I finished"],
+          explanation: "Mawie m'adwuma = I finished my work in Twi."
         }
       ]
     }
@@ -395,81 +302,191 @@ export default {
     id: "review-9",
     title: "Review: School & Work",
     icon: "refresh-outline",
-    description: "Review the school, education, and occupation words you've learned",
+    description: "Review all the school and work vocabulary you've learned",
     questions: [
       {
-        id: 401,
+        id: 913,
         type: "multiple_choice",
         instruction: "Select the correct Twi word.",
-        question: "How do you say 'Teacher' in Twi?",
+        question: "What is 'Book' in Twi?",
         options: [
-          { id: 1, text: "ɔkyerɛkyerɛni" },
-          { id: 2, text: "ɔsukuuni" },
-          { id: 3, text: "akontaabuo" },
-          { id: 4, text: "abakɔsɛm" }
+          { id: 1, text: "Sukuu" },
+          { id: 2, text: "Ɔkyerɛkyerɛni" },
+          { id: 3, text: "Nwoma" },
+          { id: 4, text: "Twerɛdua" }
         ],
-        correctOptionId: 1,
-        hints: ["A person who teaches"],
-        explanation: "'ɔkyerɛkyerɛni' means 'Teacher' in Twi."
+        correctOptionId: 3,
+        hints: ["What you read"],
+        explanation: "Nwoma = Book."
       },
       {
-        id: 402,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi phrase.",
-        question: "How do you say 'I understand' in Twi?",
+        id: 914,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What word did you hear?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/adesuadan.m4a"),
         options: [
-          { id: 1, text: "Mete ase" },
-          { id: 2, text: "Mente ase" },
-          { id: 3, text: "Merekenkan" },
-          { id: 4, text: "Mereyɛ adwuma" }
+          { id: 1, text: "School" },
+          { id: 2, text: "Book" },
+          { id: 3, text: "Pen" },
+          { id: 4, text: "Classroom" }
         ],
-        correctOptionId: 1,
-        hints: ["te ase = understand"],
-        explanation: "'Mete ase' means 'I understand' in Twi."
+        correctOptionId: 4,
+        hints: ["Where lessons happen"],
+        explanation: "You heard 'Adesuadan' which means Classroom."
       },
       {
-        id: 403,
+        id: 915,
         type: "multiple_choice",
         instruction: "Select the correct Twi word.",
-        question: "How do you say 'Doctor' in Twi?",
+        question: "What is 'Teacher' in Twi?",
         options: [
-          { id: 1, text: "ɔdɔkita" },
-          { id: 2, text: "ɔsomfo" },
-          { id: 3, text: "ɔfumfuo" },
-          { id: 4, text: "ɔsɛmfo" }
-        ],
-        correctOptionId: 1,
-        hints: ["Treats sick people"],
-        explanation: "'ɔdɔkita' means 'Doctor' in Twi."
-      },
-      {
-        id: 404,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi phrase.",
-        question: "How do you say 'I am working' in Twi?",
-        options: [
-          { id: 1, text: "Merekenkan" },
-          { id: 2, text: "Mereyɛ adwuma" },
-          { id: 3, text: "Mete ase" },
-          { id: 4, text: "Mente ase" }
+          { id: 1, text: "Sukuu" },
+          { id: 2, text: "Ɔkyerɛkyerɛni" },
+          { id: 3, text: "Nwoma" },
+          { id: 4, text: "Twerɛdua" }
         ],
         correctOptionId: 2,
-        hints: ["adwuma = work", "Mere = I am"],
-        explanation: "'Mereyɛ adwuma' means 'I am working' in Twi."
+        hints: ["Person who teaches"],
+        explanation: "Ɔkyerɛkyerɛni = Teacher."
       },
       {
-        id: 405,
-        type: "matching",
-        instruction: "Match each Twi word to its English meaning.",
-        pairs: [
-          { id: 1, left: "ɔsukuuni", right: "Student" },
-          { id: 2, left: "akontaabuo", right: "Mathematics" },
-          { id: 3, left: "ɔdɔkita", right: "Doctor" },
-          { id: 4, left: "ɔfumfuo", right: "Farmer" },
-          { id: 5, left: "Mente ase", right: "I don't understand" }
+        id: 916,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/fie_adwuma.m4a"),
+        options: [
+          { id: 1, text: "Homework" },
+          { id: 2, text: "I am learning Twi" },
+          { id: 3, text: "I have an exam tomorrow" },
+          { id: 4, text: "Write your name" }
         ],
-        hints: ["ɔsukuuni = student", "ɔdɔkita = doctor", "ɔfumfuo = farmer"],
-        explanation: "These are key school and work words from this chapter."
+        correctOptionId: 1,
+        hints: ["fie = home", "adwuma = work"],
+        explanation: "You heard 'Fie adwuma' which means Homework."
+      },
+      {
+        id: 917,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I am learning Twi' in Twi?",
+        options: [
+          { id: 1, text: "Fie adwuma" },
+          { id: 2, text: "Meresua Twi" },
+          { id: 3, text: "Mewɔ sɔhwɛ ɔkyena" },
+          { id: 4, text: "Twerɛ wo din" }
+        ],
+        correctOptionId: 2,
+        hints: ["Meresua = I am learning"],
+        explanation: "Meresua Twi = I am learning Twi."
+      },
+      {
+        id: 918,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I have an exam tomorrow' in Twi?",
+        options: [
+          { id: 1, text: "Fie adwuma" },
+          { id: 2, text: "Meresua Twi" },
+          { id: 3, text: "Mewɔ sɔhwɛ ɔkyena" },
+          { id: 4, text: "Mawie m'adwuma" }
+        ],
+        correctOptionId: 3,
+        hints: ["sɔhwɛ = exam"],
+        explanation: "Mewɔ sɔhwɛ ɔkyena = I have an exam tomorrow."
+      },
+      {
+        id: 919,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Write your name' in Twi?",
+        options: [
+          { id: 1, text: "Twerɛ wo din" },
+          { id: 2, text: "Meresua Twi" },
+          { id: 3, text: "Mewɔ sɔhwɛ ɔkyena" },
+          { id: 4, text: "Mawie m'adwuma" }
+        ],
+        correctOptionId: 1,
+        hints: ["Twerɛ = write", "wo din = your name"],
+        explanation: "Twerɛ wo din = Write your name."
+      },
+      {
+        id: 920,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/meresua_twi.m4a"),
+        options: [
+          { id: 1, text: "Homework" },
+          { id: 2, text: "I am learning Twi" },
+          { id: 3, text: "I have an exam tomorrow" },
+          { id: 4, text: "Write your name" }
+        ],
+        correctOptionId: 2,
+        hints: ["Meresua = I am learning"],
+        explanation: "You heard 'Meresua Twi' which means 'I am learning Twi'."
+      },
+      {
+        id: 921,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'The teacher is coming' in Twi?",
+        options: [
+          { id: 1, text: "Ɔkyerɛkyerɛni no reba" },
+          { id: 2, text: "Mawie m'adwuma" },
+          { id: 3, text: "Meresua Twi" },
+          { id: 4, text: "Fie adwuma" }
+        ],
+        correctOptionId: 1,
+        hints: ["reba = is coming"],
+        explanation: "Ɔkyerɛkyerɛni no reba = The teacher is coming."
+      },
+      {
+        id: 922,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi word.",
+        question: "What is 'Pen' in Twi?",
+        options: [
+          { id: 1, text: "Sukuu" },
+          { id: 2, text: "Nwoma" },
+          { id: 3, text: "Twerɛdua" },
+          { id: 4, text: "Adesuadan" }
+        ],
+        correctOptionId: 3,
+        hints: ["What you write with"],
+        explanation: "Twerɛdua = Pen."
+      },
+      {
+        id: 923,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I finished my work' in Twi?",
+        options: [
+          { id: 1, text: "Ɔkyerɛkyerɛni no reba" },
+          { id: 2, text: "Mawie m'adwuma" },
+          { id: 3, text: "Meresua Twi" },
+          { id: 4, text: "Twerɛ wo din" }
+        ],
+        correctOptionId: 2,
+        hints: ["Mawie = I finished"],
+        explanation: "Mawie m'adwuma = I finished my work."
+      },
+      {
+        id: 924,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What word did you hear?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter9/nwoma.m4a"),
+        options: [
+          { id: 1, text: "School" },
+          { id: 2, text: "Teacher" },
+          { id: 3, text: "Book" },
+          { id: 4, text: "Pen" }
+        ],
+        correctOptionId: 3,
+        hints: ["What you read"],
+        explanation: "You heard 'Nwoma' which means Book."
       }
     ]
   }

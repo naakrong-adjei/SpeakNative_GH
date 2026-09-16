@@ -1,407 +1,305 @@
-// data/course_content/twi/beginner/chapter7.js
 export default {
   id: 7,
   title: "Directions",
   description: "Learn how to ask for and give directions in Twi",
   icon: "navigate-outline",
-  totalXp: 18,
+  totalXp: 15,
   difficulty: "Beginner",
 
   sections: [
     {
       id: "7-1",
-      type: "vocabulary",
+      type: "phrases",
       title: "Asking Directions",
       icon: "help-circle-outline",
-      description: "Learn how to ask where places are in Twi",
-      words: ["Ɛwɔ he?", "ɛhe?", "ɔkwan", "benkum", "nifa", "anim", "akyi", "kɔ"],
+      description: "Learn how to ask for directions in Twi",
+      words: ["Adwa no wɔ he?", "Agyananbia no wɔ he?", "Mayera", "Mɛyɛ dɛn adu hɔ?"],
       vocabulary: [
         {
-          id: 1,
-          english: "Where is it?",
-          native: "Ɛwɔ he?",
-          pronunciation: "eh-woh heh"
-          // audioUrl: "/audio/twi/ewo_he.mp3"
+          id: 79,
+          english: "Where is the market?",
+          native: "Adwa no wɔ he?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/adwa_no_wɔ_he.m4a")
         },
         {
-          id: 2,
-          english: "Where? / Which place?",
-          native: "ɛhe?",
-          pronunciation: "eh-heh"
-          // audioUrl: "/audio/twi/ehe.mp3"
+          id: 80,
+          english: "Where is the toilet?",
+          native: "Agyananbia no wɔ he?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/agyananbia_no_wɔ_he.m4a")
         },
         {
-          id: 3,
-          english: "Road / Way / Path",
-          native: "ɔkwan",
-          pronunciation: "oh-kwan"
-          // audioUrl: "/audio/twi/okwan.mp3"
+          id: 81,
+          english: "I am lost",
+          native: "Mayera",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/mayera.m4a")
         },
         {
-          id: 4,
-          english: "Left",
-          native: "benkum",
-          pronunciation: "ben-koom"
-          // audioUrl: "/audio/twi/benkum.mp3"
-        },
-        {
-          id: 5,
-          english: "Right",
-          native: "nifa",
-          pronunciation: "nee-fah"
-          // audioUrl: "/audio/twi/nifa.mp3"
-        },
-        {
-          id: 6,
-          english: "Front / Ahead",
-          native: "anim",
-          pronunciation: "ah-neem"
-          // audioUrl: "/audio/twi/anim.mp3"
-        },
-        {
-          id: 7,
-          english: "Back / Behind",
-          native: "akyi",
-          pronunciation: "ah-chee"
-          // audioUrl: "/audio/twi/akyi.mp3"
-        },
-        {
-          id: 8,
-          english: "To go",
-          native: "kɔ",
-          pronunciation: "koh"
-          // audioUrl: "/audio/twi/ko.mp3"
+          id: 82,
+          english: "How do I get there?",
+          native: "Mɛyɛ dɛn adu hɔ?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/mɛyɛ_dɛn_adu_hɔ.m4a")
         }
       ],
       questions: [
         {
-          id: 101,
+          id: 701,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
-          question: "How do you ask 'Where is it?' in Twi?",
+          question: "How do you ask 'Where is the market?' in Twi?",
           options: [
-            { id: 1, text: "Ɛwɔ he?" },
-            { id: 2, text: "Ɛhe?" },
-            { id: 3, text: "ɔkwan" },
-            { id: 4, text: "benkum" }
+            { id: 1, text: "Adwa no wɔ he?" },
+            { id: 2, text: "Agyananbia no wɔ he?" },
+            { id: 3, text: "Mayera" },
+            { id: 4, text: "Mɛyɛ dɛn adu hɔ?" }
           ],
           correctOptionId: 1,
-          hints: ["Asking for a location", "Contains 'wɔ' (is at)"],
-          explanation: "'Ɛwɔ he?' means 'Where is it?'. 'wɔ' means 'is at' and 'he' means 'where'."
+          hints: ["adwa = market", "wɔ he = where"],
+          explanation: "Adwa no wɔ he? = Where is the market? in Twi."
         },
         {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'Left' in Twi?",
+          id: 702,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/agyananbia_no_wɔ_he.m4a"),
           options: [
-            { id: 1, text: "benkum" },
-            { id: 2, text: "nifa" },
-            { id: 3, text: "anim" },
-            { id: 4, text: "akyi" }
-          ],
-          correctOptionId: 1,
-          hints: ["Opposite of right", "Starts with 'b'"],
-          explanation: "'benkum' means 'Left' in Twi."
-        },
-        {
-          id: 103,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'Right' in Twi?",
-          options: [
-            { id: 1, text: "benkum" },
-            { id: 2, text: "nifa" },
-            { id: 3, text: "anim" },
-            { id: 4, text: "akyi" }
+            { id: 1, text: "Where is the market?" },
+            { id: 2, text: "Where is the toilet?" },
+            { id: 3, text: "I am lost" },
+            { id: 4, text: "How do I get there?" }
           ],
           correctOptionId: 2,
-          hints: ["Opposite of left", "Starts with 'n'"],
-          explanation: "'nifa' means 'Right' in Twi."
+          hints: ["agyananbia = toilet"],
+          explanation: "You heard 'Agyananbia no wɔ he?' which means 'Where is the toilet?' in Twi."
         },
         {
-          id: 104,
-          type: "matching",
-          instruction: "Match each Twi word to its English meaning.",
-          pairs: [
-            { id: 1, left: "benkum", right: "Left" },
-            { id: 2, left: "nifa", right: "Right" },
-            { id: 3, left: "anim", right: "Front / Ahead" },
-            { id: 4, left: "akyi", right: "Back / Behind" },
-            { id: 5, left: "ɔkwan", right: "Road / Way" }
+          id: 703,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I am lost' in Twi?",
+          options: [
+            { id: 1, text: "Adwa no wɔ he?" },
+            { id: 2, text: "Agyananbia no wɔ he?" },
+            { id: 3, text: "Mayera" },
+            { id: 4, text: "Kɔ tee" }
           ],
-          hints: ["benkum = left", "nifa = right", "ɔkwan = road"],
-          explanation: "These are essential direction words in Twi."
+          correctOptionId: 3,
+          hints: ["Mayera = I am lost"],
+          explanation: "Mayera = I am lost in Twi."
+        },
+        {
+          id: 704,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/mɛyɛ_dɛn_adu_hɔ.m4a"),
+          options: [
+            { id: 1, text: "Where is the market?" },
+            { id: 2, text: "Where is the toilet?" },
+            { id: 3, text: "I am lost" },
+            { id: 4, text: "How do I get there?" }
+          ],
+          correctOptionId: 4,
+          hints: ["adu hɔ = get there"],
+          explanation: "You heard 'Mɛyɛ dɛn adu hɔ?' which means 'How do I get there?' in Twi."
         }
       ]
     },
 
     {
       id: "7-2",
-      type: "vocabulary",
-      title: "Places in Town",
-      icon: "business-outline",
-      description: "Learn the Twi names for common places in town",
-      words: ["sukuu", "ɔdɔm", "aban", "ɔyarefo", "asɔre", "ɔtadeɛ", "kwan kɛseɛ", "ebutu"],
+      type: "phrases",
+      title: "Giving Directions",
+      icon: "navigation-outline",
+      description: "Learn how to give directions in Twi",
+      words: ["Kɔ tee", "Dane nifa", "Dane benkum", "Fa saa kwan yi so"],
       vocabulary: [
         {
-          id: 9,
-          english: "School",
-          native: "sukuu",
-          pronunciation: "soo-koo"
-          // audioUrl: "/audio/twi/sukuu.mp3"
+          id: 83,
+          english: "Go straight",
+          native: "Kɔ tee",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/kɔ_tee.m4a")
         },
         {
-          id: 10,
-          english: "Market",
-          native: "ɔdɔm",
-          pronunciation: "oh-dohm"
-          // audioUrl: "/audio/twi/odom.mp3"
+          id: 84,
+          english: "Turn right",
+          native: "Dane nifa",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/dane_nifa.m4a")
         },
         {
-          id: 11,
-          english: "Government / Office building",
-          native: "aban",
-          pronunciation: "ah-bahn"
-          // audioUrl: "/audio/twi/aban.mp3"
+          id: 85,
+          english: "Turn left",
+          native: "Dane benkum",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/dane_benkum.m4a")
         },
         {
-          id: 12,
-          english: "Hospital",
-          native: "ɔyarefo",
-          pronunciation: "oh-yah-reh-foh"
-          // audioUrl: "/audio/twi/oyarefo.mp3"
-        },
-        {
-          id: 13,
-          english: "Church / Mosque",
-          native: "asɔre",
-          pronunciation: "ah-soh-reh"
-          // audioUrl: "/audio/twi/asore.mp3"
-        },
-        {
-          id: 14,
-          english: "Station / Stop",
-          native: "ɔtadeɛ",
-          pronunciation: "oh-tah-deh-eh"
-          // audioUrl: "/audio/twi/otadee.mp3"
-        },
-        {
-          id: 15,
-          english: "Main road",
-          native: "kwan kɛseɛ",
-          pronunciation: "kwan keh-seh-eh"
-          // audioUrl: "/audio/twi/kwan_kessee.mp3"
-        },
-        {
-          id: 16,
-          english: "Corner",
-          native: "ebutu",
-          pronunciation: "eh-boo-too"
-          // audioUrl: "/audio/twi/ebutu.mp3"
+          id: 86,
+          english: "Follow this road",
+          native: "Fa saa kwan yi so",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/fa_saa_kwan_yi_so.m4a")
         }
       ],
       questions: [
         {
-          id: 201,
+          id: 705,
           type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'School' in Twi?",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'Go straight' in Twi?",
           options: [
-            { id: 1, text: "sukuu" },
-            { id: 2, text: "ɔdɔm" },
-            { id: 3, text: "aban" },
-            { id: 4, text: "asɔre" }
+            { id: 1, text: "Kɔ tee" },
+            { id: 2, text: "Dane nifa" },
+            { id: 3, text: "Dane benkum" },
+            { id: 4, text: "Fa saa kwan yi so" }
           ],
           correctOptionId: 1,
-          hints: ["Where you learn", "Starts with 's'"],
-          explanation: "'sukuu' means 'School' in Twi."
+          hints: ["Kɔ = go", "tee = straight"],
+          explanation: "Kɔ tee = Go straight in Twi."
         },
         {
-          id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'Hospital' in Twi?",
+          id: 706,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/dane_nifa.m4a"),
           options: [
-            { id: 1, text: "sukuu" },
-            { id: 2, text: "ɔdɔm" },
-            { id: 3, text: "ɔyarefo" },
-            { id: 4, text: "asɔre" }
+            { id: 1, text: "Go straight" },
+            { id: 2, text: "Turn right" },
+            { id: 3, text: "Turn left" },
+            { id: 4, text: "Follow this road" }
+          ],
+          correctOptionId: 2,
+          hints: ["nifa = right"],
+          explanation: "You heard 'Dane nifa' which means 'Turn right' in Twi."
+        },
+        {
+          id: 707,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'Turn left' in Twi?",
+          options: [
+            { id: 1, text: "Kɔ tee" },
+            { id: 2, text: "Dane nifa" },
+            { id: 3, text: "Dane benkum" },
+            { id: 4, text: "Fa saa kwan yi so" }
           ],
           correctOptionId: 3,
-          hints: ["Where sick people go", "Starts with 'ɔy'"],
-          explanation: "'ɔyarefo' means 'Hospital' in Twi."
+          hints: ["benkum = left"],
+          explanation: "Dane benkum = Turn left in Twi."
         },
         {
-          id: 203,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'Church / Mosque' in Twi?",
+          id: 708,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/fa_saa_kwan_yi_so.m4a"),
           options: [
-            { id: 1, text: "sukuu" },
-            { id: 2, text: "ɔdɔm" },
-            { id: 3, text: "ɔyarefo" },
-            { id: 4, text: "asɔre" }
+            { id: 1, text: "Go straight" },
+            { id: 2, text: "Turn right" },
+            { id: 3, text: "Turn left" },
+            { id: 4, text: "Follow this road" }
           ],
           correctOptionId: 4,
-          hints: ["Place of worship", "Starts with 'as'"],
-          explanation: "'asɔre' means 'Church / Mosque' in Twi."
-        },
-        {
-          id: 204,
-          type: "matching",
-          instruction: "Match each Twi word to its English meaning.",
-          pairs: [
-            { id: 1, left: "sukuu", right: "School" },
-            { id: 2, left: "ɔdɔm", right: "Market" },
-            { id: 3, left: "ɔyarefo", right: "Hospital" },
-            { id: 4, left: "asɔre", right: "Church / Mosque" }
-          ],
-          hints: ["sukuu = school", "ɔdɔm = market", "ɔyarefo = hospital"],
-          explanation: "These are common places in town in Twi."
+          hints: ["kwan = road"],
+          explanation: "You heard 'Fa saa kwan yi so' which means 'Follow this road' in Twi."
         }
       ]
     },
 
     {
       id: "7-3",
-      type: "vocabulary",
-      title: "Giving Directions",
+      type: "phrases",
+      title: "Distance & Position",
       icon: "map-outline",
-      description: "Learn how to give directions to others in Twi",
-      words: ["kɔ benkum", "kɔ nifa", "kɔ anim", "kɔ akyi", "kɔ so", "fa benkum", "bɛnom", "tweɛ"],
+      description: "Learn how to describe distance and position in Twi",
+      words: ["Ɛwɔ akyiri", "Ɛbɛn", "Efie no akyi", "Sukuu no anim"],
       vocabulary: [
         {
-          id: 17,
-          english: "Go left",
-          native: "kɔ benkum",
-          pronunciation: "koh ben-koom"
-          // audioUrl: "/audio/twi/ko_benkum.mp3"
+          id: 87,
+          english: "It is far",
+          native: "Ɛwɔ akyiri",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/ɛwɔ_akyiri.m4a")
         },
         {
-          id: 18,
-          english: "Go right",
-          native: "kɔ nifa",
-          pronunciation: "koh nee-fah"
-          // audioUrl: "/audio/twi/ko_nifa.mp3"
+          id: 88,
+          english: "It is near",
+          native: "Ɛbɛn",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/ɛbɛn.m4a")
         },
         {
-          id: 19,
-          english: "Go straight / ahead",
-          native: "kɔ anim",
-          pronunciation: "koh ah-neem"
-          // audioUrl: "/audio/twi/ko_anim.mp3"
+          id: 89,
+          english: "Behind the house",
+          native: "Efie no akyi",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/efie_no_akyi.m4a")
         },
         {
-          id: 20,
-          english: "Go back",
-          native: "kɔ akyi",
-          pronunciation: "koh ah-chee"
-          // audioUrl: "/audio/twi/ko_akyi.mp3"
-        },
-        {
-          id: 21,
-          english: "Continue / go on",
-          native: "kɔ so",
-          pronunciation: "koh soh"
-          // audioUrl: "/audio/twi/ko_so.mp3"
-        },
-        {
-          id: 22,
-          english: "Turn left",
-          native: "fa benkum",
-          pronunciation: "fah ben-koom"
-          // audioUrl: "/audio/twi/fa_benkum.mp3"
-        },
-        {
-          id: 23,
-          english: "Near / Close by",
-          native: "bɛnom",
-          pronunciation: "beh-nohm"
-          // audioUrl: "/audio/twi/benom.mp3"
-        },
-        {
-          id: 24,
-          english: "Far",
-          native: "tweɛ",
-          pronunciation: "tweh"
-          // audioUrl: "/audio/twi/twe.mp3"
+          id: 90,
+          english: "In front of the school",
+          native: "Sukuu no anim",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/sukuu_no_anim.m4a")
         }
       ],
       questions: [
         {
-          id: 301,
+          id: 709,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'Go straight / ahead' in Twi?",
+          question: "How do you say 'It is far' in Twi?",
           options: [
-            { id: 1, text: "kɔ benkum" },
-            { id: 2, text: "kɔ nifa" },
-            { id: 3, text: "kɔ anim" },
-            { id: 4, text: "kɔ akyi" }
-          ],
-          correctOptionId: 3,
-          hints: ["anim = front/ahead", "kɔ = go"],
-          explanation: "'kɔ anim' means 'Go straight / ahead'. 'anim' means 'front/ahead'."
-        },
-        {
-          id: 302,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you say 'Go left' in Twi?",
-          options: [
-            { id: 1, text: "kɔ benkum" },
-            { id: 2, text: "kɔ nifa" },
-            { id: 3, text: "kɔ anim" },
-            { id: 4, text: "kɔ akyi" }
+            { id: 1, text: "Ɛwɔ akyiri" },
+            { id: 2, text: "Ɛbɛn" },
+            { id: 3, text: "Efie no akyi" },
+            { id: 4, text: "Sukuu no anim" }
           ],
           correctOptionId: 1,
-          hints: ["benkum = left", "kɔ = go"],
-          explanation: "'kɔ benkum' means 'Go left'. 'benkum' means 'left'."
+          hints: ["akyiri = far"],
+          explanation: "Ɛwɔ akyiri = It is far in Twi."
         },
         {
-          id: 303,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'Near' in Twi?",
+          id: 710,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/ɛbɛn.m4a"),
           options: [
-            { id: 1, text: "bɛnom" },
-            { id: 2, text: "tweɛ" },
-            { id: 3, text: "ɔkwan" },
-            { id: 4, text: "ebutu" }
-          ],
-          correctOptionId: 1,
-          hints: ["Opposite of far", "Starts with 'b'"],
-          explanation: "'bɛnom' means 'Near / Close by' in Twi."
-        },
-        {
-          id: 304,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "How do you say 'Far' in Twi?",
-          options: [
-            { id: 1, text: "bɛnom" },
-            { id: 2, text: "tweɛ" },
-            { id: 3, text: "ɔkwan" },
-            { id: 4, text: "ebutu" }
+            { id: 1, text: "It is far" },
+            { id: 2, text: "It is near" },
+            { id: 3, text: "Behind the house" },
+            { id: 4, text: "In front of the school" }
           ],
           correctOptionId: 2,
-          hints: ["Opposite of near", "Starts with 't'"],
-          explanation: "'tweɛ' means 'Far' in Twi."
+          hints: ["ɛbɛn = near"],
+          explanation: "You heard 'Ɛbɛn' which means 'It is near' in Twi."
         },
         {
-          id: 305,
-          type: "matching",
-          instruction: "Match each Twi phrase to its English meaning.",
-          pairs: [
-            { id: 1, left: "kɔ benkum", right: "Go left" },
-            { id: 2, left: "kɔ nifa", right: "Go right" },
-            { id: 3, left: "kɔ anim", right: "Go straight / ahead" },
-            { id: 4, left: "kɔ akyi", right: "Go back" },
-            { id: 5, left: "bɛnom", right: "Near" }
+          id: 711,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'Behind the house' in Twi?",
+          options: [
+            { id: 1, text: "Ɛwɔ akyiri" },
+            { id: 2, text: "Ɛbɛn" },
+            { id: 3, text: "Efie no akyi" },
+            { id: 4, text: "Sukuu no anim" }
           ],
-          hints: ["kɔ = go", "benkum = left", "nifa = right"],
-          explanation: "These are essential phrases for giving directions in Twi."
+          correctOptionId: 3,
+          hints: ["efie = house", "akyi = behind"],
+          explanation: "Efie no akyi = Behind the house in Twi."
+        },
+        {
+          id: 712,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/sukuu_no_anim.m4a"),
+          options: [
+            { id: 1, text: "It is far" },
+            { id: 2, text: "It is near" },
+            { id: 3, text: "Behind the house" },
+            { id: 4, text: "In front of the school" }
+          ],
+          correctOptionId: 4,
+          hints: ["sukuu = school", "anim = front"],
+          explanation: "You heard 'Sukuu no anim' which means 'In front of the school' in Twi."
         }
       ]
     }
@@ -411,81 +309,160 @@ export default {
     id: "review-7",
     title: "Review: Directions",
     icon: "refresh-outline",
-    description: "Review the direction words and phrases you've learned",
+    description: "Review all the direction vocabulary you've learned",
     questions: [
       {
-        id: 401,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi word.",
-        question: "How do you say 'Left' in Twi?",
-        options: [
-          { id: 1, text: "benkum" },
-          { id: 2, text: "nifa" },
-          { id: 3, text: "anim" },
-          { id: 4, text: "akyi" }
-        ],
-        correctOptionId: 1,
-        hints: ["Opposite of right"],
-        explanation: "'benkum' means 'Left' in Twi."
-      },
-      {
-        id: 402,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi word.",
-        question: "How do you say 'School' in Twi?",
-        options: [
-          { id: 1, text: "sukuu" },
-          { id: 2, text: "ɔdɔm" },
-          { id: 3, text: "ɔyarefo" },
-          { id: 4, text: "asɔre" }
-        ],
-        correctOptionId: 1,
-        hints: ["Where you learn"],
-        explanation: "'sukuu' means 'School' in Twi."
-      },
-      {
-        id: 403,
+        id: 713,
         type: "multiple_choice",
         instruction: "Select the correct Twi phrase.",
-        question: "How do you say 'Go straight / ahead' in Twi?",
+        question: "How do you ask 'Where is the market?' in Twi?",
         options: [
-          { id: 1, text: "kɔ benkum" },
-          { id: 2, text: "kɔ nifa" },
-          { id: 3, text: "kɔ anim" },
-          { id: 4, text: "kɔ akyi" }
+          { id: 1, text: "Adwa no wɔ he?" },
+          { id: 2, text: "Agyananbia no wɔ he?" },
+          { id: 3, text: "Mayera" },
+          { id: 4, text: "Mɛyɛ dɛn adu hɔ?" }
         ],
-        correctOptionId: 3,
-        hints: ["anim = ahead"],
-        explanation: "'kɔ anim' means 'Go straight / ahead'."
+        correctOptionId: 1,
+        hints: ["adwa = market"],
+        explanation: "Adwa no wɔ he? = Where is the market?"
       },
       {
-        id: 404,
+        id: 714,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/dane_benkum.m4a"),
+        options: [
+          { id: 1, text: "Go straight" },
+          { id: 2, text: "Turn right" },
+          { id: 3, text: "Turn left" },
+          { id: 4, text: "Follow this road" }
+        ],
+        correctOptionId: 3,
+        hints: ["benkum = left"],
+        explanation: "You heard 'Dane benkum' which means 'Turn left'."
+      },
+      {
+        id: 715,
         type: "multiple_choice",
-        instruction: "Select the correct Twi word.",
-        question: "How do you say 'Hospital' in Twi?",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I am lost' in Twi?",
         options: [
-          { id: 1, text: "sukuu" },
-          { id: 2, text: "ɔdɔm" },
-          { id: 3, text: "ɔyarefo" },
-          { id: 4, text: "asɔre" }
+          { id: 1, text: "Adwa no wɔ he?" },
+          { id: 2, text: "Agyananbia no wɔ he?" },
+          { id: 3, text: "Mayera" },
+          { id: 4, text: "Kɔ tee" }
         ],
         correctOptionId: 3,
-        hints: ["Where sick people go"],
-        explanation: "'ɔyarefo' means 'Hospital' in Twi."
+        hints: ["Mayera = I am lost"],
+        explanation: "Mayera = I am lost."
       },
       {
-        id: 405,
-        type: "matching",
-        instruction: "Match each Twi word to its English meaning.",
-        pairs: [
-          { id: 1, left: "benkum", right: "Left" },
-          { id: 2, left: "nifa", right: "Right" },
-          { id: 3, left: "sukuu", right: "School" },
-          { id: 4, left: "ɔyarefo", right: "Hospital" },
-          { id: 5, left: "kɔ anim", right: "Go straight / ahead" }
+        id: 716,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/ɛwɔ_akyiri.m4a"),
+        options: [
+          { id: 1, text: "It is far" },
+          { id: 2, text: "It is near" },
+          { id: 3, text: "Behind the house" },
+          { id: 4, text: "In front of the school" }
         ],
-        hints: ["benkum = left", "nifa = right", "kɔ anim = go ahead"],
-        explanation: "These are key direction words from this chapter."
+        correctOptionId: 1,
+        hints: ["akyiri = far"],
+        explanation: "You heard 'Ɛwɔ akyiri' which means 'It is far'."
+      },
+      {
+        id: 717,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'How do I get there?' in Twi?",
+        options: [
+          { id: 1, text: "Adwa no wɔ he?" },
+          { id: 2, text: "Agyananbia no wɔ he?" },
+          { id: 3, text: "Mayera" },
+          { id: 4, text: "Mɛyɛ dɛn adu hɔ?" }
+        ],
+        correctOptionId: 4,
+        hints: ["adu hɔ = get there"],
+        explanation: "Mɛyɛ dɛn adu hɔ? = How do I get there?"
+      },
+      {
+        id: 718,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Go straight' in Twi?",
+        options: [
+          { id: 1, text: "Kɔ tee" },
+          { id: 2, text: "Dane nifa" },
+          { id: 3, text: "Dane benkum" },
+          { id: 4, text: "Fa saa kwan yi so" }
+        ],
+        correctOptionId: 1,
+        hints: ["tee = straight"],
+        explanation: "Kɔ tee = Go straight."
+      },
+      {
+        id: 719,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Turn right' in Twi?",
+        options: [
+          { id: 1, text: "Kɔ tee" },
+          { id: 2, text: "Dane nifa" },
+          { id: 3, text: "Dane benkum" },
+          { id: 4, text: "Fa saa kwan yi so" }
+        ],
+        correctOptionId: 2,
+        hints: ["nifa = right"],
+        explanation: "Dane nifa = Turn right."
+      },
+      {
+        id: 720,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'It is near' in Twi?",
+        options: [
+          { id: 1, text: "Ɛwɔ akyiri" },
+          { id: 2, text: "Ɛbɛn" },
+          { id: 3, text: "Efie no akyi" },
+          { id: 4, text: "Sukuu no anim" }
+        ],
+        correctOptionId: 2,
+        hints: ["ɛbɛn = near"],
+        explanation: "Ɛbɛn = It is near."
+      },
+      {
+        id: 721,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Follow this road' in Twi?",
+        options: [
+          { id: 1, text: "Kɔ tee" },
+          { id: 2, text: "Dane nifa" },
+          { id: 3, text: "Dane benkum" },
+          { id: 4, text: "Fa saa kwan yi so" }
+        ],
+        correctOptionId: 4,
+        hints: ["kwan = road"],
+        explanation: "Fa saa kwan yi so = Follow this road."
+      },
+      {
+        id: 722,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/efie_no_akyi.m4a"),
+        options: [
+          { id: 1, text: "It is far" },
+          { id: 2, text: "It is near" },
+          { id: 3, text: "Behind the house" },
+          { id: 4, text: "In front of the school" }
+        ],
+        correctOptionId: 3,
+        hints: ["efie = house", "akyi = behind"],
+        explanation: "You heard 'Efie no akyi' which means 'Behind the house'."
       }
     ]
   }

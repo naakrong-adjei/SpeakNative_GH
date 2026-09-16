@@ -1,0 +1,493 @@
+export default {
+  id: 2,
+  title: "Health & Emergencies",
+  description: "Learn health and emergency vocabulary in Twi",
+  icon: "medkit-outline",
+  totalXp: 15,
+  difficulty: "Intermediate",
+
+  sections: [
+    {
+      id: "2-1",
+      type: "phrases",
+      title: "Feeling Unwell",
+      icon: "thermometer-outline",
+      description: "Learn how to describe symptoms and how you feel in Twi",
+      words: ["Meyare", "Me ti yɛ me ya", "Atiridii akye me", "Me yam yɛ me ya"],
+      vocabulary: [
+        {
+          id: 168,
+          english: "I am sick",
+          native: "Meyare",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/meyare.m4a")
+        },
+        {
+          id: 169,
+          english: "My head hurts",
+          native: "Me ti yɛ me ya",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/me_ti_yɛ_me_ya.m4a")
+        },
+        {
+          id: 170,
+          english: "I have a fever",
+          native: "Atiridii akye me",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/atiridii_akye_me.m4a")
+        },
+        {
+          id: 171,
+          english: "My stomach hurts",
+          native: "Me yam yɛ me ya",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/me_yam_yɛ_me_ya.m4a")
+        }
+      ],
+      questions: [
+        {
+          id: 201,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I am sick' in Twi?",
+          options: [
+            { id: 1, text: "Meyare" },
+            { id: 2, text: "Me ti yɛ me ya" },
+            { id: 3, text: "Atiridii akye me" },
+            { id: 4, text: "Me yam yɛ me ya" }
+          ],
+          correctOptionId: 1,
+          hints: ["Meyare = I am sick"],
+          explanation: "Meyare = I am sick in Twi."
+        },
+        {
+          id: 202,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/me_ti_yɛ_me_ya.m4a"),
+          options: [
+            { id: 1, text: "I am sick" },
+            { id: 2, text: "My head hurts" },
+            { id: 3, text: "I have a fever" },
+            { id: 4, text: "My stomach hurts" }
+          ],
+          correctOptionId: 2,
+          hints: ["me ti = my head", "yɛ me ya = hurts me"],
+          explanation: "You heard 'Me ti yɛ me ya' which means 'My head hurts' in Twi."
+        },
+        {
+          id: 203,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I have a fever' in Twi?",
+          options: [
+            { id: 1, text: "Meyare" },
+            { id: 2, text: "Me ti yɛ me ya" },
+            { id: 3, text: "Atiridii akye me" },
+            { id: 4, text: "Mehia aduro" }
+          ],
+          correctOptionId: 3,
+          hints: ["atiridii = fever"],
+          explanation: "Atiridii akye me = I have a fever in Twi."
+        },
+        {
+          id: 204,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/me_yam_yɛ_me_ya.m4a"),
+          options: [
+            { id: 1, text: "I am sick" },
+            { id: 2, text: "My head hurts" },
+            { id: 3, text: "I have a fever" },
+            { id: 4, text: "My stomach hurts" }
+          ],
+          correctOptionId: 4,
+          hints: ["me yam = my stomach"],
+          explanation: "You heard 'Me yam yɛ me ya' which means 'My stomach hurts' in Twi."
+        }
+      ]
+    },
+
+    {
+      id: "2-2",
+      type: "phrases",
+      title: "Getting Help",
+      icon: "siren-outline",
+      description: "Learn how to seek medical assistance in Twi",
+      words: ["Frɛ ɔyaresafoɔ no", "Boa! Ɛyɛ ntɛm asɛm", "Ayaresabea no wɔ he?", "Frɛ ambulans"],
+      vocabulary: [
+        {
+          id: 172,
+          english: "Call a doctor",
+          native: "Frɛ ɔyaresafoɔ no",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/frɛ_ɔyaresafoɔ_no.m4a")
+        },
+        {
+          id: 173,
+          english: "Help! It is an emergency",
+          native: "Boa! Ɛyɛ ntɛm asɛm",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/boa_ɛyɛ_ntɛm_asɛm.m4a")
+        },
+        {
+          id: 174,
+          english: "Where is the hospital?",
+          native: "Ayaresabea no wɔ he?",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/ayaresabea_no_wɔ_he.m4a")
+        },
+        {
+          id: 175,
+          english: "Call an ambulance",
+          native: "Frɛ ambulans",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/frɛ_ambulans.m4a")
+        }
+      ],
+      questions: [
+        {
+          id: 205,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'Call a doctor' in Twi?",
+          options: [
+            { id: 1, text: "Frɛ ɔyaresafoɔ no" },
+            { id: 2, text: "Boa! Ɛyɛ ntɛm asɛm" },
+            { id: 3, text: "Ayaresabea no wɔ he?" },
+            { id: 4, text: "Frɛ ambulans" }
+          ],
+          correctOptionId: 1,
+          hints: ["Frɛ = call", "ɔyaresafoɔ = doctor"],
+          explanation: "Frɛ ɔyaresafoɔ no = Call a doctor in Twi."
+        },
+        {
+          id: 206,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/boa_ɛyɛ_ntɛm_asɛm.m4a"),
+          options: [
+            { id: 1, text: "Call a doctor" },
+            { id: 2, text: "Help! It is an emergency" },
+            { id: 3, text: "Where is the hospital?" },
+            { id: 4, text: "Call an ambulance" }
+          ],
+          correctOptionId: 2,
+          hints: ["ntɛm asɛm = emergency"],
+          explanation: "You heard 'Boa! Ɛyɛ ntɛm asɛm' which means 'Help! It is an emergency' in Twi."
+        },
+        {
+          id: 207,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'Where is the hospital?' in Twi?",
+          options: [
+            { id: 1, text: "Frɛ ɔyaresafoɔ no" },
+            { id: 2, text: "Boa! Ɛyɛ ntɛm asɛm" },
+            { id: 3, text: "Ayaresabea no wɔ he?" },
+            { id: 4, text: "Mehia aduro" }
+          ],
+          correctOptionId: 3,
+          hints: ["ayaresabea = hospital"],
+          explanation: "Ayaresabea no wɔ he? = Where is the hospital? in Twi."
+        },
+        {
+          id: 208,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/frɛ_ambulans.m4a"),
+          options: [
+            { id: 1, text: "Call a doctor" },
+            { id: 2, text: "Help! It is an emergency" },
+            { id: 3, text: "Where is the hospital?" },
+            { id: 4, text: "Call an ambulance" }
+          ],
+          correctOptionId: 4,
+          hints: ["ambulans = ambulance"],
+          explanation: "You heard 'Frɛ ambulans' which means 'Call an ambulance' in Twi."
+        }
+      ]
+    },
+
+    {
+      id: "2-3",
+      type: "phrases",
+      title: "Medicine & Care",
+      icon: "medical-outline",
+      description: "Learn phrases about medicine and staying safe in Twi",
+      words: ["Mehia aduro", "Nom aduro yi mprɛnsa dakro", "Hwɛ yie"],
+      vocabulary: [
+        {
+          id: 176,
+          english: "I need medicine",
+          native: "Mehia aduro",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/mehia_aduro.m4a")
+        },
+        {
+          id: 177,
+          english: "Take this drug three times a day",
+          native: "Nom aduro yi mprɛnsa dakro",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/nom_aduro_yi_mprɛnsa_dakro.m4a")
+        },
+        {
+          id: 178,
+          english: "Be careful",
+          native: "Hwɛ yie",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/hwɛ_yie.m4a")
+        }
+      ],
+      questions: [
+        {
+          id: 209,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'I need medicine' in Twi?",
+          options: [
+            { id: 1, text: "Mehia aduro" },
+            { id: 2, text: "Nom aduro yi mprɛnsa dakro" },
+            { id: 3, text: "Hwɛ yie" },
+            { id: 4, text: "Frɛ ɔyaresafoɔ no" }
+          ],
+          correctOptionId: 1,
+          hints: ["Mehia = I need", "aduro = medicine"],
+          explanation: "Mehia aduro = I need medicine in Twi."
+        },
+        {
+          id: 210,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/nom_aduro_yi_mprɛnsa_dakro.m4a"),
+          options: [
+            { id: 1, text: "I need medicine" },
+            { id: 2, text: "Take this drug three times a day" },
+            { id: 3, text: "Be careful" },
+            { id: 4, text: "Call a doctor" }
+          ],
+          correctOptionId: 2,
+          hints: ["mprɛnsa = three times", "dakro = a day"],
+          explanation: "You heard 'Nom aduro yi mprɛnsa dakro' which means 'Take this drug three times a day' in Twi."
+        },
+        {
+          id: 211,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you say 'Be careful' in Twi?",
+          options: [
+            { id: 1, text: "Mehia aduro" },
+            { id: 2, text: "Nom aduro yi mprɛnsa dakro" },
+            { id: 3, text: "Hwɛ yie" },
+            { id: 4, text: "Ayaresabea no wɔ he?" }
+          ],
+          correctOptionId: 3,
+          hints: ["Hwɛ = watch/look", "yie = well"],
+          explanation: "Hwɛ yie = Be careful in Twi."
+        },
+        {
+          id: 212,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/mehia_aduro.m4a"),
+          options: [
+            { id: 1, text: "I need medicine" },
+            { id: 2, text: "Take this drug three times a day" },
+            { id: 3, text: "Be careful" },
+            { id: 4, text: "Where is the hospital?" }
+          ],
+          correctOptionId: 1,
+          hints: ["aduro = medicine"],
+          explanation: "You heard 'Mehia aduro' which means 'I need medicine' in Twi."
+        }
+      ]
+    }
+  ],
+
+  review: {
+    id: "review-2",
+    title: "Review: Health & Emergencies",
+    icon: "refresh-outline",
+    description: "Review all the health and emergency vocabulary you've learned",
+    questions: [
+      {
+        id: 213,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I am sick' in Twi?",
+        options: [
+          { id: 1, text: "Meyare" },
+          { id: 2, text: "Me ti yɛ me ya" },
+          { id: 3, text: "Atiridii akye me" },
+          { id: 4, text: "Me yam yɛ me ya" }
+        ],
+        correctOptionId: 1,
+        hints: ["Meyare = I am sick"],
+        explanation: "Meyare = I am sick."
+      },
+      {
+        id: 214,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/frɛ_ɔyaresafoɔ_no.m4a"),
+        options: [
+          { id: 1, text: "Call a doctor" },
+          { id: 2, text: "Help! It is an emergency" },
+          { id: 3, text: "Where is the hospital?" },
+          { id: 4, text: "Call an ambulance" }
+        ],
+        correctOptionId: 1,
+        hints: ["ɔyaresafoɔ = doctor"],
+        explanation: "You heard 'Frɛ ɔyaresafoɔ no' which means 'Call a doctor'."
+      },
+      {
+        id: 215,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'My head hurts' in Twi?",
+        options: [
+          { id: 1, text: "Meyare" },
+          { id: 2, text: "Me ti yɛ me ya" },
+          { id: 3, text: "Atiridii akye me" },
+          { id: 4, text: "Me yam yɛ me ya" }
+        ],
+        correctOptionId: 2,
+        hints: ["me ti = my head"],
+        explanation: "Me ti yɛ me ya = My head hurts."
+      },
+      {
+        id: 216,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/hwɛ_yie.m4a"),
+        options: [
+          { id: 1, text: "I need medicine" },
+          { id: 2, text: "Take this drug three times a day" },
+          { id: 3, text: "Be careful" },
+          { id: 4, text: "Call a doctor" }
+        ],
+        correctOptionId: 3,
+        hints: ["Hwɛ yie = be careful"],
+        explanation: "You heard 'Hwɛ yie' which means 'Be careful'."
+      },
+      {
+        id: 217,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Where is the hospital?' in Twi?",
+        options: [
+          { id: 1, text: "Frɛ ɔyaresafoɔ no" },
+          { id: 2, text: "Boa! Ɛyɛ ntɛm asɛm" },
+          { id: 3, text: "Ayaresabea no wɔ he?" },
+          { id: 4, text: "Mehia aduro" }
+        ],
+        correctOptionId: 3,
+        hints: ["ayaresabea = hospital"],
+        explanation: "Ayaresabea no wɔ he? = Where is the hospital?"
+      },
+      {
+        id: 218,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I have a fever' in Twi?",
+        options: [
+          { id: 1, text: "Meyare" },
+          { id: 2, text: "Me ti yɛ me ya" },
+          { id: 3, text: "Atiridii akye me" },
+          { id: 4, text: "Mehia aduro" }
+        ],
+        correctOptionId: 3,
+        hints: ["atiridii = fever"],
+        explanation: "Atiridii akye me = I have a fever."
+      },
+      {
+        id: 219,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'I need medicine' in Twi?",
+        options: [
+          { id: 1, text: "Mehia aduro" },
+          { id: 2, text: "Nom aduro yi mprɛnsa dakro" },
+          { id: 3, text: "Hwɛ yie" },
+          { id: 4, text: "Frɛ ambulans" }
+        ],
+        correctOptionId: 1,
+        hints: ["aduro = medicine"],
+        explanation: "Mehia aduro = I need medicine."
+      },
+      {
+        id: 220,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Call an ambulance' in Twi?",
+        options: [
+          { id: 1, text: "Frɛ ɔyaresafoɔ no" },
+          { id: 2, text: "Boa! Ɛyɛ ntɛm asɛm" },
+          { id: 3, text: "Ayaresabea no wɔ he?" },
+          { id: 4, text: "Frɛ ambulans" }
+        ],
+        correctOptionId: 4,
+        hints: ["ambulans = ambulance"],
+        explanation: "Frɛ ambulans = Call an ambulance."
+      },
+      {
+        id: 221,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/twi/intermediate/chapter2/atiridii_akye_me.m4a"),
+        options: [
+          { id: 1, text: "I am sick" },
+          { id: 2, text: "My head hurts" },
+          { id: 3, text: "I have a fever" },
+          { id: 4, text: "My stomach hurts" }
+        ],
+        correctOptionId: 3,
+        hints: ["atiridii = fever"],
+        explanation: "You heard 'Atiridii akye me' which means 'I have a fever'."
+      },
+      {
+        id: 222,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'My stomach hurts' in Twi?",
+        options: [
+          { id: 1, text: "Meyare" },
+          { id: 2, text: "Me ti yɛ me ya" },
+          { id: 3, text: "Atiridii akye me" },
+          { id: 4, text: "Me yam yɛ me ya" }
+        ],
+        correctOptionId: 4,
+        hints: ["me yam = my stomach"],
+        explanation: "Me yam yɛ me ya = My stomach hurts."
+      },
+      {
+        id: 223,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Help! It is an emergency' in Twi?",
+        options: [
+          { id: 1, text: "Frɛ ɔyaresafoɔ no" },
+          { id: 2, text: "Boa! Ɛyɛ ntɛm asɛm" },
+          { id: 3, text: "Ayaresabea no wɔ he?" },
+          { id: 4, text: "Frɛ ambulans" }
+        ],
+        correctOptionId: 2,
+        hints: ["Boa! = Help!"],
+        explanation: "Boa! Ɛyɛ ntɛm asɛm = Help! It is an emergency."
+      },
+      {
+        id: 224,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you say 'Take this drug three times a day' in Twi?",
+        options: [
+          { id: 1, text: "Mehia aduro" },
+          { id: 2, text: "Nom aduro yi mprɛnsa dakro" },
+          { id: 3, text: "Hwɛ yie" },
+          { id: 4, text: "Frɛ ambulans" }
+        ],
+        correctOptionId: 2,
+        hints: ["mprɛnsa = three times"],
+        explanation: "Nom aduro yi mprɛnsa dakro = Take this drug three times a day."
+      }
+    ]
+  }
+};
