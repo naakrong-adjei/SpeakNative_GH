@@ -1,5 +1,5 @@
 export default {
-  id: 12,
+  id: 2,
   title: "Health & Emergencies",
   description: "Learn health and emergency vocabulary in Ewe",
   icon: "medkit-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "12-1",
+      id: "2-1",
       type: "words",
       title: "Feeling Unwell",
       icon: "thermometer-outline",
@@ -42,7 +42,7 @@ export default {
       ],
       questions: [
         {
-          id: 1201,
+          id: 201,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I am sick' in Ewe?",
@@ -57,7 +57,7 @@ export default {
           explanation: "Mele dɔ lém = I am sick in Ewe."
         },
         {
-          id: 1202,
+          id: 202,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -73,7 +73,7 @@ export default {
           explanation: "You heard 'Nye ta nye vem' which means 'My head hurts' in Ewe."
         },
         {
-          id: 1203,
+          id: 203,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'My stomach hurts' in Ewe?",
@@ -91,7 +91,7 @@ export default {
     },
 
     {
-      id: "12-2",
+      id: "2-2",
       type: "phrases",
       title: "Getting Help",
       icon: "alert-circle-outline",
@@ -125,7 +125,7 @@ export default {
       ],
       questions: [
         {
-          id: 1204,
+          id: 204,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Call a doctor' in Ewe?",
@@ -140,7 +140,7 @@ export default {
           explanation: "Yɔ ɖɔkta = Call a doctor in Ewe."
         },
         {
-          id: 1205,
+          id: 205,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -156,7 +156,7 @@ export default {
           explanation: "You heard 'Kpe ɖe ŋunye! Enye kpata' which means 'Help! It is an emergency' in Ewe."
         },
         {
-          id: 1206,
+          id: 206,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Call an ambulance' in Ewe?",
@@ -174,7 +174,7 @@ export default {
     },
 
     {
-      id: "12-3",
+      id: "2-3",
       type: "phrases",
       title: "Medicine & Care",
       icon: "medkit-outline",
@@ -202,7 +202,7 @@ export default {
       ],
       questions: [
         {
-          id: 1207,
+          id: 207,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I need medicine' in Ewe?",
@@ -217,7 +217,7 @@ export default {
           explanation: "Mehiã atsike = I need medicine in Ewe."
         },
         {
-          id: 1208,
+          id: 208,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -233,7 +233,7 @@ export default {
           explanation: "You heard 'No atsike hia dzi etɔ̃ gbe shia gbe' which means 'Take this drug three times a day' in Ewe."
         },
         {
-          id: 1209,
+          id: 209,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Be careful' in Ewe?",
@@ -252,13 +252,13 @@ export default {
   ],
 
   review: {
-    id: "review-12",
+    id: "review-2",
     title: "Review: Health & Emergencies",
     icon: "refresh-outline",
     description: "Review all the health and emergency vocabulary you've learned",
     questions: [
       {
-        id: 1210,
+        id: 210,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I am sick' in Ewe?",
@@ -273,7 +273,7 @@ export default {
         explanation: "Mele dɔ lém = I am sick."
       },
       {
-        id: 1211,
+        id: 211,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -289,7 +289,7 @@ export default {
         explanation: "You heard 'Asrã le ŋunye' which means 'I have a fever'."
       },
       {
-        id: 1212,
+        id: 22,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'My head hurts' in Ewe?",
@@ -304,7 +304,7 @@ export default {
         explanation: "Nye ta nye vem = My head hurts."
       },
       {
-        id: 1213,
+        id: 213,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Call a doctor' in Ewe?",
@@ -319,7 +319,7 @@ export default {
         explanation: "Yɔ ɖɔkta = Call a doctor."
       },
       {
-        id: 1214,
+        id: 214,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -335,7 +335,7 @@ export default {
         explanation: "You heard 'Yɔ dɔnɔʋu' which means 'Call an ambulance'."
       },
       {
-        id: 1215,
+        id: 215,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Help! It is an emergency' in Ewe?",
@@ -350,7 +350,7 @@ export default {
         explanation: "Kpe ɖe ŋunye! Enye kpata = Help! It is an emergency."
       },
       {
-        id: 1216,
+        id: 216,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I need medicine' in Ewe?",
@@ -365,7 +365,7 @@ export default {
         explanation: "Mehiã atsike = I need medicine."
       },
       {
-        id: 1217,
+        id: 217,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Be careful' in Ewe?",
@@ -380,7 +380,7 @@ export default {
         explanation: "Kpɔ nyuie = Be careful."
       },
       {
-        id: 1218,
+        id: 218,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Where is the hospital?' in Ewe?",
@@ -395,7 +395,7 @@ export default {
         explanation: "Afika kɔdzi la le? = Where is the hospital?"
       },
       {
-        id: 1219,
+        id: 219,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",

@@ -1,14 +1,14 @@
 export default {
-  id: 15,
+  id: 5,
   title: "Phone Conversations",
   description: "Learn how to make and receive phone calls in Ewe",
   icon: "phone-portrait-outline",
-  totalXp: 15,
+  totalXp: 5,
   difficulty: "Intermediate",
 
   sections: [
     {
-      id: "15-1",
+      id: "5-1",
       type: "words",
       title: "Starting a Call",
       icon: "call-outline",
@@ -36,7 +36,7 @@ export default {
       ],
       questions: [
         {
-          id: 1501,
+          id: 501,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Hello, who is speaking?' in Ewe?",
@@ -51,7 +51,7 @@ export default {
           explanation: "Hlo, ame kae le nu ƒom? = Hello, who is speaking? in Ewe."
         },
         {
-          id: 1502,
+          id: 502,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -67,25 +67,41 @@ export default {
           explanation: "You heard 'Ŋkɔ nye sem a?' which means 'Can you hear me?' in Ewe."
         },
         {
-          id: 1503,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Meɖe kuku [_____] (Please hold on)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "lala" },
-            { id: "opt2", text: "ake" },
-            { id: "opt3", text: "vɔ" }
+          id: 503,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Please hold on' in Ewe?",
+          options: [
+            { id: 1, text: "Hlo, ame kae le nu ƒom?" },
+            { id: 2, text: "Ŋkɔ nye sem a?" },
+            { id: 3, text: "Meɖe kuku lala" },
+            { id: 4, text: "Ɖo gbedasi ɖem" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          correctOptionId: 3,
           hints: ["lala = hold/wait"],
           explanation: "Meɖe kuku lala = Please hold on in Ewe."
+        },
+        {
+          id: 504,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter5/hlo_ame_kae_le_nu_ƒom.m4a"),
+          options: [
+            { id: 1, text: "Hello, who is speaking?" },
+            { id: 2, text: "Can you hear me?" },
+            { id: 3, text: "Please hold on" },
+            { id: 4, text: "The network is bad" }
+          ],
+          correctOptionId: 1,
+          hints: ["ame kae = who"],
+          explanation: "You heard 'Hlo, ame kae le nu ƒom?' which means 'Hello, who is speaking?' in Ewe."
         }
       ]
     },
 
     {
-      id: "15-2",
+      id: "5-2",
       type: "words",
       title: "Network Problems",
       icon: "wifi-outline",
@@ -113,7 +129,7 @@ export default {
       ],
       questions: [
         {
-          id: 1504,
+          id: 505,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'The network is bad' in Ewe?",
@@ -128,7 +144,7 @@ export default {
           explanation: "Netwɔk la megblẽ = The network is bad in Ewe."
         },
         {
-          id: 1505,
+          id: 506,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -144,25 +160,41 @@ export default {
           explanation: "You heard 'Ka la le tsotsom' which means 'The line is breaking up' in Ewe."
         },
         {
-          id: 1506,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Nye batri [_____] (My battery is low)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "vɔ" },
-            { id: "opt2", text: "le" },
-            { id: "opt3", text: "la" }
+          id: 507,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'My battery is low' in Ewe?",
+          options: [
+            { id: 1, text: "Netwɔk la megblẽ" },
+            { id: 2, text: "Ka la le tsotsom" },
+            { id: 3, text: "Nye batri vɔ" },
+            { id: 4, text: "Me ga yɔ ge" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["vɔ = finished/low"],
+          correctOptionId: 3,
+          hints: ["batri = battery", "vɔ = finished"],
           explanation: "Nye batri vɔ = My battery is low in Ewe."
+        },
+        {
+          id: 508,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter5/netwɔk_la_megblẽ.m4a"),
+          options: [
+            { id: 1, text: "The network is bad" },
+            { id: 2, text: "The line is breaking up" },
+            { id: 3, text: "My battery is low" },
+            { id: 4, text: "Send me a message" }
+          ],
+          correctOptionId: 1,
+          hints: ["megblẽ = is bad"],
+          explanation: "You heard 'Netwɔk la megblẽ' which means 'The network is bad' in Ewe."
         }
       ]
     },
 
     {
-      id: "15-3",
+      id: "5-3",
       type: "words",
       title: "Messages & Follow-up",
       icon: "chatbubble-outline",
@@ -190,7 +222,7 @@ export default {
       ],
       questions: [
         {
-          id: 1507,
+          id: 509,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I will call you back' in Ewe?",
@@ -205,7 +237,7 @@ export default {
           explanation: "Me ga yɔ ge = I will call you back in Ewe."
         },
         {
-          id: 1508,
+          id: 510,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -221,32 +253,48 @@ export default {
           explanation: "You heard 'Ɖo gbedasi ɖem' which means 'Send me a message' in Ewe."
         },
         {
-          id: 1509,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Maŋlɔ nɔƒea ɖo ɖe [_____] (I will text you the address)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "wò" },
-            { id: "opt2", text: "nye" },
-            { id: "opt3", text: "mí" }
+          id: 511,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I will text you the address' in Ewe?",
+          options: [
+            { id: 1, text: "Me ga yɔ ge" },
+            { id: 2, text: "Ɖo gbedasi ɖem" },
+            { id: 3, text: "Maŋlɔ nɔƒea ɖo ɖe wò" },
+            { id: 4, text: "Netwɔk la megblẽ" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["wò = you"],
+          correctOptionId: 3,
+          hints: ["nɔƒea = the address"],
           explanation: "Maŋlɔ nɔƒea ɖo ɖe wò = I will text you the address in Ewe."
+        },
+        {
+          id: 512,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter5/me_ga_yɔ_ge.m4a"),
+          options: [
+            { id: 1, text: "I will call you back" },
+            { id: 2, text: "Send me a message" },
+            { id: 3, text: "I will text you the address" },
+            { id: 4, text: "My battery is low" }
+          ],
+          correctOptionId: 1,
+          hints: ["ga yɔ = call again"],
+          explanation: "You heard 'Me ga yɔ ge' which means 'I will call you back' in Ewe."
         }
       ]
     }
   ],
 
   review: {
-    id: "review-15",
+    id: "review-5",
     title: "Review: Phone Conversations",
     icon: "refresh-outline",
     description: "Review all the phone conversation vocabulary you've learned",
     questions: [
       {
-        id: 1510,
+        id: 513,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Hello, who is speaking?' in Ewe?",
@@ -261,7 +309,7 @@ export default {
         explanation: "Hlo, ame kae le nu ƒom? = Hello, who is speaking?"
       },
       {
-        id: 1511,
+        id: 514,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -277,7 +325,7 @@ export default {
         explanation: "You heard 'Meɖe kuku lala' which means 'Please hold on'."
       },
       {
-        id: 1512,
+        id: 515,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'The network is bad' in Ewe?",
@@ -292,7 +340,7 @@ export default {
         explanation: "Netwɔk la megblẽ = The network is bad."
       },
       {
-        id: 1513,
+        id: 516,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -308,7 +356,7 @@ export default {
         explanation: "You heard 'Nye batri vɔ' which means 'My battery is low'."
       },
       {
-        id: 1514,
+        id: 517,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I will call you back' in Ewe?",
@@ -323,7 +371,7 @@ export default {
         explanation: "Me ga yɔ ge = I will call you back."
       },
       {
-        id: 1515,
+        id: 518,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -339,7 +387,7 @@ export default {
         explanation: "You heard 'Maŋlɔ nɔƒea ɖo ɖe wò' which means 'I will text you the address'."
       },
       {
-        id: 1516,
+        id: 519,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'The line is breaking up' in Ewe?",
@@ -354,54 +402,50 @@ export default {
         explanation: "Ka la le tsotsom = The line is breaking up."
       },
       {
-        id: 1517,
-        type: "drag_drop",
-        instruction: "Complete the phrase by dragging the correct word.",
-        sentence: "Nye batri [_____] (My battery is low)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "vɔ" },
-          { id: "opt2", text: "le" },
-          { id: "opt3", text: "la" }
+        id: 520,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Send me a message' in Ewe?",
+        options: [
+          { id: 1, text: "Me ga yɔ ge" },
+          { id: 2, text: "Ɖo gbedasi ɖem" },
+          { id: 3, text: "Maŋlɔ nɔƒea ɖo ɖe wò" },
+          { id: 4, text: "Netwɔk la megblẽ" }
         ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["vɔ = finished"],
-        explanation: "Nye batri vɔ = My battery is low."
+        correctOptionId: 2,
+        hints: ["gbedasi = message"],
+        explanation: "Ɖo gbedasi ɖem = Send me a message."
       },
       {
-        id: 1518,
-        type: "drag_drop",
-        instruction: "Complete the phrase by dragging the correct word.",
-        sentence: "Maŋlɔ nɔƒea ɖo ɖe [_____] (I will text you the address)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "wò" },
-          { id: "opt2", text: "nye" },
-          { id: "opt3", text: "mí" }
+        id: 521,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Can you hear me?' in Ewe?",
+        options: [
+          { id: 1, text: "Hlo, ame kae le nu ƒom?" },
+          { id: 2, text: "Ŋkɔ nye sem a?" },
+          { id: 3, text: "Meɖe kuku lala" },
+          { id: 4, text: "Nye batri vɔ" }
         ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["wò = you"],
-        explanation: "Maŋlɔ nɔƒea ɖo ɖe wò = I will text you the address."
+        correctOptionId: 2,
+        hints: ["sem = hear"],
+        explanation: "Ŋkɔ nye sem a? = Can you hear me?"
       },
       {
-        id: 1519,
-        type: "matching",
-        instruction: "Match the Ewe phone phrase with its English translation.",
-        question: "Match each Ewe phrase to its correct meaning:",
-        pairs: [
-          { id: "pair1", left: "Ŋkɔ nye sem a?", right: "I will call you back" },
-          { id: "pair2", left: "Meɖe kuku lala", right: "Can you hear me?" },
-          { id: "pair3", left: "Me ga yɔ ge", right: "Please hold on" },
-          { id: "pair4", left: "Ɖo gbedasi ɖem", right: "Send me a message" }
+        id: 522,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter5/ka_la_le_tsotsom.m4a"),
+        options: [
+          { id: 1, text: "The network is bad" },
+          { id: 2, text: "The line is breaking up" },
+          { id: 3, text: "My battery is low" },
+          { id: 4, text: "Send me a message" }
         ],
-        correctMatches: [
-          { leftId: "pair1", rightId: "pair2" },
-          { leftId: "pair2", rightId: "pair3" },
-          { leftId: "pair3", rightId: "pair1" },
-          { leftId: "pair4", rightId: "pair4" }
-        ],
-        hints: ["Match the phone phrase to its meaning"],
-        explanation: "These are common phone conversation phrases in Ewe."
+        correctOptionId: 2,
+        hints: ["tsotsom = breaking"],
+        explanation: "You heard 'Ka la le tsotsom' which means 'The line is breaking up'."
       }
     ]
   }

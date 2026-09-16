@@ -1,5 +1,5 @@
 export default {
-  id: 22,
+  id: 2,
   title: "Proverbs & Idioms",
   description: "Learn common Ewe proverbs and idioms",
   icon: "bulb-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "22-1",
+      id: "2-1",
       type: "words",
       title: "Wisdom Proverbs",
       icon: "bulb-outline",
@@ -30,7 +30,7 @@ export default {
       ],
       questions: [
         {
-          id: 2201,
+          id: 201,
           type: "multiple_choice",
           instruction: "Select the correct Ewe proverb.",
           question: "How do you say 'Wisdom is not in one person's head' in Ewe?",
@@ -45,7 +45,7 @@ export default {
           explanation: "Nunya menɔa ame ɖeka ƒe ta me o = Wisdom is not in one person's head in Ewe."
         },
         {
-          id: 2202,
+          id: 202,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What does this Ewe proverb mean in English?",
@@ -61,7 +61,7 @@ export default {
           explanation: "You heard 'Ta ɖeka meɖoa aɖaŋu o' which means 'One head does not hold council' in Ewe."
         },
         {
-          id: 2203,
+          id: 203,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What does this Ewe proverb mean in English?",
@@ -80,7 +80,7 @@ export default {
     },
 
     {
-      id: "22-2",
+      id: "2-2",
       type: "words",
       title: "Patience Proverbs",
       icon: "hourglass-outline",
@@ -102,7 +102,7 @@ export default {
       ],
       questions: [
         {
-          id: 2204,
+          id: 204,
           type: "multiple_choice",
           instruction: "Select the correct Ewe proverb.",
           question: "How do you say 'Slowly slowly catches the monkey' in Ewe?",
@@ -117,7 +117,7 @@ export default {
           explanation: "Blewuu blewuu wolénɛ kese = Slowly slowly catches the monkey in Ewe."
         },
         {
-          id: 2205,
+          id: 205,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What does this Ewe proverb mean in English?",
@@ -133,7 +133,7 @@ export default {
           explanation: "You heard 'Nɔnɔme aɖeke menɔa anyi tegbee o' which means 'No condition is permanent' in Ewe."
         },
         {
-          id: 2206,
+          id: 206,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What does this Ewe proverb mean in English?",
@@ -152,7 +152,7 @@ export default {
     },
 
     {
-      id: "22-3",
+      id: "2-3",
       type: "words",
       title: "Change & Respect",
       icon: "repeat-outline",
@@ -174,7 +174,7 @@ export default {
       ],
       questions: [
         {
-          id: 2207,
+          id: 207,
           type: "multiple_choice",
           instruction: "Select the correct Ewe proverb.",
           question: "How do you say 'A child who washes his hands eats with elders' in Ewe?",
@@ -189,7 +189,7 @@ export default {
           explanation: "Ɖevi si klɔa asi la ɖua nu kple ametsitsiwo = A child who washes his hands eats with elders in Ewe."
         },
         {
-          id: 2208,
+          id: 208,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What does this Ewe proverb mean in English?",
@@ -205,7 +205,7 @@ export default {
           explanation: "You heard 'Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna' which means 'When the drumbeat changes, the dance changes' in Ewe."
         },
         {
-          id: 2209,
+          id: 209,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What does this Ewe proverb mean in English?",
@@ -225,13 +225,13 @@ export default {
   ],
 
   review: {
-    id: "review-22",
+    id: "review-2",
     title: "Review: Proverbs & Idioms",
     icon: "refresh-outline",
     description: "Review all the Ewe proverbs and idioms you've learned",
     questions: [
       {
-        id: 2210,
+        id: 210,
         type: "multiple_choice",
         instruction: "Select the correct Ewe proverb.",
         question: "How do you say 'Wisdom is not in one person's head' in Ewe?",
@@ -246,7 +246,7 @@ export default {
         explanation: "Nunya menɔa ame ɖeka ƒe ta me o = Wisdom is not in one person's head."
       },
       {
-        id: 2211,
+        id: 211,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What does this Ewe proverb mean in English?",
@@ -262,7 +262,7 @@ export default {
         explanation: "You heard 'Ta ɖeka meɖoa aɖaŋu o' which means 'One head does not hold council'."
       },
       {
-        id: 2212,
+        id: 212,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What does this Ewe proverb mean in English?",
@@ -278,7 +278,7 @@ export default {
         explanation: "You heard 'Nunya menɔa ame ɖeka ƒe ta me o' which means 'Wisdom is not in one person's head'."
       },
       {
-        id: 2213,
+        id: 213,
         type: "multiple_choice",
         instruction: "Select the correct Ewe proverb.",
         question: "How do you say 'Slowly slowly catches the monkey' in Ewe?",
@@ -293,7 +293,7 @@ export default {
         explanation: "Blewuu blewuu wolénɛ kese = Slowly slowly catches the monkey."
       },
       {
-        id: 2214,
+        id: 214,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What does this Ewe proverb mean in English?",
@@ -309,7 +309,7 @@ export default {
         explanation: "You heard 'Nɔnɔme aɖeke menɔa anyi tegbee o' which means 'No condition is permanent'."
       },
       {
-        id: 2215,
+        id: 215,
         type: "multiple_choice",
         instruction: "Select the correct Ewe proverb.",
         question: "How do you say 'When the drumbeat changes, the dance changes' in Ewe?",
@@ -324,7 +324,7 @@ export default {
         explanation: "Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna = When the drumbeat changes, the dance changes."
       },
       {
-        id: 2216,
+        id: 216,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What does this Ewe proverb mean in English?",
@@ -340,7 +340,7 @@ export default {
         explanation: "You heard 'Ɖevi si klɔa asi la ɖua nu kple ametsitsiwo' which means 'A child who washes his hands eats with elders'."
       },
       {
-        id: 2217,
+        id: 217,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What does this Ewe proverb mean in English?",
@@ -356,7 +356,7 @@ export default {
         explanation: "You heard 'Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna' which means 'When the drumbeat changes, the dance changes'."
       },
       {
-        id: 2218,
+        id: 218,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What does this Ewe proverb mean in English?",
@@ -372,7 +372,7 @@ export default {
         explanation: "You heard 'Blewuu blewuu wolénɛ kese' which means 'Slowly slowly catches the monkey'."
       },
       {
-        id: 2219,
+        id: 219,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What does this Ewe proverb mean in English?",

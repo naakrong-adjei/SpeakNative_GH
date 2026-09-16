@@ -1,5 +1,5 @@
 export default {
-  id: 11,
+  id: 1,
   title: "Travel & Transport",
   description: "Learn travel and transport vocabulary in Ewe",
   icon: "bus-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "11-1",
+      id: "1-1",
       type: "words",
       title: "Planning a Trip",
       icon: "map-outline",
@@ -42,7 +42,7 @@ export default {
       ],
       questions: [
         {
-          id: 1101,
+          id: 101,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I want to travel to Agbozume' in Ewe?",
@@ -57,7 +57,7 @@ export default {
           explanation: "Medzi be mazɔ mɔ ayi Agbozume = I want to travel to Agbozume in Ewe."
         },
         {
-          id: 1102,
+          id: 102,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -73,7 +73,7 @@ export default {
           explanation: "You heard 'Afika ʋudzeƒea le?' which means 'Where is the bus station?' in Ewe."
         },
         {
-          id: 1103,
+          id: 103,
           type: "drag_drop",
           instruction: "Complete the phrase by dragging the correct word.",
           sentence: "Ɣeyiɣi kae wò[_____]? (How long does it take?)",
@@ -91,7 +91,7 @@ export default {
     },
 
     {
-      id: "11-2",
+      id: "1-2",
       type: "words",
       title: "On Board",
       icon: "bus-outline",
@@ -119,7 +119,7 @@ export default {
       ],
       questions: [
         {
-          id: 1104,
+          id: 104,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Stop here please' in Ewe?",
@@ -134,7 +134,7 @@ export default {
           explanation: "Meɖe kuku tɔ de afi = Stop here please in Ewe."
         },
         {
-          id: 1105,
+          id: 105,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -150,7 +150,7 @@ export default {
           explanation: "You heard 'Ame aɖe le zikpui hia dzia?' which means 'Is this seat taken?' in Ewe."
         },
         {
-          id: 1106,
+          id: 106,
           type: "drag_drop",
           instruction: "Complete the phrase by dragging the correct word.",
           sentence: "Afika maɖi [_____]? (Where do I get down?)",
@@ -168,7 +168,7 @@ export default {
     },
 
     {
-      id: "11-3",
+      id: "1-3",
       type: "words",
       title: "Fares & Problems",
       icon: "ticket-outline",
@@ -202,7 +202,7 @@ export default {
       ],
       questions: [
         {
-          id: 1107,
+          id: 107,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I missed the bus' in Ewe?",
@@ -217,7 +217,7 @@ export default {
           explanation: "Ʋu la dzo le gbɔnye = I missed the bus in Ewe."
         },
         {
-          id: 1108,
+          id: 108,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -233,7 +233,7 @@ export default {
           explanation: "You heard 'Nenie nye ʋu dzɔ?' which means 'How much is the fare?' in Ewe."
         },
         {
-          id: 1109,
+          id: 109,
           type: "drag_drop",
           instruction: "Complete the phrase by dragging the correct word.",
           sentence: "Ku ʋua [_____] (Drive carefully)",
@@ -252,13 +252,13 @@ export default {
   ],
 
   review: {
-    id: "review-11",
+    id: "review-1",
     title: "Review: Travel & Transport",
     icon: "refresh-outline",
     description: "Review all the travel and transport vocabulary you've learned",
     questions: [
       {
-        id: 1110,
+        id: 110,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I want to travel to Agbozume' in Ewe?",
@@ -273,7 +273,7 @@ export default {
         explanation: "Medzi be mazɔ mɔ ayi Agbozume = I want to travel to Agbozume."
       },
       {
-        id: 1111,
+        id: 11,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -289,7 +289,7 @@ export default {
         explanation: "You heard 'Mehiã taksi' which means 'I need a taxi'."
       },
       {
-        id: 1112,
+        id: 112,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Stop here please' in Ewe?",
@@ -304,7 +304,7 @@ export default {
         explanation: "Meɖe kuku tɔ de afi = Stop here please."
       },
       {
-        id: 1113,
+        id: 113,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -320,7 +320,7 @@ export default {
         explanation: "You heard 'Afika maɖi le?' which means 'Where do I get down?'."
       },
       {
-        id: 1114,
+        id: 114,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I missed the bus' in Ewe?",
@@ -335,7 +335,7 @@ export default {
         explanation: "Ʋu la dzo le gbɔnye = I missed the bus."
       },
       {
-        id: 1115,
+        id: 115,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'How much is the fare?' in Ewe?",
@@ -350,7 +350,7 @@ export default {
         explanation: "Nenie nye ʋu dzɔ = How much is the fare?"
       },
       {
-        id: 1116,
+        id: 116,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -366,7 +366,7 @@ export default {
         explanation: "You heard 'Mɔ la gblẽ' which means 'The road is bad'."
       },
       {
-        id: 1117,
+        id: 117,
         type: "drag_drop",
         instruction: "Complete the phrase by dragging the correct word.",
         sentence: "Ame aɖe le zikpui hia [_____]? (Is this seat taken?)",
@@ -381,7 +381,7 @@ export default {
         explanation: "Ame aɖe le zikpui hia dzia? = Is this seat taken?"
       },
       {
-        id: 1118,
+        id: 118,
         type: "drag_drop",
         instruction: "Complete the phrase by dragging the correct word.",
         sentence: "Ku ʋua [_____] (Drive carefully)",
@@ -396,7 +396,7 @@ export default {
         explanation: "Ku ʋua nyuie = Drive carefully."
       },
       {
-        id: 1119,
+        id: 119,
         type: "drag_drop",
         instruction: "Complete the phrase by dragging the correct word.",
         sentence: "Afika ʋudzeƒea [_____]? (Where is the bus station?)",

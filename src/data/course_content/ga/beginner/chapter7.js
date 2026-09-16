@@ -52,6 +52,22 @@ export default {
         },
         {
           id: 702,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter7/milaaje.m4a"),
+          options: [
+            { id: 1, text: "Where is the market?" },
+            { id: 2, text: "I am lost" },
+            { id: 3, text: "How do I get there?" },
+            { id: 4, text: "Go straight" }
+          ],
+          correctOptionId: 2,
+          hints: ["Expression of being lost"],
+          explanation: "You heard 'Milaaje' which means 'I am lost' in Ga."
+        },
+        {
+          id: 703,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I am lost' in Ga?",
@@ -66,19 +82,20 @@ export default {
           explanation: "Milaaje = I am lost in Ga."
         },
         {
-          id: 703,
-          type: "drag_drop",
-          instruction: "Complete the Ga phrase by dragging the correct word.",
-          sentence: "Te mafee tɛŋŋ ni mashɛ [_____]? (How do I get there?)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "jɛmɛ" },
-            { id: "opt2", text: "tɛɛ" },
-            { id: "opt3", text: "hiɛ" }
+          id: 704,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter7/te_mafee_tɛŋŋ_ni_mashɛ_jɛmɛ.m4a"),
+          options: [
+            { id: 1, text: "Where is the market?" },
+            { id: 2, text: "I am lost" },
+            { id: 3, text: "How do I get there?" },
+            { id: 4, text: "Turn right" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          correctOptionId: 3,
           hints: ["jɛmɛ = there"],
-          explanation: "Te mafee tɛŋŋ ni mashɛ jɛmɛ? = How do I get there? in Ga."
+          explanation: "You heard 'Te mafee tɛŋŋ ni mashɛ jɛmɛ?' which means 'How do I get there?' in Ga."
         }
       ]
     },
@@ -118,7 +135,7 @@ export default {
       ],
       questions: [
         {
-          id: 704,
+          id: 705,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Go straight' in Ga?",
@@ -133,22 +150,23 @@ export default {
           explanation: "Ya trɔmɔɔ = Go straight in Ga."
         },
         {
-          id: 705,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Turn right' in Ga?",
+          id: 706,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter7/tsɔ_ninejurɔ.m4a"),
           options: [
-            { id: 1, text: "Ya trɔmɔɔ" },
-            { id: 2, text: "Tsɔ ninejurɔ" },
-            { id: 3, text: "Tsɔ abɛku" },
-            { id: 4, text: "Nyiɛmɔ gbɛ nɛɛ nɔ" }
+            { id: 1, text: "Go straight" },
+            { id: 2, text: "Turn right" },
+            { id: 3, text: "Turn left" },
+            { id: 4, text: "Follow this road" }
           ],
           correctOptionId: 2,
           hints: ["Tsɔ = turn", "ninejurɔ = right"],
-          explanation: "Tsɔ ninejurɔ = Turn right in Ga."
+          explanation: "You heard 'Tsɔ ninejurɔ' which means 'Turn right' in Ga."
         },
         {
-          id: 706,
+          id: 707,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Turn left' in Ga?",
@@ -163,34 +181,20 @@ export default {
           explanation: "Tsɔ abɛku = Turn left in Ga."
         },
         {
-          id: 707,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Follow this road' in Ga?",
+          id: 708,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter7/nyiɛmɔ_gbɛ_nɛɛ_nɔ.m4a"),
           options: [
-            { id: 1, text: "Ya trɔmɔɔ" },
-            { id: 2, text: "Tsɔ ninejurɔ" },
-            { id: 3, text: "Tsɔ abɛku" },
-            { id: 4, text: "Nyiɛmɔ gbɛ nɛɛ nɔ" }
+            { id: 1, text: "Go straight" },
+            { id: 2, text: "Turn right" },
+            { id: 3, text: "Turn left" },
+            { id: 4, text: "Follow this road" }
           ],
           correctOptionId: 4,
           hints: ["Nyiɛmɔ = follow", "gbɛ = road"],
-          explanation: "Nyiɛmɔ gbɛ nɛɛ nɔ = Follow this road in Ga."
-        },
-        {
-          id: 708,
-          type: "drag_drop",
-          instruction: "Complete the Ga phrase by dragging the correct word.",
-          sentence: "Nyiɛmɔ gbɛ [_____] nɔ (Follow this road)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "nɛɛ" },
-            { id: "opt2", text: "jɛmɛ" },
-            { id: "opt3", text: "trɔmɔɔ" }
-          ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["nɛɛ = this"],
-          explanation: "Nyiɛmɔ gbɛ nɛɛ nɔ = Follow this road in Ga."
+          explanation: "You heard 'Nyiɛmɔ gbɛ nɛɛ nɔ' which means 'Follow this road' in Ga."
         }
       ]
     },
@@ -246,18 +250,19 @@ export default {
         },
         {
           id: 710,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'It is near' in Ga?",
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter7/ebɛŋ_kɛ.m4a"),
           options: [
-            { id: 1, text: "Eyɛ shɔŋŋ" },
-            { id: 2, text: "Ebɛŋ kɛ" },
-            { id: 3, text: "Shia lɛ sɛɛ" },
-            { id: 4, text: "Sukuu lɛ hiɛ" }
+            { id: 1, text: "It is far" },
+            { id: 2, text: "It is near" },
+            { id: 3, text: "Behind the house" },
+            { id: 4, text: "In front of the school" }
           ],
           correctOptionId: 2,
           hints: ["ebɛŋ kɛ = near"],
-          explanation: "Ebɛŋ kɛ = It is near in Ga."
+          explanation: "You heard 'Ebɛŋ kɛ' which means 'It is near' in Ga."
         },
         {
           id: 711,
@@ -276,33 +281,19 @@ export default {
         },
         {
           id: 712,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'In front of the school' in Ga?",
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter7/sukuu_lɛ_hiɛ.m4a"),
           options: [
-            { id: 1, text: "Eyɛ shɔŋŋ" },
-            { id: 2, text: "Ebɛŋ kɛ" },
-            { id: 3, text: "Shia lɛ sɛɛ" },
-            { id: 4, text: "Sukuu lɛ hiɛ" }
+            { id: 1, text: "It is far" },
+            { id: 2, text: "It is near" },
+            { id: 3, text: "Behind the house" },
+            { id: 4, text: "In front of the school" }
           ],
           correctOptionId: 4,
           hints: ["sukuu = school", "hiɛ = in front of"],
-          explanation: "Sukuu lɛ hiɛ = In front of the school in Ga."
-        },
-        {
-          id: 713,
-          type: "drag_drop",
-          instruction: "Complete the Ga phrase by dragging the correct word.",
-          sentence: "Shia lɛ [_____] (Behind the house)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "sɛɛ" },
-            { id: "opt2", text: "hiɛ" },
-            { id: "opt3", text: "nɔ" }
-          ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["sɛɛ = behind"],
-          explanation: "Shia lɛ sɛɛ = Behind the house in Ga."
+          explanation: "You heard 'Sukuu lɛ hiɛ' which means 'In front of the school' in Ga."
         }
       ]
     }
@@ -315,7 +306,7 @@ export default {
     description: "Review all the direction and location vocabulary you've learned",
     questions: [
       {
-        id: 717,
+        id: 713,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you ask 'Where is the market?' in Ga?",
@@ -330,7 +321,23 @@ export default {
         explanation: "Nɛgbɛ jara lɛ yɔɔ? = Where is the market?"
       },
       {
-        id: 718,
+        id: 714,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter7/tsɔ_abɛku.m4a"),
+        options: [
+          { id: 1, text: "Go straight" },
+          { id: 2, text: "Turn right" },
+          { id: 3, text: "Turn left" },
+          { id: 4, text: "Follow this road" }
+        ],
+        correctOptionId: 3,
+        hints: ["abɛku = left"],
+        explanation: "You heard 'Tsɔ abɛku' which means 'Turn left'."
+      },
+      {
+        id: 715,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Turn right' in Ga?",
@@ -341,26 +348,27 @@ export default {
           { id: 4, text: "Nyiɛmɔ gbɛ nɛɛ nɔ" }
         ],
         correctOptionId: 2,
-        hints: ["Tsɔ = turn", "ninejurɔ = right"],
+        hints: ["ninejurɔ = right"],
         explanation: "Tsɔ ninejurɔ = Turn right."
       },
       {
-        id: 719,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Turn left' in Ga?",
+        id: 716,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter7/eyɛ_shɔŋŋ.m4a"),
         options: [
-          { id: 1, text: "Ya trɔmɔɔ" },
-          { id: 2, text: "Tsɔ ninejurɔ" },
-          { id: 3, text: "Tsɔ abɛku" },
-          { id: 4, text: "Nyiɛmɔ gbɛ nɛɛ nɔ" }
+          { id: 1, text: "It is far" },
+          { id: 2, text: "It is near" },
+          { id: 3, text: "Behind the house" },
+          { id: 4, text: "In front of the school" }
         ],
-        correctOptionId: 3,
-        hints: ["Tsɔ = turn", "abɛku = left"],
-        explanation: "Tsɔ abɛku = Turn left."
+        correctOptionId: 1,
+        hints: ["shɔŋŋ = far"],
+        explanation: "You heard 'Eyɛ shɔŋŋ' which means 'It is far'."
       },
       {
-        id: 720,
+        id: 717,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'It is near' in Ga?",
@@ -371,11 +379,11 @@ export default {
           { id: 4, text: "Sukuu lɛ hiɛ" }
         ],
         correctOptionId: 2,
-        hints: ["Opposite of far"],
+        hints: ["ebɛŋ kɛ = near"],
         explanation: "Ebɛŋ kɛ = It is near."
       },
       {
-        id: 721,
+        id: 718,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'In front of the school' in Ga?",
@@ -386,11 +394,27 @@ export default {
           { id: 4, text: "Sukuu lɛ hiɛ" }
         ],
         correctOptionId: 4,
-        hints: ["sukuu = school", "hiɛ = in front of"],
+        hints: ["hiɛ = in front of"],
         explanation: "Sukuu lɛ hiɛ = In front of the school."
       },
       {
-        id: 722,
+        id: 719,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter7/shia_lɛ_sɛɛ.m4a"),
+        options: [
+          { id: 1, text: "It is far" },
+          { id: 2, text: "It is near" },
+          { id: 3, text: "Behind the house" },
+          { id: 4, text: "In front of the school" }
+        ],
+        correctOptionId: 3,
+        hints: ["sɛɛ = behind"],
+        explanation: "You heard 'Shia lɛ sɛɛ' which means 'Behind the house'."
+      },
+      {
+        id: 720,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Follow this road' in Ga?",
@@ -401,56 +425,57 @@ export default {
           { id: 4, text: "Nyiɛmɔ gbɛ nɛɛ nɔ" }
         ],
         correctOptionId: 4,
-        hints: ["Nyiɛmɔ = follow", "gbɛ = road"],
+        hints: ["Nyiɛmɔ = follow"],
         explanation: "Nyiɛmɔ gbɛ nɛɛ nɔ = Follow this road."
       },
       {
-        id: 723,
-        type: "drag_drop",
-        instruction: "Complete the Ga phrase by dragging the correct word.",
-        sentence: "Milaaje (I am [_____])",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "lost" },
-          { id: "opt2", text: "found" },
-          { id: "opt3", text: "here" }
+        id: 721,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter7/ya_trɔmɔɔ.m4a"),
+        options: [
+          { id: 1, text: "Go straight" },
+          { id: 2, text: "Turn right" },
+          { id: 3, text: "Turn left" },
+          { id: 4, text: "Follow this road" }
         ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        correctOptionId: 1,
+        hints: ["trɔmɔɔ = straight"],
+        explanation: "You heard 'Ya trɔmɔɔ' which means 'Go straight'."
+      },
+      {
+        id: 722,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Go straight' in Ga?",
+        options: [
+          { id: 1, text: "Ya trɔmɔɔ" },
+          { id: 2, text: "Tsɔ ninejurɔ" },
+          { id: 3, text: "Tsɔ abɛku" },
+          { id: 4, text: "Nyiɛmɔ gbɛ nɛɛ nɔ" }
+        ],
+        correctOptionId: 1,
+        hints: ["trɔmɔɔ = straight"],
+        explanation: "Ya trɔmɔɔ = Go straight."
+      },
+      {
+        id: 723,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I am lost' in Ga?",
+        options: [
+          { id: 1, text: "Nɛgbɛ jara lɛ yɔɔ?" },
+          { id: 2, text: "Milaaje" },
+          { id: 3, text: "Te mafee tɛŋŋ ni mashɛ jɛmɛ?" },
+          { id: 4, text: "Ya trɔmɔɔ" }
+        ],
+        correctOptionId: 2,
         hints: ["Expression of being lost"],
         explanation: "Milaaje = I am lost."
       },
       {
         id: 724,
-        type: "drag_drop",
-        instruction: "Complete the Ga phrase by dragging the correct word.",
-        sentence: "Ebɛŋ [_____] (It is near)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "kɛ" },
-          { id: "opt2", text: "nɔ" },
-          { id: "opt3", text: "sɛɛ" }
-        ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["kɛ = near"],
-        explanation: "Ebɛŋ kɛ = It is near."
-      },
-      {
-        id: 725,
-        type: "drag_drop",
-        instruction: "Complete the Ga phrase by dragging the correct word.",
-        sentence: "Ya [_____] (Go straight)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "trɔmɔɔ" },
-          { id: "opt2", text: "sɛɛ" },
-          { id: "opt3", text: "hiɛ" }
-        ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["trɔmɔɔ = straight"],
-        explanation: "Ya trɔmɔɔ = Go straight."
-      },
-      {
-        id: 726,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'How do I get there?' in Ga?",

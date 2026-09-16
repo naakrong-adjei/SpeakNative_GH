@@ -1,5 +1,5 @@
 export default {
-  id: 14,
+  id: 4,
   title: "Opinions & Emotions",
   description: "Learn how to express opinions and emotions in Ewe",
   icon: "chatbubbles-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "14-1",
+      id: "4-1",
       type: "words",
       title: "Happy & Sad",
       icon: "happy-outline",
@@ -42,7 +42,7 @@ export default {
       ],
       questions: [
         {
-          id: 1401,
+          id: 401,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I am happy' in Ewe?",
@@ -57,7 +57,7 @@ export default {
           explanation: "Dzi dzɔm = I am happy in Ewe."
         },
         {
-          id: 1402,
+          id: 402,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -73,25 +73,41 @@ export default {
           explanation: "You heard 'Nye dzi gbã' which means 'I am sad' in Ewe."
         },
         {
-          id: 1403,
+          id: 403,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'Don't worry' in Ewe?",
+          question: "How do you say 'I am proud of you' in Ewe?",
           options: [
             { id: 1, text: "Dzi dzɔm" },
             { id: 2, text: "Nye dzi gbã" },
             { id: 3, text: "Nye dzi dzɔ ɖe ŋuwò" },
             { id: 4, text: "Mègatsi dzi o" }
           ],
+          correctOptionId: 3,
+          hints: ["dzɔ ɖe ŋuwò = for you"],
+          explanation: "Nye dzi dzɔ ɖe ŋuwò = I am proud of you in Ewe."
+        },
+        {
+          id: 404,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/mègatsi_dzi_o.m4a"),
+          options: [
+            { id: 1, text: "I am happy" },
+            { id: 2, text: "I am sad" },
+            { id: 3, text: "I am proud of you" },
+            { id: 4, text: "Don't worry" }
+          ],
           correctOptionId: 4,
-          hints: ["mègatsi = don't take", "dzi = heart"],
-          explanation: "Mègatsi dzi o = Don't worry in Ewe."
+          hints: ["mègatsi = don't take"],
+          explanation: "You heard 'Mègatsi dzi o' which means 'Don't worry' in Ewe."
         }
       ]
     },
 
     {
-      id: "14-2",
+      id: "4-2",
       type: "words",
       title: "Strong Feelings",
       icon: "flame-outline",
@@ -119,7 +135,7 @@ export default {
       ],
       questions: [
         {
-          id: 1404,
+          id: 405,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I am angry' in Ewe?",
@@ -134,7 +150,7 @@ export default {
           explanation: "Me kpo dzi ku = I am angry in Ewe."
         },
         {
-          id: 1405,
+          id: 406,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -150,25 +166,41 @@ export default {
           explanation: "You heard 'Me vɔvɔ̃m' which means 'I am afraid' in Ewe."
         },
         {
-          id: 1406,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Ewɔ nuku [_____] (I am surprised)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "nam" },
-            { id: "opt2", text: "wò" },
-            { id: "opt3", text: "nye" }
+          id: 407,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I am surprised' in Ewe?",
+          options: [
+            { id: 1, text: "Me kpo dzi ku" },
+            { id: 2, text: "Me vɔvɔ̃m" },
+            { id: 3, text: "Ewɔ nuku nam" },
+            { id: 4, text: "Nye dzi gbã" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["nam = for me"],
+          correctOptionId: 3,
+          hints: ["nuku = wonder"],
           explanation: "Ewɔ nuku nam = I am surprised in Ewe."
+        },
+        {
+          id: 408,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/me_kpo_dzi_ku.m4a"),
+          options: [
+            { id: 1, text: "I am angry" },
+            { id: 2, text: "I am afraid" },
+            { id: 3, text: "I am surprised" },
+            { id: 4, text: "I am sad" }
+          ],
+          correctOptionId: 1,
+          hints: ["ku = dead"],
+          explanation: "You heard 'Me kpo dzi ku' which means 'I am angry' in Ewe."
         }
       ]
     },
 
     {
-      id: "14-3",
+      id: "4-3",
       type: "words",
       title: "Giving Opinions",
       icon: "chatbox-outline",
@@ -202,7 +234,7 @@ export default {
       ],
       questions: [
         {
-          id: 1407,
+          id: 409,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I think so' in Ewe?",
@@ -217,7 +249,7 @@ export default {
           explanation: "Mesusu nenema = I think so in Ewe."
         },
         {
-          id: 1408,
+          id: 410,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -233,32 +265,48 @@ export default {
           explanation: "You heard 'Nyemelɔ̃ ɖe edzi o' which means 'I don't agree' in Ewe."
         },
         {
-          id: 1409,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Le nye susu [_____] (In my opinion)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "nu" },
-            { id: "opt2", text: "o" },
-            { id: "opt3", text: "me" }
+          id: 411,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'In my opinion' in Ewe?",
+          options: [
+            { id: 1, text: "Mesusu nenema" },
+            { id: 2, text: "Nyemelɔ̃ ɖe edzi o" },
+            { id: 3, text: "Le nye susu nu" },
+            { id: 4, text: "Nyateƒee" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["nu = in"],
+          correctOptionId: 3,
+          hints: ["susu = opinion"],
           explanation: "Le nye susu nu = In my opinion in Ewe."
+        },
+        {
+          id: 412,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/nyateƒee.m4a"),
+          options: [
+            { id: 1, text: "I think so" },
+            { id: 2, text: "I don't agree" },
+            { id: 3, text: "In my opinion" },
+            { id: 4, text: "That is true" }
+          ],
+          correctOptionId: 4,
+          hints: ["nyateƒee = true"],
+          explanation: "You heard 'Nyateƒee' which means 'That is true' in Ewe."
         }
       ]
     }
   ],
 
   review: {
-    id: "review-14",
+    id: "review-4",
     title: "Review: Opinions & Emotions",
     icon: "refresh-outline",
     description: "Review all the opinion and emotion vocabulary you've learned",
     questions: [
       {
-        id: 1410,
+        id: 413,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I am happy' in Ewe?",
@@ -273,7 +321,7 @@ export default {
         explanation: "Dzi dzɔm = I am happy."
       },
       {
-        id: 1411,
+        id: 414,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -289,7 +337,7 @@ export default {
         explanation: "You heard 'Nye dzi dzɔ ɖe ŋuwò' which means 'I am proud of you'."
       },
       {
-        id: 1412,
+        id: 415,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I am angry' in Ewe?",
@@ -304,7 +352,7 @@ export default {
         explanation: "Me kpo dzi ku = I am angry."
       },
       {
-        id: 1413,
+        id: 416,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -320,7 +368,7 @@ export default {
         explanation: "You heard 'Ewɔ nuku nam' which means 'I am surprised'."
       },
       {
-        id: 1414,
+        id: 417,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I think so' in Ewe?",
@@ -335,38 +383,23 @@ export default {
         explanation: "Mesusu nenema = I think so."
       },
       {
-        id: 1415,
+        id: 418,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/nyateƒee.m4a"),
+        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/le_nye_susu_nu.m4a"),
         options: [
           { id: 1, text: "I think so" },
           { id: 2, text: "I don't agree" },
           { id: 3, text: "In my opinion" },
           { id: 4, text: "That is true" }
         ],
-        correctOptionId: 4,
-        hints: ["nyateƒee = true"],
-        explanation: "You heard 'Nyateƒee' which means 'That is true'."
-      },
-      {
-        id: 1416,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'In my opinion' in Ewe?",
-        options: [
-          { id: 1, text: "Mesusu nenema" },
-          { id: 2, text: "Nyemelɔ̃ ɖe edzi o" },
-          { id: 3, text: "Le nye susu nu" },
-          { id: 4, text: "Nyateƒee" }
-        ],
         correctOptionId: 3,
         hints: ["susu = opinion"],
-        explanation: "Le nye susu nu = In my opinion."
+        explanation: "You heard 'Le nye susu nu' which means 'In my opinion'."
       },
       {
-        id: 1417,
+        id: 419,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Don't worry' in Ewe?",
@@ -381,44 +414,50 @@ export default {
         explanation: "Mègatsi dzi o = Don't worry."
       },
       {
-        id: 1418,
-        type: "matching",
-        instruction: "Match the Ewe emotion with its English translation.",
-        question: "Match each Ewe phrase to its correct meaning:",
-        pairs: [
-          { id: "pair1", left: "Dzi dzɔm", right: "I am angry" },
-          { id: "pair2", left: "Nye dzi gbã", right: "I am happy" },
-          { id: "pair3", left: "Me kpo dzi ku", right: "I am afraid" },
-          { id: "pair4", left: "Me vɔvɔ̃m", right: "I am sad" }
+        id: 420,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I am sad' in Ewe?",
+        options: [
+          { id: 1, text: "Dzi dzɔm" },
+          { id: 2, text: "Nye dzi gbã" },
+          { id: 3, text: "Me kpo dzi ku" },
+          { id: 4, text: "Me vɔvɔ̃m" }
         ],
-        correctMatches: [
-          { leftId: "pair1", rightId: "pair2" },
-          { leftId: "pair2", rightId: "pair4" },
-          { leftId: "pair3", rightId: "pair1" },
-          { leftId: "pair4", rightId: "pair3" }
-        ],
-        hints: ["Match the emotion to its meaning"],
-        explanation: "These are common emotion phrases in Ewe."
+        correctOptionId: 2,
+        hints: ["gbã = broken/sad"],
+        explanation: "Nye dzi gbã = I am sad."
       },
       {
-        id: 1419,
-        type: "matching",
-        instruction: "Match the Ewe opinion phrase with its English translation.",
-        question: "Match each Ewe phrase to its correct meaning:",
-        pairs: [
-          { id: "pair1", left: "Mesusu nenema", right: "In my opinion" },
-          { id: "pair2", left: "Nyemelɔ̃ ɖe edzi o", right: "That is true" },
-          { id: "pair3", left: "Le nye susu nu", right: "I don't agree" },
-          { id: "pair4", left: "Nyateƒee", right: "I think so" }
+        id: 421,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I am afraid' in Ewe?",
+        options: [
+          { id: 1, text: "Me kpo dzi ku" },
+          { id: 2, text: "Me vɔvɔ̃m" },
+          { id: 3, text: "Ewɔ nuku nam" },
+          { id: 4, text: "Nye dzi gbã" }
         ],
-        correctMatches: [
-          { leftId: "pair1", rightId: "pair4" },
-          { leftId: "pair2", rightId: "pair3" },
-          { leftId: "pair3", rightId: "pair1" },
-          { leftId: "pair4", rightId: "pair2" }
+        correctOptionId: 2,
+        hints: ["vɔvɔ̃ = fear"],
+        explanation: "Me vɔvɔ̃m = I am afraid."
+      },
+      {
+        id: 422,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter4/mesusu_nenema.m4a"),
+        options: [
+          { id: 1, text: "I think so" },
+          { id: 2, text: "I don't agree" },
+          { id: 3, text: "In my opinion" },
+          { id: 4, text: "That is true" }
         ],
-        hints: ["Match the opinion phrase to its meaning"],
-        explanation: "These are common opinion phrases in Ewe."
+        correctOptionId: 1,
+        hints: ["mesusu = I think"],
+        explanation: "You heard 'Mesusu nenema' which means 'I think so'."
       }
     ]
   }

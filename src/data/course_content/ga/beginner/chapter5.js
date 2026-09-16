@@ -58,18 +58,19 @@ export default {
         },
         {
           id: 502,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Food' in Ga?",
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What word did you hear?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/niyenii.m4a"),
           options: [
-            { id: 1, text: "Nu" },
-            { id: 2, text: "Niyenii" },
-            { id: 3, text: "Omo" },
-            { id: 4, text: "Loo" }
+            { id: 1, text: "Water" },
+            { id: 2, text: "Food" },
+            { id: 3, text: "Rice" },
+            { id: 4, text: "Meat" }
           ],
           correctOptionId: 2,
           hints: ["What you eat"],
-          explanation: "Niyenii = Food in Ga."
+          explanation: "You heard 'Niyenii' which means Food in Ga."
         },
         {
           id: 503,
@@ -88,33 +89,19 @@ export default {
         },
         {
           id: 504,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Meat' in Ga?",
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What word did you hear?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/loo.m4a"),
           options: [
-            { id: 1, text: "Nu" },
-            { id: 2, text: "Niyenii" },
-            { id: 3, text: "Omo" },
-            { id: 4, text: "Loo" }
+            { id: 1, text: "Water" },
+            { id: 2, text: "Food" },
+            { id: 3, text: "Rice" },
+            { id: 4, text: "Meat" }
           ],
           correctOptionId: 4,
           hints: ["Loo = Meat"],
-          explanation: "Loo = Meat in Ga."
-        },
-        {
-          id: 505,
-          type: "drag_drop",
-          instruction: "Complete the Ga word by dragging the correct ending.",
-          sentence: "L[_____] (Meat)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "oo" },
-            { id: "opt2", text: "u" },
-            { id: "opt3", text: "a" }
-          ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["Loo = Meat"],
-          explanation: "Loo = Meat in Ga."
+          explanation: "You heard 'Loo' which means Meat in Ga."
         }
       ]
     },
@@ -148,7 +135,7 @@ export default {
       ],
       questions: [
         {
-          id: 506,
+          id: 505,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I am hungry' in Ga?",
@@ -163,22 +150,23 @@ export default {
           explanation: "Hɔmɔ ye mi = I am hungry in Ga."
         },
         {
-          id: 507,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I want to eat' in Ga?",
+          id: 506,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/mitaoɔ_ni_maye_nii.m4a"),
           options: [
-            { id: 1, text: "Hɔmɔ ye mi" },
-            { id: 2, text: "Mitaoɔ ni maye nii" },
-            { id: 3, text: "Kumai miiye mi" },
-            { id: 4, text: "Eŋɔɔ" }
+            { id: 1, text: "I am hungry" },
+            { id: 2, text: "I want to eat" },
+            { id: 3, text: "I am thirsty" },
+            { id: 4, text: "It is delicious" }
           ],
           correctOptionId: 2,
           hints: ["Mitaoɔ = I want"],
-          explanation: "Mitaoɔ ni maye nii = I want to eat in Ga."
+          explanation: "You heard 'Mitaoɔ ni maye nii' which means 'I want to eat' in Ga."
         },
         {
-          id: 508,
+          id: 507,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I am thirsty' in Ga?",
@@ -193,19 +181,20 @@ export default {
           explanation: "Kumai miiye mi = I am thirsty in Ga."
         },
         {
-          id: 509,
-          type: "drag_drop",
-          instruction: "Complete the Ga phrase by dragging the correct word.",
-          sentence: "Mitaoɔ ni maye [_____] (I want to eat)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "nii" },
-            { id: "opt2", text: "nu" },
-            { id: "opt3", text: "loo" }
+          id: 508,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/hɔmɔ_ye_mi.m4a"),
+          options: [
+            { id: 1, text: "I am hungry" },
+            { id: 2, text: "I want to eat" },
+            { id: 3, text: "I am thirsty" },
+            { id: 4, text: "The food is hot" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["nii = food"],
-          explanation: "Mitaoɔ ni maye nii = I want to eat in Ga."
+          correctOptionId: 1,
+          hints: ["Hɔmɔ = hunger"],
+          explanation: "You heard 'Hɔmɔ ye mi' which means 'I am hungry' in Ga."
         }
       ]
     },
@@ -245,7 +234,7 @@ export default {
       ],
       questions: [
         {
-          id: 510,
+          id: 509,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'It is delicious' in Ga?",
@@ -260,22 +249,23 @@ export default {
           explanation: "Eŋɔɔ = It is delicious in Ga."
         },
         {
-          id: 511,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Give me water please' in Ga?",
+          id: 510,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/ofainɛ_hã_mi_nu.m4a"),
           options: [
-            { id: 1, text: "Eŋɔɔ" },
-            { id: 2, text: "Ofainɛ hã mi nu" },
-            { id: 3, text: "Miyeee loo" },
-            { id: 4, text: "Niyenii lɛ edɔ" }
+            { id: 1, text: "It is delicious" },
+            { id: 2, text: "Give me water please" },
+            { id: 3, text: "I don't eat meat" },
+            { id: 4, text: "The food is hot" }
           ],
           correctOptionId: 2,
           hints: ["Ofainɛ = please", "nu = water"],
-          explanation: "Ofainɛ hã mi nu = Give me water please in Ga."
+          explanation: "You heard 'Ofainɛ hã mi nu' which means 'Give me water please' in Ga."
         },
         {
-          id: 512,
+          id: 511,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I don't eat meat' in Ga?",
@@ -288,6 +278,22 @@ export default {
           correctOptionId: 3,
           hints: ["Miyeee = I don't eat", "loo = meat"],
           explanation: "Miyeee loo = I don't eat meat in Ga."
+        },
+        {
+          id: 512,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/niyenii_lɛ_edɔ.m4a"),
+          options: [
+            { id: 1, text: "It is delicious" },
+            { id: 2, text: "Give me water please" },
+            { id: 3, text: "I don't eat meat" },
+            { id: 4, text: "The food is hot" }
+          ],
+          correctOptionId: 4,
+          hints: ["edɔ = hot"],
+          explanation: "You heard 'Niyenii lɛ edɔ' which means 'The food is hot' in Ga."
         },
         {
           id: 513,
@@ -303,36 +309,6 @@ export default {
           correctOptionId: 4,
           hints: ["edɔ = hot"],
           explanation: "Niyenii lɛ edɔ = The food is hot in Ga."
-        },
-        {
-          id: 514,
-          type: "drag_drop",
-          instruction: "Complete the Ga phrase by dragging the correct word.",
-          sentence: "Ofainɛ hã mi [_____] (Give me water please)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "nu" },
-            { id: "opt2", text: "niyenii" },
-            { id: "opt3", text: "loo" }
-          ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["nu = water"],
-          explanation: "Ofainɛ hã mi nu = Give me water please in Ga."
-        },
-        {
-          id: 515,
-          type: "drag_drop",
-          instruction: "Complete the Ga phrase by dragging the correct word.",
-          sentence: "Miyeee [_____] (I don't eat meat)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "loo" },
-            { id: "opt2", text: "nu" },
-            { id: "opt3", text: "omo" }
-          ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["loo = meat"],
-          explanation: "Miyeee loo = I don't eat meat in Ga."
         }
       ]
     }
@@ -345,7 +321,7 @@ export default {
     description: "Review all the food and drink vocabulary you've learned",
     questions: [
       {
-        id: 516,
+        id: 514,
         type: "multiple_choice",
         instruction: "Select the correct Ga word.",
         question: "What is 'Rice' in Ga?",
@@ -360,7 +336,23 @@ export default {
         explanation: "Omo = Rice in Ga."
       },
       {
-        id: 517,
+        id: 515,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What word did you hear?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/nu.m4a"),
+        options: [
+          { id: 1, text: "Water" },
+          { id: 2, text: "Food" },
+          { id: 3, text: "Rice" },
+          { id: 4, text: "Meat" }
+        ],
+        correctOptionId: 1,
+        hints: ["Essential for drinking"],
+        explanation: "You heard 'Nu' which means Water in Ga."
+      },
+      {
+        id: 516,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I am hungry' in Ga?",
@@ -375,6 +367,22 @@ export default {
         explanation: "Hɔmɔ ye mi = I am hungry."
       },
       {
+        id: 517,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/kumai_miiye_mi.m4a"),
+        options: [
+          { id: 1, text: "I am hungry" },
+          { id: 2, text: "I want to eat" },
+          { id: 3, text: "I am thirsty" },
+          { id: 4, text: "It is delicious" }
+        ],
+        correctOptionId: 3,
+        hints: ["Kumai = thirst"],
+        explanation: "You heard 'Kumai miiye mi' which means 'I am thirsty'."
+      },
+      {
         id: 518,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
@@ -386,56 +394,42 @@ export default {
           { id: 4, text: "Eŋɔɔ" }
         ],
         correctOptionId: 1,
-        hints: ["Ofainɛ = please", "nu = water"],
+        hints: ["nu = water"],
         explanation: "Ofainɛ hã mi nu = Give me water please."
       },
       {
         id: 519,
-        type: "drag_drop",
-        instruction: "Complete the Ga phrase by dragging the correct word.",
-        sentence: "Miyeee [_____] (I don't eat meat)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "loo" },
-          { id: "opt2", text: "nu" },
-          { id: "opt3", text: "omo" }
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/miyeee_loo.m4a"),
+        options: [
+          { id: 1, text: "It is delicious" },
+          { id: 2, text: "Give me water please" },
+          { id: 3, text: "I don't eat meat" },
+          { id: 4, text: "The food is hot" }
         ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
+        correctOptionId: 3,
         hints: ["loo = meat"],
-        explanation: "Miyeee loo = I don't eat meat."
+        explanation: "You heard 'Miyeee loo' which means 'I don't eat meat'."
       },
       {
         id: 520,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'The food is hot' in Ga?",
+        question: "How do you say 'It is delicious' in Ga?",
         options: [
           { id: 1, text: "Eŋɔɔ" },
-          { id: 2, text: "Niyenii lɛ edɔ" },
+          { id: 2, text: "Ofainɛ hã mi nu" },
           { id: 3, text: "Miyeee loo" },
-          { id: 4, text: "Ofainɛ hã mi nu" }
+          { id: 4, text: "Niyenii lɛ edɔ" }
         ],
-        correctOptionId: 2,
-        hints: ["edɔ = hot"],
-        explanation: "Niyenii lɛ edɔ = The food is hot."
+        correctOptionId: 1,
+        hints: ["Eŋɔɔ = It is delicious"],
+        explanation: "Eŋɔɔ = It is delicious."
       },
       {
         id: 521,
-        type: "drag_drop",
-        instruction: "Complete the Ga phrase by dragging the correct word.",
-        sentence: "Ofainɛ hã mi [_____] (Give me water please)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "nu" },
-          { id: "opt2", text: "niyenii" },
-          { id: "opt3", text: "loo" }
-        ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["nu = water"],
-        explanation: "Ofainɛ hã mi nu = Give me water please."
-      },
-      {
-        id: 522,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I want to eat' in Ga?",
@@ -450,19 +444,50 @@ export default {
         explanation: "Mitaoɔ ni maye nii = I want to eat."
       },
       {
-        id: 523,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I am thirsty' in Ga?",
+        id: 522,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What word did you hear?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter5/omo.m4a"),
         options: [
-          { id: 1, text: "Hɔmɔ ye mi" },
-          { id: 2, text: "Mitaoɔ ni maye nii" },
-          { id: 3, text: "Kumai miiye mi" },
-          { id: 4, text: "Eŋɔɔ" }
+          { id: 1, text: "Water" },
+          { id: 2, text: "Food" },
+          { id: 3, text: "Rice" },
+          { id: 4, text: "Meat" }
         ],
         correctOptionId: 3,
-        hints: ["Kumai = thirst"],
-        explanation: "Kumai miiye mi = I am thirsty."
+        hints: ["A staple food"],
+        explanation: "You heard 'Omo' which means Rice in Ga."
+      },
+      {
+        id: 523,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga word.",
+        question: "What is 'Meat' in Ga?",
+        options: [
+          { id: 1, text: "Nu" },
+          { id: 2, text: "Niyenii" },
+          { id: 3, text: "Omo" },
+          { id: 4, text: "Loo" }
+        ],
+        correctOptionId: 4,
+        hints: ["Loo = Meat"],
+        explanation: "Loo = Meat in Ga."
+      },
+      {
+        id: 524,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'The food is hot' in Ga?",
+        options: [
+          { id: 1, text: "Eŋɔɔ" },
+          { id: 2, text: "Niyenii lɛ edɔ" },
+          { id: 3, text: "Miyeee loo" },
+          { id: 4, text: "Ofainɛ hã mi nu" }
+        ],
+        correctOptionId: 2,
+        hints: ["edɔ = hot"],
+        explanation: "Niyenii lɛ edɔ = The food is hot."
       }
     ]
   }

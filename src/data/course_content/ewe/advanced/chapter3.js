@@ -1,5 +1,5 @@
 export default {
-  id: 23,
+  id: 3,
   title: "Public Speaking",
   description: "Learn public speaking and formal speech phrases in Ewe",
   icon: "mic-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "23-1",
+      id: "3-1",
       type: "words",
       title: "Opening a Speech",
       icon: "mic-outline",
@@ -36,7 +36,7 @@ export default {
       ],
       questions: [
         {
-          id: 2301,
+          id: 301,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Distinguished guests, good evening' in Ewe?",
@@ -51,7 +51,7 @@ export default {
           explanation: "Amedzro bubutɔwo, fiẽ na mi = Distinguished guests, good evening in Ewe."
         },
         {
-          id: 2302,
+          id: 302,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -67,25 +67,41 @@ export default {
           explanation: "You heard 'Nyɔnuwo kple ŋutsuwo' which means 'Ladies and gentlemen' in Ewe."
         },
         {
-          id: 2303,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Enye bubu be metsi tre ɖe [_____] (It is an honour to stand here)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "afia" },
-            { id: "opt2", text: "afima" },
-            { id: "opt3", text: "afisia" }
+          id: 303,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'It is an honour to stand here' in Ewe?",
+          options: [
+            { id: 1, text: "Amedzro bubutɔwo, fiẽ na mi" },
+            { id: 2, text: "Nyɔnuwo kple ŋutsuwo" },
+            { id: 3, text: "Enye bubu be metsi tre ɖe afia" },
+            { id: 4, text: "Le nuwuwua" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["afia = here"],
+          correctOptionId: 3,
+          hints: ["bubu = honour"],
           explanation: "Enye bubu be metsi tre ɖe afia = It is an honour to stand here in Ewe."
+        },
+        {
+          id: 304,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/amedzro_bubutɔwo_fiẽ_na_mi.m4a"),
+          options: [
+            { id: 1, text: "Distinguished guests, good evening" },
+            { id: 2, text: "Ladies and gentlemen" },
+            { id: 3, text: "It is an honour to stand here" },
+            { id: 4, text: "In conclusion" }
+          ],
+          correctOptionId: 1,
+          hints: ["amedzro = guests"],
+          explanation: "You heard 'Amedzro bubutɔwo, fiẽ na mi' which means 'Distinguished guests, good evening' in Ewe."
         }
       ]
     },
 
     {
-      id: "23-2",
+      id: "3-2",
       type: "words",
       title: "Delivering Your Point",
       icon: "megaphone-outline",
@@ -107,7 +123,7 @@ export default {
       ],
       questions: [
         {
-          id: 2304,
+          id: 305,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Let me begin by thanking you' in Ewe?",
@@ -122,7 +138,7 @@ export default {
           explanation: "Mina madze egɔme to akpedada na mi me = Let me begin by thanking you in Ewe."
         },
         {
-          id: 2305,
+          id: 306,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -138,25 +154,41 @@ export default {
           explanation: "You heard 'Na mɔnukpɔkpɔm maɖe eme' which means 'Allow me to explain' in Ewe."
         },
         {
-          id: 2306,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Mina madze egɔme to akpedada na mi [_____] (Let me begin by thanking you)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "me" },
-            { id: "opt2", text: "nu" },
-            { id: "opt3", text: "wo" }
+          id: 307,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Allow me to explain' in Ewe?",
+          options: [
+            { id: 1, text: "Mina madze egɔme to akpedada na mi me" },
+            { id: 2, text: "Na mɔnukpɔkpɔm maɖe eme" },
+            { id: 3, text: "Le nuwuwua" },
+            { id: 4, text: "Enye bubu be metsi tre ɖe afia" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["me = in"],
-          explanation: "Mina madze egɔme to akpedada na mi me = Let me begin by thanking you in Ewe."
+          correctOptionId: 2,
+          hints: ["mɔnukpɔkpɔm = permission"],
+          explanation: "Na mɔnukpɔkpɔm maɖe eme = Allow me to explain in Ewe."
+        },
+        {
+          id: 308,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/mina_madze_egɔme_to_akpedada_na_mi_me.m4a"),
+          options: [
+            { id: 1, text: "Let me begin by thanking you" },
+            { id: 2, text: "Allow me to explain" },
+            { id: 3, text: "In conclusion" },
+            { id: 4, text: "Ladies and gentlemen" }
+          ],
+          correctOptionId: 1,
+          hints: ["akpedada = thanking"],
+          explanation: "You heard 'Mina madze egɔme to akpedada na mi me' which means 'Let me begin by thanking you' in Ewe."
         }
       ]
     },
 
     {
-      id: "23-3",
+      id: "3-3",
       type: "words",
       title: "Closing a Speech",
       icon: "checkmark-outline",
@@ -178,7 +210,7 @@ export default {
       ],
       questions: [
         {
-          id: 2307,
+          id: 309,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'In conclusion' in Ewe?",
@@ -193,7 +225,7 @@ export default {
           explanation: "Le nuwuwua = In conclusion in Ewe."
         },
         {
-          id: 2308,
+          id: 310,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -207,19 +239,50 @@ export default {
           correctOptionId: 3,
           hints: ["nuwuwua = conclusion"],
           explanation: "You heard 'Le nuwuwua' which means 'In conclusion' in Ewe."
+        },
+        {
+          id: 311,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Thank you for your attention' in Ewe?",
+          options: [
+            { id: 1, text: "Le nuwuwua" },
+            { id: 2, text: "Akpe na wò ɖotoɖoame" },
+            { id: 3, text: "Na mɔnukpɔkpɔm maɖe eme" },
+            { id: 4, text: "Nyɔnuwo kple ŋutsuwo" }
+          ],
+          correctOptionId: 2,
+          hints: ["akpe = thank you", "ɖotoɖoame = attention"],
+          explanation: "Akpe na wò ɖotoɖoame = Thank you for your attention in Ewe."
+        },
+        {
+          id: 312,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/akpe_na_wò_ɖotoɖoame.m4a"),
+          options: [
+            { id: 1, text: "In conclusion" },
+            { id: 2, text: "Thank you for your attention" },
+            { id: 3, text: "Let me begin by thanking you" },
+            { id: 4, text: "Allow me to explain" }
+          ],
+          correctOptionId: 2,
+          hints: ["ɖotoɖoame = attention"],
+          explanation: "You heard 'Akpe na wò ɖotoɖoame' which means 'Thank you for your attention' in Ewe."
         }
       ]
     }
   ],
 
   review: {
-    id: "review-23",
+    id: "review-3",
     title: "Review: Public Speaking",
     icon: "refresh-outline",
     description: "Review all the public speaking vocabulary you've learned",
     questions: [
       {
-        id: 2309,
+        id: 313,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Distinguished guests, good evening' in Ewe?",
@@ -234,7 +297,7 @@ export default {
         explanation: "Amedzro bubutɔwo, fiẽ na mi = Distinguished guests, good evening."
       },
       {
-        id: 2310,
+        id: 314,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -250,7 +313,7 @@ export default {
         explanation: "You heard 'Enye bubu be metsi tre ɖe afia' which means 'It is an honour to stand here'."
       },
       {
-        id: 2311,
+        id: 315,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Ladies and gentlemen' in Ewe?",
@@ -265,7 +328,53 @@ export default {
         explanation: "Nyɔnuwo kple ŋutsuwo = Ladies and gentlemen."
       },
       {
-        id: 2312,
+        id: 316,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/na_mɔnukpɔkpɔm_maɖe_eme.m4a"),
+        options: [
+          { id: 1, text: "Let me begin by thanking you" },
+          { id: 2, text: "Allow me to explain" },
+          { id: 3, text: "In conclusion" },
+          { id: 4, text: "Ladies and gentlemen" }
+        ],
+        correctOptionId: 2,
+        hints: ["maɖe eme = I explain"],
+        explanation: "You heard 'Na mɔnukpɔkpɔm maɖe eme' which means 'Allow me to explain'."
+      },
+      {
+        id: 317,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'It is an honour to stand here' in Ewe?",
+        options: [
+          { id: 1, text: "Amedzro bubutɔwo, fiẽ na mi" },
+          { id: 2, text: "Nyɔnuwo kple ŋutsuwo" },
+          { id: 3, text: "Enye bubu be metsi tre ɖe afia" },
+          { id: 4, text: "Mina madze egɔme to akpedada na mi me" }
+        ],
+        correctOptionId: 3,
+        hints: ["bubu = honour"],
+        explanation: "Enye bubu be metsi tre ɖe afia = It is an honour to stand here."
+      },
+      {
+        id: 318,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Let me begin by thanking you' in Ewe?",
+        options: [
+          { id: 1, text: "Mina madze egɔme to akpedada na mi me" },
+          { id: 2, text: "Na mɔnukpɔkpɔm maɖe eme" },
+          { id: 3, text: "Le nuwuwua" },
+          { id: 4, text: "Amedzro bubutɔwo, fiẽ na mi" }
+        ],
+        correctOptionId: 1,
+        hints: ["akpedada = thanking"],
+        explanation: "Mina madze egɔme to akpedada na mi me = Let me begin by thanking you."
+      },
+      {
+        id: 319,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -281,7 +390,7 @@ export default {
         explanation: "You heard 'Mina madze egɔme to akpedada na mi me' which means 'Let me begin by thanking you'."
       },
       {
-        id: 2313,
+        id: 320,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Allow me to explain' in Ewe?",
@@ -289,44 +398,30 @@ export default {
           { id: 1, text: "Mina madze egɔme to akpedada na mi me" },
           { id: 2, text: "Na mɔnukpɔkpɔm maɖe eme" },
           { id: 3, text: "Le nuwuwua" },
-          { id: 4, text: "Amedzro bubutɔwo, fiẽ na mi" }
+          { id: 4, text: "Nyɔnuwo kple ŋutsuwo" }
         ],
         correctOptionId: 2,
         hints: ["mɔnukpɔkpɔm = permission"],
         explanation: "Na mɔnukpɔkpɔm maɖe eme = Allow me to explain."
       },
       {
-        id: 2314,
-        type: "drag_drop",
-        instruction: "Complete the phrase by dragging the correct word.",
-        sentence: "Enye bubu be metsi tre ɖe [_____] (It is an honour to stand here)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "afia" },
-          { id: "opt2", text: "afima" },
-          { id: "opt3", text: "afisia" }
+        id: 321,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/le_nuwuwua.m4a"),
+        options: [
+          { id: 1, text: "Let me begin by thanking you" },
+          { id: 2, text: "Allow me to explain" },
+          { id: 3, text: "In conclusion" },
+          { id: 4, text: "Ladies and gentlemen" }
         ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["afia = here"],
-        explanation: "Enye bubu be metsi tre ɖe afia = It is an honour to stand here."
+        correctOptionId: 3,
+        hints: ["nuwuwua = conclusion"],
+        explanation: "You heard 'Le nuwuwua' which means 'In conclusion'."
       },
       {
-        id: 2315,
-        type: "drag_drop",
-        instruction: "Complete the phrase by dragging the correct word.",
-        sentence: "Mina madze egɔme to akpedada na mi [_____] (Let me begin by thanking you)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "me" },
-          { id: "opt2", text: "nu" },
-          { id: "opt3", text: "wo" }
-        ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["me = in"],
-        explanation: "Mina madze egɔme to akpedada na mi me = Let me begin by thanking you."
-      },
-      {
-        id: 2316,
+        id: 322,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'In conclusion' in Ewe?",
@@ -341,35 +436,35 @@ export default {
         explanation: "Le nuwuwua = In conclusion."
       },
       {
-        id: 2317,
+        id: 33,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Thank you for your attention' in Ewe?",
+        options: [
+          { id: 1, text: "Le nuwuwua" },
+          { id: 2, text: "Akpe na wò ɖotoɖoame" },
+          { id: 3, text: "Na mɔnukpɔkpɔm maɖe eme" },
+          { id: 4, text: "Enye bubu be metsi tre ɖe afia" }
+        ],
+        correctOptionId: 2,
+        hints: ["akpe = thank you"],
+        explanation: "Akpe na wò ɖotoɖoame = Thank you for your attention."
+      },
+      {
+        id: 324,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/nyɔnuwo_kple_ŋutsuwo.m4a"),
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter3/akpe_na_wò_ɖotoɖoame.m4a"),
         options: [
-          { id: 1, text: "Distinguished guests, good evening" },
-          { id: 2, text: "Ladies and gentlemen" },
-          { id: 3, text: "It is an honour to stand here" },
-          { id: 4, text: "Let me begin by thanking you" }
+          { id: 1, text: "In conclusion" },
+          { id: 2, text: "Thank you for your attention" },
+          { id: 3, text: "Let me begin by thanking you" },
+          { id: 4, text: "Allow me to explain" }
         ],
         correctOptionId: 2,
-        hints: ["nyɔnuwo = ladies"],
-        explanation: "You heard 'Nyɔnuwo kple ŋutsuwo' which means 'Ladies and gentlemen'."
-      },
-      {
-        id: 2318,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'It is an honour to stand here' in Ewe?",
-        options: [
-          { id: 1, text: "Amedzro bubutɔwo, fiẽ na mi" },
-          { id: 2, text: "Nyɔnuwo kple ŋutsuwo" },
-          { id: 3, text: "Enye bubu be metsi tre ɖe afia" },
-          { id: 4, text: "Mina madze egɔme to akpedada na mi me" }
-        ],
-        correctOptionId: 3,
-        hints: ["bubu = honour"],
-        explanation: "Enye bubu be metsi tre ɖe afia = It is an honour to stand here."
+        hints: ["ɖotoɖoame = attention"],
+        explanation: "You heard 'Akpe na wò ɖotoɖoame' which means 'Thank you for your attention'."
       }
     ]
   }

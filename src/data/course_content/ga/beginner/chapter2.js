@@ -52,18 +52,19 @@ export default {
         },
         {
           id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'My name is Aba' in Ga?",
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/atsɛɔ_mi_aba.m4a"),
           options: [
-            { id: 1, text: "Te atsɛɔ bo tɛŋŋ?" },
-            { id: 2, text: "Atsɛɔ mi Aba" },
-            { id: 3, text: "Eye fɛo akɛ mina bo" },
-            { id: 4, text: "Miijɛ Ghana" }
+            { id: 1, text: "What is your name?" },
+            { id: 2, text: "My name is Aba" },
+            { id: 3, text: "Nice to meet you" },
+            { id: 4, text: "Where are you from?" }
           ],
           correctOptionId: 2,
           hints: ["Atsɛɔ mi = My name is"],
-          explanation: "'Atsɛɔ mi Aba' means 'My name is Aba' in Ga."
+          explanation: "You heard 'Atsɛɔ mi Aba' which means 'My name is Aba' in Ga."
         },
         {
           id: 203,
@@ -82,18 +83,19 @@ export default {
         },
         {
           id: 204,
-          type: "drag_drop",
-          instruction: "Complete the Ga phrase by dragging the correct word.",
-          sentence: "Atsɛɔ mi [_____] (My name is Aba)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "Aba" },
-            { id: "opt2", text: "bo" },
-            { id: "opt3", text: "tɛŋŋ" }
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/eye_fɛo_akɛ_mina_bo.m4a"),
+          options: [
+            { id: 1, text: "What is your name?" },
+            { id: 2, text: "My name is Aba" },
+            { id: 3, text: "Nice to meet you" },
+            { id: 4, text: "I am from Ghana" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["Aba = a Ga name"],
-          explanation: "Atsɛɔ mi Aba = My name is Aba in Ga."
+          correctOptionId: 3,
+          hints: ["fɛo = nice", "mina bo = meet you"],
+          explanation: "You heard 'Eye fɛo akɛ mina bo' which means 'Nice to meet you' in Ga."
         }
       ]
     },
@@ -140,7 +142,7 @@ export default {
           options: [
             { id: 1, text: "Nɛgbɛ ohiɔ?" },
             { id: 2, text: "Nɛgbɛ ojɛ?" },
-            { id: 3, text: "Miijɛ Ghana" },
+            { id: 3, text: "Miijɛ Ghana" }, 
             { id: 4, text: "Mi shia yɛ Ga" }
           ],
           correctOptionId: 2,
@@ -149,18 +151,19 @@ export default {
         },
         {
           id: 206,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I am from Ghana' in Ga?",
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/miijɛ_ghana.m4a"),
           options: [
-            { id: 1, text: "Nɛgbɛ ojɛ?" },
-            { id: 2, text: "Miijɛ Ghana" },
-            { id: 3, text: "Nɛgbɛ ohiɔ?" },
-            { id: 4, text: "Mi shia yɛ Ga" }
+            { id: 1, text: "Where are you from?" },
+            { id: 2, text: "I am from Ghana" },
+            { id: 3, text: "Where do you live?" },
+            { id: 4, text: "I live in Accra" }
           ],
           correctOptionId: 2,
           hints: ["Miijɛ = I am from"],
-          explanation: "'Miijɛ Ghana' = I am from Ghana in Ga."
+          explanation: "You heard 'Miijɛ Ghana' which means 'I am from Ghana' in Ga."
         },
         {
           id: 207,
@@ -179,33 +182,19 @@ export default {
         },
         {
           id: 208,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I live in Accra' in Ga?",
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/mi_shia_yɛ_Ga.m4a"),
           options: [
-            { id: 1, text: "Nɛgbɛ ojɛ?" },
-            { id: 2, text: "Miijɛ Ghana" },
-            { id: 3, text: "Nɛgbɛ ohiɔ?" },
-            { id: 4, text: "Mi shia yɛ Ga" }
+            { id: 1, text: "Where are you from?" },
+            { id: 2, text: "I am from Ghana" },
+            { id: 3, text: "Where do you live?" },
+            { id: 4, text: "I live in Accra" }
           ],
           correctOptionId: 4,
-          hints: ["Mi shia yɛ = I live in", "Ga = Accra"],
-          explanation: "'Mi shia yɛ Ga' = I live in Accra in Ga."
-        },
-        {
-          id: 209,
-          type: "drag_drop",
-          instruction: "Complete the Ga phrase by dragging the correct word.",
-          sentence: "Miijɛ [_____] (I am from Ghana)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "Ghana" },
-            { id: "opt2", text: "Ga" },
-            { id: "opt3", text: "Nɛgbɛ" }
-          ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["Ghana = the country"],
-          explanation: "Miijɛ Ghana = I am from Ghana in Ga."
+          hints: ["Mi shia yɛ = I live in"],
+          explanation: "You heard 'Mi shia yɛ Ga' which means 'I live in Accra' in Ga."
         }
       ]
     },
@@ -261,18 +250,19 @@ export default {
         },
         {
           id: 211,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I am 22 years old' in Ga?",
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/miye_afii_nyɔŋmai_enyɔ_kɛ_enyɔ.m4a"),
           options: [
-            { id: 1, text: "Afi enyiɛ ni oye?" },
-            { id: 2, text: "Miye afii nyɔŋmai enyɔ kɛ enyɔ" },
-            { id: 3, text: "Mɛni nitsumɔ otsuɔ?" },
-            { id: 4, text: "Nɛgbɛ ohiɔ?" }
+            { id: 1, text: "How old are you?" },
+            { id: 2, text: "I am 22 years old" },
+            { id: 3, text: "What work do you do?" },
+            { id: 4, text: "This is my friend" }
           ],
           correctOptionId: 2,
           hints: ["nyɔŋmai enyɔ kɛ enyɔ = 22"],
-          explanation: "'Miye afii nyɔŋmai enyɔ kɛ enyɔ' = I am 22 years old in Ga."
+          explanation: "You heard 'Miye afii nyɔŋmai enyɔ kɛ enyɔ' which means 'I am 22 years old' in Ga."
         },
         {
           id: 212,
@@ -291,33 +281,19 @@ export default {
         },
         {
           id: 213,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'This is my friend' in Ga?",
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/enɛ_ji_minanyo.m4a"),
           options: [
-            { id: 1, text: "Enɛ ji minanyo" },
-            { id: 2, text: "Te atsɛɔ bo tɛŋŋ?" },
-            { id: 3, text: "Atsɛɔ mi Aba" },
-            { id: 4, text: "Mɛni nitsumɔ otsuɔ?" }
+            { id: 1, text: "How old are you?" },
+            { id: 2, text: "I am 22 years old" },
+            { id: 3, text: "What work do you do?" },
+            { id: 4, text: "This is my friend" }
           ],
-          correctOptionId: 1,
-          hints: ["Enɛ = this", "minanyo = my friend"],
-          explanation: "'Enɛ ji minanyo' = This is my friend in Ga."
-        },
-        {
-          id: 214,
-          type: "drag_drop",
-          instruction: "Complete the Ga phrase by dragging the correct word.",
-          sentence: "Enɛ ji [_____] (This is my friend)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "minanyo" },
-            { id: "opt2", text: "Aba" },
-            { id: "opt3", text: "Ghana" }
-          ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          correctOptionId: 4,
           hints: ["minanyo = my friend"],
-          explanation: "Enɛ ji minanyo = This is my friend in Ga."
+          explanation: "You heard 'Enɛ ji minanyo' which means 'This is my friend' in Ga."
         }
       ]
     }
@@ -346,6 +322,22 @@ export default {
       },
       {
         id: 502,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/nɛgbɛ_ojɛ.m4a"),
+        options: [
+          { id: 1, text: "What is your name?" },
+          { id: 2, text: "My name is Aba" },
+          { id: 3, text: "Where are you from?" },
+          { id: 4, text: "I live in Accra" }
+        ],
+        correctOptionId: 3,
+        hints: ["Nɛgbɛ = where"],
+        explanation: "You heard 'Nɛgbɛ ojɛ?' which means 'Where are you from?'."
+      },
+      {
+        id: 503,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'My name is Aba' in Ga?",
@@ -360,22 +352,23 @@ export default {
         explanation: "'Atsɛɔ mi Aba' = My name is Aba."
       },
       {
-        id: 503,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you ask 'Where are you from?' in Ga?",
+        id: 504,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/nɛgbɛ_ohiɔ.m4a"),
         options: [
-          { id: 1, text: "Nɛgbɛ ohiɔ?" },
-          { id: 2, text: "Nɛgbɛ ojɛ?" },
-          { id: 3, text: "Miijɛ Ghana" },
-          { id: 4, text: "Mi shia yɛ Ga" }
+          { id: 1, text: "Where are you from?" },
+          { id: 2, text: "I am from Ghana" },
+          { id: 3, text: "Where do you live?" },
+          { id: 4, text: "I live in Accra" }
         ],
-        correctOptionId: 2,
-        hints: ["Nɛgbɛ = where"],
-        explanation: "'Nɛgbɛ ojɛ?' = Where are you from?"
+        correctOptionId: 3,
+        hints: ["ohiɔ = you live"],
+        explanation: "You heard 'Nɛgbɛ ohiɔ?' which means 'Where do you live?'."
       },
       {
-        id: 504,
+        id: 505,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I am from Ghana' in Ga?",
@@ -390,22 +383,23 @@ export default {
         explanation: "'Miijɛ Ghana' = I am from Ghana."
       },
       {
-        id: 505,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you ask 'How old are you?' in Ga?",
+        id: 506,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/afi_enyiɛ_ni_oye.m4a"),
         options: [
-          { id: 1, text: "Mɛni nitsumɔ otsuɔ?" },
-          { id: 2, text: "Afi enyiɛ ni oye?" },
-          { id: 3, text: "Miye afii nyɔŋmai enyɔ kɛ enyɔ" },
-          { id: 4, text: "Mi shia yɛ Ga" }
+          { id: 1, text: "How old are you?" },
+          { id: 2, text: "I am 22 years old" },
+          { id: 3, text: "What work do you do?" },
+          { id: 4, text: "This is my friend" }
         ],
-        correctOptionId: 2,
+        correctOptionId: 1,
         hints: ["afi = year"],
-        explanation: "'Afi enyiɛ ni oye?' = How old are you?"
+        explanation: "You heard 'Afi enyiɛ ni oye?' which means 'How old are you?'."
       },
       {
-        id: 506,
+        id: 507,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I am 22 years old' in Ga?",
@@ -420,34 +414,20 @@ export default {
         explanation: "'Miye afii nyɔŋmai enyɔ kɛ enyɔ' = I am 22 years old."
       },
       {
-        id: 507,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you ask 'Where do you live?' in Ga?",
-        options: [
-          { id: 1, text: "Nɛgbɛ ohiɔ?" },
-          { id: 2, text: "Nɛgbɛ ojɛ?" },
-          { id: 3, text: "Miijɛ Ghana" },
-          { id: 4, text: "Mi shia yɛ Ga" }
-        ],
-        correctOptionId: 1,
-        hints: ["ohiɔ = you live"],
-        explanation: "'Nɛgbɛ ohiɔ?' = Where do you live?"
-      },
-      {
         id: 508,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Nice to meet you' in Ga?",
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/mɛni_nitsumɔ_otsuɔ.m4a"),
         options: [
-          { id: 1, text: "Te atsɛɔ bo tɛŋŋ?" },
-          { id: 2, text: "Atsɛɔ mi Aba" },
-          { id: 3, text: "Eye fɛo akɛ mina bo" },
-          { id: 4, text: "Nɛgbɛ ojɛ?" }
+          { id: 1, text: "How old are you?" },
+          { id: 2, text: "I am 22 years old" },
+          { id: 3, text: "What work do you do?" },
+          { id: 4, text: "This is my friend" }
         ],
         correctOptionId: 3,
-        hints: ["Used when meeting someone"],
-        explanation: "'Eye fɛo akɛ mina bo' = Nice to meet you."
+        hints: ["nitsumɔ = work"],
+        explanation: "You heard 'Mɛni nitsumɔ otsuɔ?' which means 'What work do you do?'."
       },
       {
         id: 509,
@@ -466,33 +446,50 @@ export default {
       },
       {
         id: 510,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you ask 'What work do you do?' in Ga?",
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/te_atsɛɔ_bo_tɛŋŋ.m4a"),
         options: [
-          { id: 1, text: "Afi enyiɛ ni oye?" },
-          { id: 2, text: "Miye afii nyɔŋmai enyɔ kɛ enyɔ" },
-          { id: 3, text: "Mɛni nitsumɔ otsuɔ?" },
-          { id: 4, text: "Mi shia yɛ Ga" }
+          { id: 1, text: "What is your name?" },
+          { id: 2, text: "My name is Aba" },
+          { id: 3, text: "Nice to meet you" },
+          { id: 4, text: "Where do you live?" }
         ],
-        correctOptionId: 3,
-        hints: ["nitsumɔ = work"],
-        explanation: "'Mɛni nitsumɔ otsuɔ?' = What work do you do?"
+        correctOptionId: 1,
+        hints: ["atsɛɔ = name"],
+        explanation: "You heard 'Te atsɛɔ bo tɛŋŋ?' which means 'What is your name?'."
       },
       {
         id: 511,
-        type: "drag_drop",
-        instruction: "Complete the Ga phrase by dragging the correct word.",
-        sentence: "Mi shia yɛ [_____] (I live in Accra)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "Ga" },
-          { id: "opt2", text: "Ghana" },
-          { id: "opt3", text: "Aba" }
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I live in Accra' in Ga?",
+        options: [
+          { id: 1, text: "Nɛgbɛ ojɛ?" },
+          { id: 2, text: "Miijɛ Ghana" },
+          { id: 3, text: "Nɛgbɛ ohiɔ?" },
+          { id: 4, text: "Mi shia yɛ Ga" }
         ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["Ga = Accra"],
-        explanation: "Mi shia yɛ Ga = I live in Accra."
+        correctOptionId: 4,
+        hints: ["Mi shia yɛ = I live in"],
+        explanation: "'Mi shia yɛ Ga' = I live in Accra."
+      },
+      {
+        id: 512,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/beginner/chapter2/mi_shia_yɛ_Ga.m4a"),
+        options: [
+          { id: 1, text: "Where are you from?" },
+          { id: 2, text: "I am from Ghana" },
+          { id: 3, text: "Where do you live?" },
+          { id: 4, text: "I live in Accra" }
+        ],
+        correctOptionId: 4,
+        hints: ["Mi shia yɛ = I live in"],
+        explanation: "You heard 'Mi shia yɛ Ga' which means 'I live in Accra'."
       }
     ]
   }

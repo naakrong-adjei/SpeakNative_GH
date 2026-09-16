@@ -1,5 +1,5 @@
 export default {
-  id: 13,
+  id: 3,
   title: "Market Negotiation",
   description: "Learn how to negotiate at the market in Ewe",
   icon: "cash-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "13-1",
+      id: "3-1",
       type: "words",
       title: "Opening the Bargain",
       icon: "pricetag-outline",
@@ -36,7 +36,7 @@ export default {
       ],
       questions: [
         {
-          id: 1301,
+          id: 301,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you ask 'What is your last price?' in Ewe?",
@@ -51,7 +51,7 @@ export default {
           explanation: "Kae nye wasi mamlɛtɔ? = What is your last price? in Ewe."
         },
         {
-          id: 1302,
+          id: 302,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -67,7 +67,7 @@ export default {
           explanation: "You heard 'Àte ŋu atsɔ vie de akpee?' which means 'Can you add a little?' in Ewe."
         },
         {
-          id: 1303,
+          id: 303,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Give me a discount' in Ewe?",
@@ -85,7 +85,7 @@ export default {
     },
 
     {
-      id: "13-2",
+      id: "3-2",
       type: "words",
       title: "Making Offers",
       icon: "scale-outline",
@@ -113,7 +113,7 @@ export default {
       ],
       questions: [
         {
-          id: 1304,
+          id: 304,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I will buy two' in Ewe?",
@@ -128,7 +128,7 @@ export default {
           explanation: "Maƒle ɔmeve = I will buy two in Ewe."
         },
         {
-          id: 1305,
+          id: 305,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -144,7 +144,7 @@ export default {
           explanation: "You heard 'Emae nye nye nya mamlɛtɔ' which means 'That is my final offer' in Ewe."
         },
         {
-          id: 1306,
+          id: 306,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I bought it cheaper there' in Ewe?",
@@ -162,7 +162,7 @@ export default {
     },
 
     {
-      id: "13-3",
+      id: "3-3",
       type: "words",
       title: "Closing the Deal",
       icon: "cash-outline",
@@ -196,7 +196,7 @@ export default {
       ],
       questions: [
         {
-          id: 1307,
+          id: 307,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I don't have enough money' in Ewe?",
@@ -211,7 +211,7 @@ export default {
           explanation: "Ga su gbɔ mele ashinye o = I don't have enough money in Ewe."
         },
         {
-          id: 1308,
+          id: 308,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -227,7 +227,7 @@ export default {
           explanation: "You heard 'Ele yeyee?' which means 'Is it fresh?' in Ewe."
         },
         {
-          id: 1309,
+          id: 309,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Keep the change' in Ewe?",
@@ -246,13 +246,13 @@ export default {
   ],
 
   review: {
-    id: "review-13",
+    id: "review-3",
     title: "Review: Market Negotiation",
     icon: "refresh-outline",
     description: "Review all the market negotiation vocabulary you've learned",
     questions: [
       {
-        id: 1310,
+        id: 310,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you ask 'What is your last price?' in Ewe?",
@@ -267,7 +267,7 @@ export default {
         explanation: "Kae nye wasi mamlɛtɔ? = What is your last price?"
       },
       {
-        id: 1311,
+        id: 311,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -283,7 +283,7 @@ export default {
         explanation: "You heard 'Ɖe asi le dzi nam' which means 'Give me a discount'."
       },
       {
-        id: 1312,
+        id: 312,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'That is my final offer' in Ewe?",
@@ -298,7 +298,7 @@ export default {
         explanation: "Emae nye nye nya mamlɛtɔ = That is my final offer."
       },
       {
-        id: 1313,
+        id: 33,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -314,7 +314,7 @@ export default {
         explanation: "You heard 'Meƒlee bɔbɔe le afima' which means 'I bought it cheaper there'."
       },
       {
-        id: 1314,
+        id: 314,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Is it fresh?' in Ewe?",
@@ -329,7 +329,7 @@ export default {
         explanation: "Ele yeyee? = Is it fresh?"
       },
       {
-        id: 1315,
+        id: 315,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -345,7 +345,7 @@ export default {
         explanation: "You heard 'Xlẽ ga' which means 'Count the money'."
       },
       {
-        id: 1316,
+        id: 316,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Keep the change' in Ewe?",
@@ -360,7 +360,7 @@ export default {
         explanation: "Tsɔ ga gbagba = Keep the change."
       },
       {
-        id: 1317,
+        id: 317,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I don't have enough money' in Ewe?",
@@ -375,7 +375,7 @@ export default {
         explanation: "Ga su gbɔ mele ashinye o = I don't have enough money."
       },
       {
-        id: 1318,
+        id: 318,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Can you add a little?' in Ewe?",
@@ -390,7 +390,7 @@ export default {
         explanation: "Àte ŋu atsɔ vie de akpee? = Can you add a little?"
       },
       {
-        id: 1319,
+        id: 319,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",

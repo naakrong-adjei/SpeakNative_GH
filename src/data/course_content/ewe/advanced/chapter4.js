@@ -1,5 +1,5 @@
 export default {
-  id: 24,
+  id: 4,
   title: "Festivals & Traditions",
   description: "Learn about Ghanaian festivals and traditions in Ewe",
   icon: "ribbon-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "24-1",
+      id: "4-1",
       type: "words",
       title: "Festivals & Chiefs",
       icon: "trophy-outline",
@@ -36,7 +36,7 @@ export default {
       ],
       questions: [
         {
-          id: 2401,
+          id: 401,
           type: "multiple_choice",
           instruction: "Select the correct Ewe word.",
           question: "What is 'Traditional festival' in Ewe?",
@@ -51,7 +51,7 @@ export default {
           explanation: "Blema kɔnu ŋkekenyui = Traditional festival in Ewe."
         },
         {
-          id: 2402,
+          id: 402,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -67,7 +67,7 @@ export default {
           explanation: "You heard 'Fia' which means 'Chief' in Ewe."
         },
         {
-          id: 2403,
+          id: 403,
           type: "drag_drop",
           instruction: "Complete the phrase by dragging the correct word.",
           sentence: "Fia[_____] (Queen mother)",
@@ -85,7 +85,7 @@ export default {
     },
 
     {
-      id: "24-2",
+      id: "4-2",
       type: "words",
       title: "Ceremonies",
       icon: "musical-notes-outline",
@@ -113,7 +113,7 @@ export default {
       ],
       questions: [
         {
-          id: 2404,
+          id: 404,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "What is 'Naming ceremony' in Ewe?",
@@ -128,7 +128,7 @@ export default {
           explanation: "Ŋkɔnana = Naming ceremony in Ewe."
         },
         {
-          id: 2405,
+          id: 405,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -144,7 +144,7 @@ export default {
           explanation: "You heard 'Ʋuƒoƒo kple ɣeɖuɖu' which means 'Drumming and dancing' in Ewe."
         },
         {
-          id: 2406,
+          id: 406,
           type: "drag_drop",
           instruction: "Complete the phrase by dragging the correct word.",
           sentence: "Ametsitsiwo ƒo tsi [_____] (Elders pour libation)",
@@ -162,7 +162,7 @@ export default {
     },
 
     {
-      id: "24-3",
+      id: "4-3",
       type: "words",
       title: "Values & Dress",
       icon: "shirt-outline",
@@ -190,7 +190,7 @@ export default {
       ],
       questions: [
         {
-          id: 2407,
+          id: 407,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'We respect our elders' in Ewe?",
@@ -205,7 +205,7 @@ export default {
           explanation: "Míedea bubu mí ametsitsiwo ŋu = We respect our elders in Ewe."
         },
         {
-          id: 2408,
+          id: 408,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -221,7 +221,7 @@ export default {
           explanation: "You heard 'Kente avɔ' which means 'Kente cloth' in Ewe."
         },
         {
-          id: 2409,
+          id: 409,
           type: "drag_drop",
           instruction: "Complete the phrase by dragging the correct word.",
           sentence: "Míaƒe kɔnuwo le [_____] (Our customs are important)",
@@ -240,13 +240,13 @@ export default {
   ],
 
   review: {
-    id: "review-24",
+    id: "review-4",
     title: "Review: Festivals & Traditions",
     icon: "refresh-outline",
     description: "Review all the festivals and traditions vocabulary you've learned",
     questions: [
       {
-        id: 2410,
+        id: 410,
         type: "multiple_choice",
         instruction: "Select the correct Ewe word.",
         question: "What is 'Chief' in Ewe?",
@@ -261,7 +261,7 @@ export default {
         explanation: "Fia = Chief in Ewe."
       },
       {
-        id: 2411,
+        id: 411,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -277,7 +277,7 @@ export default {
         explanation: "You heard 'Fianyɔnu' which means 'Queen mother' in Ewe."
       },
       {
-        id: 2412,
+        id: 412,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "What is 'Drumming and dancing' in Ewe?",
@@ -292,7 +292,7 @@ export default {
         explanation: "Ʋuƒoƒo kple ɣeɖuɖu = Drumming and dancing."
       },
       {
-        id: 2413,
+        id: 413,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -308,7 +308,7 @@ export default {
         explanation: "You heard 'Ametsitsiwo ƒo tsi di' which means 'Elders pour libation'."
       },
       {
-        id: 2414,
+        id: 414,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Kente cloth' in Ewe?",
@@ -323,7 +323,7 @@ export default {
         explanation: "Kente avɔ = Kente cloth."
       },
       {
-        id: 2415,
+        id: 415,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -339,7 +339,7 @@ export default {
         explanation: "You heard 'Míedea bubu mí ametsitsiwo ŋu' which means 'We respect our elders'."
       },
       {
-        id: 2416,
+        id: 416,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Our customs are important' in Ewe?",
@@ -354,7 +354,7 @@ export default {
         explanation: "Míaƒe kɔnuwo le vevie = Our customs are important."
       },
       {
-        id: 2417,
+        id: 417,
         type: "drag_drop",
         instruction: "Complete the phrase by dragging the correct word.",
         sentence: "Ametsitsiwo ƒo tsi [_____] (Elders pour libation)",
@@ -369,7 +369,7 @@ export default {
         explanation: "Ametsitsiwo ƒo tsi di = Elders pour libation."
       },
       {
-        id: 2418,
+        id: 418,
         type: "drag_drop",
         instruction: "Complete the phrase by dragging the correct word.",
         sentence: "Míaƒe kɔnuwo le [_____] (Our customs are important)",
@@ -384,7 +384,7 @@ export default {
         explanation: "Míaƒe kɔnuwo le vevie = Our customs are important."
       },
       {
-        id: 2419,
+        id: 419,
         type: "multiple_choice",
         instruction: "Select the correct Ewe word.",
         question: "What is 'Traditional festival' in Ewe?",

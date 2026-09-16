@@ -1,5 +1,5 @@
 export default {
-  id: 26,
+  id: 6,
   title: "News & Politics",
   description: "Learn news and politics vocabulary in Ewe",
   icon: "newspaper-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "26-1",
+      id: "6-1",
       type: "words",
       title: "Government & Elections",
       icon: "business-outline",
@@ -42,7 +42,7 @@ export default {
       ],
       questions: [
         {
-          id: 2601,
+          id: 601,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'The government announced a new policy' in Ewe?",
@@ -57,7 +57,7 @@ export default {
           explanation: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye = The government announced a new policy in Ewe."
         },
         {
-          id: 2602,
+          id: 602,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -73,7 +73,7 @@ export default {
           explanation: "You heard 'Woawɔ akɔdada le ƒe si gbɔna me' which means 'Elections will be held next year' in Ewe."
         },
         {
-          id: 2603,
+          id: 603,
           type: "drag_drop",
           instruction: "Complete the phrase by dragging the correct word.",
           sentence: "Dukplɔla la ƒo nu na [_____] (The president addressed the nation)",
@@ -91,7 +91,7 @@ export default {
     },
 
     {
-      id: "26-2",
+      id: "6-2",
       type: "words",
       title: "Economy & Citizens",
       icon: "trending-up-outline",
@@ -111,7 +111,7 @@ export default {
           audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/nuwo_ƒe_asi_dzi_ɖe_edzi.m4a")
         },
         {
-          id: 260,
+          id: 60,
           english: "Citizens demand accountability",
           native: "Dukɔmeviwo bia akɔntabubu",
           audioUrl: require("../../../../assets/audio/ewe/advanced/chapter6/dukɔmeviwo_bia_akɔntabubu.m4a")
@@ -119,7 +119,7 @@ export default {
       ],
       questions: [
         {
-          id: 2604,
+          id: 604,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'The economy is improving' in Ewe?",
@@ -134,7 +134,7 @@ export default {
           explanation: "Ganyawo ɖeɖem ɖe edzi = The economy is improving in Ewe."
         },
         {
-          id: 2605,
+          id: 605,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -154,13 +154,13 @@ export default {
   ],
 
   review: {
-    id: "review-26",
+    id: "review-6",
     title: "Review: News & Politics",
     icon: "refresh-outline",
     description: "Review all the news and politics vocabulary you've learned",
     questions: [
       {
-        id: 2606,
+        id: 606,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'The government announced a new policy' in Ewe?",
@@ -175,7 +175,7 @@ export default {
         explanation: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye = The government announced a new policy."
       },
       {
-        id: 2607,
+        id: 607,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -191,7 +191,7 @@ export default {
         explanation: "You heard 'Dukplɔla la ƒo nu na dukɔa' which means 'The president addressed the nation'."
       },
       {
-        id: 2608,
+        id: 608,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Elections will be held next year' in Ewe?",
@@ -206,7 +206,7 @@ export default {
         explanation: "Woawɔ akɔdada le ƒe si gbɔna me = Elections will be held next year."
       },
       {
-        id: 2609,
+        id: 609,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -222,7 +222,7 @@ export default {
         explanation: "You heard 'Dziɖuɖua ɖe gbeƒã ɖoɖo yeye' which means 'The government announced a new policy'."
       },
       {
-        id: 2610,
+        id: 610,
         type: "drag_drop",
         instruction: "Complete the phrase by dragging the correct word.",
         sentence: "Dukplɔla la ƒo nu na [_____] (The president addressed the nation)",
@@ -237,7 +237,7 @@ export default {
         explanation: "Dukplɔla la ƒo nu na dukɔa = The president addressed the nation."
       },
       {
-        id: 2611,
+        id: 611,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'The economy is improving' in Ewe?",
@@ -252,7 +252,7 @@ export default {
         explanation: "Ganyawo ɖeɖem ɖe edzi = The economy is improving."
       },
       {
-        id: 2612,
+        id: 612,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -268,7 +268,7 @@ export default {
         explanation: "You heard 'Ganyawo ɖeɖem ɖe edzi' which means 'The economy is improving'."
       },
       {
-        id: 2613,
+        id: 613,
         type: "drag_drop",
         instruction: "Complete the phrase by dragging the correct word.",
         sentence: "Dziɖuɖua ɖe gbeƒã ɖoɖo [_____] (The government announced a new policy)",
@@ -283,7 +283,7 @@ export default {
         explanation: "Dziɖuɖua ɖe gbeƒã ɖoɖo yeye = The government announced a new policy."
       },
       {
-        id: 2614,
+        id: 614,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'The president addressed the nation' in Ewe?",
@@ -298,7 +298,7 @@ export default {
         explanation: "Dukplɔla la ƒo nu na dukɔa = The president addressed the nation."
       },
       {
-        id: 2615,
+        id: 615,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",

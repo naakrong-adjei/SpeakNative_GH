@@ -74,38 +74,34 @@ export default {
         },
         {
           id: 803,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Mèse enya [_____] o (You have missed the point)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "gɔme" },
-            { id: "opt2", text: "dzi" },
-            { id: "opt3", text: "nu" }
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'You have missed the point' in Ewe?",
+          options: [
+            { id: 1, text: "Nyemelɔ̃ ɖe nya ma dzi o" },
+            { id: 2, text: "Le ema teƒe" },
+            { id: 3, text: "Mèse enya gɔme o" },
+            { id: 4, text: "Melɔ̃ ɖe edzi vie" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          correctOptionId: 3,
           hints: ["gɔme = meaning/point"],
           explanation: "Mèse enya gɔme o = You have missed the point in Ewe."
         },
         {
           id: 804,
-          type: "matching",
-          instruction: "Match the Ewe disagreement phrase with its English translation.",
-          question: "Match each Ewe phrase to its correct meaning:",
-          pairs: [
-            { id: "pair1", left: "Nyemelɔ̃ ɖe nya ma dzi o", right: "I agree to some extent" },
-            { id: "pair2", left: "Le ema teƒe", right: "I disagree with that point" },
-            { id: "pair3", left: "Mèse enya gɔme o", right: "On the contrary" },
-            { id: "pair4", left: "Melɔ̃ ɖe edzi vie", right: "You have missed the point" }
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter8/melɔ̃_ɖe_edzi_vie.m4a"),
+          options: [
+            { id: 1, text: "I disagree with that point" },
+            { id: 2, text: "On the contrary" },
+            { id: 3, text: "You have missed the point" },
+            { id: 4, text: "I agree to some extent" }
           ],
-          correctMatches: [
-            { leftId: "pair1", rightId: "pair2" },
-            { leftId: "pair2", rightId: "pair3" },
-            { leftId: "pair3", rightId: "pair4" },
-            { leftId: "pair4", rightId: "pair1" }
-          ],
-          hints: ["Match the disagreement phrase to its meaning"],
-          explanation: "These are common disagreement phrases in Ewe."
+          correctOptionId: 4,
+          hints: ["vie = a little"],
+          explanation: "You heard 'Melɔ̃ ɖe edzi vie' which means 'I agree to some extent' in Ewe."
         }
       ]
     },
@@ -122,7 +118,7 @@ export default {
           id: 277,
           english: "The evidence supports my claim",
           native: "Ɖaseɖiɖia doa nye nya ŋu ŋusẽ",
-          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter8/ɉaseɖiɖia_doa_nye_nya_ŋu_ŋusẽ.m4a")
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter8/ɖaseɖiɖia_doa_nye_nya_ŋu_ŋusẽ.m4a")
         },
         {
           id: 278,
@@ -171,36 +167,34 @@ export default {
         },
         {
           id: 807,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Afika wò ɖaseɖiɖi [_____]? (Where is your proof?)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "le" },
-            { id: "opt2", text: "me" },
-            { id: "opt3", text: "nu" }
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Where is your proof?' in Ewe?",
+          options: [
+            { id: 1, text: "Ɖaseɖiɖia doa nye nya ŋu ŋusẽ" },
+            { id: 2, text: "Na maɖe nye nya me nyuie" },
+            { id: 3, text: "Afika wò ɖaseɖiɖi le?" },
+            { id: 4, text: "Le ema teƒe" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["le = is at"],
+          correctOptionId: 3,
+          hints: ["afika = where"],
           explanation: "Afika wò ɖaseɖiɖi le? = Where is your proof? in Ewe."
         },
         {
           id: 808,
-          type: "matching",
-          instruction: "Match the Ewe debate phrase with its English translation.",
-          question: "Match each Ewe phrase to its correct meaning:",
-          pairs: [
-            { id: "pair1", left: "Ɖaseɖiɖia doa nye nya ŋu ŋusẽ", right: "Let me make my point clear" },
-            { id: "pair2", left: "Na maɖe nye nya me nyuie", right: "Where is your proof?" },
-            { id: "pair3", left: "Afika wò ɖaseɖiɖi le?", right: "The evidence supports my claim" }
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter8/ɖaseɖiɖia_doa_nye_nya_ŋu_ŋusẽ.m4a"),
+          options: [
+            { id: 1, text: "The evidence supports my claim" },
+            { id: 2, text: "Let me make my point clear" },
+            { id: 3, text: "Where is your proof?" },
+            { id: 4, text: "I disagree with that point" }
           ],
-          correctMatches: [
-            { leftId: "pair1", rightId: "pair3" },
-            { leftId: "pair2", rightId: "pair1" },
-            { leftId: "pair3", rightId: "pair2" }
-          ],
-          hints: ["Match the debate phrase to its meaning"],
-          explanation: "These are common debate phrases in Ewe."
+          correctOptionId: 1,
+          hints: ["ɖaseɖiɖia = evidence"],
+          explanation: "You heard 'Ɖaseɖiɖia doa nye nya ŋu ŋusẽ' which means 'The evidence supports my claim' in Ewe."
         }
       ]
     }
@@ -322,33 +316,34 @@ export default {
       },
       {
         id: 816,
-        type: "drag_drop",
-        instruction: "Complete the phrase by dragging the correct word.",
-        sentence: "Mèse enya [_____] o (You have missed the point)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "gɔme" },
-          { id: "opt2", text: "dzi" },
-          { id: "opt3", text: "nu" }
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter8/nyemelɔ̃_ɖe_nya_ma_dzi_o.m4a"),
+        options: [
+          { id: 1, text: "I disagree with that point" },
+          { id: 2, text: "On the contrary" },
+          { id: 3, text: "You have missed the point" },
+          { id: 4, text: "Where is your proof?" }
         ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["gɔme = meaning"],
-        explanation: "Mèse enya gɔme o = You have missed the point."
+        correctOptionId: 1,
+        hints: ["nyemelɔ̃ = I don't agree"],
+        explanation: "You heard 'Nyemelɔ̃ ɖe nya ma dzi o' which means 'I disagree with that point'."
       },
       {
         id: 817,
-        type: "drag_drop",
-        instruction: "Complete the phrase by dragging the correct word.",
-        sentence: "Afika wò ɖaseɖiɖi [_____]? (Where is your proof?)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "le" },
-          { id: "opt2", text: "me" },
-          { id: "opt3", text: "nu" }
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I agree to some extent' in Ewe?",
+        options: [
+          { id: 1, text: "Nyemelɔ̃ ɖe nya ma dzi o" },
+          { id: 2, text: "Le ema teƒe" },
+          { id: 3, text: "Mèse enya gɔme o" },
+          { id: 4, text: "Melɔ̃ ɖe edzi vie" }
         ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["le = is at"],
-        explanation: "Afika wò ɖaseɖiɖi le? = Where is your proof?"
+        correctOptionId: 4,
+        hints: ["vie = a little"],
+        explanation: "Melɔ̃ ɖe edzi vie = I agree to some extent."
       }
     ]
   }

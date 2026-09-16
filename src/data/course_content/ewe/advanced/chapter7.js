@@ -74,38 +74,34 @@ export default {
         },
         {
           id: 703,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Nu kae naa gɔmesese wò [_____]? (What gives your life meaning?)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "agbe" },
-            { id: "opt2", text: "nye" },
-            { id: "opt3", text: "mí" }
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'What gives your life meaning?' in Ewe?",
+          options: [
+            { id: 1, text: "Nu ka nèxɔ se tso agbe ŋu?" },
+            { id: 2, text: "Agbe nye mɔzɔzɔ" },
+            { id: 3, text: "Nu kae naa gɔmesese wò agbe?" },
+            { id: 4, text: "Taɖodzinu le ame shia ame shi" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["agbe = life"],
+          correctOptionId: 3,
+          hints: ["gɔmesese = meaning"],
           explanation: "Nu kae naa gɔmesese wò agbe? = What gives your life meaning? in Ewe."
         },
         {
           id: 704,
-          type: "matching",
-          instruction: "Match the Ewe life phrase with its English translation.",
-          question: "Match each Ewe phrase to its correct meaning:",
-          pairs: [
-            { id: "pair1", left: "Nu ka nèxɔ se tso agbe ŋu?", right: "Life is a journey" },
-            { id: "pair2", left: "Agbe nye mɔzɔzɔ", right: "Everyone has a purpose" },
-            { id: "pair3", left: "Nu kae naa gɔmesese wò agbe?", right: "What do you believe about life?" },
-            { id: "pair4", left: "Taɖodzinu le ame shia ame shi", right: "What gives your life meaning?" }
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter7/taɖodzinu_le_ame_shia_ame_shi.m4a"),
+          options: [
+            { id: 1, text: "What do you believe about life?" },
+            { id: 2, text: "Life is a journey" },
+            { id: 3, text: "What gives your life meaning?" },
+            { id: 4, text: "Everyone has a purpose" }
           ],
-          correctMatches: [
-            { leftId: "pair1", rightId: "pair3" },
-            { leftId: "pair2", rightId: "pair1" },
-            { leftId: "pair3", rightId: "pair4" },
-            { leftId: "pair4", rightId: "pair2" }
-          ],
-          hints: ["Match the life phrase to its meaning"],
-          explanation: "These are common phrases for discussing life and purpose in Ewe."
+          correctOptionId: 4,
+          hints: ["taɖodzinu = purpose"],
+          explanation: "You heard 'Taɖodzinu le ame shia ame shi' which means 'Everyone has a purpose' in Ewe."
         }
       ]
     },
@@ -186,36 +182,19 @@ export default {
         },
         {
           id: 708,
-          type: "drag_drop",
-          instruction: "Complete the phrase by dragging the correct word.",
-          sentence: "Fukpekpe fiaa [_____] mí (Suffering teaches us)",
-          blankId: "blank1",
-          items: [
-            { id: "opt1", text: "nu" },
-            { id: "opt2", text: "me" },
-            { id: "opt3", text: "le" }
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter7/fukpekpe_fiaa_nu_mí.m4a"),
+          options: [
+            { id: 1, text: "Suffering teaches us" },
+            { id: 2, text: "Time heals" },
+            { id: 3, text: "Don't take it to heart" },
+            { id: 4, text: "What gives your life meaning?" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
-          hints: ["nu = thing/lesson"],
-          explanation: "Fukpekpe fiaa nu mí = Suffering teaches us in Ewe."
-        },
-        {
-          id: 709,
-          type: "matching",
-          instruction: "Match the Ewe wisdom phrase with its English translation.",
-          question: "Match each Ewe phrase to its correct meaning:",
-          pairs: [
-            { id: "pair1", left: "Fukpekpe fiaa nu mí", right: "Time heals" },
-            { id: "pair2", left: "Ɣeyiɣi daa gbe le ame ŋu", right: "Don't take it to heart" },
-            { id: "pair3", left: "Mègatsɔe de dzi me", right: "Suffering teaches us" }
-          ],
-          correctMatches: [
-            { leftId: "pair1", rightId: "pair3" },
-            { leftId: "pair2", rightId: "pair1" },
-            { leftId: "pair3", rightId: "pair2" }
-          ],
-          hints: ["Match the wisdom phrase to its meaning"],
-          explanation: "These are common wisdom and comfort phrases in Ewe."
+          correctOptionId: 1,
+          hints: ["fukpekpe = suffering"],
+          explanation: "You heard 'Fukpekpe fiaa nu mí' which means 'Suffering teaches us' in Ewe."
         }
       ]
     }
@@ -228,7 +207,7 @@ export default {
     description: "Review all the life and wisdom vocabulary you've learned",
     questions: [
       {
-        id: 710,
+        id: 709,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you ask 'What do you believe about life?' in Ewe?",
@@ -243,23 +222,23 @@ export default {
         explanation: "Nu ka nèxɔ se tso agbe ŋu? = What do you believe about life?"
       },
       {
-        id: 711,
+        id: 710,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter7/taɖodzinu_le_ame_shia_ame_shi.m4a"),
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter7/mègatsɔe_de_dzi_me.m4a"),
         options: [
-          { id: 1, text: "What do you believe about life?" },
-          { id: 2, text: "Life is a journey" },
-          { id: 3, text: "What gives your life meaning?" },
+          { id: 1, text: "Suffering teaches us" },
+          { id: 2, text: "Time heals" },
+          { id: 3, text: "Don't take it to heart" },
           { id: 4, text: "Everyone has a purpose" }
         ],
-        correctOptionId: 4,
-        hints: ["taɖodzinu = purpose"],
-        explanation: "You heard 'Taɖodzinu le ame shia ame shi' which means 'Everyone has a purpose'."
+        correctOptionId: 3,
+        hints: ["dzi me = heart"],
+        explanation: "You heard 'Mègatsɔe de dzi me' which means 'Don't take it to heart'."
       },
       {
-        id: 712,
+        id: 711,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Life is a journey' in Ewe?",
@@ -274,7 +253,7 @@ export default {
         explanation: "Agbe nye mɔzɔzɔ = Life is a journey."
       },
       {
-        id: 713,
+        id: 712,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -290,7 +269,7 @@ export default {
         explanation: "You heard 'Nu kae naa gɔmesese wò agbe?' which means 'What gives your life meaning?'."
       },
       {
-        id: 714,
+        id: 713,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Suffering teaches us' in Ewe?",
@@ -305,38 +284,7 @@ export default {
         explanation: "Fukpekpe fiaa nu mí = Suffering teaches us."
       },
       {
-        id: 715,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter7/fukpekpe_fiaa_nu_mí.m4a"),
-        options: [
-          { id: 1, text: "Suffering teaches us" },
-          { id: 2, text: "Time heals" },
-          { id: 3, text: "Don't take it to heart" },
-          { id: 4, text: "Life is a journey" }
-        ],
-        correctOptionId: 1,
-        hints: ["fiaa = teaches"],
-        explanation: "You heard 'Fukpekpe fiaa nu mí' which means 'Suffering teaches us'."
-      },
-      {
-        id: 716,
-        type: "drag_drop",
-        instruction: "Complete the phrase by dragging the correct word.",
-        sentence: "Nu kae naa gɔmesese wò [_____]? (What gives your life meaning?)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "agbe" },
-          { id: "opt2", text: "nye" },
-          { id: "opt3", text: "mí" }
-        ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["agbe = life"],
-        explanation: "Nu kae naa gɔmesese wò agbe? = What gives your life meaning?"
-      },
-      {
-        id: 717,
+        id: 714,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Time heals' in Ewe?",
@@ -351,22 +299,7 @@ export default {
         explanation: "Ɣeyiɣi daa gbe le ame ŋu = Time heals."
       },
       {
-        id: 718,
-        type: "drag_drop",
-        instruction: "Complete the phrase by dragging the correct word.",
-        sentence: "Fukpekpe fiaa [_____] mí (Suffering teaches us)",
-        blankId: "blank1",
-        items: [
-          { id: "opt1", text: "nu" },
-          { id: "opt2", text: "me" },
-          { id: "opt3", text: "le" }
-        ],
-        correctDrop: { blankId: "blank1", itemId: "opt1" },
-        hints: ["nu = thing/lesson"],
-        explanation: "Fukpekpe fiaa nu mí = Suffering teaches us."
-      },
-      {
-        id: 719,
+        id: 715,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Don't take it to heart' in Ewe?",
@@ -374,11 +307,58 @@ export default {
           { id: 1, text: "Fukpekpe fiaa nu mí" },
           { id: 2, text: "Ɣeyiɣi daa gbe le ame ŋu" },
           { id: 3, text: "Mègatsɔe de dzi me" },
-          { id: 4, text: "Taɖodzinu le ame shia ame shi" }
+          { id: 4, text: "Nu ka nèxɔ se tso agbe ŋu?" }
         ],
         correctOptionId: 3,
-        hints: ["mègatsɔe = don't take"],
+        hints: ["dzi me = heart"],
         explanation: "Mègatsɔe de dzi me = Don't take it to heart."
+      },
+      {
+        id: 716,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter7/taɖodzinu_le_ame_shia_ame_shi.m4a"),
+        options: [
+          { id: 1, text: "What do you believe about life?" },
+          { id: 2, text: "Life is a journey" },
+          { id: 3, text: "What gives your life meaning?" },
+          { id: 4, text: "Everyone has a purpose" }
+        ],
+        correctOptionId: 4,
+        hints: ["taɖodzinu = purpose"],
+        explanation: "You heard 'Taɖodzinu le ame shia ame shi' which means 'Everyone has a purpose'."
+      },
+      {
+        id: 717,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter7/ɣeyiɣi_daa_gbe_le_ame_ŋu.m4a"),
+        options: [
+          { id: 1, text: "Suffering teaches us" },
+          { id: 2, text: "Time heals" },
+          { id: 3, text: "Don't take it to heart" },
+          { id: 4, text: "Life is a journey" }
+        ],
+        correctOptionId: 2,
+        hints: ["ɣeyiɣi = time"],
+        explanation: "You heard 'Ɣeyiɣi daa gbe le ame ŋu' which means 'Time heals'."
+      },
+      {
+        id: 718,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Everyone has a purpose' in Ewe?",
+        options: [
+          { id: 1, text: "Nu ka nèxɔ se tso agbe ŋu?" },
+          { id: 2, text: "Agbe nye mɔzɔzɔ" },
+          { id: 3, text: "Nu kae naa gɔmesese wò agbe?" },
+          { id: 4, text: "Taɖodzinu le ame shia ame shi" }
+        ],
+        correctOptionId: 4,
+        hints: ["taɖodzinu = purpose"],
+        explanation: "Taɖodzinu le ame shia ame shi = Everyone has a purpose."
       }
     ]
   }

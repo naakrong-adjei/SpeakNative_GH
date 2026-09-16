@@ -1,5 +1,5 @@
 export default {
-  id: 21,
+  id: 1,
   title: "Complex Grammar",
   description: "Learn complex grammar structures in Ewe",
   icon: "git-branch-outline",
@@ -8,7 +8,7 @@ export default {
 
   sections: [
     {
-      id: "21-1",
+      id: "1-1",
       type: "words",
       title: "Conditionals",
       icon: "git-branch-outline",
@@ -30,7 +30,7 @@ export default {
       ],
       questions: [
         {
-          id: 2101,
+          id: 101,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'If I had known, I would not have gone' in Ewe?",
@@ -45,7 +45,7 @@ export default {
           explanation: "Ne ɖe menya la, nyemayi o = If I had known, I would not have gone in Ewe."
         },
         {
-          id: 2102,
+          id: 102,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -61,7 +61,7 @@ export default {
           explanation: "You heard 'Ehia ɖe wòanyo wu' which means 'It would have been better' in Ewe."
         },
         {
-          id: 2103,
+          id: 103,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -80,7 +80,7 @@ export default {
     },
 
     {
-      id: "21-2",
+      id: "1-2",
       type: "words",
       title: "Contrast & Linking",
       icon: "link-outline",
@@ -102,7 +102,7 @@ export default {
       ],
       questions: [
         {
-          id: 2104,
+          id: 104,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Although it rained, we continued' in Ewe?",
@@ -117,7 +117,7 @@ export default {
           explanation: "Togbɔ be tsi dza hã, míeyi edzi = Although it rained, we continued in Ewe."
         },
         {
-          id: 2105,
+          id: 105,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -133,7 +133,7 @@ export default {
           explanation: "You heard 'Menye ema ɖeɖe ko o, ke ehia hã' which means 'Not only that, but also this' in Ewe."
         },
         {
-          id: 2106,
+          id: 106,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -152,7 +152,7 @@ export default {
     },
 
     {
-      id: "21-3",
+      id: "1-3",
       type: "words",
       title: "Relative Clauses",
       icon: "code-slash-outline",
@@ -180,7 +180,7 @@ export default {
       ],
       questions: [
         {
-          id: 2107,
+          id: 107,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'The work that was done yesterday' in Ewe?",
@@ -195,7 +195,7 @@ export default {
           explanation: "Dɔ hia wowɔ etsɔ = The work that was done yesterday in Ewe."
         },
         {
-          id: 2108,
+          id: 108,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -211,7 +211,7 @@ export default {
           explanation: "You heard 'Ame shia ame si va gbã la woasubɔ' which means 'Whoever comes first will be served' in Ewe."
         },
         {
-          id: 2109,
+          id: 109,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
@@ -231,13 +231,13 @@ export default {
   ],
 
   review: {
-    id: "review-21",
+    id: "review-1",
     title: "Review: Complex Grammar",
     icon: "refresh-outline",
     description: "Review all the complex grammar structures you've learned",
     questions: [
       {
-        id: 2110,
+        id: 110,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'If I had known, I would not have gone' in Ewe?",
@@ -252,7 +252,7 @@ export default {
         explanation: "Ne ɖe menya la, nyemayi o = If I had known, I would not have gone."
       },
       {
-        id: 2111,
+        id: 111,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -268,7 +268,7 @@ export default {
         explanation: "You heard 'Togbɔ be tsi dza hã, míeyi edzi' which means 'Although it rained, we continued'."
       },
       {
-        id: 2112,
+        id: 112,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Not only that, but also this' in Ewe?",
@@ -283,7 +283,7 @@ export default {
         explanation: "Menye ema ɖeɖe ko o, ke ehia hã = Not only that, but also this."
       },
       {
-        id: 2113,
+        id: 113,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -299,7 +299,7 @@ export default {
         explanation: "You heard 'Dɔ hia wowɔ etsɔ' which means 'The work that was done yesterday'."
       },
       {
-        id: 2114,
+        id: 114,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Whoever comes first will be served' in Ewe?",
@@ -314,7 +314,7 @@ export default {
         explanation: "Ame shia ame si va gbã la woasubɔ = Whoever comes first will be served."
       },
       {
-        id: 2115,
+        id: 115,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -330,7 +330,7 @@ export default {
         explanation: "You heard 'Xɔ hia metu le ƒe si va yi me' which means 'The house that I built last year'."
       },
       {
-        id: 2116,
+        id: 116,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'It would have been better' in Ewe?",
@@ -345,7 +345,7 @@ export default {
         explanation: "Ehia ɖe wòanyo wu = It would have been better."
       },
       {
-        id: 2117,
+        id: 117,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -361,7 +361,7 @@ export default {
         explanation: "You heard 'Ame shia ame si va gbã la woasubɔ' which means 'Whoever comes first will be served'."
       },
       {
-        id: 2118,
+        id: 118,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
@@ -377,7 +377,7 @@ export default {
         explanation: "You heard 'Menye ema ɖeɖe ko o, ke ehia hã' which means 'Not only that, but also this'."
       },
       {
-        id: 2119,
+        id: 119,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
