@@ -38,7 +38,10 @@ export default function OnboardingScreen({ onComplete }) {
   const { getToken } = useAuth();
   const { user, isLoaded } = useUser();
 
-  const supabase = useMemo(() => createSupabaseClient(getToken), [getToken]);
+  const supabase = useMemo(
+    () => createSupabaseClient(getToken),
+    [getToken]
+  );
 
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -55,53 +58,65 @@ export default function OnboardingScreen({ onComplete }) {
     if (user?.firstName && !name) {
       setName(user.firstName);
     }
-  }, [user]);
+  }, [user, name]);
 
   const toggleMotivation = (id) => {
     setMotivations((prev) =>
-      prev.includes(id) ? prev.filter((m) => m !== id) : [...prev, id]
+      prev.includes(id)
+        ? prev.filter((m) => m !== id)
+        : [...prev, id]
     );
   };
 
   const isNextEnabled = () => {
-    if (!clerkId) return false;
+    if (!clerkId) {
+      return false;
+    }
 
-    if (step === 0) return name.trim().length > 0;
-    if (step === 1) return !!language;
-    if (step === 2) return !!level;
-    if (step === 3) return motivations.length > 0;
-    if (step === 4) return !!goal;
+    if (step === 0) {
+      return name.trim().length > 0;
+    }
+
+    if (step === 1) {
+      return !!language;
+    }
+
+    if (step === 2) {
+      return !!level;
+    }
+
+    if (step === 3) {
+      return motivations.length > 0;
+    }
+
+    if (step === 4) {
+      return !!goal;
+    }
 
     return false;
   };
 
   const selectedLanguageTitle = useMemo(() => {
-    return LANGUAGES.find((l) => l.id === language)?.title || "this language";
+    return (
+      LANGUAGES.find((l) => l.id === language)?.title ||
+      "this language"
+    );
   }, [language]);
 
   const saveProfile = async () => {
-    if (!clerkId) return;
+    if (!clerkId || loading) {
+      return;
+    }
 
     setLoading(true);
 
     try {
-      try {
-        if (user && name?.trim()) {
-          await user.update({
-            unsafeMetadata: {
-              full_name: name.trim(),
-            },
-          });
-        }
-      } catch (err) {
-        console.log("Clerk update failed:", err);
-      }
-
-      const { data: existingProfile, error: fetchError } = await supabase
-        .from("profiles")
-        .select("clerk_id")
-        .eq("clerk_id", clerkId)
-        .maybeSingle();
+      const { data: existingProfile, error: fetchError } =
+        await supabase
+          .from("profiles")
+          .select("clerk_id")
+          .eq("clerk_id", clerkId)
+          .maybeSingle();
 
       if (fetchError) {
         console.log("Fetch error:", fetchError);
@@ -110,25 +125,28 @@ export default function OnboardingScreen({ onComplete }) {
       let error;
 
       if (!existingProfile) {
-        const { error: insertError } = await supabase.from("profiles").insert({
-          clerk_id: clerkId,
-          full_name: name,
-          email: user?.emailAddresses?.[0]?.emailAddress || "",
-          target_language: language,
-          language_level: level,
-          motivations,
-          daily_goal: goal,
-          onboarding_completed: true,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        });
+        const { error: insertError } = await supabase
+          .from("profiles")
+          .insert({
+            clerk_id: clerkId,
+            full_name: name.trim(),
+            email:
+              user?.emailAddresses?.[0]?.emailAddress || "",
+            target_language: language,
+            language_level: level,
+            motivations,
+            daily_goal: goal,
+            onboarding_completed: true,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          });
 
         error = insertError;
       } else {
         const { error: updateError } = await supabase
           .from("profiles")
           .update({
-            full_name: name,
+            full_name: name.trim(),
             target_language: language,
             language_level: level,
             motivations,
@@ -146,11 +164,10 @@ export default function OnboardingScreen({ onComplete }) {
         return;
       }
 
-      // Handle completion using onComplete prop or router fallback
       if (onComplete) {
         onComplete();
       } else {
-        router.replace("/(app)/(tabs)/lessons");
+        router.replace("/(app)/(tabs)");
       }
     } catch (err) {
       console.log("Save crash:", err);
@@ -160,7 +177,9 @@ export default function OnboardingScreen({ onComplete }) {
   };
 
   const handleContinue = async () => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
 
     if (step < 4) {
       setStep((s) => s + 1);
@@ -172,28 +191,54 @@ export default function OnboardingScreen({ onComplete }) {
 
   if (!isLoaded) {
     return (
-      <View style={styles.loader}>
-        <ActivityIndicator size="large" color={colors.primary} />
+      <View
+        style={[
+          styles.loader,
+          {
+            backgroundColor: colors.background,
+          },
+        ]}
+      >
+        <ActivityIndicator
+          size="large"
+          color={colors.primary}
+        />
       </View>
     );
   }
 
   const steps = [
     <View key="name" style={styles.step}>
-      <ThemedText type="title">What should we call you?</ThemedText>
+      <ThemedText type="title">
+        What should we call you?
+      </ThemedText>
 
       <TextInput
         value={name}
         onChangeText={setName}
         placeholder="Enter your full name"
         placeholderTextColor="#999"
-        style={[styles.input, { color: colors.text, borderColor: colors.border }]}
+        autoCapitalize="words"
+        autoCorrect={false}
+        style={[
+          styles.input,
+          {
+            color: colors.text,
+            borderColor: colors.border,
+          },
+        ]}
       />
     </View>,
 
     <View key="language" style={styles.step}>
-      <ThemedText type="title">What would you like to learn?</ThemedText>
-      <ScrollView>
+      <ThemedText type="title">
+        What would you like to learn?
+      </ThemedText>
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
         {LANGUAGES.map((l) => (
           <OptionCard
             key={l.id}
@@ -211,7 +256,11 @@ export default function OnboardingScreen({ onComplete }) {
       <ThemedText type="title">
         How much {selectedLanguageTitle} do you know?
       </ThemedText>
-      <ScrollView>
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
         {LEVELS.map((l) => (
           <OptionCard
             key={l.id}
@@ -226,8 +275,14 @@ export default function OnboardingScreen({ onComplete }) {
     </View>,
 
     <View key="motivations" style={styles.step}>
-      <ThemedText type="title">Why are you learning?</ThemedText>
-      <ScrollView>
+      <ThemedText type="title">
+        Why are you learning?
+      </ThemedText>
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
         {MOTIVATIONS.map((m) => (
           <OptionCard
             key={m.id}
@@ -241,8 +296,14 @@ export default function OnboardingScreen({ onComplete }) {
     </View>,
 
     <View key="goals" style={styles.step}>
-      <ThemedText type="title">What's your daily learning goal?</ThemedText>
-      <ScrollView>
+      <ThemedText type="title">
+        What's your daily learning goal?
+      </ThemedText>
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
         {GOALS.map((g) => (
           <OptionCard
             key={g.id}
@@ -258,14 +319,38 @@ export default function OnboardingScreen({ onComplete }) {
   ];
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
+    <SafeAreaView
+      style={[
+        styles.container,
+        {
+          backgroundColor: colors.background,
+        },
+      ]}
+    >
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={{ flex: 1 }}
+        style={styles.keyboardView}
       >
         <View style={styles.header}>
-          <TouchableOpacity onPress={() => step > 0 && setStep(step - 1)}>
-            <Ionicons name="arrow-back" size={24} color={step === 0 ? "#ccc" : colors.text} />
+          <TouchableOpacity
+            onPress={() => {
+              if (step > 0 && !loading) {
+                setStep((s) => s - 1);
+              }
+            }}
+            disabled={step === 0 || loading}
+            hitSlop={10}
+            activeOpacity={0.7}
+          >
+            <Ionicons
+              name="arrow-back"
+              size={24}
+              color={
+                step === 0 || loading
+                  ? "#ccc"
+                  : colors.text
+              }
+            />
           </TouchableOpacity>
 
           <ProgressBar step={step} total={5} />
@@ -282,7 +367,13 @@ export default function OnboardingScreen({ onComplete }) {
 
         <View style={styles.footer}>
           <Button
-            title={loading ? "Saving..." : step === 4 ? "Finish" : "Continue"}
+            title={
+              loading
+                ? "Saving..."
+                : step === 4
+                ? "Finish"
+                : "Continue"
+            }
             onPress={handleContinue}
             loading={loading}
             disabled={!isNextEnabled() || loading}
@@ -296,32 +387,47 @@ export default function OnboardingScreen({ onComplete }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
+
+  keyboardView: {
+    flex: 1,
+  },
+
   loader: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
+
   header: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 20
+    padding: 20,
+    gap: 16,
   },
+
   content: {
     flex: 1,
-    padding: 20
+    padding: 20,
   },
+
   step: {
     flex: 1,
-    gap: 18
+    gap: 18,
   },
+
+  scrollContent: {
+    paddingBottom: 20,
+  },
+
   input: {
     borderBottomWidth: 2,
     fontSize: 18,
     paddingVertical: 10,
   },
+
   footer: {
-    padding: 20
+    padding: 20,
   },
 });

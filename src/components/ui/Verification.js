@@ -17,58 +17,46 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "../../context/ThemeContext";
 import Button from "./Button";
 
-const BlinkingCaret = React.memo(
-  ({ color }) => {
-    const fadeAnim = useRef(
-      new Animated.Value(0)
-    ).current;
+const BlinkingCaret = React.memo(({ color }) => {
+  const fadeAnim = useRef(
+    new Animated.Value(0)
+  ).current;
 
-    useEffect(() => {
-      const animation =
-        Animated.loop(
-          Animated.sequence([
-            Animated.timing(
-              fadeAnim,
-              {
-                toValue: 1,
-                duration: 450,
-                useNativeDriver: true,
-              }
-            ),
-            Animated.timing(
-              fadeAnim,
-              {
-                toValue: 0,
-                duration: 450,
-                useNativeDriver: true,
-              }
-            ),
-          ])
-        );
-
-      animation.start();
-
-      return () =>
-        animation.stop();
-    }, [fadeAnim]);
-
-    return (
-      <Animated.View
-        style={[
-          styles.caret,
-          {
-            opacity: fadeAnim,
-            backgroundColor:
-              color,
-          },
-        ]}
-      />
+  useEffect(() => {
+    const animation = Animated.loop(
+      Animated.sequence([
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 450,
+          useNativeDriver: true,
+        }),
+        Animated.timing(fadeAnim, {
+          toValue: 0,
+          duration: 450,
+          useNativeDriver: true,
+        }),
+      ])
     );
-  }
-);
 
-BlinkingCaret.displayName =
-  "BlinkingCaret";
+    animation.start();
+
+    return () => animation.stop();
+  }, [fadeAnim]);
+
+  return (
+    <Animated.View
+      style={[
+        styles.caret,
+        {
+          opacity: fadeAnim,
+          backgroundColor: color,
+        },
+      ]}
+    />
+  );
+});
+
+BlinkingCaret.displayName = "BlinkingCaret";
 
 export default function Verification({
   visible,
@@ -89,30 +77,86 @@ export default function Verification({
   const [canResend, setCanResend] = useState(false);
 
   const inputRef = useRef(null);
-  const shake = useRef(new Animated.Value(0)).current;
+  const shake = useRef(
+    new Animated.Value(0)
+  ).current;
   const errorTimerRef = useRef(null);
+  const resendIntervalRef = useRef(null);
 
   useEffect(() => {
-    if (!visible) return;
+    if (!visible) {
+      return;
+    }
 
     setOtp("");
     setError("");
+    setFocused(false);
     setResendTimer(60);
     setCanResend(false);
 
-    const interval = setInterval(() => {
+    if (resendIntervalRef.current) {
+      clearInterval(resendIntervalRef.current);
+    }
+
+    resendIntervalRef.current = setInterval(() => {
       setResendTimer((prev) => {
         if (prev <= 1) {
-          clearInterval(interval);
+          clearInterval(
+            resendIntervalRef.current
+          );
+          resendIntervalRef.current = null;
           setCanResend(true);
           return 0;
         }
+
         return prev - 1;
       });
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => {
+      if (resendIntervalRef.current) {
+        clearInterval(
+          resendIntervalRef.current
+        );
+        resendIntervalRef.current = null;
+      }
+    };
   }, [visible]);
+
+  useEffect(() => {
+    if (visible) {
+      setOtp("");
+      setError("");
+      setFocused(false);
+
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 350);
+
+      return () => clearTimeout(timer);
+    }
+
+    Keyboard.dismiss();
+
+    if (errorTimerRef.current) {
+      clearTimeout(errorTimerRef.current);
+      errorTimerRef.current = null;
+    }
+  }, [visible]);
+
+  useEffect(() => {
+    return () => {
+      if (errorTimerRef.current) {
+        clearTimeout(errorTimerRef.current);
+      }
+
+      if (resendIntervalRef.current) {
+        clearInterval(
+          resendIntervalRef.current
+        );
+      }
+    };
+  }, []);
 
   const triggerShake = () => {
     Animated.sequence([
@@ -144,10 +188,15 @@ export default function Verification({
     ]).start();
   };
 
-  const triggerError = (msg, shouldShake = true) => {
+  const triggerError = (
+    msg,
+    shouldShake = true
+  ) => {
     setError(msg);
 
-    if (shouldShake) triggerShake();
+    if (shouldShake) {
+      triggerShake();
+    }
 
     if (errorTimerRef.current) {
       clearTimeout(errorTimerRef.current);
@@ -158,47 +207,17 @@ export default function Verification({
     }, 4000);
   };
 
-  useEffect(() => {
-    if (visible) {
-      setOtp("");
-      setError("");
-      setFocused(false);
-
-      const timer =
-        setTimeout(() => {
-          inputRef.current?.focus();
-        }, 250);
-
-      return () =>
-        clearTimeout(timer);
-    } else {
-      Keyboard.dismiss();
-
-      if (
-        errorTimerRef.current
-      ) {
-        clearTimeout(
-          errorTimerRef.current
-        );
-      }
-    }
-  }, [visible]);
-
-  useEffect(() => {
-    return () => {
-      if (
-        errorTimerRef.current
-      ) {
-        clearTimeout(
-          errorTimerRef.current
-        );
-      }
-    };
-  }, []);
-
   const submitOtpCode = async (code) => {
+    if (loading || resending) {
+      return;
+    }
+
     if (code.length !== 6) {
-      triggerError("Enter 6-digit code", true);
+      triggerError(
+        "Enter 6-digit code",
+        true
+      );
+      inputRef.current?.focus();
       return;
     }
 
@@ -212,10 +231,17 @@ export default function Verification({
         "Invalid code";
 
       const isOtpError =
-        message.toLowerCase().includes("code") ||
-        message.toLowerCase().includes("invalid");
+        message
+          .toLowerCase()
+          .includes("code") ||
+        message
+          .toLowerCase()
+          .includes("invalid");
 
-      triggerError(message, isOtpError);
+      triggerError(
+        message,
+        isOtpError
+      );
 
       setOtp("");
 
@@ -226,18 +252,37 @@ export default function Verification({
   };
 
   const handleChange = (text) => {
-    const code = text.replace(/\D/g, "").slice(0, 6);
+    const code = text
+      .replace(/\D/g, "")
+      .slice(0, 6);
+
     setOtp(code);
 
-    if (error) setError("");
+    if (error) {
+      setError("");
+    }
 
     if (code.length === 6) {
       submitOtpCode(code);
     }
   };
 
+  const handleOtpPress = () => {
+    if (loading || resending) {
+      return;
+    }
+
+    inputRef.current?.focus();
+  };
+
   const handleResend = async () => {
-    if (!canResend) return;
+    if (
+      !canResend ||
+      loading ||
+      resending
+    ) {
+      return;
+    }
 
     try {
       setError("");
@@ -249,23 +294,39 @@ export default function Verification({
       setResendTimer(60);
       setCanResend(false);
 
-      const interval = setInterval(() => {
-        setResendTimer((prev) => {
-          if (prev <= 1) {
-            clearInterval(interval);
-            setCanResend(true);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
+      if (resendIntervalRef.current) {
+        clearInterval(
+          resendIntervalRef.current
+        );
+      }
+
+      resendIntervalRef.current =
+        setInterval(() => {
+          setResendTimer((prev) => {
+            if (prev <= 1) {
+              clearInterval(
+                resendIntervalRef.current
+              );
+
+              resendIntervalRef.current =
+                null;
+
+              setCanResend(true);
+
+              return 0;
+            }
+
+            return prev - 1;
+          });
+        }, 1000);
 
       setTimeout(() => {
         inputRef.current?.focus();
-      }, 100);
+      }, 150);
     } catch (err) {
       triggerError(
         err?.errors?.[0]?.message ||
+          err?.message ||
           "Failed to resend code",
         false
       );
@@ -303,17 +364,14 @@ export default function Verification({
           ]}
         >
           <TouchableOpacity
-            style={
-              styles.closeBtn
-            }
+            style={styles.closeBtn}
             onPress={onClose}
+            disabled={loading || resending}
           >
             <Ionicons
               name="close"
               size={22}
-              color={
-                theme.text
-              }
+              color={theme.text}
             />
           </TouchableOpacity>
 
@@ -321,8 +379,7 @@ export default function Verification({
             style={[
               styles.title,
               {
-                color:
-                  theme.text,
+                color: theme.text,
               },
             ]}
           >
@@ -338,16 +395,11 @@ export default function Verification({
               },
             ]}
           >
-            Enter the
-            6-digit code
-            sent to{"\n"}
-
+            Enter the 6-digit code sent to{"\n"}
             <Text
               style={{
-                color:
-                  theme.primary,
-                fontWeight:
-                  "700",
+                color: theme.primary,
+                fontWeight: "700",
               }}
             >
               {email}
@@ -359,8 +411,7 @@ export default function Verification({
               style={[
                 styles.error,
                 {
-                  color:
-                    theme.error,
+                  color: theme.error,
                 },
               ]}
             >
@@ -368,10 +419,11 @@ export default function Verification({
             </Text>
           )}
 
-          <View
-            style={
-              styles.otpContainer
-            }
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={handleOtpPress}
+            disabled={loading || resending}
+            style={styles.otpContainer}
           >
             <Animated.View
               style={[
@@ -379,112 +431,97 @@ export default function Verification({
                 {
                   transform: [
                     {
-                      translateX:
-                        shake,
+                      translateX: shake,
                     },
                   ],
                 },
               ]}
             >
-              {boxes.map(
-                (_, i) => {
-                  const digit =
-                    otp[i] ||
-                    "";
+              {boxes.map((_, i) => {
+                const digit =
+                  otp[i] || "";
 
-                  const isActive =
-                    i ===
-                    otp.length;
+                const isActive =
+                  i === otp.length;
 
-                  return (
-                    <View
-                      key={i}
+                return (
+                  <View
+                    key={i}
+                    style={[
+                      styles.box,
+                      {
+                        borderColor:
+                          isActive &&
+                          focused
+                            ? theme.primary
+                            : theme.border,
+                        backgroundColor:
+                          theme.background,
+                      },
+                    ]}
+                  >
+                    <Text
                       style={[
-                        styles.box,
+                        styles.boxText,
                         {
-                          borderColor:
-                            isActive &&
-                            focused
-                              ? theme.primary
-                              : theme.border,
-                          backgroundColor:
-                            theme.background,
+                          color:
+                            theme.text,
                         },
                       ]}
                     >
-                      <Text
-                        style={[
-                          styles.boxText,
-                          {
-                            color:
-                              theme.text,
-                          },
-                        ]}
-                      >
-                        {
-                          digit
-                        }
-                      </Text>
+                      {digit}
+                    </Text>
 
-                      {isActive &&
-                        focused && (
-                          <BlinkingCaret
-                            color={
-                              theme.primary
-                            }
-                          />
-                        )}
-                    </View>
-                  );
-                }
-              )}
+                    {isActive &&
+                      focused && (
+                        <BlinkingCaret
+                          color={
+                            theme.primary
+                          }
+                        />
+                      )}
+                  </View>
+                );
+              })}
             </Animated.View>
 
             <TextInput
               ref={inputRef}
               value={otp}
-              onChangeText={
-                handleChange
-              }
+              onChangeText={handleChange}
               keyboardType="number-pad"
               maxLength={6}
               onFocus={() =>
-                setFocused(
-                  true
-                )
+                setFocused(true)
               }
               onBlur={() =>
-                setFocused(
-                  false
-                )
+                setFocused(false)
               }
-              style={
-                styles.hiddenInput
-              }
+              style={styles.hiddenInput}
               caretHidden
               autoComplete="sms-otp"
               textContentType="oneTimeCode"
               editable={
-                !loading
+                !loading &&
+                !resending
               }
             />
-          </View>
+          </TouchableOpacity>
 
           <Button
             title={
               loading
                 ? "Verifying..."
-                :resending
+                : resending
                 ? "Resending..."
                 : "Verify"
             }
             onPress={() =>
-              submitOtpCode(
-                otp
-              )
+              submitOtpCode(otp)
             }
             disabled={
-              loading
+              loading ||
+              resending
             }
             status={
               error
@@ -494,20 +531,21 @@ export default function Verification({
           />
 
           <TouchableOpacity
-            onPress={
-              handleResend
+            onPress={handleResend}
+            disabled={
+              !canResend ||
+              loading ||
+              resending
             }
-            disabled={!canResend || loading || resending}
-            style={
-              styles.resendTouch
-            }
+            style={styles.resendTouch}
           >
             <Text
               style={[
                 styles.resend,
                 {
                   color: theme.primary,
-                  opacity: !canResend ? 0.5 : 1,
+                  opacity:
+                    !canResend ? 0.5 : 1,
                 },
               ]}
             >
@@ -522,122 +560,109 @@ export default function Verification({
   );
 }
 
-const styles =
-  StyleSheet.create({
-    overlay: {
-      flex: 1,
-      alignItems:
-        "center",
-    },
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    alignItems: "center",
+  },
 
-    modal: {
-      width: "88%",
-      maxWidth: 400,
-      top: "20%",
-      padding: 24,
-      borderRadius: 16,
-      position: "relative",
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 4,
-      },
-      shadowOpacity: 0.15,
-      shadowRadius: 10,
-      elevation: 5,
+  modal: {
+    width: "88%",
+    maxWidth: 400,
+    top: "20%",
+    padding: 24,
+    borderRadius: 16,
+    position: "relative",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
     },
+    shadowOpacity: 0.15,
+    shadowRadius: 10,
+    elevation: 5,
+  },
 
-    closeBtn: {
-      position:
-        "absolute",
-      top: 16,
-      right: 16,
-      zIndex: 10,
-      padding: 4,
-    },
+  closeBtn: {
+    position: "absolute",
+    top: 16,
+    right: 16,
+    zIndex: 10,
+    padding: 4,
+  },
 
-    title: {
-      fontSize: 22,
-      fontWeight: "700",
-      textAlign:
-        "center",
-      marginTop: 8,
-    },
+  title: {
+    fontSize: 22,
+    fontWeight: "700",
+    textAlign: "center",
+    marginTop: 8,
+  },
 
-    subtitle: {
-      fontSize: 14,
-      textAlign:
-        "center",
-      marginTop: 8,
-      marginBottom: 20,
-      lineHeight: 20,
-    },
+  subtitle: {
+    fontSize: 14,
+    textAlign: "center",
+    marginTop: 8,
+    marginBottom: 20,
+    lineHeight: 20,
+  },
 
-    error: {
-      textAlign:
-        "center",
-      marginBottom: 12,
-      fontWeight: "500",
-      fontSize: 14,
-    },
+  error: {
+    textAlign: "center",
+    marginBottom: 12,
+    fontWeight: "500",
+    fontSize: 14,
+  },
 
-    otpContainer: {
-      position:
-        "relative",
-      marginBottom: 24,
-      justifyContent:
-        "center",
-      alignItems:
-        "center",
-    },
+  otpContainer: {
+    position: "relative",
+    marginBottom: 24,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
 
-    otpRow: {
-      flexDirection:
-        "row",
-      justifyContent:
-        "center",
-      width: "100%",
-    },
+  otpRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "100%",
+  },
 
-    box: {
-      width: 44,
-      height: 52,
-      borderWidth: 1.5,
-      borderRadius: 10,
-      justifyContent:
-        "center",
-      alignItems:
-        "center",
-      marginHorizontal: 5,
-    },
+  box: {
+    width: 44,
+    height: 52,
+    borderWidth: 1.5,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 5,
+  },
 
-    boxText: {
-      fontSize: 20,
-      fontWeight: "600",
-    },
+  boxText: {
+    fontSize: 20,
+    fontWeight: "600",
+  },
 
-    hiddenInput: {
-      ...StyleSheet.absoluteFillObject,
-      opacity: 0,
-      fontSize: 24,
-    },
+  hiddenInput: {
+    position: "absolute",
+    width: 1,
+    height: 1,
+    opacity: 0,
+  },
 
-    resendTouch: {
-      paddingVertical: 10,
-    },
+  resendTouch: {
+    paddingVertical: 10,
+  },
 
-    resend: {
-      textAlign:
-        "center",
-      marginTop: 8,
-      fontWeight: "600",
-      fontSize: 14,
-    },
+  resend: {
+    textAlign: "center",
+    marginTop: 8,
+    fontWeight: "600",
+    fontSize: 14,
+  },
 
-    caret: {
-      position:
-        "absolute",
-      width: 2,
-      height: 22,
-    },
-  });
+  caret: {
+    position: "absolute",
+    width: 2,
+    height: 22,
+  },
+});

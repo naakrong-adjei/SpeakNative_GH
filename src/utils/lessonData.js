@@ -100,7 +100,6 @@ export const getLessonData = () => {
           chapter7: twiBeginnerChapter7,
           chapter8: twiBeginnerChapter8,
           chapter9: twiBeginnerChapter9,
-          chapter10: twiBeginnerChapter10,
         },
         intermediate: {
           chapter1: twiIntermediateChapter1,

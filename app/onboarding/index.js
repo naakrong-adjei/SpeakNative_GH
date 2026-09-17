@@ -9,8 +9,7 @@ export default function OnboardingRoute() {
   const { theme } = useTheme();
 
   const handleComplete = () => {
-    console.log("Attempting to navigate to tabs...");
-    router.replace("/(app)"); 
+    router.replace("/(app)");
   };
 
   return (

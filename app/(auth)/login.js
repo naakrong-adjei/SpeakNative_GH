@@ -1,22 +1,13 @@
-import React, {
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
-
+import React, { useCallback, useState } from "react";
 import {
-  Alert,
+  ActivityIndicator,
   StyleSheet,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-
 import Ionicons from "@expo/vector-icons/Ionicons";
-import {
-  useAuth,
-  useSignIn,
-} from "@clerk/expo";
+import { useSignIn } from "@clerk/expo";
 import { useRouter } from "expo-router";
 
 import { useTheme } from "../../src/context/ThemeContext";
@@ -28,79 +19,232 @@ import GoogleSignIn from "../../src/components/ui/GoogleSignIn";
 export default function LoginScreen() {
   const { theme } = useTheme();
   const router = useRouter();
-
-  const {
-    signIn,
-    setActive,
-    isLoaded,
-  } = useSignIn();
-
-  const {
-    isSignedIn,
-    isLoaded: authLoaded,
-  } = useAuth();
+  const { signIn } = useSignIn();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [loading, setLoading] = useState(false);
+  const [loadingAction, setLoadingAction] = useState(null);
   const [showVerify, setShowVerify] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
+  const loading = loadingAction !== null;
+  const cleanEmail = email.trim().toLowerCase();
 
-  useEffect(() => {
-    if (!authLoaded || !isSignedIn) {
-      return;
-    }
+  const isValidEmail =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail);
 
-    setShowVerify(false);
-    setLoading(false);
+  const canContinue =
+    isValidEmail &&
+    password.length >= 6 &&
+    !loading;
 
-    router.replace("/");
-  }, [
-    authLoaded,
-    isSignedIn,
-    router,
-  ]);
+  const getClerkErrorMessage = useCallback(
+    (error, fallback) => {
+      const clerkError = error?.errors?.[0];
 
-  const isValidEmail = (value) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  };
-
-  const sendOTP = useCallback(async () => {
-    if (!isLoaded) {
-      return;
-    }
-
-    if (!isValidEmail(email)) {
-      Alert.alert(
-        "Error",
-        "Enter a valid email"
+      return (
+        clerkError?.longMessage ||
+        clerkError?.message ||
+        error?.message ||
+        fallback
       );
+    },
+    []
+  );
+
+  const goToApp = useCallback(() => {
+    setShowVerify(false);
+    router.replace("/(app)/(tabs)");
+  }, [router]);
+
+  const login = useCallback(async () => {
+    if (loading) {
+      return;
+    }
+
+    setErrorMessage("");
+
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (!normalizedEmail) {
+      setErrorMessage("Please enter your email address.");
+      return;
+    }
+
+    if (!isValidEmail) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    if (!password) {
+      setErrorMessage("Please enter your password.");
       return;
     }
 
     if (password.length < 6) {
-      Alert.alert(
-        "Error",
-        "Password too short"
+      setErrorMessage(
+        "Password must be at least 6 characters."
       );
       return;
     }
 
     try {
-      setLoading(true);
+      setLoadingAction("login");
 
-      const signInAttempt =
-        await signIn.create({
-          identifier: email.trim(),
+      const { error } = await signIn.create({
+        identifier: normalizedEmail,
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      const { error: passwordError } =
+        await signIn.password({
           password,
         });
 
+      if (passwordError) {
+        throw passwordError;
+      }
+
+      if (signIn.status === "complete") {
+        await signIn.finalize({
+          navigate: goToApp,
+        });
+        return;
+      }
+
+      if (
+        signIn.status === "needs_first_factor" ||
+        signIn.status === "needs_second_factor"
+      ) {
+        const emailFactor =
+          signIn.supportedFirstFactors?.find(
+            (factor) => factor.strategy === "email_code"
+          );
+
+        if (!emailFactor?.emailAddressId) {
+          throw new Error(
+            "Email verification is not available for this account."
+          );
+        }
+
+        const { error: verificationError } =
+          await signIn.emailCode.sendCode({
+            emailAddressId:
+              emailFactor.emailAddressId,
+          });
+
+        if (verificationError) {
+          throw verificationError;
+        }
+
+        setShowVerify(true);
+        return;
+      }
+
+      throw new Error(
+        `Unable to complete login. Current status: ${
+          signIn.status || "unknown"
+        }`
+      );
+    } catch (error) {
+      setErrorMessage(
+        getClerkErrorMessage(
+          error,
+          "Unable to log in. Please check your email and password."
+        )
+      );
+    } finally {
+      setLoadingAction(null);
+    }
+  }, [
+    email,
+    getClerkErrorMessage,
+    goToApp,
+    isValidEmail,
+    loading,
+    password,
+    signIn,
+  ]);
+
+  const verifyCode = useCallback(
+    async (code) => {
+      if (loading) {
+        return;
+      }
+
+      const cleanCode = code?.trim();
+
+      if (!cleanCode) {
+        setErrorMessage(
+          "Please enter the verification code."
+        );
+        return;
+      }
+
+      if (cleanCode.length !== 6) {
+        setErrorMessage(
+          "Please enter the 6-digit verification code."
+        );
+        return;
+      }
+
+      try {
+        setLoadingAction("verify");
+        setErrorMessage("");
+
+        const { error } =
+          await signIn.emailCode.verifyCode({
+            code: cleanCode,
+          });
+
+        if (error) {
+          throw error;
+        }
+
+        if (signIn.status !== "complete") {
+          throw new Error(
+            "Verification could not be completed."
+          );
+        }
+
+        await signIn.finalize({
+          navigate: goToApp,
+        });
+      } catch (error) {
+        setErrorMessage(
+          getClerkErrorMessage(
+            error,
+            "The verification code is invalid or has expired."
+          )
+        );
+      } finally {
+        setLoadingAction(null);
+      }
+    },
+    [
+      getClerkErrorMessage,
+      goToApp,
+      loading,
+      signIn,
+    ]
+  );
+
+  const resendCode = useCallback(async () => {
+    if (loading) {
+      return;
+    }
+
+    try {
+      setLoadingAction("resend");
+      setErrorMessage("");
+
       const emailFactor =
-        signInAttempt.supportedFirstFactors?.find(
-          (factor) =>
-            factor.strategy === "email_code"
+        signIn.supportedFirstFactors?.find(
+          (factor) => factor.strategy === "email_code"
         );
 
       if (!emailFactor?.emailAddressId) {
@@ -109,145 +253,56 @@ export default function LoginScreen() {
         );
       }
 
-      await signIn.prepareFirstFactor({
-        strategy: "email_code",
-        emailAddressId:
-          emailFactor.emailAddressId,
-      });
-
-      setShowVerify(true);
-    } catch (err) {
-      Alert.alert(
-        "Login Failed",
-        err?.errors?.[0]?.message ||
-          err?.message ||
-          "Unable to log in. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  }, [
-    email,
-    password,
-    signIn,
-    isLoaded,
-  ]);
-
-  const verifyCode = useCallback(
-    async (code) => {
-      if (!isLoaded) {
-        return;
-      }
-
-      try {
-        setLoading(true);
-
-        const result =
-          await signIn.attemptFirstFactor({
-            strategy: "email_code",
-            code: code.trim(),
-          });
-
-        if (result.status !== "complete") {
-          throw new Error(
-            "Verification could not be completed."
-          );
-        }
-
-        if (!result.createdSessionId) {
-          throw new Error(
-            "No active session was created."
-          );
-        }
-
-        /*
-         * Activate the Clerk session.
-         *
-         * We intentionally DO NOT navigate here.
-         *
-         * The useEffect above watches isSignedIn.
-         * When Clerk finishes updating its state,
-         * it will automatically navigate to "/".
-         */
-        await setActive({
-          session: result.createdSessionId,
-        });
-      } catch (err) {
-        Alert.alert(
-          "Invalid Code",
-          err?.errors?.[0]?.message ||
-            err?.message ||
-            "The verification code is invalid."
-        );
-
-        setLoading(false);
-      }
-    },
-    [
-      signIn,
-      setActive,
-      isLoaded,
-    ]
-  );
-
-  const resendCode = useCallback(
-    async () => {
-      if (!isLoaded) {
-        return;
-      }
-
-      try {
-        setLoading(true);
-
-        const signInAttempt =
-          await signIn.create({
-            identifier: email.trim(),
-            password,
-          });
-
-        const emailFactor =
-          signInAttempt.supportedFirstFactors?.find(
-            (factor) =>
-              factor.strategy === "email_code"
-          );
-
-        if (!emailFactor?.emailAddressId) {
-          throw new Error(
-            "Email verification is not available."
-          );
-        }
-
-        await signIn.prepareFirstFactor({
-          strategy: "email_code",
+      const { error } =
+        await signIn.emailCode.sendCode({
           emailAddressId:
             emailFactor.emailAddressId,
         });
-      } catch (err) {
-        Alert.alert(
-          "Resend Failed",
-          err?.errors?.[0]?.message ||
-            err?.message ||
-            "Unable to resend the verification code."
-        );
-      } finally {
-        setLoading(false);
+
+      if (error) {
+        throw error;
       }
-    },
-    [
-      email,
-      password,
-      signIn,
-      isLoaded,
-    ]
-  );
+    } catch (error) {
+      setErrorMessage(
+        getClerkErrorMessage(
+          error,
+          "Unable to resend the verification code."
+        )
+      );
+    } finally {
+      setLoadingAction(null);
+    }
+  }, [
+    getClerkErrorMessage,
+    loading,
+    signIn,
+  ]);
+
+  const handleCloseVerification = useCallback(() => {
+    if (loading) {
+      return;
+    }
+
+    setShowVerify(false);
+    setErrorMessage("");
+  }, [loading]);
+
+  const handleEmailChange = useCallback((value) => {
+    setEmail(value);
+    setErrorMessage("");
+  }, []);
+
+  const handlePasswordChange = useCallback((value) => {
+    setPassword(value);
+    setErrorMessage("");
+  }, []);
 
   return (
     <View
       style={[
         styles.container,
         {
-          backgroundColor:
-            theme.background,
+          backgroundColor: theme.background,
         },
       ]}
     >
@@ -267,14 +322,16 @@ export default function LoginScreen() {
 
       <TextInput
         value={email}
-        onChangeText={setEmail}
+        onChangeText={handleEmailChange}
         placeholder="Email"
-        placeholderTextColor={
-          theme.secondaryText
-        }
+        placeholderTextColor={theme.secondaryText}
         autoCapitalize="none"
         autoCorrect={false}
         keyboardType="email-address"
+        textContentType="emailAddress"
+        autoComplete="email"
+        editable={!loading}
+        returnKeyType="next"
         style={[
           styles.input,
           {
@@ -294,14 +351,17 @@ export default function LoginScreen() {
       >
         <TextInput
           value={password}
-          onChangeText={setPassword}
+          onChangeText={handlePasswordChange}
           placeholder="Password"
-          placeholderTextColor={
-            theme.secondaryText
-          }
+          placeholderTextColor={theme.secondaryText}
           secureTextEntry={!showPassword}
           autoCapitalize="none"
           autoCorrect={false}
+          textContentType="password"
+          autoComplete="password"
+          editable={!loading}
+          returnKeyType="done"
+          onSubmitEditing={login}
           style={[
             styles.passwordInput,
             {
@@ -318,6 +378,13 @@ export default function LoginScreen() {
           }
           disabled={loading}
           hitSlop={10}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel={
+            showPassword
+              ? "Hide password"
+              : "Show password"
+          }
         >
           <Ionicons
             name={
@@ -331,27 +398,49 @@ export default function LoginScreen() {
         </TouchableOpacity>
       </View>
 
-      <Button
-        title={
-          loading
-            ? "Please wait..."
-            : "Login"
-        }
-        onPress={sendOTP}
-        disabled={
-          !isValidEmail(email) ||
-          password.length < 6 ||
-          loading
-        }
-      />
+      {errorMessage ? (
+        <ThemedText
+          style={[
+            styles.errorText,
+            {
+              color: theme.error || "#D32F2F",
+            },
+          ]}
+        >
+          {errorMessage}
+        </ThemedText>
+      ) : null}
+
+      <View style={styles.buttonWrapper}>
+        <Button
+          title={
+            loadingAction === "login"
+              ? "Logging in..."
+              : "Login"
+          }
+          onPress={login}
+          disabled={!canContinue}
+        />
+
+        {loadingAction === "login" && (
+          <View
+            pointerEvents="none"
+            style={styles.loadingOverlay}
+          >
+            <ActivityIndicator
+              size="small"
+              color="#FFFFFF"
+            />
+          </View>
+        )}
+      </View>
 
       <View style={styles.dividerContainer}>
         <View
           style={[
             styles.divider,
             {
-              backgroundColor:
-                theme.border,
+              backgroundColor: theme.border,
             },
           ]}
         />
@@ -369,8 +458,7 @@ export default function LoginScreen() {
           style={[
             styles.divider,
             {
-              backgroundColor:
-                theme.border,
+              backgroundColor: theme.border,
             },
           ]}
         />
@@ -380,13 +468,9 @@ export default function LoginScreen() {
 
       <Verification
         visible={showVerify}
-        email={email}
+        email={cleanEmail}
         loading={loading}
-        onClose={() => {
-          if (!loading) {
-            setShowVerify(false);
-          }
-        }}
+        onClose={handleCloseVerification}
         onVerify={verifyCode}
         onResend={resendCode}
       />
@@ -424,6 +508,28 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 18,
     paddingVertical: 12,
+  },
+
+  errorText: {
+    fontSize: 14,
+    lineHeight: 20,
+    marginTop: -8,
+    marginBottom: 16,
+  },
+
+  buttonWrapper: {
+    width: "100%",
+    position: "relative",
+  },
+
+  loadingOverlay: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   dividerContainer: {

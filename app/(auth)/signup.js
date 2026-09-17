@@ -1,60 +1,74 @@
-import React, { useState, useCallback } from "react";
+import { useSignUp } from "@clerk/expo";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useRouter } from "expo-router";
+import { useCallback, useState } from "react";
 import {
-  View,
-  StyleSheet,
-  TextInput,
   Alert,
-  TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { useSignUp } from "@clerk/expo";
-import { useRouter } from "expo-router";
-
-import { useTheme } from "../../src/context/ThemeContext";
 import { ThemedText } from "../../src/components/themed-text";
 import Button from "../../src/components/ui/Button";
 import GoogleSignIn from "../../src/components/ui/GoogleSignIn";
 import Verification from "../../src/components/ui/Verification";
+import { useTheme } from "../../src/context/ThemeContext";
 
 export default function SignUpScreen() {
   const { theme } = useTheme();
   const router = useRouter();
-
-  const { signUp, setActive, isLoaded } = useSignUp();
+  const { signUp } = useSignUp();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [loading, setLoading] = useState(false);
+  const [loadingAction, setLoadingAction] = useState(null);
   const [showVerify, setShowVerify] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const isValidEmail = useCallback((value) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-      value.trim()
-    );
-  }, []);
+  const loading = loadingAction !== null;
+  const cleanEmail = email.trim().toLowerCase();
+
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+    cleanEmail
+  );
+
+  const canContinue =
+    isValidEmail &&
+    password.length >= 6 &&
+    !loading;
+
+  const getClerkErrorMessage = useCallback(
+    (error, fallback) => {
+      const clerkError = error?.errors?.[0];
+
+      return (
+        clerkError?.longMessage ||
+        clerkError?.message ||
+        error?.message ||
+        fallback
+      );
+    },
+    []
+  );
+
+  const goToOnboarding = useCallback(() => {
+    setShowVerify(false);
+    router.replace("/onboarding");
+  }, [router]);
 
   const createAccount = useCallback(async () => {
     if (loading) {
       return;
     }
 
-    if (!isLoaded) {
-      Alert.alert(
-        "Please wait",
-        "Authentication is still loading. Please try again in a moment."
-      );
-      return;
-    }
+    const normalizedEmail = email.trim().toLowerCase();
 
-    const cleanEmail = email.trim();
-
-    if (!cleanEmail) {
+    if (!normalizedEmail) {
       Alert.alert(
         "Email required",
         "Please enter your email address."
@@ -62,9 +76,9 @@ export default function SignUpScreen() {
       return;
     }
 
-    if (!isValidEmail(cleanEmail)) {
+    if (!isValidEmail) {
       Alert.alert(
-        "Invalid Email",
+        "Invalid email",
         "Please enter a valid email address."
       );
       return;
@@ -80,58 +94,73 @@ export default function SignUpScreen() {
 
     if (password.length < 6) {
       Alert.alert(
-        "Weak Password",
+        "Weak password",
         "Password must be at least 6 characters."
       );
       return;
     }
 
     try {
-      setLoading(true);
+      setLoadingAction("create");
 
-      const result = await signUp.create({
-        emailAddress: cleanEmail,
-        password: password,
+      const { error } = await signUp.password({
+        emailAddress: normalizedEmail,
+        password,
       });
 
-      console.log("Sign up created:", result.status);
+      if (error) {
+        throw error;
+      }
 
-      await signUp.prepareEmailAddressVerification({
-        strategy: "email_code",
-      });
+      if (
+        signUp.status === "missing_requirements" &&
+        signUp.unverifiedFields?.includes("email_address")
+      ) {
+        const { error: verificationError } =
+          await signUp.verifications.sendEmailCode();
 
-      setShowVerify(true);
-    } catch (err) {
-      console.log("Sign up error:", err);
+        if (verificationError) {
+          throw verificationError;
+        }
 
-      const clerkError =
-        err?.errors?.[0];
+        setShowVerify(true);
+        return;
+      }
 
-      const errorMessage =
-        clerkError?.longMessage ||
-        clerkError?.message ||
-        err?.message ||
-        "Unable to create your account. Please try again.";
+      if (signUp.status === "complete") {
+        const { error: finalizeError } =
+          await signUp.finalize({
+            navigate: goToOnboarding,
+          });
 
+        if (finalizeError) {
+          throw finalizeError;
+        }
+      }
+    } catch (error) {
       Alert.alert(
-        "Sign Up Failed",
-        errorMessage
+        "Sign up failed",
+        getClerkErrorMessage(
+          error,
+          "Unable to create your account. Please check your details and try again."
+        )
       );
     } finally {
-      setLoading(false);
+      setLoadingAction(null);
     }
   }, [
     email,
-    password,
-    loading,
-    isLoaded,
-    signUp,
+    getClerkErrorMessage,
+    goToOnboarding,
     isValidEmail,
+    loading,
+    password,
+    signUp,
   ]);
 
   const verifyCode = useCallback(
     async (code) => {
-      if (!isLoaded || loading) {
+      if (loading) {
         return;
       }
 
@@ -146,110 +175,87 @@ export default function SignUpScreen() {
       }
 
       try {
-        setLoading(true);
+        setLoadingAction("verify");
 
-        const result =
-          await signUp.attemptEmailAddressVerification({
+        const { error } =
+          await signUp.verifications.verifyEmailCode({
             code: cleanCode,
           });
 
-        console.log(
-          "Verification status:",
-          result.status
-        );
+        if (error) {
+          throw error;
+        }
 
-        if (result.status === "complete") {
-          await setActive({
-            session: result.createdSessionId,
-          });
-
-          setShowVerify(false);
-
-          router.replace(
-            "/(app)/(tabs)/lessons"
+        if (signUp.status !== "complete") {
+          Alert.alert(
+            "Verification incomplete",
+            "Your email was verified, but your account still has requirements to complete."
           );
-
           return;
         }
 
+        const { error: finalizeError } =
+          await signUp.finalize({
+            navigate: goToOnboarding,
+          });
+
+        if (finalizeError) {
+          throw finalizeError;
+        }
+      } catch (error) {
         Alert.alert(
-          "Verification incomplete",
-          "Your email could not be verified yet. Please try again."
-        );
-      } catch (err) {
-        console.log(
-          "Verification error:",
-          err
-        );
-
-        const clerkError =
-          err?.errors?.[0];
-
-        const errorMessage =
-          clerkError?.longMessage ||
-          clerkError?.message ||
-          err?.message ||
-          "The verification code is incorrect or has expired.";
-
-        Alert.alert(
-          "Invalid Code",
-          errorMessage
+          "Verification failed",
+          getClerkErrorMessage(
+            error,
+            "The verification code is incorrect or has expired. Please try again."
+          )
         );
       } finally {
-        setLoading(false);
+        setLoadingAction(null);
       }
     },
     [
-      signUp,
-      setActive,
-      router,
-      isLoaded,
+      getClerkErrorMessage,
+      goToOnboarding,
       loading,
+      signUp,
     ]
   );
 
   const resendCode = useCallback(async () => {
-    if (!isLoaded || loading) {
+    if (loading) {
       return;
     }
 
     try {
-      setLoading(true);
+      setLoadingAction("resend");
 
-      await signUp.prepareEmailAddressVerification({
-        strategy: "email_code",
-      });
+      const { error } =
+        await signUp.verifications.sendEmailCode();
+
+      if (error) {
+        throw error;
+      }
 
       Alert.alert(
         "Code sent",
         "A new verification code has been sent to your email."
       );
-    } catch (err) {
-      console.log(
-        "Resend code error:",
-        err
-      );
-
-      const clerkError =
-        err?.errors?.[0];
-
-      const errorMessage =
-        clerkError?.longMessage ||
-        clerkError?.message ||
-        err?.message ||
-        "Unable to resend the verification code.";
-
+    } catch (error) {
       Alert.alert(
-        "Error",
-        errorMessage
+        "Unable to resend",
+        getClerkErrorMessage(
+          error,
+          "Unable to resend the verification code. Please try again."
+        )
       );
     } finally {
-      setLoading(false);
+      setLoadingAction(null);
     }
   }, [
-    signUp,
-    isLoaded,
+    getClerkErrorMessage,
     loading,
+    signUp,
   ]);
 
   const handleCloseVerification = useCallback(() => {
@@ -259,12 +265,6 @@ export default function SignUpScreen() {
 
     setShowVerify(false);
   }, [loading]);
-
-  const canContinue =
-    isValidEmail(email.trim()) &&
-    password.length >= 6 &&
-    isLoaded &&
-    !loading;
 
   return (
     <KeyboardAvoidingView
@@ -281,9 +281,7 @@ export default function SignUpScreen() {
       }
     >
       <ScrollView
-        contentContainerStyle={
-          styles.scrollContent
-        }
+        contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       >
@@ -291,8 +289,7 @@ export default function SignUpScreen() {
           style={[
             styles.container,
             {
-              backgroundColor:
-                theme.background,
+              backgroundColor: theme.background,
             },
           ]}
         >
@@ -306,17 +303,13 @@ export default function SignUpScreen() {
                 color: theme.secondaryText,
               }}
             >
-              Create your account to start
-              learning.
+              Create your account to start learning.
             </ThemedText>
           </View>
 
-          {/* EMAIL */}
           <TextInput
             placeholder="Email"
-            placeholderTextColor={
-              theme.secondaryText
-            }
+            placeholderTextColor={theme.secondaryText}
             autoCapitalize="none"
             autoCorrect={false}
             keyboardType="email-address"
@@ -325,6 +318,7 @@ export default function SignUpScreen() {
             value={email}
             onChangeText={setEmail}
             editable={!loading}
+            returnKeyType="next"
             style={[
               styles.input,
               {
@@ -334,7 +328,6 @@ export default function SignUpScreen() {
             ]}
           />
 
-          {/* PASSWORD */}
           <View
             style={[
               styles.passwordContainer,
@@ -345,9 +338,7 @@ export default function SignUpScreen() {
           >
             <TextInput
               placeholder="Password"
-              placeholderTextColor={
-                theme.secondaryText
-              }
+              placeholderTextColor={theme.secondaryText}
               secureTextEntry={!showPassword}
               autoCapitalize="none"
               autoCorrect={false}
@@ -356,6 +347,8 @@ export default function SignUpScreen() {
               value={password}
               onChangeText={setPassword}
               editable={!loading}
+              returnKeyType="done"
+              onSubmitEditing={createAccount}
               style={[
                 styles.passwordInput,
                 {
@@ -373,6 +366,12 @@ export default function SignUpScreen() {
                 )
               }
               style={styles.eyeButton}
+              accessibilityRole="button"
+              accessibilityLabel={
+                showPassword
+                  ? "Hide password"
+                  : "Show password"
+              }
             >
               <Ionicons
                 name={
@@ -381,42 +380,38 @@ export default function SignUpScreen() {
                     : "eye-outline"
                 }
                 size={22}
-                color={
-                  theme.secondaryText
-                }
+                color={theme.secondaryText}
               />
             </TouchableOpacity>
           </View>
 
-          {/* CONTINUE */}
-          <Button
-            title={
-              loading
-                ? "Please wait..."
-                : "Continue"
-            }
-            onPress={createAccount}
-            disabled={!canContinue}
-          />
+          <View nativeID="clerk-captcha" />
 
-          {/* DIVIDER */}
-          <View
-            style={styles.dividerContainer}
-          >
+          <View style={styles.buttonWrapper}>
+            <Button
+              title={
+                loadingAction === "create"
+                  ? "Creating account..."
+                  : "Continue"
+              }
+              onPress={createAccount}
+              disabled={!canContinue}
+            />
+          </View>
+
+          <View style={styles.dividerContainer}>
             <View
               style={[
                 styles.divider,
                 {
-                  backgroundColor:
-                    theme.border,
+                  backgroundColor: theme.border,
                 },
               ]}
             />
 
             <ThemedText
               style={{
-                color:
-                  theme.secondaryText,
+                color: theme.secondaryText,
                 marginHorizontal: 12,
               }}
             >
@@ -427,22 +422,19 @@ export default function SignUpScreen() {
               style={[
                 styles.divider,
                 {
-                  backgroundColor:
-                    theme.border,
+                  backgroundColor: theme.border,
                 },
               ]}
             />
           </View>
 
-          {/* GOOGLE */}
           <GoogleSignIn />
         </View>
       </ScrollView>
 
-      {/* EMAIL VERIFICATION */}
       <Verification
         visible={showVerify}
-        email={email.trim()}
+        email={cleanEmail}
         loading={loading}
         onClose={handleCloseVerification}
         onVerify={verifyCode}
@@ -497,6 +489,10 @@ const styles = StyleSheet.create({
     padding: 8,
   },
 
+  buttonWrapper: {
+    width: "100%",
+  },
+
   dividerContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -508,5 +504,3 @@ const styles = StyleSheet.create({
     height: 1,
   },
 });
-
-
