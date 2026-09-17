@@ -68,7 +68,6 @@ import twiAdvancedChapter7 from "../data/course_content/twi/advanced/chapter7.js
 import twiAdvancedChapter8 from "../data/course_content/twi/advanced/chapter8.js";
 
 import twiBeginnerChapter1 from "../data/course_content/twi/beginner/chapter1.js";
-import twiBeginnerChapter10 from "../data/course_content/twi/beginner/chapter10.js";
 import twiBeginnerChapter2 from "../data/course_content/twi/beginner/chapter2.js";
 import twiBeginnerChapter3 from "../data/course_content/twi/beginner/chapter3.js";
 import twiBeginnerChapter4 from "../data/course_content/twi/beginner/chapter4.js";

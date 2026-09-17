@@ -69,7 +69,7 @@ export default {
             { id: 1, text: "Blema ɣeaɖeɣi" },
             { id: 2, text: "Ɖo to nye ŋutinya" },
             { id: 3, text: "Emegbe nane dzɔ" },
-            { id: 4, text: "Emae nye nuwuwua" }
+            { id: 4, text: "Emae nye mamle" }
           ],
           correctOptionId: 2,
           hints: ["Ɖo to = listen"],
@@ -193,7 +193,7 @@ export default {
       title: "Lessons & Endings",
       icon: "sparkles-outline",
       description: "Learn how to conclude a story and share its moral in Ewe",
-      words: ["Ŋutinya fiaa nunya mí", "Emae nye nuwuwua", "Ŋutinya la ƒe nufiame"],
+      words: ["Ŋutinya fiaa nunya mí", "Emae nye mamle", "Ŋutinya la ƒe nufiame"],
       vocabulary: [
         {
           id: 177,
@@ -204,8 +204,8 @@ export default {
         {
           id: 178,
           english: "That is the end",
-          native: "Emae nye nuwuwua",
-          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/emae_nye_nuwuwua.m4a")
+          native: "Emae nye mamle",
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/emae_nye_ma_mle.m4a")
         },
         {
           id: 181,
@@ -222,7 +222,7 @@ export default {
           question: "How do you say 'The story teaches us wisdom' in Ewe?",
           options: [
             { id: 1, text: "Ŋutinya fiaa nunya mí" },
-            { id: 2, text: "Emae nye nuwuwua" },
+            { id: 2, text: "Emae nye mamle" },
             { id: 3, text: "Ŋutinya la ƒe nufiame" },
             { id: 4, text: "Blema ɣeaɖeɣi" }
           ],
@@ -235,7 +235,7 @@ export default {
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/emae_nye_nuwuwua.m4a"),
+          audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/emae_nye_ma_mle.m4a"),
           options: [
             { id: 1, text: "The story teaches us wisdom" },
             { id: 2, text: "That is the end" },
@@ -243,8 +243,8 @@ export default {
             { id: 4, text: "Once upon a time" }
           ],
           correctOptionId: 2,
-          hints: ["nuwuwua = the end"],
-          explanation: "You heard 'Emae nye nuwuwua' which means 'That is the end' in Ewe."
+          hints: ["mamle = the end"],
+          explanation: "You heard 'Emae nye mamle' which means 'That is the end' in Ewe."
         },
         {
           id: 511,
@@ -253,7 +253,7 @@ export default {
           question: "How do you say 'The moral of the story' in Ewe?",
           options: [
             { id: 1, text: "Ŋutinya fiaa nunya mí" },
-            { id: 2, text: "Emae nye nuwuwua" },
+            { id: 2, text: "Emae nye mamle" },
             { id: 3, text: "Ŋutinya la ƒe nufiame" },
             { id: 4, text: "Ɖo to nye ŋutinya" }
           ],
@@ -327,7 +327,7 @@ export default {
           { id: 1, text: "Blema ɣeaɖeɣi" },
           { id: 2, text: "Ɖo to nye ŋutinya" },
           { id: 3, text: "Emegbe nane dzɔ" },
-          { id: 4, text: "Emae nye nuwuwua" }
+          { id: 4, text: "Emae nye mamle" }
         ],
         correctOptionId: 2,
         hints: ["Ɖo to = listen"],
@@ -338,7 +338,7 @@ export default {
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/emae_nye_nuwuwua.m4a"),
+        audioUrl: require("../../../../assets/audio/ewe/advanced/chapter5/emae_nye_ma_mle.m4a"),
         options: [
           { id: 1, text: "The story teaches us wisdom" },
           { id: 2, text: "That is the end" },
@@ -346,8 +346,8 @@ export default {
           { id: 4, text: "Once upon a time" }
         ],
         correctOptionId: 2,
-        hints: ["nuwuwua = the end"],
-        explanation: "You heard 'Emae nye nuwuwua' which means 'That is the end'."
+        hints: ["mamle = the end"],
+        explanation: "You heard 'Emae nye mamle' which means 'That is the end'."
       },
       {
         id: 517,
@@ -386,7 +386,7 @@ export default {
         question: "How do you say 'The story teaches us wisdom' in Ewe?",
         options: [
           { id: 1, text: "Ŋutinya fiaa nunya mí" },
-          { id: 2, text: "Emae nye nuwuwua" },
+          { id: 2, text: "Emae nye mamle" },
           { id: 3, text: "Ŋutinya la ƒe nufiame" },
           { id: 4, text: "Blema ɣeaɖeɣi" }
         ],
@@ -417,7 +417,7 @@ export default {
         question: "How do you say 'The moral of the story' in Ewe?",
         options: [
           { id: 1, text: "Ŋutinya fiaa nunya mí" },
-          { id: 2, text: "Emae nye nuwuwua" },
+          { id: 2, text: "Emae nye mamle" },
           { id: 3, text: "Ŋutinya la ƒe nufiame" },
           { id: 4, text: "Ɖo to nye ŋutinya" }
         ],
