@@ -11,7 +11,7 @@ export default {
       id: "3-1",
       type: "words",
       title: "Close Family",
-      icon: "users-outline",
+      icon: "people-outline",
       description: "Learn words for close family members in Twi",
       words: ["Ɛna", "Agya", "Abofra", "Nua barima", "Nua baa"],
       vocabulary: [
@@ -53,9 +53,9 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Mother' in Twi?",
           options: [
-            { id: 1, text: "Ɛna" },
             { id: 2, text: "Agya" },
             { id: 3, text: "Abofra" },
+            { id: 1, text: "Ɛna" },
             { id: 4, text: "Nua barima" }
           ],
           correctOptionId: 1,
@@ -68,10 +68,10 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Father' in Twi?",
           options: [
+            { id: 4, text: "Nua baa" },
             { id: 1, text: "Ɛna" },
             { id: 2, text: "Agya" },
-            { id: 3, text: "Abofra" },
-            { id: 4, text: "Nua baa" }
+            { id: 3, text: "Abofra" }
           ],
           correctOptionId: 2,
           hints: ["Male parent"],
@@ -83,10 +83,10 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Child' in Twi?",
           options: [
+            { id: 4, text: "Nua barima" },
             { id: 1, text: "Ɛna" },
             { id: 2, text: "Agya" },
-            { id: 3, text: "Abofra" },
-            { id: 4, text: "Nua barima" }
+            { id: 3, text: "Abofra" }
           ],
           correctOptionId: 3,
           hints: ["A young person"],
@@ -98,10 +98,10 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Brother' in Twi?",
           options: [
-            { id: 1, text: "Ɛna" },
-            { id: 2, text: "Agya" },
+            { id: 4, text: "Nua barima" },
             { id: 3, text: "Abofra" },
-            { id: 4, text: "Nua barima" }
+            { id: 1, text: "Ɛna" },
+            { id: 2, text: "Agya" }
           ],
           correctOptionId: 4,
           hints: ["Male sibling"],
@@ -113,10 +113,10 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Sister' in Twi?",
           options: [
-            { id: 1, text: "Nua baa" },
             { id: 2, text: "Agya" },
             { id: 3, text: "Abofra" },
-            { id: 4, text: "Nua barima" }
+            { id: 4, text: "Nua barima" },
+            { id: 1, text: "Nua baa" }
           ],
           correctOptionId: 1,
           hints: ["Female sibling"],
@@ -156,8 +156,7 @@ export default {
           english: "Wife",
           native: "Yere",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter3/yere.m4a")
-        },
-        
+        }
       ],
       questions: [
         {
@@ -166,9 +165,9 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Grandmother' in Twi?",
           options: [
-            { id: 1, text: "Nana baa" },
             { id: 2, text: "Kunu" },
             { id: 3, text: "Yere" },
+            { id: 1, text: "Nana baa" },
             { id: 4, text: "Nana barima" }
           ],
           correctOptionId: 1,
@@ -181,10 +180,10 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Husband' in Twi?",
           options: [
+            { id: 4, text: "Nana barima" },
             { id: 1, text: "Nana baa" },
             { id: 2, text: "Kunu" },
-            { id: 3, text: "Yere" },
-            { id: 4, text: "Nana barima" }
+            { id: 3, text: "Yere" }
           ],
           correctOptionId: 2,
           hints: ["Male spouse"],
@@ -196,10 +195,10 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Wife' in Twi?",
           options: [
-            { id: 1, text: "Nana baa" },
+            { id: 4, text: "Nana barima" },
             { id: 2, text: "Kunu" },
             { id: 3, text: "Yere" },
-            { id: 4, text: "Nana barima" }
+            { id: 1, text: "Nana baa" }
           ],
           correctOptionId: 3,
           hints: ["Female spouse"],
@@ -212,9 +211,9 @@ export default {
           question: "What is 'Grandfather' in Twi?",
           options: [
             { id: 1, text: "Nana baa" },
-            { id: 2, text: "Kunu" },
+            { id: 4, text: "Nana barima" },
             { id: 3, text: "Yere" },
-            { id: 4, text: "Nana barima" }
+            { id: 2, text: "Kunu" }
           ],
           correctOptionId: 4,
           hints: ["Male grandparent"],
@@ -229,7 +228,12 @@ export default {
       title: "Talking About Family",
       icon: "home-outline",
       description: "Learn how to talk about your family in Twi",
-      words: ["M'abusua nie", "M'abusua no sõ", "Mewɔ mma mmienu",  "Wowɔ nuanom ahe?"],
+      words: [
+        "M'abusua nie",
+        "M'abusua no sõ",
+        "Mewɔ mma mmienu",
+        "Wowɔ nuanom ahe?"
+      ],
       vocabulary: [
         {
           id: 49,
@@ -263,9 +267,9 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'This is my family' in Twi?",
           options: [
-            { id: 1, text: "M'abusua nie" },
-            { id: 2, text: "Mewɔ mma mmienu" },
             { id: 3, text: "M'abusua no sõ" },
+            { id: 2, text: "Mewɔ mma mmienu" },
+            { id: 1, text: "M'abusua nie" },
             { id: 4, text: "Wowɔ nuanom ahe?" }
           ],
           correctOptionId: 1,
@@ -278,10 +282,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'I have two children' in Twi?",
           options: [
+            { id: 4, text: "Wowɔ nuanom ahe?" },
             { id: 1, text: "M'abusua nie" },
-            { id: 2, text: "Mewɔ mma mmienu" },
             { id: 3, text: "M'abusua no sõ" },
-            { id: 4, text: "Wowɔ nuanom ahe?" }
+            { id: 2, text: "Mewɔ mma mmienu" }
           ],
           correctOptionId: 2,
           hints: ["Mewɔ = I have", "mma mmienu = two children"],
@@ -293,10 +297,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'My family is big' in Twi?",
           options: [
-            { id: 1, text: "M'abusua nie" },
             { id: 2, text: "Mewɔ mma mmienu" },
+            { id: 4, text: "Wowɔ nuanom ahe?" },
             { id: 3, text: "M'abusua no sõ" },
-            { id: 4, text: "Wowɔ nuanom ahe?" }
+            { id: 1, text: "M'abusua nie" }
           ],
           correctOptionId: 3,
           hints: ["sõ = big"],
@@ -309,9 +313,9 @@ export default {
           question: "How do you ask 'How many siblings do you have?' in Twi?",
           options: [
             { id: 1, text: "M'abusua nie" },
-            { id: 2, text: "Mewɔ mma mmienu" },
             { id: 3, text: "M'abusua no sõ" },
-            { id: 4, text: "Wowɔ nuanom ahe?" }
+            { id: 4, text: "Wowɔ nuanom ahe?" },
+            { id: 2, text: "Mewɔ mma mmienu" }
           ],
           correctOptionId: 4,
           hints: ["nuanom = siblings", "ahe = how many"],
@@ -333,10 +337,10 @@ export default {
         instruction: "Select the correct Twi word.",
         question: "What is 'Mother' in Twi?",
         options: [
-          { id: 1, text: "Ɛna" },
+          { id: 4, text: "Nua barima" },
           { id: 2, text: "Agya" },
-          { id: 3, text: "Abofra" },
-          { id: 4, text: "Nua barima" }
+          { id: 1, text: "Ɛna" },
+          { id: 3, text: "Abofra" }
         ],
         correctOptionId: 1,
         hints: ["Female parent"],
@@ -348,10 +352,10 @@ export default {
         instruction: "Select the correct Twi word.",
         question: "What is 'Father' in Twi?",
         options: [
-          { id: 1, text: "Ɛna" },
-          { id: 2, text: "Agya" },
           { id: 3, text: "Abofra" },
-          { id: 4, text: "Nua baa" }
+          { id: 4, text: "Nua baa" },
+          { id: 2, text: "Agya" },
+          { id: 1, text: "Ɛna" }
         ],
         correctOptionId: 2,
         hints: ["Male parent"],
@@ -363,10 +367,10 @@ export default {
         instruction: "Select the correct Twi word.",
         question: "What is 'Brother' in Twi?",
         options: [
+          { id: 4, text: "Abofra" },
           { id: 1, text: "Nua baa" },
-          { id: 2, text: "Agya" },
           { id: 3, text: "Nua barima" },
-          { id: 4, text: "Abofra" }
+          { id: 2, text: "Agya" }
         ],
         correctOptionId: 3,
         hints: ["Male sibling"],
@@ -378,10 +382,10 @@ export default {
         instruction: "Select the correct Twi word.",
         question: "What is 'Sister' in Twi?",
         options: [
-          { id: 1, text: "Nua baa" },
           { id: 2, text: "Nua barima" },
           { id: 3, text: "Ɛna" },
-          { id: 4, text: "Yere" }
+          { id: 4, text: "Yere" },
+          { id: 1, text: "Nua baa" }
         ],
         correctOptionId: 1,
         hints: ["Female sibling"],
@@ -393,10 +397,10 @@ export default {
         instruction: "Select the correct Twi word.",
         question: "What is 'Grandmother' in Twi?",
         options: [
-          { id: 1, text: "Nana barima" },
-          { id: 2, text: "Nana baa" },
           { id: 3, text: "Yere" },
-          { id: 4, text: "Kunu" }
+          { id: 1, text: "Nana barima" },
+          { id: 4, text: "Kunu" },
+          { id: 2, text: "Nana baa" }
         ],
         correctOptionId: 2,
         hints: ["Female grandparent"],
@@ -409,9 +413,9 @@ export default {
         question: "What is 'Husband' in Twi?",
         options: [
           { id: 1, text: "Yere" },
+          { id: 4, text: "Agya" },
           { id: 2, text: "Kunu" },
-          { id: 3, text: "Nana baa" },
-          { id: 4, text: "Agya" }
+          { id: 3, text: "Nana baa" }
         ],
         correctOptionId: 2,
         hints: ["Male spouse"],
@@ -423,9 +427,9 @@ export default {
         instruction: "Select the correct Twi word.",
         question: "What is 'Wife' in Twi?",
         options: [
-          { id: 1, text: "Yere" },
           { id: 2, text: "Kunu" },
           { id: 3, text: "Ɛna" },
+          { id: 1, text: "Yere" },
           { id: 4, text: "Nua baa" }
         ],
         correctOptionId: 1,
@@ -438,10 +442,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'This is my family' in Twi?",
         options: [
-          { id: 1, text: "M'abusua nie" },
-          { id: 2, text: "Mewɔ mma mmienu" },
+          { id: 4, text: "Wowɔ nuanom ahe?" },
           { id: 3, text: "M'abusua no sõ" },
-          { id: 4, text: "Wowɔ nuanom ahe?" }
+          { id: 1, text: "M'abusua nie" },
+          { id: 2, text: "Mewɔ mma mmienu" }
         ],
         correctOptionId: 1,
         hints: ["M'abusua = my family"],
@@ -453,10 +457,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'I have two children' in Twi?",
         options: [
-          { id: 1, text: "M'abusua nie" },
-          { id: 2, text: "Mewɔ mma mmienu" },
           { id: 3, text: "M'abusua no sõ" },
-          { id: 4, text: "Wowɔ nuanom ahe?" }
+          { id: 2, text: "Mewɔ mma mmienu" },
+          { id: 4, text: "Wowɔ nuanom ahe?" },
+          { id: 1, text: "M'abusua nie" }
         ],
         correctOptionId: 2,
         hints: ["Mewɔ = I have"],
@@ -469,9 +473,9 @@ export default {
         question: "How do you say 'My family is big' in Twi?",
         options: [
           { id: 1, text: "M'abusua nie" },
-          { id: 2, text: "Mewɔ mma mmienu" },
+          { id: 4, text: "Wowɔ nuanom ahe?" },
           { id: 3, text: "M'abusua no sõ" },
-          { id: 4, text: "Wowɔ nuanom ahe?" }
+          { id: 2, text: "Mewɔ mma mmienu" }
         ],
         correctOptionId: 3,
         hints: ["sõ = big"],
@@ -483,10 +487,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you ask 'How many siblings do you have?' in Twi?",
         options: [
-          { id: 1, text: "M'abusua nie" },
           { id: 2, text: "Mewɔ mma mmienu" },
-          { id: 3, text: "M'abusua no sõ" },
-          { id: 4, text: "Wowɔ nuanom ahe?" }
+          { id: 4, text: "Wowɔ nuanom ahe?" },
+          { id: 1, text: "M'abusua nie" },
+          { id: 3, text: "M'abusua no sõ" }
         ],
         correctOptionId: 4,
         hints: ["nuanom = siblings"],

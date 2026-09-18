@@ -1,23 +1,23 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from "react-native";
 import { useNavigation } from "expo-router/react-navigation";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useTheme } from "../../context/ThemeContext";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
+import { useTheme } from "../../context/ThemeContext";
 import Button from "../ui/Button";
 import ConfirmDialog from "../ui/ConfirmDialog";
 import DragDropMode from "./DragDropMode";
 import LessonCompleteScreen from "./LessonCompleteScreen";
-import ListeningMatchingMode from "./ListeningMatchingMode";
 import ListeningMultipleChoiceMode from "./ListeningMultipleChoiceMode";
-import MatchingMode from "./MatchingMode";
 import MultipleChoiceMode from "./MultipleChoiceMode";
 import ProgressHeader from "./ProgressHeader";
 
@@ -25,6 +25,7 @@ export default function LessonContent({
   questions,
   onComplete,
   isReview = false,
+  type = "lesson",
 }) {
   const { theme } = useTheme();
   const navigation = useNavigation();
@@ -32,27 +33,17 @@ export default function LessonContent({
 
   const [currentQuestionIndex, setCurrentQuestionIndex] =
     useState(0);
-
   const [exitConfirmVisible, setExitConfirmVisible] =
     useState(false);
-
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
-
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongQuestions, setWrongQuestions] = useState([]);
-
   const [showComplete, setShowComplete] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
-
-  const [selectedOption, setSelectedOption] =
-    useState(null);
-
-  const [matchingAnswers, setMatchingAnswers] =
-    useState({});
-
-  const [dragDropAnswers, setDragDropAnswers] =
-    useState({});
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [dragDropAnswers, setDragDropAnswers] = useState({});
+  const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
 
   const totalQuestions = questions?.length || 0;
 
@@ -72,9 +63,7 @@ export default function LessonContent({
 
   const progress =
     totalQuestions > 0
-      ? ((currentQuestionIndex + 1) /
-          totalQuestions) *
-        100
+      ? ((currentQuestionIndex + 1) / totalQuestions) * 100
       : 0;
 
   const isDragDrop =
@@ -83,26 +72,14 @@ export default function LessonContent({
 
   const isMultipleChoice =
     currentQuestionType === "multiple_choice" ||
-    currentQuestionType ===
-      "listening_multiple_choice";
+    currentQuestionType === "listening_multiple_choice";
 
-  const isMatching =
-    currentQuestionType === "matching" ||
-    currentQuestionType ===
-      "listening_matching";
-
-  const isListeningMatching =
-    currentQuestionType ===
-    "listening_matching";
-
-
-  useEffect(() => {
+  const resetQuestionState = useCallback(() => {
     setShowResult(false);
     setIsCorrect(null);
     setSelectedOption(null);
-    setMatchingAnswers({});
     setDragDropAnswers({});
-  }, [questionKey]);
+  }, []);
 
   const handleMultipleChoiceSelect = useCallback(
     (optionId) => {
@@ -115,22 +92,6 @@ export default function LessonContent({
     [showResult]
   );
 
-  const handleMatchingAnswersChange = useCallback(
-    (answers) => {
-      if (showResult) {
-        return;
-      }
-
-      setMatchingAnswers(
-        answers &&
-          typeof answers === "object"
-          ? answers
-          : {}
-      );
-    },
-    [showResult]
-  );
-
   const handleDragDropAnswersChange = useCallback(
     (answers) => {
       if (showResult) {
@@ -138,8 +99,7 @@ export default function LessonContent({
       }
 
       setDragDropAnswers(
-        answers &&
-          typeof answers === "object"
+        answers && typeof answers === "object"
           ? answers
           : {}
       );
@@ -147,93 +107,28 @@ export default function LessonContent({
     [showResult]
   );
 
+  const getCorrectAnswerText = useCallback(() => {
+    if (!currentQuestion) {
+      return null;
+    }
 
-  const getCorrectOptionId = useCallback(
-    (pairId) => {
-      if (!currentQuestion) {
-        return null;
-      }
+    if (isMultipleChoice) {
+      return currentQuestion.options?.find(
+        (option) =>
+          option.id === currentQuestion.correctOptionId
+      )?.text;
+    }
 
-      const pair = (
-        currentQuestion.pairs || []
-      ).find(
-        (item) => item.id === pairId
-      );
-
-      if (pair?.correctOptionId) {
-        return pair.correctOptionId;
-      }
-
-      const drops = Array.isArray(
-        currentQuestion.correctDrops
-      )
-        ? currentQuestion.correctDrops
-        : [];
-
-      const drop = drops.find(
-        (item) => item?.pairId === pairId
-      );
-
-      return drop?.optionId || null;
-    },
-    [currentQuestion]
-  );
-
-  const getCorrectAnswerText = useCallback(
-    () => {
-      if (!currentQuestion) {
-        return null;
-      }
-
-      if (isMultipleChoice) {
-        return currentQuestion.options?.find(
-          (option) =>
-            option.id ===
-            currentQuestion.correctOptionId
-        )?.text;
-      }
-
-      if (isListeningMatching) {
-        const pairs =
-          currentQuestion.pairs || [];
-
-        for (const pair of pairs) {
-          const correctOptionId =
-            getCorrectOptionId(pair.id);
-
-          const correctOption =
-            currentQuestion.options?.find(
-              (option) =>
-                option.id ===
-                correctOptionId
-            );
-
-          if (correctOption?.text) {
-            return correctOption.text;
-          }
-        }
-      }
-
-      return (
-        currentQuestion.correctAnswer ||
-        currentQuestion.answer ||
-        null
-      );
-    },
-    [
-      currentQuestion,
-      isMultipleChoice,
-      isListeningMatching,
-      getCorrectOptionId,
-    ]
-  );
+    return (
+      currentQuestion.correctAnswer ||
+      currentQuestion.answer ||
+      null
+    );
+  }, [currentQuestion, isMultipleChoice]);
 
   const handleAnswer = useCallback(
     (correct) => {
-      if (
-        showResult ||
-        !currentQuestion
-      ) {
+      if (showResult || !currentQuestion) {
         return;
       }
 
@@ -247,38 +142,28 @@ export default function LessonContent({
         );
       } else {
         setWrongQuestions((previous) => {
-          const questionId =
-            currentQuestion.id;
-
+          const questionId = currentQuestion.id;
           const questionText =
             currentQuestion.question;
 
           const existingIndex =
             previous.findIndex(
               (item) =>
-                (
-                  questionId !==
-                    undefined &&
-                  item.id === questionId
-                ) ||
-                (
-                  questionText &&
-                  item.question ===
-                    questionText
-                )
+                (questionId !== undefined &&
+                  item.id === questionId) ||
+                (questionText &&
+                  item.question === questionText)
             );
 
           if (existingIndex !== -1) {
-            return previous.map(
-              (item, index) =>
-                index === existingIndex
-                  ? {
-                      ...item,
-                      attempts:
-                        (item.attempts || 0) +
-                        1,
-                    }
-                  : item
+            return previous.map((item, index) =>
+              index === existingIndex
+                ? {
+                    ...item,
+                    attempts:
+                      (item.attempts || 0) + 1,
+                  }
+                : item
             );
           }
 
@@ -287,8 +172,7 @@ export default function LessonContent({
             {
               id: currentQuestion.id,
               question:
-                currentQuestion.question ||
-                "",
+                currentQuestion.question || "",
               english:
                 getCorrectAnswerText() ||
                 currentQuestion.question ||
@@ -298,8 +182,7 @@ export default function LessonContent({
                 currentQuestion.question ||
                 "",
               pronunciation:
-                currentQuestion
-                  .pronunciation ||
+                currentQuestion.pronunciation ||
                 currentQuestion.hints?.[0] ||
                 null,
               attempts: 1,
@@ -317,242 +200,110 @@ export default function LessonContent({
     ]
   );
 
-  const evaluateMultipleChoice =
-    useCallback(() => {
-      if (
-        showResult ||
-        !currentQuestion ||
-        !isMultipleChoice ||
-        selectedOption === null
-      ) {
-        return;
-      }
+  const evaluateMultipleChoice = useCallback(() => {
+    if (
+      showResult ||
+      !currentQuestion ||
+      !isMultipleChoice ||
+      selectedOption === null
+    ) {
+      return;
+    }
 
-      const correct =
-        selectedOption ===
-        currentQuestion.correctOptionId;
+    const correct =
+      selectedOption ===
+      currentQuestion.correctOptionId;
 
-      handleAnswer(correct);
-    }, [
-      showResult,
-      currentQuestion,
-      isMultipleChoice,
-      selectedOption,
-      handleAnswer,
-    ]);
+    handleAnswer(correct);
+  }, [
+    showResult,
+    currentQuestion,
+    isMultipleChoice,
+    selectedOption,
+    handleAnswer,
+  ]);
 
+  const evaluateDragDrop = useCallback(() => {
+    if (
+      showResult ||
+      !currentQuestion ||
+      !isDragDrop
+    ) {
+      return;
+    }
 
-  const evaluateMatching =
-    useCallback(() => {
-      if (
-        showResult ||
-        !currentQuestion ||
-        !isMatching
-      ) {
-        return;
-      }
+    const sentence =
+      currentQuestion.sentence || "";
 
-      const pairs =
-        currentQuestion.pairs || [];
+    const blankMatches =
+      sentence.match(/\[_____\]/g) || [];
 
-      if (pairs.length === 0) {
-        return;
-      }
+    if (blankMatches.length === 0) {
+      return;
+    }
 
-      const answerCount =
-        Object.keys(
-          matchingAnswers
-        ).length;
-
-      if (
-        answerCount !==
-        pairs.length
-      ) {
-        return;
-      }
-
-      let allCorrect = false;
-
-      if (isListeningMatching) {
-
-        allCorrect = pairs.every(
-          (pair) => {
-            const selectedOptionId =
-              matchingAnswers[
-                pair.id
-              ];
-
-            const correctOptionId =
-              getCorrectOptionId(
-                pair.id
-              );
-
-            return (
-              selectedOptionId !==
-                undefined &&
-              correctOptionId !==
-                null &&
-              selectedOptionId ===
-                correctOptionId
-            );
-          }
-        );
-      } else {
-
-        const correctMatches =
-          Array.isArray(
-            currentQuestion.correctMatches
+    const allBlanksFilled =
+      blankMatches.every(
+        (_, index) =>
+          Boolean(
+            dragDropAnswers[
+              `blank${index + 1}`
+            ]
           )
-            ? currentQuestion.correctMatches
-            : [];
-
-        const correctMap = {};
-
-        correctMatches.forEach(
-          (match) => {
-            if (
-              match?.leftId !==
-                undefined &&
-              match?.rightId !==
-                undefined
-            ) {
-              correctMap[
-                match.leftId
-              ] = match.rightId;
-            }
-          }
-        );
-
-        allCorrect = pairs.every(
-          (pair) => {
-            const selectedRightId =
-              matchingAnswers[
-                pair.id
-              ];
-
-            const correctRightId =
-              correctMap[pair.id];
-
-            return (
-              selectedRightId !==
-                undefined &&
-              correctRightId !==
-                undefined &&
-              selectedRightId ===
-                correctRightId
-            );
-          }
-        );
-      }
-
-      handleAnswer(allCorrect);
-    }, [
-      showResult,
-      currentQuestion,
-      isMatching,
-      matchingAnswers,
-      isListeningMatching,
-      getCorrectOptionId,
-      handleAnswer,
-    ]);
-
-  const evaluateDragDrop =
-    useCallback(() => {
-      if (
-        showResult ||
-        !currentQuestion ||
-        !isDragDrop
-      ) {
-        return;
-      }
-
-      const sentence =
-        currentQuestion.sentence ||
-        "";
-
-      const blankMatches =
-        sentence.match(
-          /\[_____\]/g
-        ) || [];
-
-      if (
-        blankMatches.length === 0
-      ) {
-        return;
-      }
-
-      const allBlanksFilled =
-        blankMatches.every(
-          (_, index) =>
-            Boolean(
-              dragDropAnswers[
-                `blank${index + 1}`
-              ]
-            )
-        );
-
-      if (!allBlanksFilled) {
-        return;
-      }
-
-      const drops = Array.isArray(
-        currentQuestion.correctDrops
-      )
-        ? currentQuestion.correctDrops
-        : currentQuestion.correctDrop
-        ? [
-            currentQuestion.correctDrop,
-          ]
-        : [];
-
-      const correctMap = {};
-
-      drops.forEach(
-        (drop, index) => {
-          if (!drop?.itemId) {
-            return;
-          }
-
-          const blankId =
-            drop.blankId ||
-            `blank${index + 1}`;
-
-          correctMap[blankId] =
-            drop.itemId;
-        }
       );
 
-      const allCorrect =
-        blankMatches.every(
-          (_, index) => {
-            const blankId =
-              `blank${index + 1}`;
+    if (!allBlanksFilled) {
+      return;
+    }
 
-            const selectedItem =
-              dragDropAnswers[
-                blankId
-              ];
+    const drops = Array.isArray(
+      currentQuestion.correctDrops
+    )
+      ? currentQuestion.correctDrops
+      : currentQuestion.correctDrop
+      ? [currentQuestion.correctDrop]
+      : [];
 
-            const correctItem =
-              correctMap[blankId];
+    const correctMap = {};
 
-            return (
-              Boolean(selectedItem) &&
-              Boolean(correctItem) &&
-              selectedItem ===
-                correctItem
-            );
-          }
+    drops.forEach((drop, index) => {
+      if (!drop?.itemId) {
+        return;
+      }
+
+      const blankId =
+        drop.blankId ||
+        `blank${index + 1}`;
+
+      correctMap[blankId] = drop.itemId;
+    });
+
+    const allCorrect =
+      blankMatches.every((_, index) => {
+        const blankId =
+          `blank${index + 1}`;
+
+        const selectedItem =
+          dragDropAnswers[blankId];
+
+        const correctItem =
+          correctMap[blankId];
+
+        return (
+          Boolean(selectedItem) &&
+          Boolean(correctItem) &&
+          selectedItem === correctItem
         );
+      });
 
-      handleAnswer(allCorrect);
-    }, [
-      showResult,
-      currentQuestion,
-      isDragDrop,
-      dragDropAnswers,
-      handleAnswer,
-    ]);
+    handleAnswer(allCorrect);
+  }, [
+    showResult,
+    currentQuestion,
+    isDragDrop,
+    dragDropAnswers,
+    handleAnswer,
+  ]);
 
   const handleNext = useCallback(() => {
     if (!currentQuestion) {
@@ -564,26 +315,28 @@ export default function LessonContent({
       return;
     }
 
+    resetQuestionState();
+
+    setRetryCount(
+      (previous) => previous + 1
+    );
+
     setCurrentQuestionIndex(
       (previous) => previous + 1
     );
   }, [
     currentQuestion,
     isLastQuestion,
+    resetQuestionState,
   ]);
 
-
   const handleRetry = useCallback(() => {
-    setShowResult(false);
-    setIsCorrect(null);
-    setSelectedOption(null);
-    setMatchingAnswers({});
-    setDragDropAnswers({});
+    resetQuestionState();
 
     setRetryCount(
       (previous) => previous + 1
     );
-  }, []);
+  }, [resetQuestionState]);
 
   const handleComplete = useCallback(() => {
     if (onComplete) {
@@ -592,10 +345,7 @@ export default function LessonContent({
     }
 
     navigation.goBack();
-  }, [
-    onComplete,
-    navigation,
-  ]);
+  }, [onComplete, navigation]);
 
   const handleBack = useCallback(() => {
     if (showComplete) {
@@ -604,49 +354,38 @@ export default function LessonContent({
     }
 
     setExitConfirmVisible(true);
-  }, [
-    showComplete,
-    handleComplete,
-  ]);
+  }, [showComplete, handleComplete]);
 
-  const handleExitConfirm =
-    useCallback(() => {
-      setExitConfirmVisible(false);
-      navigation.goBack();
-    }, [navigation]);
+  const handleExitConfirm = useCallback(() => {
+    setExitConfirmVisible(false);
+    navigation.goBack();
+  }, [navigation]);
 
-  const handleExitCancel =
-    useCallback(() => {
-      setExitConfirmVisible(false);
-    }, []);
+  const handleExitCancel = useCallback(() => {
+    setExitConfirmVisible(false);
+  }, []);
 
-  const handleReview =
-    useCallback(() => {
-      setCorrectAnswers(0);
-      setWrongQuestions([]);
+  const handleReview = useCallback(() => {
+    setCorrectAnswers(0);
+    setWrongQuestions([]);
 
-      setSelectedOption(null);
-      setMatchingAnswers({});
-      setDragDropAnswers({});
+    resetQuestionState();
 
-      setRetryCount(
-        (previous) => previous + 1
-      );
+    setRetryCount(
+      (previous) => previous + 1
+    );
 
-      setCurrentQuestionIndex(0);
-      setShowResult(false);
-      setIsCorrect(null);
-      setShowComplete(false);
-    }, []);
+    setCurrentQuestionIndex(0);
+    setShowComplete(false);
+  }, [resetQuestionState]);
 
   const renderMode = useCallback(() => {
     if (!currentQuestion) {
       return null;
     }
 
-
     const modeKey =
-      `q-${questionKey}`;
+      `q-${questionKey}-reset-${retryCount}`;
 
     switch (currentQuestionType) {
       case "listening_multiple_choice":
@@ -657,30 +396,6 @@ export default function LessonContent({
             showResult={showResult}
             onOptionSelect={
               handleMultipleChoiceSelect
-            }
-          />
-        );
-
-      case "matching":
-        return (
-          <MatchingMode
-            question={currentQuestion}
-            showResult={showResult}
-            resetKey={retryCount}
-            onMatchesChange={
-              handleMatchingAnswersChange
-            }
-          />
-        );
-
-      case "listening_matching":
-        return (
-          <ListeningMatchingMode
-            key={modeKey}
-            question={currentQuestion}
-            showResult={showResult}
-            onMatchesChange={
-              handleMatchingAnswersChange
             }
           />
         );
@@ -696,6 +411,7 @@ export default function LessonContent({
             onAnswerChange={
               handleDragDropAnswersChange
             }
+            theme={theme}
           />
         );
 
@@ -719,15 +435,12 @@ export default function LessonContent({
     currentQuestionType,
     showResult,
     handleMultipleChoiceSelect,
-    handleMatchingAnswersChange,
     isCorrect,
     handleDragDropAnswersChange,
+    theme,
   ]);
 
-  if (
-    !currentQuestion &&
-    !showComplete
-  ) {
+  if (!currentQuestion && !showComplete) {
     return (
       <SafeAreaView
         style={[
@@ -805,6 +518,7 @@ export default function LessonContent({
         ]}
       >
         <LessonCompleteScreen
+          type={type}
           lessonStats={lessonStats}
           onContinue={handleComplete}
           onReview={handleReview}
@@ -813,32 +527,25 @@ export default function LessonContent({
     );
   }
 
-  const feedbackBackground =
-    showResult
-      ? isCorrect
-        ? "#E8F7EE"
-        : "#FDECEC"
-      : theme.surface;
+  const feedbackBackground = theme.surface;
 
   const feedbackBorder =
     showResult
       ? isCorrect
-        ? "#B7E4C7"
-        : "#F5B5B5"
+        ? theme.success
+        : theme.error
       : theme.border;
 
   const feedbackColor =
     showResult
       ? isCorrect
-        ? "#16803C"
-        : "#C62828"
+        ? theme.success
+        : theme.error
       : theme.text;
 
   const canCheckDragDrop =
     isDragDrop &&
-    Boolean(
-      currentQuestion?.sentence
-    ) &&
+    Boolean(currentQuestion?.sentence) &&
     (
       currentQuestion.sentence.match(
         /\[_____\]/g
@@ -856,18 +563,6 @@ export default function LessonContent({
     isMultipleChoice &&
     selectedOption !== null;
 
-  const canCheckMatching =
-    isMatching &&
-    Array.isArray(
-      currentQuestion?.pairs
-    ) &&
-    currentQuestion.pairs.length >
-      0 &&
-    Object.keys(
-      matchingAnswers
-    ).length ===
-      currentQuestion.pairs.length;
-
   const handleCheck = () => {
     if (isDragDrop) {
       evaluateDragDrop();
@@ -876,18 +571,15 @@ export default function LessonContent({
 
     if (isMultipleChoice) {
       evaluateMultipleChoice();
-      return;
-    }
-
-    if (isMatching) {
-      evaluateMatching();
     }
   };
 
   const canCheck =
     canCheckDragDrop ||
-    canCheckMultipleChoice ||
-    canCheckMatching;
+    canCheckMultipleChoice;
+
+  const contentBottomPadding =
+    bottomSheetHeight + 24;
 
   return (
     <View
@@ -906,15 +598,12 @@ export default function LessonContent({
         cancelLabel="Cancel"
         confirmLabel="Exit"
         destructive
-        onConfirm={
-          handleExitConfirm
-        }
-        onCancel={
-          handleExitCancel
-        }
+        onConfirm={handleExitConfirm}
+        onCancel={handleExitCancel}
       />
 
       <SafeAreaView
+        edges={["top"]}
         style={styles.topArea}
       >
         <ProgressHeader
@@ -922,9 +611,7 @@ export default function LessonContent({
           currentCount={
             currentQuestionIndex + 1
           }
-          totalCount={
-            totalQuestions
-          }
+          totalCount={totalQuestions}
           onClose={handleBack}
         />
 
@@ -933,28 +620,22 @@ export default function LessonContent({
             styles.contentContainer,
             {
               paddingBottom:
-                160 +
-                insets.bottom,
+                contentBottomPadding,
             },
           ]}
-          showsVerticalScrollIndicator={
-            false
-          }
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
         >
-          <View
-            style={styles.questionHeader}
-          >
+          <View style={styles.questionHeader}>
             {isReview && (
               <View
                 style={[
                   styles.reviewBadge,
                   {
                     backgroundColor:
-                      theme.primary +
-                      "18",
+                      theme.primary + "18",
                     borderColor:
-                      theme.primary +
-                      "30",
+                      theme.primary + "30",
                   },
                 ]}
               >
@@ -990,14 +671,11 @@ export default function LessonContent({
               style={[
                 styles.questionText,
                 {
-                  color:
-                    theme.text,
+                  color: theme.text,
                 },
               ]}
             >
-              {
-                currentQuestion.question
-              }
+              {currentQuestion.question}
             </Text>
 
             {currentQuestion.instruction && (
@@ -1010,9 +688,7 @@ export default function LessonContent({
                   },
                 ]}
               >
-                {
-                  currentQuestion.instruction
-                }
+                {currentQuestion.instruction}
               </Text>
             )}
           </View>
@@ -1022,6 +698,18 @@ export default function LessonContent({
       </SafeAreaView>
 
       <View
+        onLayout={(event) => {
+          const height =
+            event.nativeEvent.layout.height;
+
+          if (
+            Math.abs(
+              height - bottomSheetHeight
+            ) > 1
+          ) {
+            setBottomSheetHeight(height);
+          }
+        }}
         style={[
           styles.bottomSheet,
           {
@@ -1039,9 +727,7 @@ export default function LessonContent({
       >
         {showResult && (
           <View
-            style={
-              styles.feedbackBanner
-            }
+            style={styles.feedbackBanner}
           >
             <Text
               style={[
@@ -1067,42 +753,18 @@ export default function LessonContent({
                   },
                 ]}
               >
-                {
-                  currentQuestion.explanation
-                }
+                {currentQuestion.explanation}
               </Text>
             )}
           </View>
         )}
 
-        <View
-          style={
-            styles.buttonWrapper
-          }
-        >
+        <View style={styles.buttonWrapper}>
           {!showResult ? (
             <Button
-              title={
-                isDragDrop ||
-                isMultipleChoice ||
-                isMatching
-                  ? "CHECK"
-                  : "CONTINUE"
-              }
-              onPress={
-                isDragDrop ||
-                isMultipleChoice ||
-                isMatching
-                  ? handleCheck
-                  : undefined
-              }
-              disabled={
-                isDragDrop ||
-                isMultipleChoice ||
-                isMatching
-                  ? !canCheck
-                  : true
-              }
+              title="CHECK"
+              onPress={handleCheck}
+              disabled={!canCheck}
               variant="primary"
             />
           ) : isCorrect ? (
@@ -1112,18 +774,14 @@ export default function LessonContent({
                   ? "FINISH"
                   : "CONTINUE"
               }
-              onPress={
-                handleNext
-              }
+              onPress={handleNext}
               variant="primary"
               status="success"
             />
           ) : (
             <Button
               title="TRY AGAIN"
-              onPress={
-                handleRetry
-              }
+              onPress={handleRetry}
               variant="primary"
               status="error"
             />
@@ -1147,7 +805,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 20,
+    paddingHorizontal: 20,
   },
 
   loadingText: {
@@ -1158,11 +816,11 @@ const styles = StyleSheet.create({
 
   contentContainer: {
     paddingHorizontal: 20,
-    paddingTop: 16,
+    paddingTop: 20,
   },
 
   questionHeader: {
-    marginBottom: 20,
+    marginBottom: 24,
   },
 
   reviewBadge: {
@@ -1181,7 +839,7 @@ const styles = StyleSheet.create({
   },
 
   questionLabel: {
-    marginBottom: 6,
+    marginBottom: 7,
     fontSize: 14,
     fontWeight: "700",
     textTransform: "uppercase",
@@ -1189,7 +847,7 @@ const styles = StyleSheet.create({
   },
 
   questionText: {
-    marginBottom: 6,
+    marginBottom: 7,
     fontSize: 24,
     lineHeight: 32,
     fontWeight: "800",
@@ -1224,6 +882,7 @@ const styles = StyleSheet.create({
   explanationText: {
     marginTop: 4,
     fontSize: 15,
+    lineHeight: 22,
     fontWeight: "600",
   },
 

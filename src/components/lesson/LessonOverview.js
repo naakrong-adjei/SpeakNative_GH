@@ -5,9 +5,9 @@ import {
   useMemo,
   useState,
 } from "react";
-import { 
+import { SafeAreaView } from "react-native-safe-area-context";
+import {
   ActivityIndicator,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,

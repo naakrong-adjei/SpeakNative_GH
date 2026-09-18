@@ -59,9 +59,9 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Water' in Twi?",
           options: [
-            { id: 1, text: "Nsuo" },
             { id: 2, text: "Aduane" },
             { id: 3, text: "Ɛmo" },
+            { id: 1, text: "Nsuo" },
             { id: 4, text: "Nammono" }
           ],
           correctOptionId: 1,
@@ -74,10 +74,10 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Food' in Twi?",
           options: [
+            { id: 4, text: "Mako" },
             { id: 1, text: "Nsuo" },
             { id: 2, text: "Aduane" },
-            { id: 3, text: "Ɛmo" },
-            { id: 4, text: "Mako" }
+            { id: 3, text: "Ɛmo" }
           ],
           correctOptionId: 2,
           hints: ["What you eat"],
@@ -89,10 +89,10 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Rice' in Twi?",
           options: [
-            { id: 1, text: "Nsuo" },
+            { id: 4, text: "Nsuomnam" },
             { id: 2, text: "Aduane" },
             { id: 3, text: "Ɛmo" },
-            { id: 4, text: "Nsuomnam" }
+            { id: 1, text: "Nsuo" }
           ],
           correctOptionId: 3,
           hints: ["A staple food"],
@@ -104,10 +104,10 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Meat' in Twi?",
           options: [
-            { id: 1, text: "Nsuo" },
             { id: 2, text: "Aduane" },
-            { id: 3, text: "Ɛmo" },
-            { id: 4, text: "Nammono" }
+            { id: 4, text: "Nammono" },
+            { id: 1, text: "Nsuo" },
+            { id: 3, text: "Ɛmo" }
           ],
           correctOptionId: 4,
           hints: ["From animals"],
@@ -119,10 +119,10 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Fish' in Twi?",
           options: [
-            { id: 1, text: "Nsuomnam" },
             { id: 2, text: "Aduane" },
-            { id: 3, text: "Ɛmo" },
-            { id: 4, text: "Mako" }
+            { id: 4, text: "Mako" },
+            { id: 1, text: "Nsuomnam" },
+            { id: 3, text: "Ɛmo" }
           ],
           correctOptionId: 1,
           hints: ["From the water"],
@@ -139,7 +139,10 @@ export default {
             { id: "opt2", text: "Nsuo" },
             { id: "opt3", text: "Ɛmo" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
           hints: ["Spicy ingredient"],
           explanation: "Mako = Pepper in Twi."
         }
@@ -180,10 +183,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'I am hungry' in Twi?",
           options: [
-            { id: 1, text: "Ɛkɔm de me" },
-            { id: 2, text: "Mepɛ sɛ mididi" },
             { id: 3, text: "Sukɔm de me" },
-            { id: 4, text: "Ɛyɛ dɛ" }
+            { id: 4, text: "Ɛyɛ dɛ" },
+            { id: 1, text: "Ɛkɔm de me" },
+            { id: 2, text: "Mepɛ sɛ mididi" }
           ],
           correctOptionId: 1,
           hints: ["Ɛkɔm = hunger"],
@@ -195,10 +198,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'I want to eat' in Twi?",
           options: [
-            { id: 1, text: "Ɛkɔm de me" },
-            { id: 2, text: "Mepɛ sɛ mididi" },
             { id: 3, text: "Sukɔm de me" },
-            { id: 4, text: "Mepa wo kyɛw ma me nsuo" }
+            { id: 2, text: "Mepɛ sɛ mididi" },
+            { id: 4, text: "Mepa wo kyɛw ma me nsuo" },
+            { id: 1, text: "Ɛkɔm de me" }
           ],
           correctOptionId: 2,
           hints: ["Mepɛ sɛ = I want to"],
@@ -210,10 +213,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'I am thirsty' in Twi?",
           options: [
+            { id: 4, text: "Ɛyɛ dɛ" },
             { id: 1, text: "Ɛkɔm de me" },
-            { id: 2, text: "Mepɛ sɛ mididi" },
             { id: 3, text: "Sukɔm de me" },
-            { id: 4, text: "Ɛyɛ dɛ" }
+            { id: 2, text: "Mepɛ sɛ mididi" }
           ],
           correctOptionId: 3,
           hints: ["Sukɔm = thirst"],
@@ -230,7 +233,10 @@ export default {
             { id: "opt2", text: "nsuo" },
             { id: "opt3", text: "mako" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
           hints: ["mididi = I eat"],
           explanation: "Mepɛ sɛ mididi = I want to eat in Twi."
         }
@@ -243,7 +249,13 @@ export default {
       title: "At the Table",
       icon: "restaurant-outline",
       description: "Learn useful phrases for dining in Twi",
-      words: ["Ɛyɛ dɛ", "Mepa wo kyɛw ma me nsuo", "Menni nammono", "Aduane no yɛ hye", "Mepa wo kyɛw fa ka no brɛ me"],
+      words: [
+        "Ɛyɛ dɛ",
+        "Mepa wo kyɛw ma me nsuo",
+        "Menni nammono",
+        "Aduane no yɛ hye",
+        "Mepa wo kyɛw fa ka no brɛ me"
+      ],
       vocabulary: [
         {
           id: 62,
@@ -283,10 +295,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'It is delicious' in Twi?",
           options: [
-            { id: 1, text: "Ɛyɛ dɛ" },
-            { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
             { id: 3, text: "Menni nammono" },
-            { id: 4, text: "Aduane no yɛ hye" }
+            { id: 1, text: "Ɛyɛ dɛ" },
+            { id: 4, text: "Aduane no yɛ hye" },
+            { id: 2, text: "Mepa wo kyɛw ma me nsuo" }
           ],
           correctOptionId: 1,
           hints: ["Ɛyɛ dɛ = it is sweet/delicious"],
@@ -298,10 +310,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'Give me water please' in Twi?",
           options: [
+            { id: 4, text: "Mepa wo kyɛw fa ka no brɛ me" },
             { id: 1, text: "Ɛyɛ dɛ" },
             { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
-            { id: 3, text: "Menni nammono" },
-            { id: 4, text: "Mepa wo kyɛw fa ka no brɛ me" }
+            { id: 3, text: "Menni nammono" }
           ],
           correctOptionId: 2,
           hints: ["nsuo = water"],
@@ -313,10 +325,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'I don't eat meat' in Twi?",
           options: [
-            { id: 1, text: "Ɛyɛ dɛ" },
             { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+            { id: 4, text: "Aduane no yɛ hye" },
             { id: 3, text: "Menni nammono" },
-            { id: 4, text: "Aduane no yɛ hye" }
+            { id: 1, text: "Ɛyɛ dɛ" }
           ],
           correctOptionId: 3,
           hints: ["Menni = I don't eat", "nammono = meat"],
@@ -328,10 +340,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'The food is hot' in Twi?",
           options: [
-            { id: 1, text: "Ɛyɛ dɛ" },
             { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
-            { id: 3, text: "Menni nammono" },
-            { id: 4, text: "Aduane no yɛ hye" }
+            { id: 4, text: "Aduane no yɛ hye" },
+            { id: 1, text: "Ɛyɛ dɛ" },
+            { id: 3, text: "Menni nammono" }
           ],
           correctOptionId: 4,
           hints: ["hye = hot"],
@@ -348,7 +360,10 @@ export default {
             { id: "opt2", text: "nsuo" },
             { id: "opt3", text: "nammono" }
           ],
-          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          correctDrop: {
+            blankId: "blank1",
+            itemId: "opt1"
+          },
           hints: ["brɛ me = bring to me"],
           explanation: "Mepa wo kyɛw fa ka no brɛ me = Bring the bill please in Twi."
         }
@@ -368,10 +383,10 @@ export default {
         instruction: "Select the correct Twi word.",
         question: "What is 'Water' in Twi?",
         options: [
-          { id: 1, text: "Nsuo" },
+          { id: 4, text: "Nammono" },
           { id: 2, text: "Aduane" },
-          { id: 3, text: "Ɛmo" },
-          { id: 4, text: "Nammono" }
+          { id: 1, text: "Nsuo" },
+          { id: 3, text: "Ɛmo" }
         ],
         correctOptionId: 1,
         hints: ["Essential for drinking"],
@@ -384,9 +399,9 @@ export default {
         question: "What is 'Rice' in Twi?",
         options: [
           { id: 1, text: "Nsuo" },
-          { id: 2, text: "Aduane" },
+          { id: 4, text: "Mako" },
           { id: 3, text: "Ɛmo" },
-          { id: 4, text: "Mako" }
+          { id: 2, text: "Aduane" }
         ],
         correctOptionId: 3,
         hints: ["A staple food"],
@@ -398,10 +413,10 @@ export default {
         instruction: "Select the correct Twi word.",
         question: "What is 'Fish' in Twi?",
         options: [
-          { id: 1, text: "Nsuomnam" },
+          { id: 4, text: "Mako" },
           { id: 2, text: "Nammono" },
-          { id: 3, text: "Ɛmo" },
-          { id: 4, text: "Mako" }
+          { id: 1, text: "Nsuomnam" },
+          { id: 3, text: "Ɛmo" }
         ],
         correctOptionId: 1,
         hints: ["From the water"],
@@ -414,8 +429,8 @@ export default {
         question: "What is 'Pepper' in Twi?",
         options: [
           { id: 1, text: "Nsuo" },
-          { id: 2, text: "Mako" },
           { id: 3, text: "Ɛmo" },
+          { id: 2, text: "Mako" },
           { id: 4, text: "Nsuomnam" }
         ],
         correctOptionId: 2,
@@ -428,10 +443,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'I am hungry' in Twi?",
         options: [
-          { id: 1, text: "Ɛkɔm de me" },
-          { id: 2, text: "Mepɛ sɛ mididi" },
           { id: 3, text: "Sukɔm de me" },
-          { id: 4, text: "Ɛyɛ dɛ" }
+          { id: 1, text: "Ɛkɔm de me" },
+          { id: 4, text: "Ɛyɛ dɛ" },
+          { id: 2, text: "Mepɛ sɛ mididi" }
         ],
         correctOptionId: 1,
         hints: ["Ɛkɔm = hunger"],
@@ -443,10 +458,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'I want to eat' in Twi?",
         options: [
+          { id: 4, text: "Mepa wo kyɛw ma me nsuo" },
           { id: 1, text: "Ɛkɔm de me" },
           { id: 2, text: "Mepɛ sɛ mididi" },
-          { id: 3, text: "Sukɔm de me" },
-          { id: 4, text: "Mepa wo kyɛw ma me nsuo" }
+          { id: 3, text: "Sukɔm de me" }
         ],
         correctOptionId: 2,
         hints: ["Mepɛ sɛ = I want to"],
@@ -458,10 +473,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'I am thirsty' in Twi?",
         options: [
-          { id: 1, text: "Ɛkɔm de me" },
           { id: 2, text: "Mepɛ sɛ mididi" },
+          { id: 4, text: "Ɛyɛ dɛ" },
           { id: 3, text: "Sukɔm de me" },
-          { id: 4, text: "Ɛyɛ dɛ" }
+          { id: 1, text: "Ɛkɔm de me" }
         ],
         correctOptionId: 3,
         hints: ["Sukɔm = thirst"],
@@ -473,10 +488,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'It is delicious' in Twi?",
         options: [
-          { id: 1, text: "Ɛyɛ dɛ" },
-          { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
           { id: 3, text: "Menni nammono" },
-          { id: 4, text: "Aduane no yɛ hye" }
+          { id: 4, text: "Aduane no yɛ hye" },
+          { id: 1, text: "Ɛyɛ dɛ" },
+          { id: 2, text: "Mepa wo kyɛw ma me nsuo" }
         ],
         correctOptionId: 1,
         hints: ["Ɛyɛ dɛ = it is sweet/delicious"],
@@ -489,9 +504,9 @@ export default {
         question: "How do you say 'Give me water please' in Twi?",
         options: [
           { id: 1, text: "Ɛyɛ dɛ" },
+          { id: 4, text: "Mepa wo kyɛw fa ka no brɛ me" },
           { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
-          { id: 3, text: "Menni nammono" },
-          { id: 4, text: "Mepa wo kyɛw fa ka no brɛ me" }
+          { id: 3, text: "Menni nammono" }
         ],
         correctOptionId: 2,
         hints: ["nsuo = water"],
@@ -503,10 +518,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'I don't eat meat' in Twi?",
         options: [
-          { id: 1, text: "Ɛyɛ dɛ" },
-          { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
+          { id: 4, text: "Aduane no yɛ hye" },
           { id: 3, text: "Menni nammono" },
-          { id: 4, text: "Aduane no yɛ hye" }
+          { id: 1, text: "Ɛyɛ dɛ" },
+          { id: 2, text: "Mepa wo kyɛw ma me nsuo" }
         ],
         correctOptionId: 3,
         hints: ["nammono = meat"],
@@ -518,10 +533,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'The food is hot' in Twi?",
         options: [
-          { id: 1, text: "Ɛyɛ dɛ" },
           { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
-          { id: 3, text: "Menni nammono" },
-          { id: 4, text: "Aduane no yɛ hye" }
+          { id: 1, text: "Ɛyɛ dɛ" },
+          { id: 4, text: "Aduane no yɛ hye" },
+          { id: 3, text: "Menni nammono" }
         ],
         correctOptionId: 4,
         hints: ["hye = hot"],
@@ -533,10 +548,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'Bring the bill please' in Twi?",
         options: [
-          { id: 1, text: "Mepa wo kyɛw fa ka no brɛ me" },
-          { id: 2, text: "Mepa wo kyɛw ma me nsuo" },
           { id: 3, text: "Menni nammono" },
-          { id: 4, text: "Aduane no yɛ hye" }
+          { id: 1, text: "Mepa wo kyɛw fa ka no brɛ me" },
+          { id: 4, text: "Aduane no yɛ hye" },
+          { id: 2, text: "Mepa wo kyɛw ma me nsuo" }
         ],
         correctOptionId: 1,
         hints: ["ka = bill"],

@@ -41,10 +41,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you ask 'How much is it?' in Twi?",
           options: [
-            { id: 1, text: "Ɛyɛ sɛn?" },
-            { id: 2, text: "Ne boɔ yɛ den dodo" },
             { id: 3, text: "Eyɛ fo" },
-            { id: 4, text: "Te me so" }
+            { id: 1, text: "Ɛyɛ sɛn?" },
+            { id: 4, text: "Te me so" },
+            { id: 2, text: "Ne boɔ yɛ den dodo" }
           ],
           correctOptionId: 1,
           hints: ["Question about price"],
@@ -57,10 +57,10 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter6/ne_boɔ_yɛ_den_dodo.m4a"),
           options: [
-            { id: 1, text: "How much is it?" },
+            { id: 4, text: "Reduce the price" },
             { id: 2, text: "It is too expensive" },
-            { id: 3, text: "It is cheap" },
-            { id: 4, text: "Reduce the price" }
+            { id: 1, text: "How much is it?" },
+            { id: 3, text: "It is cheap" }
           ],
           correctOptionId: 2,
           hints: ["den dodo = too much"],
@@ -72,10 +72,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'It is cheap' in Twi?",
           options: [
-            { id: 1, text: "Ɛyɛ sɛn?" },
+            { id: 4, text: "Wowɔ nsesa?" },
             { id: 2, text: "Ne boɔ yɛ den dodo" },
             { id: 3, text: "Eyɛ fo" },
-            { id: 4, text: "Wowɔ nsesa?" }
+            { id: 1, text: "Ɛyɛ sɛn?" }
           ],
           correctOptionId: 3,
           hints: ["fo = cheap"],
@@ -88,7 +88,7 @@ export default {
       id: "6-2",
       type: "phrases",
       title: "Bargaining",
-      icon: "handshake-outline",
+      icon: "people-outline",
       description: "Learn how to bargain at the market in Twi",
       words: ["Te me so", "Wowɔ nsesa?", "Kyerɛ me foforɔ"],
       vocabulary: [
@@ -118,10 +118,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'Reduce the price' in Twi?",
           options: [
-            { id: 1, text: "Te me so" },
             { id: 2, text: "Wowɔ nsesa?" },
-            { id: 3, text: "Kyerɛ me foforɔ" },
-            { id: 4, text: "Ɛyɛ sɛn?" }
+            { id: 4, text: "Ɛyɛ sɛn?" },
+            { id: 1, text: "Te me so" },
+            { id: 3, text: "Kyerɛ me foforɔ" }
           ],
           correctOptionId: 1,
           hints: ["Te me so = reduce it for me"],
@@ -134,10 +134,10 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter6/wowɔ_nsesa.m4a"),
           options: [
-            { id: 1, text: "Reduce the price" },
-            { id: 2, text: "Do you have change?" },
             { id: 3, text: "Show me another one" },
-            { id: 4, text: "I will take it" }
+            { id: 1, text: "Reduce the price" },
+            { id: 4, text: "I will take it" },
+            { id: 2, text: "Do you have change?" }
           ],
           correctOptionId: 2,
           hints: ["nsesa = change"],
@@ -149,10 +149,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'Show me another one' in Twi?",
           options: [
-            { id: 1, text: "Te me so" },
-            { id: 2, text: "Wowɔ nsesa?" },
+            { id: 4, text: "Kyekyere ma me" },
             { id: 3, text: "Kyerɛ me foforɔ" },
-            { id: 4, text: "Kyekyere ma me" }
+            { id: 1, text: "Te me so" },
+            { id: 2, text: "Wowɔ nsesa?" }
           ],
           correctOptionId: 3,
           hints: ["kyerɛ = show", "foforɔ = another"],
@@ -195,10 +195,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'I want to buy this' in Twi?",
           options: [
-            { id: 1, text: "Mepɛ sɛ metɔ wei" },
-            { id: 2, text: "Mɛfa" },
             { id: 3, text: "Kyekyere ma me" },
-            { id: 4, text: "Merehwɛ kwa" }
+            { id: 4, text: "Merehwɛ kwa" },
+            { id: 1, text: "Mepɛ sɛ metɔ wei" },
+            { id: 2, text: "Mɛfa" }
           ],
           correctOptionId: 1,
           hints: ["Mepɛ sɛ = I want to", "metɔ = I buy"],
@@ -213,8 +213,8 @@ export default {
           options: [
             { id: 1, text: "I want to buy this" },
             { id: 2, text: "I will take it" },
-            { id: 3, text: "Wrap it for me" },
-            { id: 4, text: "I am just looking" }
+            { id: 4, text: "I am just looking" },
+            { id: 3, text: "Wrap it for me" }
           ],
           correctOptionId: 2,
           hints: ["Mɛfa = I will take it"],
@@ -226,10 +226,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'Wrap it for me' in Twi?",
           options: [
-            { id: 1, text: "Mepɛ sɛ metɔ wei" },
+            { id: 4, text: "Te me so" },
             { id: 2, text: "Mɛfa" },
             { id: 3, text: "Kyekyere ma me" },
-            { id: 4, text: "Te me so" }
+            { id: 1, text: "Mepɛ sɛ metɔ wei" }
           ],
           correctOptionId: 3,
           hints: ["Kyekyere = wrap", "ma me = for me"],
@@ -272,10 +272,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'I am just looking' in Twi?",
           options: [
-            { id: 1, text: "Merehwɛ kwa" },
             { id: 2, text: "Dwam" },
-            { id: 3, text: "Sika" },
-            { id: 4, text: "Ɛyɛ sɛn?" }
+            { id: 4, text: "Ɛyɛ sɛn?" },
+            { id: 1, text: "Merehwɛ kwa" },
+            { id: 3, text: "Sika" }
           ],
           correctOptionId: 1,
           hints: ["hwɛ = look", "kwa = just"],
@@ -288,10 +288,10 @@ export default {
           question: "What word did you hear?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter6/dwam.m4a"),
           options: [
-            { id: 1, text: "Market" },
-            { id: 2, text: "Money" },
             { id: 3, text: "Change" },
-            { id: 4, text: "Price" }
+            { id: 1, text: "Market" },
+            { id: 4, text: "Price" },
+            { id: 2, text: "Money" }
           ],
           correctOptionId: 1,
           hints: ["Where you buy things"],
@@ -303,9 +303,9 @@ export default {
           instruction: "Select the correct Twi word.",
           question: "What is 'Money' in Twi?",
           options: [
+            { id: 3, text: "Nsesa" },
             { id: 1, text: "Dwam" },
             { id: 2, text: "Sika" },
-            { id: 3, text: "Nsesa" },
             { id: 4, text: "Boɔ" }
           ],
           correctOptionId: 2,
@@ -328,10 +328,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you ask 'How much is it?' in Twi?",
         options: [
-          { id: 1, text: "Ɛyɛ sɛn?" },
+          { id: 4, text: "Te me so" },
           { id: 2, text: "Ne boɔ yɛ den dodo" },
-          { id: 3, text: "Eyɛ fo" },
-          { id: 4, text: "Te me so" }
+          { id: 1, text: "Ɛyɛ sɛn?" },
+          { id: 3, text: "Eyɛ fo" }
         ],
         correctOptionId: 1,
         hints: ["Question about price"],
@@ -345,9 +345,9 @@ export default {
         audioUrl: require("../../../../assets/audio/twi/beginner/chapter6/kyerɛ_me_foforɔ.m4a"),
         options: [
           { id: 1, text: "Reduce the price" },
-          { id: 2, text: "Do you have change?" },
           { id: 3, text: "Show me another one" },
-          { id: 4, text: "I will take it" }
+          { id: 4, text: "I will take it" },
+          { id: 2, text: "Do you have change?" }
         ],
         correctOptionId: 3,
         hints: ["foforɔ = another"],
@@ -359,10 +359,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'It is too expensive' in Twi?",
         options: [
-          { id: 1, text: "Ɛyɛ sɛn?" },
-          { id: 2, text: "Ne boɔ yɛ den dodo" },
           { id: 3, text: "Eyɛ fo" },
-          { id: 4, text: "Te me so" }
+          { id: 2, text: "Ne boɔ yɛ den dodo" },
+          { id: 4, text: "Te me so" },
+          { id: 1, text: "Ɛyɛ sɛn?" }
         ],
         correctOptionId: 2,
         hints: ["den dodo = too much"],
@@ -375,10 +375,10 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/twi/beginner/chapter6/kyekyere_ma_me.m4a"),
         options: [
-          { id: 1, text: "I want to buy this" },
-          { id: 2, text: "I will take it" },
+          { id: 4, text: "I am just looking" },
           { id: 3, text: "Wrap it for me" },
-          { id: 4, text: "I am just looking" }
+          { id: 1, text: "I want to buy this" },
+          { id: 2, text: "I will take it" }
         ],
         correctOptionId: 3,
         hints: ["Kyekyere = wrap"],
@@ -390,10 +390,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'I want to buy this' in Twi?",
         options: [
-          { id: 1, text: "Mepɛ sɛ metɔ wei" },
           { id: 2, text: "Mɛfa" },
+          { id: 4, text: "Merehwɛ kwa" },
           { id: 3, text: "Kyekyere ma me" },
-          { id: 4, text: "Merehwɛ kwa" }
+          { id: 1, text: "Mepɛ sɛ metɔ wei" }
         ],
         correctOptionId: 1,
         hints: ["metɔ = I buy"],
@@ -405,10 +405,10 @@ export default {
         instruction: "Select the correct Twi word.",
         question: "What is 'Market' in Twi?",
         options: [
+          { id: 4, text: "Boɔ" },
           { id: 1, text: "Dwam" },
-          { id: 2, text: "Sika" },
           { id: 3, text: "Nsesa" },
-          { id: 4, text: "Boɔ" }
+          { id: 2, text: "Sika" }
         ],
         correctOptionId: 1,
         hints: ["Where you buy things"],
@@ -420,10 +420,10 @@ export default {
         instruction: "Select the correct Twi word.",
         question: "What is 'Money' in Twi?",
         options: [
-          { id: 1, text: "Dwam" },
-          { id: 2, text: "Sika" },
           { id: 3, text: "Nsesa" },
-          { id: 4, text: "Boɔ" }
+          { id: 2, text: "Sika" },
+          { id: 4, text: "Boɔ" },
+          { id: 1, text: "Dwam" }
         ],
         correctOptionId: 2,
         hints: ["What you pay with"],
@@ -435,10 +435,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'Do you have change?' in Twi?",
         options: [
+          { id: 4, text: "Mɛfa" },
           { id: 1, text: "Te me so" },
           { id: 2, text: "Wowɔ nsesa?" },
-          { id: 3, text: "Kyerɛ me foforɔ" },
-          { id: 4, text: "Mɛfa" }
+          { id: 3, text: "Kyerɛ me foforɔ" }
         ],
         correctOptionId: 2,
         hints: ["nsesa = change"],
@@ -450,10 +450,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'I will take it' in Twi?",
         options: [
-          { id: 1, text: "Mepɛ sɛ metɔ wei" },
-          { id: 2, text: "Mɛfa" },
           { id: 3, text: "Kyekyere ma me" },
-          { id: 4, text: "Merehwɛ kwa" }
+          { id: 2, text: "Mɛfa" },
+          { id: 4, text: "Merehwɛ kwa" },
+          { id: 1, text: "Mepɛ sɛ metɔ wei" }
         ],
         correctOptionId: 2,
         hints: ["Mɛfa = I will take it"],
@@ -465,10 +465,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'Reduce the price' in Twi?",
         options: [
-          { id: 1, text: "Te me so" },
           { id: 2, text: "Wowɔ nsesa?" },
-          { id: 3, text: "Kyerɛ me foforɔ" },
-          { id: 4, text: "Ɛyɛ sɛn?" }
+          { id: 1, text: "Te me so" },
+          { id: 4, text: "Ɛyɛ sɛn?" },
+          { id: 3, text: "Kyerɛ me foforɔ" }
         ],
         correctOptionId: 1,
         hints: ["Te me so = reduce it for me"],

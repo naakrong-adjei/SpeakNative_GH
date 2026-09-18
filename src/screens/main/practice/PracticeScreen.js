@@ -1,20 +1,20 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
-
 import {
   ActivityIndicator,
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuth, useUser } from "@clerk/expo";
 
 import LessonContent from "../../../components/lesson/LessonContent";
 import VocabularyIntroScreen from "../../../components/lesson/VocabularyIntroScreen";
+import ChapterCompleteScreen from "../../../components/lesson/ChapterCompleteScreen";
+import LevelCompleteScreen from "../../../components/lesson/LevelCompleteScreen";
 import { useTheme } from "../../../context/ThemeContext";
 
 import {
@@ -23,6 +23,8 @@ import {
   markReviewComplete,
   markVocabularyComplete,
   completeLessonActivity,
+  checkAndAwardChapterXP,
+  areAllChapterLessonsComplete,
 } from "../../../lib/lessonProgress";
 
 import { getLanguageData } from "../../../utils/lessonData";
@@ -35,14 +37,22 @@ export default function PracticeScreen({
   level = "beginner",
   mode,
   isReview = false,
-  sectionTitle,
-  quizAlreadyCompleted,
 }) {
   const router = useRouter();
   const { theme } = useTheme();
-
   const { getToken } = useAuth();
   const { user } = useUser();
+
+  const [loading, setLoading] = useState(true);
+  const [vocabulary, setVocabulary] = useState([]);
+  const [questions, setQuestions] = useState([]);
+  const [lessonData, setLessonData] = useState(null);
+  const [showVocabulary, setShowVocabulary] = useState(false);
+  const [showChapterComplete, setShowChapterComplete] =
+    useState(false);
+  const [showLevelComplete, setShowLevelComplete] =
+    useState(false);
+  const [chapterXP, setChapterXP] = useState(0);
 
   const supabase = useMemo(() => {
     if (typeof getToken !== "function") {
@@ -52,24 +62,61 @@ export default function PracticeScreen({
     return createSupabaseClient(getToken);
   }, [getToken]);
 
-  const [loading, setLoading] = useState(true);
-  const [vocabulary, setVocabulary] = useState([]);
-  const [questions, setQuestions] = useState([]);
-  const [lessonData, setLessonData] = useState(null);
-  const [showVocabulary, setShowVocabulary] = useState(false);
+  const completionType =
+    mode === "quiz" ? "quiz" : "lesson";
+
+  const levelTitle = useMemo(() => {
+    if (!level) {
+      return "Level completed";
+    }
+
+    return String(level)
+      .replace(/[-_]/g, " ")
+      .replace(/\b\w/g, (character) =>
+        character.toUpperCase()
+      );
+  }, [level]);
+
+  const chapter = useMemo(() => {
+    if (!sectionId) {
+      return null;
+    }
+
+    try {
+      const languageData = getLanguageData(
+        language,
+        level
+      );
+
+      for (const [chapterId, currentChapter] of Object.entries(
+        languageData || {}
+      )) {
+        if (
+          currentChapter?.sections?.some(
+            (section) => section?.id === sectionId
+          )
+        ) {
+          return {
+            ...currentChapter,
+            id: currentChapter?.id || chapterId,
+          };
+        }
+      }
+    } catch {
+      return null;
+    }
+
+    return null;
+  }, [sectionId, language, level]);
 
   useEffect(() => {
     let mounted = true;
 
     const loadLesson = () => {
+      setLoading(true);
+
       try {
-        setLoading(true);
-
-        let foundSection = null;
-
-        if (sectionDataProp) {
-          foundSection = sectionDataProp;
-        }
+        let foundSection = sectionDataProp || null;
 
         if (!foundSection && sectionId) {
           const languageData = getLanguageData(
@@ -77,27 +124,22 @@ export default function PracticeScreen({
             level
           );
 
-          for (const chapter of Object.values(
+          for (const currentChapter of Object.values(
             languageData || {}
           )) {
-            if (Array.isArray(chapter?.sections)) {
-              const section =
-                chapter.sections.find(
-                  (item) =>
-                    item?.id === sectionId
-                );
+            const section = currentChapter?.sections?.find(
+              (item) => item?.id === sectionId
+            );
 
-              if (section) {
-                foundSection = section;
-                break;
-              }
+            if (section) {
+              foundSection = section;
+              break;
             }
 
             if (
-              chapter?.review &&
-              chapter.review.id === sectionId
+              currentChapter?.review?.id === sectionId
             ) {
-              foundSection = chapter.review;
+              foundSection = currentChapter.review;
               break;
             }
           }
@@ -132,28 +174,21 @@ export default function PracticeScreen({
         setLessonData(foundSection);
         setVocabulary(safeVocabulary);
         setQuestions(safeQuestions);
-
-        const shouldShowVocabulary =
-          mode !== "quiz" &&
-          mode !== "review" &&
-          !isReview &&
-          safeVocabulary.length > 0;
-
         setShowVocabulary(
-          shouldShowVocabulary
+          mode !== "quiz" &&
+            mode !== "review" &&
+            !isReview &&
+            safeVocabulary.length > 0
         );
-      } catch (error) {
-        console.error(
-          "Error loading practice lesson:",
-          error
-        );
-
-        if (mounted) {
-          setLessonData(null);
-          setVocabulary([]);
-          setQuestions([]);
-          setShowVocabulary(false);
+      } catch {
+        if (!mounted) {
+          return;
         }
+
+        setLessonData(null);
+        setVocabulary([]);
+        setQuestions([]);
+        setShowVocabulary(false);
       } finally {
         if (mounted) {
           setLoading(false);
@@ -176,56 +211,63 @@ export default function PracticeScreen({
   ]);
 
   const recordActivity = async () => {
-    if (
-      !supabase ||
-      !user?.id
-    ) {
+    if (!supabase || !user?.id || !sectionId) {
       return;
     }
 
     try {
-      const result =
-        await completeLessonActivity(
-          supabase,
-          user.id,
+      await completeLessonActivity(
+        supabase,
+        user.id,
+        sectionId,
+        language,
+        level
+      );
+    } catch {}
+  };
+
+  const handleVocabularyOnlyComplete = async () => {
+    if (!sectionId) {
+      router.back();
+      return;
+    }
+
+    try {
+      if (mode === "review" || isReview) {
+        await markReviewComplete(
           sectionId,
           language,
           level
         );
-
-      if (!result?.success) {
-        console.warn(
-          "Daily activity could not be recorded."
+      } else {
+        await incrementLessonCompletion(
+          sectionId,
+          language,
+          level
         );
       }
-    } catch (error) {
-      console.error(
-        "Error recording daily activity:",
-        error
-      );
-    }
+
+      await recordActivity();
+    } catch {}
+
+    router.back();
   };
 
   const handleStartLesson = async () => {
-    try {
-      if (
-        sectionId &&
-        mode !== "quiz" &&
-        mode !== "review" &&
-        !isReview &&
-        vocabulary.length > 0
-      ) {
+    if (
+      sectionId &&
+      mode !== "quiz" &&
+      mode !== "review" &&
+      !isReview &&
+      vocabulary.length > 0
+    ) {
+      try {
         await markVocabularyComplete(
           sectionId,
           language,
           level
         );
-      }
-    } catch (error) {
-      console.error(
-        "Error saving vocabulary progress:",
-        error
-      );
+      } catch {}
     }
 
     if (questions.length === 0) {
@@ -235,44 +277,6 @@ export default function PracticeScreen({
 
     setShowVocabulary(false);
   };
-
-  const handleVocabularyOnlyComplete =
-    async () => {
-      try {
-        if (!sectionId) {
-          router.back();
-          return;
-        }
-
-        if (mode === "review" || isReview) {
-          await markReviewComplete(
-            sectionId,
-            language,
-            level
-          );
-
-          await recordActivity();
-
-          router.back();
-          return;
-        }
-
-        await incrementLessonCompletion(
-          sectionId,
-          language,
-          level
-        );
-
-        await recordActivity();
-      } catch (error) {
-        console.error(
-          "Error completing activity:",
-          error
-        );
-      } finally {
-        router.back();
-      }
-    };
 
   const handleSkipVocabulary = () => {
     if (questions.length === 0) {
@@ -298,15 +302,11 @@ export default function PracticeScreen({
         );
 
         await recordActivity();
-
         router.back();
         return;
       }
 
-      if (
-        mode === "quiz" &&
-        questions.length > 0
-      ) {
+      if (mode === "quiz" && questions.length > 0) {
         await markQuizComplete(
           sectionId,
           language,
@@ -314,6 +314,28 @@ export default function PracticeScreen({
         );
 
         await recordActivity();
+
+        if (chapter && supabase && user?.id) {
+          const result =
+            await checkAndAwardChapterXP(
+              chapter,
+              supabase,
+              user.id,
+              language,
+              level
+            );
+
+          if (
+            result?.completed &&
+            result?.xpAwarded
+          ) {
+            setChapterXP(
+              Number(result.xp) || 0
+            );
+            setShowChapterComplete(true);
+            return;
+          }
+        }
 
         router.back();
         return;
@@ -326,31 +348,91 @@ export default function PracticeScreen({
       );
 
       await recordActivity();
+    } catch {}
 
-      router.back();
-    } catch (error) {
-      console.error(
-        "Error completing lesson:",
-        error
-      );
-
-      router.back();
-    }
-  };
-
-  const handleBack = () => {
     router.back();
   };
+
+  const handleChapterContinue = async () => {
+    try {
+      const languageData = getLanguageData(
+        language,
+        level
+      );
+
+      const chapters = Object.entries(
+        languageData || {}
+      ).map(
+        ([chapterId, currentChapter]) => ({
+          ...currentChapter,
+          id:
+            currentChapter?.id ||
+            chapterId,
+        })
+      );
+
+      if (!chapters.length) {
+        router.back();
+        return;
+      }
+
+      const chapterResults = await Promise.all(
+        chapters.map((currentChapter) =>
+          areAllChapterLessonsComplete(
+            currentChapter,
+            language,
+            level
+          )
+        )
+      );
+
+      const levelCompleted =
+        chapterResults.every(Boolean);
+
+      setShowChapterComplete(false);
+      setChapterXP(0);
+
+      if (levelCompleted) {
+        setShowLevelComplete(true);
+        return;
+      }
+    } catch {}
+
+    router.back();
+  };
+
+  const handleLevelContinue = () => {
+    setShowLevelComplete(false);
+    router.back();
+  };
+
+  if (showLevelComplete) {
+    return (
+      <LevelCompleteScreen
+        levelTitle={levelTitle}
+        onContinue={handleLevelContinue}
+      />
+    );
+  }
+
+  if (showChapterComplete) {
+    return (
+      <ChapterCompleteScreen
+        chapterTitle={
+          chapter?.title || "Chapter completed"
+        }
+        xp={chapterXP}
+        onContinue={handleChapterContinue}
+      />
+    );
+  }
 
   if (loading) {
     return (
       <SafeAreaView
         style={[
           styles.container,
-          {
-            backgroundColor:
-              theme.background,
-          },
+          { backgroundColor: theme.background },
         ]}
       >
         <View style={styles.center}>
@@ -362,10 +444,7 @@ export default function PracticeScreen({
           <Text
             style={[
               styles.loadingText,
-              {
-                color:
-                  theme.secondaryText,
-              },
+              { color: theme.secondaryText },
             ]}
           >
             Loading lesson...
@@ -380,15 +459,12 @@ export default function PracticeScreen({
       <SafeAreaView
         style={[
           styles.container,
-          {
-            backgroundColor:
-              theme.background,
-          },
+          { backgroundColor: theme.background },
         ]}
       >
         <View style={styles.header}>
           <TouchableOpacity
-            onPress={handleBack}
+            onPress={router.back}
             activeOpacity={0.7}
             hitSlop={{
               top: 10,
@@ -408,9 +484,7 @@ export default function PracticeScreen({
           <Text
             style={[
               styles.headerTitle,
-              {
-                color: theme.text,
-              },
+              { color: theme.text },
             ]}
           >
             Practice
@@ -439,9 +513,7 @@ export default function PracticeScreen({
           <Text
             style={[
               styles.noContentTitle,
-              {
-                color: theme.text,
-              },
+              { color: theme.text },
             ]}
           >
             Lesson not found
@@ -450,10 +522,7 @@ export default function PracticeScreen({
           <Text
             style={[
               styles.noContentText,
-              {
-                color:
-                  theme.secondaryText,
-              },
+              { color: theme.secondaryText },
             ]}
           >
             We couldn't load this lesson.
@@ -462,17 +531,12 @@ export default function PracticeScreen({
           <TouchableOpacity
             style={[
               styles.backButtonLarge,
-              {
-                backgroundColor:
-                  theme.primary,
-              },
+              { backgroundColor: theme.primary },
             ]}
-            onPress={handleBack}
+            onPress={router.back}
             activeOpacity={0.8}
           >
-            <Text
-              style={styles.backButtonText}
-            >
+            <Text style={styles.backButtonText}>
               Go Back
             </Text>
           </TouchableOpacity>
@@ -481,28 +545,18 @@ export default function PracticeScreen({
     );
   }
 
-  if (
-    showVocabulary &&
-    vocabulary.length > 0
-  ) {
+  if (showVocabulary && vocabulary.length > 0) {
     return (
       <SafeAreaView
         style={[
           styles.container,
-          {
-            backgroundColor:
-              theme.background,
-          },
+          { backgroundColor: theme.background },
         ]}
       >
         <VocabularyIntroScreen
           vocabulary={vocabulary}
-          onStartLesson={
-            handleStartLesson
-          }
-          onSkip={
-            handleSkipVocabulary
-          }
+          onStartLesson={handleStartLesson}
+          onSkip={handleSkipVocabulary}
         />
       </SafeAreaView>
     );
@@ -513,10 +567,7 @@ export default function PracticeScreen({
       <SafeAreaView
         style={[
           styles.container,
-          {
-            backgroundColor:
-              theme.background,
-          },
+          { backgroundColor: theme.background },
         ]}
       >
         <LessonContent
@@ -525,6 +576,7 @@ export default function PracticeScreen({
           vocabulary={vocabulary}
           onComplete={handleComplete}
           isReview={isReview}
+          type={completionType}
         />
       </SafeAreaView>
     );
@@ -534,10 +586,7 @@ export default function PracticeScreen({
     <SafeAreaView
       style={[
         styles.container,
-        {
-          backgroundColor:
-            theme.background,
-        },
+        { backgroundColor: theme.background },
       ]}
     >
       <View style={styles.center}>
@@ -560,9 +609,7 @@ export default function PracticeScreen({
         <Text
           style={[
             styles.completedTitle,
-            {
-              color: theme.text,
-            },
+            { color: theme.text },
           ]}
         >
           Lesson Complete
@@ -571,30 +618,21 @@ export default function PracticeScreen({
         <Text
           style={[
             styles.completedSubtitle,
-            {
-              color:
-                theme.secondaryText,
-            },
+            { color: theme.secondaryText },
           ]}
         >
-          You have completed this
-          lesson.
+          You have completed this lesson.
         </Text>
 
         <TouchableOpacity
           style={[
             styles.backButtonLarge,
-            {
-              backgroundColor:
-                theme.primary,
-            },
+            { backgroundColor: theme.primary },
           ]}
-          onPress={handleBack}
+          onPress={router.back}
           activeOpacity={0.8}
         >
-          <Text
-            style={styles.backButtonText}
-          >
+          <Text style={styles.backButtonText}>
             Continue
           </Text>
         </TouchableOpacity>

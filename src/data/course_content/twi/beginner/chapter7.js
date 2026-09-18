@@ -47,10 +47,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you ask 'Where is the market?' in Twi?",
           options: [
-            { id: 1, text: "Adwa no wɔ he?" },
             { id: 2, text: "Agyananbia no wɔ he?" },
-            { id: 3, text: "Mayera" },
-            { id: 4, text: "Mɛyɛ dɛn adu hɔ?" }
+            { id: 4, text: "Mɛyɛ dɛn adu hɔ?" },
+            { id: 1, text: "Adwa no wɔ he?" },
+            { id: 3, text: "Mayera" }
           ],
           correctOptionId: 1,
           hints: ["adwa = market", "wɔ he = where"],
@@ -64,8 +64,8 @@ export default {
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/agyananbia_no_wɔ_he.m4a"),
           options: [
             { id: 1, text: "Where is the market?" },
-            { id: 2, text: "Where is the toilet?" },
             { id: 3, text: "I am lost" },
+            { id: 2, text: "Where is the toilet?" },
             { id: 4, text: "How do I get there?" }
           ],
           correctOptionId: 2,
@@ -78,10 +78,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'I am lost' in Twi?",
           options: [
-            { id: 1, text: "Adwa no wɔ he?" },
+            { id: 4, text: "Kɔ tee" },
             { id: 2, text: "Agyananbia no wɔ he?" },
             { id: 3, text: "Mayera" },
-            { id: 4, text: "Kɔ tee" }
+            { id: 1, text: "Adwa no wɔ he?" }
           ],
           correctOptionId: 3,
           hints: ["Mayera = I am lost"],
@@ -94,10 +94,10 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/mɛyɛ_dɛn_adu_hɔ.m4a"),
           options: [
-            { id: 1, text: "Where is the market?" },
-            { id: 2, text: "Where is the toilet?" },
             { id: 3, text: "I am lost" },
-            { id: 4, text: "How do I get there?" }
+            { id: 1, text: "Where is the market?" },
+            { id: 4, text: "How do I get there?" },
+            { id: 2, text: "Where is the toilet?" }
           ],
           correctOptionId: 4,
           hints: ["adu hɔ = get there"],
@@ -110,7 +110,7 @@ export default {
       id: "7-2",
       type: "phrases",
       title: "Giving Directions",
-      icon: "navigation-outline",
+      icon: "map-outline",
       description: "Learn how to give directions in Twi",
       words: ["Kɔ tee", "Dane nifa", "Dane benkum", "Fa saa kwan yi so"],
       vocabulary: [
@@ -146,10 +146,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'Go straight' in Twi?",
           options: [
+            { id: 4, text: "Fa saa kwan yi so" },
             { id: 1, text: "Kɔ tee" },
-            { id: 2, text: "Dane nifa" },
             { id: 3, text: "Dane benkum" },
-            { id: 4, text: "Fa saa kwan yi so" }
+            { id: 2, text: "Dane nifa" }
           ],
           correctOptionId: 1,
           hints: ["Kɔ = go", "tee = straight"],
@@ -162,10 +162,10 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/dane_nifa.m4a"),
           options: [
-            { id: 1, text: "Go straight" },
             { id: 2, text: "Turn right" },
-            { id: 3, text: "Turn left" },
-            { id: 4, text: "Follow this road" }
+            { id: 4, text: "Follow this road" },
+            { id: 1, text: "Go straight" },
+            { id: 3, text: "Turn left" }
           ],
           correctOptionId: 2,
           hints: ["nifa = right"],
@@ -177,10 +177,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'Turn left' in Twi?",
           options: [
-            { id: 1, text: "Kɔ tee" },
             { id: 2, text: "Dane nifa" },
-            { id: 3, text: "Dane benkum" },
-            { id: 4, text: "Fa saa kwan yi so" }
+            { id: 1, text: "Kɔ tee" },
+            { id: 4, text: "Fa saa kwan yi so" },
+            { id: 3, text: "Dane benkum" }
           ],
           correctOptionId: 3,
           hints: ["benkum = left"],
@@ -193,10 +193,10 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/fa_saa_kwan_yi_so.m4a"),
           options: [
-            { id: 1, text: "Go straight" },
-            { id: 2, text: "Turn right" },
             { id: 3, text: "Turn left" },
-            { id: 4, text: "Follow this road" }
+            { id: 4, text: "Follow this road" },
+            { id: 1, text: "Go straight" },
+            { id: 2, text: "Turn right" }
           ],
           correctOptionId: 4,
           hints: ["kwan = road"],
@@ -245,10 +245,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'It is far' in Twi?",
           options: [
-            { id: 1, text: "Ɛwɔ akyiri" },
-            { id: 2, text: "Ɛbɛn" },
             { id: 3, text: "Efie no akyi" },
-            { id: 4, text: "Sukuu no anim" }
+            { id: 1, text: "Ɛwɔ akyiri" },
+            { id: 4, text: "Sukuu no anim" },
+            { id: 2, text: "Ɛbɛn" }
           ],
           correctOptionId: 1,
           hints: ["akyiri = far"],
@@ -261,10 +261,10 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/ɛbɛn.m4a"),
           options: [
-            { id: 1, text: "It is far" },
+            { id: 4, text: "In front of the school" },
             { id: 2, text: "It is near" },
-            { id: 3, text: "Behind the house" },
-            { id: 4, text: "In front of the school" }
+            { id: 1, text: "It is far" },
+            { id: 3, text: "Behind the house" }
           ],
           correctOptionId: 2,
           hints: ["ɛbɛn = near"],
@@ -276,10 +276,10 @@ export default {
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'Behind the house' in Twi?",
           options: [
-            { id: 1, text: "Ɛwɔ akyiri" },
             { id: 2, text: "Ɛbɛn" },
+            { id: 4, text: "Sukuu no anim" },
             { id: 3, text: "Efie no akyi" },
-            { id: 4, text: "Sukuu no anim" }
+            { id: 1, text: "Ɛwɔ akyiri" }
           ],
           correctOptionId: 3,
           hints: ["efie = house", "akyi = behind"],
@@ -293,9 +293,9 @@ export default {
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/sukuu_no_anim.m4a"),
           options: [
             { id: 1, text: "It is far" },
-            { id: 2, text: "It is near" },
             { id: 3, text: "Behind the house" },
-            { id: 4, text: "In front of the school" }
+            { id: 4, text: "In front of the school" },
+            { id: 2, text: "It is near" }
           ],
           correctOptionId: 4,
           hints: ["sukuu = school", "anim = front"],
@@ -317,10 +317,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you ask 'Where is the market?' in Twi?",
         options: [
+          { id: 4, text: "Mɛyɛ dɛn adu hɔ?" },
           { id: 1, text: "Adwa no wɔ he?" },
-          { id: 2, text: "Agyananbia no wɔ he?" },
           { id: 3, text: "Mayera" },
-          { id: 4, text: "Mɛyɛ dɛn adu hɔ?" }
+          { id: 2, text: "Agyananbia no wɔ he?" }
         ],
         correctOptionId: 1,
         hints: ["adwa = market"],
@@ -334,9 +334,9 @@ export default {
         audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/dane_benkum.m4a"),
         options: [
           { id: 1, text: "Go straight" },
-          { id: 2, text: "Turn right" },
           { id: 3, text: "Turn left" },
-          { id: 4, text: "Follow this road" }
+          { id: 4, text: "Follow this road" },
+          { id: 2, text: "Turn right" }
         ],
         correctOptionId: 3,
         hints: ["benkum = left"],
@@ -348,9 +348,9 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'I am lost' in Twi?",
         options: [
-          { id: 1, text: "Adwa no wɔ he?" },
           { id: 2, text: "Agyananbia no wɔ he?" },
           { id: 3, text: "Mayera" },
+          { id: 1, text: "Adwa no wɔ he?" },
           { id: 4, text: "Kɔ tee" }
         ],
         correctOptionId: 3,
@@ -364,10 +364,10 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/ɛwɔ_akyiri.m4a"),
         options: [
-          { id: 1, text: "It is far" },
+          { id: 4, text: "In front of the school" },
           { id: 2, text: "It is near" },
-          { id: 3, text: "Behind the house" },
-          { id: 4, text: "In front of the school" }
+          { id: 1, text: "It is far" },
+          { id: 3, text: "Behind the house" }
         ],
         correctOptionId: 1,
         hints: ["akyiri = far"],
@@ -379,10 +379,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'How do I get there?' in Twi?",
         options: [
-          { id: 1, text: "Adwa no wɔ he?" },
-          { id: 2, text: "Agyananbia no wɔ he?" },
           { id: 3, text: "Mayera" },
-          { id: 4, text: "Mɛyɛ dɛn adu hɔ?" }
+          { id: 4, text: "Mɛyɛ dɛn adu hɔ?" },
+          { id: 1, text: "Adwa no wɔ he?" },
+          { id: 2, text: "Agyananbia no wɔ he?" }
         ],
         correctOptionId: 4,
         hints: ["adu hɔ = get there"],
@@ -394,10 +394,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'Go straight' in Twi?",
         options: [
-          { id: 1, text: "Kɔ tee" },
-          { id: 2, text: "Dane nifa" },
           { id: 3, text: "Dane benkum" },
-          { id: 4, text: "Fa saa kwan yi so" }
+          { id: 1, text: "Kɔ tee" },
+          { id: 4, text: "Fa saa kwan yi so" },
+          { id: 2, text: "Dane nifa" }
         ],
         correctOptionId: 1,
         hints: ["tee = straight"],
@@ -409,10 +409,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'Turn right' in Twi?",
         options: [
-          { id: 1, text: "Kɔ tee" },
+          { id: 4, text: "Fa saa kwan yi so" },
           { id: 2, text: "Dane nifa" },
-          { id: 3, text: "Dane benkum" },
-          { id: 4, text: "Fa saa kwan yi so" }
+          { id: 1, text: "Kɔ tee" },
+          { id: 3, text: "Dane benkum" }
         ],
         correctOptionId: 2,
         hints: ["nifa = right"],
@@ -425,9 +425,9 @@ export default {
         question: "How do you say 'It is near' in Twi?",
         options: [
           { id: 1, text: "Ɛwɔ akyiri" },
+          { id: 4, text: "Sukuu no anim" },
           { id: 2, text: "Ɛbɛn" },
-          { id: 3, text: "Efie no akyi" },
-          { id: 4, text: "Sukuu no anim" }
+          { id: 3, text: "Efie no akyi" }
         ],
         correctOptionId: 2,
         hints: ["ɛbɛn = near"],
@@ -439,10 +439,10 @@ export default {
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'Follow this road' in Twi?",
         options: [
-          { id: 1, text: "Kɔ tee" },
           { id: 2, text: "Dane nifa" },
-          { id: 3, text: "Dane benkum" },
-          { id: 4, text: "Fa saa kwan yi so" }
+          { id: 4, text: "Fa saa kwan yi so" },
+          { id: 1, text: "Kɔ tee" },
+          { id: 3, text: "Dane benkum" }
         ],
         correctOptionId: 4,
         hints: ["kwan = road"],
@@ -455,10 +455,10 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/twi/beginner/chapter7/efie_no_akyi.m4a"),
         options: [
-          { id: 1, text: "It is far" },
-          { id: 2, text: "It is near" },
           { id: 3, text: "Behind the house" },
-          { id: 4, text: "In front of the school" }
+          { id: 1, text: "It is far" },
+          { id: 4, text: "In front of the school" },
+          { id: 2, text: "It is near" }
         ],
         correctOptionId: 3,
         hints: ["efie = house", "akyi = behind"],

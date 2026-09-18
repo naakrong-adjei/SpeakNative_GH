@@ -3,7 +3,7 @@ export default {
   title: "Numbers & Time",
   description: "Learn numbers, time, and days in Twi",
   icon: "calculator-outline",
-  totalXp: 20,
+  totalXp: 25,
   difficulty: "Beginner",
 
   sections: [
@@ -48,19 +48,49 @@ export default {
       ],
       questions: [
         {
+          id: 403,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi number.",
+          question: "What is 'Three' in Twi?",
+          options: [
+            { id: 4, text: "Enum" },
+            { id: 1, text: "Baako" },
+            { id: 3, text: "Mmiɛnsa" },
+            { id: 2, text: "Mmienu" }
+          ],
+          correctOptionId: 3,
+          hints: ["Comes after two"],
+          explanation: "Mmiɛnsa = Three in Twi."
+        },
+        {
           id: 401,
           type: "multiple_choice",
           instruction: "Select the correct Twi number.",
           question: "What is 'One' in Twi?",
           options: [
-            { id: 1, text: "Baako" },
-            { id: 2, text: "Mmienu" },
             { id: 3, text: "Mmiɛnsa" },
-            { id: 4, text: "Enan" }
+            { id: 1, text: "Baako" },
+            { id: 4, text: "Enan" },
+            { id: 2, text: "Mmienu" }
           ],
           correctOptionId: 1,
           hints: ["The first number"],
           explanation: "Baako = One in Twi."
+        },
+        {
+          id: 405,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi number.",
+          question: "What is 'Five' in Twi?",
+          options: [
+            { id: 2, text: "Mmiɛnsa" },
+            { id: 4, text: "Enum" },
+            { id: 1, text: "Baako" },
+            { id: 3, text: "Enan" }
+          ],
+          correctOptionId: 4,
+          hints: ["Comes after four"],
+          explanation: "Enum = Five in Twi."
         },
         {
           id: 402,
@@ -69,29 +99,14 @@ export default {
           question: "What number did you hear?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/mmienu.m4a"),
           options: [
-            { id: 1, text: "One" },
+            { id: 4, text: "Four" },
             { id: 2, text: "Two" },
-            { id: 3, text: "Three" },
-            { id: 4, text: "Four" }
+            { id: 1, text: "One" },
+            { id: 3, text: "Three" }
           ],
           correctOptionId: 2,
           hints: ["Comes after one"],
           explanation: "You heard 'Mmienu' which means Two in Twi."
-        },
-        {
-          id: 403,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi number.",
-          question: "What is 'Three' in Twi?",
-          options: [
-            { id: 1, text: "Baako" },
-            { id: 2, text: "Mmienu" },
-            { id: 3, text: "Mmiɛnsa" },
-            { id: 4, text: "Enum" }
-          ],
-          correctOptionId: 3,
-          hints: ["Comes after two"],
-          explanation: "Mmiɛnsa = Three in Twi."
         },
         {
           id: 404,
@@ -101,28 +116,13 @@ export default {
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/enan.m4a"),
           options: [
             { id: 1, text: "Two" },
-            { id: 2, text: "Three" },
+            { id: 4, text: "Five" },
             { id: 3, text: "Four" },
-            { id: 4, text: "Five" }
+            { id: 2, text: "Three" }
           ],
           correctOptionId: 3,
           hints: ["Comes after three"],
           explanation: "You heard 'Enan' which means Four in Twi."
-        },
-        {
-          id: 405,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi number.",
-          question: "What is 'Five' in Twi?",
-          options: [
-            { id: 1, text: "Baako" },
-            { id: 2, text: "Mmiɛnsa" },
-            { id: 3, text: "Enan" },
-            { id: 4, text: "Enum" }
-          ],
-          correctOptionId: 4,
-          hints: ["Comes after four"],
-          explanation: "Enum = Five in Twi."
         }
       ]
     },
@@ -168,50 +168,49 @@ export default {
       ],
       questions: [
         {
+          id: 408,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi number.",
+          question: "What is 'Eight' in Twi?",
+          options: [
+            { id: 4, text: "Edu" },
+            { id: 2, text: "Nson" },
+            { id: 3, text: "Nwotwe" },
+            { id: 1, text: "Nsia" }
+          ],
+          correctOptionId: 3,
+          hints: ["Comes after seven"],
+          explanation: "Nwotwe = Eight in Twi."
+        },
+        {
           id: 406,
           type: "multiple_choice",
           instruction: "Select the correct Twi number.",
           question: "What is 'Six' in Twi?",
           options: [
-            { id: 1, text: "Nsia" },
             { id: 2, text: "Nson" },
-            { id: 3, text: "Nwotwe" },
-            { id: 4, text: "Nkron" }
+            { id: 4, text: "Nkron" },
+            { id: 1, text: "Nsia" },
+            { id: 3, text: "Nwotwe" }
           ],
           correctOptionId: 1,
           hints: ["Comes after five"],
           explanation: "Nsia = Six in Twi."
         },
         {
-          id: 407,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What number did you hear?",
-          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/nson.m4a"),
-          options: [
-            { id: 1, text: "Six" },
-            { id: 2, text: "Seven" },
-            { id: 3, text: "Eight" },
-            { id: 4, text: "Nine" }
-          ],
-          correctOptionId: 2,
-          hints: ["Comes after six"],
-          explanation: "You heard 'Nson' which means Seven in Twi."
-        },
-        {
-          id: 408,
+          id: 410,
           type: "multiple_choice",
           instruction: "Select the correct Twi number.",
-          question: "What is 'Eight' in Twi?",
+          question: "What is 'Ten' in Twi?",
           options: [
+            { id: 3, text: "Nkron" },
             { id: 1, text: "Nsia" },
-            { id: 2, text: "Nson" },
-            { id: 3, text: "Nwotwe" },
-            { id: 4, text: "Edu" }
+            { id: 4, text: "Edu" },
+            { id: 2, text: "Nwotwe" }
           ],
-          correctOptionId: 3,
-          hints: ["Comes after seven"],
-          explanation: "Nwotwe = Eight in Twi."
+          correctOptionId: 4,
+          hints: ["Comes after nine"],
+          explanation: "Edu = Ten in Twi."
         },
         {
           id: 409,
@@ -221,28 +220,29 @@ export default {
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/nkron.m4a"),
           options: [
             { id: 1, text: "Seven" },
+            { id: 4, text: "Ten" },
             { id: 2, text: "Eight" },
-            { id: 3, text: "Nine" },
-            { id: 4, text: "Ten" }
+            { id: 3, text: "Nine" }
           ],
           correctOptionId: 3,
           hints: ["Comes after eight"],
           explanation: "You heard 'Nkron' which means Nine in Twi."
         },
         {
-          id: 410,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi number.",
-          question: "What is 'Ten' in Twi?",
+          id: 407,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/nson.m4a"),
           options: [
-            { id: 1, text: "Nsia" },
-            { id: 2, text: "Nwotwe" },
-            { id: 3, text: "Nkron" },
-            { id: 4, text: "Edu" }
+            { id: 3, text: "Eight" },
+            { id: 2, text: "Seven" },
+            { id: 4, text: "Nine" },
+            { id: 1, text: "Six" }
           ],
-          correctOptionId: 4,
-          hints: ["Comes after nine"],
-          explanation: "Edu = Ten in Twi."
+          correctOptionId: 2,
+          hints: ["Comes after six"],
+          explanation: "You heard 'Nson' which means Seven in Twi."
         }
       ]
     },
@@ -288,50 +288,49 @@ export default {
       ],
       questions: [
         {
-          id: 411,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi number.",
-          question: "What is 'Eleven' in Twi?",
-          options: [
-            { id: 1, text: "Dubaako" },
-            { id: 2, text: "Dummienu" },
-            { id: 3, text: "Dummiɛnsa" },
-            { id: 4, text: "Dunnan" }
-          ],
-          correctOptionId: 1,
-          hints: ["Ten plus one"],
-          explanation: "Dubaako = Eleven in Twi."
-        },
-        {
-          id: 412,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What number did you hear?",
-          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/dummienu.m4a"),
-          options: [
-            { id: 1, text: "Eleven" },
-            { id: 2, text: "Twelve" },
-            { id: 3, text: "Thirteen" },
-            { id: 4, text: "Fourteen" }
-          ],
-          correctOptionId: 2,
-          hints: ["Ten plus two"],
-          explanation: "You heard 'Dummienu' which means Twelve in Twi."
-        },
-        {
           id: 413,
           type: "multiple_choice",
           instruction: "Select the correct Twi number.",
           question: "What is 'Thirteen' in Twi?",
           options: [
             { id: 1, text: "Dubaako" },
-            { id: 2, text: "Dummienu" },
+            { id: 4, text: "Dunnum" },
             { id: 3, text: "Dummiɛnsa" },
-            { id: 4, text: "Dunnum" }
+            { id: 2, text: "Dummienu" }
           ],
           correctOptionId: 3,
           hints: ["Ten plus three"],
           explanation: "Dummiɛnsa = Thirteen in Twi."
+        },
+        {
+          id: 411,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi number.",
+          question: "What is 'Eleven' in Twi?",
+          options: [
+            { id: 4, text: "Dunnan" },
+            { id: 2, text: "Dummienu" },
+            { id: 1, text: "Dubaako" },
+            { id: 3, text: "Dummiɛnsa" }
+          ],
+          correctOptionId: 1,
+          hints: ["Ten plus one"],
+          explanation: "Dubaako = Eleven in Twi."
+        },
+        {
+          id: 415,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi number.",
+          question: "What is 'Fifteen' in Twi?",
+          options: [
+            { id: 2, text: "Dummiɛnsa" },
+            { id: 3, text: "Dunnan" },
+            { id: 4, text: "Dunnum" },
+            { id: 1, text: "Dubaako" }
+          ],
+          correctOptionId: 4,
+          hints: ["Ten plus five"],
+          explanation: "Dunnum = Fifteen in Twi."
         },
         {
           id: 414,
@@ -341,28 +340,29 @@ export default {
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/dunnan.m4a"),
           options: [
             { id: 1, text: "Twelve" },
+            { id: 4, text: "Fifteen" },
             { id: 2, text: "Thirteen" },
-            { id: 3, text: "Fourteen" },
-            { id: 4, text: "Fifteen" }
+            { id: 3, text: "Fourteen" }
           ],
           correctOptionId: 3,
           hints: ["Ten plus four"],
           explanation: "You heard 'Dunnan' which means Fourteen in Twi."
         },
         {
-          id: 415,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi number.",
-          question: "What is 'Fifteen' in Twi?",
+          id: 412,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/dummienu.m4a"),
           options: [
-            { id: 1, text: "Dubaako" },
-            { id: 2, text: "Dummiɛnsa" },
-            { id: 3, text: "Dunnan" },
-            { id: 4, text: "Dunnum" }
+            { id: 3, text: "Thirteen" },
+            { id: 2, text: "Twelve" },
+            { id: 4, text: "Fourteen" },
+            { id: 1, text: "Eleven" }
           ],
-          correctOptionId: 4,
-          hints: ["Ten plus five"],
-          explanation: "Dunnum = Fifteen in Twi."
+          correctOptionId: 2,
+          hints: ["Ten plus two"],
+          explanation: "You heard 'Dummienu' which means Twelve in Twi."
         }
       ]
     },
@@ -402,50 +402,34 @@ export default {
       ],
       questions: [
         {
-          id: 416,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi number.",
-          question: "What is 'Twenty' in Twi?",
-          options: [
-            { id: 1, text: "Aduonu" },
-            { id: 2, text: "Aduasa" },
-            { id: 3, text: "Aduanan" },
-            { id: 4, text: "Aduonum" }
-          ],
-          correctOptionId: 1,
-          hints: ["Two tens"],
-          explanation: "Aduonu = Twenty in Twi."
-        },
-        {
-          id: 417,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What number did you hear?",
-          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduasa.m4a"),
-          options: [
-            { id: 1, text: "Twenty" },
-            { id: 2, text: "Thirty" },
-            { id: 3, text: "Forty" },
-            { id: 4, text: "Fifty" }
-          ],
-          correctOptionId: 2,
-          hints: ["Three tens"],
-          explanation: "You heard 'Aduasa' which means Thirty in Twi."
-        },
-        {
           id: 418,
           type: "multiple_choice",
           instruction: "Select the correct Twi number.",
           question: "What is 'Forty' in Twi?",
           options: [
             { id: 1, text: "Aduonu" },
-            { id: 2, text: "Aduasa" },
+            { id: 4, text: "Aduonum" },
             { id: 3, text: "Aduanan" },
-            { id: 4, text: "Aduonum" }
+            { id: 2, text: "Aduasa" }
           ],
           correctOptionId: 3,
           hints: ["Four tens"],
           explanation: "Aduanan = Forty in Twi."
+        },
+        {
+          id: 416,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi number.",
+          question: "What is 'Twenty' in Twi?",
+          options: [
+            { id: 2, text: "Aduasa" },
+            { id: 1, text: "Aduonu" },
+            { id: 4, text: "Aduonum" },
+            { id: 3, text: "Aduanan" }
+          ],
+          correctOptionId: 1,
+          hints: ["Two tens"],
+          explanation: "Aduonu = Twenty in Twi."
         },
         {
           id: 419,
@@ -454,14 +438,45 @@ export default {
           question: "What number did you hear?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduonum.m4a"),
           options: [
-            { id: 1, text: "Twenty" },
             { id: 2, text: "Thirty" },
-            { id: 3, text: "Forty" },
-            { id: 4, text: "Fifty" }
+            { id: 4, text: "Fifty" },
+            { id: 1, text: "Twenty" },
+            { id: 3, text: "Forty" }
           ],
           correctOptionId: 4,
           hints: ["Five tens"],
           explanation: "You heard 'Aduonum' which means Fifty in Twi."
+        },
+        {
+          id: 417,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduasa.m4a"),
+          options: [
+            { id: 3, text: "Forty" },
+            { id: 2, text: "Thirty" },
+            { id: 4, text: "Fifty" },
+            { id: 1, text: "Twenty" }
+          ],
+          correctOptionId: 2,
+          hints: ["Three tens"],
+          explanation: "You heard 'Aduasa' which means Thirty in Twi."
+        },
+        {
+          id: 420,
+          type: "drag_drop",
+          instruction: "Complete the Twi number by dragging the correct word.",
+          sentence: "Aduo[_____] (Fifty)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "num" },
+            { id: "opt2", text: "nu" },
+            { id: "opt3", text: "sa" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["Aduonum = Fifty"],
+          explanation: "Aduonum = Fifty in Twi."
         }
       ]
     },
@@ -507,81 +522,81 @@ export default {
       ],
       questions: [
         {
-          id: 420,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi number.",
-          question: "What is 'Sixty' in Twi?",
-          options: [
-            { id: 1, text: "Aduosia" },
-            { id: 2, text: "Aduoson" },
-            { id: 3, text: "Aduowotwe" },
-            { id: 4, text: "Aduokron" }
-          ],
-          correctOptionId: 1,
-          hints: ["Six tens"],
-          explanation: "Aduosia = Sixty in Twi."
-        },
-        {
-          id: 421,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What number did you hear?",
-          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduoson.m4a"),
-          options: [
-            { id: 1, text: "Sixty" },
-            { id: 2, text: "Seventy" },
-            { id: 3, text: "Eighty" },
-            { id: 4, text: "Ninety" }
-          ],
-          correctOptionId: 2,
-          hints: ["Seven tens"],
-          explanation: "You heard 'Aduoson' which means Seventy in Twi."
-        },
-        {
-          id: 422,
+          id: 423,
           type: "multiple_choice",
           instruction: "Select the correct Twi number.",
           question: "What is 'Eighty' in Twi?",
           options: [
-            { id: 1, text: "Aduosia" },
+            { id: 4, text: "Aduokron" },
             { id: 2, text: "Aduoson" },
             { id: 3, text: "Aduowotwe" },
-            { id: 4, text: "Aduokron" }
+            { id: 1, text: "Aduosia" }
           ],
           correctOptionId: 3,
           hints: ["Eight tens"],
           explanation: "Aduowotwe = Eighty in Twi."
         },
         {
-          id: 423,
+          id: 421,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi number.",
+          question: "What is 'Sixty' in Twi?",
+          options: [
+            { id: 2, text: "Aduoson" },
+            { id: 4, text: "Aduokron" },
+            { id: 1, text: "Aduosia" },
+            { id: 3, text: "Aduowotwe" }
+          ],
+          correctOptionId: 1,
+          hints: ["Six tens"],
+          explanation: "Aduosia = Sixty in Twi."
+        },
+        {
+          id: 425,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi number.",
+          question: "What is 'One hundred' in Twi?",
+          options: [
+            { id: 3, text: "Aduokron" },
+            { id: 1, text: "Aduosia" },
+            { id: 4, text: "Ɔha" },
+            { id: 2, text: "Aduowotwe" }
+          ],
+          correctOptionId: 4,
+          hints: ["Ten tens"],
+          explanation: "Ɔha = One hundred in Twi."
+        },
+        {
+          id: 424,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What number did you hear?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduokron.m4a"),
           options: [
             { id: 1, text: "Sixty" },
+            { id: 4, text: "Ninety" },
             { id: 2, text: "Seventy" },
-            { id: 3, text: "Eighty" },
-            { id: 4, text: "Ninety" }
+            { id: 3, text: "Eighty" }
           ],
           correctOptionId: 4,
           hints: ["Nine tens"],
           explanation: "You heard 'Aduokron' which means Ninety in Twi."
         },
         {
-          id: 424,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi number.",
-          question: "What is 'One hundred' in Twi?",
+          id: 422,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduoson.m4a"),
           options: [
-            { id: 1, text: "Aduosia" },
-            { id: 2, text: "Aduowotwe" },
-            { id: 3, text: "Aduokron" },
-            { id: 4, text: "Ɔha" }
+            { id: 3, text: "Eighty" },
+            { id: 2, text: "Seventy" },
+            { id: 4, text: "Ninety" },
+            { id: 1, text: "Sixty" }
           ],
-          correctOptionId: 4,
-          hints: ["Ten tens"],
-          explanation: "Ɔha = One hundred in Twi."
+          correctOptionId: 2,
+          hints: ["Seven tens"],
+          explanation: "You heard 'Aduoson' which means Seventy in Twi."
         }
       ]
     },
@@ -592,7 +607,13 @@ export default {
       title: "Compound Numbers",
       icon: "extension-puzzle-outline",
       description: "Learn how to form compound numbers in Twi",
-      words: ["Aduonum nson", "Aduosia mmienu", "Aduowotwe nwotwe", "Aduokron mmiɛnsa", "Ɔha ne aduasa"],
+      words: [
+        "Aduonum nson",
+        "Aduosia mmienu",
+        "Aduowotwe nwotwe",
+        "Aduokron mmiɛnsa",
+        "Ɔha ne aduasa"
+      ],
       vocabulary: [
         {
           id: 115,
@@ -627,81 +648,81 @@ export default {
       ],
       questions: [
         {
-          id: 425,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi number.",
-          question: "How do you say '57' in Twi?",
-          options: [
-            { id: 1, text: "Aduonum nson" },
-            { id: 2, text: "Aduosia mmienu" },
-            { id: 3, text: "Aduowotwe nwotwe" },
-            { id: 4, text: "Aduokron mmiɛnsa" }
-          ],
-          correctOptionId: 1,
-          hints: ["Aduonum = fifty", "nson = seven"],
-          explanation: "Aduonum nson = 57 in Twi."
-        },
-        {
-          id: 426,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What number did you hear?",
-          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduosia_mmienu.m4a"),
-          options: [
-            { id: 1, text: "57" },
-            { id: 2, text: "62" },
-            { id: 3, text: "88" },
-            { id: 4, text: "93" }
-          ],
-          correctOptionId: 2,
-          hints: ["Aduosia = sixty", "mmienu = two"],
-          explanation: "You heard 'Aduosia mmienu' which means 62 in Twi."
-        },
-        {
-          id: 427,
+          id: 428,
           type: "multiple_choice",
           instruction: "Select the correct Twi number.",
           question: "How do you say '88' in Twi?",
           options: [
-            { id: 1, text: "Aduonum nson" },
+            { id: 4, text: "Ɔha ne aduasa" },
             { id: 2, text: "Aduosia mmienu" },
             { id: 3, text: "Aduowotwe nwotwe" },
-            { id: 4, text: "Ɔha ne aduasa" }
+            { id: 1, text: "Aduonum nson" }
           ],
           correctOptionId: 3,
           hints: ["Aduowotwe = eighty", "nwotwe = eight"],
           explanation: "Aduowotwe nwotwe = 88 in Twi."
         },
         {
-          id: 428,
+          id: 426,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi number.",
+          question: "How do you say '57' in Twi?",
+          options: [
+            { id: 2, text: "Aduosia mmienu" },
+            { id: 1, text: "Aduonum nson" },
+            { id: 4, text: "Aduokron mmiɛnsa" },
+            { id: 3, text: "Aduowotwe nwotwe" }
+          ],
+          correctOptionId: 1,
+          hints: ["Aduonum = fifty", "nson = seven"],
+          explanation: "Aduonum nson = 57 in Twi."
+        },
+        {
+          id: 430,
+          type: "drag_drop",
+          instruction: "Complete the Twi number by dragging the correct word.",
+          sentence: "Ɔha ne [_____] (130)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "aduasa" },
+            { id: "opt2", text: "aduonu" },
+            { id: "opt3", text: "aduanan" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["Ɔha = one hundred", "ne = and", "aduasa = thirty"],
+          explanation: "Ɔha ne aduasa = 130 in Twi."
+        },
+        {
+          id: 429,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What number did you hear?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduokron_mmiɛnsa.m4a"),
           options: [
             { id: 1, text: "57" },
+            { id: 4, text: "93" },
             { id: 2, text: "62" },
-            { id: 3, text: "88" },
-            { id: 4, text: "93" }
+            { id: 3, text: "88" }
           ],
           correctOptionId: 4,
           hints: ["Aduokron = ninety", "mmiɛnsa = three"],
           explanation: "You heard 'Aduokron mmiɛnsa' which means 93 in Twi."
         },
         {
-          id: 429,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi number.",
-          question: "How do you say '130' in Twi?",
+          id: 427,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What number did you hear?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduosia_mmienu.m4a"),
           options: [
-            { id: 1, text: "Aduonum nson" },
-            { id: 2, text: "Aduowotwe nwotwe" },
-            { id: 3, text: "Aduokron mmiɛnsa" },
-            { id: 4, text: "Ɔha ne aduasa" }
+            { id: 3, text: "88" },
+            { id: 2, text: "62" },
+            { id: 4, text: "93" },
+            { id: 1, text: "57" }
           ],
-          correctOptionId: 4,
-          hints: ["Ɔha = one hundred", "ne = and", "aduasa = thirty"],
-          explanation: "Ɔha ne aduasa = 130 in Twi."
+          correctOptionId: 2,
+          hints: ["Aduosia = sixty", "mmienu = two"],
+          explanation: "You heard 'Aduosia mmienu' which means 62 in Twi."
         }
       ]
     },
@@ -710,7 +731,7 @@ export default {
       id: "4-7",
       type: "phrases",
       title: "Telling Time",
-      icon: "clock-outline",
+      icon: "time-outline",
       description: "Learn how to tell time in Twi",
       words: ["Abɔ sɛn?", "Abɔ nnɔn mmiɛnsa", "Anɔpa", "Anadwo"],
       vocabulary: [
@@ -741,66 +762,81 @@ export default {
       ],
       questions: [
         {
-          id: 430,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi phrase.",
-          question: "How do you ask 'What time is it?' in Twi?",
-          options: [
-            { id: 1, text: "Abɔ sɛn?" },
-            { id: 2, text: "Abɔ nnɔn mmiɛnsa" },
-            { id: 3, text: "Anɔpa" },
-            { id: 4, text: "Anadwo" }
-          ],
-          correctOptionId: 1,
-          hints: ["Question about time"],
-          explanation: "Abɔ sɛn? = What time is it? in Twi."
-        },
-        {
-          id: 431,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/abɔ_nnɔn_mmiɛnsa.m4a"),
-          options: [
-            { id: 1, text: "What time is it?" },
-            { id: 2, text: "It is three o'clock" },
-            { id: 3, text: "In the morning" },
-            { id: 4, text: "At night" }
-          ],
-          correctOptionId: 2,
-          hints: ["nnɔn mmiɛnsa = three o'clock"],
-          explanation: "You heard 'Abɔ nnɔn mmiɛnsa' which means 'It is three o'clock' in Twi."
-        },
-        {
-          id: 432,
+          id: 433,
           type: "multiple_choice",
           instruction: "Select the correct Twi phrase.",
           question: "How do you say 'In the morning' in Twi?",
           options: [
+            { id: 4, text: "Anadwo" },
             { id: 1, text: "Abɔ sɛn?" },
-            { id: 2, text: "Abɔ nnɔn mmiɛnsa" },
             { id: 3, text: "Anɔpa" },
-            { id: 4, text: "Anadwo" }
+            { id: 2, text: "Abɔ nnɔn mmiɛnsa" }
           ],
           correctOptionId: 3,
           hints: ["Morning time"],
           explanation: "Anɔpa = In the morning in Twi."
         },
         {
-          id: 433,
+          id: 431,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi phrase.",
+          question: "How do you ask 'What time is it?' in Twi?",
+          options: [
+            { id: 2, text: "Abɔ nnɔn mmiɛnsa" },
+            { id: 1, text: "Abɔ sɛn?" },
+            { id: 4, text: "Anadwo" },
+            { id: 3, text: "Anɔpa" }
+          ],
+          correctOptionId: 1,
+          hints: ["Question about time"],
+          explanation: "Abɔ sɛn? = What time is it? in Twi."
+        },
+        {
+          id: 435,
+          type: "drag_drop",
+          instruction: "Complete the Twi phrase by dragging the correct word.",
+          sentence: "Abɔ nnɔn [_____] (It is three o'clock)",
+          blankId: "blank1",
+          items: [
+            { id: "opt1", text: "mmiɛnsa" },
+            { id: "opt2", text: "mmienu" },
+            { id: "opt3", text: "baako" }
+          ],
+          correctDrop: { blankId: "blank1", itemId: "opt1" },
+          hints: ["mmiɛnsa = three"],
+          explanation: "Abɔ nnɔn mmiɛnsa = It is three o'clock in Twi."
+        },
+        {
+          id: 434,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/anadwo.m4a"),
           options: [
-            { id: 1, text: "What time is it?" },
             { id: 2, text: "It is three o'clock" },
-            { id: 3, text: "In the morning" },
-            { id: 4, text: "At night" }
+            { id: 4, text: "At night" },
+            { id: 1, text: "What time is it?" },
+            { id: 3, text: "In the morning" }
           ],
           correctOptionId: 4,
           hints: ["Night time"],
           explanation: "You heard 'Anadwo' which means 'At night' in Twi."
+        },
+        {
+          id: 432,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/abɔ_nnɔn_mmiɛnsa.m4a"),
+          options: [
+            { id: 3, text: "In the morning" },
+            { id: 2, text: "It is three o'clock" },
+            { id: 4, text: "At night" },
+            { id: 1, text: "What time is it?" }
+          ],
+          correctOptionId: 2,
+          hints: ["nnɔn mmiɛnsa = three o'clock"],
+          explanation: "You heard 'Abɔ nnɔn mmiɛnsa' which means 'It is three o'clock' in Twi."
         }
       ]
     },
@@ -840,66 +876,66 @@ export default {
       ],
       questions: [
         {
-          id: 434,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi word.",
-          question: "What is 'Today' in Twi?",
-          options: [
-            { id: 1, text: "Ɛnnɛ" },
-            { id: 2, text: "Ɔkyena" },
-            { id: 3, text: "Ɛnora" },
-            { id: 4, text: "Nnawɔtwe a ɛdi hɔ" }
-          ],
-          correctOptionId: 1,
-          hints: ["The current day"],
-          explanation: "Ɛnnɛ = Today in Twi."
-        },
-        {
-          id: 435,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/ɔkyena.m4a"),
-          options: [
-            { id: 1, text: "Today" },
-            { id: 2, text: "Tomorrow" },
-            { id: 3, text: "Yesterday" },
-            { id: 4, text: "Next week" }
-          ],
-          correctOptionId: 2,
-          hints: ["The day after today"],
-          explanation: "You heard 'Ɔkyena' which means Tomorrow in Twi."
-        },
-        {
-          id: 436,
+          id: 438,
           type: "multiple_choice",
           instruction: "Select the correct Twi word.",
           question: "What is 'Yesterday' in Twi?",
           options: [
-            { id: 1, text: "Ɛnnɛ" },
+            { id: 4, text: "Nnawɔtwe a ɛdi hɔ" },
             { id: 2, text: "Ɔkyena" },
             { id: 3, text: "Ɛnora" },
-            { id: 4, text: "Nnawɔtwe a ɛdi hɔ" }
+            { id: 1, text: "Ɛnnɛ" }
           ],
           correctOptionId: 3,
           hints: ["The day before today"],
           explanation: "Ɛnora = Yesterday in Twi."
         },
         {
-          id: 437,
+          id: 436,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi word.",
+          question: "What is 'Today' in Twi?",
+          options: [
+            { id: 2, text: "Ɔkyena" },
+            { id: 1, text: "Ɛnnɛ" },
+            { id: 4, text: "Nnawɔtwe a ɛdi hɔ" },
+            { id: 3, text: "Ɛnora" }
+          ],
+          correctOptionId: 1,
+          hints: ["The current day"],
+          explanation: "Ɛnnɛ = Today in Twi."
+        },
+        {
+          id: 439,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/nnawɔtwe_a_ɛdi_hɔ.m4a"),
           options: [
-            { id: 1, text: "Today" },
-            { id: 2, text: "Tomorrow" },
             { id: 3, text: "Yesterday" },
-            { id: 4, text: "Next week" }
+            { id: 4, text: "Next week" },
+            { id: 1, text: "Today" },
+            { id: 2, text: "Tomorrow" }
           ],
           correctOptionId: 4,
           hints: ["The week after this one"],
           explanation: "You heard 'Nnawɔtwe a ɛdi hɔ' which means Next week in Twi."
+        },
+        {
+          id: 437,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/ɔkyena.m4a"),
+          options: [
+            { id: 3, text: "Yesterday" },
+            { id: 2, text: "Tomorrow" },
+            { id: 4, text: "Next week" },
+            { id: 1, text: "Today" }
+          ],
+          correctOptionId: 2,
+          hints: ["The day after today"],
+          explanation: "You heard 'Ɔkyena' which means Tomorrow in Twi."
         }
       ]
     },
@@ -910,7 +946,15 @@ export default {
       title: "Days of the Week",
       icon: "calendar-outline",
       description: "Learn the days of the week in Twi",
-      words: ["Dwoada", "Benada", "Wukuada", "Yawoada", "Fiada", "Memeneda", "Kwasiada"],
+      words: [
+        "Dwoada",
+        "Benada",
+        "Wukuada",
+        "Yawoada",
+        "Fida",
+        "Memeneda",
+        "Kwasiada"
+      ],
       vocabulary: [
         {
           id: 128,
@@ -939,7 +983,7 @@ export default {
         {
           id: 132,
           english: "Friday",
-          native: "Fiada",
+          native: "Fida",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/fiada.m4a")
         },
         {
@@ -957,112 +1001,112 @@ export default {
       ],
       questions: [
         {
-          id: 438,
-          type: "multiple_choice",
-          instruction: "Select the correct Twi day.",
-          question: "What is 'Monday' in Twi?",
-          options: [
-            { id: 1, text: "Dwoada" },
-            { id: 2, text: "Benada" },
-            { id: 3, text: "Wukuada" },
-            { id: 4, text: "Yawoada" }
-          ],
-          correctOptionId: 1,
-          hints: ["First day of the week"],
-          explanation: "Dwoada = Monday in Twi."
-        },
-        {
-          id: 439,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What day did you hear?",
-          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/benada.m4a"),
-          options: [
-            { id: 1, text: "Monday" },
-            { id: 2, text: "Tuesday" },
-            { id: 3, text: "Wednesday" },
-            { id: 4, text: "Thursday" }
-          ],
-          correctOptionId: 2,
-          hints: ["Second day of the week"],
-          explanation: "You heard 'Benada' which means Tuesday in Twi."
-        },
-        {
-          id: 440,
+          id: 442,
           type: "multiple_choice",
           instruction: "Select the correct Twi day.",
           question: "What is 'Wednesday' in Twi?",
           options: [
-            { id: 1, text: "Dwoada" },
+            { id: 4, text: "Fida" },
             { id: 2, text: "Benada" },
             { id: 3, text: "Wukuada" },
-            { id: 4, text: "Fiada" }
+            { id: 1, text: "Dwoada" }
           ],
           correctOptionId: 3,
           hints: ["Third day of the week"],
           explanation: "Wukuada = Wednesday in Twi."
         },
         {
-          id: 441,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What day did you hear?",
-          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/yawoada.m4a"),
-          options: [
-            { id: 1, text: "Tuesday" },
-            { id: 2, text: "Wednesday" },
-            { id: 3, text: "Thursday" },
-            { id: 4, text: "Friday" }
-          ],
-          correctOptionId: 3,
-          hints: ["Fourth day of the week"],
-          explanation: "You heard 'Yawoada' which means Thursday in Twi."
-        },
-        {
-          id: 442,
+          id: 440,
           type: "multiple_choice",
           instruction: "Select the correct Twi day.",
-          question: "What is 'Friday' in Twi?",
+          question: "What is 'Monday' in Twi?",
           options: [
+            { id: 2, text: "Benada" },
             { id: 1, text: "Dwoada" },
-            { id: 2, text: "Wukuada" },
-            { id: 3, text: "Fiada" },
-            { id: 4, text: "Memeneda" }
+            { id: 4, text: "Yawoada" },
+            { id: 3, text: "Wukuada" }
           ],
-          correctOptionId: 3,
-          hints: ["Fifth day of the week"],
-          explanation: "Fiada = Friday in Twi."
+          correctOptionId: 1,
+          hints: ["First day of the week"],
+          explanation: "Dwoada = Monday in Twi."
         },
         {
-          id: 443,
+          id: 445,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What day did you hear?",
           audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/memeneda.m4a"),
           options: [
             { id: 1, text: "Thursday" },
-            { id: 2, text: "Friday" },
+            { id: 4, text: "Sunday" },
             { id: 3, text: "Saturday" },
-            { id: 4, text: "Sunday" }
+            { id: 2, text: "Friday" }
           ],
           correctOptionId: 3,
           hints: ["Sixth day of the week"],
           explanation: "You heard 'Memeneda' which means Saturday in Twi."
         },
         {
-          id: 444,
+          id: 443,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What day did you hear?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/yawoada.m4a"),
+          options: [
+            { id: 2, text: "Wednesday" },
+            { id: 3, text: "Thursday" },
+            { id: 4, text: "Friday" },
+            { id: 1, text: "Tuesday" }
+          ],
+          correctOptionId: 3,
+          hints: ["Fourth day of the week"],
+          explanation: "You heard 'Yawoada' which means Thursday in Twi."
+        },
+        {
+          id: 446,
           type: "multiple_choice",
           instruction: "Select the correct Twi day.",
           question: "What is 'Sunday' in Twi?",
           options: [
-            { id: 1, text: "Dwoada" },
-            { id: 2, text: "Fiada" },
             { id: 3, text: "Memeneda" },
-            { id: 4, text: "Kwasiada" }
+            { id: 1, text: "Dwoada" },
+            { id: 4, text: "Kwasiada" },
+            { id: 2, text: "Fida" }
           ],
           correctOptionId: 4,
           hints: ["Last day of the week"],
           explanation: "Kwasiada = Sunday in Twi."
+        },
+        {
+          id: 441,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What day did you hear?",
+          audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/benada.m4a"),
+          options: [
+            { id: 4, text: "Thursday" },
+            { id: 2, text: "Tuesday" },
+            { id: 1, text: "Monday" },
+            { id: 3, text: "Wednesday" }
+          ],
+          correctOptionId: 2,
+          hints: ["Second day of the week"],
+          explanation: "You heard 'Benada' which means Tuesday in Twi."
+        },
+        {
+          id: 444,
+          type: "multiple_choice",
+          instruction: "Select the correct Twi day.",
+          question: "What is 'Friday' in Twi?",
+          options: [
+            { id: 1, text: "Dwoada" },
+            { id: 4, text: "Memeneda" },
+            { id: 3, text: "Fida" },
+            { id: 2, text: "Wukuada" }
+          ],
+          correctOptionId: 3,
+          hints: ["Fifth day of the week"],
+          explanation: "Fida = Friday in Twi."
         }
       ]
     }
@@ -1075,218 +1119,218 @@ export default {
     description: "Review all the numbers, time, and days you've learned",
     questions: [
       {
-        id: 445,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi number.",
-        question: "What is 'Three' in Twi?",
-        options: [
-          { id: 1, text: "Baako" },
-          { id: 2, text: "Mmienu" },
-          { id: 3, text: "Mmiɛnsa" },
-          { id: 4, text: "Enan" }
-        ],
-        correctOptionId: 3,
-        hints: ["Comes after two"],
-        explanation: "Mmiɛnsa = Three."
-      },
-      {
-        id: 446,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What number did you hear?",
-        audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/nson.m4a"),
-        options: [
-          { id: 1, text: "Six" },
-          { id: 2, text: "Seven" },
-          { id: 3, text: "Eight" },
-          { id: 4, text: "Nine" }
-        ],
-        correctOptionId: 2,
-        hints: ["Comes after six"],
-        explanation: "You heard 'Nson' which means Seven."
-      },
-      {
-        id: 447,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi number.",
-        question: "What is 'Twenty' in Twi?",
-        options: [
-          { id: 1, text: "Aduonu" },
-          { id: 2, text: "Aduasa" },
-          { id: 3, text: "Aduanan" },
-          { id: 4, text: "Aduonum" }
-        ],
-        correctOptionId: 1,
-        hints: ["Two tens"],
-        explanation: "Aduonu = Twenty."
-      },
-      {
-        id: 448,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What number did you hear?",
-        audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/ɔha.m4a"),
-        options: [
-          { id: 1, text: "Sixty" },
-          { id: 2, text: "Eighty" },
-          { id: 3, text: "Ninety" },
-          { id: 4, text: "One hundred" }
-        ],
-        correctOptionId: 4,
-        hints: ["Ten tens"],
-        explanation: "You heard 'Ɔha' which means One hundred."
-      },
-      {
-        id: 449,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi phrase.",
-        question: "How do you ask 'What time is it?' in Twi?",
-        options: [
-          { id: 1, text: "Abɔ sɛn?" },
-          { id: 2, text: "Abɔ nnɔn mmiɛnsa" },
-          { id: 3, text: "Anɔpa" },
-          { id: 4, text: "Anadwo" }
-        ],
-        correctOptionId: 1,
-        hints: ["Question about time"],
-        explanation: "Abɔ sɛn? = What time is it?"
-      },
-      {
-        id: 450,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi word.",
-        question: "What is 'Tomorrow' in Twi?",
-        options: [
-          { id: 1, text: "Ɛnnɛ" },
-          { id: 2, text: "Ɔkyena" },
-          { id: 3, text: "Ɛnora" },
-          { id: 4, text: "Nnawɔtwe a ɛdi hɔ" }
-        ],
-        correctOptionId: 2,
-        hints: ["The day after today"],
-        explanation: "Ɔkyena = Tomorrow."
-      },
-      {
-        id: 451,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What day did you hear?",
-        audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/kwasiada.m4a"),
-        options: [
-          { id: 1, text: "Friday" },
-          { id: 2, text: "Saturday" },
-          { id: 3, text: "Sunday" },
-          { id: 4, text: "Monday" }
-        ],
-        correctOptionId: 3,
-        hints: ["Last day of the week"],
-        explanation: "You heard 'Kwasiada' which means Sunday."
-      },
-      {
-        id: 452,
-        type: "multiple_choice",
-        instruction: "Select the correct Twi day.",
-        question: "What is 'Wednesday' in Twi?",
-        options: [
-          { id: 1, text: "Dwoada" },
-          { id: 2, text: "Benada" },
-          { id: 3, text: "Wukuada" },
-          { id: 4, text: "Yawoada" }
-        ],
-        correctOptionId: 3,
-        hints: ["Third day of the week"],
-        explanation: "Wukuada = Wednesday."
-      },
-      {
-        id: 453,
+        id: 455,
         type: "multiple_choice",
         instruction: "Select the correct Twi number.",
         question: "How do you say '62' in Twi?",
         options: [
-          { id: 1, text: "Aduonum nson" },
-          { id: 2, text: "Aduosia mmienu" },
           { id: 3, text: "Aduowotwe nwotwe" },
-          { id: 4, text: "Aduokron mmiɛnsa" }
+          { id: 2, text: "Aduosia mmienu" },
+          { id: 4, text: "Aduokron mmiɛnsa" },
+          { id: 1, text: "Aduonum nson" }
         ],
         correctOptionId: 2,
         hints: ["Aduosia = sixty", "mmienu = two"],
         explanation: "Aduosia mmienu = 62."
       },
       {
-        id: 454,
+        id: 447,
         type: "multiple_choice",
-        instruction: "Select the correct Twi word.",
-        question: "What is 'Yesterday' in Twi?",
+        instruction: "Select the correct Twi number.",
+        question: "What is 'Three' in Twi?",
         options: [
-          { id: 1, text: "Ɛnnɛ" },
-          { id: 2, text: "Ɔkyena" },
-          { id: 3, text: "Ɛnora" },
-          { id: 4, text: "Nnawɔtwe a ɛdi hɔ" }
+          { id: 4, text: "Enan" },
+          { id: 1, text: "Baako" },
+          { id: 3, text: "Mmiɛnsa" },
+          { id: 2, text: "Mmienu" }
         ],
         correctOptionId: 3,
-        hints: ["The day before today"],
-        explanation: "Ɛnora = Yesterday."
+        hints: ["Comes after two"],
+        explanation: "Mmiɛnsa = Three."
       },
       {
-        id: 455,
+        id: 453,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What day did you hear?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/kwasiada.m4a"),
+        options: [
+          { id: 4, text: "Monday" },
+          { id: 2, text: "Saturday" },
+          { id: 3, text: "Sunday" },
+          { id: 1, text: "Friday" }
+        ],
+        correctOptionId: 3,
+        hints: ["Last day of the week"],
+        explanation: "You heard 'Kwasiada' which means Sunday."
+      },
+      {
+        id: 460,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What number did you hear?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduanan.m4a"),
+        options: [
+          { id: 2, text: "Thirty" },
+          { id: 3, text: "Forty" },
+          { id: 1, text: "Twenty" },
+          { id: 4, text: "Fifty" }
+        ],
+        correctOptionId: 3,
+        hints: ["Four tens"],
+        explanation: "You heard 'Aduanan' which means Forty."
+      },
+      {
+        id: 449,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi number.",
+        question: "What is 'Twenty' in Twi?",
+        options: [
+          { id: 4, text: "Aduonum" },
+          { id: 2, text: "Aduasa" },
+          { id: 1, text: "Aduonu" },
+          { id: 3, text: "Aduanan" }
+        ],
+        correctOptionId: 1,
+        hints: ["Two tens"],
+        explanation: "Aduonu = Twenty."
+      },
+      {
+        id: 457,
         type: "multiple_choice",
         instruction: "Select the correct Twi number.",
         question: "What is 'Fifteen' in Twi?",
         options: [
-          { id: 1, text: "Dubaako" },
-          { id: 2, text: "Dummiɛnsa" },
           { id: 3, text: "Dunnan" },
-          { id: 4, text: "Dunnum" }
+          { id: 4, text: "Dunnum" },
+          { id: 1, text: "Dubaako" },
+          { id: 2, text: "Dummiɛnsa" }
         ],
         correctOptionId: 4,
         hints: ["Ten plus five"],
         explanation: "Dunnum = Fifteen."
       },
       {
-        id: 456,
+        id: 451,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi phrase.",
+        question: "How do you ask 'What time is it?' in Twi?",
+        options: [
+          { id: 4, text: "Anadwo" },
+          { id: 2, text: "Abɔ nnɔn mmiɛnsa" },
+          { id: 1, text: "Abɔ sɛn?" },
+          { id: 3, text: "Anɔpa" }
+        ],
+        correctOptionId: 1,
+        hints: ["Question about time"],
+        explanation: "Abɔ sɛn? = What time is it?"
+      },
+      {
+        id: 458,
         type: "multiple_choice",
         instruction: "Select the correct Twi day.",
         question: "What is 'Saturday' in Twi?",
         options: [
-          { id: 1, text: "Fiada" },
+          { id: 4, text: "Dwoada" },
           { id: 2, text: "Memeneda" },
-          { id: 3, text: "Kwasiada" },
-          { id: 4, text: "Dwoada" }
+          { id: 1, text: "Fida" },
+          { id: 3, text: "Kwasiada" }
         ],
         correctOptionId: 2,
         hints: ["Sixth day of the week"],
         explanation: "Memeneda = Saturday."
       },
       {
-        id: 457,
+        id: 448,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What number did you hear?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/nson.m4a"),
+        options: [
+          { id: 3, text: "Eight" },
+          { id: 1, text: "Six" },
+          { id: 4, text: "Nine" },
+          { id: 2, text: "Seven" }
+        ],
+        correctOptionId: 2,
+        hints: ["Comes after six"],
+        explanation: "You heard 'Nson' which means Seven."
+      },
+      {
+        id: 456,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi word.",
+        question: "What is 'Yesterday' in Twi?",
+        options: [
+          { id: 4, text: "Nnawɔtwe a ɛdi hɔ" },
+          { id: 3, text: "Ɛnora" },
+          { id: 1, text: "Ɛnnɛ" },
+          { id: 2, text: "Ɔkyena" }
+        ],
+        correctOptionId: 3,
+        hints: ["The day before today"],
+        explanation: "Ɛnora = Yesterday."
+      },
+      {
+        id: 450,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What number did you hear?",
+        audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/ɔha.m4a"),
+        options: [
+          { id: 2, text: "Eighty" },
+          { id: 4, text: "One hundred" },
+          { id: 1, text: "Sixty" },
+          { id: 3, text: "Ninety" }
+        ],
+        correctOptionId: 4,
+        hints: ["Ten tens"],
+        explanation: "You heard 'Ɔha' which means One hundred."
+      },
+      {
+        id: 454,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi day.",
+        question: "What is 'Wednesday' in Twi?",
+        options: [
+          { id: 2, text: "Benada" },
+          { id: 4, text: "Yawoada" },
+          { id: 3, text: "Wukuada" },
+          { id: 1, text: "Dwoada" }
+        ],
+        correctOptionId: 3,
+        hints: ["Third day of the week"],
+        explanation: "Wukuada = Wednesday."
+      },
+      {
+        id: 459,
         type: "multiple_choice",
         instruction: "Select the correct Twi phrase.",
         question: "How do you say 'In the morning' in Twi?",
         options: [
-          { id: 1, text: "Abɔ sɛn?" },
           { id: 2, text: "Abɔ nnɔn mmiɛnsa" },
           { id: 3, text: "Anɔpa" },
-          { id: 4, text: "Anadwo" }
+          { id: 4, text: "Anadwo" },
+          { id: 1, text: "Abɔ sɛn?" }
         ],
         correctOptionId: 3,
         hints: ["Morning time"],
         explanation: "Anɔpa = In the morning."
       },
       {
-        id: 458,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What number did you hear?",
-        audioUrl: require("../../../../assets/audio/twi/beginner/chapter4/aduanan.m4a"),
+        id: 452,
+        type: "multiple_choice",
+        instruction: "Select the correct Twi word.",
+        question: "What is 'Tomorrow' in Twi?",
         options: [
-          { id: 1, text: "Twenty" },
-          { id: 2, text: "Thirty" },
-          { id: 3, text: "Forty" },
-          { id: 4, text: "Fifty" }
+          { id: 3, text: "Ɛnora" },
+          { id: 1, text: "Ɛnnɛ" },
+          { id: 4, text: "Nnawɔtwe a ɛdi hɔ" },
+          { id: 2, text: "Ɔkyena" }
         ],
-        correctOptionId: 3,
-        hints: ["Four tens"],
-        explanation: "You heard 'Aduanan' which means Forty."
+        correctOptionId: 2,
+        hints: ["The day after today"],
+        explanation: "Ɔkyena = Tomorrow."
       }
     ]
   }

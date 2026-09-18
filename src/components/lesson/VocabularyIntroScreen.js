@@ -1,16 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "expo-router/react-navigation";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import {
-  Animated,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "../../context/ThemeContext";
 
 import ConfirmDialog from "../ui/ConfirmDialog";
@@ -41,48 +39,32 @@ export default function VocabularyIntroScreen({
   const [showComplete, setShowComplete] =
     useState(false);
 
-  const fadeAnim = useRef(
-    new Animated.Value(1)
-  ).current;
-
   const totalCards =
     vocabulary?.length || 0;
 
   const handleCardComplete = (grade) => {
-    Animated.timing(fadeAnim, {
-      toValue: 0,
-      duration: 200,
-      useNativeDriver: true,
-    }).start(() => {
-      if (
-        grade === "good" ||
-        grade === "again"
-      ) {
-        setCompleted((prev) =>
-          Math.min(
-            prev + 1,
-            totalCards
-          )
-        );
-      }
+    if (
+      grade === "good" ||
+      grade === "again"
+    ) {
+      setCompleted((prev) =>
+        Math.min(
+          prev + 1,
+          totalCards
+        )
+      );
+    }
 
-      if (
-        currentIndex <
-        totalCards - 1
-      ) {
-        setCurrentIndex(
-          (prev) => prev + 1
-        );
-
-        Animated.timing(fadeAnim, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: true,
-        }).start();
-      } else {
-        setShowComplete(true);
-      }
-    });
+    if (
+      currentIndex <
+      totalCards - 1
+    ) {
+      setCurrentIndex(
+        (prev) => prev + 1
+      );
+    } else {
+      setShowComplete(true);
+    }
   };
 
   const handlePrevious = () => {
@@ -90,25 +72,13 @@ export default function VocabularyIntroScreen({
       return;
     }
 
-    Animated.timing(fadeAnim, {
-      toValue: 0,
-      duration: 200,
-      useNativeDriver: true,
-    }).start(() => {
-      setCurrentIndex(
-        (prev) => prev - 1
-      );
+    setCurrentIndex(
+      (prev) => prev - 1
+    );
 
-      setCompleted((prev) =>
-        Math.max(0, prev - 1)
-      );
-
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 200,
-        useNativeDriver: true,
-      }).start();
-    });
+    setCompleted((prev) =>
+      Math.max(0, prev - 1)
+    );
   };
 
   const handleSkip = () => {
@@ -298,23 +268,20 @@ export default function VocabularyIntroScreen({
         </View>
 
         {currentWord && (
-          <Animated.View
-            style={[
-              styles.flashcardContainer,
-              {
-                opacity: fadeAnim,
-              },
-            ]}
+          <View
+            style={
+              styles.flashcardContainer
+            }
           >
             <Flashcard
               key={
                 currentWord.id ||
-                currentIndex
+                `word-${currentIndex}`
               }
               word={currentWord}
               direction={direction}
             />
-          </Animated.View>
+          </View>
         )}
 
         <View

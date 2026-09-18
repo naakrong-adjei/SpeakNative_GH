@@ -5,35 +5,259 @@ import React, {
   useRef,
   useState,
 } from "react";
+
 import {
-  Animated,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from "react-native";
+
+import {
+  Gesture,
+  GestureDetector,
+} from "react-native-gesture-handler";
+
+import Animated, {
+  runOnJS,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  withTiming,
+} from "react-native-reanimated";
+
 import * as Haptics from "expo-haptics";
 
 import { useTheme } from "../../context/ThemeContext";
 
+const SPRING_CONFIG = {
+  damping: 15,
+  stiffness: 150,
+  mass: 0.6,
+};
+
 const BLANK_PATTERN = /\[_____\]/g;
+
+function WordTile({
+  item,
+  isUsed,
+  onSelect,
+  theme,
+  disabled,
+}) {
+  const scale = useSharedValue(1);
+
+  const gesture = Gesture.Tap()
+    .enabled(!disabled && !isUsed)
+    .onBegin(() => {
+      scale.value = withTiming(0.92, {
+        duration: 50,
+      });
+    })
+    .onFinalize(() => {
+      scale.value = withSpring(
+        1,
+        SPRING_CONFIG
+      );
+    })
+    .onEnd(() => {
+      runOnJS(onSelect)(item);
+    });
+
+  const animatedStyle = useAnimatedStyle(
+    () => ({
+      transform: [
+        {
+          scale: scale.value,
+        },
+      ],
+      opacity: isUsed ? 0 : 1,
+    }),
+    [isUsed]
+  );
+
+  return (
+    <View style={styles.tileWrapper}>
+      {!isUsed && (
+        <GestureDetector gesture={gesture}>
+          <Animated.View
+            style={[
+              styles.answerTile,
+              {
+                backgroundColor: theme.surface,
+                borderColor: theme.border,
+              },
+              animatedStyle,
+            ]}
+          >
+            <Text
+              style={[
+                styles.tileText,
+                {
+                  color: theme.text,
+                },
+              ]}
+            >
+              {item.text}
+            </Text>
+
+            {item.meaning && (
+              <Text
+                style={[
+                  styles.tileMeaning,
+                  {
+                    color: theme.secondaryText,
+                  },
+                ]}
+              >
+                {item.meaning}
+              </Text>
+            )}
+          </Animated.View>
+        </GestureDetector>
+      )}
+    </View>
+  );
+}
+
+function BlankSlot({
+  blankId,
+  selectedItem,
+  correctItemId,
+  showResult,
+  onRemove,
+  theme,
+}) {
+  const isFilled = Boolean(selectedItem);
+
+  const isCorrect =
+    showResult &&
+    isFilled &&
+    selectedItem.id === correctItemId;
+
+  const isIncorrect =
+    showResult &&
+    isFilled &&
+    selectedItem.id !== correctItemId;
+
+  const scale = useSharedValue(
+    isFilled ? 0.8 : 1
+  );
+
+  useEffect(() => {
+    if (isFilled) {
+      scale.value = withSpring(
+        1,
+        SPRING_CONFIG
+      );
+    }
+  }, [isFilled, scale]);
+
+  const gesture = Gesture.Tap()
+    .enabled(!showResult && isFilled)
+    .onEnd(() => {
+      runOnJS(onRemove)(blankId);
+    });
+
+  const animatedStyle = useAnimatedStyle(
+    () => ({
+      transform: [
+        {
+          scale: scale.value,
+        },
+      ],
+    })
+  );
+
+  let backgroundColor = theme.surface;
+  let borderColor = theme.border;
+  let textColor = theme.text;
+
+  if (isCorrect) {
+    backgroundColor = theme.success;
+    borderColor = theme.success;
+    textColor = theme.surface;
+  } else if (isIncorrect) {
+    backgroundColor = theme.error;
+    borderColor = theme.error;
+    textColor = theme.surface;
+  }
+
+  return (
+    <GestureDetector gesture={gesture}>
+      <Animated.View
+        style={[
+          styles.slotContainer,
+          {
+            borderColor,
+          },
+        ]}
+      >
+        {selectedItem ? (
+          <Animated.View
+            style={[
+              styles.selectedTile,
+              {
+                backgroundColor,
+                borderColor,
+              },
+              animatedStyle,
+            ]}
+          >
+            <Text
+              style={[
+                styles.tileText,
+                {
+                  color: textColor,
+                },
+              ]}
+            >
+              {selectedItem.text}
+            </Text>
+          </Animated.View>
+        ) : (
+          <View
+            style={[
+              styles.slotPlaceholder,
+              {
+                backgroundColor: theme.surface,
+                borderColor: theme.border,
+              },
+            ]}
+          />
+        )}
+      </Animated.View>
+    </GestureDetector>
+  );
+}
 
 export default function DragDropMode({
   question,
   showResult = false,
   onAnswerChange,
+  theme: themeProp,
 }) {
-  const { theme } = useTheme();
+  const { theme: contextTheme } = useTheme();
+
+  const theme = themeProp || contextTheme;
+
+  const [answers, setAnswers] = useState({});
+
+  const previousQuestionKey = useRef(null);
 
   const items = useMemo(() => {
     return Array.isArray(question?.items)
-      ? question.items.filter((item) => item?.id)
+      ? question.items.filter(
+          (item) => item?.id
+        )
       : [];
   }, [question?.items]);
 
   const blanks = useMemo(() => {
-    const sentence = question?.sentence || "";
-    const matches = sentence.match(BLANK_PATTERN) || [];
+    const sentence =
+      question?.sentence || "";
+
+    const matches =
+      sentence.match(BLANK_PATTERN) || [];
 
     return matches.map((_, index) => ({
       id: `blank${index + 1}`,
@@ -44,7 +268,9 @@ export default function DragDropMode({
   const correctMap = useMemo(() => {
     const map = {};
 
-    const drops = Array.isArray(question?.correctDrops)
+    const drops = Array.isArray(
+      question?.correctDrops
+    )
       ? question.correctDrops
       : question?.correctDrop
       ? [question.correctDrop]
@@ -56,7 +282,8 @@ export default function DragDropMode({
       }
 
       const blankId =
-        drop.blankId || `blank${index + 1}`;
+        drop.blankId ||
+        `blank${index + 1}`;
 
       map[blankId] = drop.itemId;
     });
@@ -67,82 +294,42 @@ export default function DragDropMode({
     question?.correctDrop,
   ]);
 
-  const [answers, setAnswers] = useState({});
-
-  const scaleAnim = useRef(
-    new Animated.Value(1)
-  ).current;
-
-  const onAnswerChangeRef = useRef(
-    onAnswerChange
+  const questionKey = useMemo(
+    () =>
+      question?.id ??
+      question?.sentence ??
+      null,
+    [question?.id, question?.sentence]
   );
 
   useEffect(() => {
-    onAnswerChangeRef.current =
-      onAnswerChange;
-  }, [onAnswerChange]);
+    if (
+      previousQuestionKey.current === null
+    ) {
+      previousQuestionKey.current =
+        questionKey;
+      return;
+    }
 
-  useEffect(() => {
-    setAnswers({});
-    scaleAnim.setValue(1);
-    onAnswerChangeRef.current?.({});
-  }, [
-    question?.id,
-    question?.sentence,
-    scaleAnim,
-  ]);
+    if (
+      previousQuestionKey.current !==
+      questionKey
+    ) {
+      previousQuestionKey.current =
+        questionKey;
 
-  const getItemById = useCallback(
-    (itemId) => {
-      if (!itemId) {
-        return null;
-      }
+      setAnswers({});
+      onAnswerChange?.({});
+    }
+  }, [questionKey, onAnswerChange]);
 
-      return (
-        items.find(
-          (item) => item.id === itemId
-        ) || null
-      );
-    },
-    [items]
-  );
-
-  const triggerBounce = useCallback(() => {
-    Animated.sequence([
-      Animated.timing(scaleAnim, {
-        toValue: 0.95,
-        duration: 80,
-        useNativeDriver: true,
-      }),
-      Animated.timing(scaleAnim, {
-        toValue: 1,
-        duration: 80,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [scaleAnim]);
-
-  const triggerSelectionHaptic = useCallback(() => {
+  const triggerHaptic = useCallback(() => {
     Haptics.impactAsync(
       Haptics.ImpactFeedbackStyle.Light
     );
   }, []);
 
-  const triggerRemovalHaptic = useCallback(() => {
-    Haptics.impactAsync(
-      Haptics.ImpactFeedbackStyle.Light
-    );
-  }, []);
-
-  const updateAnswers = useCallback(
-    (updatedAnswers) => {
-      setAnswers(updatedAnswers);
-      onAnswerChange?.(updatedAnswers);
-    },
-    [onAnswerChange]
-  );
-
-  const handleItemPress = useCallback(
+  const handleSelectWord = useCallback(
     (item) => {
       if (
         showResult ||
@@ -152,43 +339,42 @@ export default function DragDropMode({
         return;
       }
 
-      const alreadyUsed = Object.values(
-        answers
-      ).includes(item.id);
+      const alreadyUsed =
+        Object.values(answers).includes(
+          item.id
+        );
 
       if (alreadyUsed) {
         return;
       }
 
-      const emptyBlank = blanks.find(
+      const firstEmptyBlank = blanks.find(
         (blank) => !answers[blank.id]
       );
 
-      if (!emptyBlank) {
+      if (!firstEmptyBlank) {
         return;
       }
 
-      const updatedAnswers = {
+      const updated = {
         ...answers,
-        [emptyBlank.id]: item.id,
+        [firstEmptyBlank.id]: item.id,
       };
 
-      updateAnswers(updatedAnswers);
-
-      triggerBounce();
-      triggerSelectionHaptic();
+      setAnswers(updated);
+      onAnswerChange?.(updated);
+      triggerHaptic();
     },
     [
       showResult,
       blanks,
       answers,
-      updateAnswers,
-      triggerBounce,
-      triggerSelectionHaptic,
+      onAnswerChange,
+      triggerHaptic,
     ]
   );
 
-  const handleSlotPress = useCallback(
+  const handleRemoveWord = useCallback(
     (blankId) => {
       if (
         showResult ||
@@ -197,324 +383,35 @@ export default function DragDropMode({
         return;
       }
 
-      const updatedAnswers = {
+      const updated = {
         ...answers,
       };
 
-      delete updatedAnswers[blankId];
+      delete updated[blankId];
 
-      updateAnswers(updatedAnswers);
-      triggerRemovalHaptic();
+      setAnswers(updated);
+      onAnswerChange?.(updated);
+      triggerHaptic();
     },
     [
       showResult,
       answers,
-      updateAnswers,
-      triggerRemovalHaptic,
+      onAnswerChange,
+      triggerHaptic,
     ]
   );
 
-  const usedItemIds = useMemo(() => {
-    return new Set(
-      Object.values(answers)
-    );
-  }, [answers]);
+  const usedItemIds = useMemo(
+    () =>
+      new Set(Object.values(answers)),
+    [answers]
+  );
 
-  const renderSentence = useCallback(() => {
-    const sentence =
-      question?.sentence || "";
-
-    const parts =
-      sentence.split(BLANK_PATTERN);
-
-    if (parts.length === 1) {
-      return (
-        <Text
-          style={[
-            styles.sentenceText,
-            {
-              color: theme.text,
-            },
-          ]}
-        >
-          {sentence}
-        </Text>
-      );
-    }
-
+  const sentenceParts = useMemo(() => {
     return (
-      <View style={styles.sentenceWrapper}>
-        {parts.map((part, index) => {
-          const blank = blanks[index];
-
-          const selectedItemId = blank
-            ? answers[blank.id]
-            : null;
-
-          const selectedItem =
-            getItemById(selectedItemId);
-
-          const correctItemId = blank
-            ? correctMap[blank.id]
-            : null;
-
-          const slotHasAnswer =
-            Boolean(selectedItemId);
-
-          const slotIsCorrect =
-            showResult &&
-            slotHasAnswer &&
-            selectedItemId ===
-              correctItemId;
-
-          const slotIsIncorrect =
-            showResult &&
-            slotHasAnswer &&
-            selectedItemId !==
-              correctItemId;
-
-          let backgroundColor =
-            `${theme.primary}12`;
-
-          let borderColor =
-            theme.primary;
-
-          let bottomBorderColor =
-            theme.primaryDark ||
-            theme.primary;
-
-          let textColor =
-            theme.primary;
-
-          if (slotIsCorrect) {
-            backgroundColor =
-              theme.success;
-            borderColor =
-              theme.success;
-            bottomBorderColor =
-              theme.success;
-            textColor = "#FFFFFF";
-          } else if (slotIsIncorrect) {
-            backgroundColor =
-              theme.error;
-            borderColor =
-              theme.error;
-            bottomBorderColor =
-              theme.errorDark ||
-              theme.error;
-            textColor = "#FFFFFF";
-          }
-
-          return (
-            <React.Fragment
-              key={`part-${index}`}
-            >
-              {part !== "" && (
-                <Text
-                  style={[
-                    styles.sentenceText,
-                    {
-                      color: theme.text,
-                    },
-                  ]}
-                >
-                  {part}
-                </Text>
-              )}
-
-              {blank && (
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  onPress={() =>
-                    handleSlotPress(
-                      blank.id
-                    )
-                  }
-                  disabled={
-                    showResult ||
-                    !slotHasAnswer
-                  }
-                  accessibilityRole="button"
-                  accessibilityLabel={
-                    selectedItem
-                      ? `Answer: ${selectedItem.text}`
-                      : "Empty answer slot"
-                  }
-                  accessibilityHint={
-                    selectedItem
-                      ? "Tap to remove this answer"
-                      : undefined
-                  }
-                  accessibilityState={{
-                    disabled:
-                      showResult ||
-                      !slotHasAnswer,
-                  }}
-                  style={[
-                    styles.slotContainer,
-                    {
-                      borderBottomColor:
-                        slotHasAnswer
-                          ? bottomBorderColor
-                          : theme.border,
-                    },
-                  ]}
-                >
-                  {selectedItem ? (
-                    <Animated.View
-                      style={[
-                        styles.animatedSlot,
-                        {
-                          transform: [
-                            {
-                              scale:
-                                scaleAnim,
-                            },
-                          ],
-                        },
-                      ]}
-                    >
-                      <View
-                        style={[
-                          styles.selectedTile,
-                          {
-                            backgroundColor,
-                            borderColor,
-                            borderBottomColor:
-                              bottomBorderColor,
-                          },
-                        ]}
-                      >
-                        <Text
-                          style={[
-                            styles.tileText,
-                            {
-                              color:
-                                textColor,
-                            },
-                          ]}
-                        >
-                          {selectedItem.text}
-                        </Text>
-                      </View>
-                    </Animated.View>
-                  ) : (
-                    <View
-                      style={[
-                        styles.slotPlaceholder,
-                        {
-                          backgroundColor:
-                            `${theme.primary}06`,
-                          borderColor:
-                            theme.border,
-                        },
-                      ]}
-                    />
-                  )}
-                </TouchableOpacity>
-              )}
-            </React.Fragment>
-          );
-        })}
-      </View>
-    );
-  }, [
-    question?.sentence,
-    blanks,
-    answers,
-    showResult,
-    correctMap,
-    theme,
-    getItemById,
-    handleSlotPress,
-    scaleAnim,
-  ]);
-
-  const renderAnswerBank = useMemo(() => {
-    return items.map((item) => {
-      const isUsed =
-        usedItemIds.has(item.id);
-
-      return (
-        <View
-          key={item.id}
-          style={styles.tileWrapper}
-        >
-          {isUsed ? (
-            <View
-              style={[
-                styles.tilePlaceholder,
-                {
-                  backgroundColor:
-                    `${theme.primary}06`,
-                  borderColor:
-                    theme.border,
-                },
-              ]}
-            />
-          ) : (
-            <TouchableOpacity
-              activeOpacity={0.75}
-              onPress={() =>
-                handleItemPress(item)
-              }
-              disabled={showResult}
-              accessibilityRole="button"
-              accessibilityLabel={`Select ${item.text}`}
-              accessibilityState={{
-                disabled: showResult,
-              }}
-            >
-              <View
-                style={[
-                  styles.answerTile,
-                  {
-                    backgroundColor:
-                      theme.surface,
-                    borderColor:
-                      theme.border,
-                    borderBottomColor:
-                      theme.border,
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.tileText,
-                    {
-                      color: theme.text,
-                    },
-                  ]}
-                >
-                  {item.text}
-                </Text>
-
-                {item.meaning ? (
-                  <Text
-                    style={[
-                      styles.tileMeaning,
-                      {
-                        color:
-                          theme.secondaryText,
-                      },
-                    ]}
-                  >
-                    {item.meaning}
-                  </Text>
-                ) : null}
-              </View>
-            </TouchableOpacity>
-          )}
-        </View>
-      );
-    });
-  }, [
-    items,
-    usedItemIds,
-    theme,
-    showResult,
-    handleItemPress,
-  ]);
+      question?.sentence || ""
+    ).split(BLANK_PATTERN);
+  }, [question?.sentence]);
 
   if (!question) {
     return null;
@@ -522,15 +419,80 @@ export default function DragDropMode({
 
   return (
     <View style={styles.container}>
-      <View
-        style={styles.sentenceArea}
-        accessibilityRole="text"
-      >
-        {renderSentence()}
+      <View style={styles.sentenceArea}>
+        <View style={styles.sentenceWrapper}>
+          {sentenceParts.map(
+            (part, index) => {
+              const blank = blanks[index];
+
+              const selectedItemId = blank
+                ? answers[blank.id]
+                : null;
+
+              const selectedItem =
+                items.find(
+                  (item) =>
+                    item.id ===
+                    selectedItemId
+                );
+
+              return (
+                <React.Fragment
+                  key={`part-${index}`}
+                >
+                  {part !== "" && (
+                    <Text
+                      style={[
+                        styles.sentenceText,
+                        {
+                          color: theme.text,
+                        },
+                      ]}
+                    >
+                      {part}
+                    </Text>
+                  )}
+
+                  {blank && (
+                    <BlankSlot
+                      blankId={blank.id}
+                      selectedItem={
+                        selectedItem
+                      }
+                      correctItemId={
+                        correctMap[
+                          blank.id
+                        ]
+                      }
+                      showResult={
+                        showResult
+                      }
+                      onRemove={
+                        handleRemoveWord
+                      }
+                      theme={theme}
+                    />
+                  )}
+                </React.Fragment>
+              );
+            }
+          )}
+        </View>
       </View>
 
       <View style={styles.answerBank}>
-        {renderAnswerBank}
+        {items.map((item) => (
+          <WordTile
+            key={item.id}
+            item={item}
+            isUsed={usedItemIds.has(
+              item.id
+            )}
+            onSelect={handleSelectWord}
+            theme={theme}
+            disabled={showResult}
+          />
+        ))}
       </View>
     </View>
   );
@@ -543,7 +505,7 @@ const styles = StyleSheet.create({
   },
 
   sentenceArea: {
-    minHeight: 150,
+    minHeight: 140,
     marginBottom: 28,
     justifyContent: "center",
   },
@@ -556,44 +518,43 @@ const styles = StyleSheet.create({
   },
 
   sentenceText: {
-    fontSize: 21,
+    fontSize: 20,
     fontWeight: "700",
-    lineHeight: 38,
-    letterSpacing: 0.1,
+    lineHeight: 36,
   },
 
   slotContainer: {
-    minWidth: 82,
-    height: 48,
+    minWidth: 78,
+    minHeight: 46,
     marginHorizontal: 4,
     marginVertical: 4,
     alignItems: "center",
     justifyContent: "center",
-    borderBottomWidth: 3,
+    borderWidth: 2,
+    borderBottomWidth: 4,
+    borderRadius: 10,
+    flexShrink: 0,
   },
 
   slotPlaceholder: {
     width: "100%",
-    height: 44,
+    height: 40,
     borderRadius: 10,
     borderWidth: 1.5,
     borderStyle: "dashed",
   },
 
-  animatedSlot: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
   selectedTile: {
-    minWidth: 82,
-    minHeight: 46,
-    paddingHorizontal: 14,
-    borderRadius: 11,
+    minWidth: 78,
+    minHeight: 44,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 10,
     borderWidth: 2,
     borderBottomWidth: 4,
     alignItems: "center",
     justifyContent: "center",
+    flexShrink: 0,
   },
 
   answerBank: {
@@ -601,44 +562,43 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
-    gap: 10,
+    gap: 8,
   },
 
   tileWrapper: {
-    marginVertical: 3,
+    minWidth: 78,
+    minHeight: 46,
+    marginVertical: 4,
+    alignSelf: "flex-start",
+    flexShrink: 0,
   },
 
   answerTile: {
-    minWidth: 82,
-    minHeight: 48,
-    paddingHorizontal: 15,
-    paddingVertical: 9,
+    minWidth: 78,
+    minHeight: 46,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
     borderRadius: 12,
-    borderWidth: 1.5,
-    borderBottomWidth: 3,
+    borderWidth: 2,
+    borderBottomWidth: 4,
     alignItems: "center",
     justifyContent: "center",
+    alignSelf: "flex-start",
+    flexShrink: 0,
   },
 
   tileText: {
     fontSize: 16,
     fontWeight: "700",
     textAlign: "center",
+    flexShrink: 0,
   },
 
   tileMeaning: {
     marginTop: 2,
-    fontSize: 11,
+    fontSize: 10,
     fontWeight: "500",
     textAlign: "center",
-  },
-
-  tilePlaceholder: {
-    minWidth: 82,
-    minHeight: 48,
-    borderRadius: 12,
-    borderWidth: 1.5,
-    borderStyle: "dashed",
-    opacity: 0.45,
+    flexShrink: 0,
   },
 });

@@ -1,18 +1,10 @@
-import { useEffect, useState } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-} from "react-native";
-import {
-  useVideoPlayer,
-  VideoView,
-} from "expo-video";
+import { StyleSheet, View } from "react-native";
+import { useVideoPlayer, VideoView } from "expo-video";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../ui/Button";
 import { ThemedText } from "../themed-text";
-import ConfettiCelebration from "./ConfettiCelebration";
 
 const REWARD_VIDEO = require("../../assets/images/celebration/reward.mp4");
 
@@ -22,36 +14,20 @@ export default function LessonCompleteScreen({
 }) {
   const { theme } = useTheme();
 
-  const [showConfetti, setShowConfetti] = useState(false);
-
   const player = useVideoPlayer(REWARD_VIDEO, (player) => {
     player.loop = true;
     player.muted = true;
     player.play();
   });
 
-  useEffect(() => {
-    const confettiTimer = setTimeout(() => {
-      setShowConfetti(true);
-    }, 200);
-
-    return () => {
-      clearTimeout(confettiTimer);
-    };
-  }, []);
-
-  const completionText = {
-    lesson: "You just completed this lesson!",
-    quiz: "You just completed this quiz!",
-    chapter: "You just completed this chapter!",
-  };
-
   const subtitle =
-    completionText[type] ||
-    completionText.lesson;
+    type === "quiz"
+      ? "You just completed this quiz!"
+      : "You just completed this lesson!";
 
   return (
     <SafeAreaView
+      edges={["top", "bottom"]}
       style={[
         styles.container,
         {
@@ -101,23 +77,6 @@ export default function LessonCompleteScreen({
           />
         </View>
       </View>
-
-      <ConfettiCelebration
-        active={showConfetti}
-        count={100}
-        duration={4000}
-        colors={[
-          theme.primary,
-          theme.accent,
-          theme.success,
-          theme.info,
-          theme.warning,
-          "#FF6B6B",
-          "#4ECDC4",
-          "#FFE66D",
-          "#A8E6CF",
-        ]}
-      />
     </SafeAreaView>
   );
 }

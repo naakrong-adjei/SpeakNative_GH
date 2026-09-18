@@ -1,21 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
 import {
   Animated,
   Pressable,
   StyleSheet,
-  View,
   TouchableOpacity,
-  Alert,
+  View,
 } from "react-native";
+
 import { Ionicons } from "@expo/vector-icons";
+import { useAudioPlayer } from "expo-audio";
+
 import { ThemedText } from "../themed-text";
 import { useTheme } from "../../context/ThemeContext";
-import {
-  useAudioPlayer,
-  useAudioPlayerStatus,
-} from "expo-audio";
 
-export default function Flashcard({ word, direction }) {
+export default function Flashcard({
+  word,
+  direction,
+}) {
   const { theme } = useTheme();
 
   const [isFlipped, setIsFlipped] = useState(false);
@@ -24,220 +31,168 @@ export default function Flashcard({ word, direction }) {
     new Animated.Value(0)
   ).current;
 
+  const audioSource = useMemo(() => {
+    const source =
+      word?.audioUrl ||
+      word?.audio ||
+      word?.sound;
 
-  const player = useAudioPlayer(null);
-  const playerStatus = useAudioPlayerStatus(player);
+    if (!source) {
+      return null;
+    }
 
-  const isPlaying = playerStatus.playing;
+    if (
+      typeof source === "string" ||
+      typeof source === "number"
+    ) {
+      return source;
+    }
 
-  const frontInterpolate = flipAnimation.interpolate({
-    inputRange: [0, 180],
-    outputRange: ["0deg", "180deg"],
-  });
+    if (typeof source === "object") {
+      return source;
+    }
 
-  const backInterpolate = flipAnimation.interpolate({
-    inputRange: [0, 180],
-    outputRange: ["180deg", "360deg"],
-  });
+    return null;
+  }, [word]);
 
-  const frontAnimatedStyle = {
-    transform: [{ rotateY: frontInterpolate }],
-  };
+  const player = useAudioPlayer(audioSource);
 
-  const backAnimatedStyle = {
-    transform: [{ rotateY: backInterpolate }],
-  };
+  const hasAudio = Boolean(audioSource);
 
-  const flipToFront = () => {
-    Animated.timing(flipAnimation, {
-      toValue: 0,
-      duration: 250,
-      useNativeDriver: true,
-    }).start();
+  const nativeText =
+    typeof word === "string"
+      ? word
+      : word?.native ||
+        word?.word ||
+        "";
 
+  const englishText =
+    typeof word === "string"
+      ? word
+      : word?.english ||
+        word?.translation ||
+        "";
+
+  const pronunciation =
+    word &&
+    typeof word === "object"
+      ? word?.pronunciation || null
+      : null;
+
+  useEffect(() => {
+    flipAnimation.stopAnimation();
+    flipAnimation.setValue(0);
     setIsFlipped(false);
-  };
+
+    try {
+      player.pause();
+      player.seekTo(0);
+    } catch {}
+  }, [word, direction]);
 
   const flipToBack = () => {
+    if (isFlipped) {
+      return;
+    }
+
+    setIsFlipped(true);
+
     Animated.timing(flipAnimation, {
       toValue: 180,
       duration: 250,
       useNativeDriver: true,
     }).start();
-
-    setIsFlipped(true);
   };
 
-
-  const hasAudio = Boolean(
-    word?.audioUrl ||
-    word?.audio ||
-    word?.sound
-  );
-
-  const getAudioSource = () => {
-    const audioPath =
-      word?.audioUrl ||
-      word?.audio ||
-      word?.sound;
-
-    if (!audioPath) {
-      return null;
+  const flipToFront = () => {
+    if (!isFlipped) {
+      return;
     }
 
-
-    if (typeof audioPath === "number") {
-      return audioPath;
-    }
-
-
-    if (typeof audioPath === "object") {
-      return audioPath;
-    }
-
-
-    if (typeof audioPath === "string") {
-      return audioPath;
-    }
-
-    return null;
+    Animated.timing(flipAnimation, {
+      toValue: 0,
+      duration: 250,
+      useNativeDriver: true,
+    }).start(() => {
+      setIsFlipped(false);
+    });
   };
 
-  const playAudio = async (event) => {
-    if (event && event.stopPropagation) {
-      event.stopPropagation();
+  const handleCardPress = () => {
+    if (isFlipped) {
+      flipToFront();
+    } else {
+      flipToBack();
     }
+  };
 
-    const audioSource = getAudioSource();
+  const playAudio = (event) => {
+    event?.stopPropagation?.();
 
     if (!audioSource) {
-      Alert.alert(
-        "Audio Unavailable",
-        "No valid audio source was found for this word."
-      );
       return;
     }
 
     try {
-      if (isPlaying) {
-        player.pause();
-        return;
-      }
-
-      player.replace(audioSource);
-
+      player.pause();
+      player.seekTo(0);
       player.play();
-    } catch (error) {
-      console.error(
-        "Error playing audio:",
-        error
-      );
-
-      Alert.alert(
-        "Playback Error",
-        "Could not play the audio file."
-      );
-    }
+    } catch {}
   };
 
-
-  const getNativeText = () => {
-    if (typeof word === "string") {
-      return word;
-    }
-
-    return (
-      word?.native ||
-      word?.word ||
-      ""
-    );
+  const handleSpeakerPressIn = (event) => {
+    event?.stopPropagation?.();
   };
 
-  const getEnglishText = () => {
-    if (typeof word === "string") {
-      return word;
-    }
-
-    return (
-      word?.english ||
-      word?.translation ||
-      ""
-    );
-  };
-
-  const getPronunciation = () => {
-    if (
-      word &&
-      typeof word === "object"
-    ) {
-      return word?.pronunciation || null;
-    }
-
-    return null;
-  };
-
-  const nativeText = getNativeText();
-  const englishText = getEnglishText();
-  const pronunciation = getPronunciation();
-
-
-  const RenderSpeakerButton = ({
+  const renderSpeakerButton = ({
     isDarkBg = false,
-  }) => {
+  } = {}) => {
     if (!hasAudio) {
       return null;
     }
 
     return (
       <TouchableOpacity
+        onPressIn={handleSpeakerPressIn}
         onPress={playAudio}
         activeOpacity={0.7}
         style={[
           styles.speakerButton,
           {
             backgroundColor: isDarkBg
-              ? "rgba(255,255,255,0.2)"
-              : `${theme.primary || "#2E7D32"}20`,
+              ? theme.surface
+              : theme.primary,
           },
         ]}
       >
         <Ionicons
-          name={
-            isPlaying
-              ? "pause-circle"
-              : "volume-medium"
-          }
+          name="volume-medium"
           size={24}
           color={
             isDarkBg
-              ? "#FFFFFF"
-              : theme.primary || "#2E7D32"
+              ? theme.primary
+              : theme.surface
           }
         />
       </TouchableOpacity>
     );
   };
 
-
-  const FrontContent = () => {
-    if (direction === "en-native") {
-      return (
-        <View style={styles.frontContent}>
-          <ThemedText
-            style={[
-              styles.englishFront,
-              {
-                color: theme.text,
-              },
-            ]}
-          >
-            {englishText}
-          </ThemedText>
-        </View>
-      );
-    }
-
-    return (
+  const frontContent =
+    direction === "en-native" ? (
+      <View style={styles.frontContent}>
+        <ThemedText
+          style={[
+            styles.englishFront,
+            {
+              color: theme.text,
+            },
+          ]}
+        >
+          {englishText}
+        </ThemedText>
+      </View>
+    ) : (
       <View style={styles.nativeContent}>
         <ThemedText
           style={[
@@ -255,8 +210,7 @@ export default function Flashcard({ word, direction }) {
             style={[
               styles.pronunciationText,
               {
-                color:
-                  theme.secondaryText,
+                color: theme.secondaryText,
               },
             ]}
           >
@@ -264,97 +218,105 @@ export default function Flashcard({ word, direction }) {
           </ThemedText>
         )}
 
-        <RenderSpeakerButton />
+        {renderSpeakerButton()}
       </View>
     );
-  };
 
+  const backContent =
+    direction === "en-native" ? (
+      <View style={styles.nativeContent}>
+        <ThemedText
+          style={[
+            styles.nativeText,
+            {
+              color: theme.surface,
+            },
+          ]}
+        >
+          {nativeText}
+        </ThemedText>
 
-  const BackContent = () => {
-    if (direction === "en-native") {
-      return (
-        <View style={styles.nativeContent}>
+        {pronunciation && (
           <ThemedText
             style={[
-              styles.nativeText,
-              styles.nativeBackText,
+              styles.pronunciationText,
+              {
+                color: theme.surface,
+              },
             ]}
           >
-            {nativeText}
+            {pronunciation}
           </ThemedText>
+        )}
 
-          {pronunciation && (
-            <ThemedText
-              style={[
-                styles.pronunciationText,
-                styles.nativeBackText,
-              ]}
-            >
-              {pronunciation}
-            </ThemedText>
-          )}
-
-          <RenderSpeakerButton
-            isDarkBg={true}
-          />
-        </View>
-      );
-    }
-
-    return (
+        {renderSpeakerButton({
+          isDarkBg: true,
+        })}
+      </View>
+    ) : (
       <View style={styles.frontContent}>
         <ThemedText
           style={[
             styles.englishBack,
-            styles.nativeBackText,
+            {
+              color: theme.surface,
+            },
           ]}
         >
           {englishText}
         </ThemedText>
       </View>
     );
-  };
 
+  const frontRotation =
+    flipAnimation.interpolate({
+      inputRange: [0, 180],
+      outputRange: ["0deg", "180deg"],
+    });
+
+  const backRotation =
+    flipAnimation.interpolate({
+      inputRange: [0, 180],
+      outputRange: ["180deg", "360deg"],
+    });
 
   return (
-    <Pressable
-      onPress={
-        isFlipped
-          ? flipToFront
-          : flipToBack
-      }
-    >
-      <View>
+    <Pressable onPress={handleCardPress}>
+      <View style={styles.cardWrapper}>
         <Animated.View
           style={[
             styles.card,
             styles.cardFront,
-            frontAnimatedStyle,
             {
-              backgroundColor:
-                theme.surface,
-              borderColor:
-                theme.border,
+              backgroundColor: theme.surface,
+              borderColor: theme.border,
+              transform: [
+                {
+                  rotateY: frontRotation,
+                },
+              ],
             },
           ]}
         >
-          <FrontContent />
+          {frontContent}
         </Animated.View>
-
 
         <Animated.View
           style={[
             styles.card,
             styles.cardBack,
-            backAnimatedStyle,
             {
-              backgroundColor:
-                theme.primary ||
-                "#2E7D32",
+              backgroundColor: theme.primary,
+              borderColor: theme.primary,
+              transform: [
+                {
+                  rotateY: backRotation,
+                },
+              ],
             },
           ]}
         >
-          <BackContent />
+          {backContent}
         </Animated.View>
       </View>
     </Pressable>
@@ -362,26 +324,30 @@ export default function Flashcard({ word, direction }) {
 }
 
 const styles = StyleSheet.create({
-  card: {
+  cardWrapper: {
     width: 340,
-    maxHeight: 440,
-    height: "100%",
+    height: 440,
+  },
+
+  card: {
+    position: "absolute",
+    width: 340,
+    height: 440,
     justifyContent: "center",
     alignItems: "center",
-    backfaceVisibility: "hidden",
     borderRadius: 12,
-    shadowColor: "#000",
-
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
-    elevation: 5,
+    overflow: "hidden",
     paddingHorizontal: 32,
     paddingVertical: 48,
+    backfaceVisibility: "hidden",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
   },
 
   cardFront: {
@@ -389,14 +355,13 @@ const styles = StyleSheet.create({
   },
 
   cardBack: {
-    position: "absolute",
-    top: 0,
+    borderWidth: 0,
   },
 
   frontContent: {
     justifyContent: "center",
     alignItems: "center",
-    gap: 16,
+    gap: 14,
     width: "100%",
   },
 
@@ -408,41 +373,36 @@ const styles = StyleSheet.create({
   },
 
   nativeText: {
-    fontSize: 40,
-    lineHeight: 48,
+    fontSize: 32,
+    lineHeight: 40,
     fontWeight: "600",
     textAlign: "center",
     maxWidth: "90%",
   },
 
-  pronunciationText: {
-    fontSize: 20,
-    lineHeight: 28,
-    fontWeight: "400",
-    textAlign: "center",
-    maxWidth: "90%",
-    fontStyle: "italic",
-  },
-
-  nativeBackText: {
-    color: "#FFFFFF",
-  },
-
   englishFront: {
-    fontSize: 40,
-    lineHeight: 48,
+    fontSize: 32,
+    lineHeight: 40,
     textAlign: "center",
     fontWeight: "600",
     maxWidth: "90%",
   },
 
   englishBack: {
-    fontSize: 40,
-    lineHeight: 48,
+    fontSize: 32,
+    lineHeight: 40,
     textAlign: "center",
     fontStyle: "italic",
-    color: "#FFFFFF",
     maxWidth: "90%",
+  },
+
+  pronunciationText: {
+    fontSize: 18,
+    lineHeight: 26,
+    fontWeight: "400",
+    textAlign: "center",
+    maxWidth: "90%",
+    fontStyle: "italic",
   },
 
   speakerButton: {

@@ -3,7 +3,6 @@ import React, {
   useEffect,
   useState,
 } from "react";
-
 import {
   View,
   Text,
@@ -13,9 +12,7 @@ import {
   ActivityIndicator,
   RefreshControl,
 } from "react-native";
-
 import { SafeAreaView } from "react-native-safe-area-context";
-
 import { Ionicons } from "@expo/vector-icons";
 
 import {
@@ -71,66 +68,67 @@ const LessonNode = React.memo(
         ? "flex-start"
         : "flex-end";
 
-    const renderCompletionStars = useCallback(
-      (completion) => {
-        const stars = [];
+    const renderCompletionStars =
+      useCallback(
+        (completion) => {
+          const stars = [];
 
-        const starsToShow = Math.min(
-          Math.max(
-            0,
-            Number(completion) || 0
-          ),
-          MAX_STARS
-        );
-
-        for (
-          let i = 0;
-          i < starsToShow;
-          i++
-        ) {
-          stars.push(
-            <Ionicons
-              key={`star-${i}`}
-              name="star"
-              size={16}
-              color={
-                theme.warning ||
-                "#FFD700"
-              }
-            />
+          const starsToShow = Math.min(
+            Math.max(
+              0,
+              Number(completion) || 0
+            ),
+            MAX_STARS
           );
-        }
 
-        for (
-          let i = starsToShow;
-          i < MAX_STARS;
-          i++
-        ) {
-          stars.push(
-            <Ionicons
-              key={`empty-star-${i}`}
-              name="star-outline"
-              size={16}
-              color={
-                theme.icon ||
-                "#8e8e93"
+          for (
+            let i = 0;
+            i < starsToShow;
+            i++
+          ) {
+            stars.push(
+              <Ionicons
+                key={`star-${i}`}
+                name="star"
+                size={16}
+                color={
+                  theme.warning ||
+                  "#FFD700"
+                }
+              />
+            );
+          }
+
+          for (
+            let i = starsToShow;
+            i < MAX_STARS;
+            i++
+          ) {
+            stars.push(
+              <Ionicons
+                key={`empty-star-${i}`}
+                name="star-outline"
+                size={16}
+                color={
+                  theme.icon ||
+                  "#8e8e93"
+                }
+              />
+            );
+          }
+
+          return (
+            <View
+              style={
+                styles.completionStarsContainer
               }
-            />
+            >
+              {stars}
+            </View>
           );
-        }
-
-        return (
-          <View
-            style={
-              styles.completionStarsContainer
-            }
-          >
-            {stars}
-          </View>
-        );
-      },
-      [theme]
-    );
+        },
+        [theme]
+      );
 
     return (
       <View
@@ -720,15 +718,23 @@ export default function LessonScreen() {
           chapter;
 
         router.push({
-          pathname: "/(app)/lesson/[id]",
+          pathname:
+            "/(app)/lesson/[id]",
           params: {
             id: lesson.id,
             lessonId: lesson.id,
-            lessonTitle: lesson.title,
-            lessonData: JSON.stringify(dataToPass),
-            language: selectedLanguage,
-            level: selectedLevel,
-            chapterId: chapter.id,
+            lessonTitle:
+              lesson.title,
+            lessonData:
+              JSON.stringify(
+                dataToPass
+              ),
+            language:
+              selectedLanguage,
+            level:
+              selectedLevel,
+            chapterId:
+              chapter.id,
           },
         });
       },
@@ -769,16 +775,26 @@ export default function LessonScreen() {
         }
 
         router.push({
-          pathname: "/(app)/lesson/[id]",
+          pathname:
+            "/(app)/lesson/[id]",
           params: {
             id: chapter.review.id,
-            lessonId: chapter.review.id,
-            lessonTitle: chapter.review.title || `Review: ${chapter.title}`,
-            lessonData: JSON.stringify(chapter.review),
-            language: selectedLanguage,
-            level: selectedLevel,
+            lessonId:
+              chapter.review.id,
+            lessonTitle:
+              chapter.review.title ||
+              `Review: ${chapter.title}`,
+            lessonData:
+              JSON.stringify(
+                chapter.review
+              ),
+            language:
+              selectedLanguage,
+            level:
+              selectedLevel,
             isReview: true,
-            chapterId: chapter.id,
+            chapterId:
+              chapter.id,
           },
         });
       },
@@ -792,7 +808,9 @@ export default function LessonScreen() {
 
   const handleStreakPress =
     useCallback(() => {
-      router.push("/(app)/streak");
+      router.push(
+        "/(app)/streak"
+      );
     }, [router]);
 
   if (
@@ -1072,7 +1090,10 @@ export default function LessonScreen() {
                               styles.chapterXPContainer,
                               {
                                 backgroundColor:
-                                  `${theme.warning || "#FFD700"}20`,
+                                  `${
+                                    theme.warning ||
+                                    "#FFD700"
+                                  }20`,
                               },
                             ]}
                           >
@@ -1288,17 +1309,17 @@ const styles =
     },
 
     scrollContainer: {
-      paddingVertical: 24,
+      paddingTop: 10,
       paddingHorizontal: 20,
-      paddingBottom: 40,
+      paddingBottom: 20,
     },
 
     chapterContainer: {
-      marginBottom: 32,
+      marginBottom: 24,
     },
 
     chapterHeader: {
-      marginBottom: 20,
+      marginBottom: 14,
     },
 
     chapterHeaderRow: {
@@ -1349,20 +1370,21 @@ const styles =
     chapterTitleText: {
       fontSize: 24,
       fontWeight: "bold",
-      marginTop: 4,
+      marginTop: 3,
     },
 
     chapterDescription: {
       fontSize: 14,
-      marginTop: 4,
+      marginTop: 3,
+      lineHeight: 20,
     },
 
     lessonsWrapper: {
-      gap: 20,
+      gap: 14,
     },
 
     lessonNodeContainer: {
-      minHeight: 80,
+      minHeight: 72,
       justifyContent:
         "center",
       width: "100%",
@@ -1371,12 +1393,12 @@ const styles =
     lessonBubble: {
       flexDirection: "row",
       alignItems: "center",
-      paddingVertical: 12,
-      paddingHorizontal: 16,
+      paddingVertical: 10,
+      paddingHorizontal: 14,
       borderRadius: 14,
       borderWidth: 2,
       width: "88%",
-      gap: 12,
+      gap: 10,
     },
 
     lessonIconContainer: {
@@ -1407,6 +1429,7 @@ const styles =
       fontSize: 11,
       fontWeight: "600",
       marginTop: 4,
+      lineHeight: 15,
     },
 
     reviewButton: {
@@ -1415,10 +1438,10 @@ const styles =
       justifyContent:
         "center",
       gap: 8,
-      marginTop: 16,
+      marginTop: 12,
       alignSelf: "center",
-      paddingVertical: 12,
-      paddingHorizontal: 24,
+      paddingVertical: 11,
+      paddingHorizontal: 22,
       borderRadius: 24,
       shadowColor: "#000",
       shadowOffset: {
