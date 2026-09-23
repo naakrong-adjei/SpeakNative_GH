@@ -154,7 +154,7 @@ export default {
     {
       id: "2-3",
       type: "words",
-      title: "Change & Respect",
+      title: "Life Lessons",
       icon: "repeat-outline",
       description: "Learn Ewe proverbs about change and respect",
       words: ["Ɖevi si klɔa asi la ɖua nu kple ametsitsiwo", "Ne ʋuƒoƒo trɔ la, ɣeɖuɖu hã trɔna"],

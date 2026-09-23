@@ -43,22 +43,23 @@ export default function LevelCompleteScreen({
 
           <ThemedText
             style={[
-              styles.title,
+              styles.completeLabel,
               {
                 color: theme.primary,
               },
             ]}
           >
-            Level complete!
+            LEVEL COMPLETE
           </ThemedText>
 
           <ThemedText
             style={[
               styles.levelTitle,
               {
-                color: theme.text,
+                color: theme.primary,
               },
             ]}
+            numberOfLines={3}
           >
             {levelTitle || "Level completed"}
           </ThemedText>
@@ -71,7 +72,7 @@ export default function LevelCompleteScreen({
               },
             ]}
           >
-            You've completed this level!
+            You've completed this level.
           </ThemedText>
         </View>
 
@@ -96,8 +97,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    paddingTop: 70,
-    paddingBottom: 28,
+    paddingTop: 50,
+    paddingBottom: 24,
   },
 
   messageContainer: {
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
   trophyContainer: {
     width: 240,
     height: 240,
-    marginBottom: 8,
+    marginBottom: 10,
     alignItems: "center",
     justifyContent: "center",
     overflow: "hidden",
@@ -118,27 +119,31 @@ const styles = StyleSheet.create({
     height: 240,
   },
 
-  title: {
-    fontSize: 34,
-    lineHeight: 40,
-    fontWeight: "900",
+  completeLabel: {
+    marginTop: 4,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: "800",
+    letterSpacing: 1.6,
     textAlign: "center",
   },
 
   levelTitle: {
-    marginTop: 12,
-    fontSize: 21,
-    lineHeight: 28,
-    fontWeight: "800",
+    marginTop: 2,
+    maxWidth: 340,
+    fontSize: 28,
+    lineHeight: 34,
+    fontWeight: "900",
     textAlign: "center",
+    letterSpacing: 0.1,
   },
 
   subtitle: {
     marginTop: 8,
     maxWidth: 320,
-    fontSize: 16,
-    lineHeight: 23,
-    fontWeight: "500",
+    fontSize: 15,
+    lineHeight: 22,
+    fontWeight: "600",
     textAlign: "center",
   },
 

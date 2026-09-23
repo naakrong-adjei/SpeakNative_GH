@@ -527,7 +527,8 @@ export default function LessonContent({
     );
   }
 
-  const feedbackBackground = theme.surface;
+  const feedbackBackground =
+    theme.surface;
 
   const feedbackBorder =
     showResult
@@ -602,10 +603,7 @@ export default function LessonContent({
         onCancel={handleExitCancel}
       />
 
-      <SafeAreaView
-        edges={["top"]}
-        style={styles.topArea}
-      >
+      <View style={styles.headerArea}>
         <ProgressHeader
           progress={progress}
           currentCount={
@@ -614,88 +612,89 @@ export default function LessonContent({
           totalCount={totalQuestions}
           onClose={handleBack}
         />
+      </View>
 
-        <ScrollView
-          contentContainerStyle={[
-            styles.contentContainer,
-            {
-              paddingBottom:
-                contentBottomPadding,
-            },
-          ]}
-          showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled"
-        >
-          <View style={styles.questionHeader}>
-            {isReview && (
-              <View
+      <ScrollView
+        style={styles.questionScroll}
+        contentContainerStyle={[
+          styles.contentContainer,
+          {
+            paddingBottom:
+              contentBottomPadding,
+          },
+        ]}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={styles.questionHeader}>
+          {isReview && (
+            <View
+              style={[
+                styles.reviewBadge,
+                {
+                  backgroundColor:
+                    theme.primary + "18",
+                  borderColor:
+                    theme.primary + "30",
+                },
+              ]}
+            >
+              <Text
                 style={[
-                  styles.reviewBadge,
+                  styles.reviewBadgeText,
                   {
-                    backgroundColor:
-                      theme.primary + "18",
-                    borderColor:
-                      theme.primary + "30",
+                    color:
+                      theme.primary,
                   },
                 ]}
               >
-                <Text
-                  style={[
-                    styles.reviewBadgeText,
-                    {
-                      color:
-                        theme.primary,
-                    },
-                  ]}
-                >
-                  REVIEW
-                </Text>
-              </View>
-            )}
+                REVIEW
+              </Text>
+            </View>
+          )}
 
+          <Text
+            style={[
+              styles.questionLabel,
+              {
+                color:
+                  theme.secondaryText,
+              },
+            ]}
+          >
+            {isReview
+              ? "Let's review this one"
+              : "Translate or answer"}
+          </Text>
+
+          <Text
+            style={[
+              styles.questionText,
+              {
+                color: theme.text,
+              },
+            ]}
+          >
+            {currentQuestion.question}
+          </Text>
+
+          {currentQuestion.instruction && (
             <Text
               style={[
-                styles.questionLabel,
+                styles.instructionText,
                 {
                   color:
                     theme.secondaryText,
                 },
               ]}
             >
-              {isReview
-                ? "Let's review this one"
-                : "Translate or answer"}
+              {currentQuestion.instruction}
             </Text>
+          )}
+        </View>
 
-            <Text
-              style={[
-                styles.questionText,
-                {
-                  color: theme.text,
-                },
-              ]}
-            >
-              {currentQuestion.question}
-            </Text>
-
-            {currentQuestion.instruction && (
-              <Text
-                style={[
-                  styles.instructionText,
-                  {
-                    color:
-                      theme.secondaryText,
-                  },
-                ]}
-              >
-                {currentQuestion.instruction}
-              </Text>
-            )}
-          </View>
-
-          {renderMode()}
-        </ScrollView>
-      </SafeAreaView>
+        {renderMode()}
+      </ScrollView>
 
       <View
         onLayout={(event) => {
@@ -797,7 +796,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  topArea: {
+  headerArea: {
+    width: "100%",
+  },
+
+  questionScroll: {
     flex: 1,
   },
 

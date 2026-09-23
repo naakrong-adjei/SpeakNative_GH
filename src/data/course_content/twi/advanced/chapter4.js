@@ -11,7 +11,7 @@ export default {
       id: "4-1",
       type: "phrases",
       title: "Government & Elections",
-      icon: "landmark-outline",
+      icon: "business-outline",
       description: "Learn phrases about government and elections in Twi",
       words: ["Aban no de nhyehyɛeɛ foforɔ ato dwa", "Wɔbɛto aba afe a ɛdi yɛn anim no mu", "Ɔmanpanin no kasa kyerɛɛ ɔman no", "Mmarahyɛbadwa no agye mmara no atoom"],
       vocabulary: [

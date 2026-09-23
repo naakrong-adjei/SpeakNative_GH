@@ -1,7 +1,7 @@
 export default {
   id: 5,
-  title: "Food & Drinks",
-  description: "Learn food and drink vocabulary in Ewe",
+  title: "Food & Dining",
+  description: "Learn useful words and phrases related to food and everyday dining situations in Ewe.",
   icon: "restaurant-outline",
   totalXp: 10,
   difficulty: "Beginner",

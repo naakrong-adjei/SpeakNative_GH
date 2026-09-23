@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
+
 import {
   View,
   Text,
@@ -12,6 +13,7 @@ import {
   ActivityIndicator,
   RefreshControl,
 } from "react-native";
+
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -907,6 +909,7 @@ export default function LessonScreen() {
 
   return (
     <SafeAreaView
+      edges={["top"]}
       style={[
         styles.container,
         {
@@ -1311,7 +1314,6 @@ const styles =
     scrollContainer: {
       paddingTop: 10,
       paddingHorizontal: 20,
-      paddingBottom: 20,
     },
 
     chapterContainer: {

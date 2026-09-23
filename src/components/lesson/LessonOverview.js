@@ -26,12 +26,8 @@ import {
 } from "@clerk/expo";
 
 import { useTheme } from "../../context/ThemeContext";
-import {
-  createSupabaseClient,
-} from "../../utils/supabase";
-import {
-  getLessonData,
-} from "../../utils/lessonData";
+import { createSupabaseClient } from "../../utils/supabase";
+import { getLessonData } from "../../utils/lessonData";
 import {
   getLessonProgress,
   getQuizCompletion,
@@ -89,51 +85,32 @@ export default function LessonOverview() {
 
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);
-
   const [vocabulary, setVocabulary] = useState([]);
   const [questions, setQuestions] = useState([]);
-
   const [isReview, setIsReview] = useState(false);
-
-  const [
-    vocabularyCompleted,
-    setVocabularyCompleted,
-  ] = useState(false);
-
-  const [
-    quizCompleted,
-    setQuizCompleted,
-  ] = useState(false);
-
-  const [
-    reviewCompleted,
-    setReviewCompleted,
-  ] = useState(false);
-
+  const [vocabularyCompleted, setVocabularyCompleted] =
+    useState(false);
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const [reviewCompleted, setReviewCompleted] =
+    useState(false);
   const [progress, setProgress] = useState(0);
   const [streak, setStreak] = useState(0);
 
-  const normalizeProgress = useCallback(
+  const normalizeProgress = useCallback((value) => {
+    const numericValue = Number(value);
+
+    if (!Number.isFinite(numericValue)) {
+      return 0;
+    }
+
+    return Math.max(
+      0,
+      Math.min(MAX_STARS, numericValue)
+    );
+  }, []);
+
+  const isVocabularyProgressComplete = useCallback(
     (value) => {
-      const numericValue = Number(value);
-
-      if (!Number.isFinite(numericValue)) {
-        return 0;
-      }
-
-      return Math.max(
-        0,
-        Math.min(
-          MAX_STARS,
-          numericValue
-        )
-      );
-    },
-    []
-  );
-
-  const isVocabularyProgressComplete =
-    useCallback((value) => {
       if (typeof value === "boolean") {
         return value;
       }
@@ -145,7 +122,9 @@ export default function LessonOverview() {
       }
 
       return Boolean(value);
-    }, []);
+    },
+    []
+  );
 
   const resolveLesson = useCallback(() => {
     if (!lessonData) {
@@ -166,31 +145,21 @@ export default function LessonOverview() {
     ) {
       return (
         lessonData.sections.find(
-          (section) =>
-            section?.id === lessonIdParam
-        ) ||
-        lessonData.sections[0]
+          (section) => section?.id === lessonIdParam
+        ) || lessonData.sections[0]
       );
     }
 
     return lessonData;
-  }, [
-    lessonData,
-    lessonIdParam,
-  ]);
+  }, [lessonData, lessonIdParam]);
 
   const checkProgress = useCallback(
     async (id, vocab = []) => {
       if (!id) {
         setProgress(0);
-
-        setVocabularyCompleted(
-          vocab.length === 0
-        );
-
+        setVocabularyCompleted(vocab.length === 0);
         setQuizCompleted(false);
         setReviewCompleted(false);
-
         return;
       }
 
@@ -206,19 +175,16 @@ export default function LessonOverview() {
             language,
             level
           ),
-
           getVocabularyProgress(
             id,
             language,
             level
           ),
-
           getQuizCompletion(
             id,
             language,
             level
           ),
-
           getReviewCompletion(
             id,
             language,
@@ -226,10 +192,9 @@ export default function LessonOverview() {
           ),
         ]);
 
-        const lessonStars =
-          normalizeProgress(
-            lessonProgress
-          );
+        const lessonStars = normalizeProgress(
+          lessonProgress
+        );
 
         const vocabularyDone =
           vocab.length === 0
@@ -238,33 +203,17 @@ export default function LessonOverview() {
                 vocabularyProgress
               );
 
-        const finalProgress =
-          quizDone
-            ? MAX_STARS
-            : lessonStars;
+        const finalProgress = quizDone
+          ? MAX_STARS
+          : lessonStars;
 
-        setProgress(
-          finalProgress
-        );
-
-        setVocabularyCompleted(
-          vocabularyDone
-        );
-
-        setQuizCompleted(
-          quizDone
-        );
-
-        setReviewCompleted(
-          reviewDone
-        );
+        setProgress(finalProgress);
+        setVocabularyCompleted(vocabularyDone);
+        setQuizCompleted(quizDone);
+        setReviewCompleted(reviewDone);
       } catch {
         setProgress(0);
-
-        setVocabularyCompleted(
-          vocab.length === 0
-        );
-
+        setVocabularyCompleted(vocab.length === 0);
         setQuizCompleted(false);
         setReviewCompleted(false);
       }
@@ -277,46 +226,31 @@ export default function LessonOverview() {
     ]
   );
 
-  const loadStreak = useCallback(
-    async () => {
-      if (!user?.id) {
-        setStreak(0);
+  const loadStreak = useCallback(async () => {
+    if (!user?.id) {
+      setStreak(0);
+      return;
+    }
+
+    try {
+      const token = await getToken();
+
+      if (!token) {
         return;
       }
 
-      try {
-        const token =
-          await getToken();
+      const supabase = createSupabaseClient(token);
 
-        if (!token) {
-          return;
-        }
+      const result = await getStreak(
+        supabase,
+        user.id
+      );
 
-        const supabase =
-          createSupabaseClient(
-            token
-          );
-
-        const result =
-          await getStreak(
-            supabase,
-            user.id
-          );
-
-        setStreak(
-          Number(
-            result?.streak
-          ) || 0
-        );
-      } catch {
-        setStreak(0);
-      }
-    },
-    [
-      user?.id,
-      getToken,
-    ]
-  );
+      setStreak(Number(result?.streak) || 0);
+    } catch {
+      setStreak(0);
+    }
+  }, [user?.id, getToken]);
 
   useEffect(() => {
     let mounted = true;
@@ -325,8 +259,7 @@ export default function LessonOverview() {
       setLoading(true);
 
       try {
-        const actualLesson =
-          resolveLesson();
+        const actualLesson = resolveLesson();
 
         if (!mounted) {
           return;
@@ -338,60 +271,39 @@ export default function LessonOverview() {
           setQuestions([]);
           setIsReview(false);
           setProgress(0);
-
-          setVocabularyCompleted(
-            false
-          );
-
+          setVocabularyCompleted(false);
           setQuizCompleted(false);
           setReviewCompleted(false);
-
           return;
         }
 
-        const lessonVocabulary =
-          Array.isArray(
-            actualLesson.vocabulary
-          )
-            ? actualLesson.vocabulary
-            : Array.isArray(
-                actualLesson.words
-              )
-            ? actualLesson.words
-            : [];
+        const lessonVocabulary = Array.isArray(
+          actualLesson.vocabulary
+        )
+          ? actualLesson.vocabulary
+          : Array.isArray(actualLesson.words)
+          ? actualLesson.words
+          : [];
 
-        const lessonQuestions =
-          Array.isArray(
-            actualLesson.questions
-          )
-            ? actualLesson.questions
-            : [];
+        const lessonQuestions = Array.isArray(
+          actualLesson.questions
+        )
+          ? actualLesson.questions
+          : [];
 
         const resolvedLessonId =
-          actualLesson.id ||
-          lessonIdParam;
+          actualLesson.id || lessonIdParam;
 
         const normalizedLesson = {
           ...actualLesson,
           id: resolvedLessonId,
         };
 
-        setLesson(
-          normalizedLesson
-        );
-
-        setVocabulary(
-          lessonVocabulary
-        );
-
-        setQuestions(
-          lessonQuestions
-        );
-
+        setLesson(normalizedLesson);
+        setVocabulary(lessonVocabulary);
+        setQuestions(lessonQuestions);
         setIsReview(
-          parseBooleanParam(
-            isReviewParam
-          )
+          parseBooleanParam(isReviewParam)
         );
 
         await checkProgress(
@@ -406,11 +318,7 @@ export default function LessonOverview() {
         setLesson(null);
         setVocabulary([]);
         setQuestions([]);
-
-        setVocabularyCompleted(
-          false
-        );
-
+        setVocabularyCompleted(false);
         setQuizCompleted(false);
         setReviewCompleted(false);
         setProgress(0);
@@ -444,12 +352,8 @@ export default function LessonOverview() {
       let cancelled = false;
 
       const refresh = async () => {
-        await new Promise(
-          (resolve) =>
-            setTimeout(
-              resolve,
-              150
-            )
+        await new Promise((resolve) =>
+          setTimeout(resolve, 150)
         );
 
         if (cancelled) {
@@ -478,318 +382,210 @@ export default function LessonOverview() {
     ])
   );
 
-  const progressPercentage =
-    useMemo(() => {
-      if (isReview) {
-        return 0;
-      }
-
-      const hasVocabulary =
-        vocabulary.length > 0;
-
-      const hasQuiz =
-        questions.length > 0;
-
-      if (
-        !hasVocabulary &&
-        !hasQuiz
-      ) {
-        return 0;
-      }
-
-      if (
-        hasQuiz &&
-        quizCompleted
-      ) {
-        return 100;
-      }
-
-      if (
-        hasVocabulary &&
-        hasQuiz
-      ) {
-        return vocabularyCompleted
-          ? 50
-          : 0;
-      }
-
-      if (hasVocabulary) {
-        return vocabularyCompleted
-          ? 100
-          : 0;
-      }
-
-      if (hasQuiz) {
-        return quizCompleted
-          ? 100
-          : 0;
-      }
-
+  const progressPercentage = useMemo(() => {
+    if (isReview) {
       return 0;
-    }, [
-      vocabulary.length,
-      questions.length,
-      vocabularyCompleted,
-      quizCompleted,
-      isReview,
-    ]);
+    }
 
-  const vocabChunks =
-    useMemo(() => {
-      if (vocabulary.length === 0) {
-        return [];
-      }
+    const hasVocabulary = vocabulary.length > 0;
+    const hasQuiz = questions.length > 0;
 
-      if (vocabulary.length <= 7) {
-        return [
-          {
-            id: "vocabulary",
-            title: "Vocabulary",
-            data: vocabulary,
-          },
-        ];
-      }
+    if (!hasVocabulary && !hasQuiz) {
+      return 0;
+    }
 
-      const midpoint =
-        Math.ceil(
-          vocabulary.length / 2
-        );
+    if (hasQuiz && quizCompleted) {
+      return 100;
+    }
 
+    if (hasVocabulary && hasQuiz) {
+      return vocabularyCompleted ? 50 : 0;
+    }
+
+    if (hasVocabulary) {
+      return vocabularyCompleted ? 100 : 0;
+    }
+
+    if (hasQuiz) {
+      return quizCompleted ? 100 : 0;
+    }
+
+    return 0;
+  }, [
+    vocabulary.length,
+    questions.length,
+    vocabularyCompleted,
+    quizCompleted,
+    isReview,
+  ]);
+
+  const practiceChunks = useMemo(() => {
+    if (vocabulary.length === 0) {
+      return [];
+    }
+
+    if (vocabulary.length <= 7) {
       return [
         {
-          id: "vocabulary-1",
-          title: "Vocabulary",
-          data: vocabulary.slice(
-            0,
-            midpoint
-          ),
-        },
-        {
-          id: "vocabulary-2",
-          title: "Vocabulary II",
-          data: vocabulary.slice(
-            midpoint
-          ),
+          id: "language-practice",
+          title: "Language Practice",
+          data: vocabulary,
         },
       ];
-    }, [vocabulary]);
+    }
 
-  const handleStartVocabulary =
-    useCallback(
-      (
-        vocabSubset,
-        title = "Vocabulary"
-      ) => {
-        if (
-          !Array.isArray(
-            vocabSubset
-          ) ||
-          vocabSubset.length === 0
-        ) {
-          return;
-        }
-
-        router.push({
-          pathname:
-            "/(app)/practice/[id]",
-
-          params: {
-            id:
-              lesson?.id ||
-              "practice",
-
-            sectionId:
-              lesson?.id,
-
-            sectionTitle:
-              `${
-                lesson?.title ||
-                lessonTitle
-              } - ${title}`,
-
-            sectionData:
-              JSON.stringify({
-                ...lesson,
-                vocabulary:
-                  vocabSubset,
-                questions: [],
-              }),
-
-            language,
-            level,
-            mode: "vocabulary",
-            isReview: false,
-          },
-        });
-      },
-      [
-        router,
-        lesson,
-        lessonTitle,
-        language,
-        level,
-      ]
+    const midpoint = Math.ceil(
+      vocabulary.length / 2
     );
 
-  const handleStartQuiz =
-    useCallback(() => {
+    return [
+      {
+        id: "language-practice-1",
+        title: "Language Practice",
+        data: vocabulary.slice(0, midpoint),
+      },
+      {
+        id: "language-practice-2",
+        title: "Language Practice II",
+        data: vocabulary.slice(midpoint),
+      },
+    ];
+  }, [vocabulary]);
+
+  const handleStartVocabulary = useCallback(
+    (practiceSubset, title = "Language Practice") => {
       if (
-        questions.length === 0
+        !Array.isArray(practiceSubset) ||
+        practiceSubset.length === 0
       ) {
         return;
       }
 
       router.push({
-        pathname:
-          "/(app)/practice/[id]",
-
+        pathname: "/(app)/practice/[id]",
         params: {
-          id:
-            lesson?.id ||
-            "quiz",
-
-          sectionId:
-            lesson?.id,
-
-          sectionTitle:
-            `${
-              lesson?.title ||
-              lessonTitle
-            } - Quiz`,
-
-          sectionData:
-            JSON.stringify({
-              ...lesson,
-              vocabulary: [],
-              questions,
-            }),
-
+          id: lesson?.id || "practice",
+          sectionId: lesson?.id,
+          sectionTitle: `${
+            lesson?.title || lessonTitle
+          } - ${title}`,
+          sectionData: JSON.stringify({
+            ...lesson,
+            vocabulary: practiceSubset,
+            questions: [],
+          }),
           language,
           level,
-          mode: "quiz",
-
-          quizAlreadyCompleted:
-            quizCompleted,
-
+          mode: "vocabulary",
           isReview: false,
         },
       });
-    }, [
+    },
+    [
       router,
       lesson,
       lessonTitle,
-      questions,
       language,
       level,
-      quizCompleted,
-    ]);
+    ]
+  );
 
-  const handleStartReview =
-    useCallback(() => {
-      if (
-        vocabulary.length === 0 &&
-        questions.length === 0
-      ) {
-        return;
-      }
+  const handleStartQuiz = useCallback(() => {
+    if (questions.length === 0) {
+      return;
+    }
 
-      router.push({
-        pathname:
-          "/(app)/practice/[id]",
+    router.push({
+      pathname: "/(app)/practice/[id]",
+      params: {
+        id: lesson?.id || "quiz",
+        sectionId: lesson?.id,
+        sectionTitle: `${
+          lesson?.title || lessonTitle
+        } - Quiz`,
+        sectionData: JSON.stringify({
+          ...lesson,
+          vocabulary: [],
+          questions,
+        }),
+        language,
+        level,
+        mode: "quiz",
+        quizAlreadyCompleted: quizCompleted,
+        isReview: false,
+      },
+    });
+  }, [
+    router,
+    lesson,
+    lessonTitle,
+    questions,
+    language,
+    level,
+    quizCompleted,
+  ]);
 
-        params: {
-          id:
-            lesson?.id ||
-            "review",
+  const handleStartReview = useCallback(() => {
+    if (
+      vocabulary.length === 0 &&
+      questions.length === 0
+    ) {
+      return;
+    }
 
-          sectionId:
-            lesson?.id,
+    router.push({
+      pathname: "/(app)/practice/[id]",
+      params: {
+        id: lesson?.id || "review",
+        sectionId: lesson?.id,
+        sectionTitle: `${
+          lesson?.title || lessonTitle
+        } - Review`,
+        sectionData: JSON.stringify({
+          ...lesson,
+          vocabulary,
+          questions,
+        }),
+        language,
+        level,
+        mode: "review",
+        isReview: true,
+      },
+    });
+  }, [
+    router,
+    lesson,
+    lessonTitle,
+    vocabulary,
+    questions,
+    language,
+    level,
+  ]);
 
-          sectionTitle:
-            `${
-              lesson?.title ||
-              lessonTitle
-            } - Review`,
+  const getSectionIcon = useCallback((type) => {
+    const icons = {
+      vocabulary: "book-outline",
+      words: "book-outline",
+      phrases: "chatbox-ellipses-outline",
+      simple_sentences: "document-text-outline",
+      basic_conversations: "chatbubbles-outline",
+      useful_phrases: "chatbox-ellipses-outline",
+      complete_sentences: "document-text-outline",
+      conversations: "chatbubbles-outline",
+      listening: "headset-outline",
+      advanced_vocabulary: "book-outline",
+      expressions_idioms: "chatbox-ellipses-outline",
+      complex_sentences: "document-text-outline",
+      natural_conversations: "chatbubbles-outline",
+      proverbs_cultural: "library-outline",
+    };
 
-          sectionData:
-            JSON.stringify({
-              ...lesson,
-              vocabulary,
-              questions,
-            }),
+    return icons[type] || "book-outline";
+  }, []);
 
-          language,
-          level,
-          mode: "review",
-          isReview: true,
-        },
-      });
-    }, [
-      router,
-      lesson,
-      lessonTitle,
-      vocabulary,
-      questions,
-      language,
-      level,
-    ]);
-
-  const getSectionIcon =
-    useCallback((type) => {
-      const icons = {
-        vocabulary:
-          "book-outline",
-
-        words:
-          "book-outline",
-
-        phrases:
-          "chatbox-ellipses-outline",
-
-        simple_sentences:
-          "document-text-outline",
-
-        basic_conversations:
-          "chatbubbles-outline",
-
-        useful_phrases:
-          "chatbox-ellipses-outline",
-
-        complete_sentences:
-          "document-text-outline",
-
-        conversations:
-          "chatbubbles-outline",
-
-        listening:
-          "headset-outline",
-
-        advanced_vocabulary:
-          "book-outline",
-
-        expressions_idioms:
-          "chatbox-ellipses-outline",
-
-        complex_sentences:
-          "document-text-outline",
-
-        natural_conversations:
-          "chatbubbles-outline",
-
-        proverbs_cultural:
-          "library-outline",
-      };
-
-      return (
-        icons[type] ||
-        "book-outline"
-      );
-    }, []);
-
-  const goBack =
-    useCallback(() => {
-      router.back();
-    }, [router]);
+  const goBack = useCallback(() => {
+    router.back();
+  }, [router]);
 
   if (loading) {
     return (
@@ -797,8 +593,7 @@ export default function LessonOverview() {
         style={[
           styles.container,
           {
-            backgroundColor:
-              theme.background,
+            backgroundColor: theme.background,
           },
         ]}
       >
@@ -808,9 +603,7 @@ export default function LessonOverview() {
               ? "light-content"
               : "dark-content"
           }
-          backgroundColor={
-            theme.background
-          }
+          backgroundColor={theme.background}
         />
 
         <View style={styles.center}>
@@ -841,8 +634,7 @@ export default function LessonOverview() {
         style={[
           styles.container,
           {
-            backgroundColor:
-              theme.background,
+            backgroundColor: theme.background,
           },
         ]}
       >
@@ -852,9 +644,7 @@ export default function LessonOverview() {
               ? "light-content"
               : "dark-content"
           }
-          backgroundColor={
-            theme.background
-          }
+          backgroundColor={theme.background}
         />
 
         <View style={styles.center}>
@@ -894,8 +684,7 @@ export default function LessonOverview() {
               },
             ]}
           >
-            We couldn't load this
-            lesson.
+            We couldn't load this lesson.
           </Text>
 
           <TouchableOpacity
@@ -910,9 +699,7 @@ export default function LessonOverview() {
             ]}
           >
             <Text
-              style={
-                styles.backActionText
-              }
+              style={styles.backActionText}
             >
               Go Back
             </Text>
@@ -923,8 +710,7 @@ export default function LessonOverview() {
   }
 
   const quizIsCompleted =
-    !isReview &&
-    quizCompleted;
+    !isReview && quizCompleted;
 
   const quizLocked =
     questions.length === 0 ||
@@ -932,18 +718,16 @@ export default function LessonOverview() {
       vocabulary.length > 0 &&
       !vocabularyCompleted);
 
-  const lessonIcon =
-    getSectionIcon(
-      lesson.type
-    );
+  const lessonIcon = getSectionIcon(
+    lesson.type
+  );
 
   return (
     <SafeAreaView
       style={[
         styles.container,
         {
-          backgroundColor:
-            theme.background,
+          backgroundColor: theme.background,
         },
       ]}
     >
@@ -953,9 +737,7 @@ export default function LessonOverview() {
             ? "light-content"
             : "dark-content"
         }
-        backgroundColor={
-          theme.background
-        }
+        backgroundColor={theme.background}
       />
 
       <ScrollView
@@ -963,9 +745,7 @@ export default function LessonOverview() {
         contentContainerStyle={
           styles.scrollContent
         }
-        showsVerticalScrollIndicator={
-          false
-        }
+        showsVerticalScrollIndicator={false}
       >
         <View style={styles.header}>
           <TouchableOpacity
@@ -982,8 +762,7 @@ export default function LessonOverview() {
               {
                 backgroundColor:
                   theme.surface,
-                borderColor:
-                  theme.border,
+                borderColor: theme.border,
               },
             ]}
           >
@@ -1002,16 +781,10 @@ export default function LessonOverview() {
               },
             ]}
           >
-            {isReview
-              ? "Review"
-              : "Lesson"}
+            {isReview ? "Review" : "Lesson"}
           </Text>
 
-          <View
-            style={
-              styles.headerSpacer
-            }
-          />
+          <View style={styles.headerSpacer} />
         </View>
 
         <View style={styles.hero}>
@@ -1027,9 +800,7 @@ export default function LessonOverview() {
             <Ionicons
               name={lessonIcon}
               size={32}
-              color={
-                theme.background
-              }
+              color={theme.background}
             />
           </View>
 
@@ -1041,8 +812,7 @@ export default function LessonOverview() {
               },
             ]}
           >
-            {lesson.title ||
-              lessonTitle}
+            {lesson.title || lessonTitle}
           </Text>
 
           {lesson.description ? (
@@ -1060,12 +830,8 @@ export default function LessonOverview() {
           ) : null}
         </View>
 
-        <View
-          style={styles.pathHeader}
-        >
-          <View
-            style={styles.pathTitleRow}
-          >
+        <View style={styles.pathHeader}>
+          <View style={styles.pathTitleRow}>
             <Text
               style={[
                 styles.pathTitle,
@@ -1096,9 +862,7 @@ export default function LessonOverview() {
                     },
                   ]}
                 >
-                  {
-                    progressPercentage
-                  }%
+                  {progressPercentage}%
                 </Text>
               </View>
             )}
@@ -1113,14 +877,13 @@ export default function LessonOverview() {
               },
             ]}
           >
-            Complete each step to move
-            forward
+            Complete each step to move forward
           </Text>
         </View>
 
         <View style={styles.path}>
           {!isReview &&
-            vocabChunks.map(
+            practiceChunks.map(
               (chunk, index) => {
                 const completed =
                   vocabularyCompleted;
@@ -1132,19 +895,13 @@ export default function LessonOverview() {
                 return (
                   <View
                     key={chunk.id}
-                    style={
-                      styles.pathItem
-                    }
+                    style={styles.pathItem}
                   >
                     <TouchableOpacity
                       activeOpacity={
-                        available
-                          ? 0.8
-                          : 1
+                        available ? 0.8 : 1
                       }
-                      disabled={
-                        !available
-                      }
+                      disabled={!available}
                       onPress={() =>
                         handleStartVocabulary(
                           chunk.data,
@@ -1156,18 +913,14 @@ export default function LessonOverview() {
                         {
                           backgroundColor:
                             theme.surface,
-
                           borderColor:
                             completed
                               ? theme.primary
                               : available
                               ? theme.primary
                               : theme.border,
-
                           opacity:
-                            available
-                              ? 1
-                              : 0.55,
+                            available ? 1 : 0.55,
                         },
                       ]}
                     >
@@ -1205,9 +958,7 @@ export default function LessonOverview() {
                             },
                           ]}
                         >
-                          {
-                            chunk.title
-                          }
+                          {chunk.title}
                         </Text>
 
                         <Text
@@ -1219,15 +970,11 @@ export default function LessonOverview() {
                             },
                           ]}
                         >
-                          {
-                            chunk.data
-                              .length
-                          }{" "}
-                          {chunk.data
-                            .length ===
+                          {chunk.data.length}{" "}
+                          {chunk.data.length ===
                           1
-                            ? "new item"
-                            : "new items"}
+                            ? "language item"
+                            : "language items"}
                         </Text>
                       </View>
 
@@ -1269,34 +1016,26 @@ export default function LessonOverview() {
             )}
 
           {!isReview && (
-            <View
-              style={styles.pathItem}
-            >
+            <View style={styles.pathItem}>
               <TouchableOpacity
                 activeOpacity={
                   quizLocked ? 1 : 0.8
                 }
                 disabled={quizLocked}
-                onPress={
-                  handleStartQuiz
-                }
+                onPress={handleStartQuiz}
                 style={[
                   styles.activityCard,
                   {
                     backgroundColor:
                       theme.surface,
-
                     borderColor:
                       quizIsCompleted
                         ? theme.primary
                         : quizLocked
                         ? theme.border
                         : theme.accent,
-
                     opacity:
-                      quizLocked
-                        ? 0.55
-                        : 1,
+                      quizLocked ? 0.55 : 1,
                   },
                 ]}
               >
@@ -1329,8 +1068,7 @@ export default function LessonOverview() {
                     style={[
                       styles.activityTitle,
                       {
-                        color:
-                          theme.text,
+                        color: theme.text,
                       },
                     ]}
                   >
@@ -1346,8 +1084,7 @@ export default function LessonOverview() {
                       },
                     ]}
                   >
-                    {questions.length >
-                    0
+                    {questions.length > 0
                       ? `${questions.length} ${
                           questions.length ===
                           1
@@ -1358,8 +1095,7 @@ export default function LessonOverview() {
                   </Text>
 
                   {quizLocked &&
-                    vocabulary.length >
-                      0 &&
+                    vocabulary.length > 0 &&
                     !vocabularyCompleted && (
                       <Text
                         style={[
@@ -1370,7 +1106,7 @@ export default function LessonOverview() {
                           },
                         ]}
                       >
-                        Complete vocabulary
+                        Complete language practice
                         first
                       </Text>
                     )}
@@ -1385,8 +1121,7 @@ export default function LessonOverview() {
                         },
                       ]}
                     >
-                      Tap to take the
-                      quiz again
+                      Tap to take the quiz again
                     </Text>
                   )}
                 </View>
@@ -1427,20 +1162,15 @@ export default function LessonOverview() {
           )}
 
           {isReview && (
-            <View
-              style={styles.pathItem}
-            >
+            <View style={styles.pathItem}>
               <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={
-                  handleStartReview
-                }
+                onPress={handleStartReview}
                 style={[
                   styles.activityCard,
                   {
                     backgroundColor:
                       theme.surface,
-
                     borderColor:
                       theme.primary,
                   },
@@ -1469,8 +1199,7 @@ export default function LessonOverview() {
                     style={[
                       styles.activityTitle,
                       {
-                        color:
-                          theme.text,
+                        color: theme.text,
                       },
                     ]}
                   >
@@ -1537,11 +1266,7 @@ export default function LessonOverview() {
             color={theme.primary}
           />
 
-          <View
-            style={
-              styles.encouragementText
-            }
-          >
+          <View style={styles.encouragementText}>
             <Text
               style={[
                 styles.encouragementTitle,

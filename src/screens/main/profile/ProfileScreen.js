@@ -21,6 +21,7 @@ import { useAuth, useUser } from "@clerk/expo";
 
 import { ThemedText } from "../../../components/themed-text";
 import Button from "../../../components/ui/Button";
+import ConfirmDialog from "../../../components/ui/ConfirmDialog";
 import ThemeToggle from "../../../components/ui/ThemeToggle";
 import { useTheme } from "../../../context/ThemeContext";
 import { createSupabaseClient } from "../../../utils/supabase";
@@ -53,6 +54,12 @@ export default function ProfileScreen() {
     setIsEditModalVisible,
   ] = useState(false);
   const [userLanguages, setUserLanguages] = useState([]);
+  const [showSignOutDialog, setShowSignOutDialog] =
+    useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] =
+    useState(false);
+  const [deletingAccount, setDeletingAccount] =
+    useState(false);
 
   const calculateStreak = useCallback(
     (data) => {
@@ -126,8 +133,7 @@ export default function ProfileScreen() {
           return;
         }
 
-        const currentStreak =
-          calculateStreak(data);
+        const currentStreak = calculateStreak(data);
 
         const updatedProfile = {
           ...data,
@@ -234,32 +240,25 @@ export default function ProfileScreen() {
     calculateStreak,
   ]);
 
-  const currentLanguage =
-    LANGUAGES.find(
-      (lang) =>
-        lang.id ===
-        profile?.target_language
-    );
+  const currentLanguage = LANGUAGES.find(
+    (lang) =>
+      lang.id === profile?.target_language
+  );
 
-  const currentLevel =
-    LEVELS.find(
-      (level) =>
-        level.id ===
-        profile?.language_level
-    );
+  const currentLevel = LEVELS.find(
+    (level) =>
+      level.id === profile?.language_level
+  );
 
-  const userLanguageList =
-    userLanguages
-      .map((id) =>
-        LANGUAGES.find(
-          (lang) => lang.id === id
-        )
+  const userLanguageList = userLanguages
+    .map((id) =>
+      LANGUAGES.find(
+        (lang) => lang.id === id
       )
-      .filter(Boolean);
+    )
+    .filter(Boolean);
 
-  const handleSaveProfile = async (
-    updates
-  ) => {
+  const handleSaveProfile = async (updates) => {
     if (!user?.id || !supabase) {
       return;
     }
@@ -287,7 +286,8 @@ export default function ProfileScreen() {
         updates.email &&
         updates.email !== profile?.email
       ) {
-        updateData.email = updates.email;
+        updateData.email =
+          updates.email;
       }
 
       const { error } = await supabase
@@ -330,104 +330,106 @@ export default function ProfileScreen() {
   };
 
   const handleSignOut = () => {
-    Alert.alert(
-      "Sign Out",
-      "Are you sure you want to sign out?",
-      [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-        {
-          text: "Sign Out",
-          style: "destructive",
-          onPress: async () => {
-            try {
-              await signOut();
-              router.replace("/(auth)/intro");
-            } catch (error) {
-              console.error(
-                "Sign out failed:",
-                error
-              );
+    setShowSignOutDialog(true);
+  };
 
-              Alert.alert(
-                "Sign Out Failed",
-                "We couldn't sign you out. Please try again."
-              );
-            }
-          },
-        },
-      ]
-    );
+  const handleConfirmSignOut = async () => {
+    try {
+      setShowSignOutDialog(false);
+
+      await signOut();
+
+      router.replace("/(auth)/intro");
+    } catch (error) {
+      console.error(
+        "Sign out failed:",
+        error
+      );
+
+      Alert.alert(
+        "Sign Out Failed",
+        "We couldn't sign you out. Please try again."
+      );
+    }
   };
 
   const handleDeleteAccount = () => {
-    Alert.alert(
-      "Delete Account",
-      "Are you absolutely sure you want to delete your account? This action is permanent and your progress will be lost forever.",
-      [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-        {
-          text: "Delete Permanently",
-          style: "destructive",
-          onPress: async () => {
-            try {
-              setLoading(true);
+    if (deletingAccount) {
+      return;
+    }
 
-              if (!supabase || !user?.id) {
-                throw new Error(
-                  "Account information is unavailable."
-                );
-              }
-
-              const { error } =
-                await supabase
-                  .from("profiles")
-                  .delete()
-                  .eq(
-                    "clerk_id",
-                    user.id
-                  );
-
-              if (error) {
-                throw error;
-              }
-
-              await signOut();
-              router.replace("/(auth)/intro");
-            } catch (error) {
-              console.error(
-                "Error deleting account:",
-                error
-              );
-
-              Alert.alert(
-                "Error",
-                "Something went wrong while deleting your account."
-              );
-            } finally {
-              setLoading(false);
-            }
-          },
-        },
-      ]
-    );
+    setShowDeleteDialog(true);
   };
 
-  if (loading) {
+  const handleConfirmDeleteAccount =
+    async () => {
+      if (
+        deletingAccount ||
+        !supabase ||
+        !user?.id
+      ) {
+        if (!supabase || !user?.id) {
+          setShowDeleteDialog(false);
+
+          Alert.alert(
+            "Error",
+            "Account information is unavailable."
+          );
+        }
+
+        return;
+      }
+
+      try {
+        setShowDeleteDialog(false);
+        setDeletingAccount(true);
+        setLoading(true);
+
+        const { data, error } =
+          await supabase.functions.invoke(
+            "delete-account"
+          );
+
+        if (error) {
+          throw error;
+        }
+
+        if (!data?.success) {
+          throw new Error(
+            data?.message ||
+              "Account deletion failed."
+          );
+        }
+
+        await signOut();
+
+        router.replace("/(auth)/intro");
+      } catch (error) {
+        console.error(
+          "Error deleting account:",
+          error
+        );
+
+        setDeletingAccount(false);
+        setLoading(false);
+
+        Alert.alert(
+          "Delete Failed",
+          "We couldn't delete your account. Please try again."
+        );
+      }
+    };
+
+  if (loading || deletingAccount) {
     return (
       <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor:
-            theme.background,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+        style={[
+          styles.container,
+          {
+            backgroundColor:
+              theme.background,
+          },
+        ]}
       >
         <ActivityIndicator
           size="large"
@@ -439,17 +441,47 @@ export default function ProfileScreen() {
 
   return (
     <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor:
-          theme.background,
-      }}
+      style={[
+        styles.container,
+        {
+          backgroundColor:
+            theme.background,
+        },
+      ]}
       edges={[
         "top",
         "left",
         "right",
       ]}
     >
+      <ConfirmDialog
+        visible={showSignOutDialog}
+        title="Sign Out"
+        description="Are you sure you want to log out? You can sign back in anytime."
+        cancelLabel="No, Cancel"
+        confirmLabel="Yes, Sign Out"
+        onConfirm={handleConfirmSignOut}
+        onCancel={() =>
+          setShowSignOutDialog(false)
+        }
+        destructive
+      />
+
+      <ConfirmDialog
+        visible={showDeleteDialog}
+        title="Delete Account"
+        description="Are you sure you want to delete your account? This action is permanent and all your progress will be lost."
+        cancelLabel="No, Cancel"
+        confirmLabel="Yes, Delete Account"
+        onConfirm={
+          handleConfirmDeleteAccount
+        }
+        onCancel={() =>
+          setShowDeleteDialog(false)
+        }
+        destructive
+      />
+
       <View style={styles.container}>
         <View
           style={[
@@ -473,9 +505,7 @@ export default function ProfileScreen() {
           contentContainerStyle={
             styles.scrollContainer
           }
-          showsVerticalScrollIndicator={
-            false
-          }
+          showsVerticalScrollIndicator={false}
         >
           <View
             style={[
@@ -522,7 +552,13 @@ export default function ProfileScreen() {
               ]}
             >
               <ThemedText
-                style={styles.avatarText}
+                style={[
+                  styles.avatarText,
+                  {
+                    color:
+                      theme.surface,
+                  },
+                ]}
               >
                 {profile?.full_name
                   ?.charAt(0)
@@ -530,9 +566,13 @@ export default function ProfileScreen() {
               </ThemedText>
             </View>
 
-            <View style={styles.userInfo}>
+            <View
+              style={styles.userInfo}
+            >
               <ThemedText
                 style={styles.userName}
+                numberOfLines={1}
+                ellipsizeMode="tail"
               >
                 {profile?.full_name ||
                   "User"}
@@ -546,6 +586,8 @@ export default function ProfileScreen() {
                       theme.secondaryText,
                   },
                 ]}
+                numberOfLines={1}
+                ellipsizeMode="tail"
               >
                 {profile?.email ||
                   user
@@ -678,10 +720,14 @@ export default function ProfileScreen() {
                 }
               >
                 <View
-                  style={styles.learningRow}
+                  style={
+                    styles.learningRow
+                  }
                 >
                   <View
-                    style={styles.learningItem}
+                    style={
+                      styles.learningItem
+                    }
                   >
                     <View
                       style={[
@@ -689,6 +735,8 @@ export default function ProfileScreen() {
                         {
                           backgroundColor:
                             theme.surface,
+                          borderColor:
+                            theme.border,
                         },
                       ]}
                     >
@@ -719,6 +767,7 @@ export default function ProfileScreen() {
                         style={
                           styles.learningValue
                         }
+                        numberOfLines={1}
                       >
                         {currentLanguage?.title ||
                           "Not selected"}
@@ -737,7 +786,9 @@ export default function ProfileScreen() {
                   />
 
                   <View
-                    style={styles.learningItem}
+                    style={
+                      styles.learningItem
+                    }
                   >
                     <View
                       style={[
@@ -745,6 +796,8 @@ export default function ProfileScreen() {
                         {
                           backgroundColor:
                             theme.surface,
+                          borderColor:
+                            theme.border,
                         },
                       ]}
                     >
@@ -788,9 +841,13 @@ export default function ProfileScreen() {
               {userLanguageList.length >
                 0 && (
                 <View
-                  style={
-                    styles.languagesContainer
-                  }
+                  style={[
+                    styles.languagesContainer,
+                    {
+                      borderTopColor:
+                        theme.border,
+                    },
+                  ]}
                 >
                   <View
                     style={
@@ -1042,11 +1099,15 @@ export default function ProfileScreen() {
                 styles.deleteAccountButton
               }
               activeOpacity={0.7}
+              disabled={deletingAccount}
             >
               <ThemedText
-                style={
-                  styles.deleteAccountText
-                }
+                style={[
+                  styles.deleteAccountText,
+                  {
+                    color: theme.error,
+                  },
+                ]}
               >
                 Delete Account
               </ThemedText>
@@ -1131,7 +1192,6 @@ const styles = StyleSheet.create({
   avatarText: {
     fontSize: 28,
     fontWeight: "800",
-    color: "#fff",
     lineHeight: 28,
     paddingTop: 2,
   },
@@ -1160,6 +1220,7 @@ const styles = StyleSheet.create({
   userInfo: {
     marginLeft: 16,
     flex: 1,
+    minWidth: 0,
     paddingRight: 24,
   },
 
@@ -1172,6 +1233,7 @@ const styles = StyleSheet.create({
   userEmail: {
     fontSize: 14,
     fontWeight: "500",
+    flexShrink: 1,
   },
 
   sectionTitle: {
@@ -1248,10 +1310,11 @@ const styles = StyleSheet.create({
   learningIcon: {
     width: 36,
     height: 36,
-    borderRadius: 12,
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
     flexShrink: 0,
+    borderWidth: 1,
   },
 
   learningTitle: {
@@ -1268,7 +1331,7 @@ const styles = StyleSheet.create({
   },
 
   learningVerticalDivider: {
-    width: 2,
+    width: 1,
     height: 36,
     marginHorizontal: 10,
     flexShrink: 0,
@@ -1278,8 +1341,6 @@ const styles = StyleSheet.create({
     marginTop: 8,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor:
-      "rgba(0,0,0,0.08)",
   },
 
   languagesHeader: {
@@ -1378,7 +1439,6 @@ const styles = StyleSheet.create({
   },
 
   deleteAccountText: {
-    color: "#CC2929",
     fontWeight: "800",
     fontSize: 15,
     textTransform: "uppercase",

@@ -34,24 +34,18 @@ export default function ChapterCompleteScreen({
   const cardScale = useSharedValue(0);
   const buttonScale = useSharedValue(0);
 
-  const player = useVideoPlayer(
-    SUCCESS_ANIMATION,
-    (p) => {
-      p.loop = true;
-      p.muted = true;
-      p.play();
-    }
-  );
+  const player = useVideoPlayer(SUCCESS_ANIMATION, (p) => {
+    p.loop = true;
+    p.muted = true;
+    p.play();
+  });
 
   useEffect(() => {
     Haptics.notificationAsync(
       Haptics.NotificationFeedbackType.Success
     );
 
-    videoScale.value = withSpring(
-      1,
-      SPRING_CONFIG
-    );
+    videoScale.value = withSpring(1, SPRING_CONFIG);
 
     cardScale.value = withDelay(
       200,
@@ -62,40 +56,33 @@ export default function ChapterCompleteScreen({
       400,
       withSpring(1, SPRING_CONFIG)
     );
-  }, [
-    cardScale,
-    videoScale,
-    buttonScale,
-  ]);
+  }, [cardScale, videoScale, buttonScale]);
 
-  const animatedVideoStyle =
-    useAnimatedStyle(() => ({
-      transform: [
-        {
-          scale: videoScale.value,
-        },
-      ],
-    }));
+  const animatedVideoStyle = useAnimatedStyle(() => ({
+    transform: [
+      {
+        scale: videoScale.value,
+      },
+    ],
+  }));
 
-  const animatedCardStyle =
-    useAnimatedStyle(() => ({
-      transform: [
-        {
-          scale: cardScale.value,
-        },
-      ],
-      opacity: cardScale.value,
-    }));
+  const animatedCardStyle = useAnimatedStyle(() => ({
+    transform: [
+      {
+        scale: cardScale.value,
+      },
+    ],
+    opacity: cardScale.value,
+  }));
 
-  const animatedButtonStyle =
-    useAnimatedStyle(() => ({
-      transform: [
-        {
-          scale: buttonScale.value,
-        },
-      ],
-      opacity: buttonScale.value,
-    }));
+  const animatedButtonStyle = useAnimatedStyle(() => ({
+    transform: [
+      {
+        scale: buttonScale.value,
+      },
+    ],
+    opacity: buttonScale.value,
+  }));
 
   return (
     <SafeAreaView
@@ -109,38 +96,41 @@ export default function ChapterCompleteScreen({
     >
       <View style={styles.content}>
         <View style={styles.messageContainer}>
-          <Animated.View
-            style={[
-              styles.animationContainer,
-              animatedVideoStyle,
-            ]}
-          >
-            <VideoView
-              player={player}
-              style={styles.animation}
-              contentFit="contain"
-              nativeControls={false}
-            />
-          </Animated.View>
+          <View style={styles.animationWrapper}>
+            <Animated.View
+              style={[
+                styles.animationContainer,
+                animatedVideoStyle,
+              ]}
+            >
+              <VideoView
+                player={player}
+                style={styles.animation}
+                contentFit="contain"
+                nativeControls={false}
+              />
+            </Animated.View>
+          </View>
 
           <ThemedText
             style={[
-              styles.title,
+              styles.completeLabel,
               {
                 color: theme.primary,
               },
             ]}
           >
-            Chapter Complete!
+            CHAPTER COMPLETE
           </ThemedText>
 
           <ThemedText
             style={[
               styles.chapterTitle,
               {
-                color: theme.text,
+                color: theme.primary,
               },
             ]}
+            numberOfLines={3}
           >
             {chapterTitle || "Chapter completed"}
           </ThemedText>
@@ -153,7 +143,7 @@ export default function ChapterCompleteScreen({
               },
             ]}
           >
-            You've mastered every lesson in this section!
+            You've completed every lesson in this chapter.
           </ThemedText>
 
           {xp > 0 && (
@@ -167,8 +157,7 @@ export default function ChapterCompleteScreen({
                 style={[
                   styles.xpCard,
                   {
-                    backgroundColor:
-                      theme.surface,
+                    backgroundColor: theme.surface,
                     borderColor: theme.accent,
                   },
                 ]}
@@ -228,10 +217,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  animationWrapper: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
   animationContainer: {
     width: 220,
     height: 220,
-    marginBottom: 12,
+    marginBottom: 10,
     alignItems: "center",
     justifyContent: "center",
     overflow: "hidden",
@@ -242,25 +236,28 @@ const styles = StyleSheet.create({
     height: 220,
   },
 
-  title: {
-    fontSize: 32,
-    lineHeight: 38,
-    fontWeight: "900",
+  completeLabel: {
+    marginTop: 4,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: "800",
+    letterSpacing: 1.6,
     textAlign: "center",
-    letterSpacing: 0.5,
   },
 
   chapterTitle: {
-    marginTop: 8,
-    fontSize: 20,
-    lineHeight: 26,
-    fontWeight: "800",
+    marginTop: 2,
+    maxWidth: 340,
+    fontSize: 28,
+    lineHeight: 34,
+    fontWeight: "900",
     textAlign: "center",
+    letterSpacing: 0.1,
   },
 
   subtitle: {
-    marginTop: 6,
-    maxWidth: 300,
+    marginTop: 8,
+    maxWidth: 320,
     fontSize: 15,
     lineHeight: 22,
     fontWeight: "600",

@@ -24,23 +24,15 @@ export default function VocabularyIntroScreen({
   const { theme } = useTheme();
   const navigation = useNavigation();
 
-  const [currentIndex, setCurrentIndex] =
-    useState(0);
-
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [exitConfirmVisible, setExitConfirmVisible] =
     useState(false);
-
   const [direction, setDirection] =
     useState("en-native");
+  const [completed, setCompleted] = useState(0);
+  const [showComplete, setShowComplete] = useState(false);
 
-  const [completed, setCompleted] =
-    useState(0);
-
-  const [showComplete, setShowComplete] =
-    useState(false);
-
-  const totalCards =
-    vocabulary?.length || 0;
+  const totalCards = vocabulary?.length || 0;
 
   const handleCardComplete = (grade) => {
     if (
@@ -162,6 +154,7 @@ export default function VocabularyIntroScreen({
 
   return (
     <SafeAreaView
+      edges={["left", "right", "bottom"]}
       style={[
         styles.container,
         {
@@ -186,103 +179,109 @@ export default function VocabularyIntroScreen({
         }}
       />
 
-      <ProgressHeader
-        progress={progressPercent}
-        currentCount={Math.min(
-          currentIndex + 1,
-          totalCards
-        )}
-        totalCount={totalCards}
-        onClose={handleBack}
-      />
+      <View style={styles.headerContainer}>
+        <ProgressHeader
+          progress={progressPercent}
+          currentCount={Math.min(
+            currentIndex + 1,
+            totalCards
+          )}
+          totalCount={totalCards}
+          onClose={handleBack}
+        />
+      </View>
 
-      <ScrollView
-        contentContainerStyle={
-          styles.content
-        }
-        showsVerticalScrollIndicator={
-          false
-        }
-      >
-        <View
-          style={styles.instructionContainer}
+      <View style={styles.mainContent}>
+        <ScrollView
+          style={styles.scrollView}
+          contentContainerStyle={
+            styles.scrollContent
+          }
+          showsVerticalScrollIndicator={false}
+          bounces={false}
         >
-          <Text
-            style={[
-              styles.instructionTitle,
-              {
-                color: theme.text,
-              },
-            ]}
-          >
-            Lesson Vocabulary
-          </Text>
-
-          <Text
-            style={[
-              styles.instructionText,
-              {
-                color:
-                  theme.secondaryText,
-              },
-            ]}
-          >
-            Tap the card to flip it. Learn
-            the words before starting the
-            lesson.
-          </Text>
-
-          <TouchableOpacity
-            onPress={
-              handleFlipDirection
+          <View
+            style={
+              styles.instructionContainer
             }
-            style={[
-              styles.flipDirectionButton,
-              {
-                borderColor:
-                  theme.border,
-              },
-            ]}
-            activeOpacity={0.7}
           >
-            <Ionicons
-              name="swap-horizontal"
-              size={18}
-              color={theme.primary}
-            />
-
             <Text
               style={[
-                styles.flipDirectionText,
+                styles.instructionTitle,
                 {
-                  color:
-                    theme.primary,
+                  color: theme.text,
                 },
               ]}
             >
-              {direction === "en-native"
-                ? `${nativeLanguageName} → English`
-                : `English → ${nativeLanguageName}`}
+              Lesson Vocabulary
             </Text>
-          </TouchableOpacity>
-        </View>
 
-        {currentWord && (
-          <View
-            style={
-              styles.flashcardContainer
-            }
-          >
-            <Flashcard
-              key={
-                currentWord.id ||
-                `word-${currentIndex}`
+            <Text
+              style={[
+                styles.instructionText,
+                {
+                  color:
+                    theme.secondaryText,
+                },
+              ]}
+            >
+              Tap the card to flip it. Learn
+              the words before starting the
+              lesson.
+            </Text>
+
+            <TouchableOpacity
+              onPress={
+                handleFlipDirection
               }
-              word={currentWord}
-              direction={direction}
-            />
+              style={[
+                styles.flipDirectionButton,
+                {
+                  borderColor:
+                    theme.border,
+                },
+              ]}
+              activeOpacity={0.7}
+            >
+              <Ionicons
+                name="swap-horizontal"
+                size={18}
+                color={theme.primary}
+              />
+
+              <Text
+                style={[
+                  styles.flipDirectionText,
+                  {
+                    color:
+                      theme.primary,
+                  },
+                ]}
+              >
+                {direction === "en-native"
+                  ? `${nativeLanguageName} → English`
+                  : `English → ${nativeLanguageName}`}
+              </Text>
+            </TouchableOpacity>
           </View>
-        )}
+
+          {currentWord && (
+            <View
+              style={
+                styles.flashcardContainer
+              }
+            >
+              <Flashcard
+                key={
+                  currentWord.id ||
+                  `word-${currentIndex}`
+                }
+                word={currentWord}
+                direction={direction}
+              />
+            </View>
+          )}
+        </ScrollView>
 
         <View
           style={styles.bottomActions}
@@ -318,8 +317,7 @@ export default function VocabularyIntroScreen({
                   styles.navButtonText,
                   {
                     color:
-                      currentIndex ===
-                      0
+                      currentIndex === 0
                         ? theme.secondaryText
                         : theme.text,
                   },
@@ -361,7 +359,7 @@ export default function VocabularyIntroScreen({
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -371,15 +369,27 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  content: {
-    flexGrow: 1,
+  headerContainer: {
+    width: "100%",
+  },
+
+  mainContent: {
+    flex: 1,
+    minHeight: 0,
+  },
+
+  scrollView: {
+    flex: 1,
+  },
+
+  scrollContent: {
     paddingHorizontal: 20,
     paddingTop: 16,
-    paddingBottom: 30,
+    paddingBottom: 12,
   },
 
   instructionContainer: {
-    marginBottom: 20,
+    marginBottom: 16,
     paddingHorizontal: 8,
     alignItems: "center",
   },
@@ -414,18 +424,16 @@ const styles = StyleSheet.create({
   },
 
   flashcardContainer: {
-    flex: 1,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 12,
     minHeight: 300,
   },
 
   bottomActions: {
-    marginTop: "auto",
-    paddingTop: 16,
-    gap: 12,
+    paddingHorizontal: 20,
+    paddingTop: 12,
+    paddingBottom: 12,
   },
 
   navigationButtons: {
