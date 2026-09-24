@@ -1,4 +1,5 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Constants from "expo-constants";
 import { useFocusEffect, useRouter } from "expo-router";
 import {
   useCallback,
@@ -18,6 +19,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useAuth, useUser } from "@clerk/expo";
+import { toast } from "sonner-native";
 
 import { ThemedText } from "../../../components/themed-text";
 import Button from "../../../components/ui/Button";
@@ -60,6 +62,11 @@ export default function ProfileScreen() {
     useState(false);
   const [deletingAccount, setDeletingAccount] =
     useState(false);
+
+  const appVersion =
+    Constants.expoConfig?.version ||
+    Constants.manifest?.version ||
+    "1.0.0";
 
   const calculateStreak = useCallback(
     (data) => {
@@ -310,8 +317,7 @@ export default function ProfileScreen() {
         );
       }
 
-      Alert.alert(
-        "Success",
+      toast.success(
         "Profile updated successfully!"
       );
     } catch (error) {
@@ -965,119 +971,121 @@ export default function ProfileScreen() {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.section}>
-            <ThemedText
-              style={[
-                styles.sectionTitle,
-                {
-                  color:
-                    theme.secondaryText,
-                },
-              ]}
-            >
-              Preferences
-            </ThemedText>
+          {/* 
+          <View style={styles.section}> 
+            <ThemedText 
+              style={[ 
+                styles.sectionTitle, 
+                { 
+                  color: 
+                    theme.secondaryText, 
+                }, 
+              ]} 
+            > 
+              Preferences 
+            </ThemedText> 
 
-            <View
-              style={[
-                styles.menuCard,
-                {
-                  backgroundColor:
-                    theme.surface,
-                  borderColor:
-                    theme.border,
-                },
-              ]}
-            >
-              <TouchableOpacity
-                style={[
-                  styles.menuItem,
-                  {
-                    borderBottomColor:
-                      theme.border,
-                  },
-                ]}
-                onPress={() =>
-                  Alert.alert(
-                    "Settings",
-                    "Manage notifications and options."
-                  )
-                }
-              >
-                <View
-                  style={
-                    styles.menuItemLeft
-                  }
-                >
-                  <Ionicons
-                    name="settings-outline"
-                    size={22}
-                    color={
-                      theme.primary
-                    }
-                  />
+            <View 
+              style={[ 
+                styles.menuCard, 
+                { 
+                  backgroundColor: 
+                    theme.surface, 
+                  borderColor: 
+                    theme.border, 
+                }, 
+              ]} 
+            > 
+              <TouchableOpacity 
+                style={[ 
+                  styles.menuItem, 
+                  { 
+                    borderBottomColor: 
+                      theme.border, 
+                  }, 
+                ]} 
+                onPress={() => 
+                  Alert.alert( 
+                    "Settings", 
+                    "Manage notifications and options." 
+                  ) 
+                } 
+              > 
+                <View 
+                  style={ 
+                    styles.menuItemLeft 
+                  } 
+                > 
+                  <Ionicons 
+                    name="settings-outline" 
+                    size={22} 
+                    color={ 
+                      theme.primary 
+                    } 
+                  /> 
 
-                  <ThemedText
-                    style={
-                      styles.menuItemTitle
-                    }
-                  >
-                    App Settings
-                  </ThemedText>
-                </View>
+                  <ThemedText 
+                    style={ 
+                      styles.menuItemTitle 
+                    } 
+                  > 
+                    App Settings 
+                  </ThemedText> 
+                </View> 
 
-                <Ionicons
-                  name="chevron-forward"
-                  size={18}
-                  color={
-                    theme.secondaryText
-                  }
-                />
-              </TouchableOpacity>
+                <Ionicons 
+                  name="chevron-forward" 
+                  size={18} 
+                  color={ 
+                    theme.secondaryText 
+                  } 
+                /> 
+              </TouchableOpacity> 
 
-              <TouchableOpacity
-                style={
-                  styles.menuItemLast
-                }
-                onPress={() =>
-                  Alert.alert(
-                    "Help",
-                    "Access community guidelines & support documentation."
-                  )
-                }
-              >
-                <View
-                  style={
-                    styles.menuItemLeft
-                  }
-                >
-                  <Ionicons
-                    name="help-circle-outline"
-                    size={22}
-                    color={
-                      theme.primary
-                    }
-                  />
+              <TouchableOpacity 
+                style={ 
+                  styles.menuItemLast 
+                } 
+                onPress={() => 
+                  Alert.alert( 
+                    "Help", 
+                    "Access community guidelines & support documentation." 
+                  ) 
+                } 
+              > 
+                <View 
+                  style={ 
+                    styles.menuItemLeft 
+                  } 
+                > 
+                  <Ionicons 
+                    name="help-circle-outline" 
+                    size={22} 
+                    color={ 
+                      theme.primary 
+                    } 
+                  /> 
 
-                  <ThemedText
-                    style={
-                      styles.menuItemTitle
-                    }
-                  >
-                    Help & Support
-                  </ThemedText>
-                </View>
+                  <ThemedText 
+                    style={ 
+                      styles.menuItemTitle 
+                    } 
+                  > 
+                    Help & Support 
+                  </ThemedText> 
+                </View> 
 
-                <Ionicons
-                  name="chevron-forward"
-                  size={18}
-                  color={
-                    theme.secondaryText
-                  }
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
+                <Ionicons 
+                  name="chevron-forward" 
+                  size={18} 
+                  color={ 
+                    theme.secondaryText 
+                  } 
+                /> 
+              </TouchableOpacity> 
+            </View> 
+          </View> 
+          */}
 
           <View
             style={styles.actionContainer}
@@ -1112,6 +1120,40 @@ export default function ProfileScreen() {
                 Delete Account
               </ThemedText>
             </TouchableOpacity>
+          </View>
+
+          <View
+            style={[
+              styles.versionContainer,
+              {
+                borderTopColor:
+                  theme.border,
+              },
+            ]}
+          >
+            <ThemedText
+              style={[
+                styles.versionText,
+                {
+                  color:
+                    theme.secondaryText,
+                },
+              ]}
+            >
+              SpeakNative GH
+            </ThemedText>
+
+            <ThemedText
+              style={[
+                styles.versionNumber,
+                {
+                  color:
+                    theme.secondaryText,
+                },
+              ]}
+            >
+              Version {appVersion}
+            </ThemedText>
           </View>
         </ScrollView>
       </View>
@@ -1443,5 +1485,23 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textTransform: "uppercase",
     letterSpacing: 0.5,
+  },
+
+  versionContainer: {
+    alignItems: "center",
+    marginTop: 28,
+    paddingTop: 20,
+    borderTopWidth: 1,
+  },
+
+  versionText: {
+    fontSize: 14,
+    fontWeight: "600",
+  },
+
+  versionNumber: {
+    fontSize: 12,
+    fontWeight: "500",
+    marginTop: 4,
   },
 });

@@ -187,6 +187,7 @@ function BlankSlot({
       <Animated.View
         style={[
           styles.slotContainer,
+          isFilled && styles.filledSlot,
           {
             borderColor,
           },
@@ -536,8 +537,16 @@ const styles = StyleSheet.create({
     flexShrink: 0,
   },
 
+  filledSlot: {
+    minWidth: 0,
+    minHeight: 0,
+    borderWidth: 0,
+    borderBottomWidth: 0,
+    borderRadius: 10,
+  },
+
   slotPlaceholder: {
-    width: "100%",
+    width: 100,
     height: 40,
     borderRadius: 10,
     borderWidth: 1.5,
@@ -545,10 +554,9 @@ const styles = StyleSheet.create({
   },
 
   selectedTile: {
-    minWidth: 78,
-    minHeight: 44,
     paddingHorizontal: 12,
     paddingVertical: 8,
+    minHeight: 44,
     borderRadius: 10,
     borderWidth: 2,
     borderBottomWidth: 4,

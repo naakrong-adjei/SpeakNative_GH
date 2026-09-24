@@ -237,13 +237,17 @@ export default function PracticeScreen({
         await markReviewComplete(
           sectionId,
           language,
-          level
+          level,
+          supabase,
+          user?.id
         );
       } else {
         await incrementLessonCompletion(
           sectionId,
           language,
-          level
+          level,
+          supabase,
+          user?.id
         );
       }
 
@@ -265,7 +269,9 @@ export default function PracticeScreen({
         await markVocabularyComplete(
           sectionId,
           language,
-          level
+          level,
+          supabase,
+          user?.id
         );
       } catch {}
     }
@@ -294,57 +300,83 @@ export default function PracticeScreen({
     }
 
     try {
+      /*
+       * REVIEW
+       */
       if (mode === "review" || isReview) {
         await markReviewComplete(
           sectionId,
           language,
-          level
+          level,
+          supabase,
+          user?.id
         );
 
         await recordActivity();
+
         router.back();
         return;
       }
 
+      /*
+       * QUIZ COMPLETION
+       */
       if (mode === "quiz" && questions.length > 0) {
         await markQuizComplete(
           sectionId,
           language,
-          level
+          level,
+          supabase,
+          user?.id
         );
 
         await recordActivity();
 
+        /*
+         * The quiz has now been completed.
+         *
+         * Check whether this was the final lesson
+         * in the chapter.
+         */
         if (chapter && supabase && user?.id) {
-          const result =
-            await checkAndAwardChapterXP(
-              chapter,
-              supabase,
-              user.id,
-              language,
-              level
-            );
+          const result = await checkAndAwardChapterXP(
+            chapter,
+            supabase,
+            user.id,
+            language,
+            level
+          );
 
-          if (
-            result?.completed &&
-            result?.xpAwarded
-          ) {
-            setChapterXP(
-              Number(result.xp) || 0
-            );
+          /*
+           * Chapter is complete.
+           *
+           * checkAndAwardChapterXP awards the XP only once.
+           * The ChapterCompleteScreen is still shown when
+           * the chapter is complete.
+           */
+          if (result?.completed) {
+            setChapterXP(Number(result?.xp) || 0);
             setShowChapterComplete(true);
             return;
           }
         }
 
+        /*
+         * This was not the final lesson in the chapter.
+         */
         router.back();
         return;
       }
 
+      /*
+       * NORMAL LESSON COMPLETION
+       */
       await incrementLessonCompletion(
         sectionId,
         language,
-        level
+        level,
+        supabase,
+        user?.id
       );
 
       await recordActivity();
@@ -376,17 +408,26 @@ export default function PracticeScreen({
         return;
       }
 
+      /*
+       * Check every chapter in the current level.
+       *
+       * If every chapter is complete, show the
+       * LevelCompleteScreen.
+       */
       const chapterResults = await Promise.all(
         chapters.map((currentChapter) =>
           areAllChapterLessonsComplete(
             currentChapter,
             language,
-            level
+            level,
+            supabase,
+            user?.id
           )
         )
       );
 
       const levelCompleted =
+        chapterResults.length > 0 &&
         chapterResults.every(Boolean);
 
       setShowChapterComplete(false);
@@ -398,6 +439,10 @@ export default function PracticeScreen({
       }
     } catch {}
 
+    /*
+     * Chapter is complete but the entire level is not.
+     * Return to the chapter/lesson screen.
+     */
     router.back();
   };
 
@@ -406,6 +451,9 @@ export default function PracticeScreen({
     router.back();
   };
 
+  /*
+   * LEVEL COMPLETE
+   */
   if (showLevelComplete) {
     return (
       <LevelCompleteScreen
@@ -415,6 +463,9 @@ export default function PracticeScreen({
     );
   }
 
+  /*
+   * CHAPTER COMPLETE
+   */
   if (showChapterComplete) {
     return (
       <ChapterCompleteScreen
@@ -427,6 +478,9 @@ export default function PracticeScreen({
     );
   }
 
+  /*
+   * LOADING
+   */
   if (loading) {
     return (
       <SafeAreaView
@@ -454,6 +508,9 @@ export default function PracticeScreen({
     );
   }
 
+  /*
+   * LESSON NOT FOUND
+   */
   if (!lessonData) {
     return (
       <SafeAreaView
@@ -545,6 +602,9 @@ export default function PracticeScreen({
     );
   }
 
+  /*
+   * VOCABULARY INTRO
+   */
   if (showVocabulary && vocabulary.length > 0) {
     return (
       <SafeAreaView
@@ -562,6 +622,9 @@ export default function PracticeScreen({
     );
   }
 
+  /*
+   * LESSON / QUIZ
+   */
   if (questions.length > 0) {
     return (
       <SafeAreaView
@@ -582,6 +645,9 @@ export default function PracticeScreen({
     );
   }
 
+  /*
+   * LESSON WITH NO QUESTIONS
+   */
   return (
     <SafeAreaView
       style={[

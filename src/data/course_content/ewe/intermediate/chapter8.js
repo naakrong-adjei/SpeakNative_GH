@@ -1,7 +1,7 @@
 export default {
   id: 8,
   title: "Future & Past Tense",
-  description: "Learn how to talk about the past and future in Ewe",
+  description: "Learn useful Ewe phrases for talking about past and future events",
   icon: "time-outline",
   totalXp: 12,
   difficulty: "Intermediate",
@@ -13,13 +13,13 @@ export default {
       title: "Talking About the Past",
       icon: "time-outline",
       description: "Learn how to express past actions and events in Ewe",
-      words: ["Meyi etsɔ si va yi", "Meɖu nu xoxo", "Menɔ dɔ wɔm", "Míenɔ Egɛ̃"],
+      words: ["Meyi etsɔ hi va yi", "Meɖu nu xoxo", "Menɔ dɔ wɔm", "Míenɔ Egɛ̃"],
       vocabulary: [
         {
           id: 196,
           english: "I went yesterday",
-          native: "Meyi etsɔ si va yi",
-          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter8/meyi_etsɔ_si_va_yi.m4a")
+          native: "Meyi etsɔ hi va yi",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter8/meyi_etsɔ_hi_va_yi.m4a")
         },
         {
           id: 197,
@@ -47,14 +47,14 @@ export default {
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I went yesterday' in Ewe?",
           options: [
-            { id: 1, text: "Meyi etsɔ si va yi" },
+            { id: 1, text: "Meyi etsɔ hi va yi" },
             { id: 2, text: "Meɖu nu xoxo" },
             { id: 3, text: "Menɔ dɔ wɔm" },
             { id: 4, text: "Míenɔ Egɛ̃" }
           ],
           correctOptionId: 1,
-          hints: ["meyi = I went", "etsɔ si va yi = yesterday"],
-          explanation: "Meyi etsɔ si va yi = I went yesterday in Ewe."
+          hints: ["meyi = I went", "etsɔ hi va yi = yesterday"],
+          explanation: "Meyi etsɔ hi va yi = I went yesterday in Ewe."
         },
         {
           id: 802,
@@ -78,7 +78,7 @@ export default {
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I was working' in Ewe?",
           options: [
-            { id: 1, text: "Meyi etsɔ si va yi" },
+            { id: 1, text: "Meyi etsɔ hi va yi" },
             { id: 2, text: "Meɖu nu xoxo" },
             { id: 3, text: "Menɔ dɔ wɔm" },
             { id: 4, text: "Míenɔ Egɛ̃" }
@@ -112,7 +112,7 @@ export default {
       title: "Talking About the Future",
       icon: "time-outline",
       description: "Learn how to express future actions and plans in Ewe",
-      words: ["Mava etsɔ", "Meyina ʋu ƒle ge", "Woawu enu le ɣleti si gbɔna me"],
+      words: ["Mava etsɔ", "Meyina ʋu ƒle ge", "Woawu enu le ɣleti hi gbɔna me"],
       vocabulary: [
         {
           id: 195,
@@ -129,8 +129,8 @@ export default {
         {
           id: 202,
           english: "They will finish next month",
-          native: "Woawu enu le ɣleti si gbɔna me",
-          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter8/woawu_enu_le_ɣleti_si_gbɔna_me.m4a")
+          native: "Woawu enu le ɣleti hi gbɔna me",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter8/woawu_enu_le_vleti_si_gbɔna_me.m4a")
         }
       ],
       questions: [
@@ -142,8 +142,8 @@ export default {
           options: [
             { id: 1, text: "Mava etsɔ" },
             { id: 2, text: "Meyina ʋu ƒle ge" },
-            { id: 3, text: "Woawu enu le ɣleti si gbɔna me" },
-            { id: 4, text: "Meyi etsɔ si va yi" }
+            { id: 3, text: "Woawu enu le ɣleti hi gbɔna me" },
+            { id: 4, text: "Meyi etsɔ hi va yi" }
           ],
           correctOptionId: 1,
           hints: ["mava = I will come", "etsɔ = tomorrow"],
@@ -173,12 +173,12 @@ export default {
           options: [
             { id: 1, text: "Mava etsɔ" },
             { id: 2, text: "Meyina ʋu ƒle ge" },
-            { id: 3, text: "Woawu enu le ɣleti si gbɔna me" },
+            { id: 3, text: "Woawu enu le ɣleti hi gbɔna me" },
             { id: 4, text: "Míenɔ Egɛ̃" }
           ],
           correctOptionId: 3,
-          hints: ["woawu = they will finish", "ɣleti si gbɔna = next month"],
-          explanation: "Woawu enu le ɣleti si gbɔna me = They will finish next month in Ewe."
+          hints: ["woawu = they will finish", "ɣleti hi gbɔna = next month"],
+          explanation: "Woawu enu le ɣleti hi gbɔna me = They will finish next month in Ewe."
         },
         {
           id: 808,
@@ -202,7 +202,7 @@ export default {
     {
       id: "8-3",
       type: "words",
-      title: "Everyday Situations",
+      title: "Past Conditions & Regret",
       icon: "bulb-outline",
       description: "Learn how to express things not yet done and regret in Ewe",
       words: ["Meva haɖe o", "Ne ɖe menya"],
@@ -230,7 +230,7 @@ export default {
             { id: 1, text: "Meva haɖe o" },
             { id: 2, text: "Ne ɖe menya" },
             { id: 3, text: "Mava etsɔ" },
-            { id: 4, text: "Meyi etsɔ si va yi" }
+            { id: 4, text: "Meyi etsɔ hi va yi" }
           ],
           correctOptionId: 1,
           hints: ["meva = she has not come", "haɖe o = yet"],
@@ -299,14 +299,14 @@ export default {
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I went yesterday' in Ewe?",
         options: [
-          { id: 1, text: "Meyi etsɔ si va yi" },
+          { id: 1, text: "Meyi etsɔ hi va yi" },
           { id: 2, text: "Meɖu nu xoxo" },
           { id: 3, text: "Menɔ dɔ wɔm" },
           { id: 4, text: "Míenɔ Egɛ̃" }
         ],
         correctOptionId: 1,
-        hints: ["etsɔ si va yi = yesterday"],
-        explanation: "Meyi etsɔ si va yi = I went yesterday."
+        hints: ["etsɔ hi va yi = yesterday"],
+        explanation: "Meyi etsɔ hi va yi = I went yesterday."
       },
       {
         id: 814,
@@ -330,7 +330,7 @@ export default {
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'We were living in Accra' in Ewe?",
         options: [
-          { id: 1, text: "Meyi etsɔ si va yi" },
+          { id: 1, text: "Meyi etsɔ hi va yi" },
           { id: 2, text: "Meɖu nu xoxo" },
           { id: 3, text: "Menɔ dɔ wɔm" },
           { id: 4, text: "Míenɔ Egɛ̃" }
@@ -344,7 +344,7 @@ export default {
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter8/woawu_enu_le_ɣleti_si_gbɔna_me.m4a"),
+        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter8/woawu_enu_le_vleti_si_gbɔna_me.m4a"),
         options: [
           { id: 1, text: "I will come tomorrow" },
           { id: 2, text: "I am going to buy a car" },
@@ -352,8 +352,8 @@ export default {
           { id: 4, text: "I was working" }
         ],
         correctOptionId: 3,
-        hints: ["ɣleti si gbɔna = next month"],
-        explanation: "You heard 'Woawu enu le ɣleti si gbɔna me' which means 'They will finish next month'."
+        hints: ["ɣleti hi gbɔna = next month"],
+        explanation: "You heard 'Woawu enu le ɣleti hi gbɔna me' which means 'They will finish next month'."
       },
       {
         id: 817,
@@ -363,12 +363,12 @@ export default {
         options: [
           { id: 1, text: "Mava etsɔ" },
           { id: 2, text: "Meyina ʋu ƒle ge" },
-          { id: 3, text: "Woawu enu le ɣleti si gbɔna me" },
-          { id: 4, text: "Meyi etsɔ si va yi" }
+          { id: 3, text: "Woawu enu le ɣleti hi gbɔna me" },
+          { id: 4, text: "Meyi etsɔ hi va yi" }
         ],
         correctOptionId: 3,
         hints: ["woawu = they will finish"],
-        explanation: "Woawu enu le ɣleti si gbɔna me = They will finish next month."
+        explanation: "Woawu enu le ɣleti hi gbɔna me = They will finish next month."
       },
       {
         id: 818,
@@ -376,7 +376,7 @@ export default {
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I have eaten already' in Ewe?",
         options: [
-          { id: 1, text: "Meyi etsɔ si va yi" },
+          { id: 1, text: "Meyi etsɔ hi va yi" },
           { id: 2, text: "Meɖu nu xoxo" },
           { id: 3, text: "Menɔ dɔ wɔm" },
           { id: 4, text: "Míenɔ Egɛ̃" }
@@ -410,7 +410,7 @@ export default {
           { id: 1, text: "Meva haɖe o" },
           { id: 2, text: "Ne ɖe menya" },
           { id: 3, text: "Mava etsɔ" },
-          { id: 4, text: "Meyi etsɔ si va yi" }
+          { id: 4, text: "Meyi etsɔ hi va yi" }
         ],
         correctOptionId: 1,
         hints: ["haɖe o = yet"],

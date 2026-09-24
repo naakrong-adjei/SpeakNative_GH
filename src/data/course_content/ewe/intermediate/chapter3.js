@@ -36,17 +36,32 @@ export default {
       ],
       questions: [
         {
+          id: 303,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Give me a discount' in Ewe?",
+          options: [
+            { id: 1, text: "Emae nye nye nya mamlɛtɔ" },
+            { id: 2, text: "Ɖe asi le dzi nam" },
+            { id: 3, text: "Kae nye wasi mamlɛtɔ?" },
+            { id: 4, text: "Àte ŋu atsɔ vie de akpee?" }
+          ],
+          correctOptionId: 2,
+          hints: ["Ɖe = reduce", "asi = price", "dzi = on"],
+          explanation: "Ɖe asi le dzi nam = Give me a discount in Ewe."
+        },
+        {
           id: 301,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you ask 'What is your last price?' in Ewe?",
           options: [
-            { id: 1, text: "Kae nye wasi mamlɛtɔ?" },
-            { id: 2, text: "Àte ŋu atsɔ vie de akpee?" },
-            { id: 3, text: "Ɖe asi le dzi nam" },
-            { id: 4, text: "Maƒle ɔmeve" }
+            { id: 1, text: "Maƒle ɔmeve" },
+            { id: 2, text: "Ɖe asi le dzi nam" },
+            { id: 3, text: "Àte ŋu atsɔ vie de akpee?" },
+            { id: 4, text: "Kae nye wasi mamlɛtɔ?" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 4,
           hints: ["wasi = price", "mamlɛtɔ = last"],
           explanation: "Kae nye wasi mamlɛtɔ? = What is your last price? in Ewe."
         },
@@ -57,29 +72,14 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter3/àte_ŋu_atsɔ_vie_de_akpee.m4a"),
           options: [
-            { id: 1, text: "What is your last price?" },
-            { id: 2, text: "Can you add a little?" },
-            { id: 3, text: "Give me a discount" },
-            { id: 4, text: "I will buy two" }
-          ],
-          correctOptionId: 2,
-          hints: ["Àte ŋu = Can you", "vie = a little"],
-          explanation: "You heard 'Àte ŋu atsɔ vie de akpee?' which means 'Can you add a little?' in Ewe."
-        },
-        {
-          id: 303,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'Give me a discount' in Ewe?",
-          options: [
-            { id: 1, text: "Kae nye wasi mamlɛtɔ?" },
-            { id: 2, text: "Àte ŋu atsɔ vie de akpee?" },
-            { id: 3, text: "Ɖe asi le dzi nam" },
-            { id: 4, text: "Emae nye nye nya mamlɛtɔ" }
+            { id: 1, text: "Give me a discount" },
+            { id: 2, text: "I will buy two" },
+            { id: 3, text: "Can you add a little?" },
+            { id: 4, text: "What is your last price?" }
           ],
           correctOptionId: 3,
-          hints: ["Ɖe = reduce", "asi = price", "dzi = on"],
-          explanation: "Ɖe asi le dzi nam = Give me a discount in Ewe."
+          hints: ["Àte ŋu = Can you", "vie = a little"],
+          explanation: "You heard 'Àte ŋu atsɔ vie de akpee?' which means 'Can you add a little?' in Ewe."
         }
       ]
     },
@@ -113,33 +113,18 @@ export default {
       ],
       questions: [
         {
-          id: 304,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'I will buy two' in Ewe?",
-          options: [
-            { id: 1, text: "Maƒle ɔmeve" },
-            { id: 2, text: "Emae nye nye nya mamlɛtɔ" },
-            { id: 3, text: "Meƒlee bɔbɔe le afima" },
-            { id: 4, text: "Kae nye wasi mamlɛtɔ?" }
-          ],
-          correctOptionId: 1,
-          hints: ["maƒle = I will buy", "ɔmeve = two"],
-          explanation: "Maƒle ɔmeve = I will buy two in Ewe."
-        },
-        {
           id: 305,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter3/emae_nye_nye_nya_mamlɛtɔ.m4a"),
           options: [
-            { id: 1, text: "I will buy two" },
-            { id: 2, text: "That is my final offer" },
-            { id: 3, text: "I bought it cheaper there" },
-            { id: 4, text: "Give me a discount" }
+            { id: 1, text: "Give me a discount" },
+            { id: 2, text: "I bought it cheaper there" },
+            { id: 3, text: "That is my final offer" },
+            { id: 4, text: "I will buy two" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["nya = offer", "mamlɛtɔ = final"],
           explanation: "You heard 'Emae nye nye nya mamlɛtɔ' which means 'That is my final offer' in Ewe."
         },
@@ -149,14 +134,29 @@ export default {
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I bought it cheaper there' in Ewe?",
           options: [
-            { id: 1, text: "Maƒle ɔmeve" },
-            { id: 2, text: "Emae nye nye nya mamlɛtɔ" },
-            { id: 3, text: "Meƒlee bɔbɔe le afima" },
-            { id: 4, text: "Ga su gbɔ mele ashinye o" }
+            { id: 1, text: "Kae nye wasi mamlɛtɔ?" },
+            { id: 2, text: "Meƒlee bɔbɔe le afima" },
+            { id: 3, text: "Maƒle ɔmeve" },
+            { id: 4, text: "Emae nye nye nya mamlɛtɔ" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["meƒlee = I bought", "bɔbɔe = cheaper"],
           explanation: "Meƒlee bɔbɔe le afima = I bought it cheaper there in Ewe."
+        },
+        {
+          id: 304,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I will buy two' in Ewe?",
+          options: [
+            { id: 1, text: "Meƒlee bɔbɔe le afima" },
+            { id: 2, text: "Maƒle ɔmeve" },
+            { id: 3, text: "Kae nye wasi mamlɛtɔ?" },
+            { id: 4, text: "Emae nye nye nya mamlɛtɔ" }
+          ],
+          correctOptionId: 2,
+          hints: ["maƒle = I will buy", "ɔmeve = two"],
+          explanation: "Maƒle ɔmeve = I will buy two in Ewe."
         }
       ]
     },
@@ -196,19 +196,19 @@ export default {
       ],
       questions: [
         {
-          id: 307,
+          id: 309,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'I don't have enough money' in Ewe?",
+          question: "How do you say 'Keep the change' in Ewe?",
           options: [
-            { id: 1, text: "Ele yeyee?" },
-            { id: 2, text: "Xlẽ ga" },
-            { id: 3, text: "Tsɔ ga gbagba" },
-            { id: 4, text: "Ga su gbɔ mele ashinye o" }
+            { id: 1, text: "Ga su gbɔ mele ashinye o" },
+            { id: 2, text: "Tsɔ ga gbagba" },
+            { id: 3, text: "Ele yeyee?" },
+            { id: 4, text: "Xlẽ ga" }
           ],
-          correctOptionId: 4,
-          hints: ["ga = money", "su gbɔ = not enough"],
-          explanation: "Ga su gbɔ mele ashinye o = I don't have enough money in Ewe."
+          correctOptionId: 2,
+          hints: ["tsɔ = take/keep", "ga = money", "gbagba = change"],
+          explanation: "Tsɔ ga gbagba = Keep the change in Ewe."
         },
         {
           id: 308,
@@ -217,29 +217,29 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter3/ele_yeyee.m4a"),
           options: [
-            { id: 1, text: "Is it fresh?" },
-            { id: 2, text: "Count the money" },
+            { id: 1, text: "Count the money" },
+            { id: 2, text: "I don't have enough money" },
             { id: 3, text: "Keep the change" },
-            { id: 4, text: "I don't have enough money" }
+            { id: 4, text: "Is it fresh?" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 4,
           hints: ["yeyee = fresh"],
           explanation: "You heard 'Ele yeyee?' which means 'Is it fresh?' in Ewe."
         },
         {
-          id: 309,
+          id: 307,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'Keep the change' in Ewe?",
+          question: "How do you say 'I don't have enough money' in Ewe?",
           options: [
-            { id: 1, text: "Ele yeyee?" },
-            { id: 2, text: "Xlẽ ga" },
+            { id: 1, text: "Xlẽ ga" },
+            { id: 2, text: "Ga su gbɔ mele ashinye o" },
             { id: 3, text: "Tsɔ ga gbagba" },
-            { id: 4, text: "Ga su gbɔ mele ashinye o" }
+            { id: 4, text: "Ele yeyee?" }
           ],
-          correctOptionId: 3,
-          hints: ["tsɔ = take/keep", "ga = money", "gbagba = change"],
-          explanation: "Tsɔ ga gbagba = Keep the change in Ewe."
+          correctOptionId: 2,
+          hints: ["ga = money", "su gbɔ = not enough"],
+          explanation: "Ga su gbɔ mele ashinye o = I don't have enough money in Ewe."
         }
       ]
     }
@@ -252,19 +252,35 @@ export default {
     description: "Review all the market negotiation vocabulary you've learned",
     questions: [
       {
-        id: 310,
+        id: 315,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter3/xlẽ_ga.m4a"),
+        options: [
+          { id: 1, text: "Keep the change" },
+          { id: 2, text: "I don't have enough money" },
+          { id: 3, text: "Count the money" },
+          { id: 4, text: "Is it fresh?" }
+        ],
+        correctOptionId: 3,
+        hints: ["xlẽ = count"],
+        explanation: "You heard 'Xlẽ ga' which means 'Count the money' in Ewe."
+      },
+      {
+        id: 318,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you ask 'What is your last price?' in Ewe?",
+        question: "How do you say 'Can you add a little?' in Ewe?",
         options: [
-          { id: 1, text: "Kae nye wasi mamlɛtɔ?" },
-          { id: 2, text: "Àte ŋu atsɔ vie de akpee?" },
-          { id: 3, text: "Ɖe asi le dzi nam" },
-          { id: 4, text: "Maƒle ɔmeve" }
+          { id: 1, text: "Maƒle ɔmeve" },
+          { id: 2, text: "Ɖe asi le dzi nam" },
+          { id: 3, text: "Kae nye wasi mamlɛtɔ?" },
+          { id: 4, text: "Àte ŋu atsɔ vie de akpee?" }
         ],
-        correctOptionId: 1,
-        hints: ["wasi = price"],
-        explanation: "Kae nye wasi mamlɛtɔ? = What is your last price?"
+        correctOptionId: 4,
+        hints: ["Àte ŋu = Can you", "vie = a little"],
+        explanation: "Àte ŋu atsɔ vie de akpee? = Can you add a little?"
       },
       {
         id: 311,
@@ -273,91 +289,14 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter3/ɖe_asi_le_dzi_nam.m4a"),
         options: [
-          { id: 1, text: "What is your last price?" },
-          { id: 2, text: "Can you add a little?" },
-          { id: 3, text: "Give me a discount" },
-          { id: 4, text: "I will buy two" }
+          { id: 1, text: "I will buy two" },
+          { id: 2, text: "Give me a discount" },
+          { id: 3, text: "What is your last price?" },
+          { id: 4, text: "Can you add a little?" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["Ɖe = reduce", "asi = price"],
         explanation: "You heard 'Ɖe asi le dzi nam' which means 'Give me a discount'."
-      },
-      {
-        id: 312,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'That is my final offer' in Ewe?",
-        options: [
-          { id: 1, text: "Maƒle ɔmeve" },
-          { id: 2, text: "Emae nye nye nya mamlɛtɔ" },
-          { id: 3, text: "Meƒlee bɔbɔe le afima" },
-          { id: 4, text: "Kae nye wasi mamlɛtɔ?" }
-        ],
-        correctOptionId: 2,
-        hints: ["nya = offer", "mamlɛtɔ = final"],
-        explanation: "Emae nye nye nya mamlɛtɔ = That is my final offer."
-      },
-      {
-        id: 33,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter3/meƒlee_bɔbɔe_le_afima.m4a"),
-        options: [
-          { id: 1, text: "I will buy two" },
-          { id: 2, text: "That is my final offer" },
-          { id: 3, text: "I bought it cheaper there" },
-          { id: 4, text: "Give me a discount" }
-        ],
-        correctOptionId: 3,
-        hints: ["bɔbɔe = cheaper"],
-        explanation: "You heard 'Meƒlee bɔbɔe le afima' which means 'I bought it cheaper there'."
-      },
-      {
-        id: 314,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'Is it fresh?' in Ewe?",
-        options: [
-          { id: 1, text: "Ele yeyee?" },
-          { id: 2, text: "Xlẽ ga" },
-          { id: 3, text: "Tsɔ ga gbagba" },
-          { id: 4, text: "Ga su gbɔ mele ashinye o" }
-        ],
-        correctOptionId: 1,
-        hints: ["yeyee = fresh"],
-        explanation: "Ele yeyee? = Is it fresh?"
-      },
-      {
-        id: 315,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter3/xlẽ_ga.m4a"),
-        options: [
-          { id: 1, text: "Is it fresh?" },
-          { id: 2, text: "Count the money" },
-          { id: 3, text: "Keep the change" },
-          { id: 4, text: "I don't have enough money" }
-        ],
-        correctOptionId: 2,
-        hints: ["xlẽ = count"],
-        explanation: "You heard 'Xlẽ ga' which means 'Count the money'."
-      },
-      {
-        id: 316,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'Keep the change' in Ewe?",
-        options: [
-          { id: 1, text: "Ele yeyee?" },
-          { id: 2, text: "Xlẽ ga" },
-          { id: 3, text: "Tsɔ ga gbagba" },
-          { id: 4, text: "Ga su gbɔ mele ashinye o" }
-        ],
-        correctOptionId: 3,
-        hints: ["gbagba = change"],
-        explanation: "Tsɔ ga gbagba = Keep the change."
       },
       {
         id: 317,
@@ -365,29 +304,29 @@ export default {
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'I don't have enough money' in Ewe?",
         options: [
-          { id: 1, text: "Ele yeyee?" },
-          { id: 2, text: "Xlẽ ga" },
-          { id: 3, text: "Tsɔ ga gbagba" },
-          { id: 4, text: "Ga su gbɔ mele ashinye o" }
+          { id: 1, text: "Tsɔ ga gbagba" },
+          { id: 2, text: "Ele yeyee?" },
+          { id: 3, text: "Ga su gbɔ mele ashinye o" },
+          { id: 4, text: "Xlẽ ga" }
         ],
-        correctOptionId: 4,
+        correctOptionId: 3,
         hints: ["ga = money", "su gbɔ = not enough"],
         explanation: "Ga su gbɔ mele ashinye o = I don't have enough money."
       },
       {
-        id: 318,
+        id: 312,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'Can you add a little?' in Ewe?",
+        question: "How do you say 'That is my final offer' in Ewe?",
         options: [
-          { id: 1, text: "Kae nye wasi mamlɛtɔ?" },
-          { id: 2, text: "Àte ŋu atsɔ vie de akpee?" },
-          { id: 3, text: "Ɖe asi le dzi nam" },
+          { id: 1, text: "Emae nye nye nya mamlɛtɔ" },
+          { id: 2, text: "Kae nye wasi mamlɛtɔ?" },
+          { id: 3, text: "Meƒlee bɔbɔe le afima" },
           { id: 4, text: "Maƒle ɔmeve" }
         ],
-        correctOptionId: 2,
-        hints: ["Àte ŋu = Can you", "vie = a little"],
-        explanation: "Àte ŋu atsɔ vie de akpee? = Can you add a little?"
+        correctOptionId: 1,
+        hints: ["nya = offer", "mamlɛtɔ = final"],
+        explanation: "Emae nye nye nya mamlɛtɔ = That is my final offer."
       },
       {
         id: 319,
@@ -396,14 +335,75 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter3/tsɔ_ga_gbagba.m4a"),
         options: [
-          { id: 1, text: "Is it fresh?" },
-          { id: 2, text: "Count the money" },
-          { id: 3, text: "Keep the change" },
-          { id: 4, text: "I don't have enough money" }
+          { id: 1, text: "I don't have enough money" },
+          { id: 2, text: "Keep the change" },
+          { id: 3, text: "Is it fresh?" },
+          { id: 4, text: "Count the money" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["tsɔ = take", "gbagba = change"],
         explanation: "You heard 'Tsɔ ga gbagba' which means 'Keep the change'."
+      },
+      {
+        id: 314,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Is it fresh?' in Ewe?",
+        options: [
+          { id: 1, text: "Tsɔ ga gbagba" },
+          { id: 2, text: "Ele yeyee?" },
+          { id: 3, text: "Ga su gbɔ mele ashinye o" },
+          { id: 4, text: "Xlẽ ga" }
+        ],
+        correctOptionId: 2,
+        hints: ["yeyee = fresh"],
+        explanation: "Ele yeyee? = Is it fresh?"
+      },
+      {
+        id: 310,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you ask 'What is your last price?' in Ewe?",
+        options: [
+          { id: 1, text: "Ɖe asi le dzi nam" },
+          { id: 2, text: "Maƒle ɔmeve" },
+          { id: 3, text: "Kae nye wasi mamlɛtɔ?" },
+          { id: 4, text: "Àte ŋu atsɔ vie de akpee?" }
+        ],
+        correctOptionId: 3,
+        hints: ["wasi = price"],
+        explanation: "Kae nye wasi mamlɛtɔ? = What is your last price?"
+      },
+      {
+        id: 33,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter3/meƒlee_bɔbɔe_le_afima.m4a"),
+        options: [
+          { id: 1, text: "Give me a discount" },
+          { id: 2, text: "I will buy two" },
+          { id: 3, text: "I bought it cheaper there" },
+          { id: 4, text: "That is my final offer" }
+        ],
+        correctOptionId: 3,
+        hints: ["bɔbɔe = cheaper"],
+        explanation: "You heard 'Meƒlee bɔbɔe le afima' which means 'I bought it cheaper there'."
+      },
+      {
+        id: 316,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'Keep the change' in Ewe?",
+        options: [
+          { id: 1, text: "Xlẽ ga" },
+          { id: 2, text: "Ga su gbɔ mele ashinye o" },
+          { id: 3, text: "Ele yeyee?" },
+          { id: 4, text: "Tsɔ ga gbagba" }
+        ],
+        correctOptionId: 4,
+        hints: ["gbagba = change"],
+        explanation: "Tsɔ ga gbagba = Keep the change."
       }
     ]
   }

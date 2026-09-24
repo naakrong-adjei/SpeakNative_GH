@@ -3,6 +3,7 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -45,6 +46,12 @@ export default function LessonOverview() {
   const { theme, isDark } = useTheme();
   const { user } = useUser();
   const { getToken } = useAuth();
+
+  const getTokenRef = useRef(getToken);
+
+  useEffect(() => {
+    getTokenRef.current = getToken;
+  }, [getToken]);
 
   const {
     lessonData: lessonDataParam,
@@ -163,7 +170,27 @@ export default function LessonOverview() {
         return;
       }
 
+      if (!user?.id) {
+        setProgress(0);
+        setVocabularyCompleted(vocab.length === 0);
+        setQuizCompleted(false);
+        setReviewCompleted(false);
+        return;
+      }
+
       try {
+        const token = await getTokenRef.current();
+
+        if (!token) {
+          setProgress(0);
+          setVocabularyCompleted(vocab.length === 0);
+          setQuizCompleted(false);
+          setReviewCompleted(false);
+          return;
+        }
+
+        const supabase = createSupabaseClient(token);
+
         const [
           lessonProgress,
           vocabularyProgress,
@@ -173,22 +200,30 @@ export default function LessonOverview() {
           getLessonProgress(
             id,
             language,
-            level
+            level,
+            supabase,
+            user.id
           ),
           getVocabularyProgress(
             id,
             language,
-            level
+            level,
+            supabase,
+            user.id
           ),
           getQuizCompletion(
             id,
             language,
-            level
+            level,
+            supabase,
+            user.id
           ),
           getReviewCompletion(
             id,
             language,
-            level
+            level,
+            supabase,
+            user.id
           ),
         ]);
 
@@ -219,6 +254,7 @@ export default function LessonOverview() {
       }
     },
     [
+      user?.id,
       language,
       level,
       normalizeProgress,
@@ -233,7 +269,7 @@ export default function LessonOverview() {
     }
 
     try {
-      const token = await getToken();
+      const token = await getTokenRef.current();
 
       if (!token) {
         return;
@@ -250,7 +286,7 @@ export default function LessonOverview() {
     } catch {
       setStreak(0);
     }
-  }, [user?.id, getToken]);
+  }, [user?.id]);
 
   useEffect(() => {
     let mounted = true;

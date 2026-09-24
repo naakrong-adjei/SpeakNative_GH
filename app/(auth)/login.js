@@ -15,6 +15,7 @@ import { ThemedText } from "../../src/components/themed-text";
 import Button from "../../src/components/ui/Button";
 import Verification from "../../src/components/ui/Verification";
 import GoogleSignIn from "../../src/components/ui/GoogleSignIn";
+import ForgotPassword from "../../src/components/ui/ForgotPassword";
 
 export default function LoginScreen() {
   const { theme } = useTheme();
@@ -27,6 +28,7 @@ export default function LoginScreen() {
   const [showVerify, setShowVerify] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
 
   const loading = loadingAction !== null;
   const cleanEmail = email.trim().toLowerCase();
@@ -297,6 +299,17 @@ export default function LoginScreen() {
     setErrorMessage("");
   }, []);
 
+  if (showForgotPassword) {
+    return (
+      <ForgotPassword
+        onClose={() => setShowForgotPassword(false)}
+        onComplete={() => {
+          setShowForgotPassword(false);
+        }}
+      />
+    );
+  }
+
   return (
     <View
       style={[
@@ -397,6 +410,29 @@ export default function LoginScreen() {
           />
         </TouchableOpacity>
       </View>
+
+      <TouchableOpacity
+        onPress={() => {
+          setErrorMessage("");
+          setShowForgotPassword(true);
+        }}
+        disabled={loading}
+        activeOpacity={0.7}
+        style={styles.forgotPasswordButton}
+        accessibilityRole="button"
+        accessibilityLabel="Forgot password"
+      >
+        <ThemedText
+          style={[
+            styles.forgotPasswordText,
+            {
+              color: theme.primary,
+            },
+          ]}
+        >
+          Forgot password?
+        </ThemedText>
+      </TouchableOpacity>
 
       {errorMessage ? (
         <ThemedText
@@ -501,13 +537,24 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 24,
+    marginBottom: 8,
   },
 
   passwordInput: {
     flex: 1,
     fontSize: 18,
     paddingVertical: 12,
+  },
+
+  forgotPasswordButton: {
+    alignSelf: "flex-end",
+    paddingVertical: 8,
+    marginBottom: 16,
+  },
+
+  forgotPasswordText: {
+    fontSize: 14,
+    fontWeight: "600",
   },
 
   errorText: {

@@ -1,7 +1,7 @@
 export default {
   id: 6,
   title: "Work & Business",
-  description: "Learn work and business vocabulary in Ewe",
+  description: "Learn useful Ewe phrases for meetings, business growth, deals, and workplace communication",
   icon: "briefcase-outline",
   totalXp: 15,
   difficulty: "Intermediate",
@@ -36,50 +36,34 @@ export default {
       ],
       questions: [
         {
-          id: 601,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'I have a meeting' in Ewe?",
-          options: [
-            { id: 1, text: "Takpekpe le ashinye" },
-            { id: 2, text: "Ɖo nyatakaka la ɖem" },
-            { id: 3, text: "Mina míadzro ɖoɖoawo me" },
-            { id: 4, text: "Dɔwɔƒe la le tsitsim" }
-          ],
-          correctOptionId: 1,
-          hints: ["takpekpe = meeting"],
-          explanation: "Takpekpe le ashinye = I have a meeting in Ewe."
-        },
-        {
-          id: 602,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/ɖo_nyatakaka_la_ɖem.m4a"),
-          options: [
-            { id: 1, text: "I have a meeting" },
-            { id: 2, text: "Send me the report" },
-            { id: 3, text: "Let us discuss the terms" },
-            { id: 4, text: "The business is growing" }
-          ],
-          correctOptionId: 2,
-          hints: ["nyatakaka = report", "ɖem = me"],
-          explanation: "You heard 'Ɖo nyatakaka la ɖem' which means 'Send me the report' in Ewe."
-        },
-        {
           id: 603,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Let us discuss the terms' in Ewe?",
           options: [
-            { id: 1, text: "Takpekpe le ashinye" },
-            { id: 2, text: "Ɖo nyatakaka la ɖem" },
-            { id: 3, text: "Mina míadzro ɖoɖoawo me" },
-            { id: 4, text: "Wò gaɖoƒe nenie?" }
+            { id: 1, text: "Ɖo nyatakaka la ɖem" },
+            { id: 2, text: "Mina míadzro ɖoɖoawo me" },
+            { id: 3, text: "Dɔwɔƒe la le tsitsim" },
+            { id: 4, text: "Takpekpe le ashinye" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["ɖoɖoawo = terms"],
           explanation: "Mina míadzro ɖoɖoawo me = Let us discuss the terms in Ewe."
+        },
+        {
+          id: 601,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'I have a meeting' in Ewe?",
+          options: [
+            { id: 1, text: "Mina míadzro ɖoɖoawo me" },
+            { id: 2, text: "Takpekpe le ashinye" },
+            { id: 3, text: "Dɔwɔƒe la le tsitsim" },
+            { id: 4, text: "Ɖo nyatakaka la ɖem" }
+          ],
+          correctOptionId: 2,
+          hints: ["takpekpe = meeting"],
+          explanation: "Takpekpe le ashinye = I have a meeting in Ewe."
         },
         {
           id: 604,
@@ -88,14 +72,30 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/mina_míadzro_ɖoɖoawo_me.m4a"),
           options: [
-            { id: 1, text: "I have a meeting" },
-            { id: 2, text: "Send me the report" },
-            { id: 3, text: "Let us discuss the terms" },
-            { id: 4, text: "I am the manager" }
+            { id: 1, text: "Let us discuss the terms" },
+            { id: 2, text: "I am the manager" },
+            { id: 3, text: "I have a meeting" },
+            { id: 4, text: "Send me the report" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 1,
           hints: ["ɖoɖoawo = terms"],
           explanation: "You heard 'Mina míadzro ɖoɖoawo me' which means 'Let us discuss the terms' in Ewe."
+        },
+        {
+          id: 602,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/ɖo_nyatakaka_la_ɖem.m4a"),
+          options: [
+            { id: 1, text: "The business is growing" },
+            { id: 2, text: "Let us discuss the terms" },
+            { id: 3, text: "Send me the report" },
+            { id: 4, text: "I have a meeting" }
+          ],
+          correctOptionId: 3,
+          hints: ["nyatakaka = report", "ɖem = me"],
+          explanation: "You heard 'Ɖo nyatakaka la ɖem' which means 'Send me the report' in Ewe."
         }
       ]
     },
@@ -129,19 +129,20 @@ export default {
       ],
       questions: [
         {
-          id: 605,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'The business is growing' in Ewe?",
+          id: 608,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/dɔwɔƒe_la_le_tsitsim.m4a"),
           options: [
-            { id: 1, text: "Dɔwɔƒe la le tsitsim" },
-            { id: 2, text: "Míehiã asisi geɖe wu" },
-            { id: 3, text: "Viɖe la dzi ɖe edzi" },
-            { id: 4, text: "Takpekpe le ashinye" }
+            { id: 1, text: "Sign the contract" },
+            { id: 2, text: "The profit increased" },
+            { id: 3, text: "The business is growing" },
+            { id: 4, text: "We need more customers" }
           ],
-          correctOptionId: 1,
-          hints: ["dɔwɔƒe = business", "tsitsim = growing"],
-          explanation: "Dɔwɔƒe la le tsitsim = The business is growing in Ewe."
+          correctOptionId: 3,
+          hints: ["tsitsim = growing"],
+          explanation: "You heard 'Dɔwɔƒe la le tsitsim' which means 'The business is growing' in Ewe."
         },
         {
           id: 606,
@@ -150,12 +151,12 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/míehiã_asisi_geɖe_wu.m4a"),
           options: [
-            { id: 1, text: "The business is growing" },
-            { id: 2, text: "We need more customers" },
-            { id: 3, text: "The profit increased" },
-            { id: 4, text: "I have a meeting" }
+            { id: 1, text: "I have a meeting" },
+            { id: 2, text: "The profit increased" },
+            { id: 3, text: "We need more customers" },
+            { id: 4, text: "The business is growing" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["asisi = customers", "geɖe wu = more"],
           explanation: "You heard 'Míehiã asisi geɖe wu' which means 'We need more customers' in Ewe."
         },
@@ -165,30 +166,29 @@ export default {
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'The profit increased' in Ewe?",
           options: [
-            { id: 1, text: "Dɔwɔƒe la le tsitsim" },
-            { id: 2, text: "Míehiã asisi geɖe wu" },
-            { id: 3, text: "Viɖe la dzi ɖe edzi" },
-            { id: 4, text: "De ashi nubablaa te" }
+            { id: 1, text: "Viɖe la dzi ɖe edzi" },
+            { id: 2, text: "Dɔwɔƒe la le tsitsim" },
+            { id: 3, text: "De ashi nubablaa te" },
+            { id: 4, text: "Míehiã asisi geɖe wu" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 1,
           hints: ["viɖe = profit"],
           explanation: "Viɖe la dzi ɖe edzi = The profit increased in Ewe."
         },
         {
-          id: 608,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/dɔwɔƒe_la_le_tsitsim.m4a"),
+          id: 605,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'The business is growing' in Ewe?",
           options: [
-            { id: 1, text: "The business is growing" },
-            { id: 2, text: "We need more customers" },
-            { id: 3, text: "The profit increased" },
-            { id: 4, text: "Sign the contract" }
+            { id: 1, text: "Míehiã asisi geɖe wu" },
+            { id: 2, text: "Dɔwɔƒe la le tsitsim" },
+            { id: 3, text: "Takpekpe le ashinye" },
+            { id: 4, text: "Viɖe la dzi ɖe edzi" }
           ],
-          correctOptionId: 1,
-          hints: ["tsitsim = growing"],
-          explanation: "You heard 'Dɔwɔƒe la le tsitsim' which means 'The business is growing' in Ewe."
+          correctOptionId: 2,
+          hints: ["dɔwɔƒe = business", "tsitsim = growing"],
+          explanation: "Dɔwɔƒe la le tsitsim = The business is growing in Ewe."
         }
       ]
     },
@@ -228,48 +228,17 @@ export default {
       ],
       questions: [
         {
-          id: 609,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you ask 'What is your budget?' in Ewe?",
-          options: [
-            { id: 1, text: "Wò gaɖoƒe nenie?" },
-            { id: 2, text: "Míetsɔa nuwo yina gbe shia gbe" },
-            { id: 3, text: "De ashi nubablaa te" },
-            { id: 4, text: "Nyee nye dɔdzikpɔla" }
-          ],
-          correctOptionId: 1,
-          hints: ["gaɖoƒe = budget", "nenie = how much"],
-          explanation: "Wò gaɖoƒe nenie? = What is your budget? in Ewe."
-        },
-        {
-          id: 610,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/de_ashi_nubablaa_te.m4a"),
-          options: [
-            { id: 1, text: "What is your budget?" },
-            { id: 2, text: "We deliver goods daily" },
-            { id: 3, text: "Sign the contract" },
-            { id: 4, text: "I am the manager" }
-          ],
-          correctOptionId: 3,
-          hints: ["nubablaa = contract", "de ashi te = sign"],
-          explanation: "You heard 'De ashi nubablaa te' which means 'Sign the contract' in Ewe."
-        },
-        {
           id: 611,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I am the manager' in Ewe?",
           options: [
-            { id: 1, text: "Wò gaɖoƒe nenie?" },
-            { id: 2, text: "Míetsɔa nuwo yina gbe shia gbe" },
-            { id: 3, text: "De ashi nubablaa te" },
-            { id: 4, text: "Nyee nye dɔdzikpɔla" }
+            { id: 1, text: "De ashi nubablaa te" },
+            { id: 2, text: "Nyee nye dɔdzikpɔla" },
+            { id: 3, text: "Wò gaɖoƒe nenie?" },
+            { id: 4, text: "Míetsɔa nuwo yina gbe shia gbe" }
           ],
-          correctOptionId: 4,
+          correctOptionId: 2,
           hints: ["dɔdzikpɔla = manager"],
           explanation: "Nyee nye dɔdzikpɔla = I am the manager in Ewe."
         },
@@ -280,14 +249,45 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/míetsɔa_nuwo_yina_gbe_shia_gbe.m4a"),
           options: [
-            { id: 1, text: "What is your budget?" },
-            { id: 2, text: "We deliver goods daily" },
-            { id: 3, text: "Sign the contract" },
-            { id: 4, text: "I am the manager" }
+            { id: 1, text: "Sign the contract" },
+            { id: 2, text: "I am the manager" },
+            { id: 3, text: "What is your budget?" },
+            { id: 4, text: "We deliver goods daily" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 4,
           hints: ["nuwo = goods", "gbe shia gbe = daily"],
           explanation: "You heard 'Míetsɔa nuwo yina gbe shia gbe' which means 'We deliver goods daily' in Ewe."
+        },
+        {
+          id: 609,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you ask 'What is your budget?' in Ewe?",
+          options: [
+            { id: 1, text: "Nyee nye dɔdzikpɔla" },
+            { id: 2, text: "De ashi nubablaa te" },
+            { id: 3, text: "Wò gaɖoƒe nenie?" },
+            { id: 4, text: "Míetsɔa nuwo yina gbe shia gbe" }
+          ],
+          correctOptionId: 3,
+          hints: ["gaɖoƒe = budget", "nenie = how much"],
+          explanation: "Wò gaɖoƒe nenie? = What is your budget? in Ewe."
+        },
+        {
+          id: 610,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/de_ashi_nubablaa_te.m4a"),
+          options: [
+            { id: 1, text: "I am the manager" },
+            { id: 2, text: "Sign the contract" },
+            { id: 3, text: "We deliver goods daily" },
+            { id: 4, text: "What is your budget?" }
+          ],
+          correctOptionId: 2,
+          hints: ["nubablaa = contract", "de ashi te = sign"],
+          explanation: "You heard 'De ashi nubablaa te' which means 'Sign the contract' in Ewe."
         }
       ]
     }
@@ -300,19 +300,19 @@ export default {
     description: "Review all the work and business vocabulary you've learned",
     questions: [
       {
-        id: 613,
+        id: 620,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'I have a meeting' in Ewe?",
+        question: "How do you say 'We need more customers' in Ewe?",
         options: [
-          { id: 1, text: "Takpekpe le ashinye" },
-          { id: 2, text: "Ɖo nyatakaka la ɖem" },
-          { id: 3, text: "Mina míadzro ɖoɖoawo me" },
+          { id: 1, text: "Viɖe la dzi ɖe edzi" },
+          { id: 2, text: "Takpekpe le ashinye" },
+          { id: 3, text: "Míehiã asisi geɖe wu" },
           { id: 4, text: "Dɔwɔƒe la le tsitsim" }
         ],
-        correctOptionId: 1,
-        hints: ["takpekpe = meeting"],
-        explanation: "Takpekpe le ashinye = I have a meeting."
+        correctOptionId: 3,
+        hints: ["asisi = customers"],
+        explanation: "Míehiã asisi geɖe wu = We need more customers."
       },
       {
         id: 614,
@@ -321,29 +321,29 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/nyee_nye_dɔdzikpɔla.m4a"),
         options: [
-          { id: 1, text: "What is your budget?" },
-          { id: 2, text: "We deliver goods daily" },
+          { id: 1, text: "I have a meeting" },
+          { id: 2, text: "I am the manager" },
           { id: 3, text: "Sign the contract" },
-          { id: 4, text: "I am the manager" }
+          { id: 4, text: "We deliver goods daily" }
         ],
-        correctOptionId: 4,
+        correctOptionId: 2,
         hints: ["dɔdzikpɔla = manager"],
         explanation: "You heard 'Nyee nye dɔdzikpɔla' which means 'I am the manager'."
       },
       {
-        id: 615,
+        id: 617,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'Send me the report' in Ewe?",
+        question: "How do you say 'Let us discuss the terms' in Ewe?",
         options: [
-          { id: 1, text: "Takpekpe le ashinye" },
-          { id: 2, text: "Ɖo nyatakaka la ɖem" },
+          { id: 1, text: "Wò gaɖoƒe nenie?" },
+          { id: 2, text: "Takpekpe le ashinye" },
           { id: 3, text: "Mina míadzro ɖoɖoawo me" },
-          { id: 4, text: "Viɖe la dzi ɖe edzi" }
+          { id: 4, text: "Ɖo nyatakaka la ɖem" }
         ],
-        correctOptionId: 2,
-        hints: ["nyatakaka = report"],
-        explanation: "Ɖo nyatakaka la ɖem = Send me the report."
+        correctOptionId: 3,
+        hints: ["ɖoɖoawo = terms"],
+        explanation: "Mina míadzro ɖoɖoawo me = Let us discuss the terms."
       },
       {
         id: 616,
@@ -352,44 +352,44 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/viɖe_la_dzi_ɖe_edzi.m4a"),
         options: [
-          { id: 1, text: "The business is growing" },
-          { id: 2, text: "We need more customers" },
-          { id: 3, text: "The profit increased" },
-          { id: 4, text: "I have a meeting" }
+          { id: 1, text: "The profit increased" },
+          { id: 2, text: "The business is growing" },
+          { id: 3, text: "I have a meeting" },
+          { id: 4, text: "We need more customers" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 1,
         hints: ["viɖe = profit"],
         explanation: "You heard 'Viɖe la dzi ɖe edzi' which means 'The profit increased'."
       },
       {
-        id: 617,
+        id: 621,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'Let us discuss the terms' in Ewe?",
+        question: "How do you ask 'What is your budget?' in Ewe?",
         options: [
-          { id: 1, text: "Takpekpe le ashinye" },
-          { id: 2, text: "Ɖo nyatakaka la ɖem" },
-          { id: 3, text: "Mina míadzro ɖoɖoawo me" },
-          { id: 4, text: "Wò gaɖoƒe nenie?" }
-        ],
-        correctOptionId: 3,
-        hints: ["ɖoɖoawo = terms"],
-        explanation: "Mina míadzro ɖoɖoawo me = Let us discuss the terms."
-      },
-      {
-        id: 618,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'The business is growing' in Ewe?",
-        options: [
-          { id: 1, text: "Dɔwɔƒe la le tsitsim" },
-          { id: 2, text: "Míehiã asisi geɖe wu" },
-          { id: 3, text: "Viɖe la dzi ɖe edzi" },
+          { id: 1, text: "Míetsɔa nuwo yina gbe shia gbe" },
+          { id: 2, text: "Nyee nye dɔdzikpɔla" },
+          { id: 3, text: "Wò gaɖoƒe nenie?" },
           { id: 4, text: "De ashi nubablaa te" }
         ],
-        correctOptionId: 1,
-        hints: ["dɔwɔƒe = business"],
-        explanation: "Dɔwɔƒe la le tsitsim = The business is growing."
+        correctOptionId: 3,
+        hints: ["gaɖoƒe = budget"],
+        explanation: "Wò gaɖoƒe nenie? = What is your budget?"
+      },
+      {
+        id: 613,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I have a meeting' in Ewe?",
+        options: [
+          { id: 1, text: "Dɔwɔƒe la le tsitsim" },
+          { id: 2, text: "Ɖo nyatakaka la ɖem" },
+          { id: 3, text: "Takpekpe le ashinye" },
+          { id: 4, text: "Mina míadzro ɖoɖoawo me" }
+        ],
+        correctOptionId: 3,
+        hints: ["takpekpe = meeting"],
+        explanation: "Takpekpe le ashinye = I have a meeting."
       },
       {
         id: 619,
@@ -398,44 +398,29 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter6/mina_míadzro_ɖoɖoawo_me.m4a"),
         options: [
-          { id: 1, text: "I have a meeting" },
-          { id: 2, text: "Send me the report" },
-          { id: 3, text: "Let us discuss the terms" },
-          { id: 4, text: "We need more customers" }
+          { id: 1, text: "We need more customers" },
+          { id: 2, text: "Let us discuss the terms" },
+          { id: 3, text: "I have a meeting" },
+          { id: 4, text: "Send me the report" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["ɖoɖoawo = terms"],
         explanation: "You heard 'Mina míadzro ɖoɖoawo me' which means 'Let us discuss the terms'."
       },
       {
-        id: 620,
+        id: 615,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'We need more customers' in Ewe?",
+        question: "How do you say 'Send me the report' in Ewe?",
         options: [
-          { id: 1, text: "Dɔwɔƒe la le tsitsim" },
-          { id: 2, text: "Míehiã asisi geɖe wu" },
-          { id: 3, text: "Viɖe la dzi ɖe edzi" },
-          { id: 4, text: "Takpekpe le ashinye" }
+          { id: 1, text: "Viɖe la dzi ɖe edzi" },
+          { id: 2, text: "Ɖo nyatakaka la ɖem" },
+          { id: 3, text: "Takpekpe le ashinye" },
+          { id: 4, text: "Mina míadzro ɖoɖoawo me" }
         ],
         correctOptionId: 2,
-        hints: ["asisi = customers"],
-        explanation: "Míehiã asisi geɖe wu = We need more customers."
-      },
-      {
-        id: 621,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you ask 'What is your budget?' in Ewe?",
-        options: [
-          { id: 1, text: "Wò gaɖoƒe nenie?" },
-          { id: 2, text: "Míetsɔa nuwo yina gbe shia gbe" },
-          { id: 3, text: "De ashi nubablaa te" },
-          { id: 4, text: "Nyee nye dɔdzikpɔla" }
-        ],
-        correctOptionId: 1,
-        hints: ["gaɖoƒe = budget"],
-        explanation: "Wò gaɖoƒe nenie? = What is your budget?"
+        hints: ["nyatakaka = report"],
+        explanation: "Ɖo nyatakaka la ɖem = Send me the report."
       },
       {
         id: 622,
@@ -443,14 +428,29 @@ export default {
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Sign the contract' in Ewe?",
         options: [
-          { id: 1, text: "Wò gaɖoƒe nenie?" },
-          { id: 2, text: "Míetsɔa nuwo yina gbe shia gbe" },
-          { id: 3, text: "De ashi nubablaa te" },
-          { id: 4, text: "Nyee nye dɔdzikpɔla" }
+          { id: 1, text: "Nyee nye dɔdzikpɔla" },
+          { id: 2, text: "De ashi nubablaa te" },
+          { id: 3, text: "Wò gaɖoƒe nenie?" },
+          { id: 4, text: "Míetsɔa nuwo yina gbe shia gbe" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["nubablaa = contract"],
         explanation: "De ashi nubablaa te = Sign the contract."
+      },
+      {
+        id: 618,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'The business is growing' in Ewe?",
+        options: [
+          { id: 1, text: "Míehiã asisi geɖe wu" },
+          { id: 2, text: "Viɖe la dzi ɖe edzi" },
+          { id: 3, text: "Dɔwɔƒe la le tsitsim" },
+          { id: 4, text: "De ashi nubablaa te" }
+        ],
+        correctOptionId: 3,
+        hints: ["dɔwɔƒe = business"],
+        explanation: "Dɔwɔƒe la le tsitsim = The business is growing."
       }
     ]
   }

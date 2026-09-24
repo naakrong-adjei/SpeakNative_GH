@@ -54,32 +54,17 @@ export default {
       ],
       questions: [
         {
-          id: 901,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe word.",
-          question: "What is 'School' in Ewe?",
-          options: [
-            { id: 1, text: "Suku" },
-            { id: 2, text: "Nufiala" },
-            { id: 3, text: "Agbalẽ" },
-            { id: 4, text: "Nuŋlɔti" }
-          ],
-          correctOptionId: 1,
-          hints: ["Place of learning"],
-          explanation: "Suku = School in Ewe."
-        },
-        {
           id: 902,
           type: "multiple_choice",
           instruction: "Select the correct Ewe word.",
           question: "What is 'Teacher' in Ewe?",
           options: [
-            { id: 1, text: "Suku" },
-            { id: 2, text: "Nufiala" },
-            { id: 3, text: "Agbalẽ" },
-            { id: 4, text: "Sukuxɔ" }
+            { id: 1, text: "Agbalẽ" },
+            { id: 2, text: "Sukuxɔ" },
+            { id: 3, text: "Nufiala" },
+            { id: 4, text: "Suku" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["Person who teaches"],
           explanation: "Nufiala = Teacher in Ewe."
         },
@@ -90,14 +75,29 @@ export default {
           question: "What word did you hear?",
           audioUrl: require("../../../../assets/audio/ewe/beginner/chapter9/agbalẽ.m4a"),
           options: [
-            { id: 1, text: "School" },
-            { id: 2, text: "Teacher" },
-            { id: 3, text: "Book" },
-            { id: 4, text: "Pen" }
+            { id: 1, text: "Pen" },
+            { id: 2, text: "Book" },
+            { id: 3, text: "School" },
+            { id: 4, text: "Teacher" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["What you read"],
           explanation: "You heard 'Agbalẽ' which means Book in Ewe."
+        },
+        {
+          id: 901,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe word.",
+          question: "What is 'School' in Ewe?",
+          options: [
+            { id: 1, text: "Nuŋlɔti" },
+            { id: 2, text: "Agbalẽ" },
+            { id: 3, text: "Suku" },
+            { id: 4, text: "Nufiala" }
+          ],
+          correctOptionId: 3,
+          hints: ["Place of learning"],
+          explanation: "Suku = School in Ewe."
         }
       ]
     },
@@ -108,7 +108,14 @@ export default {
       title: "Studying & Work",
       icon: "book-outline",
       description: "Learn phrases related to studying, language learning, and work in Ewe",
-      words: ["Mele ʋegbé srɔ̃m", "Medoa ʋegbé vie", "Mexlẽa nu gbe shia gbe", "Dodokpɔ le ashinye etsɔ", "Ŋlɔ wò ŋkɔ", "Mewu nye dɔ nu"],
+      words: [
+        "Mele ʋegbé srɔ̃m",
+        "Medoa ʋegbé vie",
+        "Mexlẽa nu gbe shia gbe",
+        "Dodokpɔ le ashinye etsɔ",
+        "Ŋlɔ wò ŋkɔ",
+        "Mewu nye dɔ nu"
+      ],
       vocabulary: [
         {
           id: 113,
@@ -149,17 +156,32 @@ export default {
       ],
       questions: [
         {
+          id: 906,
+          type: "multiple_choice",
+          instruction: "Select the correct Ewe phrase.",
+          question: "How do you say 'Write your name' in Ewe?",
+          options: [
+            { id: 1, text: "Dodokpɔ le ashinye etsɔ" },
+            { id: 2, text: "Ŋlɔ wò ŋkɔ" },
+            { id: 3, text: "Medoa ʋegbé vie" },
+            { id: 4, text: "Mele ʋegbé srɔ̃m" }
+          ],
+          correctOptionId: 2,
+          hints: ["ŋlɔ = write", "ŋkɔ = name"],
+          explanation: "Ŋlɔ wò ŋkɔ = Write your name in Ewe."
+        },
+        {
           id: 904,
           type: "multiple_choice",
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I am learning Ewe' in Ewe?",
           options: [
-            { id: 1, text: "Mele ʋegbé srɔ̃m" },
-            { id: 2, text: "Medoa ʋegbé vie" },
+            { id: 1, text: "Dodokpɔ le ashinye etsɔ" },
+            { id: 2, text: "Mele ʋegbé srɔ̃m" },
             { id: 3, text: "Aƒemedɔ" },
-            { id: 4, text: "Dodokpɔ le ashinye etsɔ" }
+            { id: 4, text: "Medoa ʋegbé vie" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 2,
           hints: ["Mele = I am", "srɔ̃m = learning"],
           explanation: "Mele ʋegbé srɔ̃m = I am learning Ewe in Ewe."
         },
@@ -170,29 +192,14 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ewe/beginner/chapter9/mele_ʋegbé_srɔ̃m.m4a"),
           options: [
-            { id: 1, text: "I am learning Ewe" },
-            { id: 2, text: "I speak a little Ewe" },
-            { id: 3, text: "I have an exam tomorrow" },
-            { id: 4, text: "Write your name" }
-          ],
-          correctOptionId: 1,
-          hints: ["Mele = I am", "srɔ̃m = learning"],
-          explanation: "You heard 'Mele ʋegbé srɔ̃m' which means 'I am learning Ewe' in Ewe."
-        },
-        {
-          id: 906,
-          type: "multiple_choice",
-          instruction: "Select the correct Ewe phrase.",
-          question: "How do you say 'Write your name' in Ewe?",
-          options: [
-            { id: 1, text: "Mele ʋegbé srɔ̃m" },
-            { id: 2, text: "Medoa ʋegbé vie" },
-            { id: 3, text: "Dodokpɔ le ashinye etsɔ" },
-            { id: 4, text: "Ŋlɔ wò ŋkɔ" }
+            { id: 1, text: "Write your name" },
+            { id: 2, text: "I have an exam tomorrow" },
+            { id: 3, text: "I speak a little Ewe" },
+            { id: 4, text: "I am learning Ewe" }
           ],
           correctOptionId: 4,
-          hints: ["ŋlɔ = write", "ŋkɔ = name"],
-          explanation: "Ŋlɔ wò ŋkɔ = Write your name in Ewe."
+          hints: ["Mele = I am", "srɔ̃m = learning"],
+          explanation: "You heard 'Mele ʋegbé srɔ̃m' which means 'I am learning Ewe' in Ewe."
         }
       ]
     }
@@ -205,19 +212,19 @@ export default {
     description: "Review all the school and work vocabulary you've learned",
     questions: [
       {
-        id: 907,
+        id: 913,
         type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "What is 'Book' in Ewe?",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I have an exam tomorrow' in Ewe?",
         options: [
-          { id: 1, text: "Suku" },
-          { id: 2, text: "Nufiala" },
-          { id: 3, text: "Agbalẽ" },
-          { id: 4, text: "Nuŋlɔti" }
+          { id: 1, text: "Ŋlɔ wò ŋkɔ" },
+          { id: 2, text: "Dodokpɔ le ashinye etsɔ" },
+          { id: 3, text: "Aƒemedɔ" },
+          { id: 4, text: "Mele ʋegbé srɔ̃m" }
         ],
-        correctOptionId: 3,
-        hints: ["What you read"],
-        explanation: "Agbalẽ = Book in Ewe."
+        correctOptionId: 2,
+        hints: ["dodokpɔ = exam", "etsɔ = tomorrow"],
+        explanation: "Dodokpɔ le ashinye etsɔ = I have an exam tomorrow."
       },
       {
         id: 908,
@@ -226,44 +233,29 @@ export default {
         question: "What word did you hear?",
         audioUrl: require("../../../../assets/audio/ewe/beginner/chapter9/suku.m4a"),
         options: [
-          { id: 1, text: "School" },
-          { id: 2, text: "Teacher" },
-          { id: 3, text: "Book" },
-          { id: 4, text: "Pen" }
+          { id: 1, text: "Book" },
+          { id: 2, text: "Pen" },
+          { id: 3, text: "School" },
+          { id: 4, text: "Teacher" }
         ],
-        correctOptionId: 1,
+        correctOptionId: 3,
         hints: ["Place of learning"],
         explanation: "You heard 'Suku' which means School in Ewe."
       },
       {
-        id: 909,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe word.",
-        question: "What is 'Classroom' in Ewe?",
-        options: [
-          { id: 1, text: "Sukuxɔ" },
-          { id: 2, text: "Aƒemedɔ" },
-          { id: 3, text: "Nuŋlɔti" },
-          { id: 4, text: "Agbalẽ" }
-        ],
-        correctOptionId: 1,
-        hints: ["suku = school", "xɔ = room"],
-        explanation: "Sukuxɔ = Classroom in Ewe."
-      },
-      {
-        id: 910,
+        id: 915,
         type: "multiple_choice",
         instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'I am learning Ewe' in Ewe?",
+        question: "How do you say 'I read every day' in Ewe?",
         options: [
-          { id: 1, text: "Mele ʋegbé srɔ̃m" },
-          { id: 2, text: "Medoa ʋegbé vie" },
-          { id: 3, text: "Aƒemedɔ" },
-          { id: 4, text: "Dodokpɔ le ashinye etsɔ" }
+          { id: 1, text: "Menu ɖam" },
+          { id: 2, text: "Mexlẽa nu gbe shia gbe" },
+          { id: 3, text: "Meyina dɔ me" },
+          { id: 4, text: "Nu ka wɔm nèle?" }
         ],
-        correctOptionId: 1,
-        hints: ["Mele = I am", "srɔ̃m = learning"],
-        explanation: "Mele ʋegbé srɔ̃m = I am learning Ewe."
+        correctOptionId: 2,
+        hints: ["Mexlẽa = I read", "gbe shia gbe = every day"],
+        explanation: "Mexlẽa nu gbe shia gbe = I read every day in Ewe."
       },
       {
         id: 911,
@@ -272,74 +264,29 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ewe/beginner/chapter9/ŋlɔ_wò_ŋkɔ.m4a"),
         options: [
-          { id: 1, text: "I am learning Ewe" },
-          { id: 2, text: "Homework" },
-          { id: 3, text: "I have an exam tomorrow" },
-          { id: 4, text: "Write your name" }
+          { id: 1, text: "Homework" },
+          { id: 2, text: "Write your name" },
+          { id: 3, text: "I am learning Ewe" },
+          { id: 4, text: "I have an exam tomorrow" }
         ],
-        correctOptionId: 4,
+        correctOptionId: 2,
         hints: ["ŋlɔ = write", "ŋkɔ = name"],
         explanation: "You heard 'Ŋlɔ wò ŋkɔ' which means 'Write your name' in Ewe."
       },
       {
-        id: 912,
+        id: 907,
         type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'I speak a little Ewe' in Ewe?",
+        instruction: "Select the correct Ewe word.",
+        question: "What is 'Book' in Ewe?",
         options: [
-          { id: 1, text: "Mele ʋegbé srɔ̃m" },
-          { id: 2, text: "Medoa ʋegbé vie" },
-          { id: 3, text: "Aƒemedɔ" },
-          { id: 4, text: "Nufiala menye" }
+          { id: 1, text: "Nuŋlɔti" },
+          { id: 2, text: "Agbalẽ" },
+          { id: 3, text: "Nufiala" },
+          { id: 4, text: "Suku" }
         ],
         correctOptionId: 2,
-        hints: ["Medoa = I speak", "vie = a little"],
-        explanation: "Medoa ʋegbé vie = I speak a little Ewe."
-      },
-      {
-        id: 913,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'I have an exam tomorrow' in Ewe?",
-        options: [
-          { id: 1, text: "Mele ʋegbé srɔ̃m" },
-          { id: 2, text: "Aƒemedɔ" },
-          { id: 3, text: "Dodokpɔ le ashinye etsɔ" },
-          { id: 4, text: "Ŋlɔ wò ŋkɔ" }
-        ],
-        correctOptionId: 3,
-        hints: ["dodokpɔ = exam", "etsɔ = tomorrow"],
-        explanation: "Dodokpɔ le ashinye etsɔ = I have an exam tomorrow."
-      },
-      {
-        id: 914,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'I finished my work' in Ewe?",
-        options: [
-          { id: 1, text: "Mewu nye dɔ nu" },
-          { id: 2, text: "Nufiala gbɔna" },
-          { id: 3, text: "Mele ʋegbé srɔ̃m" },
-          { id: 4, text: "Dodokpɔ le ashinye etsɔ" }
-        ],
-        correctOptionId: 1,
-        hints: ["mewu = I finished", "dɔ = work"],
-        explanation: "Mewu nye dɔ nu = I finished my work."
-      },
-      {
-        id: 915,
-        type: "multiple_choice",
-        instruction: "Select the correct Ewe phrase.",
-        question: "How do you say 'I read every day' in Ewe?",
-        options: [
-          { id: 1, text: "Mexlẽa nu gbe shia gbe" },
-          { id: 2, text: "Nu ka wɔm nèle?" },
-          { id: 3, text: "Meyina dɔ me" },
-          { id: 4, text: "Menu ɖam" }
-        ],
-        correctOptionId: 1,
-        hints: ["Mexlẽa = I read", "gbe shia gbe = every day"],
-        explanation: "Mexlẽa nu gbe shia gbe = I read every day in Ewe."
+        hints: ["What you read"],
+        explanation: "Agbalẽ = Book in Ewe."
       },
       {
         id: 916,
@@ -348,14 +295,74 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ewe/beginner/chapter9/mexlẽa_nu_gbe_shia_gbe.m4a"),
         options: [
-          { id: 1, text: "I read every day" },
-          { id: 2, text: "What are you doing?" },
+          { id: 1, text: "I am cooking" },
+          { id: 2, text: "I read every day" },
           { id: 3, text: "I am going to work" },
-          { id: 4, text: "I am cooking" }
+          { id: 4, text: "What are you doing?" }
         ],
-        correctOptionId: 1,
+        correctOptionId: 2,
         hints: ["Mexlẽa = I read"],
         explanation: "You heard 'Mexlẽa nu gbe shia gbe' which means 'I read every day' in Ewe."
+      },
+      {
+        id: 910,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I am learning Ewe' in Ewe?",
+        options: [
+          { id: 1, text: "Aƒemedɔ" },
+          { id: 2, text: "Medoa ʋegbé vie" },
+          { id: 3, text: "Dodokpɔ le ashinye etsɔ" },
+          { id: 4, text: "Mele ʋegbé srɔ̃m" }
+        ],
+        correctOptionId: 4,
+        hints: ["Mele = I am", "srɔ̃m = learning"],
+        explanation: "Mele ʋegbé srɔ̃m = I am learning Ewe."
+      },
+      {
+        id: 914,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I finished my work' in Ewe?",
+        options: [
+          { id: 1, text: "Mele ʋegbé srɔ̃m" },
+          { id: 2, text: "Dodokpɔ le ashinye etsɔ" },
+          { id: 3, text: "Mewu nye dɔ nu" },
+          { id: 4, text: "Nufiala gbɔna" }
+        ],
+        correctOptionId: 3,
+        hints: ["mewu = I finished", "dɔ = work"],
+        explanation: "Mewu nye dɔ nu = I finished my work in Ewe."
+      },
+      {
+        id: 912,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe phrase.",
+        question: "How do you say 'I speak a little Ewe' in Ewe?",
+        options: [
+          { id: 1, text: "Aƒemedɔ" },
+          { id: 2, text: "Mele ʋegbé srɔ̃m" },
+          { id: 3, text: "Nufiala menye" },
+          { id: 4, text: "Medoa ʋegbé vie" }
+        ],
+        correctOptionId: 4,
+        hints: ["Medoa = I speak", "vie = a little"],
+        explanation: "Medoa ʋegbé vie = I speak a little Ewe."
+      },
+      {
+        id: 909,
+        type: "multiple_choice",
+        instruction: "Select the correct Ewe word.",
+        question: "What is 'Classroom' in Ewe?",
+        options: [
+          { id: 1, text: "Agbalẽ" },
+          { id: 2, text: "Sukuxɔ" },
+          { id: 3, text: "Aƒemedɔ" },
+          { id: 4, text: "Nuŋlɔti" }
+        ],
+        correctOptionId: 2,
+        hints: ["suku = school", "xɔ = room"],
+        explanation: "Sukuxɔ = Classroom in Ewe."
       }
     ]
   }

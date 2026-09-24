@@ -13,12 +13,12 @@ export default {
       title: "Making Plans",
       icon: "calendar-outline",
       description: "Learn how to make plans with friends in Ewe",
-      words: ["Mina míado go le Memleɖagbe", "Èva azãɖuƒea?", "Mava kɔ wò", "Kpe xɔ̃wòwo"],
+      words: ["Mina míado go Memleɖagbe", "Èva azãɖuƒea?", "Mava kɔ wò", "Kpe xɔ̃wòwo"],
       vocabulary: [
         {
           id: 204,
           english: "Let's meet on Saturday",
-          native: "Mina míado go le Memleɖagbe",
+          native: "Mina míado go Memleɖagbe",
           audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter7/mina_míado_go_le_memleɖagbe.m4a")
         },
         {
@@ -47,14 +47,14 @@ export default {
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'Let's meet on Saturday' in Ewe?",
           options: [
-            { id: 1, text: "Mina míado go le Memleɖagbe" },
+            { id: 1, text: "Mina míado go Memleɖagbe" },
             { id: 2, text: "Èva azãɖuƒea?" },
             { id: 3, text: "Mava kɔ wò" },
             { id: 4, text: "Kpe xɔ̃wòwo" }
           ],
           correctOptionId: 1,
           hints: ["Mina = Let's", "Memleɖagbe = Saturday"],
-          explanation: "Mina míado go le Memleɖagbe = Let's meet on Saturday in Ewe."
+          explanation: "Mina míado go Memleɖagbe = Let's meet on Saturday in Ewe."
         },
         {
           id: 702,
@@ -78,7 +78,7 @@ export default {
           instruction: "Select the correct Ewe phrase.",
           question: "How do you say 'I will pick you up' in Ewe?",
           options: [
-            { id: 1, text: "Mina míado go le Memleɖagbe" },
+            { id: 1, text: "Mina míado go Memleɖagbe" },
             { id: 2, text: "Èva azãɖuƒea?" },
             { id: 3, text: "Mava kɔ wò" },
             { id: 4, text: "Kpe xɔ̃wòwo" }
@@ -112,7 +112,7 @@ export default {
       title: "Going Out Together",
       icon: "walk-outline",
       description: "Learn how to suggest going out together in Ewe",
-      words: ["Mina míaƒome míayi", "Mina míaɖu ƒome", "Gaƒoƒo ka mee wòdzena egɔme?", "Hadzidzia vivi"],
+      words: ["Mina míaƒome míayi", "Mina míaɖunua ƒome", "Gaƒoƒo kae me wòdzena egɔme?", "Hadzidzia vivi"],
       vocabulary: [
         {
           id: 207,
@@ -123,13 +123,13 @@ export default {
         {
           id: 208,
           english: "Let's eat together",
-          native: "Mina míaɖu ƒome",
+          native: "Mina míaɖunua ƒome",
           audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter7/mina_míaɖu_ƒome.m4a")
         },
         {
           id: 211,
           english: "What time does it start?",
-          native: "Gaƒoƒo ka mee wòdzena egɔme?",
+          native: "Gaƒoƒo kae me wòdzena egɔme?",
           audioUrl: require("../../../../assets/audio/ewe/intermediate/chapter7/gaƒoƒo_ka_mee_wòdzena_egɔme.m4a")
         },
         {
@@ -147,8 +147,8 @@ export default {
           question: "How do you say 'Let's go together' in Ewe?",
           options: [
             { id: 1, text: "Mina míaƒome míayi" },
-            { id: 2, text: "Mina míaɖu ƒome" },
-            { id: 3, text: "Gaƒoƒo ka mee wòdzena egɔme?" },
+            { id: 2, text: "Mina míaɖunua ƒome" },
+            { id: 3, text: "Gaƒoƒo kae me wòdzena egɔme?" },
             { id: 4, text: "Hadzidzia vivi" }
           ],
           correctOptionId: 1,
@@ -169,7 +169,7 @@ export default {
           ],
           correctOptionId: 2,
           hints: ["míaɖu = let's eat", "ƒome = together"],
-          explanation: "You heard 'Mina míaɖu ƒome' which means 'Let's eat together' in Ewe."
+          explanation: "You heard 'Mina míaɖunua ƒome' which means 'Let's eat together' in Ewe."
         },
         {
           id: 707,
@@ -178,13 +178,13 @@ export default {
           question: "How do you say 'What time does it start?' in Ewe?",
           options: [
             { id: 1, text: "Mina míaƒome míayi" },
-            { id: 2, text: "Mina míaɖu ƒome" },
-            { id: 3, text: "Gaƒoƒo ka mee wòdzena egɔme?" },
+            { id: 2, text: "Mina míaɖunua ƒome" },
+            { id: 3, text: "Gaƒoƒo kae me wòdzena egɔme?" },
             { id: 4, text: "Hadzidzia vivi" }
           ],
           correctOptionId: 3,
           hints: ["egɔme = start"],
-          explanation: "Gaƒoƒo ka mee wòdzena egɔme? = What time does it start? in Ewe."
+          explanation: "Gaƒoƒo kae me wòdzena egɔme? = What time does it start? in Ewe."
         },
         {
           id: 708,
@@ -218,14 +218,14 @@ export default {
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Let's meet on Saturday' in Ewe?",
         options: [
-          { id: 1, text: "Mina míado go le Memleɖagbe" },
+          { id: 1, text: "Mina míado go Memleɖagbe" },
           { id: 2, text: "Èva azãɖuƒea?" },
           { id: 3, text: "Mava kɔ wò" },
           { id: 4, text: "Kpe xɔ̃wòwo" }
         ],
         correctOptionId: 1,
         hints: ["Memleɖagbe = Saturday"],
-        explanation: "Mina míado go le Memleɖagbe = Let's meet on Saturday."
+        explanation: "Mina míado go Memleɖagbe = Let's meet on Saturday."
       },
       {
         id: 710,
@@ -249,7 +249,7 @@ export default {
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Invite your friends' in Ewe?",
         options: [
-          { id: 1, text: "Mina míado go le Memleɖagbe" },
+          { id: 1, text: "Mina míado go Memleɖagbe" },
           { id: 2, text: "Èva azãɖuƒea?" },
           { id: 3, text: "Mava kɔ wò" },
           { id: 4, text: "Kpe xɔ̃wòwo" }
@@ -272,7 +272,7 @@ export default {
         ],
         correctOptionId: 3,
         hints: ["egɔme = start"],
-        explanation: "You heard 'Gaƒoƒo ka mee wòdzena egɔme?' which means 'What time does it start?'."
+        explanation: "You heard 'Gaƒoƒo kae me wòdzena egɔme?' which means 'What time does it start?'."
       },
       {
         id: 713,
@@ -281,8 +281,8 @@ export default {
         question: "How do you say 'Let's go together' in Ewe?",
         options: [
           { id: 1, text: "Mina míaƒome míayi" },
-          { id: 2, text: "Mina míaɖu ƒome" },
-          { id: 3, text: "Gaƒoƒo ka mee wòdzena egɔme?" },
+          { id: 2, text: "Mina míaɖunua ƒome" },
+          { id: 3, text: "Gaƒoƒo kae me wòdzena egɔme?" },
           { id: 4, text: "Hadzidzia vivi" }
         ],
         correctOptionId: 1,
@@ -295,7 +295,7 @@ export default {
         instruction: "Select the correct Ewe phrase.",
         question: "How do you say 'Are you coming to the party?' in Ewe?",
         options: [
-          { id: 1, text: "Mina míado go le Memleɖagbe" },
+          { id: 1, text: "Mina míado go Memleɖagbe" },
           { id: 2, text: "Èva azãɖuƒea?" },
           { id: 3, text: "Mava kɔ wò" },
           { id: 4, text: "Kpe xɔ̃wòwo" }
@@ -327,13 +327,13 @@ export default {
         question: "How do you say 'Let's eat together' in Ewe?",
         options: [
           { id: 1, text: "Mina míaƒome míayi" },
-          { id: 2, text: "Mina míaɖu ƒome" },
-          { id: 3, text: "Gaƒoƒo ka mee wòdzena egɔme?" },
+          { id: 2, text: "Mina míaɖunua ƒome" },
+          { id: 3, text: "Gaƒoƒo kae me wòdzena egɔme?" },
           { id: 4, text: "Hadzidzia vivi" }
         ],
         correctOptionId: 2,
         hints: ["míaɖu = let's eat"],
-        explanation: "Mina míaɖu ƒome = Let's eat together."
+        explanation: "Mina míaɖunua ƒome = Let's eat together."
       },
       {
         id: 717,
@@ -349,7 +349,7 @@ export default {
         ],
         correctOptionId: 1,
         hints: ["Memleɖagbe = Saturday"],
-        explanation: "You heard 'Mina míado go le Memleɖagbe' which means 'Let's meet on Saturday'."
+        explanation: "You heard 'Mina míado go Memleɖagbe' which means 'Let's meet on Saturday'."
       },
       {
         id: 718,
@@ -358,8 +358,8 @@ export default {
         question: "How do you say 'The music is nice' in Ewe?",
         options: [
           { id: 1, text: "Mina míaƒome míayi" },
-          { id: 2, text: "Mina míaɖu ƒome" },
-          { id: 3, text: "Gaƒoƒo ka mee wòdzena egɔme?" },
+          { id: 2, text: "Mina míaɖunua ƒome" },
+          { id: 3, text: "Gaƒoƒo kae me wòdzena egɔme?" },
           { id: 4, text: "Hadzidzia vivi" }
         ],
         correctOptionId: 4,

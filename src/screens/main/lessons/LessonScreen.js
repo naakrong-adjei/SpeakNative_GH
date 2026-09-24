@@ -461,11 +461,26 @@ export default function LessonScreen() {
         return;
       }
 
+      if (!user?.id) {
+        setProgress({});
+        return;
+      }
+
       try {
+        const token =
+          await getToken();
+
+        const supabase =
+          createSupabaseClient(
+            token
+          );
+
         const savedProgress =
           await getAllProgress(
             selectedLanguage,
-            selectedLevel
+            selectedLevel,
+            supabase,
+            user.id
           );
 
         const normalizedProgress =
@@ -503,6 +518,8 @@ export default function LessonScreen() {
     }, [
       selectedLanguage,
       selectedLevel,
+      getToken,
+      user?.id,
     ]);
 
   useEffect(() => {
