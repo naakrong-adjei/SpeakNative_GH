@@ -1,24 +1,17 @@
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet, View } from "react-native";
-import { useVideoPlayer, VideoView } from "expo-video";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../ui/Button";
 import { ThemedText } from "../themed-text";
-
-const REWARD_VIDEO = require("../../assets/images/celebration/reward.mp4");
+import ConfettiCelebration from "./ConfettiCelebration";
 
 export default function LessonCompleteScreen({
   onContinue,
   type = "lesson",
 }) {
   const { theme } = useTheme();
-
-  const player = useVideoPlayer(REWARD_VIDEO, (player) => {
-    player.loop = true;
-    player.muted = true;
-    player.play();
-  });
 
   const subtitle =
     type === "quiz"
@@ -35,14 +28,28 @@ export default function LessonCompleteScreen({
         },
       ]}
     >
+      <ConfettiCelebration
+        count={50}
+        active={true}
+        duration={2000}
+      />
+
       <View style={styles.content}>
         <View style={styles.messageContainer}>
-          <View style={styles.rewardContainer}>
-            <VideoView
-              player={player}
-              style={styles.rewardVideo}
-              contentFit="contain"
-              nativeControls={false}
+          <View
+            style={[
+              styles.iconContainer,
+              {
+                backgroundColor: theme.success,
+                borderColor: theme.border,
+                shadowColor: theme.primary,
+              },
+            ]}
+          >
+            <Ionicons
+              name="checkmark-circle"
+              size={82}
+              color="#FFFFFF"
             />
           </View>
 
@@ -98,18 +105,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  rewardContainer: {
-    width: 220,
-    height: 220,
-    marginBottom: 12,
+  iconContainer: {
+    width: 170,
+    height: 170,
+    borderRadius: 85,
+    marginBottom: 24,
     alignItems: "center",
     justifyContent: "center",
-    overflow: "hidden",
-  },
 
-  rewardVideo: {
-    width: 220,
-    height: 220,
+    // Subtle depth
+    borderWidth: 4,
+
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+
+    // Android
+    elevation: 6,
   },
 
   title: {

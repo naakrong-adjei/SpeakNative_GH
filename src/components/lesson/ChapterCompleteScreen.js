@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useVideoPlayer, VideoView } from "expo-video";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -14,8 +13,7 @@ import * as Haptics from "expo-haptics";
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../ui/Button";
 import { ThemedText } from "../themed-text";
-
-const SUCCESS_ANIMATION = require("../../assets/images/celebration/success.mp4");
+import ConfettiCelebration from "./ConfettiCelebration";
 
 const SPRING_CONFIG = {
   damping: 12,
@@ -30,22 +28,16 @@ export default function ChapterCompleteScreen({
 }) {
   const { theme } = useTheme();
 
-  const videoScale = useSharedValue(0.3);
+  const iconScale = useSharedValue(0.3);
   const cardScale = useSharedValue(0);
   const buttonScale = useSharedValue(0);
-
-  const player = useVideoPlayer(SUCCESS_ANIMATION, (p) => {
-    p.loop = true;
-    p.muted = true;
-    p.play();
-  });
 
   useEffect(() => {
     Haptics.notificationAsync(
       Haptics.NotificationFeedbackType.Success
     );
 
-    videoScale.value = withSpring(1, SPRING_CONFIG);
+    iconScale.value = withSpring(1, SPRING_CONFIG);
 
     cardScale.value = withDelay(
       200,
@@ -56,12 +48,12 @@ export default function ChapterCompleteScreen({
       400,
       withSpring(1, SPRING_CONFIG)
     );
-  }, [cardScale, videoScale, buttonScale]);
+  }, [iconScale, cardScale, buttonScale]);
 
-  const animatedVideoStyle = useAnimatedStyle(() => ({
+  const animatedIconStyle = useAnimatedStyle(() => ({
     transform: [
       {
-        scale: videoScale.value,
+        scale: iconScale.value,
       },
     ],
   }));
@@ -94,23 +86,31 @@ export default function ChapterCompleteScreen({
         },
       ]}
     >
+      <ConfettiCelebration
+        count={50}
+        active={true}
+        duration={3000}
+      />
+
       <View style={styles.content}>
         <View style={styles.messageContainer}>
-          <View style={styles.animationWrapper}>
-            <Animated.View
-              style={[
-                styles.animationContainer,
-                animatedVideoStyle,
-              ]}
-            >
-              <VideoView
-                player={player}
-                style={styles.animation}
-                contentFit="contain"
-                nativeControls={false}
-              />
-            </Animated.View>
-          </View>
+          <Animated.View
+            style={[
+              styles.iconContainer,
+              {
+                backgroundColor: theme.success,
+                borderColor: theme.border,
+                shadowColor: theme.primary,
+              },
+              animatedIconStyle,
+            ]}
+          >
+            <Ionicons
+              name="ribbon"
+              size={82}
+              color="#FFFFFF"
+            />
+          </Animated.View>
 
           <ThemedText
             style={[
@@ -217,23 +217,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  animationWrapper: {
+  iconContainer: {
+    width: 170,
+    height: 170,
+    marginBottom: 20,
+    borderRadius: 85,
     alignItems: "center",
     justifyContent: "center",
-  },
 
-  animationContainer: {
-    width: 220,
-    height: 220,
-    marginBottom: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    overflow: "hidden",
-  },
+    borderWidth: 4,
 
-  animation: {
-    width: 220,
-    height: 220,
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+
+    elevation: 6,
   },
 
   completeLabel: {

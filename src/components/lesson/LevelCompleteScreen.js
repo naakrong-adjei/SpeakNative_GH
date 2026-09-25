@@ -1,24 +1,17 @@
 import { StyleSheet, View } from "react-native";
-import { useVideoPlayer, VideoView } from "expo-video";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
 
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../ui/Button";
 import { ThemedText } from "../themed-text";
-
-const TROPHY_VIDEO = require("../../assets/images/celebration/trophy.mp4");
+import ConfettiCelebration from "./ConfettiCelebration";
 
 export default function LevelCompleteScreen({
   levelTitle,
   onContinue,
 }) {
   const { theme } = useTheme();
-
-  const player = useVideoPlayer(TROPHY_VIDEO, (player) => {
-    player.loop = true;
-    player.muted = true;
-    player.play();
-  });
 
   return (
     <SafeAreaView
@@ -30,14 +23,28 @@ export default function LevelCompleteScreen({
         },
       ]}
     >
+      <ConfettiCelebration
+        count={50}
+        active={true}
+        duration={3000}
+      />
+
       <View style={styles.content}>
         <View style={styles.messageContainer}>
-          <View style={styles.trophyContainer}>
-            <VideoView
-              player={player}
-              style={styles.trophyVideo}
-              contentFit="contain"
-              nativeControls={false}
+          <View
+            style={[
+              styles.trophyContainer,
+              {
+                backgroundColor: theme.primary,
+                borderColor: theme.border,
+                shadowColor: theme.primary,
+              },
+            ]}
+          >
+            <Ionicons
+              name="trophy"
+              size={88}
+              color="#FFFFFF"
             />
           </View>
 
@@ -106,17 +113,23 @@ const styles = StyleSheet.create({
   },
 
   trophyContainer: {
-    width: 240,
-    height: 240,
-    marginBottom: 10,
+    width: 180,
+    height: 180,
+    marginBottom: 20,
+    borderRadius: 90,
     alignItems: "center",
     justifyContent: "center",
-    overflow: "hidden",
-  },
 
-  trophyVideo: {
-    width: 240,
-    height: 240,
+    borderWidth: 4,
+
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+
+    elevation: 6,
   },
 
   completeLabel: {

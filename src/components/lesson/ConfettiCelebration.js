@@ -1,24 +1,26 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import ConfettiCannon from "react-native-confetti-cannon";
-import { useTheme } from "../../context/ThemeContext";
 
 export default function ConfettiCelebration({
-  count = 70,
+  count = 50,
   colors,
   active = true,
-  duration = 4000,
 }) {
-  const { theme } = useTheme();
   const confettiRef = useRef(null);
 
-  const confettiColors = colors || [
-    theme.primary,
-    theme.accent,
-    theme.success,
-    theme.info,
-    theme.warning,
-  ];
+  const confettiColors = useMemo(
+    () =>
+      colors || [
+        "#2E7D32",
+        "#F4A100",
+        "#E53935",
+        "#1E88E5",
+        "#8E44AD",
+        "#00A896",
+      ],
+    [colors]
+  );
 
   useEffect(() => {
     if (active && confettiRef.current) {
@@ -33,12 +35,12 @@ export default function ConfettiCelebration({
       <ConfettiCannon
         ref={confettiRef}
         count={count}
-        origin={{ x: -10, y: -10 }}
-        autoStart={true}
-        fadeOut={true}
-        fallSpeed={duration / 1000}
-        colors={confettiColors}
+        origin={{ x: 0, y: 0 }}
+        autoStart
+        fadeOut
+        fallSpeed={25}
         explosionSpeed={350}
+        colors={confettiColors}
         renderCount={count}
       />
     </View>
