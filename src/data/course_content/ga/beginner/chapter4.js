@@ -52,7 +52,7 @@ export default {
           type: "drag_drop",
           instruction:
             "Complete the pattern by dragging the correct Ga number.",
-          sentence: "Ekome, Enyɔ, [[_____]__], Ejwɛ, Enumɔ",
+          sentence: "Ekome, Enyɔ, [_____], Ejwɛ, Enumɔ",
           blankId: "blank1",
           items: [
             { id: "opt2", text: "Ekpaa" },
@@ -144,7 +144,7 @@ export default {
           type: "drag_drop",
           instruction:
             "Complete the pattern by dragging the correct Ga number.",
-          sentence: "Ekpaa, Kpawo, [[_____]__], Nɛɛhu",
+          sentence: "Ekpaa, Kpawo, [_____], Nɛɛhu",
           blankId: "blank1",
           items: [
             { id: "opt3", text: "Nyɔŋma" },
@@ -261,7 +261,7 @@ export default {
           instruction:
             "Complete the pattern by dragging the correct Ga number.",
           sentence:
-            "Nyɔŋma kɛ ekome, Nyɔŋma kɛ enyɔ, [[_____]__], Nyɔŋma kɛ ejwɛ, Nyɔŋma kɛ enumɔ",
+            "Nyɔŋma kɛ ekome, Nyɔŋma kɛ enyɔ, [_____], Nyɔŋma kɛ ejwɛ, Nyɔŋma kɛ enumɔ",
           blankId: "blank1",
           items: [
             { id: "opt3", text: "Nyɔŋmai enyɔ" },
@@ -336,7 +336,7 @@ export default {
           instruction:
             "Complete the pattern by dragging the correct Ga number.",
           sentence:
-            "Nyɔŋmai enyɔ, Nyɔŋmai etɛ, [[_____]__], Nyɔŋmai enumɔ",
+            "Nyɔŋmai enyɔ, Nyɔŋmai etɛ, [_____], Nyɔŋmai enumɔ",
           blankId: "blank1",
           items: [
             { id: "opt3", text: "Nyɔŋmai kpaanyɔ" },
@@ -436,7 +436,7 @@ export default {
           instruction:
             "Complete the pattern by dragging the correct Ga number.",
           sentence:
-            "Nyɔŋmai ekpaa, Nyɔŋmai kpawo, [[_____]__], Nyɔŋmai nɛɛhu",
+            "Nyɔŋmai ekpaa, Nyɔŋmai kpawo, [_____], Nyɔŋmai nɛɛhu",
           blankId: "blank1",
           items: [
             { id: "opt1", text: "Nyɔŋmai ejwɛ" },
@@ -568,7 +568,7 @@ export default {
           type: "drag_drop",
           instruction:
             "Complete the phrase by dragging the correct Ga number.",
-          sentence: "Nyɔŋmai enyɔ kɛ [[_____]__] (Twenty-two)",
+          sentence: "Nyɔŋmai enyɔ kɛ [_____] (Twenty-two)",
           blankId: "blank1",
           items: [
             { id: "opt3", text: "ejwɛ" },
@@ -640,7 +640,7 @@ export default {
           type: "drag_drop",
           instruction:
             "Complete the Ga phrase by dragging the correct word.",
-          sentence: "Atswa ŋmɛjii [[_____]__] (It is three o'clock)",
+          sentence: "Atswa ŋmɛjii [_____] (It is three o'clock)",
           blankId: "blank1",
           items: [
             { id: "opt3", text: "enumɔ" },
@@ -734,7 +734,7 @@ export default {
           type: "drag_drop",
           instruction:
             "Complete the Ga phrase by dragging the correct word.",
-          sentence: "[[_____]__] ni baa lɛ (Next week)",
+          sentence: "[_____] ni baa lɛ (Next week)",
           blankId: "blank1",
           items: [
             { id: "opt3", text: "Nyɛ" },
@@ -897,7 +897,7 @@ export default {
         instruction:
           "Complete the pattern by dragging the correct Ga number.",
         sentence:
-          "Nyɔŋmai enyɔ, [[_____]__], Nyɔŋmai ejwɛ, Nyɔŋmai enumɔ",
+          "Nyɔŋmai enyɔ, [_____], Nyɔŋmai ejwɛ, Nyɔŋmai enumɔ",
         blankId: "blank1",
         items: [
           { id: "opt3", text: "Nyɔŋmai kpaanyɔ" },
@@ -945,7 +945,7 @@ export default {
         type: "drag_drop",
         instruction:
           "Complete the pattern by dragging the correct Ga number.",
-        sentence: "Ekome, Enyɔ, [[_____]__], Ejwɛ, Enumɔ",
+        sentence: "Ekome, Enyɔ, [_____], Ejwɛ, Enumɔ",
         blankId: "blank1",
         items: [
           { id: "opt2", text: "Ekpaa" },
@@ -1010,7 +1010,7 @@ export default {
         instruction:
           "Complete the pattern by dragging the correct Ga number.",
         sentence:
-          "Nyɔŋma kɛ ekome, Nyɔŋma kɛ enyɔ, Nyɔŋma kɛ etɛ, [[_____]__], Nyɔŋma kɛ enumɔ",
+          "Nyɔŋma kɛ ekome, Nyɔŋma kɛ enyɔ, Nyɔŋma kɛ etɛ, [_____], Nyɔŋma kɛ enumɔ",
         blankId: "blank1",
         items: [
           { id: "opt3", text: "Nyɔŋmai enyɔ" },

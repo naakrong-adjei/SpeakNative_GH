@@ -1,7 +1,7 @@
 export default {
   id: 5,
   title: "Phone Conversations",
-  description: "Learn phone conversation vocabulary in Ga",
+  description: "Learn how to make and receive phone calls in Ga",
   icon: "call-outline",
   totalXp: 15,
   difficulty: "Intermediate",
@@ -11,7 +11,7 @@ export default {
       id: "5-1",
       type: "words",
       title: "Starting a Call",
-      icon: "phone-outline",
+      icon: "call-outline",
       description: "Learn how to start a phone conversation in Ga",
       words: ["Hɛlo, namɔ wieɔ?", "Oonu mi he lo?"],
       vocabulary: [
@@ -30,17 +30,32 @@ export default {
       ],
       questions: [
         {
+          id: 503,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Can you hear me?' in Ga?",
+          options: [
+            { id: 1, text: "Matswa bo ekoŋŋ" },
+            { id: 2, text: "Ofainɛ mɛ" },
+            { id: 3, text: "Oonu mi he lo?" },
+            { id: 4, text: "Hɛlo, namɔ wieɔ?" }
+          ],
+          correctOptionId: 3,
+          hints: ["onu = hear"],
+          explanation: "Oonu mi he lo? = Can you hear me? in Ga."
+        },
+        {
           id: 501,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Hello, who is speaking?' in Ga?",
           options: [
-            { id: 1, text: "Hɛlo, namɔ wieɔ?" },
-            { id: 2, text: "Oonu mi he lo?" },
+            { id: 1, text: "Ofainɛ mɛ" },
+            { id: 2, text: "Hɛlo, namɔ wieɔ?" },
             { id: 3, text: "Netwɔk lɛ ehiii" },
-            { id: 4, text: "Ofainɛ mɛ" }
+            { id: 4, text: "Oonu mi he lo?" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 2,
           hints: ["namɔ = who", "wieɔ = speaking"],
           explanation: "Hɛlo, namɔ wieɔ? = Hello, who is speaking? in Ga."
         },
@@ -51,29 +66,14 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter5/oonu_mi_he_lo.m4a"),
           options: [
-            { id: 1, text: "Hello, who is speaking?" },
-            { id: 2, text: "Can you hear me?" },
-            { id: 3, text: "The network is bad" },
-            { id: 4, text: "I will call you back" }
+            { id: 1, text: "The network is bad" },
+            { id: 2, text: "I will call you back" },
+            { id: 3, text: "Can you hear me?" },
+            { id: 4, text: "Hello, who is speaking?" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["onu = hear", "mi = me"],
           explanation: "You heard 'Oonu mi he lo?' which means 'Can you hear me?' in Ga."
-        },
-        {
-          id: 503,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Can you hear me?' in Ga?",
-          options: [
-            { id: 1, text: "Hɛlo, namɔ wieɔ?" },
-            { id: 2, text: "Oonu mi he lo?" },
-            { id: 3, text: "Matswa bo ekoŋŋ" },
-            { id: 4, text: "Ofainɛ mɛ" }
-          ],
-          correctOptionId: 2,
-          hints: ["onu = hear"],
-          explanation: "Oonu mi he lo? = Can you hear me? in Ga."
         }
       ]
     },
@@ -82,7 +82,7 @@ export default {
       id: "5-2",
       type: "phrases",
       title: "Call Problems",
-      icon: "warning-outline",
+      icon: "wifi-outline",
       description: "Learn phrases for dealing with phone call problems in Ga",
       words: ["Netwɔk lɛ ehiii", "Ofainɛ mɛ"],
       vocabulary: [
@@ -101,17 +101,32 @@ export default {
       ],
       questions: [
         {
+          id: 506,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Please hold on' in Ga?",
+          options: [
+            { id: 1, text: "Hɛlo, namɔ wieɔ?" },
+            { id: 2, text: "Ofainɛ mɛ" },
+            { id: 3, text: "Maŋma shihilɛhe lɛ aha bo" },
+            { id: 4, text: "Netwɔk lɛ ehiii" }
+          ],
+          correctOptionId: 2,
+          hints: ["Ofainɛ = please"],
+          explanation: "Ofainɛ mɛ = Please hold on in Ga."
+        },
+        {
           id: 504,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'The network is bad' in Ga?",
           options: [
-            { id: 1, text: "Netwɔk lɛ ehiii" },
-            { id: 2, text: "Ofainɛ mɛ" },
-            { id: 3, text: "Oonu mi he lo?" },
-            { id: 4, text: "Matswa bo ekoŋŋ" }
+            { id: 1, text: "Matswa bo ekoŋŋ" },
+            { id: 2, text: "Netwɔk lɛ ehiii" },
+            { id: 3, text: "Ofainɛ mɛ" },
+            { id: 4, text: "Oonu mi he lo?" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 2,
           hints: ["netwɔk = network", "ehiii = bad"],
           explanation: "Netwɔk lɛ ehiii = The network is bad in Ga."
         },
@@ -122,29 +137,14 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter5/ofainɛ_mɛ.m4a"),
           options: [
-            { id: 1, text: "The network is bad" },
-            { id: 2, text: "Please hold on" },
-            { id: 3, text: "Can you hear me?" },
-            { id: 4, text: "Send me a message" }
+            { id: 1, text: "Send me a message" },
+            { id: 2, text: "Can you hear me?" },
+            { id: 3, text: "Please hold on" },
+            { id: 4, text: "The network is bad" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["Ofainɛ = please", "mɛ = wait"],
           explanation: "You heard 'Ofainɛ mɛ' which means 'Please hold on' in Ga."
-        },
-        {
-          id: 506,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Please hold on' in Ga?",
-          options: [
-            { id: 1, text: "Netwɔk lɛ ehiii" },
-            { id: 2, text: "Ofainɛ mɛ" },
-            { id: 3, text: "Hɛlo, namɔ wieɔ?" },
-            { id: 4, text: "Maŋma shihilɛhe lɛ aha bo" }
-          ],
-          correctOptionId: 2,
-          hints: ["Ofainɛ = please"],
-          explanation: "Ofainɛ mɛ = Please hold on in Ga."
         }
       ]
     },
@@ -153,7 +153,7 @@ export default {
       id: "5-3",
       type: "phrases",
       title: "Messages & Follow-ups",
-      icon: "chatbubble-ellipses-outline",
+      icon: "chatbubble-outline",
       description: "Learn phrases for messages and follow-ups in Ga",
       words: ["Matswa bo ekoŋŋ", "Kɛ shɛɛ sane amaje mi", "Maŋma shihilɛhe lɛ aha bo"],
       vocabulary: [
@@ -178,17 +178,32 @@ export default {
       ],
       questions: [
         {
+          id: 509,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I will text you the address' in Ga?",
+          options: [
+            { id: 1, text: "Oonu mi he lo?" },
+            { id: 2, text: "Matswa bo ekoŋŋ" },
+            { id: 3, text: "Maŋma shihilɛhe lɛ aha bo" },
+            { id: 4, text: "Kɛ shɛɛ sane amaje mi" }
+          ],
+          correctOptionId: 3,
+          hints: ["Maŋma = I will write", "shihilɛhe = address"],
+          explanation: "Maŋma shihilɛhe lɛ aha bo = I will text you the address in Ga."
+        },
+        {
           id: 507,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I will call you back' in Ga?",
           options: [
-            { id: 1, text: "Matswa bo ekoŋŋ" },
-            { id: 2, text: "Kɛ shɛɛ sane amaje mi" },
-            { id: 3, text: "Maŋma shihilɛhe lɛ aha bo" },
-            { id: 4, text: "Ofainɛ mɛ" }
+            { id: 1, text: "Ofainɛ mɛ" },
+            { id: 2, text: "Maŋma shihilɛhe lɛ aha bo" },
+            { id: 3, text: "Matswa bo ekoŋŋ" },
+            { id: 4, text: "Kɛ shɛɛ sane amaje mi" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["Matswa = I will call", "ekoŋŋ = again"],
           explanation: "Matswa bo ekoŋŋ = I will call you back in Ga."
         },
@@ -199,29 +214,14 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter5/kɛ_shɛɛ_sane_amaje_mi.m4a"),
           options: [
-            { id: 1, text: "I will call you back" },
-            { id: 2, text: "Send me a message" },
-            { id: 3, text: "I will text you the address" },
-            { id: 4, text: "The network is bad" }
-          ],
-          correctOptionId: 2,
-          hints: ["shɛɛ sane = message"],
-          explanation: "You heard 'Kɛ shɛɛ sane amaje mi' which means 'Send me a message' in Ga."
-        },
-        {
-          id: 509,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I will text you the address' in Ga?",
-          options: [
-            { id: 1, text: "Matswa bo ekoŋŋ" },
-            { id: 2, text: "Kɛ shɛɛ sane amaje mi" },
-            { id: 3, text: "Maŋma shihilɛhe lɛ aha bo" },
-            { id: 4, text: "Oonu mi he lo?" }
+            { id: 1, text: "The network is bad" },
+            { id: 2, text: "I will text you the address" },
+            { id: 3, text: "Send me a message" },
+            { id: 4, text: "I will call you back" }
           ],
           correctOptionId: 3,
-          hints: ["Maŋma = I will write", "shihilɛhe = address"],
-          explanation: "Maŋma shihilɛhe lɛ aha bo = I will text you the address in Ga."
+          hints: ["shɛɛ sane = message"],
+          explanation: "You heard 'Kɛ shɛɛ sane amaje mi' which means 'Send me a message' in Ga."
         }
       ]
     }
@@ -234,19 +234,19 @@ export default {
     description: "Review all the phone conversation vocabulary you've learned",
     questions: [
       {
-        id: 510,
+        id: 516,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Hello, who is speaking?' in Ga?",
+        question: "How do you say 'Send me a message' in Ga?",
         options: [
-          { id: 1, text: "Hɛlo, namɔ wieɔ?" },
-          { id: 2, text: "Oonu mi he lo?" },
-          { id: 3, text: "Netwɔk lɛ ehiii" },
-          { id: 4, text: "Ofainɛ mɛ" }
+          { id: 1, text: "Oonu mi he lo?" },
+          { id: 2, text: "Matswa bo ekoŋŋ" },
+          { id: 3, text: "Kɛ shɛɛ sane amaje mi" },
+          { id: 4, text: "Maŋma shihilɛhe lɛ aha bo" }
         ],
-        correctOptionId: 1,
-        hints: ["namɔ = who"],
-        explanation: "Hɛlo, namɔ wieɔ? = Hello, who is speaking?"
+        correctOptionId: 3,
+        hints: ["shɛɛ sane = message"],
+        explanation: "Kɛ shɛɛ sane amaje mi = Send me a message."
       },
       {
         id: 511,
@@ -255,14 +255,59 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/intermediate/chapter5/netwɔk_lɛ_ehiii.m4a"),
         options: [
-          { id: 1, text: "Can you hear me?" },
+          { id: 1, text: "I will call you back" },
           { id: 2, text: "The network is bad" },
           { id: 3, text: "Please hold on" },
-          { id: 4, text: "I will call you back" }
+          { id: 4, text: "Can you hear me?" }
         ],
         correctOptionId: 2,
         hints: ["netwɔk = network", "ehiii = bad"],
         explanation: "You heard 'Netwɔk lɛ ehiii' which means 'The network is bad'."
+      },
+      {
+        id: 514,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Please hold on' in Ga?",
+        options: [
+          { id: 1, text: "Kɛ shɛɛ sane amaje mi" },
+          { id: 2, text: "Netwɔk lɛ ehiii" },
+          { id: 3, text: "Hɛlo, namɔ wieɔ?" },
+          { id: 4, text: "Ofainɛ mɛ" }
+        ],
+        correctOptionId: 4,
+        hints: ["Ofainɛ = please"],
+        explanation: "Ofainɛ mɛ = Please hold on."
+      },
+      {
+        id: 510,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Hello, who is speaking?' in Ga?",
+        options: [
+          { id: 1, text: "Netwɔk lɛ ehiii" },
+          { id: 2, text: "Hɛlo, namɔ wieɔ?" },
+          { id: 3, text: "Oonu mi he lo?" },
+          { id: 4, text: "Ofainɛ mɛ" }
+        ],
+        correctOptionId: 2,
+        hints: ["namɔ = who"],
+        explanation: "Hɛlo, namɔ wieɔ? = Hello, who is speaking?"
+      },
+      {
+        id: 515,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I will call you back' in Ga?",
+        options: [
+          { id: 1, text: "Kɛ shɛɛ sane amaje mi" },
+          { id: 2, text: "Ofainɛ mɛ" },
+          { id: 3, text: "Matswa bo ekoŋŋ" },
+          { id: 4, text: "Maŋma shihilɛhe lɛ aha bo" }
+        ],
+        correctOptionId: 3,
+        hints: ["ekoŋŋ = again"],
+        explanation: "Matswa bo ekoŋŋ = I will call you back."
       },
       {
         id: 512,
@@ -270,12 +315,12 @@ export default {
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Can you hear me?' in Ga?",
         options: [
-          { id: 1, text: "Hɛlo, namɔ wieɔ?" },
-          { id: 2, text: "Oonu mi he lo?" },
-          { id: 3, text: "Matswa bo ekoŋŋ" },
-          { id: 4, text: "Ofainɛ mɛ" }
+          { id: 1, text: "Ofainɛ mɛ" },
+          { id: 2, text: "Matswa bo ekoŋŋ" },
+          { id: 3, text: "Hɛlo, namɔ wieɔ?" },
+          { id: 4, text: "Oonu mi he lo?" }
         ],
-        correctOptionId: 2,
+        correctOptionId: 4,
         hints: ["onu = hear"],
         explanation: "Oonu mi he lo? = Can you hear me?"
       },
@@ -286,59 +331,14 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/intermediate/chapter5/maŋma_shihilɛhe_lɛ_aha_bo.m4a"),
         options: [
-          { id: 1, text: "I will call you back" },
-          { id: 2, text: "Send me a message" },
-          { id: 3, text: "I will text you the address" },
-          { id: 4, text: "Please hold on" }
+          { id: 1, text: "Send me a message" },
+          { id: 2, text: "I will text you the address" },
+          { id: 3, text: "Please hold on" },
+          { id: 4, text: "I will call you back" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["shihilɛhe = address"],
         explanation: "You heard 'Maŋma shihilɛhe lɛ aha bo' which means 'I will text you the address'."
-      },
-      {
-        id: 514,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Please hold on' in Ga?",
-        options: [
-          { id: 1, text: "Netwɔk lɛ ehiii" },
-          { id: 2, text: "Ofainɛ mɛ" },
-          { id: 3, text: "Hɛlo, namɔ wieɔ?" },
-          { id: 4, text: "Kɛ shɛɛ sane amaje mi" }
-        ],
-        correctOptionId: 2,
-        hints: ["Ofainɛ = please"],
-        explanation: "Ofainɛ mɛ = Please hold on."
-      },
-      {
-        id: 515,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I will call you back' in Ga?",
-        options: [
-          { id: 1, text: "Matswa bo ekoŋŋ" },
-          { id: 2, text: "Kɛ shɛɛ sane amaje mi" },
-          { id: 3, text: "Maŋma shihilɛhe lɛ aha bo" },
-          { id: 4, text: "Ofainɛ mɛ" }
-        ],
-        correctOptionId: 1,
-        hints: ["ekoŋŋ = again"],
-        explanation: "Matswa bo ekoŋŋ = I will call you back."
-      },
-      {
-        id: 516,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Send me a message' in Ga?",
-        options: [
-          { id: 1, text: "Matswa bo ekoŋŋ" },
-          { id: 2, text: "Kɛ shɛɛ sane amaje mi" },
-          { id: 3, text: "Maŋma shihilɛhe lɛ aha bo" },
-          { id: 4, text: "Oonu mi he lo?" }
-        ],
-        correctOptionId: 2,
-        hints: ["shɛɛ sane = message"],
-        explanation: "Kɛ shɛɛ sane amaje mi = Send me a message."
       }
     ]
   }

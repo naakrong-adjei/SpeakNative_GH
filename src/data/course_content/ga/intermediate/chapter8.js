@@ -11,7 +11,7 @@ export default {
       id: "8-1",
       type: "phrases",
       title: "Talking About the Past",
-      icon: "history-outline",
+      icon: "time-outline",
       description: "Learn how to talk about past events in Ga",
       words: ["Mitee nyɛ", "Miye niyenii omo", "Wɔhi Ga"],
       vocabulary: [
@@ -36,31 +36,16 @@ export default {
       ],
       questions: [
         {
-          id: 801,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I went yesterday' in Ga?",
-          options: [
-            { id: 1, text: "Mitee nyɛ" },
-            { id: 2, text: "Miye niyenii omo" },
-            { id: 3, text: "Wɔhi Ga" },
-            { id: 4, text: "Maba wɔ" }
-          ],
-          correctOptionId: 1,
-          hints: ["nyɛ = yesterday"],
-          explanation: "Mitee nyɛ = I went yesterday in Ga."
-        },
-        {
           id: 802,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter8/miye_niyenii_omo.m4a"),
           options: [
-            { id: 1, text: "I went yesterday" },
+            { id: 1, text: "I will come tomorrow" },
             { id: 2, text: "I have eaten already" },
             { id: 3, text: "We were living in Accra" },
-            { id: 4, text: "I will come tomorrow" }
+            { id: 4, text: "I went yesterday" }
           ],
           correctOptionId: 2,
           hints: ["omo = already"],
@@ -72,14 +57,29 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'We were living in Accra' in Ga?",
           options: [
-            { id: 1, text: "Mitee nyɛ" },
+            { id: 1, text: "Miiya ni mayahe tsɔne" },
             { id: 2, text: "Miye niyenii omo" },
             { id: 3, text: "Wɔhi Ga" },
-            { id: 4, text: "Miiya ni mayahe tsɔne" }
+            { id: 4, text: "Mitee nyɛ" }
           ],
           correctOptionId: 3,
           hints: ["Wɔhi = we were living", "Ga = Accra"],
           explanation: "Wɔhi Ga = We were living in Accra in Ga."
+        },
+        {
+          id: 801,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I went yesterday' in Ga?",
+          options: [
+            { id: 1, text: "Wɔhi Ga" },
+            { id: 2, text: "Mitee nyɛ" },
+            { id: 3, text: "Miye niyenii omo" },
+            { id: 4, text: "Maba wɔ" }
+          ],
+          correctOptionId: 2,
+          hints: ["nyɛ = yesterday"],
+          explanation: "Mitee nyɛ = I went yesterday in Ga."
         }
       ]
     },
@@ -113,30 +113,15 @@ export default {
       ],
       questions: [
         {
-          id: 804,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I will come tomorrow' in Ga?",
-          options: [
-            { id: 1, text: "Maba wɔ" },
-            { id: 2, text: "Miiya ni mayahe tsɔne" },
-            { id: 3, text: "Amɛbagbe naa nyɔɔŋ ni baa lɛ" },
-            { id: 4, text: "Ebako" }
-          ],
-          correctOptionId: 1,
-          hints: ["wɔ = tomorrow"],
-          explanation: "Maba wɔ = I will come tomorrow in Ga."
-        },
-        {
           id: 805,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter8/miiya_ni_mayahe_tsɔne.m4a"),
           options: [
-            { id: 1, text: "I will come tomorrow" },
+            { id: 1, text: "They will finish next month" },
             { id: 2, text: "I am going to buy a car" },
-            { id: 3, text: "They will finish next month" },
+            { id: 3, text: "I will come tomorrow" },
             { id: 4, text: "Had I known" }
           ],
           correctOptionId: 2,
@@ -149,14 +134,29 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'They will finish next month' in Ga?",
           options: [
-            { id: 1, text: "Maba wɔ" },
-            { id: 2, text: "Miiya ni mayahe tsɔne" },
-            { id: 3, text: "Amɛbagbe naa nyɔɔŋ ni baa lɛ" },
-            { id: 4, text: "Mitee nyɛ" }
+            { id: 1, text: "Mitee nyɛ" },
+            { id: 2, text: "Amɛbagbe naa nyɔɔŋ ni baa lɛ" },
+            { id: 3, text: "Maba wɔ" },
+            { id: 4, text: "Miiya ni mayahe tsɔne" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["nyɔɔŋ ni baa lɛ = next month"],
           explanation: "Amɛbagbe naa nyɔɔŋ ni baa lɛ = They will finish next month in Ga."
+        },
+        {
+          id: 804,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I will come tomorrow' in Ga?",
+          options: [
+            { id: 1, text: "Maba wɔ" },
+            { id: 2, text: "Amɛbagbe naa nyɔɔŋ ni baa lɛ" },
+            { id: 3, text: "Ebako" },
+            { id: 4, text: "Miiya ni mayahe tsɔne" }
+          ],
+          correctOptionId: 1,
+          hints: ["wɔ = tomorrow"],
+          explanation: "Maba wɔ = I will come tomorrow in Ga."
         }
       ]
     },
@@ -184,35 +184,35 @@ export default {
       ],
       questions: [
         {
-          id: 807,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'She has not come yet' in Ga?",
-          options: [
-            { id: 1, text: "Ebako" },
-            { id: 2, text: "Mile ŋkuɛ" },
-            { id: 3, text: "Maba wɔ" },
-            { id: 4, text: "Wɔhi Ga" }
-          ],
-          correctOptionId: 1,
-          hints: ["Expression of 'not yet'"],
-          explanation: "Ebako = She has not come yet in Ga."
-        },
-        {
           id: 808,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter8/mile_ŋkuɛ.m4a"),
           options: [
-            { id: 1, text: "She has not come yet" },
-            { id: 2, text: "Had I known" },
+            { id: 1, text: "Had I known" },
+            { id: 2, text: "She has not come yet" },
             { id: 3, text: "I went yesterday" },
             { id: 4, text: "I will come tomorrow" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 1,
           hints: ["Expression of regret"],
           explanation: "You heard 'Mile ŋkuɛ' which means 'Had I known' in Ga."
+        },
+        {
+          id: 807,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'She has not come yet' in Ga?",
+          options: [
+            { id: 1, text: "Maba wɔ" },
+            { id: 2, text: "Ebako" },
+            { id: 3, text: "Mile ŋkuɛ" },
+            { id: 4, text: "Wɔhi Ga" }
+          ],
+          correctOptionId: 2,
+          hints: ["Expression of 'not yet'"],
+          explanation: "Ebako = She has not come yet in Ga."
         },
         {
           id: 809,
@@ -220,12 +220,12 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Had I known' in Ga?",
           options: [
-            { id: 1, text: "Ebako" },
-            { id: 2, text: "Mile ŋkuɛ" },
-            { id: 3, text: "Mitee nyɛ" },
-            { id: 4, text: "Wɔhi Ga" }
+            { id: 1, text: "Wɔhi Ga" },
+            { id: 2, text: "Ebako" },
+            { id: 3, text: "Mile ŋkuɛ" },
+            { id: 4, text: "Mitee nyɛ" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["Expression of regret"],
           explanation: "Mile ŋkuɛ = Had I known in Ga."
         }
@@ -240,21 +240,6 @@ export default {
     description: "Review all the future and past tense vocabulary you've learned",
     questions: [
       {
-        id: 810,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I went yesterday' in Ga?",
-        options: [
-          { id: 1, text: "Mitee nyɛ" },
-          { id: 2, text: "Miye niyenii omo" },
-          { id: 3, text: "Wɔhi Ga" },
-          { id: 4, text: "Maba wɔ" }
-        ],
-        correctOptionId: 1,
-        hints: ["nyɛ = yesterday"],
-        explanation: "Mitee nyɛ = I went yesterday."
-      },
-      {
         id: 811,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
@@ -262,28 +247,43 @@ export default {
         audioUrl: require("../../../../assets/audio/ga/intermediate/chapter8/maba_wɔ.m4a"),
         options: [
           { id: 1, text: "I went yesterday" },
-          { id: 2, text: "I have eaten already" },
-          { id: 3, text: "I will come tomorrow" },
+          { id: 2, text: "I will come tomorrow" },
+          { id: 3, text: "I have eaten already" },
           { id: 4, text: "She has not come yet" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["wɔ = tomorrow"],
         explanation: "You heard 'Maba wɔ' which means 'I will come tomorrow'."
       },
       {
-        id: 812,
+        id: 817,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I have eaten already' in Ga?",
+        question: "How do you say 'Had I known' in Ga?",
         options: [
           { id: 1, text: "Mitee nyɛ" },
-          { id: 2, text: "Miye niyenii omo" },
-          { id: 3, text: "Wɔhi Ga" },
-          { id: 4, text: "Mile ŋkuɛ" }
+          { id: 2, text: "Ebako" },
+          { id: 3, text: "Mile ŋkuɛ" },
+          { id: 4, text: "Miiya ni mayahe tsɔne" }
         ],
-        correctOptionId: 2,
-        hints: ["omo = already"],
-        explanation: "Miye niyenii omo = I have eaten already."
+        correctOptionId: 3,
+        hints: ["Expression of regret"],
+        explanation: "Mile ŋkuɛ = Had I known."
+      },
+      {
+        id: 815,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I am going to buy a car' in Ga?",
+        options: [
+          { id: 1, text: "Miiya ni mayahe tsɔne" },
+          { id: 2, text: "Amɛbagbe naa nyɔɔŋ ni baa lɛ" },
+          { id: 3, text: "Maba wɔ" },
+          { id: 4, text: "Ebako" }
+        ],
+        correctOptionId: 1,
+        hints: ["tsɔne = car"],
+        explanation: "Miiya ni mayahe tsɔne = I am going to buy a car."
       },
       {
         id: 813,
@@ -292,10 +292,10 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/intermediate/chapter8/amɛbagbe_naa_nyɔɔŋ_ni_baa_lɛ.m4a"),
         options: [
-          { id: 1, text: "I will come tomorrow" },
+          { id: 1, text: "Had I known" },
           { id: 2, text: "I am going to buy a car" },
           { id: 3, text: "They will finish next month" },
-          { id: 4, text: "Had I known" }
+          { id: 4, text: "I will come tomorrow" }
         ],
         correctOptionId: 3,
         hints: ["nyɔɔŋ ni baa lɛ = next month"],
@@ -307,29 +307,14 @@ export default {
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'We were living in Accra' in Ga?",
         options: [
-          { id: 1, text: "Wɔhi Ga" },
-          { id: 2, text: "Miye niyenii omo" },
-          { id: 3, text: "Mitee nyɛ" },
-          { id: 4, text: "Maba wɔ" }
-        ],
-        correctOptionId: 1,
-        hints: ["Wɔhi = we were living"],
-        explanation: "Wɔhi Ga = We were living in Accra."
-      },
-      {
-        id: 815,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I am going to buy a car' in Ga?",
-        options: [
           { id: 1, text: "Maba wɔ" },
-          { id: 2, text: "Miiya ni mayahe tsɔne" },
-          { id: 3, text: "Amɛbagbe naa nyɔɔŋ ni baa lɛ" },
-          { id: 4, text: "Ebako" }
+          { id: 2, text: "Wɔhi Ga" },
+          { id: 3, text: "Mitee nyɛ" },
+          { id: 4, text: "Miye niyenii omo" }
         ],
         correctOptionId: 2,
-        hints: ["tsɔne = car"],
-        explanation: "Miiya ni mayahe tsɔne = I am going to buy a car."
+        hints: ["Wɔhi = we were living"],
+        explanation: "Wɔhi Ga = We were living in Accra."
       },
       {
         id: 816,
@@ -337,29 +322,44 @@ export default {
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'She has not come yet' in Ga?",
         options: [
-          { id: 1, text: "Ebako" },
-          { id: 2, text: "Mile ŋkuɛ" },
-          { id: 3, text: "Maba wɔ" },
+          { id: 1, text: "Mile ŋkuɛ" },
+          { id: 2, text: "Maba wɔ" },
+          { id: 3, text: "Ebako" },
           { id: 4, text: "Wɔhi Ga" }
         ],
-        correctOptionId: 1,
+        correctOptionId: 3,
         hints: ["Expression of 'not yet'"],
         explanation: "Ebako = She has not come yet."
       },
       {
-        id: 817,
+        id: 812,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Had I known' in Ga?",
+        question: "How do you say 'I have eaten already' in Ga?",
         options: [
-          { id: 1, text: "Ebako" },
-          { id: 2, text: "Mile ŋkuɛ" },
-          { id: 3, text: "Mitee nyɛ" },
-          { id: 4, text: "Miiya ni mayahe tsɔne" }
+          { id: 1, text: "Miye niyenii omo" },
+          { id: 2, text: "Mitee nyɛ" },
+          { id: 3, text: "Mile ŋkuɛ" },
+          { id: 4, text: "Wɔhi Ga" }
+        ],
+        correctOptionId: 1,
+        hints: ["omo = already"],
+        explanation: "Miye niyenii omo = I have eaten already."
+      },
+      {
+        id: 810,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I went yesterday' in Ga?",
+        options: [
+          { id: 1, text: "Maba wɔ" },
+          { id: 2, text: "Mitee nyɛ" },
+          { id: 3, text: "Wɔhi Ga" },
+          { id: 4, text: "Miye niyenii omo" }
         ],
         correctOptionId: 2,
-        hints: ["Expression of regret"],
-        explanation: "Mile ŋkuɛ = Had I known."
+        hints: ["nyɛ = yesterday"],
+        explanation: "Mitee nyɛ = I went yesterday."
       }
     ]
   }

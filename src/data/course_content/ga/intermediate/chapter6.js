@@ -1,7 +1,7 @@
 export default {
   id: 6,
   title: "Meetings & Business",
-  description: "Learn meetings and business vocabulary in Ga",
+  description: "Learn useful Ga phrases for meetings, business growth, deals, and workplace communication",
   icon: "briefcase-outline",
   totalXp: 15,
   difficulty: "Intermediate",
@@ -11,7 +11,7 @@ export default {
       id: "6-1",
       type: "phrases",
       title: "Meetings & Reports",
-      icon: "presentation-outline",
+      icon: "document-text-outline",
       description: "Learn phrases for meetings and reports in Ga",
       words: ["Miyɛ kpee", "Ngɔɔ amaniɛbɔɔ lɛ oha mi", "Nyɛhaa wɔsusua kitã shishitoi lɛ ahe"],
       vocabulary: [
@@ -36,31 +36,16 @@ export default {
       ],
       questions: [
         {
-          id: 601,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I have a meeting' in Ga?",
-          options: [
-            { id: 1, text: "Miyɛ kpee" },
-            { id: 2, text: "Ngɔɔ amaniɛbɔɔ lɛ oha mi" },
-            { id: 3, text: "Nyɛhaa wɔsusua kitã shishitoi lɛ ahe" },
-            { id: 4, text: "Nitsumɔ lɛ miida" }
-          ],
-          correctOptionId: 1,
-          hints: ["kpee = meeting"],
-          explanation: "Miyɛ kpee = I have a meeting in Ga."
-        },
-        {
           id: 602,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter6/ngɔɔ_amaniɛbɔɔ_lɛ_oha_mi.m4a"),
           options: [
-            { id: 1, text: "I have a meeting" },
+            { id: 1, text: "Sign the contract" },
             { id: 2, text: "Send me the report" },
-            { id: 3, text: "Let us discuss the terms" },
-            { id: 4, text: "Sign the contract" }
+            { id: 3, text: "I have a meeting" },
+            { id: 4, text: "Let us discuss the terms" }
           ],
           correctOptionId: 2,
           hints: ["amaniɛbɔɔ = report"],
@@ -72,14 +57,29 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Let us discuss the terms' in Ga?",
           options: [
-            { id: 1, text: "Miyɛ kpee" },
-            { id: 2, text: "Ngɔɔ amaniɛbɔɔ lɛ oha mi" },
+            { id: 1, text: "Miji nɔyelɔ" },
+            { id: 2, text: "Miyɛ kpee" },
             { id: 3, text: "Nyɛhaa wɔsusua kitã shishitoi lɛ ahe" },
-            { id: 4, text: "Miji nɔyelɔ" }
+            { id: 4, text: "Ngɔɔ amaniɛbɔɔ lɛ oha mi" }
           ],
           correctOptionId: 3,
           hints: ["wɔsusua = let us discuss", "kitã = terms"],
           explanation: "Nyɛhaa wɔsusua kitã shishitoi lɛ ahe = Let us discuss the terms in Ga."
+        },
+        {
+          id: 601,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I have a meeting' in Ga?",
+          options: [
+            { id: 1, text: "Nitsumɔ lɛ miida" },
+            { id: 2, text: "Miyɛ kpee" },
+            { id: 3, text: "Ngɔɔ amaniɛbɔɔ lɛ oha mi" },
+            { id: 4, text: "Nyɛhaa wɔsusua kitã shishitoi lɛ ahe" }
+          ],
+          correctOptionId: 2,
+          hints: ["kpee = meeting"],
+          explanation: "Miyɛ kpee = I have a meeting in Ga."
         }
       ]
     },
@@ -113,17 +113,32 @@ export default {
       ],
       questions: [
         {
+          id: 606,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'What is your budget?' in Ga?",
+          options: [
+            { id: 1, text: "Nitsumɔ lɛ miida" },
+            { id: 2, text: "Mɛni ji oshika gbɛjianɔtoo?" },
+            { id: 3, text: "Miji nɔyelɔ" },
+            { id: 4, text: "Sɛɛnamɔ lɛ efa" }
+          ],
+          correctOptionId: 2,
+          hints: ["oshika = money", "gbɛjianɔtoo = plan/budget"],
+          explanation: "Mɛni ji oshika gbɛjianɔtoo? = What is your budget? in Ga."
+        },
+        {
           id: 604,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'The business is growing' in Ga?",
           options: [
-            { id: 1, text: "Nitsumɔ lɛ miida" },
+            { id: 1, text: "Wɔkɛ nii yaa daa" },
             { id: 2, text: "Sɛɛnamɔ lɛ efa" },
-            { id: 3, text: "Mɛni ji oshika gbɛjianɔtoo?" },
-            { id: 4, text: "Wɔkɛ nii yaa daa" }
+            { id: 3, text: "Nitsumɔ lɛ miida" },
+            { id: 4, text: "Mɛni ji oshika gbɛjianɔtoo?" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["nitsumɔ = business", "miida = growing"],
           explanation: "Nitsumɔ lɛ miida = The business is growing in Ga."
         },
@@ -134,29 +149,14 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter6/sɛɛnamɔ_lɛ_efa.m4a"),
           options: [
-            { id: 1, text: "The business is growing" },
+            { id: 1, text: "What is your budget?" },
             { id: 2, text: "The profit increased" },
-            { id: 3, text: "What is your budget?" },
+            { id: 3, text: "The business is growing" },
             { id: 4, text: "We deliver goods daily" }
           ],
           correctOptionId: 2,
           hints: ["sɛɛnamɔ = profit", "efa = increased"],
           explanation: "You heard 'Sɛɛnamɔ lɛ efa' which means 'The profit increased' in Ga."
-        },
-        {
-          id: 606,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'What is your budget?' in Ga?",
-          options: [
-            { id: 1, text: "Nitsumɔ lɛ miida" },
-            { id: 2, text: "Sɛɛnamɔ lɛ efa" },
-            { id: 3, text: "Mɛni ji oshika gbɛjianɔtoo?" },
-            { id: 4, text: "Miji nɔyelɔ" }
-          ],
-          correctOptionId: 3,
-          hints: ["oshika = money", "gbɛjianɔtoo = plan/budget"],
-          explanation: "Mɛni ji oshika gbɛjianɔtoo? = What is your budget? in Ga."
         }
       ]
     },
@@ -190,17 +190,32 @@ export default {
       ],
       questions: [
         {
+          id: 609,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I am the manager' in Ga?",
+          options: [
+            { id: 1, text: "Miji nɔyelɔ" },
+            { id: 2, text: "Miyɛ kpee" },
+            { id: 3, text: "Wɔkɛ nii yaa daa" },
+            { id: 4, text: "Ŋmaa kitã lɛ shishi" }
+          ],
+          correctOptionId: 1,
+          hints: ["nɔyelɔ = manager"],
+          explanation: "Miji nɔyelɔ = I am the manager in Ga."
+        },
+        {
           id: 607,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'We deliver goods daily' in Ga?",
           options: [
-            { id: 1, text: "Wɔkɛ nii yaa daa" },
-            { id: 2, text: "Ŋmaa kitã lɛ shishi" },
-            { id: 3, text: "Miji nɔyelɔ" },
+            { id: 1, text: "Ŋmaa kitã lɛ shishi" },
+            { id: 2, text: "Miji nɔyelɔ" },
+            { id: 3, text: "Wɔkɛ nii yaa daa" },
             { id: 4, text: "Miyɛ kpee" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["nii = goods", "daa = daily"],
           explanation: "Wɔkɛ nii yaa daa = We deliver goods daily in Ga."
         },
@@ -211,29 +226,14 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter6/ŋmaa_kitã_lɛ_shishi.m4a"),
           options: [
-            { id: 1, text: "We deliver goods daily" },
+            { id: 1, text: "I am the manager" },
             { id: 2, text: "Sign the contract" },
-            { id: 3, text: "I am the manager" },
-            { id: 4, text: "Send me the report" }
+            { id: 3, text: "Send me the report" },
+            { id: 4, text: "We deliver goods daily" }
           ],
           correctOptionId: 2,
           hints: ["kitã = contract", "shishi = sign"],
           explanation: "You heard 'Ŋmaa kitã lɛ shishi' which means 'Sign the contract' in Ga."
-        },
-        {
-          id: 609,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I am the manager' in Ga?",
-          options: [
-            { id: 1, text: "Wɔkɛ nii yaa daa" },
-            { id: 2, text: "Ŋmaa kitã lɛ shishi" },
-            { id: 3, text: "Miji nɔyelɔ" },
-            { id: 4, text: "Miyɛ kpee" }
-          ],
-          correctOptionId: 3,
-          hints: ["nɔyelɔ = manager"],
-          explanation: "Miji nɔyelɔ = I am the manager in Ga."
         }
       ]
     }
@@ -246,19 +246,34 @@ export default {
     description: "Review all the meetings and business vocabulary you've learned",
     questions: [
       {
-        id: 610,
+        id: 616,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I have a meeting' in Ga?",
+        question: "How do you say 'We deliver goods daily' in Ga?",
         options: [
-          { id: 1, text: "Miyɛ kpee" },
-          { id: 2, text: "Ngɔɔ amaniɛbɔɔ lɛ oha mi" },
-          { id: 3, text: "Nitsumɔ lɛ miida" },
-          { id: 4, text: "Miji nɔyelɔ" }
+          { id: 1, text: "Miji nɔyelɔ" },
+          { id: 2, text: "Wɔkɛ nii yaa daa" },
+          { id: 3, text: "Ŋmaa kitã lɛ shishi" },
+          { id: 4, text: "Miyɛ kpee" }
         ],
-        correctOptionId: 1,
-        hints: ["kpee = meeting"],
-        explanation: "Miyɛ kpee = I have a meeting."
+        correctOptionId: 2,
+        hints: ["daa = daily"],
+        explanation: "Wɔkɛ nii yaa daa = We deliver goods daily."
+      },
+      {
+        id: 614,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'The business is growing' in Ga?",
+        options: [
+          { id: 1, text: "Mɛni ji oshika gbɛjianɔtoo?" },
+          { id: 2, text: "Sɛɛnamɔ lɛ efa" },
+          { id: 3, text: "Nitsumɔ lɛ miida" },
+          { id: 4, text: "Wɔkɛ nii yaa daa" }
+        ],
+        correctOptionId: 3,
+        hints: ["nitsumɔ = business"],
+        explanation: "Nitsumɔ lɛ miida = The business is growing."
       },
       {
         id: 611,
@@ -267,14 +282,29 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/intermediate/chapter6/mɛni_ji_oshika_gbɛjianɔtoo.m4a"),
         options: [
-          { id: 1, text: "The business is growing" },
-          { id: 2, text: "The profit increased" },
+          { id: 1, text: "The profit increased" },
+          { id: 2, text: "We deliver goods daily" },
           { id: 3, text: "What is your budget?" },
-          { id: 4, text: "We deliver goods daily" }
+          { id: 4, text: "The business is growing" }
         ],
         correctOptionId: 3,
         hints: ["oshika = money"],
         explanation: "You heard 'Mɛni ji oshika gbɛjianɔtoo?' which means 'What is your budget?'."
+      },
+      {
+        id: 610,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I have a meeting' in Ga?",
+        options: [
+          { id: 1, text: "Miji nɔyelɔ" },
+          { id: 2, text: "Miyɛ kpee" },
+          { id: 3, text: "Nitsumɔ lɛ miida" },
+          { id: 4, text: "Ngɔɔ amaniɛbɔɔ lɛ oha mi" }
+        ],
+        correctOptionId: 2,
+        hints: ["kpee = meeting"],
+        explanation: "Miyɛ kpee = I have a meeting."
       },
       {
         id: 612,
@@ -283,74 +313,13 @@ export default {
         question: "How do you say 'Send me the report' in Ga?",
         options: [
           { id: 1, text: "Miyɛ kpee" },
-          { id: 2, text: "Ngɔɔ amaniɛbɔɔ lɛ oha mi" },
-          { id: 3, text: "Nyɛhaa wɔsusua kitã shishitoi lɛ ahe" },
+          { id: 2, text: "Nyɛhaa wɔsusua kitã shishitoi lɛ ahe" },
+          { id: 3, text: "Ngɔɔ amaniɛbɔɔ lɛ oha mi" },
           { id: 4, text: "Miji nɔyelɔ" }
         ],
-        correctOptionId: 2,
+        correctOptionId: 3,
         hints: ["amaniɛbɔɔ = report"],
         explanation: "Ngɔɔ amaniɛbɔɔ lɛ oha mi = Send me the report."
-      },
-      {
-        id: 613,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ga/intermediate/chapter6/miji_nɔyelɔ.m4a"),
-        options: [
-          { id: 1, text: "We deliver goods daily" },
-          { id: 2, text: "Sign the contract" },
-          { id: 3, text: "I am the manager" },
-          { id: 4, text: "I have a meeting" }
-        ],
-        correctOptionId: 3,
-        hints: ["nɔyelɔ = manager"],
-        explanation: "You heard 'Miji nɔyelɔ' which means 'I am the manager'."
-      },
-      {
-        id: 614,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'The business is growing' in Ga?",
-        options: [
-          { id: 1, text: "Nitsumɔ lɛ miida" },
-          { id: 2, text: "Sɛɛnamɔ lɛ efa" },
-          { id: 3, text: "Mɛni ji oshika gbɛjianɔtoo?" },
-          { id: 4, text: "Wɔkɛ nii yaa daa" }
-        ],
-        correctOptionId: 1,
-        hints: ["nitsumɔ = business"],
-        explanation: "Nitsumɔ lɛ miida = The business is growing."
-      },
-      {
-        id: 615,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Sign the contract' in Ga?",
-        options: [
-          { id: 1, text: "Wɔkɛ nii yaa daa" },
-          { id: 2, text: "Ŋmaa kitã lɛ shishi" },
-          { id: 3, text: "Miji nɔyelɔ" },
-          { id: 4, text: "Miyɛ kpee" }
-        ],
-        correctOptionId: 2,
-        hints: ["kitã = contract"],
-        explanation: "Ŋmaa kitã lɛ shishi = Sign the contract."
-      },
-      {
-        id: 616,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'We deliver goods daily' in Ga?",
-        options: [
-          { id: 1, text: "Wɔkɛ nii yaa daa" },
-          { id: 2, text: "Ŋmaa kitã lɛ shishi" },
-          { id: 3, text: "Miji nɔyelɔ" },
-          { id: 4, text: "Miyɛ kpee" }
-        ],
-        correctOptionId: 1,
-        hints: ["daa = daily"],
-        explanation: "Wɔkɛ nii yaa daa = We deliver goods daily."
       },
       {
         id: 617,
@@ -358,10 +327,10 @@ export default {
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'The profit increased' in Ga?",
         options: [
-          { id: 1, text: "Nitsumɔ lɛ miida" },
+          { id: 1, text: "Wɔkɛ nii yaa daa" },
           { id: 2, text: "Sɛɛnamɔ lɛ efa" },
-          { id: 3, text: "Mɛni ji oshika gbɛjianɔtoo?" },
-          { id: 4, text: "Wɔkɛ nii yaa daa" }
+          { id: 3, text: "Nitsumɔ lɛ miida" },
+          { id: 4, text: "Mɛni ji oshika gbɛjianɔtoo?" }
         ],
         correctOptionId: 2,
         hints: ["sɛɛnamɔ = profit"],
@@ -373,14 +342,45 @@ export default {
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Let us discuss the terms' in Ga?",
         options: [
-          { id: 1, text: "Miyɛ kpee" },
-          { id: 2, text: "Ngɔɔ amaniɛbɔɔ lɛ oha mi" },
-          { id: 3, text: "Nyɛhaa wɔsusua kitã shishitoi lɛ ahe" },
-          { id: 4, text: "Miji nɔyelɔ" }
+          { id: 1, text: "Miji nɔyelɔ" },
+          { id: 2, text: "Miyɛ kpee" },
+          { id: 3, text: "Ngɔɔ amaniɛbɔɔ lɛ oha mi" },
+          { id: 4, text: "Nyɛhaa wɔsusua kitã shishitoi lɛ ahe" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 4,
         hints: ["wɔsusua = let us discuss"],
         explanation: "Nyɛhaa wɔsusua kitã shishitoi lɛ ahe = Let us discuss the terms."
+      },
+      {
+        id: 613,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/intermediate/chapter6/miji_nɔyelɔ.m4a"),
+        options: [
+          { id: 1, text: "I have a meeting" },
+          { id: 2, text: "We deliver goods daily" },
+          { id: 3, text: "I am the manager" },
+          { id: 4, text: "Sign the contract" }
+        ],
+        correctOptionId: 3,
+        hints: ["nɔyelɔ = manager"],
+        explanation: "You heard 'Miji nɔyelɔ' which means 'I am the manager'."
+      },
+      {
+        id: 615,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Sign the contract' in Ga?",
+        options: [
+          { id: 1, text: "Miyɛ kpee" },
+          { id: 2, text: "Ŋmaa kitã lɛ shishi" },
+          { id: 3, text: "Wɔkɛ nii yaa daa" },
+          { id: 4, text: "Miji nɔyelɔ" }
+        ],
+        correctOptionId: 2,
+        hints: ["kitã = contract"],
+        explanation: "Ŋmaa kitã lɛ shishi = Sign the contract."
       }
     ]
   }

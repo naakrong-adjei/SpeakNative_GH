@@ -1,7 +1,7 @@
 export default {
   id: 7,
   title: "Social Life",
-  description: "Learn social life vocabulary in Ga",
+  description: "Learn how to make plans and socialize in Ga",
   icon: "people-outline",
   totalXp: 15,
   difficulty: "Intermediate",
@@ -13,7 +13,7 @@ export default {
       title: "Plans & Invitations",
       icon: "calendar-outline",
       description: "Learn how to make plans and invite people in Ga",
-      words: ["Nyɛhaa wɔkpea Hɔɔ", "Oobaa gbijurɔ lɛ shishi lo?", "Tsɛmɔ onanemɛi"],
+      words: ["Nyɛhaa wɔkpea Hɔɔ", "Oobaa gbijurɔ lɛ shishi lo?", "Tsɛ onanemɛi"],
       vocabulary: [
         {
           id: 204,
@@ -30,26 +30,11 @@ export default {
         {
           id: 213,
           english: "Invite your friends",
-          native: "Tsɛmɔ onanemɛi",
+          native: "Tsɛ onanemɛi",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter7/tsɛmɔ_onanemɛi.m4a")
         }
       ],
       questions: [
-        {
-          id: 701,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Let's meet on Saturday' in Ga?",
-          options: [
-            { id: 1, text: "Nyɛhaa wɔkpea Hɔɔ" },
-            { id: 2, text: "Oobaa gbijurɔ lɛ shishi lo?" },
-            { id: 3, text: "Tsɛmɔ onanemɛi" },
-            { id: 4, text: "Nyɛhaa wɔyaa shi kome" }
-          ],
-          correctOptionId: 1,
-          hints: ["Hɔɔ = Saturday"],
-          explanation: "Nyɛhaa wɔkpea Hɔɔ = Let's meet on Saturday in Ga."
-        },
         {
           id: 702,
           type: "listening_multiple_choice",
@@ -57,12 +42,12 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter7/oobaa_gbijurɔ_lɛ_shishi_lo.m4a"),
           options: [
-            { id: 1, text: "Let's meet on Saturday" },
-            { id: 2, text: "Are you coming to the party?" },
-            { id: 3, text: "Invite your friends" },
-            { id: 4, text: "I will pick you up" }
+            { id: 1, text: "I will pick you up" },
+            { id: 2, text: "Invite your friends" },
+            { id: 3, text: "Are you coming to the party?" },
+            { id: 4, text: "Let's meet on Saturday" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["gbijurɔ = party", "shishi = under"],
           explanation: "You heard 'Oobaa gbijurɔ lɛ shishi lo?' which means 'Are you coming to the party?' in Ga."
         },
@@ -72,14 +57,29 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Invite your friends' in Ga?",
           options: [
-            { id: 1, text: "Nyɛhaa wɔkpea Hɔɔ" },
-            { id: 2, text: "Oobaa gbijurɔ lɛ shishi lo?" },
-            { id: 3, text: "Tsɛmɔ onanemɛi" },
-            { id: 4, text: "Lala lɛ ŋɔɔ" }
+            { id: 1, text: "Lala lɛ ŋɔɔ" },
+            { id: 2, text: "Tsɛ onanemɛi" },
+            { id: 3, text: "Nyɛhaa wɔyaa shi kome" },
+            { id: 4, text: "Oobaa gbijurɔ lɛ shishi lo?" }
           ],
-          correctOptionId: 3,
-          hints: ["Tsɛmɔ = invite", "onanemɛi = your friends"],
-          explanation: "Tsɛmɔ onanemɛi = Invite your friends in Ga."
+          correctOptionId: 2,
+          hints: ["Tsɛ = invite", "onanemɛi = your friends"],
+          explanation: "Tsɛ onanemɛi = Invite your friends in Ga."
+        },
+        {
+          id: 701,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Let's meet on Saturday' in Ga?",
+          options: [
+            { id: 1, text: "Tsɛ onanemɛi" },
+            { id: 2, text: "Nyɛhaa wɔkpea Hɔɔ" },
+            { id: 3, text: "Nyɛhaa wɔyaa shi kome" },
+            { id: 4, text: "Oobaa gbijurɔ lɛ shishi lo?" }
+          ],
+          correctOptionId: 2,
+          hints: ["Hɔɔ = Saturday"],
+          explanation: "Nyɛhaa wɔkpea Hɔɔ = Let's meet on Saturday in Ga."
         }
       ]
     },
@@ -88,7 +88,7 @@ export default {
       id: "7-2",
       type: "phrases",
       title: "Spending Time Together",
-      icon: "users-outline",
+      icon: "walk-outline",
       description: "Learn phrases for spending time with others in Ga",
       words: ["Nyɛhaa wɔyaa shi kome", "Nyɛhaa wɔfɛɛ wɔyea nii", "Maawo bo"],
       vocabulary: [
@@ -113,35 +113,35 @@ export default {
       ],
       questions: [
         {
-          id: 704,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Let's go together' in Ga?",
-          options: [
-            { id: 1, text: "Nyɛhaa wɔyaa shi kome" },
-            { id: 2, text: "Nyɛhaa wɔfɛɛ wɔyea nii" },
-            { id: 3, text: "Maawo bo" },
-            { id: 4, text: "Minaaa be ŋmɛnɛ" }
-          ],
-          correctOptionId: 1,
-          hints: ["wɔyaa = let's go", "shi kome = together"],
-          explanation: "Nyɛhaa wɔyaa shi kome = Let's go together in Ga."
-        },
-        {
           id: 705,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter7/nyɛhaa_wɔfɛɛ_wɔyea_nii.m4a"),
           options: [
-            { id: 1, text: "Let's go together" },
-            { id: 2, text: "Let's eat together" },
-            { id: 3, text: "I will pick you up" },
-            { id: 4, text: "The music is nice" }
+            { id: 1, text: "The music is nice" },
+            { id: 2, text: "I will pick you up" },
+            { id: 3, text: "Let's eat together" },
+            { id: 4, text: "Let's go together" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["wɔyea nii = let's eat"],
           explanation: "You heard 'Nyɛhaa wɔfɛɛ wɔyea nii' which means 'Let's eat together' in Ga."
+        },
+        {
+          id: 704,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Let's go together' in Ga?",
+          options: [
+            { id: 1, text: "Minaaa be ŋmɛnɛ" },
+            { id: 2, text: "Nyɛhaa wɔyaa shi kome" },
+            { id: 3, text: "Maawo bo" },
+            { id: 4, text: "Nyɛhaa wɔfɛɛ wɔyea nii" }
+          ],
+          correctOptionId: 2,
+          hints: ["wɔyaa = let's go", "shi kome = together"],
+          explanation: "Nyɛhaa wɔyaa shi kome = Let's go together in Ga."
         },
         {
           id: 706,
@@ -149,12 +149,12 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I will pick you up' in Ga?",
           options: [
-            { id: 1, text: "Nyɛhaa wɔyaa shi kome" },
+            { id: 1, text: "Tsɛ onanemɛi" },
             { id: 2, text: "Nyɛhaa wɔfɛɛ wɔyea nii" },
-            { id: 3, text: "Maawo bo" },
-            { id: 4, text: "Tsɛmɔ onanemɛi" }
+            { id: 3, text: "Nyɛhaa wɔyaa shi kome" },
+            { id: 4, text: "Maawo bo" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 4,
           hints: ["Maawo = I will pick"],
           explanation: "Maawo bo = I will pick you up in Ga."
         }
@@ -184,17 +184,32 @@ export default {
       ],
       questions: [
         {
+          id: 709,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'The music is nice' in Ga?",
+          options: [
+            { id: 1, text: "Maawo bo" },
+            { id: 2, text: "Lala lɛ ŋɔɔ" },
+            { id: 3, text: "Minaaa be ŋmɛnɛ" },
+            { id: 4, text: "Nyɛhaa wɔkpea Hɔɔ" }
+          ],
+          correctOptionId: 2,
+          hints: ["lala = music"],
+          explanation: "Lala lɛ ŋɔɔ = The music is nice in Ga."
+        },
+        {
           id: 707,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I am busy today' in Ga?",
           options: [
-            { id: 1, text: "Minaaa be ŋmɛnɛ" },
+            { id: 1, text: "Nyɛhaa wɔyaa shi kome" },
             { id: 2, text: "Lala lɛ ŋɔɔ" },
-            { id: 3, text: "Maawo bo" },
-            { id: 4, text: "Nyɛhaa wɔyaa shi kome" }
+            { id: 3, text: "Minaaa be ŋmɛnɛ" },
+            { id: 4, text: "Maawo bo" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["ŋmɛnɛ = today", "minaaa be = I don't have time"],
           explanation: "Minaaa be ŋmɛnɛ = I am busy today in Ga."
         },
@@ -205,29 +220,14 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/intermediate/chapter7/lala_lɛ_ŋɔɔ.m4a"),
           options: [
-            { id: 1, text: "I am busy today" },
+            { id: 1, text: "Invite your friends" },
             { id: 2, text: "The music is nice" },
-            { id: 3, text: "Let's go together" },
-            { id: 4, text: "Invite your friends" }
+            { id: 3, text: "I am busy today" },
+            { id: 4, text: "Let's go together" }
           ],
           correctOptionId: 2,
           hints: ["lala = music", "ŋɔɔ = nice"],
           explanation: "You heard 'Lala lɛ ŋɔɔ' which means 'The music is nice' in Ga."
-        },
-        {
-          id: 709,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'The music is nice' in Ga?",
-          options: [
-            { id: 1, text: "Minaaa be ŋmɛnɛ" },
-            { id: 2, text: "Lala lɛ ŋɔɔ" },
-            { id: 3, text: "Maawo bo" },
-            { id: 4, text: "Nyɛhaa wɔkpea Hɔɔ" }
-          ],
-          correctOptionId: 2,
-          hints: ["lala = music"],
-          explanation: "Lala lɛ ŋɔɔ = The music is nice in Ga."
         }
       ]
     }
@@ -240,35 +240,19 @@ export default {
     description: "Review all the social life vocabulary you've learned",
     questions: [
       {
-        id: 710,
+        id: 715,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Let's meet on Saturday' in Ga?",
+        question: "How do you say 'Let's eat together' in Ga?",
         options: [
-          { id: 1, text: "Nyɛhaa wɔkpea Hɔɔ" },
-          { id: 2, text: "Oobaa gbijurɔ lɛ shishi lo?" },
-          { id: 3, text: "Tsɛmɔ onanemɛi" },
-          { id: 4, text: "Nyɛhaa wɔyaa shi kome" }
-        ],
-        correctOptionId: 1,
-        hints: ["Hɔɔ = Saturday"],
-        explanation: "Nyɛhaa wɔkpea Hɔɔ = Let's meet on Saturday."
-      },
-      {
-        id: 711,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ga/intermediate/chapter7/maawo_bo.m4a"),
-        options: [
-          { id: 1, text: "Let's go together" },
-          { id: 2, text: "Let's eat together" },
-          { id: 3, text: "I will pick you up" },
-          { id: 4, text: "Invite your friends" }
+          { id: 1, text: "Lala lɛ ŋɔɔ" },
+          { id: 2, text: "Nyɛhaa wɔyaa shi kome" },
+          { id: 3, text: "Nyɛhaa wɔfɛɛ wɔyea nii" },
+          { id: 4, text: "Maawo bo" }
         ],
         correctOptionId: 3,
-        hints: ["Maawo = I will pick"],
-        explanation: "You heard 'Maawo bo' which means 'I will pick you up'."
+        hints: ["wɔyea nii = let's eat"],
+        explanation: "Nyɛhaa wɔfɛɛ wɔyea nii = Let's eat together."
       },
       {
         id: 712,
@@ -276,14 +260,59 @@ export default {
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Are you coming to the party?' in Ga?",
         options: [
-          { id: 1, text: "Nyɛhaa wɔkpea Hɔɔ" },
-          { id: 2, text: "Oobaa gbijurɔ lɛ shishi lo?" },
-          { id: 3, text: "Tsɛmɔ onanemɛi" },
-          { id: 4, text: "Lala lɛ ŋɔɔ" }
+          { id: 1, text: "Tsɛ onanemɛi" },
+          { id: 2, text: "Lala lɛ ŋɔɔ" },
+          { id: 3, text: "Oobaa gbijurɔ lɛ shishi lo?" },
+          { id: 4, text: "Nyɛhaa wɔkpea Hɔɔ" }
         ],
-        correctOptionId: 2,
+        correctOptionId: 3,
         hints: ["gbijurɔ = party"],
         explanation: "Oobaa gbijurɔ lɛ shishi lo? = Are you coming to the party?"
+      },
+      {
+        id: 717,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'The music is nice' in Ga?",
+        options: [
+          { id: 1, text: "Nyɛhaa wɔkpea Hɔɔ" },
+          { id: 2, text: "Minaaa be ŋmɛnɛ" },
+          { id: 3, text: "Maawo bo" },
+          { id: 4, text: "Lala lɛ ŋɔɔ" }
+        ],
+        correctOptionId: 4,
+        hints: ["lala = music"],
+        explanation: "Lala lɛ ŋɔɔ = The music is nice."
+      },
+      {
+        id: 710,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Let's meet on Saturday' in Ga?",
+        options: [
+          { id: 1, text: "Nyɛhaa wɔyaa shi kome" },
+          { id: 2, text: "Oobaa gbijurɔ lɛ shishi lo?" },
+          { id: 3, text: "Tsɛ onanemɛi" },
+          { id: 4, text: "Nyɛhaa wɔkpea Hɔɔ" }
+        ],
+        correctOptionId: 4,
+        hints: ["Hɔɔ = Saturday"],
+        explanation: "Nyɛhaa wɔkpea Hɔɔ = Let's meet on Saturday."
+      },
+      {
+        id: 714,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Let's go together' in Ga?",
+        options: [
+          { id: 1, text: "Maawo bo" },
+          { id: 2, text: "Nyɛhaa wɔyaa shi kome" },
+          { id: 3, text: "Minaaa be ŋmɛnɛ" },
+          { id: 4, text: "Nyɛhaa wɔfɛɛ wɔyea nii" }
+        ],
+        correctOptionId: 2,
+        hints: ["shi kome = together"],
+        explanation: "Nyɛhaa wɔyaa shi kome = Let's go together."
       },
       {
         id: 713,
@@ -292,44 +321,14 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/intermediate/chapter7/minaaa_be_ŋmɛnɛ.m4a"),
         options: [
-          { id: 1, text: "I am busy today" },
-          { id: 2, text: "The music is nice" },
-          { id: 3, text: "Let's eat together" },
-          { id: 4, text: "Invite your friends" }
+          { id: 1, text: "Let's eat together" },
+          { id: 2, text: "Invite your friends" },
+          { id: 3, text: "I am busy today" },
+          { id: 4, text: "The music is nice" }
         ],
-        correctOptionId: 1,
+        correctOptionId: 3,
         hints: ["ŋmɛnɛ = today"],
         explanation: "You heard 'Minaaa be ŋmɛnɛ' which means 'I am busy today'."
-      },
-      {
-        id: 714,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Let's go together' in Ga?",
-        options: [
-          { id: 1, text: "Nyɛhaa wɔyaa shi kome" },
-          { id: 2, text: "Nyɛhaa wɔfɛɛ wɔyea nii" },
-          { id: 3, text: "Maawo bo" },
-          { id: 4, text: "Minaaa be ŋmɛnɛ" }
-        ],
-        correctOptionId: 1,
-        hints: ["shi kome = together"],
-        explanation: "Nyɛhaa wɔyaa shi kome = Let's go together."
-      },
-      {
-        id: 715,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Let's eat together' in Ga?",
-        options: [
-          { id: 1, text: "Nyɛhaa wɔyaa shi kome" },
-          { id: 2, text: "Nyɛhaa wɔfɛɛ wɔyea nii" },
-          { id: 3, text: "Maawo bo" },
-          { id: 4, text: "Lala lɛ ŋɔɔ" }
-        ],
-        correctOptionId: 2,
-        hints: ["wɔyea nii = let's eat"],
-        explanation: "Nyɛhaa wɔfɛɛ wɔyea nii = Let's eat together."
       },
       {
         id: 716,
@@ -337,29 +336,30 @@ export default {
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'Invite your friends' in Ga?",
         options: [
-          { id: 1, text: "Nyɛhaa wɔkpea Hɔɔ" },
-          { id: 2, text: "Oobaa gbijurɔ lɛ shishi lo?" },
-          { id: 3, text: "Tsɛmɔ onanemɛi" },
+          { id: 1, text: "Oobaa gbijurɔ lɛ shishi lo?" },
+          { id: 2, text: "Tsɛ onanemɛi" },
+          { id: 3, text: "Nyɛhaa wɔkpea Hɔɔ" },
           { id: 4, text: "Lala lɛ ŋɔɔ" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["onanemɛi = your friends"],
-        explanation: "Tsɛmɔ onanemɛi = Invite your friends."
+        explanation: "Tsɛ onanemɛi = Invite your friends."
       },
       {
-        id: 717,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'The music is nice' in Ga?",
+        id: 711,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/intermediate/chapter7/maawo_bo.m4a"),
         options: [
-          { id: 1, text: "Minaaa be ŋmɛnɛ" },
-          { id: 2, text: "Lala lɛ ŋɔɔ" },
-          { id: 3, text: "Maawo bo" },
-          { id: 4, text: "Nyɛhaa wɔkpea Hɔɔ" }
+          { id: 1, text: "Invite your friends" },
+          { id: 2, text: "I will pick you up" },
+          { id: 3, text: "Let's go together" },
+          { id: 4, text: "Let's eat together" }
         ],
         correctOptionId: 2,
-        hints: ["lala = music"],
-        explanation: "Lala lɛ ŋɔɔ = The music is nice."
+        hints: ["Maawo = I will pick"],
+        explanation: "You heard 'Maawo bo' which means 'I will pick you up'."
       }
     ]
   }
