@@ -1,7 +1,7 @@
 export default {
   id: 6,
   title: "Shopping",
-  description: "Learn shopping and market vocabulary in Ga",
+  description: "Learn useful Ga phrases for shopping, bargaining, buying, and everyday market conversations",
   icon: "cart-outline",
   totalXp: 15,
   difficulty: "Beginner",
@@ -14,6 +14,7 @@ export default {
       icon: "pricetag-outline",
       description: "Learn how to ask about prices in Ga",
       words: ["Enyiɛ ni?", "Ejara wa tsɔ", "Ejara waaa"],
+
       vocabulary: [
         {
           id: 74,
@@ -34,22 +35,24 @@ export default {
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/ejara_waaa.m4a")
         }
       ],
+
       questions: [
         {
-          id: 601,
+          id: 603,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
-          question: "How do you ask 'How much is it?' in Ga?",
+          question: "How do you say 'It is cheap' in Ga?",
           options: [
-            { id: 1, text: "Enyiɛ ni?" },
-            { id: 2, text: "Ejara wa tsɔ" },
-            { id: 3, text: "Ejara waaa" },
-            { id: 4, text: "Tse nɔ fioo" }
+            { id: 1, text: "Ejara waaa" },
+            { id: 2, text: "Tse nɔ fioo" },
+            { id: 3, text: "Enyiɛ ni?" },
+            { id: 4, text: "Ejara wa tsɔ" }
           ],
           correctOptionId: 1,
-          hints: ["Question about price"],
-          explanation: "Enyiɛ ni? = How much is it? in Ga."
+          hints: ["waaa = very"],
+          explanation: "Ejara waaa = It is cheap in Ga."
         },
+
         {
           id: 602,
           type: "listening_multiple_choice",
@@ -57,30 +60,16 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/ejara_wa_tsɔ.m4a"),
           options: [
-            { id: 1, text: "How much is it?" },
-            { id: 2, text: "It is too expensive" },
-            { id: 3, text: "It is cheap" },
-            { id: 4, text: "Reduce it a little" }
+            { id: 1, text: "It is cheap" },
+            { id: 2, text: "Reduce it a little" },
+            { id: 3, text: "It is too expensive" },
+            { id: 4, text: "How much is it?" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["ejara = price", "tsɔ = too much"],
           explanation: "You heard 'Ejara wa tsɔ' which means 'It is too expensive' in Ga."
         },
-        {
-          id: 603,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'It is cheap' in Ga?",
-          options: [
-            { id: 1, text: "Enyiɛ ni?" },
-            { id: 2, text: "Ejara wa tsɔ" },
-            { id: 3, text: "Ejara waaa" },
-            { id: 4, text: "Tse nɔ fioo" }
-          ],
-          correctOptionId: 3,
-          hints: ["waaa = very"],
-          explanation: "Ejara waaa = It is cheap in Ga."
-        },
+
         {
           id: 604,
           type: "listening_multiple_choice",
@@ -88,14 +77,30 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/enyiɛ_ni.m4a"),
           options: [
-            { id: 1, text: "How much is it?" },
-            { id: 2, text: "It is too expensive" },
-            { id: 3, text: "It is cheap" },
-            { id: 4, text: "Do you have change?" }
+            { id: 1, text: "Do you have change?" },
+            { id: 2, text: "It is cheap" },
+            { id: 3, text: "How much is it?" },
+            { id: 4, text: "It is too expensive" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["Question about price"],
           explanation: "You heard 'Enyiɛ ni?' which means 'How much is it?' in Ga."
+        },
+
+        {
+          id: 601,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you ask 'How much is it?' in Ga?",
+          options: [
+            { id: 1, text: "Ejara wa tsɔ" },
+            { id: 2, text: "Tse nɔ fioo" },
+            { id: 3, text: "Enyiɛ ni?" },
+            { id: 4, text: "Ejara waaa" }
+          ],
+          correctOptionId: 3,
+          hints: ["Question about price"],
+          explanation: "Enyiɛ ni? = How much is it? in Ga."
         }
       ]
     },
@@ -107,6 +112,7 @@ export default {
       icon: "people-outline",
       description: "Learn how to bargain at the market in Ga",
       words: ["Tse nɔ fioo", "Oyɛ shika bibioo lo?", "Tsɔɔmɔ mi ekroko"],
+
       vocabulary: [
         {
           id: 76,
@@ -127,53 +133,24 @@ export default {
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/tsɔɔmɔ_mi_ekroko.m4a")
         }
       ],
+
       questions: [
-        {
-          id: 605,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Reduce it a little' in Ga?",
-          options: [
-            { id: 1, text: "Tse nɔ fioo" },
-            { id: 2, text: "Oyɛ shika bibioo lo?" },
-            { id: 3, text: "Tsɔɔmɔ mi ekroko" },
-            { id: 4, text: "Enyiɛ ni?" }
-          ],
-          correctOptionId: 1,
-          hints: ["Tse = reduce", "fioo = a little"],
-          explanation: "Tse nɔ fioo = Reduce it a little in Ga."
-        },
-        {
-          id: 606,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/oyɛ_shika_bibioo_lo.m4a"),
-          options: [
-            { id: 1, text: "Reduce it a little" },
-            { id: 2, text: "Do you have change?" },
-            { id: 3, text: "Show me another one" },
-            { id: 4, text: "How much is it?" }
-          ],
-          correctOptionId: 2,
-          hints: ["shika = money", "bibioo = change"],
-          explanation: "You heard 'Oyɛ shika bibioo lo?' which means 'Do you have change?' in Ga."
-        },
         {
           id: 607,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Show me another one' in Ga?",
           options: [
-            { id: 1, text: "Tse nɔ fioo" },
-            { id: 2, text: "Oyɛ shika bibioo lo?" },
-            { id: 3, text: "Tsɔɔmɔ mi ekroko" },
-            { id: 4, text: "Enyiɛ ni?" }
+            { id: 1, text: "Enyiɛ ni?" },
+            { id: 2, text: "Tsɔɔmɔ mi ekroko" },
+            { id: 3, text: "Tse nɔ fioo" },
+            { id: 4, text: "Oyɛ shika bibioo lo?" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["Tsɔɔmɔ mi = show me", "ekroko = another"],
           explanation: "Tsɔɔmɔ mi ekroko = Show me another one in Ga."
         },
+
         {
           id: 608,
           type: "listening_multiple_choice",
@@ -181,14 +158,47 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/tse_nɔ_fioo.m4a"),
           options: [
-            { id: 1, text: "Reduce it a little" },
-            { id: 2, text: "Do you have change?" },
-            { id: 3, text: "Show me another one" },
-            { id: 4, text: "It is cheap" }
+            { id: 1, text: "It is cheap" },
+            { id: 2, text: "Show me another one" },
+            { id: 3, text: "Reduce it a little" },
+            { id: 4, text: "Do you have change?" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["Tse = reduce"],
           explanation: "You heard 'Tse nɔ fioo' which means 'Reduce it a little' in Ga."
+        },
+
+        {
+          id: 605,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Reduce it a little' in Ga?",
+          options: [
+            { id: 1, text: "Oyɛ shika bibioo lo?" },
+            { id: 2, text: "Enyiɛ ni?" },
+            { id: 3, text: "Tse nɔ fioo" },
+            { id: 4, text: "Tsɔɔmɔ mi ekroko" }
+          ],
+          correctOptionId: 3,
+          hints: ["Tse = reduce", "fioo = a little"],
+          explanation: "Tse nɔ fioo = Reduce it a little in Ga."
+        },
+
+        {
+          id: 606,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/oyɛ_shika_bibioo_lo.m4a"),
+          options: [
+            { id: 1, text: "How much is it?" },
+            { id: 2, text: "Show me another one" },
+            { id: 3, text: "Do you have change?" },
+            { id: 4, text: "Reduce it a little" }
+          ],
+          correctOptionId: 3,
+          hints: ["shika = money", "bibioo = change"],
+          explanation: "You heard 'Oyɛ shika bibioo lo?' which means 'Do you have change?' in Ga."
         }
       ]
     },
@@ -200,6 +210,7 @@ export default {
       icon: "bag-outline",
       description: "Learn phrases for completing a purchase in Ga",
       words: ["Mitaoɔ ni mahe enɛ", "Makɔ enɛ"],
+
       vocabulary: [
         {
           id: 77,
@@ -214,22 +225,8 @@ export default {
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/makɔ_enɛ.m4a")
         }
       ],
+
       questions: [
-        {
-          id: 609,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I want to buy this' in Ga?",
-          options: [
-            { id: 1, text: "Mitaoɔ ni mahe enɛ" },
-            { id: 2, text: "Makɔ enɛ" },
-            { id: 3, text: "Tse nɔ fioo" },
-            { id: 4, text: "Miikwɛ kɛkɛ" }
-          ],
-          correctOptionId: 1,
-          hints: ["Mitaoɔ = I want", "mahe = buy"],
-          explanation: "Mitaoɔ ni mahe enɛ = I want to buy this in Ga."
-        },
         {
           id: 610,
           type: "listening_multiple_choice",
@@ -237,30 +234,32 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/makɔ_enɛ.m4a"),
           options: [
-            { id: 1, text: "I want to buy this" },
+            { id: 1, text: "I am just looking" },
             { id: 2, text: "I will take this" },
-            { id: 3, text: "Show me another one" },
-            { id: 4, text: "I am just looking" }
+            { id: 3, text: "I want to buy this" },
+            { id: 4, text: "Show me another one" }
           ],
           correctOptionId: 2,
           hints: ["Makɔ = I will take"],
           explanation: "You heard 'Makɔ enɛ' which means 'I will take this' in Ga."
         },
+
         {
           id: 611,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I will take this' in Ga?",
           options: [
-            { id: 1, text: "Mitaoɔ ni mahe enɛ" },
-            { id: 2, text: "Makɔ enɛ" },
-            { id: 3, text: "Tse nɔ fioo" },
-            { id: 4, text: "Miikwɛ kɛkɛ" }
+            { id: 1, text: "Tse nɔ fioo" },
+            { id: 2, text: "Miikwɛ kɛkɛ" },
+            { id: 3, text: "Makɔ enɛ" },
+            { id: 4, text: "Mitaoɔ ni mahe enɛ" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["Makɔ = I will take"],
           explanation: "Makɔ enɛ = I will take this in Ga."
         },
+
         {
           id: 612,
           type: "listening_multiple_choice",
@@ -268,14 +267,30 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/mitaoɔ_ni_mahe_enɛ.m4a"),
           options: [
-            { id: 1, text: "I want to buy this" },
+            { id: 1, text: "It is too expensive" },
             { id: 2, text: "I will take this" },
-            { id: 3, text: "Reduce it a little" },
-            { id: 4, text: "It is too expensive" }
+            { id: 3, text: "I want to buy this" },
+            { id: 4, text: "Reduce it a little" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["mahe = buy"],
           explanation: "You heard 'Mitaoɔ ni mahe enɛ' which means 'I want to buy this' in Ga."
+        },
+
+        {
+          id: 609,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I want to buy this' in Ga?",
+          options: [
+            { id: 1, text: "Miikwɛ kɛkɛ" },
+            { id: 2, text: "Mitaoɔ ni mahe enɛ" },
+            { id: 3, text: "Makɔ enɛ" },
+            { id: 4, text: "Tse nɔ fioo" }
+          ],
+          correctOptionId: 2,
+          hints: ["Mitaoɔ = I want", "mahe = buy"],
+          explanation: "Mitaoɔ ni mahe enɛ = I want to buy this in Ga."
         }
       ]
     },
@@ -287,6 +302,7 @@ export default {
       icon: "storefront-outline",
       description: "Learn essential market vocabulary in Ga",
       words: ["Jara", "Shika", "Miikwɛ kɛkɛ"],
+
       vocabulary: [
         {
           id: 78,
@@ -307,53 +323,8 @@ export default {
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/miikwɛ_kɛkɛ.m4a")
         }
       ],
+
       questions: [
-        {
-          id: 613,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Market' in Ga?",
-          options: [
-            { id: 1, text: "Jara" },
-            { id: 2, text: "Shika" },
-            { id: 3, text: "Miikwɛ kɛkɛ" },
-            { id: 4, text: "Enyiɛ ni?" }
-          ],
-          correctOptionId: 1,
-          hints: ["Where you buy things"],
-          explanation: "Jara = Market in Ga."
-        },
-        {
-          id: 614,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What word did you hear?",
-          audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/shika.m4a"),
-          options: [
-            { id: 1, text: "Market" },
-            { id: 2, text: "Money" },
-            { id: 3, text: "Change" },
-            { id: 4, text: "Price" }
-          ],
-          correctOptionId: 2,
-          hints: ["What you pay with"],
-          explanation: "You heard 'Shika' which means Money in Ga."
-        },
-        {
-          id: 615,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Money' in Ga?",
-          options: [
-            { id: 1, text: "Jara" },
-            { id: 2, text: "Shika" },
-            { id: 3, text: "Miikwɛ kɛkɛ" },
-            { id: 4, text: "Enyiɛ ni?" }
-          ],
-          correctOptionId: 2,
-          hints: ["What you pay with"],
-          explanation: "Shika = Money in Ga."
-        },
         {
           id: 616,
           type: "listening_multiple_choice",
@@ -361,14 +332,63 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/miikwɛ_kɛkɛ.m4a"),
           options: [
-            { id: 1, text: "Market" },
-            { id: 2, text: "Money" },
-            { id: 3, text: "I am just looking" },
-            { id: 4, text: "How much is it?" }
+            { id: 1, text: "How much is it?" },
+            { id: 2, text: "I am just looking" },
+            { id: 3, text: "Money" },
+            { id: 4, text: "Market" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["kɛkɛ = just"],
           explanation: "You heard 'Miikwɛ kɛkɛ' which means 'I am just looking' in Ga."
+        },
+
+        {
+          id: 613,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga word.",
+          question: "What is 'Market' in Ga?",
+          options: [
+            { id: 1, text: "Miikwɛ kɛkɛ" },
+            { id: 2, text: "Enyiɛ ni?" },
+            { id: 3, text: "Jara" },
+            { id: 4, text: "Shika" }
+          ],
+          correctOptionId: 3,
+          hints: ["Where you buy things"],
+          explanation: "Jara = Market in Ga."
+        },
+
+        {
+          id: 614,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What word did you hear?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/shika.m4a"),
+          options: [
+            { id: 1, text: "Price" },
+            { id: 2, text: "Money" },
+            { id: 3, text: "Market" },
+            { id: 4, text: "Change" }
+          ],
+          correctOptionId: 2,
+          hints: ["What you pay with"],
+          explanation: "You heard 'Shika' which means Money in Ga."
+        },
+
+        {
+          id: 615,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga word.",
+          question: "What is 'Money' in Ga?",
+          options: [
+            { id: 1, text: "Enyiɛ ni?" },
+            { id: 2, text: "Miikwɛ kɛkɛ" },
+            { id: 3, text: "Jara" },
+            { id: 4, text: "Shika" }
+          ],
+          correctOptionId: 4,
+          hints: ["What you pay with"],
+          explanation: "Shika = Money in Ga."
         }
       ]
     }
@@ -379,22 +399,24 @@ export default {
     title: "Review: Shopping",
     icon: "refresh-outline",
     description: "Review all the shopping and market vocabulary you've learned",
+
     questions: [
       {
-        id: 617,
+        id: 624,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you ask 'How much is it?' in Ga?",
+        question: "How do you say 'I want to buy this' in Ga?",
         options: [
-          { id: 1, text: "Enyiɛ ni?" },
-          { id: 2, text: "Ejara wa tsɔ" },
-          { id: 3, text: "Ejara waaa" },
+          { id: 1, text: "Makɔ enɛ" },
+          { id: 2, text: "Miikwɛ kɛkɛ" },
+          { id: 3, text: "Mitaoɔ ni mahe enɛ" },
           { id: 4, text: "Tse nɔ fioo" }
         ],
-        correctOptionId: 1,
-        hints: ["Question about price"],
-        explanation: "Enyiɛ ni? = How much is it?"
+        correctOptionId: 3,
+        hints: ["mahe = buy"],
+        explanation: "Mitaoɔ ni mahe enɛ = I want to buy this."
       },
+
       {
         id: 618,
         type: "listening_multiple_choice",
@@ -402,30 +424,80 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/ejara_waaa.m4a"),
         options: [
-          { id: 1, text: "How much is it?" },
-          { id: 2, text: "It is too expensive" },
-          { id: 3, text: "It is cheap" },
-          { id: 4, text: "Reduce it a little" }
+          { id: 1, text: "Reduce it a little" },
+          { id: 2, text: "It is cheap" },
+          { id: 3, text: "How much is it?" },
+          { id: 4, text: "It is too expensive" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["waaa = very"],
         explanation: "You heard 'Ejara waaa' which means 'It is cheap'."
       },
+
       {
-        id: 619,
+        id: 623,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'It is too expensive' in Ga?",
+        question: "How do you say 'Do you have change?' in Ga?",
         options: [
           { id: 1, text: "Enyiɛ ni?" },
-          { id: 2, text: "Ejara wa tsɔ" },
-          { id: 3, text: "Ejara waaa" },
-          { id: 4, text: "Tse nɔ fioo" }
+          { id: 2, text: "Tsɔɔmɔ mi ekroko" },
+          { id: 3, text: "Tse nɔ fioo" },
+          { id: 4, text: "Oyɛ shika bibioo lo?" }
+        ],
+        correctOptionId: 4,
+        hints: ["shika = money"],
+        explanation: "Oyɛ shika bibioo lo? = Do you have change?"
+      },
+
+      {
+        id: 626,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga word.",
+        question: "What is 'Market' in Ga?",
+        options: [
+          { id: 1, text: "Shika" },
+          { id: 2, text: "Jara" },
+          { id: 3, text: "Enyiɛ ni?" },
+          { id: 4, text: "Miikwɛ kɛkɛ" }
         ],
         correctOptionId: 2,
-        hints: ["tsɔ = too much"],
-        explanation: "Ejara wa tsɔ = It is too expensive."
+        hints: ["Where you buy things"],
+        explanation: "Jara = Market."
       },
+
+      {
+        id: 621,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Reduce it a little' in Ga?",
+        options: [
+          { id: 1, text: "Tsɔɔmɔ mi ekroko" },
+          { id: 2, text: "Tse nɔ fioo" },
+          { id: 3, text: "Enyiɛ ni?" },
+          { id: 4, text: "Oyɛ shika bibioo lo?" }
+        ],
+        correctOptionId: 2,
+        hints: ["fioo = a little"],
+        explanation: "Tse nɔ fioo = Reduce it a little."
+      },
+
+      {
+        id: 627,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga word.",
+        question: "What is 'Money' in Ga?",
+        options: [
+          { id: 1, text: "Miikwɛ kɛkɛ" },
+          { id: 2, text: "Enyiɛ ni?" },
+          { id: 3, text: "Shika" },
+          { id: 4, text: "Jara" }
+        ],
+        correctOptionId: 3,
+        hints: ["What you pay with"],
+        explanation: "Shika = Money."
+      },
+
       {
         id: 620,
         type: "listening_multiple_choice",
@@ -433,30 +505,16 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/tsɔɔmɔ_mi_ekroko.m4a"),
         options: [
-          { id: 1, text: "Reduce it a little" },
-          { id: 2, text: "Do you have change?" },
-          { id: 3, text: "Show me another one" },
-          { id: 4, text: "I will take this" }
+          { id: 1, text: "I will take this" },
+          { id: 2, text: "Show me another one" },
+          { id: 3, text: "Do you have change?" },
+          { id: 4, text: "Reduce it a little" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["ekroko = another"],
         explanation: "You heard 'Tsɔɔmɔ mi ekroko' which means 'Show me another one'."
       },
-      {
-        id: 621,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Reduce it a little' in Ga?",
-        options: [
-          { id: 1, text: "Tse nɔ fioo" },
-          { id: 2, text: "Oyɛ shika bibioo lo?" },
-          { id: 3, text: "Tsɔɔmɔ mi ekroko" },
-          { id: 4, text: "Enyiɛ ni?" }
-        ],
-        correctOptionId: 1,
-        hints: ["fioo = a little"],
-        explanation: "Tse nɔ fioo = Reduce it a little."
-      },
+
       {
         id: 622,
         type: "listening_multiple_choice",
@@ -465,44 +523,31 @@ export default {
         audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/makɔ_enɛ.m4a"),
         options: [
           { id: 1, text: "I want to buy this" },
-          { id: 2, text: "I will take this" },
-          { id: 3, text: "Show me another one" },
-          { id: 4, text: "I am just looking" }
+          { id: 2, text: "I am just looking" },
+          { id: 3, text: "I will take this" },
+          { id: 4, text: "Show me another one" }
         ],
-        correctOptionId: 2,
+        correctOptionId: 3,
         hints: ["Makɔ = I will take"],
         explanation: "You heard 'Makɔ enɛ' which means 'I will take this'."
       },
+
       {
-        id: 623,
+        id: 619,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Do you have change?' in Ga?",
+        question: "How do you say 'It is too expensive' in Ga?",
         options: [
-          { id: 1, text: "Tse nɔ fioo" },
-          { id: 2, text: "Oyɛ shika bibioo lo?" },
-          { id: 3, text: "Tsɔɔmɔ mi ekroko" },
+          { id: 1, text: "Ejara waaa" },
+          { id: 2, text: "Ejara wa tsɔ" },
+          { id: 3, text: "Tse nɔ fioo" },
           { id: 4, text: "Enyiɛ ni?" }
         ],
         correctOptionId: 2,
-        hints: ["shika = money"],
-        explanation: "Oyɛ shika bibioo lo? = Do you have change?"
+        hints: ["tsɔ = too much"],
+        explanation: "Ejara wa tsɔ = It is too expensive."
       },
-      {
-        id: 624,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I want to buy this' in Ga?",
-        options: [
-          { id: 1, text: "Mitaoɔ ni mahe enɛ" },
-          { id: 2, text: "Makɔ enɛ" },
-          { id: 3, text: "Tse nɔ fioo" },
-          { id: 4, text: "Miikwɛ kɛkɛ" }
-        ],
-        correctOptionId: 1,
-        hints: ["mahe = buy"],
-        explanation: "Mitaoɔ ni mahe enɛ = I want to buy this."
-      },
+
       {
         id: 625,
         type: "listening_multiple_choice",
@@ -510,45 +555,32 @@ export default {
         question: "What word did you hear?",
         audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/jara.m4a"),
         options: [
-          { id: 1, text: "Market" },
-          { id: 2, text: "Money" },
-          { id: 3, text: "Change" },
-          { id: 4, text: "Price" }
+          { id: 1, text: "Price" },
+          { id: 2, text: "Market" },
+          { id: 3, text: "Money" },
+          { id: 4, text: "Change" }
         ],
-        correctOptionId: 1,
+        correctOptionId: 2,
         hints: ["Where you buy things"],
         explanation: "You heard 'Jara' which means Market in Ga."
       },
+
       {
-        id: 626,
+        id: 617,
         type: "multiple_choice",
-        instruction: "Select the correct Ga word.",
-        question: "What is 'Market' in Ga?",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you ask 'How much is it?' in Ga?",
         options: [
-          { id: 1, text: "Jara" },
-          { id: 2, text: "Shika" },
-          { id: 3, text: "Miikwɛ kɛkɛ" },
+          { id: 1, text: "Ejara waaa" },
+          { id: 2, text: "Tse nɔ fioo" },
+          { id: 3, text: "Ejara wa tsɔ" },
           { id: 4, text: "Enyiɛ ni?" }
         ],
-        correctOptionId: 1,
-        hints: ["Where you buy things"],
-        explanation: "Jara = Market."
+        correctOptionId: 4,
+        hints: ["Question about price"],
+        explanation: "Enyiɛ ni? = How much is it?"
       },
-      {
-        id: 627,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga word.",
-        question: "What is 'Money' in Ga?",
-        options: [
-          { id: 1, text: "Jara" },
-          { id: 2, text: "Shika" },
-          { id: 3, text: "Miikwɛ kɛkɛ" },
-          { id: 4, text: "Enyiɛ ni?" }
-        ],
-        correctOptionId: 2,
-        hints: ["What you pay with"],
-        explanation: "Shika = Money."
-      },
+
       {
         id: 628,
         type: "listening_multiple_choice",
@@ -556,12 +588,12 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/beginner/chapter6/mitaoɔ_ni_mahe_enɛ.m4a"),
         options: [
-          { id: 1, text: "I want to buy this" },
-          { id: 2, text: "I will take this" },
-          { id: 3, text: "Reduce it a little" },
-          { id: 4, text: "It is cheap" }
+          { id: 1, text: "Reduce it a little" },
+          { id: 2, text: "I want to buy this" },
+          { id: 3, text: "It is cheap" },
+          { id: 4, text: "I will take this" }
         ],
-        correctOptionId: 1,
+        correctOptionId: 2,
         hints: ["mahe = buy"],
         explanation: "You heard 'Mitaoɔ ni mahe enɛ' which means 'I want to buy this'."
       }

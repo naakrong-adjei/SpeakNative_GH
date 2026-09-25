@@ -3,7 +3,7 @@ export default {
   title: "Family",
   description: "Learn family members and how to talk about your family in Ga",
   icon: "people-outline",
-  totalXp: 20,
+  totalXp: 15,
   difficulty: "Beginner",
 
   sections: [
@@ -48,49 +48,19 @@ export default {
       ],
       questions: [
         {
-          id: 301,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Mother' in Ga?",
-          options: [
-            { id: 1, text: "Nyɛ" },
-            { id: 2, text: "Tsɛ" },
-            { id: 3, text: "Bi" },
-            { id: 4, text: "Nyɛmi nuu" }
-          ],
-          correctOptionId: 1,
-          hints: ["Female parent"],
-          explanation: "Nyɛ = Mother in Ga."
-        },
-        {
           id: 302,
           type: "multiple_choice",
           instruction: "Select the correct Ga word.",
           question: "What is 'Father' in Ga?",
           options: [
-            { id: 1, text: "Nyɛ" },
-            { id: 2, text: "Tsɛ" },
-            { id: 3, text: "Bi" },
-            { id: 4, text: "Nyɛmi yoo" }
+            { id: 1, text: "Bi" },
+            { id: 2, text: "Nyɛ" },
+            { id: 3, text: "Nyɛmi yoo" },
+            { id: 4, text: "Tsɛ" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 4,
           hints: ["Male parent"],
           explanation: "Tsɛ = Father in Ga."
-        },
-        {
-          id: 303,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Child' in Ga?",
-          options: [
-            { id: 1, text: "Nyɛ" },
-            { id: 2, text: "Tsɛ" },
-            { id: 3, text: "Bi" },
-            { id: 4, text: "Nyɛmi nuu" }
-          ],
-          correctOptionId: 3,
-          hints: ["Offspring"],
-          explanation: "Bi = Child in Ga."
         },
         {
           id: 304,
@@ -98,14 +68,29 @@ export default {
           instruction: "Select the correct Ga word.",
           question: "What is 'Brother' in Ga?",
           options: [
-            { id: 1, text: "Nyɛ" },
-            { id: 2, text: "Nyɛmi nuu" },
+            { id: 1, text: "Bi" },
+            { id: 2, text: "Nyɛ" },
             { id: 3, text: "Nyɛmi yoo" },
-            { id: 4, text: "Bi" }
+            { id: 4, text: "Nyɛmi nuu" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 4,
           hints: ["Male sibling"],
           explanation: "Nyɛmi nuu = Brother in Ga. 'Nyɛmi' means sibling and 'nuu' means male."
+        },
+        {
+          id: 301,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga word.",
+          question: "What is 'Mother' in Ga?",
+          options: [
+            { id: 1, text: "Bi" },
+            { id: 2, text: "Nyɛ" },
+            { id: 3, text: "Tsɛ" },
+            { id: 4, text: "Nyɛmi nuu" }
+          ],
+          correctOptionId: 2,
+          hints: ["Female parent"],
+          explanation: "Nyɛ = Mother in Ga."
         },
         {
           id: 305,
@@ -113,14 +98,29 @@ export default {
           instruction: "Select the correct Ga word.",
           question: "What is 'Sister' in Ga?",
           options: [
-            { id: 1, text: "Nyɛ" },
-            { id: 2, text: "Nyɛmi nuu" },
-            { id: 3, text: "Nyɛmi yoo" },
-            { id: 4, text: "Bi" }
+            { id: 1, text: "Bi" },
+            { id: 2, text: "Nyɛmi yoo" },
+            { id: 3, text: "Nyɛ" },
+            { id: 4, text: "Nyɛmi nuu" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["Female sibling"],
           explanation: "Nyɛmi yoo = Sister in Ga. 'Nyɛmi' means sibling and 'yoo' means female."
+        },
+        {
+          id: 303,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga word.",
+          question: "What is 'Child' in Ga?",
+          options: [
+            { id: 1, text: "Nyɛmi nuu" },
+            { id: 2, text: "Tsɛ" },
+            { id: 3, text: "Bi" },
+            { id: 4, text: "Nyɛ" }
+          ],
+          correctOptionId: 3,
+          hints: ["Offspring"],
+          explanation: "Bi = Child in Ga."
         }
       ]
     },
@@ -172,34 +172,19 @@ export default {
       ],
       questions: [
         {
-          id: 306,
+          id: 311,
           type: "multiple_choice",
           instruction: "Select the correct Ga word.",
-          question: "What is 'Grandmother' in Ga?",
+          question: "What is 'Wife' in Ga?",
           options: [
-            { id: 1, text: "Naa" },
-            { id: 2, text: "Nii" },
-            { id: 3, text: "Tsɛkwɛ" },
-            { id: 4, text: "Nyɛkwɛ" }
+            { id: 1, text: "Nii" },
+            { id: 2, text: "Wu" },
+            { id: 3, text: "Ŋa" },
+            { id: 4, text: "Naa" }
           ],
-          correctOptionId: 1,
-          hints: ["Mother of your parent", "Female elder"],
-          explanation: "Naa = Grandmother in Ga."
-        },
-        {
-          id: 307,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Grandfather' in Ga?",
-          options: [
-            { id: 1, text: "Naa" },
-            { id: 2, text: "Nii" },
-            { id: 3, text: "Tsɛkwɛ" },
-            { id: 4, text: "Nyɛkwɛ" }
-          ],
-          correctOptionId: 2,
-          hints: ["Father of your parent", "Male elder"],
-          explanation: "Nii = Grandfather in Ga."
+          correctOptionId: 3,
+          hints: ["Female spouse"],
+          explanation: "Ŋa = Wife in Ga."
         },
         {
           id: 308,
@@ -208,11 +193,11 @@ export default {
           question: "What is 'Uncle' in Ga?",
           options: [
             { id: 1, text: "Naa" },
-            { id: 2, text: "Nii" },
-            { id: 3, text: "Tsɛkwɛ" },
-            { id: 4, text: "Nyɛkwɛ" }
+            { id: 2, text: "Tsɛkwɛ" },
+            { id: 3, text: "Nyɛkwɛ" },
+            { id: 4, text: "Nii" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["Male relative", "Parent's brother"],
           explanation: "Tsɛkwɛ = Uncle in Ga."
         },
@@ -222,9 +207,9 @@ export default {
           instruction: "Select the correct Ga word.",
           question: "What is 'Auntie' in Ga?",
           options: [
-            { id: 1, text: "Naa" },
+            { id: 1, text: "Tsɛkwɛ" },
             { id: 2, text: "Nii" },
-            { id: 3, text: "Tsɛkwɛ" },
+            { id: 3, text: "Naa" },
             { id: 4, text: "Nyɛkwɛ" }
           ],
           correctOptionId: 4,
@@ -232,34 +217,49 @@ export default {
           explanation: "Nyɛkwɛ = Auntie in Ga."
         },
         {
+          id: 307,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga word.",
+          question: "What is 'Grandfather' in Ga?",
+          options: [
+            { id: 1, text: "Nyɛkwɛ" },
+            { id: 2, text: "Tsɛkwɛ" },
+            { id: 3, text: "Nii" },
+            { id: 4, text: "Naa" }
+          ],
+          correctOptionId: 3,
+          hints: ["Father of your parent", "Male elder"],
+          explanation: "Nii = Grandfather in Ga."
+        },
+        {
           id: 310,
           type: "multiple_choice",
           instruction: "Select the correct Ga word.",
           question: "What is 'Husband' in Ga?",
           options: [
-            { id: 1, text: "Wu" },
-            { id: 2, text: "Ŋa" },
-            { id: 3, text: "Naa" },
-            { id: 4, text: "Nii" }
+            { id: 1, text: "Naa" },
+            { id: 2, text: "Wu" },
+            { id: 3, text: "Nii" },
+            { id: 4, text: "Ŋa" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 2,
           hints: ["Male spouse"],
           explanation: "Wu = Husband in Ga."
         },
         {
-          id: 311,
+          id: 306,
           type: "multiple_choice",
           instruction: "Select the correct Ga word.",
-          question: "What is 'Wife' in Ga?",
+          question: "What is 'Grandmother' in Ga?",
           options: [
-            { id: 1, text: "Wu" },
-            { id: 2, text: "Ŋa" },
+            { id: 1, text: "Nii" },
+            { id: 2, text: "Tsɛkwɛ" },
             { id: 3, text: "Naa" },
-            { id: 4, text: "Nii" }
+            { id: 4, text: "Nyɛkwɛ" }
           ],
-          correctOptionId: 2,
-          hints: ["Female spouse"],
-          explanation: "Ŋa = Wife in Ga."
+          correctOptionId: 3,
+          hints: ["Mother of your parent", "Female elder"],
+          explanation: "Naa = Grandmother in Ga."
         }
       ]
     },
@@ -299,32 +299,17 @@ export default {
       ],
       questions: [
         {
-          id: 312,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga sentence.",
-          question: "How do you say 'This is my family' in Ga?",
-          options: [
-            { id: 1, text: "Enɛ ji miweku" },
-            { id: 2, text: "Miyɛ bii enyɔ" },
-            { id: 3, text: "Miweku lɛ da" },
-            { id: 4, text: "Nyɛmimɛi enyiɛ oyɔɔ?" }
-          ],
-          correctOptionId: 1,
-          hints: ["Introducing your family"],
-          explanation: "Enɛ ji miweku = This is my family in Ga."
-        },
-        {
           id: 313,
           type: "multiple_choice",
           instruction: "Select the correct Ga sentence.",
           question: "How do you say 'I have two children' in Ga?",
           options: [
             { id: 1, text: "Enɛ ji miweku" },
-            { id: 2, text: "Miyɛ bii enyɔ" },
-            { id: 3, text: "Miweku lɛ da" },
-            { id: 4, text: "Nyɛmimɛi enyiɛ oyɔɔ?" }
+            { id: 2, text: "Miweku lɛ da" },
+            { id: 3, text: "Nyɛmimɛi enyiɛ oyɔɔ?" },
+            { id: 4, text: "Miyɛ bii enyɔ" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 4,
           hints: ["Two = enyɔ", "Children = bii"],
           explanation: "Miyɛ bii enyɔ = I have two children in Ga."
         },
@@ -334,14 +319,29 @@ export default {
           instruction: "Select the correct Ga sentence.",
           question: "How do you say 'My family is big' in Ga?",
           options: [
-            { id: 1, text: "Enɛ ji miweku" },
-            { id: 2, text: "Miyɛ bii enyɔ" },
-            { id: 3, text: "Miweku lɛ da" },
-            { id: 4, text: "Nyɛmimɛi enyiɛ oyɔɔ?" }
+            { id: 1, text: "Nyɛmimɛi enyiɛ oyɔɔ?" },
+            { id: 2, text: "Miweku lɛ da" },
+            { id: 3, text: "Enɛ ji miweku" },
+            { id: 4, text: "Miyɛ bii enyɔ" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["Big = da"],
           explanation: "Miweku lɛ da = My family is big in Ga."
+        },
+        {
+          id: 312,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga sentence.",
+          question: "How do you say 'This is my family' in Ga?",
+          options: [
+            { id: 1, text: "Nyɛmimɛi enyiɛ oyɔɔ?" },
+            { id: 2, text: "Miyɛ bii enyɔ" },
+            { id: 3, text: "Miweku lɛ da" },
+            { id: 4, text: "Enɛ ji miweku" }
+          ],
+          correctOptionId: 4,
+          hints: ["Introducing your family"],
+          explanation: "Enɛ ji miweku = This is my family in Ga."
         },
         {
           id: 315,
@@ -349,9 +349,9 @@ export default {
           instruction: "Select the correct Ga sentence.",
           question: "How do you ask 'How many siblings do you have?' in Ga?",
           options: [
-            { id: 1, text: "Enɛ ji miweku" },
+            { id: 1, text: "Miweku lɛ da" },
             { id: 2, text: "Miyɛ bii enyɔ" },
-            { id: 3, text: "Miweku lɛ da" },
+            { id: 3, text: "Enɛ ji miweku" },
             { id: 4, text: "Nyɛmimɛi enyiɛ oyɔɔ?" }
           ],
           correctOptionId: 4,
@@ -369,34 +369,34 @@ export default {
     description: "Review all the family vocabulary and phrases you've learned",
     questions: [
       {
-        id: 501,
+        id: 510,
         type: "multiple_choice",
-        instruction: "Select the correct Ga word.",
-        question: "What is 'Mother' in Ga?",
+        instruction: "Select the correct Ga sentence.",
+        question: "How do you say 'My family is big' in Ga?",
         options: [
-          { id: 1, text: "Nyɛ" },
-          { id: 2, text: "Tsɛ" },
-          { id: 3, text: "Bi" },
-          { id: 4, text: "Naa" }
-        ],
-        correctOptionId: 1,
-        hints: ["Female parent"],
-        explanation: "Nyɛ = Mother."
-      },
-      {
-        id: 502,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga word.",
-        question: "What is 'Brother' in Ga?",
-        options: [
-          { id: 1, text: "Nyɛmi yoo" },
-          { id: 2, text: "Nyɛmi nuu" },
-          { id: 3, text: "Bi" },
-          { id: 4, text: "Tsɛ" }
+          { id: 1, text: "Enɛ ji miweku" },
+          { id: 2, text: "Miweku lɛ da" },
+          { id: 3, text: "Miyɛ bii enyɔ" },
+          { id: 4, text: "Nyɛmimɛi enyiɛ oyɔɔ?" }
         ],
         correctOptionId: 2,
-        hints: ["Male sibling"],
-        explanation: "Nyɛmi nuu = Brother."
+        hints: ["da = big"],
+        explanation: "Miweku lɛ da = My family is big."
+      },
+      {
+        id: 506,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga word.",
+        question: "What is 'Husband' in Ga?",
+        options: [
+          { id: 1, text: "Nii" },
+          { id: 2, text: "Ŋa" },
+          { id: 3, text: "Wu" },
+          { id: 4, text: "Naa" }
+        ],
+        correctOptionId: 3,
+        hints: ["Male spouse"],
+        explanation: "Wu = Husband."
       },
       {
         id: 503,
@@ -406,8 +406,8 @@ export default {
         options: [
           { id: 1, text: "Naa" },
           { id: 2, text: "Nii" },
-          { id: 3, text: "Tsɛkwɛ" },
-          { id: 4, text: "Nyɛkwɛ" }
+          { id: 3, text: "Nyɛkwɛ" },
+          { id: 4, text: "Tsɛkwɛ" }
         ],
         correctOptionId: 2,
         hints: ["Male elder"],
@@ -420,73 +420,28 @@ export default {
         question: "What is 'Uncle' in Ga?",
         options: [
           { id: 1, text: "Naa" },
-          { id: 2, text: "Nii" },
-          { id: 3, text: "Tsɛkwɛ" },
-          { id: 4, text: "Nyɛkwɛ" }
+          { id: 2, text: "Nyɛkwɛ" },
+          { id: 3, text: "Nii" },
+          { id: 4, text: "Tsɛkwɛ" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 4,
         hints: ["Parent's brother"],
         explanation: "Tsɛkwɛ = Uncle."
       },
       {
-        id: 505,
+        id: 502,
         type: "multiple_choice",
         instruction: "Select the correct Ga word.",
-        question: "What is 'Auntie' in Ga?",
+        question: "What is 'Brother' in Ga?",
         options: [
-          { id: 1, text: "Naa" },
-          { id: 2, text: "Nii" },
-          { id: 3, text: "Tsɛkwɛ" },
-          { id: 4, text: "Nyɛkwɛ" }
+          { id: 1, text: "Tsɛ" },
+          { id: 2, text: "Bi" },
+          { id: 3, text: "Nyɛmi nuu" },
+          { id: 4, text: "Nyɛmi yoo" }
         ],
-        correctOptionId: 4,
-        hints: ["Parent's sister"],
-        explanation: "Nyɛkwɛ = Auntie."
-      },
-      {
-        id: 506,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga word.",
-        question: "What is 'Husband' in Ga?",
-        options: [
-          { id: 1, text: "Wu" },
-          { id: 2, text: "Ŋa" },
-          { id: 3, text: "Naa" },
-          { id: 4, text: "Nii" }
-        ],
-        correctOptionId: 1,
-        hints: ["Male spouse"],
-        explanation: "Wu = Husband."
-      },
-      {
-        id: 507,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga word.",
-        question: "What is 'Wife' in Ga?",
-        options: [
-          { id: 1, text: "Wu" },
-          { id: 2, text: "Ŋa" },
-          { id: 3, text: "Naa" },
-          { id: 4, text: "Nii" }
-        ],
-        correctOptionId: 2,
-        hints: ["Female spouse"],
-        explanation: "Ŋa = Wife."
-      },
-      {
-        id: 508,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga sentence.",
-        question: "How do you say 'This is my family' in Ga?",
-        options: [
-          { id: 1, text: "Enɛ ji miweku" },
-          { id: 2, text: "Miyɛ bii enyɔ" },
-          { id: 3, text: "Miweku lɛ da" },
-          { id: 4, text: "Nyɛmimɛi enyiɛ oyɔɔ?" }
-        ],
-        correctOptionId: 1,
-        hints: ["Introducing your family"],
-        explanation: "Enɛ ji miweku = This is my family."
+        correctOptionId: 3,
+        hints: ["Male sibling"],
+        explanation: "Nyɛmi nuu = Brother."
       },
       {
         id: 509,
@@ -494,29 +449,74 @@ export default {
         instruction: "Select the correct Ga sentence.",
         question: "How do you ask 'How many siblings do you have?' in Ga?",
         options: [
-          { id: 1, text: "Enɛ ji miweku" },
-          { id: 2, text: "Miyɛ bii enyɔ" },
-          { id: 3, text: "Miweku lɛ da" },
-          { id: 4, text: "Nyɛmimɛi enyiɛ oyɔɔ?" }
+          { id: 1, text: "Nyɛmimɛi enyiɛ oyɔɔ?" },
+          { id: 2, text: "Enɛ ji miweku" },
+          { id: 3, text: "Miyɛ bii enyɔ" },
+          { id: 4, text: "Miweku lɛ da" }
         ],
-        correctOptionId: 4,
+        correctOptionId: 1,
         hints: ["About siblings"],
         explanation: "Nyɛmimɛi enyiɛ oyɔɔ? = How many siblings do you have?"
       },
       {
-        id: 510,
+        id: 501,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga word.",
+        question: "What is 'Mother' in Ga?",
+        options: [
+          { id: 1, text: "Tsɛ" },
+          { id: 2, text: "Naa" },
+          { id: 3, text: "Bi" },
+          { id: 4, text: "Nyɛ" }
+        ],
+        correctOptionId: 4,
+        hints: ["Female parent"],
+        explanation: "Nyɛ = Mother."
+      },
+      {
+        id: 505,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga word.",
+        question: "What is 'Auntie' in Ga?",
+        options: [
+          { id: 1, text: "Nyɛkwɛ" },
+          { id: 2, text: "Naa" },
+          { id: 3, text: "Tsɛkwɛ" },
+          { id: 4, text: "Nii" }
+        ],
+        correctOptionId: 1,
+        hints: ["Parent's sister"],
+        explanation: "Nyɛkwɛ = Auntie."
+      },
+      {
+        id: 508,
         type: "multiple_choice",
         instruction: "Select the correct Ga sentence.",
-        question: "How do you say 'My family is big' in Ga?",
+        question: "How do you say 'This is my family' in Ga?",
         options: [
-          { id: 1, text: "Enɛ ji miweku" },
-          { id: 2, text: "Miyɛ bii enyɔ" },
-          { id: 3, text: "Miweku lɛ da" },
+          { id: 1, text: "Miweku lɛ da" },
+          { id: 2, text: "Enɛ ji miweku" },
+          { id: 3, text: "Miyɛ bii enyɔ" },
           { id: 4, text: "Nyɛmimɛi enyiɛ oyɔɔ?" }
         ],
-        correctOptionId: 3,
-        hints: ["da = big"],
-        explanation: "Miweku lɛ da = My family is big."
+        correctOptionId: 2,
+        hints: ["Introducing your family"],
+        explanation: "Enɛ ji miweku = This is my family."
+      },
+      {
+        id: 507,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga word.",
+        question: "What is 'Wife' in Ga?",
+        options: [
+          { id: 1, text: "Naa" },
+          { id: 2, text: "Ŋa" },
+          { id: 3, text: "Nii" },
+          { id: 4, text: "Wu" }
+        ],
+        correctOptionId: 2,
+        hints: ["Female spouse"],
+        explanation: "Ŋa = Wife."
       }
     ]
   }

@@ -1,7 +1,7 @@
 export default {
   id: 9,
   title: "School & Learning",
-  description: "Learn essential school and learning vocabulary in Ewe",
+  description: "Learn essential school and learning vocabulary and phrases in Ewe",
   icon: "school-outline",
   totalXp: 5,
   difficulty: "Beginner",

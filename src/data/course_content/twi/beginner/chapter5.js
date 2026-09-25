@@ -1,7 +1,7 @@
 export default {
   id: 5,
-  title: "Food & Drinks",
-  description: "Learn food and drink vocabulary in Twi",
+  title: "Food & Dining",
+  description: "Learn useful words and phrases related to food and everyday dining situations in Twi",
   icon: "restaurant-outline",
   totalXp: 15,
   difficulty: "Beginner",

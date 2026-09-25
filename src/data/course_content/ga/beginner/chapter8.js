@@ -1,7 +1,7 @@
 export default {
   id: 8,
   title: "Daily Routine",
-  description: "Learn daily routine vocabulary in Ga",
+  description: "Learn how to talk about daily activities in Ga",
   icon: "time-outline",
   totalXp: 15,
   difficulty: "Beginner",
@@ -36,50 +36,34 @@ export default {
       ],
       questions: [
         {
-          id: 801,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I wake up early' in Ga?",
-          options: [
-            { id: 1, text: "Miteɔ shi mra" },
-            { id: 2, text: "Miiya nitsumɔ" },
-            { id: 3, text: "Miiju mihe" },
-            { id: 4, text: "Miihoo nii" }
-          ],
-          correctOptionId: 1,
-          hints: ["Miteɔ = I wake up", "mra = early"],
-          explanation: "Miteɔ shi mra = I wake up early in Ga."
-        },
-        {
-          id: 802,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/miiya_nitsumɔ.m4a"),
-          options: [
-            { id: 1, text: "I wake up early" },
-            { id: 2, text: "I am going to work" },
-            { id: 3, text: "I am bathing" },
-            { id: 4, text: "I am cooking" }
-          ],
-          correctOptionId: 2,
-          hints: ["miiya = I am going", "nitsumɔ = work"],
-          explanation: "You heard 'Miiya nitsumɔ' which means 'I am going to work' in Ga."
-        },
-        {
           id: 803,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I am bathing' in Ga?",
           options: [
-            { id: 1, text: "Miteɔ shi mra" },
+            { id: 1, text: "Miiya nitsumɔ" },
+            { id: 2, text: "Miihoo nii" },
+            { id: 3, text: "Miteɔ shi mra" },
+            { id: 4, text: "Miiju mihe" }
+          ],
+          correctOptionId: 4,
+          hints: ["Miiju = I am bathing", "mihe = myself"],
+          explanation: "Miiju mihe = I am bathing in Ga."
+        },
+        {
+          id: 801,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I wake up early' in Ga?",
+          options: [
+            { id: 1, text: "Miiju mihe" },
             { id: 2, text: "Miiya nitsumɔ" },
-            { id: 3, text: "Miiju mihe" },
+            { id: 3, text: "Miteɔ shi mra" },
             { id: 4, text: "Miihoo nii" }
           ],
           correctOptionId: 3,
-          hints: ["Miiju = I am bathing", "mihe = myself"],
-          explanation: "Miiju mihe = I am bathing in Ga."
+          hints: ["Miteɔ = I wake up", "mra = early"],
+          explanation: "Miteɔ shi mra = I wake up early in Ga."
         },
         {
           id: 804,
@@ -88,14 +72,30 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/miteɔ_shi_mra.m4a"),
           options: [
-            { id: 1, text: "I wake up early" },
-            { id: 2, text: "I am going to work" },
-            { id: 3, text: "I am bathing" },
-            { id: 4, text: "I am resting" }
+            { id: 1, text: "I am bathing" },
+            { id: 2, text: "I am resting" },
+            { id: 3, text: "I wake up early" },
+            { id: 4, text: "I am going to work" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["mra = early"],
           explanation: "You heard 'Miteɔ shi mra' which means 'I wake up early' in Ga."
+        },
+        {
+          id: 802,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/miiya_nitsumɔ.m4a"),
+          options: [
+            { id: 1, text: "I am cooking" },
+            { id: 2, text: "I am going to work" },
+            { id: 3, text: "I am bathing" },
+            { id: 4, text: "I wake up early" }
+          ],
+          correctOptionId: 2,
+          hints: ["miiya = I am going", "nitsumɔ = work"],
+          explanation: "You heard 'Miiya nitsumɔ' which means 'I am going to work' in Ga."
         }
       ]
     },
@@ -129,50 +129,35 @@ export default {
       ],
       questions: [
         {
-          id: 805,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I am cooking' in Ga?",
-          options: [
-            { id: 1, text: "Miihoo nii" },
-            { id: 2, text: "Mifɔɔ atadei lɛ ahe" },
-            { id: 3, text: "Miibɛɛ tsu lɛ mli" },
-            { id: 4, text: "Miiju mihe" }
-          ],
-          correctOptionId: 1,
-          hints: ["Miihoo = I am cooking", "nii = food"],
-          explanation: "Miihoo nii = I am cooking in Ga."
-        },
-        {
           id: 806,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/mifɔɔ_atadei_lɛ_ahe.m4a"),
           options: [
-            { id: 1, text: "I am cooking" },
-            { id: 2, text: "I am washing clothes" },
-            { id: 3, text: "I am sweeping the room" },
-            { id: 4, text: "I am bathing" }
+            { id: 1, text: "I am sweeping the room" },
+            { id: 2, text: "I am bathing" },
+            { id: 3, text: "I am washing clothes" },
+            { id: 4, text: "I am cooking" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["mifɔɔ = I am washing", "atadei = clothes"],
           explanation: "You heard 'Mifɔɔ atadei lɛ ahe' which means 'I am washing clothes' in Ga."
         },
         {
-          id: 807,
+          id: 805,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I am sweeping the room' in Ga?",
+          question: "How do you say 'I am cooking' in Ga?",
           options: [
-            { id: 1, text: "Miihoo nii" },
-            { id: 2, text: "Mifɔɔ atadei lɛ ahe" },
-            { id: 3, text: "Miibɛɛ tsu lɛ mli" },
-            { id: 4, text: "Miiju mihe" }
+            { id: 1, text: "Miibɛɛ tsu lɛ mli" },
+            { id: 2, text: "Miiju mihe" },
+            { id: 3, text: "Miihoo nii" },
+            { id: 4, text: "Mifɔɔ atadei lɛ ahe" }
           ],
           correctOptionId: 3,
-          hints: ["Miibɛɛ = I am sweeping", "tsu lɛ mli = the room"],
-          explanation: "Miibɛɛ tsu lɛ mli = I am sweeping the room in Ga."
+          hints: ["Miihoo = I am cooking", "nii = food"],
+          explanation: "Miihoo nii = I am cooking in Ga."
         },
         {
           id: 808,
@@ -181,14 +166,29 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/miihoo_nii.m4a"),
           options: [
-            { id: 1, text: "I am cooking" },
-            { id: 2, text: "I am washing clothes" },
-            { id: 3, text: "I am sweeping the room" },
-            { id: 4, text: "I am resting" }
+            { id: 1, text: "I am resting" },
+            { id: 2, text: "I am cooking" },
+            { id: 3, text: "I am washing clothes" },
+            { id: 4, text: "I am sweeping the room" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 2,
           hints: ["nii = food"],
           explanation: "You heard 'Miihoo nii' which means 'I am cooking' in Ga."
+        },
+        {
+          id: 807,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I am sweeping the room' in Ga?",
+          options: [
+            { id: 1, text: "Miiju mihe" },
+            { id: 2, text: "Miihoo nii" },
+            { id: 3, text: "Mifɔɔ atadei lɛ ahe" },
+            { id: 4, text: "Miibɛɛ tsu lɛ mli" }
+          ],
+          correctOptionId: 4,
+          hints: ["Miibɛɛ = I am sweeping", "tsu lɛ mli = the room"],
+          explanation: "Miibɛɛ tsu lɛ mli = I am sweeping the room in Ga."
         }
       ]
     },
@@ -228,19 +228,50 @@ export default {
       ],
       questions: [
         {
+          id: 812,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/mikaneɔ_wolo_daa.m4a"),
+          options: [
+            { id: 1, text: "I am sleeping" },
+            { id: 2, text: "I am going home" },
+            { id: 3, text: "I read every day" },
+            { id: 4, text: "I am resting" }
+          ],
+          correctOptionId: 3,
+          hints: ["wolo = book", "daa = every day"],
+          explanation: "You heard 'Mikaneɔ wolo daa' which means 'I read every day' in Ga."
+        },
+        {
           id: 809,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I am going home' in Ga?",
           options: [
-            { id: 1, text: "Miiya shia" },
-            { id: 2, text: "Miiwɔ" },
+            { id: 1, text: "Mikaneɔ wolo daa" },
+            { id: 2, text: "Miiya shia" },
             { id: 3, text: "Mijɔɔ mihe" },
-            { id: 4, text: "Mikaneɔ wolo daa" }
+            { id: 4, text: "Miiwɔ" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 2,
           hints: ["miiya = I am going", "shia = home"],
           explanation: "Miiya shia = I am going home in Ga."
+        },
+        {
+          id: 811,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I am resting' in Ga?",
+          options: [
+            { id: 1, text: "Miiwɔ" },
+            { id: 2, text: "Mikaneɔ wolo daa" },
+            { id: 3, text: "Mijɔɔ mihe" },
+            { id: 4, text: "Miiya shia" }
+          ],
+          correctOptionId: 3,
+          hints: ["mijɔɔ = I am resting", "mihe = myself"],
+          explanation: "Mijɔɔ mihe = I am resting in Ga."
         },
         {
           id: 810,
@@ -249,45 +280,14 @@ export default {
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/miiwɔ.m4a"),
           options: [
-            { id: 1, text: "I am going home" },
+            { id: 1, text: "I am resting" },
             { id: 2, text: "I am sleeping" },
-            { id: 3, text: "I am resting" },
-            { id: 4, text: "I read every day" }
+            { id: 3, text: "I read every day" },
+            { id: 4, text: "I am going home" }
           ],
           correctOptionId: 2,
           hints: ["miiwɔ = I am sleeping"],
           explanation: "You heard 'Miiwɔ' which means 'I am sleeping' in Ga."
-        },
-        {
-          id: 811,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I am resting' in Ga?",
-          options: [
-            { id: 1, text: "Miiya shia" },
-            { id: 2, text: "Miiwɔ" },
-            { id: 3, text: "Mijɔɔ mihe" },
-            { id: 4, text: "Mikaneɔ wolo daa" }
-          ],
-          correctOptionId: 3,
-          hints: ["mijɔɔ = I am resting", "mihe = myself"],
-          explanation: "Mijɔɔ mihe = I am resting in Ga."
-        },
-        {
-          id: 812,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/mikaneɔ_wolo_daa.m4a"),
-          options: [
-            { id: 1, text: "I am going home" },
-            { id: 2, text: "I am sleeping" },
-            { id: 3, text: "I am resting" },
-            { id: 4, text: "I read every day" }
-          ],
-          correctOptionId: 4,
-          hints: ["wolo = book", "daa = every day"],
-          explanation: "You heard 'Mikaneɔ wolo daa' which means 'I read every day' in Ga."
         },
         {
           id: 813,
@@ -295,12 +295,12 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I read every day' in Ga?",
           options: [
-            { id: 1, text: "Mikaneɔ wolo daa" },
-            { id: 2, text: "Miteɔ shi mra" },
-            { id: 3, text: "Miiya nitsumɔ" },
-            { id: 4, text: "Miihoo nii" }
+            { id: 1, text: "Miihoo nii" },
+            { id: 2, text: "Miiya nitsumɔ" },
+            { id: 3, text: "Mikaneɔ wolo daa" },
+            { id: 4, text: "Miteɔ shi mra" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["Mikaneɔ = I read", "wolo = book", "daa = every day"],
           explanation: "Mikaneɔ wolo daa = I read every day in Ga."
         }
@@ -315,19 +315,19 @@ export default {
     description: "Review all the daily routine vocabulary you've learned",
     questions: [
       {
-        id: 814,
+        id: 820,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I wake up early' in Ga?",
+        question: "How do you say 'I am washing clothes' in Ga?",
         options: [
-          { id: 1, text: "Miteɔ shi mra" },
-          { id: 2, text: "Miiya nitsumɔ" },
-          { id: 3, text: "Miiju mihe" },
-          { id: 4, text: "Mifɔɔ atadei lɛ ahe" }
+          { id: 1, text: "Miiju mihe" },
+          { id: 2, text: "Mifɔɔ atadei lɛ ahe" },
+          { id: 3, text: "Miihoo nii" },
+          { id: 4, text: "Miibɛɛ tsu lɛ mli" }
         ],
-        correctOptionId: 1,
-        hints: ["Miteɔ = I wake up", "mra = early"],
-        explanation: "Miteɔ shi mra = I wake up early."
+        correctOptionId: 2,
+        hints: ["atadei = clothes"],
+        explanation: "Mifɔɔ atadei lɛ ahe = I am washing clothes."
       },
       {
         id: 815,
@@ -336,29 +336,29 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/miiju_mihe.m4a"),
         options: [
-          { id: 1, text: "I wake up early" },
-          { id: 2, text: "I am going to work" },
-          { id: 3, text: "I am bathing" },
-          { id: 4, text: "I am cooking" }
+          { id: 1, text: "I am cooking" },
+          { id: 2, text: "I am bathing" },
+          { id: 3, text: "I am going to work" },
+          { id: 4, text: "I wake up early" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["miiju = I am bathing"],
         explanation: "You heard 'Miiju mihe' which means 'I am bathing'."
       },
       {
-        id: 816,
+        id: 822,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I am going to work' in Ga?",
+        question: "How do you say 'I am sleeping' in Ga?",
         options: [
-          { id: 1, text: "Miteɔ shi mra" },
-          { id: 2, text: "Miiya nitsumɔ" },
-          { id: 3, text: "Miiju mihe" },
-          { id: 4, text: "Miiya shia" }
+          { id: 1, text: "Mikaneɔ wolo daa" },
+          { id: 2, text: "Miiya shia" },
+          { id: 3, text: "Miiwɔ" },
+          { id: 4, text: "Mijɔɔ mihe" }
         ],
-        correctOptionId: 2,
-        hints: ["nitsumɔ = work"],
-        explanation: "Miiya nitsumɔ = I am going to work."
+        correctOptionId: 3,
+        hints: ["miiwɔ = I am sleeping"],
+        explanation: "Miiwɔ = I am sleeping."
       },
       {
         id: 817,
@@ -367,29 +367,29 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/miibɛɛ_tsu_lɛ_mli.m4a"),
         options: [
-          { id: 1, text: "I am cooking" },
-          { id: 2, text: "I am washing clothes" },
-          { id: 3, text: "I am sweeping the room" },
-          { id: 4, text: "I am bathing" }
+          { id: 1, text: "I am bathing" },
+          { id: 2, text: "I am sweeping the room" },
+          { id: 3, text: "I am cooking" },
+          { id: 4, text: "I am washing clothes" }
         ],
-        correctOptionId: 3,
+        correctOptionId: 2,
         hints: ["tsu lɛ mli = the room"],
         explanation: "You heard 'Miibɛɛ tsu lɛ mli' which means 'I am sweeping the room'."
       },
       {
-        id: 818,
+        id: 823,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I am cooking' in Ga?",
+        question: "How do you say 'I read every day' in Ga?",
         options: [
-          { id: 1, text: "Miihoo nii" },
-          { id: 2, text: "Mifɔɔ atadei lɛ ahe" },
-          { id: 3, text: "Miibɛɛ tsu lɛ mli" },
-          { id: 4, text: "Miiju mihe" }
+          { id: 1, text: "Miiya nitsumɔ" },
+          { id: 2, text: "Mikaneɔ wolo daa" },
+          { id: 3, text: "Miihoo nii" },
+          { id: 4, text: "Miteɔ shi mra" }
         ],
-        correctOptionId: 1,
-        hints: ["nii = food"],
-        explanation: "Miihoo nii = I am cooking."
+        correctOptionId: 2,
+        hints: ["daa = every day"],
+        explanation: "Mikaneɔ wolo daa = I read every day."
       },
       {
         id: 819,
@@ -398,29 +398,59 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/miiya_shia.m4a"),
         options: [
-          { id: 1, text: "I am going home" },
-          { id: 2, text: "I am sleeping" },
-          { id: 3, text: "I am resting" },
+          { id: 1, text: "I am resting" },
+          { id: 2, text: "I am going home" },
+          { id: 3, text: "I am sleeping" },
           { id: 4, text: "I read every day" }
         ],
-        correctOptionId: 1,
+        correctOptionId: 2,
         hints: ["shia = home"],
         explanation: "You heard 'Miiya shia' which means 'I am going home'."
       },
       {
-        id: 820,
+        id: 816,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I am washing clothes' in Ga?",
+        question: "How do you say 'I am going to work' in Ga?",
         options: [
-          { id: 1, text: "Miihoo nii" },
-          { id: 2, text: "Mifɔɔ atadei lɛ ahe" },
-          { id: 3, text: "Miibɛɛ tsu lɛ mli" },
+          { id: 1, text: "Miiya shia" },
+          { id: 2, text: "Miiju mihe" },
+          { id: 3, text: "Miiya nitsumɔ" },
+          { id: 4, text: "Miteɔ shi mra" }
+        ],
+        correctOptionId: 3,
+        hints: ["nitsumɔ = work"],
+        explanation: "Miiya nitsumɔ = I am going to work."
+      },
+      {
+        id: 824,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I am resting' in Ga?",
+        options: [
+          { id: 1, text: "Mijɔɔ mihe" },
+          { id: 2, text: "Miiwɔ" },
+          { id: 3, text: "Miiya shia" },
+          { id: 4, text: "Mikaneɔ wolo daa" }
+        ],
+        correctOptionId: 1,
+        hints: ["mihe = myself"],
+        explanation: "Mijɔɔ mihe = I am resting."
+      },
+      {
+        id: 814,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I wake up early' in Ga?",
+        options: [
+          { id: 1, text: "Miiya nitsumɔ" },
+          { id: 2, text: "Miihoo nii" },
+          { id: 3, text: "Miteɔ shi mra" },
           { id: 4, text: "Miiju mihe" }
         ],
-        correctOptionId: 2,
-        hints: ["atadei = clothes"],
-        explanation: "Mifɔɔ atadei lɛ ahe = I am washing clothes."
+        correctOptionId: 3,
+        hints: ["Miteɔ = I wake up", "mra = early"],
+        explanation: "Miteɔ shi mra = I wake up early."
       },
       {
         id: 821,
@@ -429,59 +459,29 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/mijɔɔ_mihe.m4a"),
         options: [
-          { id: 1, text: "I am going home" },
-          { id: 2, text: "I am sleeping" },
+          { id: 1, text: "I am sleeping" },
+          { id: 2, text: "I read every day" },
           { id: 3, text: "I am resting" },
-          { id: 4, text: "I read every day" }
+          { id: 4, text: "I am going home" }
         ],
         correctOptionId: 3,
         hints: ["mijɔɔ = I am resting"],
         explanation: "You heard 'Mijɔɔ mihe' which means 'I am resting'."
       },
       {
-        id: 822,
+        id: 818,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I am sleeping' in Ga?",
+        question: "How do you say 'I am cooking' in Ga?",
         options: [
-          { id: 1, text: "Miiya shia" },
-          { id: 2, text: "Miiwɔ" },
-          { id: 3, text: "Mijɔɔ mihe" },
-          { id: 4, text: "Mikaneɔ wolo daa" }
-        ],
-        correctOptionId: 2,
-        hints: ["miiwɔ = I am sleeping"],
-        explanation: "Miiwɔ = I am sleeping."
-      },
-      {
-        id: 823,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I read every day' in Ga?",
-        options: [
-          { id: 1, text: "Mikaneɔ wolo daa" },
-          { id: 2, text: "Miteɔ shi mra" },
-          { id: 3, text: "Miiya nitsumɔ" },
-          { id: 4, text: "Miihoo nii" }
-        ],
-        correctOptionId: 1,
-        hints: ["daa = every day"],
-        explanation: "Mikaneɔ wolo daa = I read every day."
-      },
-      {
-        id: 824,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I am resting' in Ga?",
-        options: [
-          { id: 1, text: "Miiya shia" },
-          { id: 2, text: "Miiwɔ" },
-          { id: 3, text: "Mijɔɔ mihe" },
-          { id: 4, text: "Mikaneɔ wolo daa" }
+          { id: 1, text: "Miibɛɛ tsu lɛ mli" },
+          { id: 2, text: "Mifɔɔ atadei lɛ ahe" },
+          { id: 3, text: "Miihoo nii" },
+          { id: 4, text: "Miiju mihe" }
         ],
         correctOptionId: 3,
-        hints: ["mihe = myself"],
-        explanation: "Mijɔɔ mihe = I am resting."
+        hints: ["nii = food"],
+        explanation: "Miihoo nii = I am cooking."
       },
       {
         id: 825,
@@ -490,12 +490,12 @@ export default {
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/beginner/chapter8/miiya_nitsumɔ.m4a"),
         options: [
-          { id: 1, text: "I wake up early" },
-          { id: 2, text: "I am going to work" },
-          { id: 3, text: "I am bathing" },
-          { id: 4, text: "I am cooking" }
+          { id: 1, text: "I am cooking" },
+          { id: 2, text: "I am bathing" },
+          { id: 3, text: "I wake up early" },
+          { id: 4, text: "I am going to work" }
         ],
-        correctOptionId: 2,
+        correctOptionId: 4,
         hints: ["nitsumɔ = work"],
         explanation: "You heard 'Miiya nitsumɔ' which means 'I am going to work'."
       }

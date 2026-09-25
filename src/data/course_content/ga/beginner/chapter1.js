@@ -39,53 +39,38 @@ export default {
           english: "Welcome",
           native: "Oobakɛ",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter1/oobakɛ.m4a")
-        },
+        }
       ],
       questions: [
-        {
-          id: 101,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga greeting.",
-          question: "What is 'Good morning' in Ga?",
-          options: [
-            { id: 1, text: "Ojekoo" },
-            { id: 2, text: "Minaokoo" },
-            { id: 3, text: "Oshwiee" },
-            { id: 4, text: "Oobakɛ" },
-          ],
-          correctOptionId: 1,
-          hints: ["Used before noon", "Morning greeting"],
-          explanation: "Ojekoo = Good morning in Ga. Response = Ojemra",
-        },
-        {
-          id: 102,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga greeting.",
-          question: "What is 'Good afternoon' in Ga?",
-          options: [
-            { id: 1, text: "Oobakɛ" },
-            { id: 2, text: "Oshwiee" },
-            { id: 3, text: "Minaokoo" },
-            { id: 4, text: "Ojekoo" },
-          ],
-          correctOptionId: 3,
-          hints: ["Used from 12 PM to 4 PM", "Afternoon greeting"],
-          explanation: "Minaokoo = Good afternoon in Ga. Response = Naejɔ",
-        },
         {
           id: 103,
           type: "multiple_choice",
           instruction: "Select the correct Ga greeting.",
           question: "What is 'Good evening' in Ga?",
           options: [
-            { id: 1, text: "Ojekoo" },
-            { id: 2, text: "Minaokoo" },
+            { id: 1, text: "Oobakɛ" },
+            { id: 2, text: "Ojekoo" },
             { id: 3, text: "Oshwiee" },
-            { id: 4, text: "Oobakɛ" },
+            { id: 4, text: "Minaokoo" }
           ],
           correctOptionId: 3,
           hints: ["Used after 6 PM", "Evening greeting"],
-          explanation: "Oshwiee = Good evening in Ga. Response = Oshwiemra",
+          explanation: "Oshwiee = Good evening in Ga. Response = Oshwiemra"
+        },
+        {
+          id: 101,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga greeting.",
+          question: "What is 'Good morning' in Ga?",
+          options: [
+            { id: 1, text: "Oshwiee" },
+            { id: 2, text: "Oobakɛ" },
+            { id: 3, text: "Ojekoo" },
+            { id: 4, text: "Minaokoo" }
+          ],
+          correctOptionId: 3,
+          hints: ["Used before noon", "Morning greeting"],
+          explanation: "Ojekoo = Good morning in Ga. Response = Ojemra"
         },
         {
           id: 104,
@@ -93,16 +78,31 @@ export default {
           instruction: "Select the correct Ga greeting.",
           question: "What is 'Welcome' in Ga?",
           options: [
-            { id: 1, text: "Ojekoo" },
-            { id: 2, text: "Minaokoo" },
+            { id: 1, text: "Minaokoo" },
+            { id: 2, text: "Oobakɛ" },
             { id: 3, text: "Oshwiee" },
-            { id: 4, text: "Oobakɛ" },
+            { id: 4, text: "Ojekoo" }
           ],
-          correctOptionId: 4,
+          correctOptionId: 2,
           hints: ["Used to greet someone arriving", "Hospitality greeting"],
-          explanation: "Oobakɛ = Welcome in Ga.",
+          explanation: "Oobakɛ = Welcome in Ga."
         },
-      ],
+        {
+          id: 102,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga greeting.",
+          question: "What is 'Good afternoon' in Ga?",
+          options: [
+            { id: 1, text: "Ojekoo" },
+            { id: 2, text: "Oshwiee" },
+            { id: 3, text: "Minaokoo" },
+            { id: 4, text: "Oobakɛ" }
+          ],
+          correctOptionId: 3,
+          hints: ["Used from 12 PM to 4 PM", "Afternoon greeting"],
+          explanation: "Minaokoo = Good afternoon in Ga. Response = Naejɔ"
+        }
+      ]
     },
 
     {
@@ -115,7 +115,7 @@ export default {
       words: [
         "Te oyɔɔ tɛŋŋ?",
         "Miyɛ ojogbaŋŋ",
-        "Te oweku lɛ yɔɔ tɛŋŋ?",
+        "Te oweku lɛ yɔɔ tɛŋŋ?"
       ],
       vocabulary: [
         {
@@ -135,57 +135,40 @@ export default {
           english: "How is your family?",
           native: "Te oweku lɛ yɔɔ tɛŋŋ?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter1/te_oweku_lɛ_yɔɔ_tɛŋŋ.m4a")
-        },
+        }
       ],
       questions: [
-        {
-          id: 201,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you ask 'How are you?' in Ga?",
-          options: [
-            { id: 1, text: "Oobakɛ" },
-            { id: 2, text: "Miyɛ ojogbaŋŋ" },
-            { id: 3, text: "Te oyɔɔ tɛŋŋ?" },
-            { id: 4, text: "Te oweku lɛ yɔɔ tɛŋŋ?" },
-          ],
-          correctOptionId: 3,
-          hints: ["Starts with 'Te'", "A question about well-being"],
-          explanation:
-            "'Te oyɔɔ tɛŋŋ?' is the standard way to ask 'How are you?' in Ga.",
-        },
-        {
-          id: 202,
-          type: "multiple_choice",
-          instruction: "Select the correct response.",
-          question:
-            "What is the correct response to 'Te oyɔɔ tɛŋŋ?' (How are you?)",
-          options: [
-            { id: 1, text: "Oobakɛ" },
-            { id: 2, text: "Miyɛ ojogbaŋŋ" },
-            { id: 3, text: "Oyiwaladɔŋŋ" },
-            { id: 4, text: "Ojekoo" },
-          ],
-          correctOptionId: 2,
-          hints: ["Miyɛ = I am"],
-          explanation:
-            "Miyɛ ojogbaŋŋ = I am fine. This is the standard response to 'How are you?'",
-        },
         {
           id: 203,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you ask 'How is your family?' in Ga?",
           options: [
-            { id: 1, text: "Miyɛ ojogbaŋŋ" },
-            { id: 2, text: "Te oyɔɔ tɛŋŋ?" },
-            { id: 3, text: "Te oweku lɛ yɔɔ tɛŋŋ?" },
-            { id: 4, text: "Oobakɛ" },
+            { id: 1, text: "Oobakɛ" },
+            { id: 2, text: "Te oweku lɛ yɔɔ tɛŋŋ?" },
+            { id: 3, text: "Miyɛ ojogbaŋŋ" },
+            { id: 4, text: "Te oyɔɔ tɛŋŋ?" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["About someone's family", "Extended greeting"],
           explanation:
-            "'Te oweku lɛ yɔɔ tɛŋŋ?' means 'How is your family?' in Ga.",
+            "'Te oweku lɛ yɔɔ tɛŋŋ?' means 'How is your family?' in Ga."
+        },
+        {
+          id: 201,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you ask 'How are you?' in Ga?",
+          options: [
+            { id: 1, text: "Te oweku lɛ yɔɔ tɛŋŋ?" },
+            { id: 2, text: "Oobakɛ" },
+            { id: 3, text: "Te oyɔɔ tɛŋŋ?" },
+            { id: 4, text: "Miyɛ ojogbaŋŋ" }
+          ],
+          correctOptionId: 3,
+          hints: ["Starts with 'Te'", "A question about well-being"],
+          explanation:
+            "'Te oyɔɔ tɛŋŋ?' is the standard way to ask 'How are you?' in Ga."
         },
         {
           id: 204,
@@ -194,22 +177,39 @@ export default {
           question:
             "How would you respond to 'Te oweku lɛ yɔɔ tɛŋŋ?' (How is your family?)",
           options: [
-            { id: 1, text: "Miyɛ ojogbaŋŋ" },
-            { id: 2, text: "Ojekoo" },
-            { id: 3, text: "Amɛ yɛ ojogbaŋŋ" },
-            { id: 4, text: "Te oyɔɔ tɛŋŋ?" },
+            { id: 1, text: "Te oyɔɔ tɛŋŋ?" },
+            { id: 2, text: "Amɛ yɛ ojogbaŋŋ" },
+            { id: 3, text: "Ojekoo" },
+            { id: 4, text: "Miyɛ ojogbaŋŋ" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["'Amɛ yɛ ojogbaŋŋ' means 'They are fine'"],
           explanation:
-            "Amɛ yɛ ojogbaŋŋ = They are fine. This is a common response to asking about someone's family.",
+            "Amɛ yɛ ojogbaŋŋ = They are fine. This is a common response to asking about someone's family."
         },
-      ],
+        {
+          id: 202,
+          type: "multiple_choice",
+          instruction: "Select the correct response.",
+          question:
+            "What is the correct response to 'Te oyɔɔ tɛŋŋ?' (How are you?)",
+          options: [
+            { id: 1, text: "Ojekoo" },
+            { id: 2, text: "Miyɛ ojogbaŋŋ" },
+            { id: 3, text: "Oyiwaladɔŋŋ" },
+            { id: 4, text: "Oobakɛ" }
+          ],
+          correctOptionId: 2,
+          hints: ["Miyɛ = I am"],
+          explanation:
+            "Miyɛ ojogbaŋŋ = I am fine. This is the standard response to 'How are you?'"
+        }
+      ]
     },
 
     {
       id: "1-3",
-      type: "simple_sentences",
+      type: "phrases",
       title: "Polite Expressions",
       icon: "heart-outline",
       description:
@@ -227,40 +227,40 @@ export default {
           english: "Please",
           native: "Ofainɛ",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter1/ofainɛ.m4a")
-        },
+        }
       ],
       questions: [
-        {
-          id: 301,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Thank you' in Ga?",
-          options: [
-            { id: 1, text: "Miyɛ ojogbaŋŋ" },
-            { id: 2, text: "Oyiwaladɔŋŋ" },
-            { id: 3, text: "Ofainɛ" },
-            { id: 4, text: "Te oyɔɔ tɛŋŋ?" },
-          ],
-          correctOptionId: 2,
-          hints: ["Shows gratitude"],
-          explanation: "'Oyiwaladɔŋŋ' means 'Thank you' in Ga.",
-        },
         {
           id: 302,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Please' in Ga?",
           options: [
-            { id: 1, text: "Ofainɛ" },
-            { id: 2, text: "Oobakɛ" },
-            { id: 3, text: "Oyiwaladɔŋŋ" },
-            { id: 4, text: "Miyɛ ojogbaŋŋ" },
+            { id: 1, text: "Oyiwaladɔŋŋ" },
+            { id: 2, text: "Miyɛ ojogbaŋŋ" },
+            { id: 3, text: "Ofainɛ" },
+            { id: 4, text: "Oobakɛ" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["Polite request"],
-          explanation: "'Ofainɛ' means 'Please' in Ga.",
+          explanation: "'Ofainɛ' means 'Please' in Ga."
         },
-      ],
+        {
+          id: 301,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Thank you' in Ga?",
+          options: [
+            { id: 1, text: "Te oyɔɔ tɛŋŋ?" },
+            { id: 2, text: "Oyiwaladɔŋŋ" },
+            { id: 3, text: "Miyɛ ojogbaŋŋ" },
+            { id: 4, text: "Ofainɛ" }
+          ],
+          correctOptionId: 2,
+          hints: ["Shows gratitude"],
+          explanation: "'Oyiwaladɔŋŋ' means 'Thank you' in Ga."
+        }
+      ]
     },
 
     {
@@ -289,23 +289,38 @@ export default {
           english: "Safe journey",
           native: "Gbɛfaa kpakpa",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter1/gbɛfaa_kpakpa.m4a")
-        },
+        }
       ],
       questions: [
+        {
+          id: 404,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Safe journey' in Ga?",
+          options: [
+            { id: 1, text: "Mana bo wɔ" },
+            { id: 2, text: "Gbɛfaa kpakpa" },
+            { id: 3, text: "Mɛ fioo" },
+            { id: 4, text: "Nyɔɔŋ kpakpa" }
+          ],
+          correctOptionId: 2,
+          hints: ["Used when someone is traveling"],
+          explanation: "'Gbɛfaa kpakpa' means 'Safe journey' in Ga."
+        },
         {
           id: 401,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Good night' in Ga?",
           options: [
-            { id: 1, text: "Gbɛfaa kpakpa" },
-            { id: 2, text: "Mana bo wɔ" },
-            { id: 3, text: "Nyɔɔŋ kpakpa" },
-            { id: 4, text: "Mɛ fioo" },
+            { id: 1, text: "Nyɔɔŋ kpakpa" },
+            { id: 2, text: "Gbɛfaa kpakpa" },
+            { id: 3, text: "Mana bo wɔ" },
+            { id: 4, text: "Mɛ fioo" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 1,
           hints: ["Used at night", "Before sleeping"],
-          explanation: "'Nyɔɔŋ kpakpa' means 'Good night' in Ga.",
+          explanation: "'Nyɔɔŋ kpakpa' means 'Good night' in Ga."
         },
         {
           id: 403,
@@ -313,31 +328,16 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'See you tomorrow' in Ga?",
           options: [
-            { id: 1, text: "Gbɛfaa kpakpa" },
-            { id: 2, text: "Nyɔɔŋ kpakpa" },
-            { id: 3, text: "Mɛ fioo" },
-            { id: 4, text: "Mana bo wɔ" },
-          ],
-          correctOptionId: 4,
-          hints: ["Tomorrow = wɔ"],
-          explanation: "'Mana bo wɔ' means 'See you tomorrow' in Ga.",
-        },
-        {
-          id: 404,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Safe journey' in Ga?",
-          options: [
-            { id: 1, text: "Nyɔɔŋ kpakpa" },
-            { id: 2, text: "Gbɛfaa kpakpa" },
-            { id: 3, text: "Mana bo wɔ" },
-            { id: 4, text: "Mɛ fioo" },
+            { id: 1, text: "Mɛ fioo" },
+            { id: 2, text: "Mana bo wɔ" },
+            { id: 3, text: "Nyɔɔŋ kpakpa" },
+            { id: 4, text: "Gbɛfaa kpakpa" }
           ],
           correctOptionId: 2,
-          hints: ["Used when someone is traveling"],
-          explanation: "'Gbɛfaa kpakpa' means 'Safe journey' in Ga.",
-        },
-      ],
+          hints: ["Tomorrow = wɔ"],
+          explanation: "'Mana bo wɔ' means 'See you tomorrow' in Ga."
+        }
+      ]
     },
 
     {
@@ -347,7 +347,7 @@ export default {
       icon: "chatbubbles-outline",
       description:
         "Learn common questions and everyday responses in Ga",
-      words: [ "Hɛɛ", "Daabi", "Misumɔɔ enɛ", "Meni nɛ?","Meni ofeɔ?", ],
+      words: ["Hɛɛ", "Daabi", "Misumɔɔ enɛ", "Meni nɛ?", "Mɛni ofeɔ?"],
       vocabulary: [
         {
           id: 17,
@@ -376,55 +376,40 @@ export default {
         {
           id: 22,
           english: "What are you doing?",
-          native: "Meni ofeɔ?",
+          native: "Mɛni ofeɔ?",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter1/meni_ofeɔ.m4a")
-        },
+        }
       ],
       questions: [
-        {
-          id: 501,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Yes' in Ga?",
-          options: [
-            { id: 1, text: "Hɛɛ" },
-            { id: 2, text: "Daabi" },
-            { id: 3, text: "Misumɔɔ enɛ" },
-            { id: 4, text: "Mɛ fioo" },
-          ],
-          correctOptionId: 1,
-          hints: ["Affirmative response"],
-          explanation: "'Hɛɛ' means 'Yes' in Ga.",
-        },
-        {
-          id: 502,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'No' in Ga?",
-          options: [
-            { id: 1, text: "Hɛɛ" },
-            { id: 2, text: "Daabi" },
-            { id: 3, text: "Misumɔɔ enɛ" },
-            { id: 4, text: "Mɛ fioo" },
-          ],
-          correctOptionId: 2,
-          hints: ["Negative response"],
-          explanation: "'Daabi' means 'No' in Ga.",
-        },
         {
           id: 504,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you ask 'What is this?' in Ga?",
           options: [
-            { id: 1, text: "Meni nɛ?" },
-            { id: 2, text: "Meni ofeɔ?" },
-            { id: 3, text: "Obaanyɛ ni owa mi?" },
-            { id: 4, text: "Ofainɛ ti mli ekoŋŋ" },
+            { id: 1, text: "Mɛni ofeɔ?" },
+            { id: 2, text: "Meni nɛ?" },
+            { id: 3, text: "Ofainɛ ti mli ekoŋŋ" },
+            { id: 4, text: "Obaanyɛ ni owa mi?" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 2,
           hints: ["Pointing to something", "Question about an object"],
-          explanation: "'Meni nɛ?' means 'What is this?' in Ga.",
+          explanation: "'Meni nɛ?' means 'What is this?' in Ga."
+        },
+        {
+          id: 501,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga word.",
+          question: "What is 'Yes' in Ga?",
+          options: [
+            { id: 1, text: "Misumɔɔ enɛ" },
+            { id: 2, text: "Hɛɛ" },
+            { id: 3, text: "Daabi" },
+            { id: 4, text: "Mɛ fioo" }
+          ],
+          correctOptionId: 2,
+          hints: ["Affirmative response"],
+          explanation: "'Hɛɛ' means 'Yes' in Ga."
         },
         {
           id: 505,
@@ -432,14 +417,29 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you ask 'What are you doing?' in Ga?",
           options: [
-            { id: 1, text: "Meni nɛ?" },
-            { id: 2, text: "Meni ofeɔ?" },
-            { id: 3, text: "Obaanyɛ ni owa mi?" },
-            { id: 4, text: "Ofainɛ wiemɔ blɛoo" },
+            { id: 1, text: "Ofainɛ wiemɔ blɛoo" },
+            { id: 2, text: "Mɛni ofeɔ?" },
+            { id: 3, text: "Meni nɛ?" },
+            { id: 4, text: "Obaanyɛ ni owa mi?" }
           ],
           correctOptionId: 2,
           hints: ["Question about an action"],
-          explanation: "'Meni ofeɔ?' means 'What are you doing?' in Ga.",
+          explanation: "'Mɛni ofeɔ?' means 'What are you doing?' in Ga."
+        },
+        {
+          id: 502,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga word.",
+          question: "What is 'No' in Ga?",
+          options: [
+            { id: 1, text: "Mɛ fioo" },
+            { id: 2, text: "Daabi" },
+            { id: 3, text: "Hɛɛ" },
+            { id: 4, text: "Misumɔɔ enɛ" }
+          ],
+          correctOptionId: 2,
+          hints: ["Negative response"],
+          explanation: "'Daabi' means 'No' in Ga."
         },
         {
           id: 509,
@@ -447,32 +447,32 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I like this' in Ga?",
           options: [
-            { id: 1, text: "Misumɔɔ enɛ" },
-            { id: 2, text: "Minuuu shishi" },
-            { id: 3, text: "Meni nɛ?" },
-            { id: 4, text: "Daabi" },
+            { id: 1, text: "Meni nɛ?" },
+            { id: 2, text: "Misumɔɔ enɛ" },
+            { id: 3, text: "Daabi" },
+            { id: 4, text: "Minuuu shishi" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 2,
           hints: ["Expressing liking"],
-          explanation: "'Misumɔɔ enɛ' means 'I like this' in Ga.",
-        },
-      ],
+          explanation: "'Misumɔɔ enɛ' means 'I like this' in Ga."
+        }
+      ]
     },
 
     {
       id: "1-6",
       type: "basic_conversations",
-      title: "Everyday Conversation",
+      title: "Everyday Conversation & Help",
       icon: "chatbubble-ellipses-outline",
       description:
-        "Learn useful expressions for keeping a conversation going in Ga",
+        "Learn useful expressions for keeping a conversation going and asking for help in Ga",
       words: [
         "Mina bo etsɛ",
         "Mɛ fioo",
         "Minuuu shishi",
         "Obaanyɛ ni owa mi?",
         "Ofainɛ wiemɔ blɛoo",
-        "Ofainɛ ti mli ekoŋŋ",
+        "Ofainɛ ti mli ekoŋŋ"
       ],
       vocabulary: [
         {
@@ -510,85 +510,39 @@ export default {
           english: "Say it again please",
           native: "Ofainɛ ti mli ekoŋŋ",
           audioUrl: require("../../../../assets/audio/ga/beginner/chapter1/ofainɛ_ti_mli_ekoŋŋ.m4a")
-        },
+        }
       ],
       questions: [
-        {
-          id: 402,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Long time no see' in Ga?",
-          options: [
-            { id: 1, text: "Mina bo etsɛ" },
-            { id: 2, text: "Nyɔɔŋ kpakpa" },
-            { id: 3, text: "Gbɛfaa kpakpa" },
-            { id: 4, text: "Mana bo wɔ" },
-          ],
-          correctOptionId: 1,
-          hints: ["Used when you haven't seen someone in a while"],
-          explanation: "'Mina bo etsɛ' means 'Long time no see' in Ga.",
-        },
-        {
-          id: 405,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Wait a moment' in Ga?",
-          options: [
-            { id: 1, text: "Mɛ fioo" },
-            { id: 2, text: "Mana bo wɔ" },
-            { id: 3, text: "Nyɔɔŋ kpakpa" },
-            { id: 4, text: "Gbɛfaa kpakpa" },
-          ],
-          correctOptionId: 1,
-          hints: ["Used to ask someone to wait briefly"],
-          explanation: "'Mɛ fioo' means 'Wait a moment' in Ga.",
-        },
-        {
-          id: 503,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I don't understand' in Ga?",
-          options: [
-            { id: 1, text: "Minuuu shishi" },
-            { id: 2, text: "Meni nɛ?" },
-            { id: 3, text: "Meni ofeɔ?" },
-            { id: 4, text: "Ofainɛ wiemɔ blɛoo" },
-          ],
-          correctOptionId: 1,
-          hints: ["Used when you don't understand"],
-          explanation: "'Minuuu shishi' means 'I don't understand' in Ga.",
-        },
-        {
-          id: 506,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Can you help me?' in Ga?",
-          options: [
-            { id: 1, text: "Obaanyɛ ni owa mi?" },
-            { id: 2, text: "Ofainɛ wiemɔ blɛoo" },
-            { id: 3, text: "Ofainɛ ti mli ekoŋŋ" },
-            { id: 4, text: "Minuuu shishi" },
-          ],
-          correctOptionId: 1,
-          hints: ["Asking for assistance"],
-          explanation:
-            "'Obaanyɛ ni owa mi?' means 'Can you help me?' in Ga.",
-        },
         {
           id: 507,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Speak slowly please' in Ga?",
           options: [
-            { id: 1, text: "Ofainɛ wiemɔ blɛoo" },
+            { id: 1, text: "Minuuu shishi" },
             { id: 2, text: "Ofainɛ ti mli ekoŋŋ" },
-            { id: 3, text: "Obaanyɛ ni owa mi?" },
-            { id: 4, text: "Minuuu shishi" },
+            { id: 3, text: "Ofainɛ wiemɔ blɛoo" },
+            { id: 4, text: "Obaanyɛ ni owa mi?" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["Asking someone to slow down while speaking"],
           explanation:
-            "'Ofainɛ wiemɔ blɛoo' means 'Speak slowly please' in Ga.",
+            "'Ofainɛ wiemɔ blɛoo' means 'Speak slowly please' in Ga."
+        },
+        {
+          id: 402,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Long time no see' in Ga?",
+          options: [
+            { id: 1, text: "Gbɛfaa kpakpa" },
+            { id: 2, text: "Mina bo etsɛ" },
+            { id: 3, text: "Mana bo wɔ" },
+            { id: 4, text: "Nyɔɔŋ kpakpa" }
+          ],
+          correctOptionId: 2,
+          hints: ["Used when you haven't seen someone in a while"],
+          explanation: "'Mina bo etsɛ' means 'Long time no see' in Ga."
         },
         {
           id: 508,
@@ -596,18 +550,64 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Say it again please' in Ga?",
           options: [
-            { id: 1, text: "Ofainɛ wiemɔ blɛoo" },
-            { id: 2, text: "Ofainɛ ti mli ekoŋŋ" },
-            { id: 3, text: "Obaanyɛ ni owa mi?" },
-            { id: 4, text: "Minuuu shishi" },
+            { id: 1, text: "Minuuu shishi" },
+            { id: 2, text: "Obaanyɛ ni owa mi?" },
+            { id: 3, text: "Ofainɛ ti mli ekoŋŋ" },
+            { id: 4, text: "Ofainɛ wiemɔ blɛoo" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["Asking someone to repeat"],
           explanation:
-            "'Ofainɛ ti mli ekoŋŋ' means 'Say it again please' in Ga.",
+            "'Ofainɛ ti mli ekoŋŋ' means 'Say it again please' in Ga."
         },
-      ],
-    },
+        {
+          id: 506,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Can you help me?' in Ga?",
+          options: [
+            { id: 1, text: "Ofainɛ ti mli ekoŋŋ" },
+            { id: 2, text: "Obaanyɛ ni owa mi?" },
+            { id: 3, text: "Minuuu shishi" },
+            { id: 4, text: "Ofainɛ wiemɔ blɛoo" }
+          ],
+          correctOptionId: 2,
+          hints: ["Asking for assistance"],
+          explanation:
+            "'Obaanyɛ ni owa mi?' means 'Can you help me?' in Ga."
+        },
+        {
+          id: 503,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I don't understand' in Ga?",
+          options: [
+            { id: 1, text: "Ofainɛ wiemɔ blɛoo" },
+            { id: 2, text: "Meni nɛ?" },
+            { id: 3, text: "Minuuu shishi" },
+            { id: 4, text: "Mɛni ofeɔ?" }
+          ],
+          correctOptionId: 3,
+          hints: ["Used when you don't understand"],
+          explanation: "'Minuuu shishi' means 'I don't understand' in Ga."
+        },
+        {
+          id: 405,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Wait a moment' in Ga?",
+          options: [
+            { id: 1, text: "Gbɛfaa kpakpa" },
+            { id: 2, text: "Mɛ fioo" },
+            { id: 3, text: "Nyɔɔŋ kpakpa" },
+            { id: 4, text: "Mana bo wɔ" }
+          ],
+          correctOptionId: 2,
+          hints: ["Used to ask someone to wait briefly"],
+          explanation: "'Mɛ fioo' means 'Wait a moment' in Ga."
+        }
+      ]
+    }
   ],
 
   review: {
@@ -618,49 +618,49 @@ export default {
       "Review all the greetings, phrases, and expressions you've learned",
     questions: [
       {
+        id: 606,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "What is 'Please' in Ga?",
+        options: [
+          { id: 1, text: "Miyɛ ojogbaŋŋ" },
+          { id: 2, text: "Ofainɛ" },
+          { id: 3, text: "Oobakɛ" },
+          { id: 4, text: "Oyiwaladɔŋŋ" }
+        ],
+        correctOptionId: 2,
+        hints: ["Used for polite requests"],
+        explanation: "Ofainɛ = Please."
+      },
+      {
         id: 601,
         type: "multiple_choice",
         instruction: "Select the correct Ga greeting.",
         question: "What is 'Good morning' in Ga?",
         options: [
-          { id: 1, text: "Oobakɛ" },
+          { id: 1, text: "Oshwiee" },
           { id: 2, text: "Minaokoo" },
           { id: 3, text: "Ojekoo" },
-          { id: 4, text: "Oshwiee" },
+          { id: 4, text: "Oobakɛ" }
         ],
         correctOptionId: 3,
         hints: ["Used before noon"],
-        explanation: "Ojekoo = Good morning.",
+        explanation: "Ojekoo = Good morning."
       },
       {
-        id: 602,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga greeting.",
-        question: "What is 'Welcome' in Ga?",
-        options: [
-          { id: 1, text: "Oshwiee" },
-          { id: 2, text: "Ojekoo" },
-          { id: 3, text: "Oobakɛ" },
-          { id: 4, text: "Minaokoo" },
-        ],
-        correctOptionId: 3,
-        hints: ["Used to greet someone arriving"],
-        explanation: "Oobakɛ = Welcome.",
-      },
-      {
-        id: 603,
+        id: 610,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'How are you?' in Ga?",
+        question: "How do you say 'See you tomorrow' in Ga?",
         options: [
-          { id: 1, text: "Miyɛ ojogbaŋŋ" },
-          { id: 2, text: "Ojekoo" },
-          { id: 3, text: "Te oyɔɔ tɛŋŋ?" },
-          { id: 4, text: "Te oweku lɛ yɔɔ tɛŋŋ?" },
+          { id: 1, text: "Gbɛfaa kpakpa" },
+          { id: 2, text: "Nyɔɔŋ kpakpa" },
+          { id: 3, text: "Mina bo etsɛ" },
+          { id: 4, text: "Mana bo wɔ" }
         ],
-        correctOptionId: 3,
-        hints: ["Question about well-being"],
-        explanation: "'Te oyɔɔ tɛŋŋ?' means 'How are you?' in Ga.",
+        correctOptionId: 4,
+        hints: ["Tomorrow = wɔ"],
+        explanation: "Mana bo wɔ = See you tomorrow."
       },
       {
         id: 604,
@@ -669,74 +669,14 @@ export default {
         question:
           "What is the correct response to 'Te oyɔɔ tɛŋŋ?' (How are you?)",
         options: [
-          { id: 1, text: "Ojekoo" },
-          { id: 2, text: "Oyiwaladɔŋŋ" },
-          { id: 3, text: "Miyɛ ojogbaŋŋ" },
-          { id: 4, text: "Nyɔɔŋ kpakpa" },
-        ],
-        correctOptionId: 3,
-        hints: ["Means 'I am fine'"],
-        explanation: "Miyɛ ojogbaŋŋ = I am fine.",
-      },
-      {
-        id: 605,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "What is 'Thank you' in Ga?",
-        options: [
-          { id: 1, text: "Miyɛ ojogbaŋŋ" },
-          { id: 2, text: "Oyiwaladɔŋŋ" },
-          { id: 3, text: "Ofainɛ" },
-          { id: 4, text: "Te oyɔɔ tɛŋŋ?" },
-        ],
-        correctOptionId: 2,
-        hints: ["Shows gratitude"],
-        explanation: "Oyiwaladɔŋŋ = Thank you.",
-      },
-      {
-        id: 606,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "What is 'Please' in Ga?",
-        options: [
-          { id: 1, text: "Oobakɛ" },
-          { id: 2, text: "Oyiwaladɔŋŋ" },
-          { id: 3, text: "Ofainɛ" },
-          { id: 4, text: "Miyɛ ojogbaŋŋ" },
-        ],
-        correctOptionId: 3,
-        hints: ["Used for polite requests"],
-        explanation: "Ofainɛ = Please.",
-      },
-      {
-        id: 607,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Good night' in Ga?",
-        options: [
           { id: 1, text: "Nyɔɔŋ kpakpa" },
-          { id: 2, text: "Gbɛfaa kpakpa" },
-          { id: 3, text: "Mana bo wɔ" },
-          { id: 4, text: "Mɛ fioo" },
-        ],
-        correctOptionId: 1,
-        hints: ["Used at night"],
-        explanation: "Nyɔɔŋ kpakpa = Good night.",
-      },
-      {
-        id: 608,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Yes' in Ga?",
-        options: [
-          { id: 1, text: "Daabi" },
-          { id: 2, text: "Hɛɛ" },
-          { id: 3, text: "Misumɔɔ enɛ" },
-          { id: 4, text: "Mɛ fioo" },
+          { id: 2, text: "Miyɛ ojogbaŋŋ" },
+          { id: 3, text: "Ojekoo" },
+          { id: 4, text: "Oyiwaladɔŋŋ" }
         ],
         correctOptionId: 2,
-        hints: ["Affirmative response"],
-        explanation: "Hɛɛ = Yes.",
+        hints: ["Means 'I am fine'"],
+        explanation: "Miyɛ ojogbaŋŋ = I am fine."
       },
       {
         id: 609,
@@ -744,30 +684,90 @@ export default {
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'I don't understand' in Ga?",
         options: [
-          { id: 1, text: "Minuuu shishi" },
-          { id: 2, text: "Meni nɛ?" },
-          { id: 3, text: "Meni ofeɔ?" },
-          { id: 4, text: "Ofainɛ wiemɔ blɛoo" },
+          { id: 1, text: "Ofainɛ wiemɔ blɛoo" },
+          { id: 2, text: "Mɛni ofeɔ?" },
+          { id: 3, text: "Minuuu shishi" },
+          { id: 4, text: "Meni nɛ?" }
         ],
-        correctOptionId: 1,
+        correctOptionId: 3,
         hints: ["Used when you don't understand"],
-        explanation: "Minuuu shishi = I don't understand.",
+        explanation: "Minuuu shishi = I don't understand."
       },
       {
-        id: 610,
+        id: 603,
         type: "multiple_choice",
         instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'See you tomorrow' in Ga?",
+        question: "How do you say 'How are you?' in Ga?",
         options: [
-          { id: 1, text: "Mana bo wɔ" },
-          { id: 2, text: "Mina bo etsɛ" },
-          { id: 3, text: "Gbɛfaa kpakpa" },
-          { id: 4, text: "Nyɔɔŋ kpakpa" },
+          { id: 1, text: "Ojekoo" },
+          { id: 2, text: "Te oweku lɛ yɔɔ tɛŋŋ?" },
+          { id: 3, text: "Te oyɔɔ tɛŋŋ?" },
+          { id: 4, text: "Miyɛ ojogbaŋŋ" }
         ],
-        correctOptionId: 1,
-        hints: ["Tomorrow = wɔ"],
-        explanation: "Mana bo wɔ = See you tomorrow.",
+        correctOptionId: 3,
+        hints: ["Question about well-being"],
+        explanation: "'Te oyɔɔ tɛŋŋ?' means 'How are you?' in Ga."
       },
-    ],
-  },
+      {
+        id: 607,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Good night' in Ga?",
+        options: [
+          { id: 1, text: "Mɛ fioo" },
+          { id: 2, text: "Mana bo wɔ" },
+          { id: 3, text: "Nyɔɔŋ kpakpa" },
+          { id: 4, text: "Gbɛfaa kpakpa" }
+        ],
+        correctOptionId: 3,
+        hints: ["Used at night"],
+        explanation: "Nyɔɔŋ kpakpa = Good night."
+      },
+      {
+        id: 602,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga greeting.",
+        question: "What is 'Welcome' in Ga?",
+        options: [
+          { id: 1, text: "Minaokoo" },
+          { id: 2, text: "Ojekoo" },
+          { id: 3, text: "Oshwiee" },
+          { id: 4, text: "Oobakɛ" }
+        ],
+        correctOptionId: 4,
+        hints: ["Used to greet someone arriving"],
+        explanation: "Oobakɛ = Welcome."
+      },
+      {
+        id: 605,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "What is 'Thank you' in Ga?",
+        options: [
+          { id: 1, text: "Ofainɛ" },
+          { id: 2, text: "Oyiwaladɔŋŋ" },
+          { id: 3, text: "Te oyɔɔ tɛŋŋ?" },
+          { id: 4, text: "Miyɛ ojogbaŋŋ" }
+        ],
+        correctOptionId: 2,
+        hints: ["Shows gratitude"],
+        explanation: "Oyiwaladɔŋŋ = Thank you."
+      },
+      {
+        id: 608,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Yes' in Ga?",
+        options: [
+          { id: 1, text: "Mɛ fioo" },
+          { id: 2, text: "Daabi" },
+          { id: 3, text: "Hɛɛ" },
+          { id: 4, text: "Misumɔɔ enɛ" }
+        ],
+        correctOptionId: 3,
+        hints: ["Affirmative response"],
+        explanation: "Hɛɛ = Yes."
+      }
+    ]
+  }
 };

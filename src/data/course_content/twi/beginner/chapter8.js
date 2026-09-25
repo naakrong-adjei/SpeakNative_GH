@@ -1,7 +1,7 @@
 export default {
   id: 8,
   title: "Daily Activities",
-  description: "Learn daily activity vocabulary in Twi",
+  description: "Learn how to talk about daily activities in Twi",
   icon: "time-outline",
   totalXp: 15,
   difficulty: "Beginner",

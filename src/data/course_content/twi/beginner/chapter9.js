@@ -1,7 +1,7 @@
 export default {
   id: 9,
   title: "School & Work",
-  description: "Learn school and work vocabulary in Twi",
+  description: "Learn school and work vocabulary and phrases in Twi",
   icon: "school-outline",
   totalXp: 15,
   difficulty: "Beginner",
@@ -229,7 +229,7 @@ export default {
     {
       id: "9-3",
       type: "phrases",
-      title: "School & Work Activities",
+      title: "School in Action",
       icon: "briefcase-outline",
       description: "Learn phrases about school and work activities in Twi",
       words: ["Ɔkyerɛkyerɛni no reba", "Mawie m'adwuma"],

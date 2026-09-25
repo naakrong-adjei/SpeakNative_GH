@@ -1,7 +1,7 @@
 export default {
   id: 9,
   title: "School & Learning",
-  description: "Learn essential school and learning vocabulary in Ga",
+  description: "Learn essential school and learning vocabulary and phrases in Ga",
   icon: "school-outline",
   totalXp: 15,
   difficulty: "Beginner",
@@ -36,17 +36,32 @@ export default {
       ],
       questions: [
         {
+          id: 903,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga word.",
+          question: "What is 'Book' in Ga?",
+          options: [
+            { id: 1, text: "Shia nitsumɔ" },
+            { id: 2, text: "Wolo" },
+            { id: 3, text: "Sukuu" },
+            { id: 4, text: "Tsɔɔlɔ" }
+          ],
+          correctOptionId: 2,
+          hints: ["What you read"],
+          explanation: "Wolo = Book in Ga."
+        },
+        {
           id: 901,
           type: "multiple_choice",
           instruction: "Select the correct Ga word.",
           question: "What is 'School' in Ga?",
           options: [
-            { id: 1, text: "Sukuu" },
-            { id: 2, text: "Tsɔɔlɔ" },
-            { id: 3, text: "Wolo" },
-            { id: 4, text: "Shia nitsumɔ" }
+            { id: 1, text: "Tsɔɔlɔ" },
+            { id: 2, text: "Shia nitsumɔ" },
+            { id: 3, text: "Sukuu" },
+            { id: 4, text: "Wolo" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 3,
           hints: ["Place of learning"],
           explanation: "Sukuu = School in Ga."
         },
@@ -56,29 +71,14 @@ export default {
           instruction: "Select the correct Ga word.",
           question: "What is 'Teacher' in Ga?",
           options: [
-            { id: 1, text: "Sukuu" },
-            { id: 2, text: "Tsɔɔlɔ" },
-            { id: 3, text: "Wolo" },
-            { id: 4, text: "Shia nitsumɔ" }
-          ],
-          correctOptionId: 2,
-          hints: ["Person who teaches"],
-          explanation: "Tsɔɔlɔ = Teacher in Ga."
-        },
-        {
-          id: 903,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga word.",
-          question: "What is 'Book' in Ga?",
-          options: [
-            { id: 1, text: "Sukuu" },
-            { id: 2, text: "Tsɔɔlɔ" },
-            { id: 3, text: "Wolo" },
-            { id: 4, text: "Shia nitsumɔ" }
+            { id: 1, text: "Wolo" },
+            { id: 2, text: "Shia nitsumɔ" },
+            { id: 3, text: "Tsɔɔlɔ" },
+            { id: 4, text: "Sukuu" }
           ],
           correctOptionId: 3,
-          hints: ["What you read"],
-          explanation: "Wolo = Book in Ga."
+          hints: ["Person who teaches"],
+          explanation: "Tsɔɔlɔ = Teacher in Ga."
         }
       ]
     },
@@ -124,19 +124,19 @@ export default {
       ],
       questions: [
         {
-          id: 905,
+          id: 908,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I am learning Ga' in Ga?",
+          question: "How do you say 'I have an exam tomorrow' in Ga?",
           options: [
-            { id: 1, text: "Miikase Ga" },
-            { id: 2, text: "Miwieɔ Ga fioo" },
-            { id: 3, text: "Shia nitsumɔ" },
-            { id: 4, text: "Miyɛ kaa wɔ" }
+            { id: 1, text: "Shia nitsumɔ" },
+            { id: 2, text: "Miyɛ kaa wɔ" },
+            { id: 3, text: "Miikase Ga" },
+            { id: 4, text: "Miwieɔ Ga fioo" }
           ],
-          correctOptionId: 1,
-          hints: ["Miikase = I am learning"],
-          explanation: "Miikase Ga = I am learning Ga in Ga."
+          correctOptionId: 2,
+          hints: ["kaa = exam", "wɔ = tomorrow"],
+          explanation: "Miyɛ kaa wɔ = I have an exam tomorrow in Ga."
         },
         {
           id: 906,
@@ -144,44 +144,14 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I speak a little Ga' in Ga?",
           options: [
-            { id: 1, text: "Miikase Ga" },
-            { id: 2, text: "Miwieɔ Ga fioo" },
-            { id: 3, text: "Shia nitsumɔ" },
-            { id: 4, text: "Miyɛ kaa wɔ" }
-          ],
-          correctOptionId: 2,
-          hints: ["Miwieɔ = I speak", "fioo = a little"],
-          explanation: "Miwieɔ Ga fioo = I speak a little Ga in Ga."
-        },
-        {
-          id: 907,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Homework' in Ga?",
-          options: [
-            { id: 1, text: "Miikase Ga" },
-            { id: 2, text: "Miwieɔ Ga fioo" },
-            { id: 3, text: "Shia nitsumɔ" },
-            { id: 4, text: "Ŋmaa ogbɛi" }
+            { id: 1, text: "Miyɛ kaa wɔ" },
+            { id: 2, text: "Miikase Ga" },
+            { id: 3, text: "Miwieɔ Ga fioo" },
+            { id: 4, text: "Shia nitsumɔ" }
           ],
           correctOptionId: 3,
-          hints: ["shia = home", "nitsumɔ = work"],
-          explanation: "Shia nitsumɔ = Homework in Ga."
-        },
-        {
-          id: 908,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'I have an exam tomorrow' in Ga?",
-          options: [
-            { id: 1, text: "Miikase Ga" },
-            { id: 2, text: "Miwieɔ Ga fioo" },
-            { id: 3, text: "Shia nitsumɔ" },
-            { id: 4, text: "Miyɛ kaa wɔ" }
-          ],
-          correctOptionId: 4,
-          hints: ["kaa = exam", "wɔ = tomorrow"],
-          explanation: "Miyɛ kaa wɔ = I have an exam tomorrow in Ga."
+          hints: ["Miwieɔ = I speak", "fioo = a little"],
+          explanation: "Miwieɔ Ga fioo = I speak a little Ga in Ga."
         },
         {
           id: 909,
@@ -189,14 +159,44 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Write your name' in Ga?",
           options: [
-            { id: 1, text: "Ŋmaa ogbɛi" },
-            { id: 2, text: "Miwieɔ Ga fioo" },
+            { id: 1, text: "Miyɛ kaa wɔ" },
+            { id: 2, text: "Ŋmaa ogbɛi" },
             { id: 3, text: "Shia nitsumɔ" },
-            { id: 4, text: "Miyɛ kaa wɔ" }
+            { id: 4, text: "Miwieɔ Ga fioo" }
           ],
-          correctOptionId: 1,
+          correctOptionId: 2,
           hints: ["ŋmaa = write", "ogbɛi = your name"],
           explanation: "Ŋmaa ogbɛi = Write your name in Ga."
+        },
+        {
+          id: 905,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'I am learning Ga' in Ga?",
+          options: [
+            { id: 1, text: "Miwieɔ Ga fioo" },
+            { id: 2, text: "Shia nitsumɔ" },
+            { id: 3, text: "Miyɛ kaa wɔ" },
+            { id: 4, text: "Miikase Ga" }
+          ],
+          correctOptionId: 4,
+          hints: ["Miikase = I am learning"],
+          explanation: "Miikase Ga = I am learning Ga in Ga."
+        },
+        {
+          id: 907,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Homework' in Ga?",
+          options: [
+            { id: 1, text: "Ŋmaa ogbɛi" },
+            { id: 2, text: "Miikase Ga" },
+            { id: 3, text: "Shia nitsumɔ" },
+            { id: 4, text: "Miwieɔ Ga fioo" }
+          ],
+          correctOptionId: 3,
+          hints: ["shia = home", "nitsumɔ = work"],
+          explanation: "Shia nitsumɔ = Homework in Ga."
         }
       ]
     },
@@ -224,34 +224,34 @@ export default {
       ],
       questions: [
         {
-          id: 910,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'The teacher is coming' in Ga?",
-          options: [
-            { id: 1, text: "Tsɔɔlɔ lɛ miiba" },
-            { id: 2, text: "Migbe minitsumɔ lɛ naa" },
-            { id: 3, text: "Miikase Ga" },
-            { id: 4, text: "Miwieɔ Ga fioo" }
-          ],
-          correctOptionId: 1,
-          hints: ["tsɔɔlɔ = teacher", "miiba = coming"],
-          explanation: "Tsɔɔlɔ lɛ miiba = The teacher is coming in Ga."
-        },
-        {
           id: 911,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'I have finished my work' in Ga?",
           options: [
-            { id: 1, text: "Tsɔɔlɔ lɛ miiba" },
-            { id: 2, text: "Migbe minitsumɔ lɛ naa" },
-            { id: 3, text: "Miikase Ga" },
-            { id: 4, text: "Shia nitsumɔ" }
+            { id: 1, text: "Miikase Ga" },
+            { id: 2, text: "Tsɔɔlɔ lɛ miiba" },
+            { id: 3, text: "Migbe minitsumɔ lɛ naa" },
+            { id: 4, text: "Miwieɔ Ga fioo" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["Migbe = I have finished", "naa = finished"],
           explanation: "Migbe minitsumɔ lɛ naa = I have finished my work in Ga."
+        },
+        {
+          id: 910,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'The teacher is coming' in Ga?",
+          options: [
+            { id: 1, text: "Migbe minitsumɔ lɛ naa" },
+            { id: 2, text: "Tsɔɔlɔ lɛ miiba" },
+            { id: 3, text: "Miwieɔ Ga fioo" },
+            { id: 4, text: "Miikase Ga" }
+          ],
+          correctOptionId: 2,
+          hints: ["tsɔɔlɔ = teacher", "miiba = coming"],
+          explanation: "Tsɔɔlɔ lɛ miiba = The teacher is coming in Ga."
         }
       ]
     }
@@ -264,19 +264,19 @@ export default {
     description: "Review all the school and work vocabulary you've learned",
     questions: [
       {
-        id: 913,
+        id: 918,
         type: "multiple_choice",
-        instruction: "Select the correct Ga word.",
-        question: "What is 'Book' in Ga?",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Homework' in Ga?",
         options: [
-          { id: 1, text: "Sukuu" },
-          { id: 2, text: "Tsɔɔlɔ" },
-          { id: 3, text: "Wolo" },
+          { id: 1, text: "Miikase Ga" },
+          { id: 2, text: "Miwieɔ Ga fioo" },
+          { id: 3, text: "Migbe minitsumɔ lɛ naa" },
           { id: 4, text: "Shia nitsumɔ" }
         ],
-        correctOptionId: 3,
-        hints: ["What you read"],
-        explanation: "Wolo = Book in Ga."
+        correctOptionId: 4,
+        hints: ["shia = home", "nitsumɔ = work"],
+        explanation: "Shia nitsumɔ = Homework."
       },
       {
         id: 914,
@@ -284,104 +284,14 @@ export default {
         instruction: "Select the correct Ga word.",
         question: "What is 'School' in Ga?",
         options: [
-          { id: 1, text: "Sukuu" },
-          { id: 2, text: "Tsɔɔlɔ" },
-          { id: 3, text: "Wolo" },
-          { id: 4, text: "Shia nitsumɔ" }
+          { id: 1, text: "Wolo" },
+          { id: 2, text: "Sukuu" },
+          { id: 3, text: "Shia nitsumɔ" },
+          { id: 4, text: "Tsɔɔlɔ" }
         ],
-        correctOptionId: 1,
+        correctOptionId: 2,
         hints: ["Place of learning"],
         explanation: "Sukuu = School in Ga."
-      },
-      {
-        id: 915,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I am learning Ga' in Ga?",
-        options: [
-          { id: 1, text: "Miikase Ga" },
-          { id: 2, text: "Miwieɔ Ga fioo" },
-          { id: 3, text: "Shia nitsumɔ" },
-          { id: 4, text: "Miyɛ kaa wɔ" }
-        ],
-        correctOptionId: 1,
-        hints: ["Miikase = I am learning"],
-        explanation: "Miikase Ga = I am learning Ga."
-      },
-      {
-        id: 916,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Write your name' in Ga?",
-        options: [
-          { id: 1, text: "Miikase Ga" },
-          { id: 2, text: "Shia nitsumɔ" },
-          { id: 3, text: "Miyɛ kaa wɔ" },
-          { id: 4, text: "Ŋmaa ogbɛi" }
-        ],
-        correctOptionId: 4,
-        hints: ["ŋmaa = write", "ogbɛi = name"],
-        explanation: "Ŋmaa ogbɛi = Write your name."
-      },
-      {
-        id: 917,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I speak a little Ga' in Ga?",
-        options: [
-          { id: 1, text: "Miikase Ga" },
-          { id: 2, text: "Miwieɔ Ga fioo" },
-          { id: 3, text: "Shia nitsumɔ" },
-          { id: 4, text: "Miyɛ kaa wɔ" }
-        ],
-        correctOptionId: 2,
-        hints: ["Miwieɔ = I speak", "fioo = a little"],
-        explanation: "Miwieɔ Ga fioo = I speak a little Ga."
-      },
-      {
-        id: 918,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Homework' in Ga?",
-        options: [
-          { id: 1, text: "Shia nitsumɔ" },
-          { id: 2, text: "Migbe minitsumɔ lɛ naa" },
-          { id: 3, text: "Miikase Ga" },
-          { id: 4, text: "Miwieɔ Ga fioo" }
-        ],
-        correctOptionId: 1,
-        hints: ["shia = home", "nitsumɔ = work"],
-        explanation: "Shia nitsumɔ = Homework."
-      },
-      {
-        id: 919,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I have finished my work' in Ga?",
-        options: [
-          { id: 1, text: "Tsɔɔlɔ lɛ miiba" },
-          { id: 2, text: "Migbe minitsumɔ lɛ naa" },
-          { id: 3, text: "Miikase Ga" },
-          { id: 4, text: "Miwieɔ Ga fioo" }
-        ],
-        correctOptionId: 2,
-        hints: ["Migbe = I have finished", "naa = finished"],
-        explanation: "Migbe minitsumɔ lɛ naa = I have finished my work."
-      },
-      {
-        id: 920,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'I have an exam tomorrow' in Ga?",
-        options: [
-          { id: 1, text: "Miyɛ kaa wɔ" },
-          { id: 2, text: "Shia nitsumɔ" },
-          { id: 3, text: "Miikase Ga" },
-          { id: 4, text: "Tsɔɔlɔ lɛ miiba" }
-        ],
-        correctOptionId: 1,
-        hints: ["kaa = exam", "wɔ = tomorrow"],
-        explanation: "Miyɛ kaa wɔ = I have an exam tomorrow."
       },
       {
         id: 921,
@@ -389,14 +299,104 @@ export default {
         instruction: "Select the correct Ga phrase.",
         question: "How do you say 'The teacher is coming' in Ga?",
         options: [
+          { id: 1, text: "Miikase Ga" },
+          { id: 2, text: "Shia nitsumɔ" },
+          { id: 3, text: "Tsɔɔlɔ lɛ miiba" },
+          { id: 4, text: "Migbe minitsumɔ lɛ naa" }
+        ],
+        correctOptionId: 3,
+        hints: ["tsɔɔlɔ = teacher", "miiba = coming"],
+        explanation: "Tsɔɔlɔ lɛ miiba = The teacher is coming."
+      },
+      {
+        id: 916,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Write your name' in Ga?",
+        options: [
+          { id: 1, text: "Shia nitsumɔ" },
+          { id: 2, text: "Miyɛ kaa wɔ" },
+          { id: 3, text: "Miikase Ga" },
+          { id: 4, text: "Ŋmaa ogbɛi" }
+        ],
+        correctOptionId: 4,
+        hints: ["ŋmaa = write", "ogbɛi = name"],
+        explanation: "Ŋmaa ogbɛi = Write your name."
+      },
+      {
+        id: 913,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga word.",
+        question: "What is 'Book' in Ga?",
+        options: [
+          { id: 1, text: "Tsɔɔlɔ" },
+          { id: 2, text: "Shia nitsumɔ" },
+          { id: 3, text: "Wolo" },
+          { id: 4, text: "Sukuu" }
+        ],
+        correctOptionId: 3,
+        hints: ["What you read"],
+        explanation: "Wolo = Book in Ga."
+      },
+      {
+        id: 920,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I have an exam tomorrow' in Ga?",
+        options: [
           { id: 1, text: "Tsɔɔlɔ lɛ miiba" },
-          { id: 2, text: "Migbe minitsumɔ lɛ naa" },
+          { id: 2, text: "Miyɛ kaa wɔ" },
           { id: 3, text: "Miikase Ga" },
           { id: 4, text: "Shia nitsumɔ" }
         ],
-        correctOptionId: 1,
-        hints: ["tsɔɔlɔ = teacher", "miiba = coming"],
-        explanation: "Tsɔɔlɔ lɛ miiba = The teacher is coming."
+        correctOptionId: 2,
+        hints: ["kaa = exam", "wɔ = tomorrow"],
+        explanation: "Miyɛ kaa wɔ = I have an exam tomorrow."
+      },
+      {
+        id: 917,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I speak a little Ga' in Ga?",
+        options: [
+          { id: 1, text: "Miyɛ kaa wɔ" },
+          { id: 2, text: "Miwieɔ Ga fioo" },
+          { id: 3, text: "Shia nitsumɔ" },
+          { id: 4, text: "Miikase Ga" }
+        ],
+        correctOptionId: 2,
+        hints: ["Miwieɔ = I speak", "fioo = a little"],
+        explanation: "Miwieɔ Ga fioo = I speak a little Ga."
+      },
+      {
+        id: 919,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I have finished my work' in Ga?",
+        options: [
+          { id: 1, text: "Miwieɔ Ga fioo" },
+          { id: 2, text: "Migbe minitsumɔ lɛ naa" },
+          { id: 3, text: "Tsɔɔlɔ lɛ miiba" },
+          { id: 4, text: "Miikase Ga" }
+        ],
+        correctOptionId: 2,
+        hints: ["Migbe = I have finished", "naa = finished"],
+        explanation: "Migbe minitsumɔ lɛ naa = I have finished my work."
+      },
+      {
+        id: 915,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'I am learning Ga' in Ga?",
+        options: [
+          { id: 1, text: "Miyɛ kaa wɔ" },
+          { id: 2, text: "Miikase Ga" },
+          { id: 3, text: "Miwieɔ Ga fioo" },
+          { id: 4, text: "Shia nitsumɔ" }
+        ],
+        correctOptionId: 2,
+        hints: ["Miikase = I am learning"],
+        explanation: "Miikase Ga = I am learning Ga."
       }
     ]
   }

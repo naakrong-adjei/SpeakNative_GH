@@ -1,7 +1,7 @@
 export default {
   id: 6,
   title: "Shopping",
-  description: "Learn shopping and market vocabulary in Twi",
+  description: "Learn useful Twi phrases for shopping, bargaining, buying, and everyday market conversations",
   icon: "cart-outline",
   totalXp: 15,
   difficulty: "Beginner",
