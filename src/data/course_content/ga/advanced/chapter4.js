@@ -11,7 +11,7 @@ export default {
       id: "4-1",
       type: "phrases",
       title: "Government & Leadership",
-      icon: "landmark-outline",
+      icon: "business-outline",
       description: "Learn phrases about government and leadership in Ga",
       words: ["Amralo lɛ kɛ mla hee eba", "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ", "Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli"],
       vocabulary: [
@@ -36,31 +36,16 @@ export default {
       ],
       questions: [
         {
-          id: 401,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'The government announced a new policy' in Ga?",
-          options: [
-            { id: 1, text: "Amralo lɛ kɛ mla hee eba" },
-            { id: 2, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" },
-            { id: 3, text: "Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli" },
-            { id: 4, text: "Abaafɔ oshiki afi ni baa lɛ" }
-          ],
-          correctOptionId: 1,
-          hints: ["amralo = government", "mla hee = new policy"],
-          explanation: "Amralo lɛ kɛ mla hee eba = The government announced a new policy in Ga."
-        },
-        {
           id: 402,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/advanced/chapter4/maŋhiɛnyiɛlɔ_lɛ_wie_etsɔɔ_maŋ_lɛ.m4a"),
           options: [
-            { id: 1, text: "The government announced a new policy" },
+            { id: 1, text: "Parliament passed the bill" },
             { id: 2, text: "The president addressed the nation" },
-            { id: 3, text: "Parliament passed the bill" },
-            { id: 4, text: "Citizens demand accountability" }
+            { id: 3, text: "Citizens demand accountability" },
+            { id: 4, text: "The government announced a new policy" }
           ],
           correctOptionId: 2,
           hints: ["maŋhiɛnyiɛlɔ = president", "maŋ = nation"],
@@ -72,14 +57,29 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Parliament passed the bill' in Ga?",
           options: [
-            { id: 1, text: "Amralo lɛ kɛ mla hee eba" },
-            { id: 2, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" },
-            { id: 3, text: "Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli" },
-            { id: 4, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" }
+            { id: 1, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
+            { id: 2, text: "Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli" },
+            { id: 3, text: "Amralo lɛ kɛ mla hee eba" },
+            { id: 4, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["Maŋkwramɔŋ saneyelihe = parliament", "mla = bill/law"],
           explanation: "Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli = Parliament passed the bill in Ga."
+        },
+        {
+          id: 401,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'The government announced a new policy' in Ga?",
+          options: [
+            { id: 1, text: "Amralo lɛ kɛ mla hee eba" },
+            { id: 2, text: "Abaafɔ oshiki afi ni baa lɛ" },
+            { id: 3, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" },
+            { id: 4, text: "Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli" }
+          ],
+          correctOptionId: 1,
+          hints: ["amralo = government", "mla hee = new policy"],
+          explanation: "Amralo lɛ kɛ mla hee eba = The government announced a new policy in Ga."
         }
       ]
     },
@@ -107,21 +107,6 @@ export default {
       ],
       questions: [
         {
-          id: 404,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Elections will be held next year' in Ga?",
-          options: [
-            { id: 1, text: "Abaafɔ oshiki afi ni baa lɛ" },
-            { id: 2, text: "Maŋbii biɔ akɔntabuu" },
-            { id: 3, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
-            { id: 4, text: "Nibii ajara etee ŋwɛi" }
-          ],
-          correctOptionId: 1,
-          hints: ["abaafɔ = elections", "afi ni baa lɛ = next year"],
-          explanation: "Abaafɔ oshiki afi ni baa lɛ = Elections will be held next year in Ga."
-        },
-        {
           id: 405,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
@@ -131,7 +116,7 @@ export default {
             { id: 1, text: "Elections will be held next year" },
             { id: 2, text: "Citizens demand accountability" },
             { id: 3, text: "The economy is improving" },
-            { id: 4, text: "Prices of goods have risen" }
+            { id: 4, text: "The president addressed the nation" }
           ],
           correctOptionId: 2,
           hints: ["maŋbii = citizens", "akɔntabuu = accountability"],
@@ -143,14 +128,29 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Citizens demand accountability' in Ga?",
           options: [
-            { id: 1, text: "Abaafɔ oshiki afi ni baa lɛ" },
-            { id: 2, text: "Maŋbii biɔ akɔntabuu" },
-            { id: 3, text: "Amralo lɛ kɛ mla hee eba" },
+            { id: 1, text: "Maŋbii biɔ akɔntabuu" },
+            { id: 2, text: "Amralo lɛ kɛ mla hee eba" },
+            { id: 3, text: "Abaafɔ oshiki afi ni baa lɛ" },
+            { id: 4, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" }
+          ],
+          correctOptionId: 1,
+          hints: ["akɔntabuu = accountability"],
+          explanation: "Maŋbii biɔ akɔntabuu = Citizens demand accountability in Ga."
+        },
+        {
+          id: 404,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Elections will be held next year' in Ga?",
+          options: [
+            { id: 1, text: "Maŋbii biɔ akɔntabuu" },
+            { id: 2, text: "Abaafɔ oshiki afi ni baa lɛ" },
+            { id: 3, text: "Nibii ajara etee ŋwɛi" },
             { id: 4, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" }
           ],
           correctOptionId: 2,
-          hints: ["akɔntabuu = accountability"],
-          explanation: "Maŋbii biɔ akɔntabuu = Citizens demand accountability in Ga."
+          hints: ["abaafɔ = elections", "afi ni baa lɛ = next year"],
+          explanation: "Abaafɔ oshiki afi ni baa lɛ = Elections will be held next year in Ga."
         }
       ]
     },
@@ -178,30 +178,15 @@ export default {
       ],
       questions: [
         {
-          id: 407,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'The economy is improving' in Ga?",
-          options: [
-            { id: 1, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
-            { id: 2, text: "Nibii ajara etee ŋwɛi" },
-            { id: 3, text: "Abaafɔ oshiki afi ni baa lɛ" },
-            { id: 4, text: "Maŋbii biɔ akɔntabuu" }
-          ],
-          correctOptionId: 1,
-          hints: ["shika he gbɛjianɔtoo = economy", "miiya hiɛ = improving"],
-          explanation: "Shika he gbɛjianɔtoo lɛ miiya hiɛ = The economy is improving in Ga."
-        },
-        {
           id: 408,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/advanced/chapter4/nibii_ajara_etee_ŋwɛi.m4a"),
           options: [
-            { id: 1, text: "The economy is improving" },
+            { id: 1, text: "The government announced a new policy" },
             { id: 2, text: "Prices of goods have risen" },
-            { id: 3, text: "The government announced a new policy" },
+            { id: 3, text: "The economy is improving" },
             { id: 4, text: "Parliament passed the bill" }
           ],
           correctOptionId: 2,
@@ -214,14 +199,29 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Prices of goods have risen' in Ga?",
           options: [
-            { id: 1, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
-            { id: 2, text: "Nibii ajara etee ŋwɛi" },
-            { id: 3, text: "Maŋbii biɔ akɔntabuu" },
-            { id: 4, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" }
+            { id: 1, text: "Nibii ajara etee ŋwɛi" },
+            { id: 2, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" },
+            { id: 3, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
+            { id: 4, text: "Maŋbii biɔ akɔntabuu" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 1,
           hints: ["etee ŋwɛi = have risen"],
           explanation: "Nibii ajara etee ŋwɛi = Prices of goods have risen in Ga."
+        },
+        {
+          id: 407,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'The economy is improving' in Ga?",
+          options: [
+            { id: 1, text: "Abaafɔ oshiki afi ni baa lɛ" },
+            { id: 2, text: "Nibii ajara etee ŋwɛi" },
+            { id: 3, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
+            { id: 4, text: "Maŋbii biɔ akɔntabuu" }
+          ],
+          correctOptionId: 3,
+          hints: ["shika he gbɛjianɔtoo = economy", "miiya hiɛ = improving"],
+          explanation: "Shika he gbɛjianɔtoo lɛ miiya hiɛ = The economy is improving in Ga."
         }
       ]
     }
@@ -234,50 +234,20 @@ export default {
     description: "Review all the news and politics vocabulary you've learned",
     questions: [
       {
-        id: 410,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'The government announced a new policy' in Ga?",
-        options: [
-          { id: 1, text: "Amralo lɛ kɛ mla hee eba" },
-          { id: 2, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" },
-          { id: 3, text: "Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli" },
-          { id: 4, text: "Abaafɔ oshiki afi ni baa lɛ" }
-        ],
-        correctOptionId: 1,
-        hints: ["amralo = government"],
-        explanation: "Amralo lɛ kɛ mla hee eba = The government announced a new policy."
-      },
-      {
         id: 411,
         type: "listening_multiple_choice",
         instruction: "Listen to the audio and select the correct English translation.",
         question: "What did the speaker say?",
         audioUrl: require("../../../../assets/audio/ga/advanced/chapter4/maŋkwramɔŋ_saneyelihe_lɛ_wo_mla_lɛ_mli.m4a"),
         options: [
-          { id: 1, text: "The government announced a new policy" },
-          { id: 2, text: "The president addressed the nation" },
+          { id: 1, text: "The president addressed the nation" },
+          { id: 2, text: "Citizens demand accountability" },
           { id: 3, text: "Parliament passed the bill" },
-          { id: 4, text: "Citizens demand accountability" }
+          { id: 4, text: "The government announced a new policy" }
         ],
         correctOptionId: 3,
         hints: ["mla = bill/law"],
         explanation: "You heard 'Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli' which means 'Parliament passed the bill'."
-      },
-      {
-        id: 412,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'The president addressed the nation' in Ga?",
-        options: [
-          { id: 1, text: "Amralo lɛ kɛ mla hee eba" },
-          { id: 2, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" },
-          { id: 3, text: "Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli" },
-          { id: 4, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" }
-        ],
-        correctOptionId: 2,
-        hints: ["maŋhiɛnyiɛlɔ = president"],
-        explanation: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ = The president addressed the nation."
       },
       {
         id: 413,
@@ -287,58 +257,13 @@ export default {
         audioUrl: require("../../../../assets/audio/ga/advanced/chapter4/abaafɔ_oshiki_afi_ni_baa_lɛ.m4a"),
         options: [
           { id: 1, text: "Elections will be held next year" },
-          { id: 2, text: "Citizens demand accountability" },
-          { id: 3, text: "The economy is improving" },
-          { id: 4, text: "Prices of goods have risen" }
+          { id: 2, text: "The economy is improving" },
+          { id: 3, text: "Prices of goods have risen" },
+          { id: 4, text: "Citizens demand accountability" }
         ],
         correctOptionId: 1,
         hints: ["abaafɔ = elections"],
         explanation: "You heard 'Abaafɔ oshiki afi ni baa lɛ' which means 'Elections will be held next year'."
-      },
-      {
-        id: 414,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Citizens demand accountability' in Ga?",
-        options: [
-          { id: 1, text: "Abaafɔ oshiki afi ni baa lɛ" },
-          { id: 2, text: "Maŋbii biɔ akɔntabuu" },
-          { id: 3, text: "Amralo lɛ kɛ mla hee eba" },
-          { id: 4, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" }
-        ],
-        correctOptionId: 2,
-        hints: ["akɔntabuu = accountability"],
-        explanation: "Maŋbii biɔ akɔntabuu = Citizens demand accountability."
-      },
-      {
-        id: 415,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'The economy is improving' in Ga?",
-        options: [
-          { id: 1, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
-          { id: 2, text: "Nibii ajara etee ŋwɛi" },
-          { id: 3, text: "Abaafɔ oshiki afi ni baa lɛ" },
-          { id: 4, text: "Maŋbii biɔ akɔntabuu" }
-        ],
-        correctOptionId: 1,
-        hints: ["miiya hiɛ = improving"],
-        explanation: "Shika he gbɛjianɔtoo lɛ miiya hiɛ = The economy is improving."
-      },
-      {
-        id: 416,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Prices of goods have risen' in Ga?",
-        options: [
-          { id: 1, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
-          { id: 2, text: "Nibii ajara etee ŋwɛi" },
-          { id: 3, text: "Maŋbii biɔ akɔntabuu" },
-          { id: 4, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" }
-        ],
-        correctOptionId: 2,
-        hints: ["etee ŋwɛi = have risen"],
-        explanation: "Nibii ajara etee ŋwɛi = Prices of goods have risen."
       },
       {
         id: 417,
@@ -350,11 +275,86 @@ export default {
           { id: 1, text: "The government announced a new policy" },
           { id: 2, text: "The president addressed the nation" },
           { id: 3, text: "Parliament passed the bill" },
-          { id: 4, text: "Citizens demand accountability" }
+          { id: 4, text: "Prices of goods have risen" }
         ],
         correctOptionId: 1,
         hints: ["mla hee = new policy"],
         explanation: "You heard 'Amralo lɛ kɛ mla hee eba' which means 'The government announced a new policy'."
+      },
+      {
+        id: 412,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'The president addressed the nation' in Ga?",
+        options: [
+          { id: 1, text: "Abaafɔ oshiki afi ni baa lɛ" },
+          { id: 2, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" },
+          { id: 3, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
+          { id: 4, text: "Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli" }
+        ],
+        correctOptionId: 2,
+        hints: ["maŋhiɛnyiɛlɔ = president"],
+        explanation: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ = The president addressed the nation."
+      },
+      {
+        id: 416,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Prices of goods have risen' in Ga?",
+        options: [
+          { id: 1, text: "Nibii ajara etee ŋwɛi" },
+          { id: 2, text: "Maŋbii biɔ akɔntabuu" },
+          { id: 3, text: "Amralo lɛ kɛ mla hee eba" },
+          { id: 4, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" }
+        ],
+        correctOptionId: 1,
+        hints: ["etee ŋwɛi = have risen"],
+        explanation: "Nibii ajara etee ŋwɛi = Prices of goods have risen."
+      },
+      {
+        id: 410,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'The government announced a new policy' in Ga?",
+        options: [
+          { id: 1, text: "Abaafɔ oshiki afi ni baa lɛ" },
+          { id: 2, text: "Maŋkwramɔŋ saneyelihe lɛ wo mla lɛ mli" },
+          { id: 3, text: "Amralo lɛ kɛ mla hee eba" },
+          { id: 4, text: "Maŋhiɛnyiɛlɔ lɛ wie etsɔɔ maŋ lɛ" }
+        ],
+        correctOptionId: 3,
+        hints: ["amralo = government"],
+        explanation: "Amralo lɛ kɛ mla hee eba = The government announced a new policy."
+      },
+      {
+        id: 415,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'The economy is improving' in Ga?",
+        options: [
+          { id: 1, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
+          { id: 2, text: "Nibii ajara etee ŋwɛi" },
+          { id: 3, text: "Maŋbii biɔ akɔntabuu" },
+          { id: 4, text: "Abaafɔ oshiki afi ni baa lɛ" }
+        ],
+        correctOptionId: 1,
+        hints: ["miiya hiɛ = improving"],
+        explanation: "Shika he gbɛjianɔtoo lɛ miiya hiɛ = The economy is improving."
+      },
+      {
+        id: 414,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Citizens demand accountability' in Ga?",
+        options: [
+          { id: 1, text: "Shika he gbɛjianɔtoo lɛ miiya hiɛ" },
+          { id: 2, text: "Maŋbii biɔ akɔntabuu" },
+          { id: 3, text: "Abaafɔ oshiki afi ni baa lɛ" },
+          { id: 4, text: "Amralo lɛ kɛ mla hee eba" }
+        ],
+        correctOptionId: 2,
+        hints: ["akɔntabuu = accountability"],
+        explanation: "Maŋbii biɔ akɔntabuu = Citizens demand accountability."
       }
     ]
   }

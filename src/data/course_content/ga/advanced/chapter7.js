@@ -36,31 +36,16 @@ export default {
       ],
       questions: [
         {
-          id: 701,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'Research shows that' in Ga?",
-          options: [
-            { id: 1, text: "Nitaomɔ tsɔɔ akɛ" },
-            { id: 2, text: "Akwɛ saji lɛ amli jogbaŋŋ" },
-            { id: 3, text: "Nɔ ni ana lɛ he hiaa" },
-            { id: 4, text: "Yɛ kukufoo mli" }
-          ],
-          correctOptionId: 1,
-          hints: ["nitaomɔ = research", "tsɔɔ akɛ = shows that"],
-          explanation: "Nitaomɔ tsɔɔ akɛ = Research shows that in Ga."
-        },
-        {
           id: 702,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
           question: "What did the speaker say?",
           audioUrl: require("../../../../assets/audio/ga/advanced/chapter7/akwɛ_saji_lɛ_amli_jogbaŋŋ.m4a"),
           options: [
-            { id: 1, text: "Research shows that" },
+            { id: 1, text: "In summary" },
             { id: 2, text: "The data was analysed carefully" },
             { id: 3, text: "The findings are significant" },
-            { id: 4, text: "In summary" }
+            { id: 4, text: "Research shows that" }
           ],
           correctOptionId: 2,
           hints: ["saji = data", "jogbaŋŋ = carefully"],
@@ -72,14 +57,29 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'The findings are significant' in Ga?",
           options: [
-            { id: 1, text: "Nitaomɔ tsɔɔ akɛ" },
-            { id: 2, text: "Akwɛ saji lɛ amli jogbaŋŋ" },
-            { id: 3, text: "Nɔ ni ana lɛ he hiaa" },
+            { id: 1, text: "Akwɛ saji lɛ amli jogbaŋŋ" },
+            { id: 2, text: "Nɔ ni ana lɛ he hiaa" },
+            { id: 3, text: "Nitaomɔ tsɔɔ akɛ" },
             { id: 4, text: "Nikasemɔ kroko he miihia" }
           ],
-          correctOptionId: 3,
+          correctOptionId: 2,
           hints: ["nɔ ni ana = findings", "he hiaa = significant"],
           explanation: "Nɔ ni ana lɛ he hiaa = The findings are significant in Ga."
+        },
+        {
+          id: 701,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'Research shows that' in Ga?",
+          options: [
+            { id: 1, text: "Yɛ kukufoo mli" },
+            { id: 2, text: "Nitaomɔ tsɔɔ akɛ" },
+            { id: 3, text: "Akwɛ saji lɛ amli jogbaŋŋ" },
+            { id: 4, text: "Nɔ ni ana lɛ he hiaa" }
+          ],
+          correctOptionId: 2,
+          hints: ["nitaomɔ = research", "tsɔɔ akɛ = shows that"],
+          explanation: "Nitaomɔ tsɔɔ akɛ = Research shows that in Ga."
         }
       ]
     },
@@ -107,6 +107,37 @@ export default {
       ],
       questions: [
         {
+          id: 705,
+          type: "listening_multiple_choice",
+          instruction: "Listen to the audio and select the correct English translation.",
+          question: "What did the speaker say?",
+          audioUrl: require("../../../../assets/audio/ga/advanced/chapter7/nɛkɛ_susumɔ_nɛɛ_tsɔɔ_nɔ_ni_jɛ_mli_kɛba_shishi.m4a"),
+          options: [
+            { id: 1, text: "In summary" },
+            { id: 2, text: "This theory explains the results" },
+            { id: 3, text: "Further study is needed" },
+            { id: 4, text: "According to the author" }
+          ],
+          correctOptionId: 2,
+          hints: ["susumɔ = theory", "shishi = meaning/explanation"],
+          explanation: "You heard 'Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi' which means 'This theory explains the results' in Ga."
+        },
+        {
+          id: 706,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'This theory explains the results' in Ga?",
+          options: [
+            { id: 1, text: "Yɛ kukufoo mli" },
+            { id: 2, text: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi" },
+            { id: 3, text: "Bɔ ni ŋmalɔ lɛ tsɔɔ" },
+            { id: 4, text: "Nɔ ni ana lɛ he hiaa" }
+          ],
+          correctOptionId: 2,
+          hints: ["susumɔ = theory"],
+          explanation: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi = This theory explains the results in Ga."
+        },
+        {
           id: 704,
           type: "multiple_choice",
           instruction: "Select the correct Ga phrase.",
@@ -120,37 +151,6 @@ export default {
           correctOptionId: 1,
           hints: ["ŋmalɔ = author", "tsɔɔ = according to"],
           explanation: "Bɔ ni ŋmalɔ lɛ tsɔɔ = According to the author in Ga."
-        },
-        {
-          id: 705,
-          type: "listening_multiple_choice",
-          instruction: "Listen to the audio and select the correct English translation.",
-          question: "What did the speaker say?",
-          audioUrl: require("../../../../assets/audio/ga/advanced/chapter7/nɛkɛ_susumɔ_nɛɛ_tsɔɔ_nɔ_ni_jɛ_mli_kɛba_shishi.m4a"),
-          options: [
-            { id: 1, text: "According to the author" },
-            { id: 2, text: "This theory explains the results" },
-            { id: 3, text: "In summary" },
-            { id: 4, text: "Further study is needed" }
-          ],
-          correctOptionId: 2,
-          hints: ["susumɔ = theory", "shishi = meaning/explanation"],
-          explanation: "You heard 'Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi' which means 'This theory explains the results' in Ga."
-        },
-        {
-          id: 706,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'This theory explains the results' in Ga?",
-          options: [
-            { id: 1, text: "Bɔ ni ŋmalɔ lɛ tsɔɔ" },
-            { id: 2, text: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi" },
-            { id: 3, text: "Yɛ kukufoo mli" },
-            { id: 4, text: "Nɔ ni ana lɛ he hiaa" }
-          ],
-          correctOptionId: 2,
-          hints: ["susumɔ = theory"],
-          explanation: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi = This theory explains the results in Ga."
         }
       ]
     },
@@ -178,21 +178,6 @@ export default {
       ],
       questions: [
         {
-          id: 707,
-          type: "multiple_choice",
-          instruction: "Select the correct Ga phrase.",
-          question: "How do you say 'In summary' in Ga?",
-          options: [
-            { id: 1, text: "Yɛ kukufoo mli" },
-            { id: 2, text: "Nikasemɔ kroko he miihia" },
-            { id: 3, text: "Bɔ ni ŋmalɔ lɛ tsɔɔ" },
-            { id: 4, text: "Nɔ ni ana lɛ he hiaa" }
-          ],
-          correctOptionId: 1,
-          hints: ["kukufoo = summary"],
-          explanation: "Yɛ kukufoo mli = In summary in Ga."
-        },
-        {
           id: 708,
           type: "listening_multiple_choice",
           instruction: "Listen to the audio and select the correct English translation.",
@@ -200,11 +185,11 @@ export default {
           audioUrl: require("../../../../assets/audio/ga/advanced/chapter7/nikasemɔ_kroko_he_miihia.m4a"),
           options: [
             { id: 1, text: "In summary" },
-            { id: 2, text: "Further study is needed" },
-            { id: 3, text: "Research shows that" },
+            { id: 2, text: "Research shows that" },
+            { id: 3, text: "Further study is needed" },
             { id: 4, text: "The data was analysed carefully" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 3,
           hints: ["nikasemɔ = study", "miihia = is needed"],
           explanation: "You heard 'Nikasemɔ kroko he miihia' which means 'Further study is needed' in Ga."
         },
@@ -214,14 +199,29 @@ export default {
           instruction: "Select the correct Ga phrase.",
           question: "How do you say 'Further study is needed' in Ga?",
           options: [
-            { id: 1, text: "Yɛ kukufoo mli" },
-            { id: 2, text: "Nikasemɔ kroko he miihia" },
+            { id: 1, text: "Nikasemɔ kroko he miihia" },
+            { id: 2, text: "Yɛ kukufoo mli" },
             { id: 3, text: "Bɔ ni ŋmalɔ lɛ tsɔɔ" },
             { id: 4, text: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi" }
           ],
-          correctOptionId: 2,
+          correctOptionId: 1,
           hints: ["nikasemɔ = study"],
           explanation: "Nikasemɔ kroko he miihia = Further study is needed in Ga."
+        },
+        {
+          id: 707,
+          type: "multiple_choice",
+          instruction: "Select the correct Ga phrase.",
+          question: "How do you say 'In summary' in Ga?",
+          options: [
+            { id: 1, text: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi" },
+            { id: 2, text: "Yɛ kukufoo mli" },
+            { id: 3, text: "Nikasemɔ kroko he miihia" },
+            { id: 4, text: "Nɔ ni ana lɛ he hiaa" }
+          ],
+          correctOptionId: 2,
+          hints: ["kukufoo = summary"],
+          explanation: "Yɛ kukufoo mli = In summary in Ga."
         }
       ]
     }
@@ -233,6 +233,84 @@ export default {
     icon: "refresh-outline",
     description: "Review all the academic and research vocabulary you've learned",
     questions: [
+      {
+        id: 711,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/advanced/chapter7/bɔ_ni_ŋmalɔ_lɛ_tsɔɔ.m4a"),
+        options: [
+          { id: 1, text: "According to the author" },
+          { id: 2, text: "In summary" },
+          { id: 3, text: "This theory explains the results" },
+          { id: 4, text: "Further study is needed" }
+        ],
+        correctOptionId: 1,
+        hints: ["ŋmalɔ = author"],
+        explanation: "You heard 'Bɔ ni ŋmalɔ lɛ tsɔɔ' which means 'According to the author'."
+      },
+      {
+        id: 713,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/advanced/chapter7/nɔ_ni_ana_lɛ_he_hiaa.m4a"),
+        options: [
+          { id: 1, text: "Research shows that" },
+          { id: 2, text: "The findings are significant" },
+          { id: 3, text: "In summary" },
+          { id: 4, text: "Further study is needed" }
+        ],
+        correctOptionId: 2,
+        hints: ["he hiaa = significant"],
+        explanation: "You heard 'Nɔ ni ana lɛ he hiaa' which means 'The findings are significant'."
+      },
+      {
+        id: 717,
+        type: "listening_multiple_choice",
+        instruction: "Listen to the audio and select the correct English translation.",
+        question: "What did the speaker say?",
+        audioUrl: require("../../../../assets/audio/ga/advanced/chapter7/yɛ_kukufoo_mli.m4a"),
+        options: [
+          { id: 1, text: "In summary" },
+          { id: 2, text: "Research shows that" },
+          { id: 3, text: "According to the author" },
+          { id: 4, text: "Further study is needed" }
+        ],
+        correctOptionId: 1,
+        hints: ["kukufoo = summary"],
+        explanation: "You heard 'Yɛ kukufoo mli' which means 'In summary'."
+      },
+      {
+        id: 714,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'This theory explains the results' in Ga?",
+        options: [
+          { id: 1, text: "Nikasemɔ kroko he miihia" },
+          { id: 2, text: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi" },
+          { id: 3, text: "Bɔ ni ŋmalɔ lɛ tsɔɔ" },
+          { id: 4, text: "Yɛ kukufoo mli" }
+        ],
+        correctOptionId: 2,
+        hints: ["susumɔ = theory"],
+        explanation: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi = This theory explains the results."
+      },
+      {
+        id: 715,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'In summary' in Ga?",
+        options: [
+          { id: 1, text: "Nɔ ni ana lɛ he hiaa" },
+          { id: 2, text: "Yɛ kukufoo mli" },
+          { id: 3, text: "Nikasemɔ kroko he miihia" },
+          { id: 4, text: "Nitaomɔ tsɔɔ akɛ" }
+        ],
+        correctOptionId: 2,
+        hints: ["kukufoo = summary"],
+        explanation: "Yɛ kukufoo mli = In summary."
+      },
       {
         id: 710,
         type: "multiple_choice",
@@ -249,20 +327,19 @@ export default {
         explanation: "Nitaomɔ tsɔɔ akɛ = Research shows that."
       },
       {
-        id: 711,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ga/advanced/chapter7/bɔ_ni_ŋmalɔ_lɛ_tsɔɔ.m4a"),
+        id: 716,
+        type: "multiple_choice",
+        instruction: "Select the correct Ga phrase.",
+        question: "How do you say 'Further study is needed' in Ga?",
         options: [
-          { id: 1, text: "According to the author" },
-          { id: 2, text: "This theory explains the results" },
-          { id: 3, text: "In summary" },
-          { id: 4, text: "Further study is needed" }
+          { id: 1, text: "Yɛ kukufoo mli" },
+          { id: 2, text: "Akwɛ saji lɛ amli jogbaŋŋ" },
+          { id: 3, text: "Nikasemɔ kroko he miihia" },
+          { id: 4, text: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi" }
         ],
-        correctOptionId: 1,
-        hints: ["ŋmalɔ = author"],
-        explanation: "You heard 'Bɔ ni ŋmalɔ lɛ tsɔɔ' which means 'According to the author'."
+        correctOptionId: 3,
+        hints: ["nikasemɔ = study"],
+        explanation: "Nikasemɔ kroko he miihia = Further study is needed."
       },
       {
         id: 712,
@@ -278,83 +355,6 @@ export default {
         correctOptionId: 2,
         hints: ["saji = data"],
         explanation: "Akwɛ saji lɛ amli jogbaŋŋ = The data was analysed carefully."
-      },
-      {
-        id: 713,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ga/advanced/chapter7/nɔ_ni_ana_lɛ_he_hiaa.m4a"),
-        options: [
-          { id: 1, text: "The findings are significant" },
-          { id: 2, text: "In summary" },
-          { id: 3, text: "Further study is needed" },
-          { id: 4, text: "Research shows that" }
-        ],
-        correctOptionId: 1,
-        hints: ["he hiaa = significant"],
-        explanation: "You heard 'Nɔ ni ana lɛ he hiaa' which means 'The findings are significant'."
-      },
-      {
-        id: 714,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'This theory explains the results' in Ga?",
-        options: [
-          { id: 1, text: "Bɔ ni ŋmalɔ lɛ tsɔɔ" },
-          { id: 2, text: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi" },
-          { id: 3, text: "Yɛ kukufoo mli" },
-          { id: 4, text: "Nikasemɔ kroko he miihia" }
-        ],
-        correctOptionId: 2,
-        hints: ["susumɔ = theory"],
-        explanation: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi = This theory explains the results."
-      },
-      {
-        id: 715,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'In summary' in Ga?",
-        options: [
-          { id: 1, text: "Yɛ kukufoo mli" },
-          { id: 2, text: "Nikasemɔ kroko he miihia" },
-          { id: 3, text: "Bɔ ni ŋmalɔ lɛ tsɔɔ" },
-          { id: 4, text: "Nɔ ni ana lɛ he hiaa" }
-        ],
-        correctOptionId: 1,
-        hints: ["kukufoo = summary"],
-        explanation: "Yɛ kukufoo mli = In summary."
-      },
-      {
-        id: 716,
-        type: "multiple_choice",
-        instruction: "Select the correct Ga phrase.",
-        question: "How do you say 'Further study is needed' in Ga?",
-        options: [
-          { id: 1, text: "Yɛ kukufoo mli" },
-          { id: 2, text: "Nikasemɔ kroko he miihia" },
-          { id: 3, text: "Nɛkɛ susumɔ nɛɛ tsɔɔ nɔ ni jɛ mli kɛba shishi" },
-          { id: 4, text: "Akwɛ saji lɛ amli jogbaŋŋ" }
-        ],
-        correctOptionId: 2,
-        hints: ["nikasemɔ = study"],
-        explanation: "Nikasemɔ kroko he miihia = Further study is needed."
-      },
-      {
-        id: 717,
-        type: "listening_multiple_choice",
-        instruction: "Listen to the audio and select the correct English translation.",
-        question: "What did the speaker say?",
-        audioUrl: require("../../../../assets/audio/ga/advanced/chapter7/yɛ_kukufoo_mli.m4a"),
-        options: [
-          { id: 1, text: "Research shows that" },
-          { id: 2, text: "According to the author" },
-          { id: 3, text: "In summary" },
-          { id: 4, text: "Further study is needed" }
-        ],
-        correctOptionId: 3,
-        hints: ["kukufoo = summary"],
-        explanation: "You heard 'Yɛ kukufoo mli' which means 'In summary'."
       }
     ]
   }
