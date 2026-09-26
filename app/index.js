@@ -9,10 +9,8 @@ import {
 import { useTheme } from "../src/context/ThemeContext";
 import { createSupabaseClient } from "../src/utils/supabase";
 
-const supabase = createSupabaseClient(() => {});
-
 export default function Index() {
-  const { isSignedIn, isLoaded: authLoaded } = useAuth();
+  const { isSignedIn, isLoaded: authLoaded, getToken } = useAuth();
   const { user, isLoaded: userLoaded } = useUser();
   const { theme } = useTheme();
 
@@ -38,6 +36,8 @@ export default function Index() {
       setCheckingOnboarding(true);
 
       try {
+        const supabase = createSupabaseClient(getToken);
+
         const { data, error } = await supabase
           .from("profiles")
           .select("onboarding_completed")
@@ -50,9 +50,10 @@ export default function Index() {
 
         if (error) {
           setNeedsOnboarding(true);
-        } else {
-          setNeedsOnboarding(!data?.onboarding_completed);
+          return;
         }
+
+        setNeedsOnboarding(!data?.onboarding_completed);
       } catch {
         if (!cancelled) {
           setNeedsOnboarding(true);
@@ -69,7 +70,13 @@ export default function Index() {
     return () => {
       cancelled = true;
     };
-  }, [authLoaded, userLoaded, isSignedIn, userId]);
+  }, [
+    authLoaded,
+    userLoaded,
+    isSignedIn,
+    userId,
+    getToken,
+  ]);
 
   if (!authLoaded || !userLoaded || checkingOnboarding) {
     return (

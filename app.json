@@ -8,19 +8,22 @@
     "icon": "./src/assets/images/logo/adaptiveIcon.png",
     "userInterfaceStyle": "light",
     "entryPoint": "./node_modules/expo-router/entry",
+
     "ios": {
       "supportsTablet": true
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/logo/adaptiveIcon.png",
-        "backgroundColor": "#2E7D32",
-        "monochromeImage": "./src/assets/images/logo/adaptiveIcon.png"
+        "backgroundColor": "#FFFFFF"
       }
     },
+
     "web": {
       "favicon": "./src/assets/images/logo/favicon.png"
     },
+
     "plugins": [
       "expo-font",
       "expo-splash-screen",

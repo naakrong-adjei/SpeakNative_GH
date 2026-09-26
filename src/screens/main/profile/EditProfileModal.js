@@ -138,7 +138,6 @@ export default function EditProfileModal({
 
       onClose();
     } catch (error) {
-      console.error("Failed to save profile changes:", error);
     } finally {
       setSaving(false);
     }
@@ -697,7 +696,6 @@ export default function EditProfileModal({
         )}
       </View>
 
-      {/* Proficiency Level */}
       <View
         style={[
           styles.card,
@@ -897,7 +895,6 @@ export default function EditProfileModal({
       >
         {renderHeader()}
 
-        {/* Tab Navigation */}
         <View
           style={[
             styles.tabBar,
@@ -991,7 +988,6 @@ export default function EditProfileModal({
           <View style={styles.footerSpacer} />
         </ScrollView>
 
-        {/* Add Language Modal */}
         <Modal
           visible={showAddLanguageModal}
           animationType="fade"

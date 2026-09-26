@@ -129,10 +129,6 @@ export default function ProfileScreen() {
           .single();
 
         if (error) {
-          console.error(
-            "Error fetching profile:",
-            error
-          );
           return;
         }
 
@@ -171,10 +167,6 @@ export default function ProfileScreen() {
             .eq("clerk_id", user.id);
         }
       } catch (error) {
-        console.error(
-          "Error fetching profile:",
-          error
-        );
       } finally {
         setLoading(false);
       }
@@ -321,11 +313,6 @@ export default function ProfileScreen() {
         "Profile updated successfully!"
       );
     } catch (error) {
-      console.error(
-        "Failed to update profile:",
-        error
-      );
-
       Alert.alert(
         "Error",
         "We couldn't save your changes. Please check your connection."
@@ -347,11 +334,6 @@ export default function ProfileScreen() {
 
       router.replace("/(auth)/intro");
     } catch (error) {
-      console.error(
-        "Sign out failed:",
-        error
-      );
-
       Alert.alert(
         "Sign Out Failed",
         "We couldn't sign you out. Please try again."
@@ -367,64 +349,64 @@ export default function ProfileScreen() {
     setShowDeleteDialog(true);
   };
 
-  const handleConfirmDeleteAccount =
-    async () => {
-      if (
-        deletingAccount ||
-        !supabase ||
-        !user?.id
-      ) {
-        if (!supabase || !user?.id) {
-          setShowDeleteDialog(false);
+  const handleConfirmDeleteAccount = async () => {
+    if (deletingAccount) {
+      return;
+    }
 
-          Alert.alert(
-            "Error",
-            "Account information is unavailable."
-          );
-        }
+    if (!supabase || !user?.id) {
+      setShowDeleteDialog(false);
 
-        return;
-      }
+      Alert.alert(
+        "Error",
+        "Account information is unavailable."
+      );
 
-      try {
-        setShowDeleteDialog(false);
-        setDeletingAccount(true);
-        setLoading(true);
+      return;
+    }
 
-        const { data, error } =
-          await supabase.functions.invoke(
-            "delete-account"
-          );
+    try {
+      setShowDeleteDialog(false);
+      setDeletingAccount(true);
+      setLoading(true);
 
-        if (error) {
-          throw error;
-        }
-
-        if (!data?.success) {
-          throw new Error(
-            data?.message ||
-              "Account deletion failed."
-          );
-        }
-
-        await signOut();
-
-        router.replace("/(auth)/intro");
-      } catch (error) {
-        console.error(
-          "Error deleting account:",
-          error
+      const { data, error } =
+        await supabase.functions.invoke(
+          "delete-account"
         );
 
-        setDeletingAccount(false);
-        setLoading(false);
-
-        Alert.alert(
-          "Delete Failed",
-          "We couldn't delete your account. Please try again."
+      if (error) {
+        throw new Error(
+          error.message ||
+            "The delete-account function failed."
         );
       }
-    };
+
+      if (!data?.success) {
+        throw new Error(
+          data?.message ||
+            "Account deletion failed."
+        );
+      }
+
+      await signOut();
+
+      router.replace("/(auth)/intro");
+    } catch (error) {
+      setDeletingAccount(false);
+      setLoading(false);
+
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Unknown error";
+
+      Alert.alert(
+        "Delete Failed",
+        message
+      );
+    }
+  };
 
   if (loading || deletingAccount) {
     return (
@@ -970,122 +952,6 @@ export default function ProfileScreen() {
               )}
             </TouchableOpacity>
           </View>
-
-          {/* 
-          <View style={styles.section}> 
-            <ThemedText 
-              style={[ 
-                styles.sectionTitle, 
-                { 
-                  color: 
-                    theme.secondaryText, 
-                }, 
-              ]} 
-            > 
-              Preferences 
-            </ThemedText> 
-
-            <View 
-              style={[ 
-                styles.menuCard, 
-                { 
-                  backgroundColor: 
-                    theme.surface, 
-                  borderColor: 
-                    theme.border, 
-                }, 
-              ]} 
-            > 
-              <TouchableOpacity 
-                style={[ 
-                  styles.menuItem, 
-                  { 
-                    borderBottomColor: 
-                      theme.border, 
-                  }, 
-                ]} 
-                onPress={() => 
-                  Alert.alert( 
-                    "Settings", 
-                    "Manage notifications and options." 
-                  ) 
-                } 
-              > 
-                <View 
-                  style={ 
-                    styles.menuItemLeft 
-                  } 
-                > 
-                  <Ionicons 
-                    name="settings-outline" 
-                    size={22} 
-                    color={ 
-                      theme.primary 
-                    } 
-                  /> 
-
-                  <ThemedText 
-                    style={ 
-                      styles.menuItemTitle 
-                    } 
-                  > 
-                    App Settings 
-                  </ThemedText> 
-                </View> 
-
-                <Ionicons 
-                  name="chevron-forward" 
-                  size={18} 
-                  color={ 
-                    theme.secondaryText 
-                  } 
-                /> 
-              </TouchableOpacity> 
-
-              <TouchableOpacity 
-                style={ 
-                  styles.menuItemLast 
-                } 
-                onPress={() => 
-                  Alert.alert( 
-                    "Help", 
-                    "Access community guidelines & support documentation." 
-                  ) 
-                } 
-              > 
-                <View 
-                  style={ 
-                    styles.menuItemLeft 
-                  } 
-                > 
-                  <Ionicons 
-                    name="help-circle-outline" 
-                    size={22} 
-                    color={ 
-                      theme.primary 
-                    } 
-                  /> 
-
-                  <ThemedText 
-                    style={ 
-                      styles.menuItemTitle 
-                    } 
-                  > 
-                    Help & Support 
-                  </ThemedText> 
-                </View> 
-
-                <Ionicons 
-                  name="chevron-forward" 
-                  size={18} 
-                  color={ 
-                    theme.secondaryText 
-                  } 
-                /> 
-              </TouchableOpacity> 
-            </View> 
-          </View> 
-          */}
 
           <View
             style={styles.actionContainer}

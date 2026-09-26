@@ -308,9 +308,7 @@ export default function LessonScreen() {
           await getToken();
 
         const supabase =
-          createSupabaseClient(
-            token
-          );
+          createSupabaseClient(token);
 
         const {
           data,
@@ -355,13 +353,11 @@ export default function LessonScreen() {
       getToken,
     ]);
 
-  useEffect(() => {
-    fetchUserProfile();
-  }, [fetchUserProfile]);
-
   useFocusEffect(
     useCallback(() => {
       fetchUserProfile();
+
+      return undefined;
     }, [fetchUserProfile])
   );
 
@@ -455,13 +451,9 @@ export default function LessonScreen() {
     useCallback(async () => {
       if (
         !selectedLanguage ||
-        !selectedLevel
+        !selectedLevel ||
+        !user?.id
       ) {
-        setProgress({});
-        return;
-      }
-
-      if (!user?.id) {
         setProgress({});
         return;
       }
@@ -471,9 +463,7 @@ export default function LessonScreen() {
           await getToken();
 
         const supabase =
-          createSupabaseClient(
-            token
-          );
+          createSupabaseClient(token);
 
         const savedProgress =
           await getAllProgress(
@@ -518,27 +508,26 @@ export default function LessonScreen() {
     }, [
       selectedLanguage,
       selectedLevel,
-      getToken,
       user?.id,
+      getToken,
     ]);
 
   useEffect(() => {
     if (
-      chapters.length > 0 &&
-      selectedLanguage &&
-      selectedLevel
+      profileLoading ||
+      !selectedLanguage ||
+      !selectedLevel ||
+      !user?.id
     ) {
-      loadProgress();
-    } else if (
-      selectedLanguage &&
-      selectedLevel
-    ) {
-      setProgress({});
+      return;
     }
+
+    loadProgress();
   }, [
-    chapters,
+    profileLoading,
     selectedLanguage,
     selectedLevel,
+    user?.id,
     loadProgress,
   ]);
 
@@ -547,29 +536,29 @@ export default function LessonScreen() {
       if (
         profileLoading ||
         !selectedLanguage ||
-        !selectedLevel
+        !selectedLevel ||
+        !user?.id
       ) {
         return undefined;
       }
 
       let cancelled = false;
 
-      const refresh =
-        async () => {
-          await new Promise(
-            (resolve) =>
-              setTimeout(
-                resolve,
-                100
-              )
-          );
+      const refresh = async () => {
+        await new Promise(
+          (resolve) =>
+            setTimeout(
+              resolve,
+              100
+            )
+        );
 
-          if (cancelled) {
-            return;
-          }
+        if (cancelled) {
+          return;
+        }
 
-          await loadProgress();
-        };
+        await loadProgress();
+      };
 
       refresh();
 
@@ -580,6 +569,7 @@ export default function LessonScreen() {
       profileLoading,
       selectedLanguage,
       selectedLevel,
+      user?.id,
       loadProgress,
     ])
   );
@@ -622,9 +612,7 @@ export default function LessonScreen() {
               lessonIndex - 1
             ];
 
-          if (
-            !previousLesson?.id
-          ) {
+          if (!previousLesson?.id) {
             return false;
           }
 
