@@ -154,7 +154,7 @@ export default function GoogleSignIn() {
         signIn,
         signUp,
       } = await startOAuthFlow({
-        redirectUrl: Linking.createURL("/"),
+        redirectUrl: Linking.createURL("/oauth-callback"),
       });
 
       if (!createdSessionId) {

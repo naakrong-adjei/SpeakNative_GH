@@ -7,7 +7,12 @@ export default function LessonsTab() {
   const { theme } = useTheme();
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: theme.background },
+      ]}
+    >
       <LessonScreen />
     </View>
   );

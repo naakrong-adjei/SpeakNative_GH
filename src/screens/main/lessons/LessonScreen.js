@@ -1,9 +1,10 @@
 import React, {
   useCallback,
   useEffect,
+  useMemo,
+  useRef,
   useState,
 } from "react";
-
 import {
   View,
   Text,
@@ -13,34 +14,26 @@ import {
   ActivityIndicator,
   RefreshControl,
 } from "react-native";
-
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
-
 import {
   useFocusEffect,
   useRouter,
 } from "expo-router";
-
 import {
   useUser,
   useAuth,
 } from "@clerk/expo";
-
 import { useTheme } from "../../../context/ThemeContext";
-
 import {
   createSupabaseClient,
 } from "../../../utils/supabase";
-
 import {
   getLanguageData,
 } from "../../../utils/lessonData";
-
 import {
   getAllProgress,
 } from "../../../lib/lessonProgress";
-
 import Header from "../../../components/ui/Header";
 
 const MAX_STARS = 3;
@@ -61,84 +54,71 @@ const LessonNode = React.memo(
         Number(completionCount) || 0
       )
     );
-
     const isMastered =
       safeCompletion >= MAX_STARS;
-
     const alignmentStyle =
       index % 2 === 0
         ? "flex-start"
         : "flex-end";
 
-    const renderCompletionStars =
-      useCallback(
-        (completion) => {
-          const stars = [];
-
-          const starsToShow = Math.min(
-            Math.max(
-              0,
-              Number(completion) || 0
-            ),
-            MAX_STARS
-          );
-
-          for (
-            let i = 0;
-            i < starsToShow;
-            i++
-          ) {
-            stars.push(
-              <Ionicons
-                key={`star-${i}`}
-                name="star"
-                size={16}
-                color={
-                  theme.warning ||
-                  "#FFD700"
-                }
-              />
-            );
-          }
-
-          for (
-            let i = starsToShow;
-            i < MAX_STARS;
-            i++
-          ) {
-            stars.push(
-              <Ionicons
-                key={`empty-star-${i}`}
-                name="star-outline"
-                size={16}
-                color={
-                  theme.icon ||
-                  "#8e8e93"
-                }
-              />
-            );
-          }
-
-          return (
-            <View
-              style={
-                styles.completionStarsContainer
-              }
-            >
-              {stars}
-            </View>
-          );
-        },
-        [theme]
+    const renderCompletionStars = () => {
+      const stars = [];
+      const starsToShow = Math.min(
+        Math.max(
+          0,
+          Number(safeCompletion) || 0
+        ),
+        MAX_STARS
       );
+      for (
+        let i = 0;
+        i < starsToShow;
+        i++
+      ) {
+        stars.push(
+          <Ionicons
+            key={`star-${i}`}
+            name="star"
+            size={16}
+            color={
+              theme.warning || "#FFD700"
+            }
+          />
+        );
+      }
+      for (
+        let i = starsToShow;
+        i < MAX_STARS;
+        i++
+      ) {
+        stars.push(
+          <Ionicons
+            key={`empty-star-${i}`}
+            name="star-outline"
+            size={16}
+            color={
+              theme.icon || "#8e8e93"
+            }
+          />
+        );
+      }
+      return (
+        <View
+          style={
+            styles.completionStarsContainer
+          }
+        >
+          {stars}
+        </View>
+      );
+    };
 
     return (
       <View
         style={[
           styles.lessonNodeContainer,
           {
-            alignItems:
-              alignmentStyle,
+            alignItems: alignmentStyle,
           },
         ]}
       >
@@ -159,25 +139,19 @@ const LessonNode = React.memo(
                   : isMastered
                   ? theme.success
                   : theme.border,
-              opacity:
-                isLocked ? 0.5 : 1,
+              opacity: isLocked ? 0.5 : 1,
             },
           ]}
-          onPress={() =>
-            onPress(lesson)
-          }
-          activeOpacity={
-            isLocked ? 1 : 0.7
-          }
+          onPress={() => onPress(lesson)}
+          activeOpacity={isLocked ? 1 : 0.7}
         >
           <View
             style={[
               styles.lessonIconContainer,
               {
-                backgroundColor:
-                  isLocked
-                    ? `${theme.border}60`
-                    : `${theme.primary}15`,
+                backgroundColor: isLocked
+                  ? `${theme.border}60`
+                  : `${theme.primary}15`,
               },
             ]}
           >
@@ -197,24 +171,16 @@ const LessonNode = React.memo(
               }
             />
           </View>
-
-          <View
-            style={
-              styles.lessonTextContainer
-            }
-          >
+          <View style={styles.lessonTextContainer}>
             <Text
               style={[
                 styles.lessonTitle,
-                {
-                  color: theme.text,
-                },
+                { color: theme.text },
               ]}
             >
               {lesson?.title ||
                 "Untitled Lesson"}
             </Text>
-
             {isLocked ? (
               <Text
                 style={[
@@ -230,12 +196,9 @@ const LessonNode = React.memo(
                 lesson first
               </Text>
             ) : (
-              renderCompletionStars(
-                safeCompletion
-              )
+              renderCompletionStars()
             )}
           </View>
-
           {!isLocked && (
             <Ionicons
               name="chevron-forward"
@@ -254,263 +217,245 @@ const LessonNode = React.memo(
 
 export default function LessonScreen() {
   const router = useRouter();
-
   const { theme } = useTheme();
-
-  const { user } = useUser();
-
+  const { user, isLoaded } = useUser();
   const { getToken } = useAuth();
 
-  const [
-    selectedLanguage,
-    setSelectedLanguage,
-  ] = useState("as-tw");
+  const [selectedLanguage, setSelectedLanguage] =
+    useState("as-tw");
+  const [selectedLevel, setSelectedLevel] =
+    useState("beginner");
+  const [profileLoading, setProfileLoading] =
+    useState(true);
+  const [error, setError] = useState(null);
+  const [chapters, setChapters] = useState([]);
+  const [chaptersLoading, setChaptersLoading] =
+    useState(true);
+  // Once we've successfully run loadChapters at least once
+  // against a *resolved* profile, we're allowed to show the
+  // empty state. Until then, always show the loading spinner.
+  const [hasLoadedChaptersOnce, setHasLoadedChaptersOnce] =
+    useState(false);
+  const [progress, setProgress] = useState({});
+  const [isInitialLoad, setIsInitialLoad] =
+    useState(true);
+  const [refreshing, setRefreshing] =
+    useState(false);
 
-  const [
-    selectedLevel,
-    setSelectedLevel,
-  ] = useState("beginner");
+  const memoizedTheme = useMemo(
+    () => theme,
+    [
+      theme?.background,
+      theme?.surface,
+      theme?.text,
+      theme?.primary,
+      theme?.secondaryText,
+      theme?.border,
+      theme?.icon,
+      theme?.success,
+      theme?.warning,
+      theme?.danger,
+      theme?.isDark,
+    ]
+  );
 
-  const [
-    profileLoading,
-    setProfileLoading,
-  ] = useState(true);
+  // ---------------------------------------------------------
+  // Safety net: if anything (Clerk hydration, token fetch,
+  // Supabase call, network) hangs, don't leave the user
+  // staring at a spinner forever.
+  // ---------------------------------------------------------
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsInitialLoad(false);
+      setProfileLoading(false);
+      setChaptersLoading(false);
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  const [error, setError] =
-    useState(null);
-
-  const [chapters, setChapters] =
-    useState([]);
-
-  const [progress, setProgress] =
-    useState({});
-
-  const [
-    isInitialLoad,
-    setIsInitialLoad,
-  ] = useState(true);
-
-  const [
-    refreshing,
-    setRefreshing,
-  ] = useState(false);
-
-  const fetchUserProfile =
-    useCallback(async () => {
-      if (!user?.id) {
-        setProfileLoading(false);
-        setIsInitialLoad(false);
-        return;
+  const fetchUserProfile = useCallback(async () => {
+    // Don't touch any flags until Clerk has actually decided
+    // whether the user is signed in. Otherwise we mark the
+    // screen as "loaded" with default values and skip the
+    // spinner before the profile has been read.
+    if (!isLoaded) {
+      return;
+    }
+    if (!user?.id) {
+      setError(
+        "You need to be signed in to view lessons."
+      );
+      setProfileLoading(false);
+      setIsInitialLoad(false);
+      return;
+    }
+    try {
+      const token = await getToken();
+      if (!token) {
+        throw new Error(
+          "Unable to authenticate. Please try again."
+        );
       }
-
-      try {
-        const token =
-          await getToken();
-
-        const supabase =
-          createSupabaseClient(token);
-
-        const {
-          data,
-          error: profileError,
-        } = await supabase
-          .from("profiles")
-          .select(
-            "target_language, language_level"
-          )
-          .eq(
-            "clerk_id",
-            user.id
-          )
-          .single();
-
-        if (profileError) {
-          throw profileError;
-        }
-
-        setSelectedLanguage(
-          data?.target_language ||
-            "as-tw"
-        );
-
-        setSelectedLevel(
-          data?.language_level ||
-            "beginner"
-        );
-
-        setError(null);
-      } catch (err) {
-        setError(
-          err?.message ||
-            "Unable to load profile."
-        );
-      } finally {
-        setProfileLoading(false);
-        setIsInitialLoad(false);
+      const supabase =
+        createSupabaseClient(token);
+      const {
+        data,
+        error: profileError,
+      } = await supabase
+        .from("profiles")
+        .select(
+          "target_language, language_level"
+        )
+        .eq("clerk_id", user.id)
+        .single();
+      if (profileError) {
+        throw profileError;
       }
-    }, [
-      user?.id,
-      getToken,
-    ]);
+      setSelectedLanguage(
+        data?.target_language || "as-tw"
+      );
+      setSelectedLevel(
+        data?.language_level || "beginner"
+      );
+      setError(null);
+    } catch (err) {
+      setError(
+        err?.message ||
+          "Unable to load profile."
+      );
+    } finally {
+      setProfileLoading(false);
+      setIsInitialLoad(false);
+    }
+  }, [isLoaded, user?.id, getToken]);
 
   useFocusEffect(
     useCallback(() => {
+      if (!isLoaded) {
+        return undefined;
+      }
       fetchUserProfile();
-
       return undefined;
-    }, [fetchUserProfile])
+    }, [isLoaded, fetchUserProfile])
   );
 
-  const loadChapters =
-    useCallback(() => {
-      if (
-        profileLoading ||
-        !selectedLanguage ||
-        !selectedLevel
-      ) {
+  const loadChapters = useCallback(() => {
+    // Only run against a resolved profile. If the profile
+    // hasn't loaded yet, keep the spinner on rather than
+    // showing the empty state.
+    if (profileLoading) {
+      return;
+    }
+    setChaptersLoading(true);
+    try {
+      if (!selectedLanguage || !selectedLevel) {
+        setChapters([]);
+        setError(null);
         return;
       }
-
-      try {
-        const languageData =
-          getLanguageData(
-            selectedLanguage,
-            selectedLevel
-          );
-
-        if (
-          !languageData ||
-          Object.keys(languageData)
-            .length === 0
-        ) {
-          setChapters([]);
-          return;
-        }
-
-        const chaptersArray =
-          Object.keys(
-            languageData
-          ).map((key) => ({
-            id: key,
-            title:
-              languageData[key]
-                ?.title || key,
-            description:
-              languageData[key]
-                ?.description || "",
-            vocabulary:
-              languageData[key]
-                ?.vocabulary || [],
-            lessons:
-              languageData[key]
-                ?.sections || [],
-            review:
-              languageData[key]
-                ?.review || null,
-            totalXp:
-              Number.isFinite(
-                Number(
-                  languageData[key]
-                    ?.totalXp
-                )
-              )
-                ? Math.max(
-                    0,
-                    Number(
-                      languageData[key]
-                        ?.totalXp
-                    )
-                  )
-                : 0,
-          }));
-
-        setChapters(
-          chaptersArray
-        );
-
-        setError(null);
-      } catch (err) {
-        setError(
-          err?.message ||
-            "Unable to load lessons."
-        );
-
+      const languageData = getLanguageData(
+        selectedLanguage,
+        selectedLevel
+      );
+      if (
+        !languageData ||
+        Object.keys(languageData).length === 0
+      ) {
         setChapters([]);
+        setError(null);
+        return;
       }
-    }, [
-      selectedLanguage,
-      selectedLevel,
-      profileLoading,
-    ]);
+      const chaptersArray = Object.keys(
+        languageData
+      ).map((key) => ({
+        id: key,
+        title: languageData[key]?.title || key,
+        description:
+          languageData[key]?.description || "",
+        vocabulary:
+          languageData[key]?.vocabulary || [],
+        lessons:
+          languageData[key]?.sections || [],
+        review: languageData[key]?.review || null,
+        totalXp: Number.isFinite(
+          Number(languageData[key]?.totalXp)
+        )
+          ? Math.max(
+              0,
+              Number(languageData[key]?.totalXp)
+            )
+          : 0,
+      }));
+      setChapters(chaptersArray);
+      setError(null);
+    } catch (err) {
+      setError(
+        err?.message ||
+          "Unable to load lessons."
+      );
+      setChapters([]);
+    } finally {
+      setChaptersLoading(false);
+      setHasLoadedChaptersOnce(true);
+    }
+  }, [
+    selectedLanguage,
+    selectedLevel,
+    profileLoading,
+  ]);
 
   useEffect(() => {
     loadChapters();
   }, [loadChapters]);
 
-  const loadProgress =
-    useCallback(async () => {
-      if (
-        !selectedLanguage ||
-        !selectedLevel ||
-        !user?.id
-      ) {
+  const loadProgress = useCallback(async () => {
+    if (
+      !selectedLanguage ||
+      !selectedLevel ||
+      !user?.id
+    ) {
+      setProgress({});
+      return;
+    }
+    try {
+      const token = await getToken();
+      if (!token) {
         setProgress({});
         return;
       }
-
-      try {
-        const token =
-          await getToken();
-
-        const supabase =
-          createSupabaseClient(token);
-
-        const savedProgress =
-          await getAllProgress(
-            selectedLanguage,
-            selectedLevel,
-            supabase,
-            user.id
-          );
-
-        const normalizedProgress =
-          {};
-
-        Object.entries(
-          savedProgress || {}
-        ).forEach(
-          ([lessonId, value]) => {
-            const numericValue =
-              Number(value);
-
-            normalizedProgress[
-              lessonId
-            ] = Math.max(
-              0,
-              Math.min(
-                MAX_STARS,
-                Number.isFinite(
-                  numericValue
-                )
-                  ? numericValue
-                  : 0
-              )
-            );
-          }
+      const supabase =
+        createSupabaseClient(token);
+      const savedProgress = await getAllProgress(
+        selectedLanguage,
+        selectedLevel,
+        supabase,
+        user.id
+      );
+      const normalizedProgress = {};
+      Object.entries(
+        savedProgress || {}
+      ).forEach(([lessonId, value]) => {
+        const numericValue = Number(value);
+        normalizedProgress[lessonId] = Math.max(
+          0,
+          Math.min(
+            MAX_STARS,
+            Number.isFinite(numericValue)
+              ? numericValue
+              : 0
+          )
         );
-
-        setProgress(
-          normalizedProgress
-        );
-      } catch {
-        setProgress({});
-      }
-    }, [
-      selectedLanguage,
-      selectedLevel,
-      user?.id,
-      getToken,
-    ]);
+      });
+      setProgress(normalizedProgress);
+    } catch {
+      setProgress({});
+    }
+  }, [
+    selectedLanguage,
+    selectedLevel,
+    user?.id,
+    getToken,
+  ]);
 
   useEffect(() => {
     if (
@@ -521,7 +466,6 @@ export default function LessonScreen() {
     ) {
       return;
     }
-
     loadProgress();
   }, [
     profileLoading,
@@ -541,27 +485,18 @@ export default function LessonScreen() {
       ) {
         return undefined;
       }
-
       let cancelled = false;
-
       const refresh = async () => {
-        await new Promise(
-          (resolve) =>
-            setTimeout(
-              resolve,
-              100
-            )
-        );
-
+        try {
+          await getToken();
+        } catch {
+        }
         if (cancelled) {
           return;
         }
-
         await loadProgress();
       };
-
       refresh();
-
       return () => {
         cancelled = true;
       };
@@ -570,285 +505,213 @@ export default function LessonScreen() {
       selectedLanguage,
       selectedLevel,
       user?.id,
+      getToken,
       loadProgress,
     ])
   );
 
-  const onRefresh =
-    useCallback(async () => {
-      setRefreshing(true);
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      await fetchUserProfile();
+      loadChapters();
+      await loadProgress();
+    } finally {
+      setRefreshing(false);
+    }
+  }, [
+    fetchUserProfile,
+    loadChapters,
+    loadProgress,
+  ]);
 
-      try {
-        await fetchUserProfile();
-        loadChapters();
-        await loadProgress();
-      } finally {
-        setRefreshing(false);
+  const isLessonUnlocked = useCallback(
+    (chapterIndex, lessonIndex) => {
+      if (
+        chapterIndex === 0 &&
+        lessonIndex === 0
+      ) {
+        return true;
       }
-    }, [
-      fetchUserProfile,
-      loadChapters,
-      loadProgress,
-    ]);
-
-  const isLessonUnlocked =
-    useCallback(
-      (
-        chapterIndex,
-        lessonIndex
-      ) => {
-        if (
-          chapterIndex === 0 &&
-          lessonIndex === 0
-        ) {
-          return true;
-        }
-
-        if (lessonIndex > 0) {
-          const previousLesson =
-            chapters[
-              chapterIndex
-            ]?.lessons?.[
-              lessonIndex - 1
-            ];
-
-          if (!previousLesson?.id) {
-            return false;
-          }
-
-          return (
-            Number(
-              progress[
-                previousLesson.id
-              ] || 0
-            ) >= MAX_STARS
-          );
-        }
-
-        const previousChapter =
-          chapters[
-            chapterIndex - 1
+      if (lessonIndex > 0) {
+        const previousLesson =
+          chapters[chapterIndex]?.lessons?.[
+            lessonIndex - 1
           ];
-
-        const previousLessons =
-          previousChapter?.lessons ||
-          [];
-
-        if (
-          previousLessons.length ===
-          0
-        ) {
+        if (!previousLesson?.id) {
           return false;
         }
-
-        const lastLesson =
-          previousLessons[
-            previousLessons.length - 1
-          ];
-
-        if (!lastLesson?.id) {
-          return false;
-        }
-
         return (
           Number(
-            progress[
-              lastLesson.id
-            ] || 0
+            progress[previousLesson.id] || 0
           ) >= MAX_STARS
         );
-      },
-      [chapters, progress]
-    );
-
-  const handleLessonPress =
-    useCallback(
-      (lesson) => {
-        if (!lesson?.id) {
-          return;
-        }
-
-        const chapter =
-          chapters.find(
-            (chapterItem) =>
-              (
-                chapterItem.lessons ||
-                []
-              ).some(
-                (item) =>
-                  item.id ===
-                  lesson.id
-              )
-          );
-
-        if (!chapter) {
-          return;
-        }
-
-        const chapterIndex =
-          chapters.findIndex(
-            (item) =>
-              item.id ===
-              chapter.id
-          );
-
-        const lessonIndex =
-          chapter.lessons.findIndex(
-            (item) =>
-              item.id ===
-              lesson.id
-          );
-
-        const unlocked =
-          isLessonUnlocked(
-            chapterIndex,
-            lessonIndex
-          );
-
-        if (!unlocked) {
-          return;
-        }
-
-        const languageData =
-          getLanguageData(
-            selectedLanguage,
-            selectedLevel
-          );
-
-        const fullChapterData =
-          languageData?.[
-            chapter.id
-          ];
-
-        const dataToPass =
-          fullChapterData ||
-          chapter;
-
-        router.push({
-          pathname:
-            "/(app)/lesson/[id]",
-          params: {
-            id: lesson.id,
-            lessonId: lesson.id,
-            lessonTitle:
-              lesson.title,
-            lessonData:
-              JSON.stringify(
-                dataToPass
-              ),
-            language:
-              selectedLanguage,
-            level:
-              selectedLevel,
-            chapterId:
-              chapter.id,
-          },
-        });
-      },
-      [
-        router,
-        selectedLanguage,
-        selectedLevel,
-        chapters,
-        isLessonUnlocked,
-      ]
-    );
-
-  const handleChapterReview =
-    useCallback(
-      (chapter) => {
-        if (
-          !chapter?.review?.id
-        ) {
-          return;
-        }
-
-        const lessons =
-          chapter.lessons || [];
-
-        const allLessonsCompleted =
-          lessons.length === 0 ||
-          lessons.every(
-            (lesson) =>
-              Number(
-                progress[
-                  lesson.id
-                ] || 0
-              ) >= MAX_STARS
-          );
-
-        if (!allLessonsCompleted) {
-          return;
-        }
-
-        router.push({
-          pathname:
-            "/(app)/lesson/[id]",
-          params: {
-            id: chapter.review.id,
-            lessonId:
-              chapter.review.id,
-            lessonTitle:
-              chapter.review.title ||
-              `Review: ${chapter.title}`,
-            lessonData:
-              JSON.stringify(
-                chapter.review
-              ),
-            language:
-              selectedLanguage,
-            level:
-              selectedLevel,
-            isReview: true,
-            chapterId:
-              chapter.id,
-          },
-        });
-      },
-      [
-        router,
-        selectedLanguage,
-        selectedLevel,
-        progress,
-      ]
-    );
-
-  const handleStreakPress =
-    useCallback(() => {
-      router.push(
-        "/(app)/streak"
+      }
+      const previousChapter =
+        chapters[chapterIndex - 1];
+      const previousLessons =
+        previousChapter?.lessons || [];
+      if (previousLessons.length === 0) {
+        return false;
+      }
+      const lastLesson =
+        previousLessons[
+          previousLessons.length - 1
+        ];
+      if (!lastLesson?.id) {
+        return false;
+      }
+      return (
+        Number(progress[lastLesson.id] || 0) >=
+        MAX_STARS
       );
-    }, [router]);
+    },
+    [chapters, progress]
+  );
 
-  if (
+  const handleLessonPress = useCallback(
+    (lesson) => {
+      if (!lesson?.id) {
+        return;
+      }
+      const chapter = chapters.find(
+        (chapterItem) =>
+          (chapterItem.lessons || []).some(
+            (item) => item.id === lesson.id
+          )
+      );
+      if (!chapter) {
+        return;
+      }
+      const chapterIndex = chapters.findIndex(
+        (item) => item.id === chapter.id
+      );
+      const lessonIndex =
+        chapter.lessons.findIndex(
+          (item) => item.id === lesson.id
+        );
+      const unlocked = isLessonUnlocked(
+        chapterIndex,
+        lessonIndex
+      );
+      if (!unlocked) {
+        return;
+      }
+      const languageData = getLanguageData(
+        selectedLanguage,
+        selectedLevel
+      );
+      const fullChapterData =
+        languageData?.[chapter.id];
+      const dataToPass =
+        fullChapterData || chapter;
+      router.push({
+        pathname: "/(app)/lesson/[id]",
+        params: {
+          id: lesson.id,
+          lessonId: lesson.id,
+          lessonTitle: lesson.title,
+          lessonData: JSON.stringify(dataToPass),
+          language: selectedLanguage,
+          level: selectedLevel,
+          chapterId: chapter.id,
+        },
+      });
+    },
+    [
+      router,
+      selectedLanguage,
+      selectedLevel,
+      chapters,
+      isLessonUnlocked,
+    ]
+  );
+
+  const handleChapterReview = useCallback(
+    (chapter) => {
+      if (!chapter?.review?.id) {
+        return;
+      }
+      const lessons = chapter.lessons || [];
+      const allLessonsCompleted =
+        lessons.length === 0 ||
+        lessons.every(
+          (lesson) =>
+            Number(progress[lesson.id] || 0) >=
+            MAX_STARS
+        );
+      if (!allLessonsCompleted) {
+        return;
+      }
+      router.push({
+        pathname: "/(app)/lesson/[id]",
+        params: {
+          id: chapter.review.id,
+          lessonId: chapter.review.id,
+          lessonTitle:
+            chapter.review.title ||
+            `Review: ${chapter.title}`,
+          lessonData: JSON.stringify(
+            chapter.review
+          ),
+          language: selectedLanguage,
+          level: selectedLevel,
+          isReview: true,
+          chapterId: chapter.id,
+        },
+      });
+    },
+    [
+      router,
+      selectedLanguage,
+      selectedLevel,
+      progress,
+    ]
+  );
+
+  const handleStreakPress = useCallback(() => {
+    router.push("/(app)/streak");
+  }, [router]);
+
+  const showInitialSpinner =
+    !isLoaded ||
     isInitialLoad ||
-    profileLoading
-  ) {
+    profileLoading;
+
+  // The chapters "loading" state should stay on until:
+  //   - initial spinner is gone AND
+  //   - we've completed at least one real chapters load
+  //     against a resolved profile.
+  // That guarantees users see "Loading lessons..." on
+  // login, and only see "No lessons found" once a genuine
+  // empty result has been confirmed.
+  const showChaptersLoading =
+    chaptersLoading || !hasLoadedChaptersOnce;
+
+  if (showInitialSpinner) {
     return (
       <View
         style={[
           styles.center,
           {
             backgroundColor:
-              theme.background,
+              memoizedTheme.background,
           },
         ]}
       >
         <ActivityIndicator
           size="large"
-          color={theme.primary}
+          color={memoizedTheme.primary}
         />
-
         <Text
           style={[
             styles.loadingText,
-            {
-              color:
-                theme.text,
-            },
+            { color: memoizedTheme.text },
           ]}
         >
-          {isInitialLoad
+          {!isLoaded
+            ? "Loading..."
+            : isInitialLoad
             ? "Loading..."
             : "Loading profile..."}
         </Text>
@@ -863,7 +726,7 @@ export default function LessonScreen() {
           styles.center,
           {
             backgroundColor:
-              theme.background,
+              memoizedTheme.background,
           },
         ]}
       >
@@ -872,7 +735,6 @@ export default function LessonScreen() {
           size={50}
           color="red"
         />
-
         <Text
           style={{
             color: "red",
@@ -882,29 +744,25 @@ export default function LessonScreen() {
         >
           Error: {error}
         </Text>
-
         <TouchableOpacity
           style={[
             styles.retryButton,
             {
               backgroundColor:
-                theme.primary,
+                memoizedTheme.primary,
               marginTop: 16,
             },
           ]}
           onPress={() => {
             setError(null);
-            setProfileLoading(
-              true
-            );
             setIsInitialLoad(true);
+            setProfileLoading(true);
+            setHasLoadedChaptersOnce(false);
+            setChaptersLoading(true);
+            fetchUserProfile();
           }}
         >
-          <Text
-            style={
-              styles.retryButtonText
-            }
-          >
+          <Text style={styles.retryButtonText}>
             Retry
           </Text>
         </TouchableOpacity>
@@ -919,580 +777,434 @@ export default function LessonScreen() {
         styles.container,
         {
           backgroundColor:
-            theme.background,
+            memoizedTheme.background,
         },
       ]}
     >
-      <Header
-        onStreakPress={
-          handleStreakPress
-        }
-      />
-
+      <Header onStreakPress={handleStreakPress} />
       <ScrollView
         contentContainerStyle={
           styles.scrollContainer
         }
-        showsVerticalScrollIndicator={
-          false
-        }
+        showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl
-            refreshing={
-              refreshing
-            }
-            onRefresh={
-              onRefresh
-            }
-            tintColor={
-              theme.primary
-            }
-            colors={[
-              theme.primary,
-            ]}
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={memoizedTheme.primary}
+            colors={[memoizedTheme.primary]}
           />
         }
       >
-        {chapters.length ===
-        0 ? (
-          <View
-            style={styles.center}
-          >
+        {showChaptersLoading ? (
+          <View style={styles.center}>
+            <ActivityIndicator
+              size="large"
+              color={memoizedTheme.primary}
+            />
+            <Text
+              style={[
+                styles.loadingText,
+                { color: memoizedTheme.text },
+              ]}
+            >
+              Loading lessons...
+            </Text>
+          </View>
+        ) : chapters.length === 0 ? (
+          <View style={styles.center}>
             <Ionicons
               name="book-outline"
               size={50}
               color={
-                theme.icon ||
-                "#8e8e93"
+                memoizedTheme.icon || "#8e8e93"
               }
             />
-
             <Text
               style={[
                 styles.noDataText,
-                {
-                  color:
-                    theme.text,
-                },
+                { color: memoizedTheme.text },
               ]}
             >
               No lessons found
             </Text>
-
             <Text
               style={[
                 styles.noDataSubText,
                 {
                   color:
-                    theme.secondaryText ||
+                    memoizedTheme.secondaryText ||
                     "#8e8e93",
                 },
               ]}
             >
-              Try selecting a
-              different language
+              Try selecting a different language
               or level
             </Text>
           </View>
         ) : (
-          chapters.map(
-            (
-              chapter,
-              chapterIndex
-            ) => {
-              const chapterProgress =
-                (
-                  chapter.lessons ||
-                  []
-                ).reduce(
-                  (
-                    total,
-                    lesson
-                  ) =>
-                    total +
-                    (
-                      progress[
-                        lesson.id
-                      ] || 0
-                    ),
-                  0
-                );
-
-              const totalLessons =
-                (
-                  chapter.lessons ||
-                  []
-                ).length;
-
-              const avgProgress =
-                totalLessons > 0
-                  ? Math.round(
-                      (
-                        chapterProgress /
-                        (
-                          totalLessons *
-                          MAX_STARS
-                        )
-                      ) *
-                        100
-                    )
-                  : 0;
-
-              const allLessonsCompleted =
-                totalLessons > 0 &&
-                (
-                  chapter.lessons ||
-                  []
-                ).every(
-                  (lesson) =>
-                    Number(
-                      progress[
-                        lesson.id
-                      ] || 0
-                    ) >= MAX_STARS
-                );
-
-              return (
-                <View
-                  key={
-                    chapter.id
-                  }
-                  style={
-                    styles.chapterContainer
-                  }
-                >
+          chapters.map((chapter, chapterIndex) => {
+            const chapterProgress = (
+              chapter.lessons || []
+            ).reduce(
+              (total, lesson) =>
+                total +
+                (progress[lesson.id] || 0),
+              0
+            );
+            const totalLessons = (
+              chapter.lessons || []
+            ).length;
+            const avgProgress =
+              totalLessons > 0
+                ? Math.round(
+                    (chapterProgress /
+                      (totalLessons * MAX_STARS)) *
+                      100
+                  )
+                : 0;
+            const allLessonsCompleted =
+              totalLessons > 0 &&
+              (chapter.lessons || []).every(
+                (lesson) =>
+                  Number(progress[lesson.id] || 0) >=
+                  MAX_STARS
+              );
+            return (
+              <View
+                key={chapter.id}
+                style={styles.chapterContainer}
+              >
+                <View style={styles.chapterHeader}>
                   <View
-                    style={
-                      styles.chapterHeader
-                    }
+                    style={styles.chapterHeaderRow}
                   >
+                    <Text
+                      style={[
+                        styles.chapterNumberText,
+                        {
+                          color:
+                            memoizedTheme.secondaryText ||
+                            "#8e8e93",
+                        },
+                      ]}
+                    >
+                      CHAPTER {chapterIndex + 1}
+                    </Text>
                     <View
                       style={
-                        styles.chapterHeaderRow
+                        styles.chapterHeaderRight
                       }
                     >
-                      <Text
-                        style={[
-                          styles.chapterNumberText,
-                          {
-                            color:
-                              theme.secondaryText ||
-                              "#8e8e93",
-                          },
-                        ]}
-                      >
-                        CHAPTER{" "}
-                        {chapterIndex +
-                          1}
-                      </Text>
-
-                      <View
-                        style={
-                          styles.chapterHeaderRight
-                        }
-                      >
-                        {chapter.totalXp >
-                          0 && (
-                          <View
-                            style={[
-                              styles.chapterXPContainer,
-                              {
-                                backgroundColor:
-                                  `${
-                                    theme.warning ||
-                                    "#FFD700"
-                                  }20`,
-                              },
-                            ]}
-                          >
-                            <Ionicons
-                              name="flash"
-                              size={16}
-                              color={
-                                theme.warning ||
-                                "#FFD700"
-                              }
-                            />
-
-                            <Text
-                              style={[
-                                styles.chapterXPText,
-                                {
-                                  color:
-                                    theme.warning ||
-                                    "#D6A900",
-                                },
-                              ]}
-                            >
-                              +
-                              {
-                                chapter.totalXp
-                              }{" "}
-                              XP
-                            </Text>
-                          </View>
-                        )}
-
+                      {chapter.totalXp > 0 && (
                         <View
                           style={[
-                            styles.chapterProgressBadge,
+                            styles.chapterXPContainer,
                             {
-                              backgroundColor:
-                                `${theme.primary}20`,
+                              backgroundColor: `${
+                                memoizedTheme.warning ||
+                                "#FFD700"
+                              }20`,
                             },
                           ]}
                         >
+                          <Ionicons
+                            name="flash"
+                            size={16}
+                            color={
+                              memoizedTheme.warning ||
+                              "#FFD700"
+                            }
+                          />
                           <Text
                             style={[
-                              styles.chapterProgressText,
+                              styles.chapterXPText,
                               {
                                 color:
-                                  theme.primary,
+                                  memoizedTheme.warning ||
+                                  "#D6A900",
                               },
                             ]}
                           >
-                            {
-                              avgProgress
-                            }
-                            %
+                            +{chapter.totalXp} XP
                           </Text>
                         </View>
-                      </View>
-                    </View>
-
-                    <Text
-                      style={[
-                        styles.chapterTitleText,
-                        {
-                          color:
-                            theme.text,
-                        },
-                      ]}
-                    >
-                      {
-                        chapter.title
-                      }
-                    </Text>
-
-                    {chapter.description && (
-                      <Text
+                      )}
+                      <View
                         style={[
-                          styles.chapterDescription,
+                          styles.chapterProgressBadge,
                           {
-                            color:
-                              theme.secondaryText ||
-                              "#8e8e93",
+                            backgroundColor: `${memoizedTheme.primary}20`,
                           },
                         ]}
                       >
-                        {
-                          chapter.description
-                        }
-                      </Text>
-                    )}
+                        <Text
+                          style={[
+                            styles.chapterProgressText,
+                            {
+                              color:
+                                memoizedTheme.primary,
+                            },
+                          ]}
+                        >
+                          {avgProgress}%
+                        </Text>
+                      </View>
+                    </View>
                   </View>
-
-                  <View
-                    style={
-                      styles.lessonsWrapper
-                    }
+                  <Text
+                    style={[
+                      styles.chapterTitleText,
+                      { color: memoizedTheme.text },
+                    ]}
                   >
-                    {(
-                      chapter.lessons ||
-                      []
-                    ).map(
-                      (
-                        lesson,
-                        lessonIndex
-                      ) => {
-                        const unlocked =
-                          isLessonUnlocked(
-                            chapterIndex,
-                            lessonIndex
-                          );
-
-                        return (
-                          <LessonNode
-                            key={
-                              lesson.id
-                            }
-                            lesson={
-                              lesson
-                            }
-                            index={
-                              lessonIndex
-                            }
-                            theme={
-                              theme
-                            }
-                            onPress={
-                              handleLessonPress
-                            }
-                            completionCount={
-                              progress[
-                                lesson.id
-                              ] || 0
-                            }
-                            isLocked={
-                              !unlocked
-                            }
-                          />
-                        );
-                      }
-                    )}
-                  </View>
-
-                  {chapter.review && (
-                    <TouchableOpacity
-                      disabled={
-                        !allLessonsCompleted
-                      }
+                    {chapter.title}
+                  </Text>
+                  {chapter.description && (
+                    <Text
                       style={[
-                        styles.reviewButton,
+                        styles.chapterDescription,
                         {
-                          backgroundColor:
-                            allLessonsCompleted
-                              ? theme.primary
-                              : theme.border,
-                          opacity:
-                            allLessonsCompleted
-                              ? 1
-                              : 0.55,
+                          color:
+                            memoizedTheme.secondaryText ||
+                            "#8e8e93",
                         },
                       ]}
-                      onPress={() =>
-                        handleChapterReview(
-                          chapter
-                        )
-                      }
-                      activeOpacity={
-                        allLessonsCompleted
-                          ? 0.8
-                          : 1
-                      }
                     >
-                      <Ionicons
-                        name={
-                          allLessonsCompleted
-                            ? "refresh-outline"
-                            : "lock-closed-outline"
-                        }
-                        size={20}
-                        color="#FFF"
-                      />
-
-                      <Text
-                        style={
-                          styles.reviewButtonText
-                        }
-                      >
-                        {allLessonsCompleted
-                          ? "Review Chapter"
-                          : "Complete Lessons to Review"}
-                      </Text>
-                    </TouchableOpacity>
+                      {chapter.description}
+                    </Text>
                   )}
                 </View>
-              );
-            }
-          )
+                <View style={styles.lessonsWrapper}>
+                  {(chapter.lessons || []).map(
+                    (lesson, lessonIndex) => {
+                      const unlocked =
+                        isLessonUnlocked(
+                          chapterIndex,
+                          lessonIndex
+                        );
+                      return (
+                        <LessonNode
+                          key={lesson.id}
+                          lesson={lesson}
+                          index={lessonIndex}
+                          theme={memoizedTheme}
+                          onPress={handleLessonPress}
+                          completionCount={
+                            progress[lesson.id] || 0
+                          }
+                          isLocked={!unlocked}
+                        />
+                      );
+                    }
+                  )}
+                </View>
+                {chapter.review && (
+                  <TouchableOpacity
+                    disabled={!allLessonsCompleted}
+                    style={[
+                      styles.reviewButton,
+                      {
+                        backgroundColor:
+                          allLessonsCompleted
+                            ? memoizedTheme.primary
+                            : memoizedTheme.border,
+                        opacity: allLessonsCompleted
+                          ? 1
+                          : 0.55,
+                      },
+                    ]}
+                    onPress={() =>
+                      handleChapterReview(chapter)
+                    }
+                    activeOpacity={
+                      allLessonsCompleted ? 0.8 : 1
+                    }
+                  >
+                    <Ionicons
+                      name={
+                        allLessonsCompleted
+                          ? "refresh-outline"
+                          : "lock-closed-outline"
+                      }
+                      size={20}
+                      color="#FFF"
+                    />
+                    <Text
+                      style={styles.reviewButtonText}
+                    >
+                      {allLessonsCompleted
+                        ? "Review Chapter"
+                        : "Complete Lessons to Review"}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+              </View>
+            );
+          })
         )}
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-const styles =
-  StyleSheet.create({
-    container: {
-      flex: 1,
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  center: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  scrollContainer: {
+    paddingTop: 10,
+    paddingHorizontal: 20,
+    flexGrow: 1,
+  },
+  chapterContainer: {
+    marginBottom: 24,
+  },
+  chapterHeader: {
+    marginBottom: 14,
+  },
+  chapterHeaderRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  chapterHeaderRight: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  chapterNumberText: {
+    fontSize: 14,
+    fontWeight: "bold",
+    textTransform: "uppercase",
+  },
+  chapterProgressBadge: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  chapterProgressText: {
+    fontSize: 12,
+    fontWeight: "600",
+  },
+  chapterXPContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 9,
+    paddingVertical: 5,
+    borderRadius: 14,
+    gap: 4,
+  },
+  chapterXPText: {
+    fontSize: 12,
+    fontWeight: "800",
+  },
+  chapterTitleText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginTop: 3,
+  },
+  chapterDescription: {
+    fontSize: 14,
+    marginTop: 3,
+    lineHeight: 20,
+  },
+  lessonsWrapper: {
+    gap: 14,
+  },
+  lessonNodeContainer: {
+    minHeight: 72,
+    justifyContent: "center",
+    width: "100%",
+  },
+  lessonBubble: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 14,
+    borderWidth: 2,
+    width: "88%",
+    gap: 10,
+  },
+  lessonIconContainer: {
+    width: 42,
+    height: 42,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  lessonTextContainer: {
+    flex: 1,
+  },
+  lessonTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  completionStarsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 3,
+  },
+  lockedText: {
+    fontSize: 11,
+    fontWeight: "600",
+    marginTop: 4,
+    lineHeight: 15,
+  },
+  reviewButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    marginTop: 12,
+    alignSelf: "center",
+    paddingVertical: 11,
+    paddingHorizontal: 22,
+    borderRadius: 24,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
     },
-
-    center: {
-      flex: 1,
-      justifyContent:
-        "center",
-      alignItems: "center",
-      padding: 20,
-    },
-
-    scrollContainer: {
-      paddingTop: 10,
-      paddingHorizontal: 20,
-    },
-
-    chapterContainer: {
-      marginBottom: 24,
-    },
-
-    chapterHeader: {
-      marginBottom: 14,
-    },
-
-    chapterHeaderRow: {
-      flexDirection: "row",
-      justifyContent:
-        "space-between",
-      alignItems: "center",
-    },
-
-    chapterHeaderRight: {
-      flexDirection: "row",
-      alignItems: "center",
-      gap: 8,
-    },
-
-    chapterNumberText: {
-      fontSize: 14,
-      fontWeight: "bold",
-      textTransform:
-        "uppercase",
-    },
-
-    chapterProgressBadge: {
-      paddingHorizontal: 10,
-      paddingVertical: 4,
-      borderRadius: 12,
-    },
-
-    chapterProgressText: {
-      fontSize: 12,
-      fontWeight: "600",
-    },
-
-    chapterXPContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      paddingHorizontal: 9,
-      paddingVertical: 5,
-      borderRadius: 14,
-      gap: 4,
-    },
-
-    chapterXPText: {
-      fontSize: 12,
-      fontWeight: "800",
-    },
-
-    chapterTitleText: {
-      fontSize: 24,
-      fontWeight: "bold",
-      marginTop: 3,
-    },
-
-    chapterDescription: {
-      fontSize: 14,
-      marginTop: 3,
-      lineHeight: 20,
-    },
-
-    lessonsWrapper: {
-      gap: 14,
-    },
-
-    lessonNodeContainer: {
-      minHeight: 72,
-      justifyContent:
-        "center",
-      width: "100%",
-    },
-
-    lessonBubble: {
-      flexDirection: "row",
-      alignItems: "center",
-      paddingVertical: 10,
-      paddingHorizontal: 14,
-      borderRadius: 14,
-      borderWidth: 2,
-      width: "88%",
-      gap: 10,
-    },
-
-    lessonIconContainer: {
-      width: 42,
-      height: 42,
-      borderRadius: 12,
-      alignItems: "center",
-      justifyContent:
-        "center",
-    },
-
-    lessonTextContainer: {
-      flex: 1,
-    },
-
-    lessonTitle: {
-      fontSize: 16,
-      fontWeight: "600",
-    },
-
-    completionStarsContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      marginTop: 3,
-    },
-
-    lockedText: {
-      fontSize: 11,
-      fontWeight: "600",
-      marginTop: 4,
-      lineHeight: 15,
-    },
-
-    reviewButton: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent:
-        "center",
-      gap: 8,
-      marginTop: 12,
-      alignSelf: "center",
-      paddingVertical: 11,
-      paddingHorizontal: 22,
-      borderRadius: 24,
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 3,
-      },
-      shadowOpacity: 0.15,
-      shadowRadius: 4,
-      elevation: 4,
-    },
-
-    reviewButtonText: {
-      color: "#FFF",
-      fontSize: 15,
-      fontWeight: "bold",
-      textAlign: "center",
-    },
-
-    loadingText: {
-      fontSize: 16,
-      marginTop: 12,
-    },
-
-    retryButton: {
-      paddingVertical: 10,
-      paddingHorizontal: 24,
-      borderRadius: 8,
-    },
-
-    retryButtonText: {
-      color: "#fff",
-      fontSize: 16,
-      fontWeight: "600",
-    },
-
-    noDataText: {
-      fontSize: 20,
-      fontWeight: "bold",
-      marginTop: 12,
-    },
-
-    noDataSubText: {
-      fontSize: 14,
-      marginTop: 4,
-      textAlign: "center",
-    },
-  });
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  reviewButtonText: {
+    color: "#FFF",
+    fontSize: 15,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  loadingText: {
+    fontSize: 16,
+    marginTop: 12,
+  },
+  retryButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+  },
+  retryButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  noDataText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 12,
+  },
+  noDataSubText: {
+    fontSize: 14,
+    marginTop: 4,
+    textAlign: "center",
+  },
+});

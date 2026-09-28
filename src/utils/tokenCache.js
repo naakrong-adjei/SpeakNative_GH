@@ -19,4 +19,12 @@ export const tokenCache = {
       return;
     }
   },
+
+  async clearToken(key) {
+    try {
+      await SecureStore.deleteItemAsync(key);
+    } catch (err) {
+      return;
+    }
+  },
 };
