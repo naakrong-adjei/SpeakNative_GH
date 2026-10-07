@@ -15,15 +15,8 @@ import {
 } from "react-native";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
-
-import {
-  useAuth,
-  useUser,
-} from "@clerk/expo";
-
-import {
-  useFocusEffect,
-} from "expo-router/react-navigation";
+import { useFocusEffect } from "expo-router";
+import { useAuth, useUser } from "@clerk/expo";
 
 import { useTheme } from "../../context/ThemeContext";
 import { createSupabaseClient } from "../../utils/supabase";
@@ -33,31 +26,19 @@ const getLocalDateString = () => {
   const date = new Date();
 
   const year = date.getFullYear();
-  const month = String(
-    date.getMonth() + 1
-  ).padStart(2, "0");
-  const day = String(
-    date.getDate()
-  ).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
 
   return `${year}-${month}-${day}`;
 };
 
-const getDateDifference = (
-  firstDate,
-  secondDate
-) => {
+const getDateDifference = (firstDate, secondDate) => {
   if (!firstDate || !secondDate) {
     return null;
   }
 
-  const first = new Date(
-    `${firstDate}T00:00:00`
-  );
-
-  const second = new Date(
-    `${secondDate}T00:00:00`
-  );
+  const first = new Date(firstDate);
+  const second = new Date(secondDate);
 
   if (
     Number.isNaN(first.getTime()) ||
@@ -78,52 +59,45 @@ export default function Header({
   onXpPress,
 }) {
   const { theme } = useTheme();
-
   const { getToken } = useAuth();
   const { user, isLoaded } = useUser();
 
-  const supabase = useMemo(
-    () =>
-      createSupabaseClient(
-        getToken
-      ),
-    [getToken]
-  );
+  const supabase = useMemo(() => {
+    if (typeof getToken !== "function") {
+      return null;
+    }
 
-  const [profile, setProfile] =
-    useState(null);
+    return createSupabaseClient(getToken);
+  }, [getToken]);
 
-  const [loading, setLoading] =
-    useState(true);
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const [xp, setXp] =
-    useState(0);
+  const userId = user?.id;
 
   const syncStreak = useCallback(
     async (profileData) => {
-      if (
-        !profileData ||
-        !user?.id ||
-        !supabase
-      ) {
+      if (!profileData || !userId || !supabase) {
         return profileData;
       }
 
-      const today =
-        getLocalDateString();
+      const currentStreak = Number(profileData.streak) || 0;
 
-      const lastActivity =
-        profileData.last_activity_date;
+      if (currentStreak === 0) {
+        return profileData;
+      }
+
+      const today = getLocalDateString();
+      const lastActivity = profileData.last_activity_date;
 
       if (!lastActivity) {
         return profileData;
       }
 
-      const daysSinceActivity =
-        getDateDifference(
-          lastActivity,
-          today
-        );
+      const daysSinceActivity = getDateDifference(
+        lastActivity,
+        today
+      );
 
       if (
         daysSinceActivity === null ||
@@ -132,134 +106,101 @@ export default function Header({
         return profileData;
       }
 
-      const { data, error } =
-        await supabase
-          .from("profiles")
-          .update({
-            streak: 0,
-          })
-          .eq(
-            "clerk_id",
-            user.id
-          )
-          .select(
-            `
-              streak,
-              total_xp,
-              hearts,
-              target_language,
-              language_level,
-              last_activity_date
-            `
-          )
-          .single();
+      const { data, error } = await supabase
+        .from("profiles")
+        .update({
+          streak: 0,
+        })
+        .eq("clerk_id", userId)
+        .select(`
+          streak,
+          total_xp,
+          hearts,
+          target_language,
+          language_level,
+          last_activity_date
+        `)
+        .maybeSingle();
 
       if (error) {
-        console.log(
-          "Streak sync error:",
-          error
-        );
-
-        return profileData;
+        return {
+          ...profileData,
+          streak: 0,
+        };
       }
 
-      return data || {
-        ...profileData,
-        streak: 0,
-      };
+      return (
+        data || {
+          ...profileData,
+          streak: 0,
+        }
+      );
     },
-    [
-      supabase,
-      user?.id,
-    ]
+    [supabase, userId]
   );
 
-  const fetchProfile =
-    useCallback(async () => {
-      if (
-        !user?.id ||
-        !supabase
-      ) {
+  const fetchProfile = useCallback(
+    async (showLoader = false) => {
+      if (!userId || !supabase) {
         return;
       }
 
       try {
-        const { data, error } =
-          await supabase
-            .from("profiles")
-            .select(
-              `
-                streak,
-                total_xp,
-                hearts,
-                target_language,
-                language_level,
-                last_activity_date
-              `
-            )
-            .eq(
-              "clerk_id",
-              user.id
-            )
-            .single();
+        if (showLoader && !profile) {
+          setLoading(true);
+        }
 
-        if (error) {
-          console.log(
-            "Profile fetch error:",
-            error
-          );
+        const { data, error } = await supabase
+          .from("profiles")
+          .select(`
+            streak,
+            total_xp,
+            hearts,
+            target_language,
+            language_level,
+            last_activity_date
+          `)
+          .eq("clerk_id", userId)
+          .maybeSingle();
+
+        if (error || !data) {
           return;
         }
 
-        if (!data) {
-          return;
-        }
+        const syncedProfile = await syncStreak(data);
 
-        const syncedProfile =
-          await syncStreak(data);
-
-        setProfile(
-          syncedProfile
-        );
-
-        setXp(
-          Number(
-            syncedProfile?.total_xp
-          ) || 0
-        );
+        setProfile(syncedProfile);
       } catch (error) {
-        console.log(
-          "Header fetch crash:",
-          error
-        );
+        return;
+      } finally {
+        if (showLoader && !profile) {
+          setLoading(false);
+        }
       }
-    }, [
+    },
+    [
       supabase,
-      user?.id,
+      userId,
       syncStreak,
-    ]);
+      profile,
+    ]
+  );
 
   useEffect(() => {
-    if (
-      !isLoaded ||
-      !user?.id
-    ) {
+    if (!isLoaded) {
       return;
     }
 
-    const loadHeader =
-      async () => {
-        setLoading(true);
+    if (!userId || !supabase) {
+      setLoading(false);
+      return;
+    }
 
-        await fetchProfile();
-
-        setLoading(false);
-      };
-
-    loadHeader();
+    fetchProfile(true);
   }, [
     isLoaded,
-    user?.id,
+    userId,
+    supabase,
     fetchProfile,
   ]);
 
@@ -267,17 +208,17 @@ export default function Header({
     useCallback(() => {
       if (
         !isLoaded ||
-        !user?.id
+        !userId ||
+        !supabase
       ) {
-        return undefined;
+        return;
       }
 
-      fetchProfile();
-
-      return undefined;
+      fetchProfile(false);
     }, [
       isLoaded,
-      user?.id,
+      userId,
+      supabase,
       fetchProfile,
     ])
   );
@@ -285,107 +226,88 @@ export default function Header({
   useEffect(() => {
     if (
       !isLoaded ||
-      !user?.id ||
+      !userId ||
       !supabase
     ) {
       return;
     }
 
-    const channel =
-      supabase
-        .channel(
-          `profile-header-changes-${user.id}`
-        )
-        .on(
-          "postgres_changes",
-          {
-            event: "UPDATE",
-            schema: "public",
-            table: "profiles",
-            filter:
-              `clerk_id=eq.${user.id}`,
-          },
-          async (payload) => {
-            const updatedProfile =
-              payload.new;
+    const channel = supabase
+      .channel(`header-profile-${userId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "profiles",
+          filter: `clerk_id=eq.${userId}`,
+        },
+        async (payload) => {
+          const updatedProfile = payload.new;
 
-            const syncedProfile =
-              await syncStreak(
-                updatedProfile
-              );
+          const syncedProfile =
+            await syncStreak(updatedProfile);
 
-            setProfile(
-              syncedProfile
-            );
-
-            setXp(
-              Number(
-                syncedProfile?.total_xp
-              ) || 0
-            );
-          }
-        )
-        .subscribe();
+          setProfile(syncedProfile);
+        }
+      )
+      .subscribe();
 
     return () => {
-      supabase.removeChannel(
-        channel
-      );
+      supabase.removeChannel(channel);
     };
   }, [
     isLoaded,
-    user?.id,
+    userId,
     supabase,
     syncStreak,
   ]);
 
-  const handleStreakPress =
-    useCallback(async () => {
-      await fetchProfile();
+  const handleStreakPress = useCallback(
+    async () => {
+      await fetchProfile(false);
 
       if (onStreakPress) {
         onStreakPress();
       }
-    }, [
+    },
+    [
       fetchProfile,
       onStreakPress,
-    ]);
+    ]
+  );
 
-  const handleXpPress =
-    useCallback(async () => {
-      await fetchProfile();
+  const handleXpPress = useCallback(
+    async () => {
+      await fetchProfile(false);
 
       if (onXpPress) {
         onXpPress();
       }
-    }, [
+    },
+    [
       fetchProfile,
       onXpPress,
-    ]);
+    ]
+  );
 
-  const currentLanguage =
-    LANGUAGES.find(
-      (lang) =>
-        lang.id ===
-        profile?.target_language
-    );
+  const currentLanguage = LANGUAGES.find(
+    (lang) =>
+      lang.id === profile?.target_language
+  );
 
-  const formatLevel = (
-    level
-  ) => {
+  const formatLevel = (level) => {
     if (!level) {
       return "";
     }
 
     return (
-      level
-        .charAt(0)
-        .toUpperCase() +
+      level.charAt(0).toUpperCase() +
       level.slice(1)
     );
   };
 
-  if (loading) {
+  if (loading && !profile) {
     return (
       <View
         style={[
@@ -418,18 +340,12 @@ export default function Header({
     >
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={
-          onLanguagePress
-        }
-        style={
-          styles.languageCard
-        }
+        onPress={onLanguagePress}
+        style={styles.languageCard}
       >
         {currentLanguage?.image ? (
           <Image
-            source={
-              currentLanguage.image
-            }
+            source={currentLanguage.image}
             style={styles.flag}
             resizeMode="contain"
           />
@@ -439,33 +355,27 @@ export default function Header({
               styles.flagPlaceholder,
               {
                 backgroundColor:
-                  theme.primary +
-                  "15",
+                  theme.primary + "15",
               },
             ]}
           >
             <Ionicons
               name="globe"
               size={20}
-              color={
-                theme.primary
-              }
+              color={theme.primary}
             />
           </View>
         )}
 
         <View
-          style={
-            styles.languageTextWrapper
-          }
+          style={styles.languageTextWrapper}
         >
           <Text
             numberOfLines={1}
             style={[
               styles.languageText,
               {
-                color:
-                  theme.text,
+                color: theme.text,
               },
             ]}
           >
@@ -493,70 +403,50 @@ export default function Header({
         </View>
       </TouchableOpacity>
 
-      <View
-        style={
-          styles.statsContainer
-        }
-      >
+      <View style={styles.statsContainer}>
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={
-            handleStreakPress
-          }
-          style={
-            styles.statItem
-          }
+          onPress={handleStreakPress}
+          style={styles.statItem}
         >
           <Ionicons
             name="flame"
             size={24}
-            color={
-              theme.warning
-            }
+            color={theme.warning}
           />
 
           <Text
             style={[
               styles.statText,
               {
-                color:
-                  theme.icon,
+                color: theme.icon,
               },
             ]}
           >
-            {Number(
-              profile?.streak
-            ) || 0}
+            {Number(profile?.streak) || 0}
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={
-            handleXpPress
-          }
-          style={
-            styles.statItem
-          }
+          onPress={handleXpPress}
+          style={styles.statItem}
         >
           <Ionicons
             name="flash"
             size={24}
-            color={
-              theme.accent
-            }
+            color={theme.accent}
           />
 
           <Text
             style={[
               styles.statText,
               {
-                color:
-                  theme.icon,
+                color: theme.icon,
               },
             ]}
           >
-            {xp}
+            {Number(profile?.total_xp) || 0}
           </Text>
         </TouchableOpacity>
       </View>
@@ -564,81 +454,76 @@ export default function Header({
   );
 }
 
-const styles =
-  StyleSheet.create({
-    loadingContainer: {
-      paddingVertical: 18,
-      alignItems: "center",
-    },
+const styles = StyleSheet.create({
+  loadingContainer: {
+    paddingVertical: 18,
+    alignItems: "center",
+  },
 
-    container: {
-      paddingHorizontal: 16,
-      paddingBottom: 14,
-      paddingTop: 8,
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent:
-        "space-between",
-      borderBottomWidth: 2,
-    },
+  container: {
+    paddingHorizontal: 16,
+    paddingBottom: 14,
+    paddingTop: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderBottomWidth: 2,
+  },
 
-    languageCard: {
-      flexDirection: "row",
-      alignItems: "center",
-      flex: 1,
-      marginRight: 8,
-    },
+  languageCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+    marginRight: 8,
+  },
 
-    flag: {
-      width: 32,
-      height: 32,
-      marginRight: 12,
-      borderRadius: 6,
-    },
+  flag: {
+    width: 32,
+    height: 32,
+    marginRight: 12,
+    borderRadius: 6,
+  },
 
-    flagPlaceholder: {
-      width: 32,
-      height: 32,
-      borderRadius: 8,
-      alignItems: "center",
-      justifyContent:
-        "center",
-      marginRight: 8,
-    },
+  flagPlaceholder: {
+    width: 32,
+    height: 32,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 8,
+  },
 
-    languageTextWrapper: {
-      flexDirection:
-        "column",
-      justifyContent:
-        "center",
-    },
+  languageTextWrapper: {
+    flexDirection: "column",
+    justifyContent: "center",
+  },
 
-    languageText: {
-      fontSize: 16,
-      fontWeight: "800",
-      letterSpacing: 0.3,
-    },
+  languageText: {
+    fontSize: 16,
+    fontWeight: "800",
+    letterSpacing: 0.3,
+  },
 
-    levelText: {
-      fontSize: 14,
-      fontWeight: "600",
-      marginTop: 4,
-    },
+  levelText: {
+    fontSize: 14,
+    fontWeight: "600",
+    marginTop: 4,
+  },
 
-    statsContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      gap: 14,
-    },
+  statsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
+  },
 
-    statItem: {
-      flexDirection: "row",
-      alignItems: "center",
-      gap: 4,
-    },
+  statItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+  },
 
-    statText: {
-      fontSize: 16,
-      fontWeight: "800",
-    },
-  });
+  statText: {
+    fontSize: 16,
+    fontWeight: "800",
+  },
+});

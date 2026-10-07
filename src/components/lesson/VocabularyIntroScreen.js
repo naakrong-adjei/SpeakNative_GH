@@ -226,7 +226,7 @@ export default function VocabularyIntroScreen({
               ]}
             >
               Tap the card to flip it. Learn
-              the words before starting the
+              the words and phrases before starting the
               lesson.
             </Text>
 

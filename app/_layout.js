@@ -41,13 +41,15 @@ function RootNavigator() {
 
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Protected guard={isSignedIn}>
-        <Stack.Screen name="(app)" />
-      </Stack.Protected>
+      <Stack.Screen name="index" />
+
       <Stack.Protected guard={!isSignedIn}>
-        <Stack.Screen name="index" />
         <Stack.Screen name="(auth)" />
+      </Stack.Protected>
+
+      <Stack.Protected guard={isSignedIn}>
         <Stack.Screen name="onboarding" />
+        <Stack.Screen name="(app)" />
       </Stack.Protected>
     </Stack>
   );

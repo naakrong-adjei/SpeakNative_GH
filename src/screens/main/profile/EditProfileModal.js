@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
 import {
   ActivityIndicator,
   Modal,
@@ -10,6 +16,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -50,41 +57,48 @@ export default function EditProfileModal({
 }) {
   const { theme } = useTheme();
 
+  const wasVisibleRef = useRef(false);
+
   const [activeLanguages, setActiveLanguages] = useState([]);
   const [selectedLanguage, setSelectedLanguage] =
     useState(currentLanguageId);
-  const [selectedLevel, setSelectedLevel] = useState(currentLevel);
+  const [selectedLevel, setSelectedLevel] =
+    useState(currentLevel);
   const [email, setEmail] = useState(currentEmail || "");
-  const [username, setUsername] = useState(currentUsername || "");
+  const [username, setUsername] = useState(
+    currentUsername || ""
+  );
   const [saving, setSaving] = useState(false);
   const [activeTab, setActiveTab] = useState("profile");
-  const [showAddLanguageModal, setShowAddLanguageModal] = useState(false);
+  const [showAddLanguageModal, setShowAddLanguageModal] =
+    useState(false);
 
   useEffect(() => {
-    if (!visible) return;
+    if (visible && !wasVisibleRef.current) {
+      setSelectedLanguage(currentLanguageId);
+      setSelectedLevel(currentLevel);
+      setEmail(currentEmail || "");
+      setUsername(currentUsername || "");
 
-    setSelectedLanguage(currentLanguageId);
-    setSelectedLevel(currentLevel);
-    setEmail(currentEmail || "");
-    setUsername(currentUsername || "");
-    setActiveTab("profile");
+      const languages =
+        userLanguages.length > 0
+          ? [...userLanguages]
+          : currentLanguageId
+          ? [currentLanguageId]
+          : [];
 
-    const languages =
-      userLanguages.length > 0
-        ? userLanguages
-        : currentLanguageId
-        ? [currentLanguageId]
-        : [];
+      setActiveLanguages(languages);
+      setActiveTab("profile");
+      setShowAddLanguageModal(false);
+      setSaving(false);
+    }
 
-    setActiveLanguages(languages);
-  }, [
-    visible,
-    currentLanguageId,
-    currentLevel,
-    currentEmail,
-    currentUsername,
-    userLanguages,
-  ]);
+    if (!visible) {
+      setShowAddLanguageModal(false);
+    }
+
+    wasVisibleRef.current = visible;
+  }, [visible]);
 
   const originalLanguages = useMemo(() => {
     return userLanguages.length > 0
@@ -101,13 +115,19 @@ export default function EditProfileModal({
   }, [activeLanguages]);
 
   const hasChanges = useMemo(() => {
+    const languagesChanged =
+      activeLanguages.length !== originalLanguages.length ||
+      activeLanguages.some(
+        (language, index) =>
+          language !== originalLanguages[index]
+      );
+
     return (
       selectedLanguage !== currentLanguageId ||
       selectedLevel !== currentLevel ||
       email !== (currentEmail || "") ||
       username !== (currentUsername || "") ||
-      JSON.stringify(activeLanguages) !==
-        JSON.stringify(originalLanguages)
+      languagesChanged
     );
   }, [
     selectedLanguage,
@@ -154,10 +174,6 @@ export default function EditProfileModal({
 
     setSelectedLanguage(langId);
     setShowAddLanguageModal(false);
-
-    if (onAddLanguage) {
-      onAddLanguage(langId);
-    }
   };
 
   const handleRemoveLanguage = (langId) => {
@@ -165,15 +181,17 @@ export default function EditProfileModal({
       return;
     }
 
-    const updatedLanguages = activeLanguages.filter(
-      (id) => id !== langId
-    );
+    setActiveLanguages((previous) => {
+      const updatedLanguages = previous.filter(
+        (id) => id !== langId
+      );
 
-    setActiveLanguages(updatedLanguages);
+      if (selectedLanguage === langId) {
+        setSelectedLanguage(updatedLanguages[0]);
+      }
 
-    if (selectedLanguage === langId) {
-      setSelectedLanguage(updatedLanguages[0]);
-    }
+      return updatedLanguages;
+    });
   };
 
   const selectedLanguageData = LANGUAGES.find(
@@ -503,12 +521,8 @@ export default function EditProfileModal({
               selectedLanguage === language.id;
 
             return (
-              <TouchableOpacity
+              <View
                 key={language.id}
-                activeOpacity={0.75}
-                onPress={() =>
-                  setSelectedLanguage(language.id)
-                }
                 style={[
                   styles.courseItem,
                   {
@@ -521,71 +535,81 @@ export default function EditProfileModal({
                   },
                 ]}
               >
-                <View style={styles.courseLeft}>
-                  <View
-                    style={[
-                      styles.courseIcon,
-                      {
-                        backgroundColor: isSelected
-                          ? theme.primary
-                          : theme.surface,
-                      },
-                    ]}
-                  >
-                    <Ionicons
-                      name="language-outline"
-                      size={21}
-                      color={
-                        isSelected
-                          ? "#FFFFFF"
-                          : theme.primary
-                      }
-                    />
-                  </View>
-
-                  <View style={styles.courseDetails}>
-                    <Text
+                <TouchableOpacity
+                  activeOpacity={0.75}
+                  onPress={() =>
+                    setSelectedLanguage(language.id)
+                  }
+                  style={styles.coursePressArea}
+                >
+                  <View style={styles.courseLeft}>
+                    <View
                       style={[
-                        styles.courseName,
+                        styles.courseIcon,
                         {
-                          color: isSelected
+                          backgroundColor: isSelected
                             ? theme.primary
-                            : theme.text,
+                            : theme.surface,
                         },
                       ]}
                     >
-                      {language.title}
-                    </Text>
-
-                    <View
-                      style={styles.courseStatusRow}
-                    >
-                      <View
-                        style={[
-                          styles.statusDot,
-                          {
-                            backgroundColor: isSelected
-                              ? theme.primary
-                              : theme.secondaryText,
-                          },
-                        ]}
+                      <Ionicons
+                        name="language-outline"
+                        size={21}
+                        color={
+                          isSelected
+                            ? "#FFFFFF"
+                            : theme.primary
+                        }
                       />
+                    </View>
 
+                    <View style={styles.courseDetails}>
                       <Text
                         style={[
-                          styles.courseStatus,
+                          styles.courseName,
                           {
-                            color: theme.secondaryText,
+                            color: isSelected
+                              ? theme.primary
+                              : theme.text,
                           },
                         ]}
                       >
-                        {isSelected
-                          ? "Currently learning"
-                          : "Tap to switch"}
+                        {language.title}
                       </Text>
+
+                      <View
+                        style={styles.courseStatusRow}
+                      >
+                        <View
+                          style={[
+                            styles.statusDot,
+                            {
+                              backgroundColor:
+                                isSelected
+                                  ? theme.primary
+                                  : theme.secondaryText,
+                            },
+                          ]}
+                        />
+
+                        <Text
+                          style={[
+                            styles.courseStatus,
+                            {
+                              color:
+                                theme.secondaryText,
+                            },
+                          ]}
+                        >
+                          {isSelected
+                            ? "Currently learning"
+                            : "Tap to switch"}
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
+                </TouchableOpacity>
 
                 {isSelected ? (
                   <View
@@ -628,7 +652,7 @@ export default function EditProfileModal({
                     </TouchableOpacity>
                   )
                 )}
-              </TouchableOpacity>
+              </View>
             );
           })}
         </View>
@@ -820,7 +844,9 @@ export default function EditProfileModal({
                         ]}
                       >
                         <Text
-                          style={styles.currentLabelText}
+                          style={
+                            styles.currentLabelText
+                          }
                         >
                           Current
                         </Text>
@@ -1122,7 +1148,9 @@ export default function EditProfileModal({
                       />
                     </View>
 
-                    <View style={styles.availableInfo}>
+                    <View
+                      style={styles.availableInfo}
+                    >
                       <Text
                         style={[
                           styles.availableName,
@@ -1388,6 +1416,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 13,
     borderWidth: 1,
+  },
+
+  coursePressArea: {
+    flex: 1,
   },
 
   courseLeft: {

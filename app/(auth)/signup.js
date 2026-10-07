@@ -56,10 +56,6 @@ export default function SignUpScreen() {
     []
   );
 
-  const goToOnboarding = useCallback(() => {
-    setShowVerify(false);
-    router.replace("/onboarding");
-  }, [router]);
 
   const createAccount = useCallback(async () => {
     if (loading) {
@@ -129,13 +125,14 @@ export default function SignUpScreen() {
 
       if (signUp.status === "complete") {
         const { error: finalizeError } =
-          await signUp.finalize({
-            navigate: goToOnboarding,
-          });
+          await signUp.finalize();
 
         if (finalizeError) {
           throw finalizeError;
         }
+
+        setShowVerify(false);
+        router.replace("/onboarding");
       }
     } catch (error) {
       Alert.alert(
@@ -151,7 +148,6 @@ export default function SignUpScreen() {
   }, [
     email,
     getClerkErrorMessage,
-    goToOnboarding,
     isValidEmail,
     loading,
     password,
@@ -195,13 +191,14 @@ export default function SignUpScreen() {
         }
 
         const { error: finalizeError } =
-          await signUp.finalize({
-            navigate: goToOnboarding,
-          });
+            await signUp.finalize();
 
-        if (finalizeError) {
-          throw finalizeError;
-        }
+          if (finalizeError) {
+            throw finalizeError;
+          }
+
+          setShowVerify(false);
+          router.replace("/onboarding");
       } catch (error) {
         Alert.alert(
           "Verification failed",
@@ -215,8 +212,7 @@ export default function SignUpScreen() {
       }
     },
     [
-      getClerkErrorMessage,
-      goToOnboarding,
+      getClerkErrorMessage,,
       loading,
       signUp,
     ]

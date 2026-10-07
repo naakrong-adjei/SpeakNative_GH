@@ -10,12 +10,24 @@ import { useTheme } from "../src/context/ThemeContext";
 import { createSupabaseClient } from "../src/utils/supabase";
 
 export default function Index() {
-  const { isSignedIn, isLoaded: authLoaded, getToken } = useAuth();
-  const { user, isLoaded: userLoaded } = useUser();
+  const {
+    isSignedIn,
+    isLoaded: authLoaded,
+    getToken,
+  } = useAuth();
+
+  const {
+    user,
+    isLoaded: userLoaded,
+  } = useUser();
+
   const { theme } = useTheme();
 
-  const [checkingOnboarding, setCheckingOnboarding] = useState(true);
-  const [needsOnboarding, setNeedsOnboarding] = useState(false);
+  const [checkingOnboarding, setCheckingOnboarding] =
+    useState(true);
+
+  const [needsOnboarding, setNeedsOnboarding] =
+    useState(false);
 
   const userId = user?.id;
 
@@ -33,12 +45,17 @@ export default function Index() {
     let cancelled = false;
 
     const checkOnboarding = async () => {
-      setCheckingOnboarding(true);
 
       try {
-        const supabase = createSupabaseClient(getToken);
+        setCheckingOnboarding(true);
 
-        const { data, error } = await supabase
+        const supabase =
+          createSupabaseClient(getToken);
+
+        const {
+          data,
+          error,
+        } = await supabase
           .from("profiles")
           .select("onboarding_completed")
           .eq("clerk_id", userId)
@@ -48,13 +65,25 @@ export default function Index() {
           return;
         }
 
+        
+
         if (error) {
           setNeedsOnboarding(true);
           return;
         }
 
-        setNeedsOnboarding(!data?.onboarding_completed);
-      } catch {
+        if (!data) {
+          setNeedsOnboarding(true);
+          return;
+        }
+
+        const onboardingComplete =
+          data.onboarding_completed === true;
+
+
+        setNeedsOnboarding(!onboardingComplete);
+      } catch (error) {
+
         if (!cancelled) {
           setNeedsOnboarding(true);
         }
@@ -75,10 +104,13 @@ export default function Index() {
     userLoaded,
     isSignedIn,
     userId,
-    getToken,
   ]);
 
-  if (!authLoaded || !userLoaded || checkingOnboarding) {
+  if (
+    !authLoaded ||
+    !userLoaded ||
+    checkingOnboarding
+  ) {
     return (
       <View
         style={{
@@ -97,12 +129,18 @@ export default function Index() {
   }
 
   if (!isSignedIn) {
-    return <Redirect href="/(auth)/intro" />;
+    return (
+      <Redirect href="/(auth)/intro" />
+    );
   }
 
   if (needsOnboarding) {
-    return <Redirect href="/onboarding" />;
+    return (
+      <Redirect href="/onboarding" />
+    );
   }
 
-  return <Redirect href="/(app)/(tabs)" />;
+  return (
+    <Redirect href="/(app)/(tabs)" />
+  );
 }

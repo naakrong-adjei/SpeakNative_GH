@@ -10,57 +10,26 @@ if (!supabaseUrl || !supabaseKey) {
   );
 }
 
-let supabaseClientInstance = null;
-
 export const createSupabaseClient = (tokenOrResolver) => {
-  if (supabaseClientInstance) return supabaseClientInstance;
-
-  const resolveToken = async () => {
-    if (typeof tokenOrResolver === "function") {
-      return await tokenOrResolver();
+  const getAccessToken = async () => { 
+    if (typeof tokenOrResolver === "function") { 
+      return await tokenOrResolver(); 
     }
-    return tokenOrResolver;
-  };
-
-  supabaseClientInstance = createClient(supabaseUrl, supabaseKey, {
-    auth: {
-      persistSession: false,
-    },
-    global: {
-      fetch: async (url, options = {}) => {
-        const headers = new Headers(options?.headers);
-
-        const token = await resolveToken();
-
-        if (token) {
-          headers.set("Authorization", `Bearer ${token}`);
-        }
-
-        return fetch(url, { ...options, headers });
-      },
-    },
-  });
-
-  return supabaseClientInstance;
+  return tokenOrResolver || null;
 };
 
-/**
- * Compatibility helper used by older code paths.
- * Accepts either a raw token string or a token resolver function.
- */
+return createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    persistSession: false,
+  },
+  accessToken: getAccessToken,
+  });
+};
+
 export const getSupabaseWithToken = async (tokenOrResolver) => {
-  const token =
-    typeof tokenOrResolver === "function"
-      ? await tokenOrResolver()
-      : tokenOrResolver;
-
-  if (!supabaseClientInstance) {
-    createSupabaseClient(() => token);
-  }
-
-  return supabaseClientInstance;
+  return createSupabaseClient(tokenOrResolver);
 };
 
 export const clearSupabaseClient = () => {
-  supabaseClientInstance = null;
+  // No cached Supabase client to clear.
 };
